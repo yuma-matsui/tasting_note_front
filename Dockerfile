@@ -8,3 +8,7 @@ ENV LANG=C.UTF-8 \
     REACT_APP_API_URL=${REACT_APP_API_URL}
 
 WORKDIR ${WORKDIR}
+
+COPY . ./
+
+RUN npm install
