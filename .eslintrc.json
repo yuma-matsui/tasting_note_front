@@ -1,0 +1,79 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "airbnb",
+        "airbnb-typescript",
+        "airbnb/hooks",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
+        "prettier"
+    ],
+    "overrides": [
+        {
+            "files": ["**/*.tsx"],
+            "rules": {
+                "react/prop-types": "off"
+            }
+        }
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "project": "./tsconfig.json",
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react",
+        "@typescript-eslint",
+        "import",
+        "unused-imports"
+    ],
+    "ignorePatterns": ["build"],
+    "rules": {
+        "no-console": "off",
+        "no-use-before-define": "off",
+        "semi": ["warn", "never"],
+        "quotes": ["warn", "single"],
+        "@typescript-eslint/no-use-before-define": ["error"],
+        "import/prefer-default-export": "off",
+        "react/react-in-jsx-scope": "off",
+        "react/function-component-definition": "off",
+        "@typescript-eslint/consistent-type-definitions": "off",
+        "import/extensions": [
+            "error",
+            "ignorePackages",
+            {
+                "js": "never",
+                "jsx": "never",
+                "ts": "never",
+                "tsx": "never"
+            }
+        ],
+        "react/jsx-filename-extension": [
+            "error",
+            {
+                "extensions": [".jsx", ".ts", ".tsx"]
+            }
+        ],
+        "no-void": [
+            "error",
+            {
+                "allowAsStatement": true
+            }
+        ]
+    },
+    "settings": {
+        "import/resolver": {
+            "node": {
+                "extensions": [".js", ".jsx", ".ts", ".tsx"]
+            },
+            "typescript": {}
+        }
+    }
+}
