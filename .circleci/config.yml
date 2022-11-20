@@ -1,0 +1,47 @@
+version: 2.1
+
+jobs:
+  test_front:
+    docker:
+      - image: cimg/node:18.12.1
+        environment:
+          NODE_ENV: test
+    
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+      - run: git submodule sync
+      - run: git submodule update --init
+
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "front/package.json" }}
+
+      - run:
+          name: install-packages
+          command: npm install
+          working_directory: front
+      
+      - save_cache:
+          key: v1-dependencies-{{ checksum "front/package.json" }}
+          paths:
+            - front/node_modules
+      
+      - run:
+          name: lint
+          command: npm run lint:eslint
+          working_directory: front
+
+      - run:
+          name: test
+          command: npm run test
+          working_directory: front
+
+workflows:
+  build_test:
+    jobs:
+      - test_front:
+          filters:
+            branches:
+              ignore: main
