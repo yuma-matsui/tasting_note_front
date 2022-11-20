@@ -24,7 +24,14 @@
     "lint": "run-p lint:*",
     "lint:eslint": "eslint --ext .jsx,.js,.tsx,.ts ./src",
     "lint:prettier": "prettier --write './src/**/*.{jsx,js,tsx,ts}'",
-    "eslint:fix": "eslint --fix --ext .jsx,.js,.tsx,.ts ./src"
+    "eslint:fix": "eslint --fix --ext .jsx,.js,.tsx,.ts ./src",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --ext .jsx,.js,.tsx,.ts ./src",
+      "prettier --write './src/**/*.{jsx,js,tsx,ts}'"
+    ]
   },
   "browserslist": {
     "production": [
@@ -50,6 +57,8 @@
     "eslint-plugin-react": "^7.31.11",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-unused-imports": "^2.0.0",
+    "husky": "^8.0.2",
+    "lint-staged": "^13.0.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.7.1"
   }
