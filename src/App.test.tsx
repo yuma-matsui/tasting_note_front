@@ -3,6 +3,6 @@ import App from './App'
 
 test('renders learn react link', () => {
   render(<App />)
-  const title = screen.getByRole('heading', { name: 'Tasting Note' })
+  const title = screen.getByRole('heading', { name: 'TastingNote' })
   expect(title).toBeInTheDocument()
 })
