@@ -1,7 +1,11 @@
+import Hello from './components/Hello'
+import Title from './components/Title'
+
 function App() {
   return (
     <div>
-      <h1>TastingNote</h1>
+      <Title />
+      <Hello />
     </div>
   )
 }

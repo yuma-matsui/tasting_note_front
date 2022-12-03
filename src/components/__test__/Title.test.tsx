@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react'
-import App from './App'
+import Title from '../Title'
 
 test('renders learn react link', () => {
-  render(<App />)
-  const title = screen.getByRole('heading', { name: 'TastingNote' })
+  render(<Title />)
+  const title = screen.getByRole('heading', { name: 'Tasting Note' })
   expect(title).toBeInTheDocument()
 })
