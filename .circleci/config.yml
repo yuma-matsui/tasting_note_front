@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  aws-s3: circleci/aws-s3@3.0.0
+  aws-s3: circleci/aws-s3@3.1.1
 
 executors:
   test_image:
@@ -55,7 +55,7 @@ jobs:
           command: npm run build
       - aws-s3/sync:
           from: build
-          to: s3://tasting-note-staging
+          to: s3://tasting-note
       - run: aws cloudfront create-invalidation --distribution-id $CF_DISTRIBUTION_ID --paths '/*'
 
 workflows:
