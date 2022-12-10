@@ -1,5 +1,5 @@
 import { FC } from 'react'
 
-const Title: FC = () => <h1>Tasting Note</h1>
+const Title: FC = () => <h2>Tasting Note</h2>
 
 export default Title
