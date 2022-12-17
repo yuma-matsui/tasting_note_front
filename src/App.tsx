@@ -1,13 +1,5 @@
-import Hello from './components/Hello'
-import Title from './components/Title'
-
 function App() {
-  return (
-    <div>
-      <Title />
-      <Hello />
-    </div>
-  )
+  return <h1>Tasting Note</h1>
 }
 
 export default App
