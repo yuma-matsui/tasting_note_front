@@ -1,5 +1,6 @@
 import { FC } from 'react'
 import logo from '../../assets/images/demo_logo.jpg'
+import { Footer } from '../organisms'
 
 const WelcomePage: FC = () => (
   <div className="main-wrapper" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -48,18 +49,7 @@ const WelcomePage: FC = () => (
       <button type="button">すぐに始める</button>
       <button type="button">Googleでログイン</button>
     </div>
-    <hr style={{ width: '50%', margin: '16px auto' }} />
-    <footer>
-      <div style={{ display: 'flex' }}>
-        <img src={logo} alt="Footer Logo" style={{ width: '50px', height: '50px' }} />
-        <p>Tasting Note</p>
-      </div>
-      <ul style={{ display: 'flex', listStyle: 'none' }}>
-        <li style={{ marginRight: '16px' }}>利用規約</li>
-        <li>プライバシーポリシー</li>
-      </ul>
-      <p>&copy; 2022 yuma-matsui</p>
-    </footer>
+    <Footer />
   </div>
 )
 
