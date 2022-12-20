@@ -1,5 +1,7 @@
+import { WelcomePage } from './components/pages'
+
 function App() {
-  return <h1>Tasting Note</h1>
+  return <WelcomePage />
 }
 
 export default App
