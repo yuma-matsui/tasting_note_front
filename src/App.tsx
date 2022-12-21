@@ -1,7 +1,7 @@
-import { WelcomePage } from './components/pages'
+import RouterConfig from './router/RouterConfig'
 
 function App() {
-  return <WelcomePage />
+  return <RouterConfig />
 }
 
 export default App
