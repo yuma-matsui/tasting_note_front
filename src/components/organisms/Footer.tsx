@@ -3,7 +3,16 @@ import { Link } from 'react-router-dom'
 import logo from '../../assets/images/demo_logo.jpg'
 
 const Footer: FC = () => (
-  <footer style={{ borderTop: '1px solid gray', margin: '32px auto', paddingTop: '16px' }}>
+  <footer
+    style={{
+      borderTop: '1px solid gray',
+      margin: '32px auto',
+      paddingTop: '16px',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+    }}
+  >
     <Link to="/" style={{ color: '#000', textDecoration: 'none' }}>
       <div style={{ display: 'flex' }}>
         <img src={logo} alt="Footer Logo" style={{ width: '50px', height: '50px' }} />
