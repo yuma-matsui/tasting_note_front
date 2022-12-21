@@ -1,18 +1,9 @@
 import { FC } from 'react'
-import { Link } from 'react-router-dom'
-import logo from '../../assets/images/demo_logo.jpg'
+import { HeaderLink } from '../atoms'
 
 const Header: FC = () => (
   <header style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', borderBottom: '1px solid red' }}>
-    <Link to="/" style={{ textDecoration: 'none', color: '#000' }}>
-      <div style={{ display: 'flex' }}>
-        <img src={logo} alt="Header Logo" style={{ width: '100px', height: '100px' }} />
-        <div>
-          <h2>Tasting Note</h2>
-          <p>テイスティングを記録してソムリエに</p>
-        </div>
-      </div>
-    </Link>
+    <HeaderLink />
   </header>
 )
 
