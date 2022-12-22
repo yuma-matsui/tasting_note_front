@@ -1,11 +1,8 @@
-import { FC, ReactNode } from 'react'
+import { FC } from 'react'
+import { ReactNodeChildren } from '../../types'
 import { Footer, Header } from '../organisms'
 
-type Props = {
-  children: ReactNode
-}
-
-const DefaultLayout: FC<Props> = ({ children }) => (
+const DefaultLayout: FC<ReactNodeChildren> = ({ children }) => (
   <>
     <Header />
     {children}
