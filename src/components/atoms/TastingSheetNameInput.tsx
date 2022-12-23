@@ -4,16 +4,17 @@ import { useTastingSheetContext } from '../../hooks'
 const TastingSheetNameInput: FC = memo(() => {
   const { setTastingSheet } = useTastingSheetContext()
 
-  const [name, setName] = useState<string>('')
+  const [sheetName, setSheetName] = useState<string>('')
   const onChangeSheetName = (e: ChangeEvent<HTMLInputElement>) => {
-    setName(e.target.value)
+    const name = e.target.value
+    setSheetName(name)
     setTastingSheet((prev) => ({ ...prev, name }))
   }
 
   return (
-    <label htmlFor="sheet_name">
+    <label htmlFor="sheet-name">
       シート名(任意)
-      <input type="text" id="sheet_name" style={{ display: 'block' }} value={name} onChange={onChangeSheetName} />
+      <input type="text" id="sheet-name" style={{ display: 'block' }} value={sheetName} onChange={onChangeSheetName} />
     </label>
   )
 })
