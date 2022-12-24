@@ -1,12 +1,11 @@
 import { ChangeEvent, FC, memo, useState } from 'react'
+import { TASTING_TIME } from '../../../../assets'
 import { useTastingSheetContext } from '../../../../hooks'
-
-const TIME_LIMITS = [3, 5, 10, 15]
 
 const TastingSheetTimeSelectBox: FC = memo(() => {
   const { setTastingSheet } = useTastingSheetContext()
 
-  const [sheetTime, setSheetTime] = useState<number>(3)
+  const [sheetTime, setSheetTime] = useState<number>(Math.min(...TASTING_TIME))
   const onChangeSheetTime = (e: ChangeEvent<HTMLSelectElement>) => {
     const time = Number(e.target.value)
     setSheetTime(time)
@@ -16,18 +15,10 @@ const TastingSheetTimeSelectBox: FC = memo(() => {
   return (
     <label htmlFor="sheet-time">
       テイスティング時間(分)
-      <select
-        id="sheet-time"
-        style={{
-          display: 'block',
-          width: '150px',
-        }}
-        value={sheetTime}
-        onChange={onChangeSheetTime}
-      >
-        {TIME_LIMITS.map((time) => (
-          <option value={time} key={time}>
-            {time}
+      <select id="sheet-time" value={sheetTime} onChange={onChangeSheetTime}>
+        {TASTING_TIME.map((_time) => (
+          <option value={_time} key={_time}>
+            {_time}
           </option>
         ))}
       </select>
