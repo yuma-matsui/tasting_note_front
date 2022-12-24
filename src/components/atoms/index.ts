@@ -1,3 +1,6 @@
 export { default as FooterLink } from './links/FooterLink'
 export { default as HeaderLink } from './links/HeaderLink'
 export { default as TastingStartButton } from './buttons/TastingStartButton'
+export { default as TastingSheetNameInput } from './form_items/tasting_sheet_setting/TastingSheetNameInput'
+export { default as TastingSheetTimeSelectBox } from './form_items/tasting_sheet_setting/TastingSheetTimeSelectBox'
+export { default as TastingSheetWineColorRadio } from './form_items/tasting_sheet_setting/TastingSheetWineColorRadio'

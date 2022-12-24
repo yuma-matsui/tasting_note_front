@@ -2,7 +2,7 @@ import { ChangeEvent, FC, useState } from 'react'
 import { WINE_COLORS } from '../../assets'
 import { useTastingSheetContext, useWineColorStatus } from '../../hooks'
 import { WineColor } from '../../types'
-import { WineColorRadio } from '../atoms'
+import { TastingSheetWineColorRadio } from '../atoms'
 
 const TastingSheetWineColorRadios: FC = () => {
   const { setTastingSheet } = useTastingSheetContext()
@@ -21,9 +21,16 @@ const TastingSheetWineColorRadios: FC = () => {
   return (
     <>
       <p>ワインの色</p>
-      {WINE_COLORS.map((_color) => (
-        <WineColorRadio key={_color} color={_color} checked={wineColor === _color} onChange={onChangeWineColor} />
-      ))}
+      <div style={{ display: 'flex' }}>
+        {WINE_COLORS.map((_color) => (
+          <TastingSheetWineColorRadio
+            key={_color}
+            color={_color}
+            checked={wineColor === _color}
+            onChange={onChangeWineColor}
+          />
+        ))}
+      </div>
     </>
   )
 }
