@@ -1,11 +1,12 @@
 import { FC } from 'react'
+import { useTastingSheetContext } from '../../../../hooks'
 
-type Props = {
-  onClick: () => void
+const TastingSheetSettingSubmitButton: FC = () => {
+  const { tastingSheet } = useTastingSheetContext()
+
+  const onClick = () => console.log(tastingSheet)
+
+  return <input type="submit" value="テイスティングをはじめる" onClick={onClick} />
 }
-
-const TastingSheetSettingSubmitButton: FC<Props> = ({ onClick }) => (
-  <input type="submit" value="テイスティングをはじめる" onClick={onClick} />
-)
 
 export default TastingSheetSettingSubmitButton
