@@ -8,7 +8,7 @@ const Footer: FC = memo(() => (
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      marginTop: '16px',
+      marginTop: '16px'
     }}
   >
     <FooterLink />

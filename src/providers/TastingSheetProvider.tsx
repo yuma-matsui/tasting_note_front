@@ -7,7 +7,7 @@ const TastingSheetProvider: FC<ReactNodeChildren> = ({ children }) => {
   const [tastingSheet, setTastingSheet] = useState<TastingSheet>({
     name: '',
     time: Math.min(...TASTING_TIME),
-    color: 'white',
+    color: 'white'
   })
 
   const tastingSheetState = useMemo(() => ({ tastingSheet, setTastingSheet }), [tastingSheet])
