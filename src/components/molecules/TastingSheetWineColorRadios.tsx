@@ -1,10 +1,10 @@
-import { ChangeEvent, FC, useState } from 'react'
+import { ChangeEvent, FC, memo, useState } from 'react'
 import { WINE_COLORS } from '../../assets'
 import { useTastingSheetContext, useWineColorStatus } from '../../hooks'
 import { WineColor } from '../../types'
 import { TastingSheetWineColorRadio } from '../atoms'
 
-const TastingSheetWineColorRadios: FC = () => {
+const TastingSheetWineColorRadios: FC = memo(() => {
   const { setTastingSheet } = useTastingSheetContext()
   const { isWineColor } = useWineColorStatus()
 
@@ -33,6 +33,6 @@ const TastingSheetWineColorRadios: FC = () => {
       </div>
     </>
   )
-}
+})
 
 export default TastingSheetWineColorRadios

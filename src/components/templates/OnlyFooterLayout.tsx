@@ -1,12 +1,12 @@
-import { FC } from 'react'
+import { FC, memo } from 'react'
 import { ReactNodeChildren } from '../../types'
 import { Footer } from '../organisms'
 
-const OnlyFooterLayout: FC<ReactNodeChildren> = ({ children }) => (
+const OnlyFooterLayout: FC<ReactNodeChildren> = memo(({ children }) => (
   <>
     {children}
     <Footer />
   </>
-)
+))
 
 export default OnlyFooterLayout

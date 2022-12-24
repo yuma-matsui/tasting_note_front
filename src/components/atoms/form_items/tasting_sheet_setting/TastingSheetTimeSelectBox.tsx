@@ -1,9 +1,9 @@
-import { ChangeEvent, FC, useState } from 'react'
+import { ChangeEvent, FC, memo, useState } from 'react'
 import { useTastingSheetContext } from '../../../../hooks'
 
 const TIME_LIMITS = [3, 5, 10, 15]
 
-const TastingSheetTimeSelectBox: FC = () => {
+const TastingSheetTimeSelectBox: FC = memo(() => {
   const { setTastingSheet } = useTastingSheetContext()
 
   const [sheetTime, setSheetTime] = useState<number>(3)
@@ -33,6 +33,6 @@ const TastingSheetTimeSelectBox: FC = () => {
       </select>
     </label>
   )
-}
+})
 
 export default TastingSheetTimeSelectBox

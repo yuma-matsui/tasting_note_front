@@ -1,7 +1,7 @@
-import { FC } from 'react'
+import { FC, memo } from 'react'
 import { FooterLink } from '../atoms'
 
-const Footer: FC = () => (
+const Footer: FC = memo(() => (
   <footer
     style={{
       borderTop: '1px solid gray',
@@ -18,6 +18,6 @@ const Footer: FC = () => (
     </ul>
     <p>&copy; 2022 yuma-matsui</p>
   </footer>
-)
+))
 
 export default Footer
