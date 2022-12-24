@@ -5,9 +5,7 @@ type Props = {
 }
 
 const TastingSheetSettingSubmitButton: FC<Props> = ({ onClick }) => (
-  <button type="button" onClick={onClick}>
-    テイスティングをはじめる
-  </button>
+  <input type="submit" value="テイスティングをはじめる" onClick={onClick} />
 )
 
 export default TastingSheetSettingSubmitButton
