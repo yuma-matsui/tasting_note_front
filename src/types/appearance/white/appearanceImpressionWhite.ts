@@ -1,6 +1,5 @@
-import AppearanceImpressionMaturityWhite from './appearanceImpressionMaturityWhite'
-import AppearanceImpressionYouthWhite from './appearanceImpressionYouthWhite'
+import AppearanceImpression from '../shared/appearanceImpression'
 
-type AppearanceImpressionWhite = AppearanceImpressionYouthWhite | AppearanceImpressionMaturityWhite
+type AppearanceImpressionWhite = AppearanceImpression | 'やや発展した' | '熟成のニュアンスが見える' | '濃縮感がある'
 
 export default AppearanceImpressionWhite

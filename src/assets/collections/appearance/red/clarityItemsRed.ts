@@ -1,6 +1,5 @@
 import { ClarityRed } from '../../../../types'
-import CLARITY_ITEMS from '../shared/clarityItems'
 
-const CLARITY_ITEMS_RED: ClarityRed[] = [...CLARITY_ITEMS, '深みのある']
+const CLARITY_ITEMS_RED: ClarityRed[] = ['澄んだ', '深みのある', 'やや濁った', '濁った']
 
 export default CLARITY_ITEMS_RED

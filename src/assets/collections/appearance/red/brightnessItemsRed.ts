@@ -1,6 +1,5 @@
 import { BrightnessRed } from '../../../../types'
-import BRIGHTNESS_ITEMS from '../shared/brightnessItems'
 
-const BRIGHTNESS_ITEMS_RED: BrightnessRed[] = [...BRIGHTNESS_ITEMS, '艶のある']
+const BRIGHTNESS_ITEMS_RED: BrightnessRed[] = ['輝きのある', '艶のある', 'モヤがかった']
 
 export default BRIGHTNESS_ITEMS_RED

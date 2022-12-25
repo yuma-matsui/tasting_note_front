@@ -1,6 +1,5 @@
 import { IntensityRed } from '../../../../types'
-import INTENSITY_ITEMS from '../shared/intensityItems'
 
-const INTENSITY_ITEMS_RED: IntensityRed[] = [...INTENSITY_ITEMS, '明るい', 'やや明るい']
+const INTENSITY_ITEMS_RED: IntensityRed[] = ['無色に近い', '明るい', 'やや明るい', 'やや濃い', '濃い', '非常に濃い']
 
 export default INTENSITY_ITEMS_RED

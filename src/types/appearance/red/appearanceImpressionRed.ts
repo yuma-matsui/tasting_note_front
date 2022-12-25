@@ -1,6 +1,10 @@
-import AppearanceImpressionMaturityRed from './appearanceImpressionMaturityRed'
-import AppearanceImpressionYouthRed from './appearanceImpressionYouthRed'
+import AppearanceImpression from '../shared/appearanceImpression'
 
-type AppearanceImpressionRed = AppearanceImpressionYouthRed | AppearanceImpressionMaturityRed
+type AppearanceImpressionRed =
+  | AppearanceImpression
+  | '若い状態を抜けた'
+  | 'やや熟成した'
+  | '酸化熟成のニュアンス'
+  | '濃縮感が強い'
 
 export default AppearanceImpressionRed

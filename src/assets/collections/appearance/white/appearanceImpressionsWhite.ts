@@ -1,10 +1,14 @@
 import { AppearanceImpressionWhite } from '../../../../types'
-import APPEARANCE_IMPRESSIONS_MATURITY_WHITE from './appearanceImpressionsMaturityWhite'
-import APPEARANCE_IMPRESSIONS_YOUTH_WHITE from './appearanceImpressionsYouthWhite'
 
 const APPEARANCE_IMPRESSIONS_WHITE: AppearanceImpressionWhite[] = [
-  ...APPEARANCE_IMPRESSIONS_YOUTH_WHITE,
-  ...APPEARANCE_IMPRESSIONS_MATURITY_WHITE
+  '若々しい',
+  'やや発展した',
+  '熟成のニュアンスが見える',
+  '熟成した',
+  '酸化が進んだ /',
+  '軽快な',
+  '成熟度が高い',
+  '濃縮感がある'
 ]
 
 export default APPEARANCE_IMPRESSIONS_WHITE
