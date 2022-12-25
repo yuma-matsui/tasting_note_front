@@ -18,3 +18,6 @@ export type { default as AppearanceItemWhite } from './appearance/white/appearan
 export type { default as Consistency } from './appearance/shared/consistency'
 export type { default as AppearanceImpressionRed } from './appearance/red/appearanceImpressionRed'
 export type { default as AppearanceImpressionWhite } from './appearance/white/appearanceImpressionWhite'
+export type { default as AppearanceRed } from './appearance/red/appearanceRed'
+export type { default as AppearanceWhite } from './appearance/white/appearanceWhite'
+export type { default as Appearance } from './appearance/shared/appearance'
