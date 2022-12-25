@@ -1,12 +1,10 @@
 import { AppearanceImpressionRed } from '../../../../types'
-import APPEARANCE_IMPRESSIONS from '../shared/appearanceImpressions'
+import APPEARANCE_IMPRESSIONS_MATURITY_RED from './appearanceImpressionsMaturityRed'
+import APPEARANCE_IMPRESSIONS_YOUTH_RED from './appearanceImpressionsYouthRed'
 
 const APPEARANCE_IMPRESSIONS_RED: AppearanceImpressionRed[] = [
-  ...APPEARANCE_IMPRESSIONS,
-  '若い状態を抜けた',
-  'やや熟成した',
-  '酸化熟成の二ュアンス',
-  '濃縮感が強い'
+  ...APPEARANCE_IMPRESSIONS_YOUTH_RED,
+  ...APPEARANCE_IMPRESSIONS_MATURITY_RED
 ]
 
 export default APPEARANCE_IMPRESSIONS_RED

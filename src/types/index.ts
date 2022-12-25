@@ -16,6 +16,5 @@ export type { default as IntensityWhite } from './appearance/white/intensityWhit
 export type { default as AppearanceItemsRed } from './appearance/red/appearanceItemsRed'
 export type { default as AppearanceItemsWhite } from './appearance/white/appearanceItemsWhite'
 export type { default as Consistency } from './appearance/shared/consistency'
-export type { default as AppearanceImpression } from './appearance/shared/appearanceImpression'
 export type { default as AppearanceImpressionRed } from './appearance/red/appearanceImpressionRed'
 export type { default as AppearanceImpressionWhite } from './appearance/white/appearanceImpressionWhite'
