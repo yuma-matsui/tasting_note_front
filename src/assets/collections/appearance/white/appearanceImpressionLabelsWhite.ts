@@ -1,6 +1,6 @@
 import { AppearanceImpressionWhite } from '../../../../types'
 
-const APPEARANCE_IMPRESSIONS_WHITE: AppearanceImpressionWhite[] = [
+const APPEARANCE_IMPRESSION_LABELS_WHITE: AppearanceImpressionWhite[] = [
   '若々しい',
   'やや発展した',
   '熟成のニュアンスが見える',
@@ -11,4 +11,4 @@ const APPEARANCE_IMPRESSIONS_WHITE: AppearanceImpressionWhite[] = [
   '濃縮感がある'
 ]
 
-export default APPEARANCE_IMPRESSIONS_WHITE
+export default APPEARANCE_IMPRESSION_LABELS_WHITE

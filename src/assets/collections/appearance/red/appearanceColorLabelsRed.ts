@@ -1,6 +1,6 @@
 import { AppearanceColorRed } from '../../../../types'
 
-const APPEARANCE_COLORS_RED: AppearanceColorRed[] = [
+const APPEARANCE_COLOR_LABELS_RED: AppearanceColorRed[] = [
   '紫がかった',
   'オレンジがかった',
   '黒みを帯びた',
@@ -12,4 +12,4 @@ const APPEARANCE_COLORS_RED: AppearanceColorRed[] = [
   'レンガ'
 ]
 
-export default APPEARANCE_COLORS_RED
+export default APPEARANCE_COLOR_LABELS_RED

@@ -21,4 +21,4 @@ export type { default as AppearanceImpressionWhite } from './appearance/white/ap
 export type { default as AppearanceRed } from './appearance/red/appearanceRed'
 export type { default as AppearanceWhite } from './appearance/white/appearanceWhite'
 export type { default as Appearance } from './appearance/shared/appearance'
-export type { default as AppearanceAllSelection } from './appearance/shared/appearanceAllSelection'
+export type { default as AppearanceAllLabels } from './appearance/shared/appearanceAllLabels'

@@ -5,7 +5,7 @@ import AppearanceImpressionWhite from './appearanceImpressionWhite'
 import BrightnessWhite from './brightnessWhite'
 import IntensityWhite from './intensityWhite'
 
-type AppearanceCollectionWhite =
+type AppearanceLabelsWhite =
   | Clarity[]
   | BrightnessWhite[]
   | AppearanceColorWhite[]
@@ -13,4 +13,4 @@ type AppearanceCollectionWhite =
   | Consistency[]
   | AppearanceImpressionWhite[]
 
-export default AppearanceCollectionWhite
+export default AppearanceLabelsWhite

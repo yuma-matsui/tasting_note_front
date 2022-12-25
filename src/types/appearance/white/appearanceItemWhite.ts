@@ -1,8 +1,8 @@
 import AppearanceItem from '../shared/appearanceItem'
-import AppearanceCollectionWhite from './appearanceCollectionWhite'
+import AppearanceLabelsWhite from './appearanceLabelsWhite'
 
 type AppearanceItemWhite = AppearanceItem & {
-  collection: AppearanceCollectionWhite
+  labels: AppearanceLabelsWhite
 }
 
 export default AppearanceItemWhite

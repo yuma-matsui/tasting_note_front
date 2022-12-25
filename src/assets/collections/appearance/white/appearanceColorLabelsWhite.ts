@@ -1,6 +1,6 @@
 import { AppearanceColorWhite } from '../../../../types'
 
-const APPEARANCE_COLORS_WHITE: AppearanceColorWhite[] = [
+const APPEARANCE_COLOR_LABELS_WHITE: AppearanceColorWhite[] = [
   'グリーンがかった',
   '黄金色がかった',
   'レモンイエロー',
@@ -11,4 +11,4 @@ const APPEARANCE_COLORS_WHITE: AppearanceColorWhite[] = [
   'アンバー'
 ]
 
-export default APPEARANCE_COLORS_WHITE
+export default APPEARANCE_COLOR_LABELS_WHITE

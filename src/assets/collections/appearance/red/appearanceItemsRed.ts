@@ -1,22 +1,22 @@
 import { AppearanceItemRed } from '../../../../types'
-import CONSISTENCY_ITEMS from '../shared/consistencyItems'
-import APPEARANCE_COLORS_RED from './appearanceColorsRed'
-import APPEARANCE_IMPRESSIONS_RED from './appearanceImpressionsRed'
-import BRIGHTNESS_ITEMS_RED from './brightnessItemsRed'
-import CLARITY_ITEMS_RED from './clarityItemsRed'
-import INTENSITY_ITEMS_RED from './intensityItemsRed'
+import CONSISTENCY_LABELS from '../shared/consistencyLabels'
+import APPEARANCE_COLOR_LABELS_RED from './appearanceColorLabelsRed'
+import APPEARANCE_IMPRESSION_LABELS_RED from './appearanceImpressionLabelsRed'
+import BRIGHTNESS_LABELS_RED from './brightnessLabelsRed'
+import CLARITY_LABELS_RED from './clarityLabelsRed'
+import INTENSITY_LABELS_RED from './intensityLabelsRed'
 
 const APPEARANCE_ITEMS_RED: AppearanceItemRed[] = [
-  { label: '清澄度', name: 'clarity', collection: CLARITY_ITEMS_RED },
-  { label: '輝き', name: 'brightness', collection: BRIGHTNESS_ITEMS_RED },
-  { label: '色調', name: 'appearanceColor', subLabel: '補助用語/メイン', collection: APPEARANCE_COLORS_RED },
-  { label: '濃淡', name: 'intensity', collection: INTENSITY_ITEMS_RED },
-  { label: '粘性', name: 'consistency', collection: CONSISTENCY_ITEMS },
+  { heading: '清澄度', name: 'clarity', labels: CLARITY_LABELS_RED },
+  { heading: '輝き', name: 'brightness', labels: BRIGHTNESS_LABELS_RED },
+  { heading: '色調', name: 'appearanceColor', subHeading: '補助用語/メイン', labels: APPEARANCE_COLOR_LABELS_RED },
+  { heading: '濃淡', name: 'intensity', labels: INTENSITY_LABELS_RED },
+  { heading: '粘性', name: 'consistency', labels: CONSISTENCY_LABELS },
   {
-    label: '外観の印象',
+    heading: '外観の印象',
     name: 'appearanceImpression',
-    subLabel: '外観の印象/成熟度',
-    collection: APPEARANCE_IMPRESSIONS_RED
+    subHeading: '外観の印象/成熟度',
+    labels: APPEARANCE_IMPRESSION_LABELS_RED
   }
 ]
 

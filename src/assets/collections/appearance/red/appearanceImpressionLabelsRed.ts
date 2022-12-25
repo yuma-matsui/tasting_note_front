@@ -1,6 +1,6 @@
 import { AppearanceImpressionRed } from '../../../../types'
 
-const APPEARANCE_IMPRESSIONS_RED: AppearanceImpressionRed[] = [
+const APPEARANCE_IMPRESSION_LABELS_RED: AppearanceImpressionRed[] = [
   '若々しい',
   '若い状態を抜けた',
   'やや熟成した',
@@ -12,4 +12,4 @@ const APPEARANCE_IMPRESSIONS_RED: AppearanceImpressionRed[] = [
   '濃縮感が強い'
 ]
 
-export default APPEARANCE_IMPRESSIONS_RED
+export default APPEARANCE_IMPRESSION_LABELS_RED

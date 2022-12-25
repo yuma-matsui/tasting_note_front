@@ -5,7 +5,7 @@ import BrightnessRed from './brightnessRed'
 import ClarityRed from './clarityRed'
 import IntensityRed from './intensityRed'
 
-type AppearanceCollectionRed =
+type AppearanceLabelsRed =
   | ClarityRed[]
   | BrightnessRed[]
   | AppearanceColorRed[]
@@ -13,4 +13,4 @@ type AppearanceCollectionRed =
   | Consistency[]
   | AppearanceImpressionRed[]
 
-export default AppearanceCollectionRed
+export default AppearanceLabelsRed

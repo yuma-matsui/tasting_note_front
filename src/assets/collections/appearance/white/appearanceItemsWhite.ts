@@ -1,22 +1,22 @@
 import { AppearanceItemWhite } from '../../../../types'
-import CONSISTENCY_ITEMS from '../shared/consistencyItems'
-import APPEARANCE_COLORS_WHITE from './appearanceColorsWhite'
-import APPEARANCE_IMPRESSIONS_WHITE from './appearanceImpressionsWhite'
-import BRIGHTNESS_ITEMS_WHITE from './brightnessItemsWhite'
-import CLARITY_ITEMS_WHITE from './clarityItemsWhite'
-import INTENSITY_ITEMS_WHITE from './intensityItemsWhite'
+import CONSISTENCY_LABELS from '../shared/consistencyLabels'
+import APPEARANCE_COLOR_LABELS_WHITE from './appearanceColorLabelsWhite'
+import APPEARANCE_IMPRESSION_LABELS_WHITE from './appearanceImpressionLabelsWhite'
+import BRIGHTNESS_LABELS_WHITE from './brightnessLabelsWhite'
+import CLARITY_LABELS_WHITE from './clarityLabelsWhite'
+import INTENSITY_LABELS_WHITE from './intensityLabelsWhite'
 
 const APPEARANCE_ITEMS_WHITE: AppearanceItemWhite[] = [
-  { label: '清澄度', name: 'clarity', collection: CLARITY_ITEMS_WHITE },
-  { label: '輝き', name: 'brightness', collection: BRIGHTNESS_ITEMS_WHITE },
-  { label: '色調', name: 'appearanceColor', subLabel: '補助用語/メイン', collection: APPEARANCE_COLORS_WHITE },
-  { label: '濃淡', name: 'intensity', collection: INTENSITY_ITEMS_WHITE },
-  { label: '粘性', name: 'consistency', collection: CONSISTENCY_ITEMS },
+  { heading: '清澄度', name: 'clarity', labels: CLARITY_LABELS_WHITE },
+  { heading: '輝き', name: 'brightness', labels: BRIGHTNESS_LABELS_WHITE },
+  { heading: '色調', name: 'appearanceColor', subHeading: '補助用語/メイン', labels: APPEARANCE_COLOR_LABELS_WHITE },
+  { heading: '濃淡', name: 'intensity', labels: INTENSITY_LABELS_WHITE },
+  { heading: '粘性', name: 'consistency', labels: CONSISTENCY_LABELS },
   {
-    label: '外観の印象',
+    heading: '外観の印象',
     name: 'appearanceImpression',
-    subLabel: '外観の印象/成熟度',
-    collection: APPEARANCE_IMPRESSIONS_WHITE
+    subHeading: '外観の印象/成熟度',
+    labels: APPEARANCE_IMPRESSION_LABELS_WHITE
   }
 ]
 

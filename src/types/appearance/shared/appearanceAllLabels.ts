@@ -9,7 +9,7 @@ import BrightnessWhite from '../white/brightnessWhite'
 import IntensityWhite from '../white/intensityWhite'
 import Consistency from './consistency'
 
-type AppearanceAllSelection =
+type AppearanceAllLabels =
   | ClarityRed
   | BrightnessWhite
   | BrightnessRed
@@ -21,4 +21,4 @@ type AppearanceAllSelection =
   | AppearanceImpressionWhite
   | AppearanceImpressionRed
 
-export default AppearanceAllSelection
+export default AppearanceAllLabels

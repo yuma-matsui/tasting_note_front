@@ -1,11 +1,11 @@
-import AppearanceLabel from './appearanceLabel'
+import AppearanceHeading from './appearanceHeading'
 import AppearanceName from './appearanceName'
-import AppearanceSubLabel from './appearanceSubLabel'
+import AppearanceSubHeading from './appearanceSubHeading'
 
 type AppearanceItem = {
-  label: AppearanceLabel
+  heading: AppearanceHeading
   name: AppearanceName
-  subLabel?: AppearanceSubLabel
+  subHeading?: AppearanceSubHeading
 }
 
 export default AppearanceItem
