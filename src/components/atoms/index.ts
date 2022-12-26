@@ -5,5 +5,4 @@ export { default as TastingSheetNameInput } from './form/setting/TastingSheetNam
 export { default as TastingSheetTimeSelectBox } from './form/setting/TastingSheetTimeSelectBox'
 export { default as TastingSheetWineColorRadio } from './form/setting/TastingSheetWineColorRadio'
 export { default as TastingSheetSettingSubmitButton } from './form/setting/TastingSheetSettingSubmitButton'
-export { default as BaseForm } from './form/shared/BaseForm'
 export { default as TastingSheetAppearanceCheckBox } from './form/appearance/TastingSheetAppearanceCheckBox'

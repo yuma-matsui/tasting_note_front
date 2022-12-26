@@ -1,5 +1,5 @@
 import { FC, FormEvent, memo } from 'react'
-import { ReactNodeChildren } from '../../../../types'
+import { ReactNodeChildren } from '../../../types'
 
 const BaseForm: FC<ReactNodeChildren> = memo(({ children }) => {
   const onSubmitPrevent = (e: FormEvent<HTMLFormElement>) => e.preventDefault()
