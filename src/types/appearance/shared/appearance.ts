@@ -1,6 +1,10 @@
-import AppearanceRed from '../red/appearanceRed'
-import AppearanceWhite from '../white/appearanceWhite'
-
-type Appearance = AppearanceWhite | AppearanceRed
+type Appearance = {
+  clarity: string
+  brightness: string
+  appearanceColor: string[]
+  intensity: string
+  consistency: string
+  appearanceImpression: string[]
+}
 
 export default Appearance
