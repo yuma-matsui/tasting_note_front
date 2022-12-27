@@ -1,6 +1,4 @@
-import { AppearanceImpressionTupleRed } from '../../../../types'
-
-const APPEARANCE_IMPRESSION_LABELS_RED: AppearanceImpressionTupleRed = [
+type AppearanceImpressionTupleRed = [
   '若々しい',
   '若い状態を抜けた',
   'やや熟成した',
@@ -12,4 +10,4 @@ const APPEARANCE_IMPRESSION_LABELS_RED: AppearanceImpressionTupleRed = [
   '濃縮感が強い'
 ]
 
-export default APPEARANCE_IMPRESSION_LABELS_RED
+export default AppearanceImpressionTupleRed

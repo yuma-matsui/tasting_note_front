@@ -1,6 +1,6 @@
-import { AppearanceImpressionWhite } from '../../../../types'
+import { AppearanceImpressionTupleWhite } from '../../../../types'
 
-const APPEARANCE_IMPRESSION_LABELS_WHITE: AppearanceImpressionWhite[] = [
+const APPEARANCE_IMPRESSION_LABELS_WHITE: AppearanceImpressionTupleWhite = [
   '若々しい',
   'やや発展した',
   '熟成のニュアンスが見える',
