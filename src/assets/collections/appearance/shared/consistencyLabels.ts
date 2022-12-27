@@ -1,5 +1,5 @@
-import { Consistency } from '../../../../types'
+import { ConsistencyTuple } from '../../../../types'
 
-const CONSISTENCY_LABELS: Consistency[] = ['さらっとした', 'やや軽い', 'やや強い', '強い']
+const CONSISTENCY_LABELS: ConsistencyTuple = ['さらっとした', 'やや軽い', 'やや強い', '強い']
 
 export default CONSISTENCY_LABELS
