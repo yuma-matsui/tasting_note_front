@@ -1,24 +1,50 @@
-import AppearanceColorRed from '../red/appearanceColorRed'
-import AppearanceImpressionRed from '../red/appearanceImpressionRed'
-import BrightnessRed from '../red/brightnessRed'
-import ClarityRed from '../red/clarityRed'
-import IntensityRed from '../red/intensityRed'
-import AppearanceColorWhite from '../white/appearanceColorWhite'
-import AppearanceImpressionWhite from '../white/appearanceImpressionWhite'
-import BrightnessWhite from '../white/brightnessWhite'
-import IntensityWhite from '../white/intensityWhite'
-import Consistency from './consistency'
-
 type AppearanceAllLabels =
-  | ClarityRed
-  | BrightnessWhite
-  | BrightnessRed
-  | AppearanceColorWhite
-  | AppearanceColorRed
-  | IntensityWhite
-  | IntensityRed
-  | Consistency
-  | AppearanceImpressionWhite
-  | AppearanceImpressionRed
+  | '澄んだ'
+  | '深みのある'
+  | 'やや濁った'
+  | '濁った'
+  | '輝きのある'
+  | '落ち着いた'
+  | '艶のある'
+  | 'モヤがかった'
+  | 'グリーンがかった'
+  | '黄金色がかった'
+  | '紫がかった'
+  | 'オレンジがかった'
+  | '黒味を帯びた'
+  | '縁が明るい'
+  | 'レモンイエロー'
+  | 'イエロー'
+  | '黄金色'
+  | 'トパーズ'
+  | 'オレンジ'
+  | 'アンバー'
+  | 'ルビー(ラズベリーレッド)'
+  | 'ガーネット(ダークチェリーレッド)'
+  | 'マホガニー'
+  | 'レンガ'
+  | '無色に近い'
+  | '淡い'
+  | '明るい'
+  | 'やや明るい'
+  | 'やや濃い'
+  | '濃い'
+  | '非常に濃い'
+  | 'さらっとした'
+  | 'やや軽い'
+  | 'やや強い'
+  | '強い'
+  | '若々しい'
+  | 'やや発展した'
+  | '熟成のニュアンスが見える'
+  | '熟成した'
+  | '酸化が進んだ'
+  | '若い状態を抜けた'
+  | 'やや熟成した'
+  | '酸化熟成のニュアンス'
+  | '軽快な'
+  | '成熟度が高い'
+  | '濃縮感がある'
+  | '濃縮感が強い'
 
 export default AppearanceAllLabels

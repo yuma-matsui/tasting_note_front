@@ -1,16 +1,16 @@
-import Consistency from '../shared/consistency'
-import AppearanceColorRed from './appearanceColorRed'
-import AppearanceImpressionRed from './appearanceImpressionRed'
-import BrightnessRed from './brightnessRed'
-import ClarityRed from './clarityRed'
-import IntensityRed from './intensityRed'
+import ConsistencyTuple from '../shared/consistencyTuple'
+import AppearanceColorTupleRed from './appearanceColorTupleRed'
+import AppearanceImpressionTupleRed from './appearanceImpressionTupleRed'
+import BrightnessTupleRed from './brightnessTupleRed'
+import ClarityTupleRed from './clarityTupleRed'
+import IntensityTupleRed from './intensityTupleRed'
 
 type AppearanceLabelsRed =
-  | ClarityRed[]
-  | BrightnessRed[]
-  | AppearanceColorRed[]
-  | IntensityRed[]
-  | Consistency[]
-  | AppearanceImpressionRed[]
+  | ClarityTupleRed
+  | BrightnessTupleRed
+  | AppearanceColorTupleRed
+  | IntensityTupleRed
+  | ConsistencyTuple
+  | AppearanceImpressionTupleRed
 
 export default AppearanceLabelsRed
