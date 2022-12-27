@@ -15,7 +15,7 @@ const APPEARANCE_ITEMS_WHITE: AppearanceItemWhite[] = [
   {
     heading: '外観の印象',
     name: 'appearanceImpression',
-    subHeading: '外観の印象/成熟度',
+    subHeading: '若さ/成熟度',
     labels: APPEARANCE_IMPRESSION_LABELS_WHITE
   }
 ]

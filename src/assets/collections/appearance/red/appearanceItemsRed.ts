@@ -15,7 +15,7 @@ const APPEARANCE_ITEMS_RED: AppearanceItemRed[] = [
   {
     heading: '外観の印象',
     name: 'appearanceImpression',
-    subHeading: '外観の印象/成熟度',
+    subHeading: '若さ/成熟度',
     labels: APPEARANCE_IMPRESSION_LABELS_RED
   }
 ]
