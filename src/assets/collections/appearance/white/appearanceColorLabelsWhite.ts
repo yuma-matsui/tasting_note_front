@@ -1,6 +1,6 @@
-import { AppearanceColorWhite } from '../../../../types'
+import { AppearanceColorTupleWhite } from '../../../../types'
 
-const APPEARANCE_COLOR_LABELS_WHITE: AppearanceColorWhite[] = [
+const APPEARANCE_COLOR_LABELS_WHITE: AppearanceColorTupleWhite = [
   'グリーンがかった',
   '黄金色がかった',
   'レモンイエロー',

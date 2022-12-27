@@ -1,6 +1,4 @@
-import { AppearanceColorTupleRed } from '../../../../types'
-
-const APPEARANCE_COLOR_LABELS_RED: AppearanceColorTupleRed = [
+type AppearanceColorTupleRed = [
   '紫がかった',
   'オレンジがかった',
   '黒みを帯びた',
@@ -12,4 +10,4 @@ const APPEARANCE_COLOR_LABELS_RED: AppearanceColorTupleRed = [
   'レンガ'
 ]
 
-export default APPEARANCE_COLOR_LABELS_RED
+export default AppearanceColorTupleRed
