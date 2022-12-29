@@ -10,3 +10,4 @@ export type { default as FlavorImpressionTupleWhite } from './white/flavorImpres
 export type { default as FlavorImpressionTupleRed } from './red/flavorImpressionTupleRed'
 export type { default as Flavor } from './shared/flavor'
 export type { default as FlavorAllLabels } from './shared/flavorAllLabels'
+export type { default as FlavorName } from './shared/flavorName'
