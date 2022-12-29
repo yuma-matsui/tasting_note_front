@@ -6,7 +6,7 @@ import FlavorSubHeading from './flavorSubHeading'
 type FlavorItem = {
   heading: FlavorHeading
   name: FlavorName
-  subHeading?: FlavorSubHeading
+  subHeading: FlavorSubHeading
   labels: FlavorAllLabels[]
 }
 
