@@ -1,8 +1,8 @@
 export type { default as WineColor } from './wineColor'
 export type { default as TastingSheet } from './tastingSheet'
-export type { default as TastingSheetContextType } from './tastingSheetContextType'
 export type { default as ReactNodeChildren } from './reactNodeChildren'
 export type { default as WineColorRadioProps } from './wineColorRadioProps'
+export type { default as AppearanceCheckBoxProps } from './appearanceCheckBoxProps'
 
 export type { default as ClarityTupleRed } from './appearance/red/clarityTupleRed'
 export type { default as ClarityTupleWhite } from './appearance/white/clarityTupleWhite'
@@ -17,5 +17,9 @@ export type { default as AppearanceImpressionTupleRed } from './appearance/red/a
 export type { default as AppearanceImpressionTupleWhite } from './appearance/white/appearanceImpressionTupleWhite'
 export type { default as AppearanceItem } from './appearance/shared/appearanceItem'
 export type { default as AppearanceAllLabels } from './appearance/shared/appearanceAllLabels'
+export type { default as AppearanceName } from './appearance/shared/appearanceName'
 export type { default as Appearance } from './appearance/shared/appearance'
 export type { default as AppearanceReducerAction } from './appearanceReducerAction'
+
+export type { default as TastingSheetContextType } from './contexts/tastingSheetContextType'
+export type { default as AppearanceContextType } from './contexts/appearanceContextType'
