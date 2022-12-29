@@ -16,7 +16,7 @@ export type { default as AppearanceItem } from './tasting_sheet/appearance/share
 export type { default as AppearanceAllLabels } from './tasting_sheet/appearance/shared/appearanceAllLabels'
 export type { default as AppearanceName } from './tasting_sheet/appearance/shared/appearanceName'
 export type { default as Appearance } from './tasting_sheet/appearance/shared/appearance'
-export type { default as AppearanceReducerAction } from './appearanceReducerAction'
+export type { default as AppearanceReducerAction } from './states/appearanceReducerAction'
 
 export type { default as TastingSheetContextType } from './contexts/tastingSheetContextType'
 export type { default as AppearanceContextType } from './contexts/appearanceContextType'

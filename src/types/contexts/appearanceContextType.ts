@@ -1,5 +1,5 @@
 import { Dispatch } from 'react'
-import AppearanceReducerAction from '../appearanceReducerAction'
+import AppearanceReducerAction from '../states/appearanceReducerAction'
 import Appearance from '../tasting_sheet/appearance/shared/appearance'
 
 type AppearanceContextType = {
