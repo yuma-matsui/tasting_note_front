@@ -1,5 +1,5 @@
-import AppearanceAllLabels from '../appearance/shared/appearanceAllLabels'
-import AppearanceName from '../appearance/shared/appearanceName'
+import AppearanceAllLabels from '../tasting_sheet/appearance/shared/appearanceAllLabels'
+import AppearanceName from '../tasting_sheet/appearance/shared/appearanceName'
 
 type AppearanceCheckBoxProps = {
   name: AppearanceName

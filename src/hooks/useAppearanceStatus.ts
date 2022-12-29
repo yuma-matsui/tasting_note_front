@@ -1,5 +1,4 @@
-import { AppearanceAllLabels } from '../types'
-import AppearanceName from '../types/appearance/shared/appearanceName'
+import { AppearanceAllLabels, AppearanceName } from '../types'
 import useAppearanceContext from './useAppearanceContext'
 
 const useAppearanceStatus = (name: AppearanceName, label: AppearanceAllLabels) => {
