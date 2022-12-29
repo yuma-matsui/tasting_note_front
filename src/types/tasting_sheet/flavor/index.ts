@@ -8,6 +8,7 @@ export type { default as FlavorSpiceTupleWhite } from './white/flavorSpiceTupleW
 export type { default as FlavorSpiceTupleRed } from './red/flavorSpiceTupleRed'
 export type { default as FlavorImpressionTupleWhite } from './white/flavorImpressionTupleWhite'
 export type { default as FlavorImpressionTupleRed } from './red/flavorImpressionTupleRed'
-export type { default as Flavor } from './shared/flavor'
+export type { default as FlavorItem } from './shared/flavorItem'
 export type { default as FlavorAllLabels } from './shared/flavorAllLabels'
 export type { default as FlavorName } from './shared/flavorName'
+export type { default as Flavor } from './shared/flavor'
