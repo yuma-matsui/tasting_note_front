@@ -1,4 +1,4 @@
-import { AppearanceAllLabels, AppearanceName } from '../../../types'
+import { AppearanceAllLabels, AppearanceName } from '../../../types/tasting_sheet/appearance'
 import useAppearanceContext from './useAppearanceContext'
 
 const useAppearanceStatus = (name: AppearanceName, label: AppearanceAllLabels) => {

@@ -1,4 +1,4 @@
-import { AppearanceColorTupleRed } from '../../../../types'
+import { AppearanceColorTupleRed } from '../../../../types/tasting_sheet/appearance'
 
 const APPEARANCE_COLOR_LABELS_RED: AppearanceColorTupleRed = [
   '紫がかった',

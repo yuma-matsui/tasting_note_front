@@ -1,4 +1,4 @@
-import { AppearanceImpressionTupleRed } from '../../../../types'
+import { AppearanceImpressionTupleRed } from '../../../../types/tasting_sheet/appearance'
 
 const APPEARANCE_IMPRESSION_LABELS_RED: AppearanceImpressionTupleRed = [
   '若々しい',
