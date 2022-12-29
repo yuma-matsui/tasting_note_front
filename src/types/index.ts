@@ -1,5 +1,7 @@
-export type { default as WineColor } from './tasting_sheet/wineColor'
 export type { default as TastingSheet } from './tasting_sheet/tastingSheet'
+
+export type { default as WineColor } from './tasting_sheet/setting/wineColor'
+export type { default as WineColorsTuple } from './tasting_sheet/setting/wineColorsTuple'
 
 export type { default as ClarityTupleRed } from './tasting_sheet/appearance/red/clarityTupleRed'
 export type { default as ClarityTupleWhite } from './tasting_sheet/appearance/white/clarityTupleWhite'
