@@ -1,10 +1,7 @@
-import AppearanceAllLabels from './appearance/shared/appearanceAllLabels'
-import AppearanceName from './appearance/shared/appearanceName'
-
 type AppearanceReducerAction = {
-  type: AppearanceName
+  type: string
   payload: {
-    value: AppearanceAllLabels
+    value: string
   }
 }
 

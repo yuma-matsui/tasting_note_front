@@ -1,11 +1,10 @@
+import { Reducer } from 'react'
 import { Appearance, AppearanceReducerAction } from '../types'
 
-const MAX_VALUES_COUNT = 2
-
-const appearanceReducer = (
-  prevAppearance: Appearance,
-  { type, payload: { value } }: AppearanceReducerAction
-): Appearance => {
+const appearanceReducer: Reducer<Appearance, AppearanceReducerAction> = (
+  prevAppearance,
+  { type, payload: { value } }
+) => {
   switch (type) {
     case 'clarity':
     case 'brightness':
@@ -14,12 +13,14 @@ const appearanceReducer = (
       return { ...prevAppearance, [type]: value }
     case 'appearanceColor':
     case 'appearanceImpression': {
-      const newAppearance = { ...prevAppearance, [type]: [...prevAppearance[type], value] }
-      if (newAppearance[type].length > MAX_VALUES_COUNT) newAppearance[type].splice(0, 1)
-      return newAppearance
+      const target = prevAppearance[type]
+      if (!target.includes(value)) return { ...prevAppearance, [type]: [...prevAppearance[type], value] }
+
+      target.splice(target.indexOf(value), 1)
+      return { ...prevAppearance, [type]: target }
     }
     default:
-      throw Error('不正な呼び出し方です')
+      throw new Error('不正な呼び出し方です。')
   }
 }
 
