@@ -4,12 +4,12 @@ import applyCaseMiddleware from 'axios-case-converter'
 const origin = process.env.REACT_APP_API_URL ?? 'https://api.tasting-note.com'
 
 const options = {
-  ignoreHeaders: true,
+  ignoreHeaders: true
 }
 
 const client = applyCaseMiddleware(
   axios.create({
-    baseURL: `${origin}/api/v1`,
+    baseURL: `${origin}/api/v1`
   }),
   options
 )

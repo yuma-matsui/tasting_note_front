@@ -40,6 +40,7 @@
         "no-use-before-define": "off",
         "semi": ["warn", "never"],
         "quotes": ["warn", "single"],
+        "comma-dangle": ["warn", "never"],
         "@typescript-eslint/no-use-before-define": ["error"],
         "import/prefer-default-export": "off",
         "react/react-in-jsx-scope": "off",

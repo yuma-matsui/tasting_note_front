@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from 'react'
-import TastingSheet from './tastingSheet'
+import TastingSheet from '../tastingSheet'
 
 type TastingSheetContextType = {
   tastingSheet: TastingSheet

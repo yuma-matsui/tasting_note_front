@@ -1,8 +1,8 @@
-import { FC } from 'react'
+import { FC, memo } from 'react'
 import { Link } from 'react-router-dom'
 import logo from '../../../assets/images/demo_logo.jpg'
 
-const HeaderLink: FC = () => (
+const HeaderLink: FC = memo(() => (
   <Link to="/" style={{ textDecoration: 'none', color: '#000' }}>
     <div style={{ display: 'flex' }}>
       <img src={logo} alt="Header Logo" style={{ width: '100px', height: '100px' }} />
@@ -12,6 +12,6 @@ const HeaderLink: FC = () => (
       </div>
     </div>
   </Link>
-)
+))
 
 export default HeaderLink

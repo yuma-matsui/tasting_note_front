@@ -34,7 +34,7 @@ const WelcomePage: FC = () => (
           width: '400px',
           height: '400px',
           background: 'gray',
-          color: '#fff',
+          color: '#fff'
         }}
       >
         サービスのデモ画像配置予定
