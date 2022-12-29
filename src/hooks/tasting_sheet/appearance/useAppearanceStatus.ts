@@ -1,4 +1,4 @@
-import { AppearanceAllLabels, AppearanceName } from '../types'
+import { AppearanceAllLabels, AppearanceName } from '../../../types'
 import useAppearanceContext from './useAppearanceContext'
 
 const useAppearanceStatus = (name: AppearanceName, label: AppearanceAllLabels) => {
