@@ -1,5 +1,4 @@
-import { Appearance, AppearanceAllLabels } from '../../types'
-import AppearanceName from '../../types/appearance/shared/appearanceName'
+import { Appearance, AppearanceAllLabels, AppearanceName } from '../../types'
 import appearanceReducer from '../appearanceReducer'
 
 describe('appearanceReducer', () => {

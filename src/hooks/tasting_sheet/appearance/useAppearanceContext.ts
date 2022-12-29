@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { AppearanceContext } from '../contexts'
+import { AppearanceContext } from '../../../contexts'
 
 const useAppearanceContext = () => useContext(AppearanceContext)
 
