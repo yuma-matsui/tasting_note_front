@@ -1,6 +1,6 @@
 import { ChangeEvent, FC, memo, useState } from 'react'
-import { TASTING_TIME } from '../../../../assets'
-import { useTastingSheetContext } from '../../../../hooks'
+import { TASTING_TIME } from '../../../assets'
+import { useTastingSheetContext } from '../../../hooks'
 
 const TastingSheetTimeSelectBox: FC = memo(() => {
   const { setTastingSheet } = useTastingSheetContext()
