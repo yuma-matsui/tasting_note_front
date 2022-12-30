@@ -1,9 +1,7 @@
-import { ChangeEvent } from 'react'
+import WineColor from '../tasting_sheet/setting/wineColor'
 
 type WineColorRadioProps = {
-  color: string
-  checked: boolean
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void
+  color: WineColor
 }
 
 export default WineColorRadioProps

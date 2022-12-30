@@ -1,4 +1,4 @@
-import WineColor from './wineColor'
+import WineColor from './setting/wineColor'
 
 type TastingSheet = {
   name?: string

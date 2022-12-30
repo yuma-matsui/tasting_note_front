@@ -1,4 +1,4 @@
-import { AppearanceImpressionTupleWhite } from '../../../../types'
+import { AppearanceImpressionTupleWhite } from '../../../../types/tasting_sheet/appearance'
 
 const APPEARANCE_IMPRESSION_LABELS_WHITE: AppearanceImpressionTupleWhite = [
   '若々しい',

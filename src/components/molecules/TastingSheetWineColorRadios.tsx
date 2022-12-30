@@ -1,38 +1,16 @@
-import { ChangeEvent, FC, memo, useState } from 'react'
+import { FC, memo } from 'react'
 import { WINE_COLORS } from '../../assets'
-import { useTastingSheetContext, useWineColorStatus } from '../../hooks'
-import { WineColor } from '../../types'
 import { TastingSheetWineColorRadio } from '../atoms'
 
-const TastingSheetWineColorRadios: FC = memo(() => {
-  const { setTastingSheet } = useTastingSheetContext()
-  const { isWineColor } = useWineColorStatus()
-
-  const [wineColor, setWineColor] = useState<WineColor>('white')
-
-  const onChangeWineColor = (e: ChangeEvent<HTMLInputElement>) => {
-    const color = e.target.value
-    if (isWineColor(color)) {
-      setWineColor(color)
-      setTastingSheet((prev) => ({ ...prev, color }))
-    }
-  }
-
-  return (
-    <>
-      <p>ワインの色</p>
-      <div style={{ display: 'flex' }}>
-        {WINE_COLORS.map((_color) => (
-          <TastingSheetWineColorRadio
-            key={_color}
-            color={_color}
-            checked={wineColor === _color}
-            onChange={onChangeWineColor}
-          />
-        ))}
-      </div>
-    </>
-  )
-})
+const TastingSheetWineColorRadios: FC = memo(() => (
+  <div>
+    <p>ワインの色</p>
+    <div style={{ display: 'flex' }}>
+      {WINE_COLORS.map((color) => (
+        <TastingSheetWineColorRadio key={color} color={color} />
+      ))}
+    </div>
+  </div>
+))
 
 export default TastingSheetWineColorRadios

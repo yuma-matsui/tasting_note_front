@@ -1,4 +1,4 @@
-import { AppearanceItem } from '../../../../types'
+import { AppearanceItem } from '../../../../types/tasting_sheet/appearance'
 import CONSISTENCY_LABELS from '../shared/consistencyLabels'
 import APPEARANCE_COLOR_LABELS_WHITE from './appearanceColorLabelsWhite'
 import APPEARANCE_IMPRESSION_LABELS_WHITE from './appearanceImpressionLabelsWhite'
