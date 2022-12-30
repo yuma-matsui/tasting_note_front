@@ -1,8 +1,8 @@
 import { Reducer } from 'react'
-import { AppearanceReducerAction } from '../types'
+import { TastingSheetReducerAction } from '../types'
 import { Appearance } from '../types/tasting_sheet/appearance'
 
-const appearanceReducer: Reducer<Appearance, AppearanceReducerAction> = (
+const appearanceReducer: Reducer<Appearance, TastingSheetReducerAction> = (
   prevAppearance,
   { type, payload: { value } }
 ) => {
@@ -15,7 +15,7 @@ const appearanceReducer: Reducer<Appearance, AppearanceReducerAction> = (
     case 'appearanceColor':
     case 'appearanceImpression': {
       const target = prevAppearance[type]
-      if (!target.includes(value)) return { ...prevAppearance, [type]: [...prevAppearance[type], value] }
+      if (!target.includes(value)) return { ...prevAppearance, [type]: [...target, value] }
 
       target.splice(target.indexOf(value), 1)
       return { ...prevAppearance, [type]: target }
