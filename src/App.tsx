@@ -1,13 +1,6 @@
-import Hello from './components/Hello'
-import Title from './components/Title'
+import { FC } from 'react'
+import RouterConfig from './router/RouterConfig'
 
-function App() {
-  return (
-    <div>
-      <Title />
-      <Hello />
-    </div>
-  )
-}
+const App: FC = () => <RouterConfig />
 
 export default App
