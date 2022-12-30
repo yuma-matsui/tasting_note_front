@@ -1,7 +1,7 @@
 import { FC, memo } from 'react'
 import { FLAVOR_ITEMS_RED, FLAVOR_ITEMS_WHITE } from '../../assets'
 import { useTastingSheetContext } from '../../hooks'
-import FlavorCheckBox from '../atoms/inputs/FlavorCheckBox'
+import { FlavorCheckBox } from '../atoms'
 import BaseForm from './shared/BaseForm'
 
 const NewTastingSheetFlavorForm: FC = memo(() => {

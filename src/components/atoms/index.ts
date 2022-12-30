@@ -6,3 +6,4 @@ export { default as TastingSheetTimeSelectBox } from './form/setting/TastingShee
 export { default as TastingSheetWineColorRadio } from './inputs/TastingSheetWineColorRadio'
 export { default as TastingSheetSettingSubmitButton } from './form/setting/TastingSheetSettingSubmitButton'
 export { default as AppearanceCheckBox } from './inputs/AppearanceCheckBox'
+export { default as FlavorCheckBox } from './inputs/FlavorCheckBox'
