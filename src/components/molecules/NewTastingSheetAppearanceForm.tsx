@@ -3,7 +3,7 @@ import { FC, memo } from 'react'
 import BaseForm from './shared/BaseForm'
 import { APPEARANCE_ITEMS_RED, APPEARANCE_ITEMS_WHITE } from '../../assets'
 import { useTastingSheetContext } from '../../hooks'
-import { TastingSheetAppearanceCheckBox } from '../atoms'
+import { AppearanceCheckBox } from '../atoms'
 
 const NewTastingSheetAppearanceForm: FC = memo(() => {
   const { tastingSheet } = useTastingSheetContext()
@@ -21,7 +21,7 @@ const NewTastingSheetAppearanceForm: FC = memo(() => {
             </h3>
             <div>
               {labels.map((label) => (
-                <TastingSheetAppearanceCheckBox key={label} name={name} label={label} />
+                <AppearanceCheckBox key={label} name={name} label={label} />
               ))}
             </div>
           </div>
