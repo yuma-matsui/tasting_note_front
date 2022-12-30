@@ -1,7 +1,8 @@
 import { FC, memo } from 'react'
-import { TastingSheetNameInput, TastingSheetSettingSubmitButton, TastingSheetTimeSelectBox } from '../atoms'
-import BaseForm from './shared/BaseForm'
-import TastingSheetWineColorRadios from './TastingSheetWineColorRadios'
+
+import { TastingSheetNameInput, TastingSheetSettingSubmitButton, TastingSheetTimeSelectBox } from '../../atoms'
+import TastingSheetWineColorRadios from '../TastingSheetWineColorRadios'
+import BaseForm from './BaseForm'
 
 const NewTastingSheetSettingForm: FC = memo(() => (
   <>
