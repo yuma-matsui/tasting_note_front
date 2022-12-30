@@ -4,7 +4,7 @@ import { useTastingSheetContext } from '../../../hooks'
 import { FlavorCheckBox } from '../../atoms'
 import BaseForm from './BaseForm'
 
-const NewTastingSheetFlavorForm: FC = memo(() => {
+const FlavorForm: FC = memo(() => {
   const { tastingSheet } = useTastingSheetContext()
   const items = tastingSheet.color === 'white' ? FLAVOR_ITEMS_WHITE : FLAVOR_ITEMS_RED
 
@@ -31,4 +31,4 @@ const NewTastingSheetFlavorForm: FC = memo(() => {
   )
 })
 
-export default NewTastingSheetFlavorForm
+export default FlavorForm
