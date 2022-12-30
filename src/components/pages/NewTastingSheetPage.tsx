@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { AppearanceProvider, FlavorProvider, TastingSheetProvider } from '../../providers'
-import { NewTastingSheetAppearanceForm, NewTastingSheetFlavorForm, NewTastingSheetSettingForm } from '../molecules'
+import { AppearanceForm, FlavorForm, NewTastingSheetSettingForm } from '../molecules'
 import { DefaultLayout } from '../templates'
 
 const NewTastingSheetPage: FC = () => (
@@ -9,11 +9,11 @@ const NewTastingSheetPage: FC = () => (
       <NewTastingSheetSettingForm />
       <hr />
       <AppearanceProvider>
-        <NewTastingSheetAppearanceForm />
+        <AppearanceForm />
       </AppearanceProvider>
       <hr />
       <FlavorProvider>
-        <NewTastingSheetFlavorForm />
+        <FlavorForm />
       </FlavorProvider>
     </TastingSheetProvider>
   </DefaultLayout>

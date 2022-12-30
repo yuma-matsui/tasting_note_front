@@ -1,6 +1,6 @@
 import { ChangeEvent, FC, memo } from 'react'
-import { useTastingSheetContext, useWineColorStatus } from '../../../../hooks'
-import { WineColorRadioProps } from '../../../../types'
+import { useTastingSheetContext, useWineColorStatus } from '../../../hooks'
+import { WineColorRadioProps } from '../../../types'
 
 const TastingSheetWineColorRadio: FC<WineColorRadioProps> = memo(({ color }) => {
   const { tastingSheet, setTastingSheet } = useTastingSheetContext()

@@ -1,11 +1,11 @@
 import { FC, memo } from 'react'
 
-import BaseForm from './shared/BaseForm'
-import { APPEARANCE_ITEMS_RED, APPEARANCE_ITEMS_WHITE } from '../../assets'
-import { useTastingSheetContext } from '../../hooks'
-import { AppearanceCheckBox } from '../atoms'
+import { APPEARANCE_ITEMS_RED, APPEARANCE_ITEMS_WHITE } from '../../../assets'
+import { useTastingSheetContext } from '../../../hooks'
+import { AppearanceCheckBox } from '../../atoms'
+import BaseForm from './BaseForm'
 
-const NewTastingSheetAppearanceForm: FC = memo(() => {
+const AppearanceForm: FC = memo(() => {
   const { tastingSheet } = useTastingSheetContext()
   const items = tastingSheet.color === 'white' ? APPEARANCE_ITEMS_WHITE : APPEARANCE_ITEMS_RED
 
@@ -31,4 +31,4 @@ const NewTastingSheetAppearanceForm: FC = memo(() => {
   )
 })
 
-export default NewTastingSheetAppearanceForm
+export default AppearanceForm
