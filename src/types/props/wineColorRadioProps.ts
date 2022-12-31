@@ -1,7 +1,5 @@
-import WineColor from '../tasting_sheet/setting/wineColor'
-
 type WineColorRadioProps = {
-  color: WineColor
+  color: string
 }
 
 export default WineColorRadioProps
