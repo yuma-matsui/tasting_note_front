@@ -11,7 +11,6 @@ export type { default as Flavor } from './tasting_sheet/flavor/flavor'
 export type { default as TastingSheetReducerAction } from './states/tastingSheetReducerAction'
 
 export type { default as TastingSheetContextType } from './contexts/tastingSheetContextType'
-export type { default as FlavorContextType } from './contexts/flavorContextType'
 
 export type { default as ReactNodeChildren } from './props/reactNodeChildren'
 export type { default as WineColorRadioProps } from './props/wineColorRadioProps'
