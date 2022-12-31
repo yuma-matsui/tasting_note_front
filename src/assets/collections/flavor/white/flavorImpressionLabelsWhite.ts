@@ -1,6 +1,4 @@
-import { FlavorImpressionTupleWhite } from '../../../../types/tasting_sheet/flavor'
-
-const FLAVOR_IMPRESSION_LABELS_WHITE: FlavorImpressionTupleWhite = [
+const FLAVOR_IMPRESSION_LABELS_WHITE = [
   '若々しい',
   '嫌気的な',
   '発展的な',

@@ -1,11 +1,10 @@
-import { FlavorItem } from '../../../../types/tasting_sheet/flavor'
 import FLAVOR_FIRST_IMPRESSION_LABELS_RED from './flavorFirstImpressionLabelsRed'
 import FLAVOR_FLOWER_LABELS_RED from './flavorFlowerLabelsRed'
 import FLAVOR_FRUIT_LABELS_RED from './flavorFruitLabelsRed'
 import FLAVOR_IMPRESSION_LABELS_RED from './flavorImpressionLabelsRed'
 import FLAVOR_SPICE_LABELS_RED from './flavorSpiceLabelsRed'
 
-const FLAVOR_ITEMS_RED: FlavorItem[] = [
+const FLAVOR_ITEMS_RED = [
   {
     heading: '第一印象',
     name: 'flavorFirstImpression',

@@ -1,6 +1,4 @@
-import { FlavorFlowerTupleWhite } from '../../../../types/tasting_sheet/flavor'
-
-const FLAVOR_FLOWER_LABELS_WHITE: FlavorFlowerTupleWhite = [
+const FLAVOR_FLOWER_LABELS_WHITE = [
   'スイカズラ',
   'アカシア',
   '白バラ',

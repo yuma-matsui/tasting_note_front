@@ -4,6 +4,10 @@ export type { default as AppearanceAllLabels } from './tasting_sheet/appearance/
 export type { default as AppearanceName } from './tasting_sheet/appearance/appearanceName'
 export type { default as Appearance } from './tasting_sheet/appearance/appearance'
 
+export type { default as FlavorAllLabels } from './tasting_sheet/flavor/flavorAllLabels'
+export type { default as FlavorName } from './tasting_sheet/flavor/flavorName'
+export type { default as Flavor } from './tasting_sheet/flavor/flavor'
+
 export type { default as TastingSheetReducerAction } from './states/tastingSheetReducerAction'
 
 export type { default as TastingSheetContextType } from './contexts/tastingSheetContextType'

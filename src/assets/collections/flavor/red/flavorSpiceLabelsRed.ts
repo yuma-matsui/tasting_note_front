@@ -1,6 +1,4 @@
-import { FlavorSpiceTupleRed } from '../../../../types/tasting_sheet/flavor'
-
-const FLAVOR_SPICE_LABELS_RED: FlavorSpiceTupleRed = [
+const FLAVOR_SPICE_LABELS_RED = [
   '黒胡椒',
   '丁子',
   'シナモン',

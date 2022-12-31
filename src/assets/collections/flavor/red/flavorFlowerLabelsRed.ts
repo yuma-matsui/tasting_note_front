@@ -1,6 +1,4 @@
-import { FlavorFlowerTupleRed } from '../../../../types/tasting_sheet/flavor'
-
-const FLAVOR_FLOWER_LABELS_RED: FlavorFlowerTupleRed = [
+const FLAVOR_FLOWER_LABELS_RED = [
   'バラ',
   'スミレ',
   '牡丹',

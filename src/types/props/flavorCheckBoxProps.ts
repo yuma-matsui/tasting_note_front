@@ -1,8 +1,6 @@
-import { FlavorAllLabels, FlavorName } from '../tasting_sheet/flavor'
-
 type FlavorCheckBoxProps = {
-  name: FlavorName
-  label: FlavorAllLabels
+  name: string
+  label: string
 }
 
 export default FlavorCheckBoxProps
