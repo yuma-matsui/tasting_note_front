@@ -1,11 +1,9 @@
 export type { default as TastingSheet } from './tasting_sheet/tastingSheet'
 export type { default as InputOrSelect } from './tasting_sheet/inputOrSelect'
 
-export type { default as AppearanceAllLabels } from './tasting_sheet/appearance/appearanceAllLabels'
 export type { default as AppearanceName } from './tasting_sheet/appearance/appearanceName'
 export type { default as Appearance } from './tasting_sheet/appearance/appearance'
 
-export type { default as FlavorAllLabels } from './tasting_sheet/flavor/flavorAllLabels'
 export type { default as FlavorName } from './tasting_sheet/flavor/flavorName'
 export type { default as Flavor } from './tasting_sheet/flavor/flavor'
 
