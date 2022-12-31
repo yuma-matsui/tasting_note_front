@@ -1,20 +1,21 @@
-import { ChangeEvent, FC, memo, useState } from 'react'
-import { useTastingSheetContext } from '../../../hooks'
+import { FC, memo } from 'react'
+import { useTastingSheetContext, useTastingSheetOnChange } from '../../../hooks'
 
 const TastingSheetNameInput: FC = memo(() => {
-  const { setTastingSheet } = useTastingSheetContext()
-
-  const [sheetName, setSheetName] = useState<string>('')
-  const onChangeSheetName = (e: ChangeEvent<HTMLInputElement>) => {
-    const name = e.target.value
-    setSheetName(name)
-    setTastingSheet((prev) => ({ ...prev, name }))
-  }
+  const { tastingSheet } = useTastingSheetContext()
+  const { onChange } = useTastingSheetOnChange()
 
   return (
-    <label htmlFor="sheet-name">
+    <label htmlFor="name">
       シート名(任意)
-      <input type="text" id="sheet-name" style={{ display: 'block' }} value={sheetName} onChange={onChangeSheetName} />
+      <input
+        type="text"
+        name="name"
+        id="name"
+        style={{ display: 'block' }}
+        value={tastingSheet.name}
+        onChange={onChange}
+      />
     </label>
   )
 })
