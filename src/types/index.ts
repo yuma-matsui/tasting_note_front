@@ -1,4 +1,5 @@
 export type { default as TastingSheet } from './tasting_sheet/tastingSheet'
+export type { default as InputOrSelect } from './tasting_sheet/inputOrSelect'
 
 export type { default as AppearanceAllLabels } from './tasting_sheet/appearance/appearanceAllLabels'
 export type { default as AppearanceName } from './tasting_sheet/appearance/appearanceName'
