@@ -1,26 +1,21 @@
-import { ChangeEvent, FC, memo } from 'react'
-import { useTastingSheetContext } from '../../../hooks'
+import { FC, memo } from 'react'
+import { useTastingSheetContext, useTastingSheetOnChange } from '../../../hooks'
 import { WineColorRadioProps } from '../../../types'
+import BaseCheckBox from './BaseCheckBox'
 
 const TastingSheetWineColorRadio: FC<WineColorRadioProps> = memo(({ color }) => {
-  const { tastingSheet, setTastingSheet } = useTastingSheetContext()
-
-  const onChangeWineColor = (e: ChangeEvent<HTMLInputElement>) => {
-    const wineColor = e.target.value
-    setTastingSheet((prev) => ({ ...prev, color: wineColor }))
-  }
+  const { tastingSheet } = useTastingSheetContext()
+  const { onChange } = useTastingSheetOnChange()
 
   return (
-    <label htmlFor={color}>
-      <input
-        type="radio"
-        id={color}
-        value={color}
-        checked={tastingSheet.color === color}
-        onChange={onChangeWineColor}
-      />
-      {color === 'white' ? '白' : '赤'}
-    </label>
+    <BaseCheckBox
+      type="radio"
+      label={color}
+      name="color"
+      onChange={onChange}
+      checked={tastingSheet.color === color}
+      text={color === 'white' ? '白' : '赤'}
+    />
   )
 })
 
