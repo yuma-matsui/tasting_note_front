@@ -8,7 +8,6 @@ const useTastingSheetOnChange = <T>() => {
 
   const onChange = (e: ChangeEvent<InputOrSelect<T>>) =>
     dispatch({
-      type: e.target.name,
       payload: {
         name: e.target.name,
         value: e.target.value

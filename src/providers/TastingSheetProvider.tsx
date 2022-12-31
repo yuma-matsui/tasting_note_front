@@ -8,7 +8,15 @@ const TastingSheetProvider: FC<ReactNodeChildren> = ({ children }) => {
   const [tastingSheet, dispatch] = useReducer(tastingSheetReducer, {
     name: '',
     time: Math.min(...TASTING_TIME),
-    color: 'white'
+    color: 'white',
+    appearance: {
+      clarity: '',
+      brightness: '',
+      appearanceColor: [],
+      intensity: '',
+      consistency: '',
+      appearanceImpression: []
+    }
   })
 
   const tastingSheetState = useMemo(() => ({ tastingSheet, dispatch }), [tastingSheet])
