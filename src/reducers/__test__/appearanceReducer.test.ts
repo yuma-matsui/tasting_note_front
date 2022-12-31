@@ -1,4 +1,4 @@
-import { Appearance, AppearanceAllLabels, AppearanceName } from '../../types/tasting_sheet/appearance'
+import { Appearance, AppearanceAllLabels, AppearanceName } from '../../types'
 import appearanceReducer from '../appearanceReducer'
 
 describe('appearanceReducer', () => {

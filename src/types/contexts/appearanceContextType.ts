@@ -1,7 +1,7 @@
 import { Dispatch } from 'react'
 
-import Appearance from '../tasting_sheet/appearance/shared/appearance'
 import TastingSheetReducerAction from '../states/tastingSheetReducerAction'
+import Appearance from '../tasting_sheet/appearance/appearance'
 
 type AppearanceContextType = {
   appearance: Appearance
