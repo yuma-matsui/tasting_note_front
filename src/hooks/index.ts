@@ -1,7 +1,6 @@
 export { default as useTastingSheetContext } from './tasting_sheet/useTastingSheetContext'
 export { default as useTastingSheetOnChange } from './tasting_sheet/useTastingSheetOnChange'
 
-export { default as useAppearanceContext } from './tasting_sheet/appearance/useAppearanceContext'
 export { default as useAppearanceStatus } from './tasting_sheet/appearance/useAppearanceStatus'
 export { default as useAppearanceNameCheck } from './tasting_sheet/appearance/useAppearanceNameCheck'
 
