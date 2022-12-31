@@ -1,6 +1,4 @@
-import { AppearanceColorTupleWhite } from '../../../../types/tasting_sheet/appearance'
-
-const APPEARANCE_COLOR_LABELS_WHITE: AppearanceColorTupleWhite = [
+const APPEARANCE_COLOR_LABELS_WHITE = [
   'グリーンがかった',
   '黄金色がかった',
   'レモンイエロー',

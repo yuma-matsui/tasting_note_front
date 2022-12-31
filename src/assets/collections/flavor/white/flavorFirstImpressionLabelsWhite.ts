@@ -1,6 +1,4 @@
-import { FlavorFirstImpressionTupleWhite } from '../../../../types/tasting_sheet/flavor'
-
-const FLAVOR_FIRST_IMPRESSION_LABELS_WHITE: FlavorFirstImpressionTupleWhite = [
+const FLAVOR_FIRST_IMPRESSION_LABELS_WHITE = [
   '閉じている',
   '控えめ',
   '開いている',

@@ -1,4 +1,4 @@
-import { Flavor, FlavorAllLabels, FlavorName } from '../../types/tasting_sheet/flavor'
+import { Flavor, FlavorAllLabels, FlavorName } from '../../types'
 import flavorReducer from '../flavorReducer'
 
 describe('flavorReducer', () => {

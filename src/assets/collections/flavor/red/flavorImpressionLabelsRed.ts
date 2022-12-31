@@ -1,6 +1,4 @@
-import { FlavorImpressionTupleRed } from '../../../../types/tasting_sheet/flavor'
-
-const FLAVOR_IMPRESSION_LABELS_RED: FlavorImpressionTupleRed = [
+const FLAVOR_IMPRESSION_LABELS_RED = [
   '若々しい',
   '嫌気的な',
   '熟成感が現れている',

@@ -1,7 +1,6 @@
 import { Reducer } from 'react'
 
-import { Flavor } from '../types/tasting_sheet/flavor'
-import { TastingSheetReducerAction } from '../types'
+import { Flavor, TastingSheetReducerAction } from '../types'
 
 const flavorReducer: Reducer<Flavor, TastingSheetReducerAction> = (prevFlavor, { type, payload: { value } }) => {
   switch (type) {

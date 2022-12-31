@@ -1,6 +1,4 @@
-import { FlavorFruitTupleWhite } from '../../../../types/tasting_sheet/flavor'
-
-const FLAVOR_FRUIT_LABELS_WHITE: FlavorFruitTupleWhite = [
+const FLAVOR_FRUIT_LABELS_WHITE = [
   '柑橘類',
   '青リンゴ',
   'リンゴ',

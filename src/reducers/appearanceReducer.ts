@@ -1,6 +1,5 @@
 import { Reducer } from 'react'
-import { TastingSheetReducerAction } from '../types'
-import { Appearance } from '../types/tasting_sheet/appearance'
+import { Appearance, TastingSheetReducerAction } from '../types'
 
 const appearanceReducer: Reducer<Appearance, TastingSheetReducerAction> = (
   prevAppearance,

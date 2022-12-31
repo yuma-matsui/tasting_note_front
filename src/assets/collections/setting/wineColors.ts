@@ -1,5 +1,3 @@
-import { WineColorsTuple } from '../../../types'
-
-const WINE_COLORS: WineColorsTuple = ['white', 'red']
+const WINE_COLORS = ['white', 'red']
 
 export default WINE_COLORS

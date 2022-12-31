@@ -1,14 +1,13 @@
 import { ChangeEvent, FC, memo } from 'react'
-import { useTastingSheetContext, useWineColorStatus } from '../../../hooks'
+import { useTastingSheetContext } from '../../../hooks'
 import { WineColorRadioProps } from '../../../types'
 
 const TastingSheetWineColorRadio: FC<WineColorRadioProps> = memo(({ color }) => {
   const { tastingSheet, setTastingSheet } = useTastingSheetContext()
-  const { isWineColor } = useWineColorStatus()
 
   const onChangeWineColor = (e: ChangeEvent<HTMLInputElement>) => {
     const wineColor = e.target.value
-    if (isWineColor(wineColor)) setTastingSheet((prev) => ({ ...prev, color: wineColor }))
+    setTastingSheet((prev) => ({ ...prev, color: wineColor }))
   }
 
   return (
