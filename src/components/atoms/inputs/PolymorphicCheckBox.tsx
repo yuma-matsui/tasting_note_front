@@ -9,7 +9,15 @@ const PolymorphicCheckBox: FC<PolymorphicCheckBoxProps> = memo(({ type, name, la
   const { onChange } = useTastingSheetOnChange()
 
   return (
-    <BaseCheckBox type="checkbox" label={label} name={name} checked={checked} disabled={disabled} onChange={onChange} />
+    <BaseCheckBox
+      type="checkbox"
+      id={`${name}-${label}`}
+      label={label}
+      name={name}
+      checked={checked}
+      disabled={disabled}
+      onChange={onChange}
+    />
   )
 })
 
