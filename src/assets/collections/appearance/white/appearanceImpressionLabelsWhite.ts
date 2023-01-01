@@ -1,6 +1,4 @@
-import { AppearanceImpressionTupleWhite } from '../../../../types/tasting_sheet/appearance'
-
-const APPEARANCE_IMPRESSION_LABELS_WHITE: AppearanceImpressionTupleWhite = [
+const APPEARANCE_IMPRESSION_LABELS_WHITE = [
   '若々しい',
   'やや発展した',
   '熟成のニュアンスが見える',

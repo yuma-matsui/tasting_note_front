@@ -1,6 +1,4 @@
-import { AppearanceColorTupleRed } from '../../../../types/tasting_sheet/appearance'
-
-const APPEARANCE_COLOR_LABELS_RED: AppearanceColorTupleRed = [
+const APPEARANCE_COLOR_LABELS_RED = [
   '紫がかった',
   'オレンジがかった',
   '黒みを帯びた',

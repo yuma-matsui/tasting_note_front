@@ -1,6 +1,6 @@
 type TastingSheetReducerAction = {
-  type: string
   payload: {
+    name: string
     value: string
   }
 }

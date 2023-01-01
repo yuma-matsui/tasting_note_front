@@ -1,6 +1,4 @@
-import { FlavorSpiceTupleWhite } from '../../../../types/tasting_sheet/flavor'
-
-const FLAVOR_SPICE_LABELS_WHITE: FlavorSpiceTupleWhite = [
+const FLAVOR_SPICE_LABELS_WHITE = [
   '石灰',
   '火打石',
   '貝殻',

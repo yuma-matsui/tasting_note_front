@@ -1,6 +1,4 @@
-import { AppearanceImpressionTupleRed } from '../../../../types/tasting_sheet/appearance'
-
-const APPEARANCE_IMPRESSION_LABELS_RED: AppearanceImpressionTupleRed = [
+const APPEARANCE_IMPRESSION_LABELS_RED = [
   '若々しい',
   '若い状態を抜けた',
   'やや熟成した',

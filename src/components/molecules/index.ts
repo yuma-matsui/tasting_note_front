@@ -1,7 +1,5 @@
-export { default as BaseForm } from './shared/BaseForm'
-
-export { default as NewTastingSheetSettingForm } from './NewTastingSheetSettingForm'
-export { default as NewTastingSheetAppearanceForm } from './NewTastingSheetAppearanceForm'
-export { default as NewTastingSheetFlavorForm } from './NewTastingSheetFlavorForm'
+export { default as BaseForm } from './forms/BaseForm'
+export { default as NewTastingSheetSettingForm } from './forms/NewTastingSheetSettingForm'
+export { default as PolymorphicForm } from './forms/PolymorphicForm'
 
 export { default as TastingSheetWineColorRadios } from './TastingSheetWineColorRadios'
