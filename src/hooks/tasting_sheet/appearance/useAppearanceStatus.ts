@@ -1,8 +1,10 @@
-import useAppearanceContext from './useAppearanceContext'
+import useTastingSheetContext from '../useTastingSheetContext'
 import useAppearanceNameCheck from './useAppearanceNameCheck'
 
 const useAppearanceStatus = (name: string, label: string) => {
-  const { appearance } = useAppearanceContext()
+  const {
+    tastingSheet: { appearance }
+  } = useTastingSheetContext()
   const { isValidName } = useAppearanceNameCheck()
 
   if (!isValidName(name)) throw new Error('不正な呼び出し方です。')
