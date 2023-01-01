@@ -1,6 +1,7 @@
 import { FC } from 'react'
-import { AppearanceProvider, FlavorProvider, TastingSheetProvider } from '../../providers'
-import { AppearanceForm, FlavorForm, NewTastingSheetSettingForm } from '../molecules'
+import { FORM_ITEMS } from '../../assets'
+import { TastingSheetProvider } from '../../providers'
+import { NewTastingSheetSettingForm, PolymorphicForm } from '../molecules'
 import { DefaultLayout } from '../templates'
 
 const NewTastingSheetPage: FC = () => (
@@ -8,13 +9,9 @@ const NewTastingSheetPage: FC = () => (
     <TastingSheetProvider>
       <NewTastingSheetSettingForm />
       <hr />
-      <AppearanceProvider>
-        <AppearanceForm />
-      </AppearanceProvider>
-      <hr />
-      <FlavorProvider>
-        <FlavorForm />
-      </FlavorProvider>
+      {FORM_ITEMS.map(({ type, white, red }) => (
+        <PolymorphicForm key={type} type={type} white={white} red={red} />
+      ))}
     </TastingSheetProvider>
   </DefaultLayout>
 )

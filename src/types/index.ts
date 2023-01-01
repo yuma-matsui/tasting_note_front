@@ -1,5 +1,6 @@
 export type { default as TastingSheet } from './tasting_sheet/tastingSheet'
 export type { default as TastingSheetName } from './tasting_sheet/tastingSheetName'
+export type { default as TastingSheetFormItem } from './tasting_sheet/tastingSheetFormItem'
 export type { default as InputOrSelect } from './tasting_sheet/inputOrSelect'
 
 export type { default as AppearanceName } from './tasting_sheet/appearance/appearanceName'
@@ -16,3 +17,4 @@ export type { default as ReactNodeChildren } from './props/reactNodeChildren'
 export type { default as WineColorRadioProps } from './props/wineColorRadioProps'
 export type { default as BaseCheckBoxProps } from './props/baseCheckBoxProps'
 export type { default as TastingSheetCheckBoxProps } from './props/tastingSheetCheckBoxProps'
+export type { default as PolymorphicFormProps } from './props/polymorphicFormProps'
