@@ -7,3 +7,6 @@ export { default as useAppearanceNameCheck } from './tasting_sheet/appearance/us
 
 export { default as useFlavorStatus } from './tasting_sheet/flavor/useFlavorStatus'
 export { default as useFlavorNameCheck } from './tasting_sheet/flavor/useFlavorNameCheck'
+
+export { default as useTasteNameCheck } from './tasting_sheet/taste/useTasteNameCheck'
+export { default as useTasteStatus } from './tasting_sheet/taste/useTasteStatus'
