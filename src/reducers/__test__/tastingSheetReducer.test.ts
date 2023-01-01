@@ -25,8 +25,8 @@ describe('tastingSheetReducer', () => {
       attack: '',
       sweetness: '',
       acidity: '',
-      astringent: '',
-      bitterness: '',
+      astringent: null,
+      bitterness: null,
       balance: '',
       alcohol: '',
       afterTaste: ''
