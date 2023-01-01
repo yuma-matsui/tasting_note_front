@@ -33,6 +33,15 @@ const TastingSheetProvider: FC<ReactNodeChildren> = ({ children }) => {
       alcohol: '',
       balance: '',
       afterTaste: ''
+    },
+    conclusion: {
+      evaluation: '',
+      optimumTemperature: '',
+      glass: '',
+      decantage: '',
+      vintage: 1900,
+      country: '',
+      grape: ''
     }
   })
 

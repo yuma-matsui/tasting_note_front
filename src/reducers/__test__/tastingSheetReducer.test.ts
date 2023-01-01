@@ -30,6 +30,15 @@ describe('tastingSheetReducer', () => {
       balance: '',
       alcohol: '',
       afterTaste: ''
+    },
+    conclusion: {
+      evaluation: '',
+      optimumTemperature: '',
+      glass: '',
+      decantage: '',
+      vintage: 1900,
+      country: '',
+      grape: ''
     }
   }
 
