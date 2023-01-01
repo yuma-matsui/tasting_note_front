@@ -7,3 +7,6 @@ export { default as APPEARANCE_ITEMS_WHITE } from './collections/appearance/whit
 
 export { default as FLAVOR_ITEMS_RED } from './collections/flavor/red/flavorItemsRed'
 export { default as FLAVOR_ITEMS_WHITE } from './collections/flavor/white/flavorItemsWhite'
+
+export { default as TASTE_ITEMS_RED } from './collections/taste/red/tasteItemsRed'
+export { default as TASTE_ITEMS_WHITE } from './collections/taste/white/tasteItemsWhite'
