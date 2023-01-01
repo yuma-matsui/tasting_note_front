@@ -5,5 +5,4 @@ export { default as TastingSheetNameInput } from './inputs/TastingSheetNameInput
 export { default as TastingSheetTimeSelectBox } from './selects/TastingSheetTimeSelectBox'
 export { default as TastingSheetWineColorRadio } from './inputs/TastingSheetWineColorRadio'
 export { default as TastingSheetSettingSubmitButton } from './buttons/TastingSheetSettingSubmitButton'
-export { default as AppearanceCheckBox } from './inputs/AppearanceCheckBox'
-export { default as FlavorCheckBox } from './inputs/FlavorCheckBox'
+export { default as PolymorphicCheckBox } from './inputs/PolymorphicCheckBox'

@@ -1,8 +1,10 @@
-import useFlavorContext from './useFlavorContext'
+import useTastingSheetContext from '../useTastingSheetContext'
 import useFlavorNameCheck from './useFlavorNameCheck'
 
 const useFlavorStatus = (name: string, label: string) => {
-  const { flavor } = useFlavorContext()
+  const {
+    tastingSheet: { flavor }
+  } = useTastingSheetContext()
   const { isValidName } = useFlavorNameCheck()
 
   if (!isValidName(name)) throw new Error('不正な呼び出し方です。')

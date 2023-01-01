@@ -1,27 +1,26 @@
-import { FC, memo } from 'react'
-import { FLAVOR_ITEMS_RED, FLAVOR_ITEMS_WHITE } from '../../../assets'
+import { FC } from 'react'
 import { useTastingSheetContext } from '../../../hooks'
-import { FlavorCheckBox } from '../../atoms'
+import { PolymorphicFormProps } from '../../../types'
+import { PolymorphicCheckBox } from '../../atoms'
 import BaseForm from './BaseForm'
 
-const FlavorForm: FC = memo(() => {
+const PolymorphicForm: FC<PolymorphicFormProps> = ({ type, white, red }) => {
   const { tastingSheet } = useTastingSheetContext()
-  const items = tastingSheet.color === 'white' ? FLAVOR_ITEMS_WHITE : FLAVOR_ITEMS_RED
+  const items = tastingSheet.color === 'white' ? white : red
 
   return (
     <>
-      <h2>香り</h2>
+      <h2>{type}</h2>
       <BaseForm>
         {items.map(({ heading, name, labels, subHeading }) => (
           <div key={heading}>
             <h3>
               {heading}
-              <br />
-              <span>{subHeading}</span>
+              {subHeading && <span>{subHeading}</span>}
             </h3>
             <div>
               {labels.map((label) => (
-                <FlavorCheckBox key={label} name={name} label={label} />
+                <PolymorphicCheckBox type={type} key={label} name={name} label={label} />
               ))}
             </div>
           </div>
@@ -29,6 +28,6 @@ const FlavorForm: FC = memo(() => {
       </BaseForm>
     </>
   )
-})
+}
 
-export default FlavorForm
+export default PolymorphicForm

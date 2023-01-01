@@ -1,24 +1,18 @@
-import { ChangeEvent, FC, memo, useState } from 'react'
+import { FC, memo } from 'react'
 import { TASTING_TIME } from '../../../assets'
-import { useTastingSheetContext } from '../../../hooks'
+import { useTastingSheetContext, useTastingSheetOnChange } from '../../../hooks'
 
 const TastingSheetTimeSelectBox: FC = memo(() => {
-  const { setTastingSheet } = useTastingSheetContext()
-
-  const [sheetTime, setSheetTime] = useState<number>(Math.min(...TASTING_TIME))
-  const onChangeSheetTime = (e: ChangeEvent<HTMLSelectElement>) => {
-    const time = Number(e.target.value)
-    setSheetTime(time)
-    setTastingSheet((prev) => ({ ...prev, time }))
-  }
+  const { tastingSheet } = useTastingSheetContext()
+  const { onChange } = useTastingSheetOnChange<'select'>()
 
   return (
-    <label htmlFor="sheet-time">
+    <label htmlFor="time">
       テイスティング時間(分)
-      <select id="sheet-time" value={sheetTime} onChange={onChangeSheetTime}>
-        {TASTING_TIME.map((_time) => (
-          <option value={_time} key={_time}>
-            {_time}
+      <select id="time" name="time" value={tastingSheet.time} onChange={onChange}>
+        {TASTING_TIME.map((time) => (
+          <option value={time} key={time}>
+            {time}
           </option>
         ))}
       </select>
