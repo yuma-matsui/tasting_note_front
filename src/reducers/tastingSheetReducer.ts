@@ -5,8 +5,9 @@ const tastingSheetReducer: Reducer<TastingSheet, TastingSheetReducerAction> = (
   prevSheet,
   { payload: { name, value } }
 ) => {
-  const { appearance } = prevSheet
+  const { appearance, flavor } = prevSheet
   const prevAppearance = { ...appearance }
+  const prevFlavor = { ...flavor }
 
   switch (name) {
     case 'time':
@@ -24,6 +25,17 @@ const tastingSheetReducer: Reducer<TastingSheet, TastingSheetReducerAction> = (
 
       target.splice(target.indexOf(value), 1)
       return { ...prevSheet, appearance: { ...prevAppearance, [name]: target } }
+    }
+    case 'flavorFirstImpression':
+    case 'flavorFruit':
+    case 'flavorFlower':
+    case 'flavorSpice':
+    case 'flavorImpression': {
+      const target = prevFlavor[name]
+      if (!target.includes(value)) return { ...prevSheet, flavor: { ...prevFlavor, [name]: [...target, value] } }
+
+      target.splice(target.indexOf(value), 1)
+      return { ...prevSheet, flavor: { ...prevFlavor, [name]: target } }
     }
     default:
       return { ...prevSheet, [name]: value }

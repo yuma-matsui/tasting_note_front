@@ -1,4 +1,4 @@
-import { AppearanceName, TastingSheet, TastingSheetName } from '../../types'
+import { AppearanceName, FlavorName, TastingSheet, TastingSheetName } from '../../types'
 import tastingSheetReducer from '../tastingSheetReducer'
 
 describe('tastingSheetReducer', () => {
@@ -13,6 +13,13 @@ describe('tastingSheetReducer', () => {
       intensity: '',
       consistency: '',
       appearanceImpression: []
+    },
+    flavor: {
+      flavorFirstImpression: [],
+      flavorFruit: [],
+      flavorFlower: [],
+      flavorSpice: [],
+      flavorImpression: []
     }
   }
 
@@ -77,6 +84,38 @@ describe('tastingSheetReducer', () => {
           const newSheet = tastingSheetReducer(initialSheet, action)
           expect(newSheet.appearance[name]).toEqual([])
         })
+      })
+    })
+  })
+  describe('flavor', () => {
+    const testItems: [FlavorName, string, string][] = [
+      ['flavorFirstImpression', '閉じている', 'チャーミングな'],
+      ['flavorFruit', '洋梨', 'マンゴー'],
+      ['flavorFlower', 'スイカズラ', 'ヘーゼルナッツ'],
+      ['flavorSpice', '石灰', 'フェノール'],
+      ['flavorImpression', '若々しい', '第2アロマが強い']
+    ]
+
+    describe.each(testItems)('nameが%sの場合', (name, firstValue, secondValue) => {
+      beforeEach(() => {
+        initialSheet.flavor[name] = []
+      })
+      it('空の配列の場合valueが追加される', () => {
+        const action = { payload: { name, value: firstValue } }
+        const newSheet = tastingSheetReducer(initialSheet, action)
+        expect(newSheet.flavor[name]).toEqual([firstValue])
+      })
+      it('要素を1もつ配列の場合valueが追加される', () => {
+        initialSheet.flavor[name].push(firstValue)
+        const action = { payload: { name, value: secondValue } }
+        const newSheet = tastingSheetReducer(initialSheet, action)
+        expect(newSheet.flavor[name]).toEqual([firstValue, secondValue])
+      })
+      it('既にvalueを含む配列の場合valueが取り除かれる', () => {
+        initialSheet.flavor[name].push(firstValue)
+        const action = { payload: { name, value: firstValue } }
+        const newSheet = tastingSheetReducer(initialSheet, action)
+        expect(newSheet.flavor[name]).toEqual([])
       })
     })
   })
