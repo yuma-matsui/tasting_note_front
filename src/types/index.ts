@@ -16,5 +16,5 @@ export type { default as TastingSheetContextType } from './contexts/tastingSheet
 export type { default as ReactNodeChildren } from './props/reactNodeChildren'
 export type { default as WineColorRadioProps } from './props/wineColorRadioProps'
 export type { default as BaseCheckBoxProps } from './props/baseCheckBoxProps'
-export type { default as TastingSheetCheckBoxProps } from './props/tastingSheetCheckBoxProps'
+export type { default as PolymorphicCheckBoxProps } from './props/polymorphicCheckBoxProps'
 export type { default as PolymorphicFormProps } from './props/polymorphicFormProps'
