@@ -10,7 +10,6 @@ const TastingSheetWineColorRadio: FC<WineColorRadioProps> = memo(({ color }) => 
   return (
     <BaseCheckBox
       type="radio"
-      id={color}
       label={color}
       name="color"
       onChange={onChange}

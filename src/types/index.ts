@@ -9,9 +9,6 @@ export type { default as Appearance } from './tasting_sheet/appearance/appearanc
 export type { default as FlavorName } from './tasting_sheet/flavor/flavorName'
 export type { default as Flavor } from './tasting_sheet/flavor/flavor'
 
-export type { default as TasteName } from './tasting_sheet/taste/tasteName'
-export type { default as Taste } from './tasting_sheet/taste/taste'
-
 export type { default as TastingSheetReducerAction } from './states/tastingSheetReducerAction'
 
 export type { default as TastingSheetContextType } from './contexts/tastingSheetContextType'

@@ -23,16 +23,6 @@ const TastingSheetProvider: FC<ReactNodeChildren> = ({ children }) => {
       flavorFlower: [],
       flavorSpice: [],
       flavorImpression: []
-    },
-    taste: {
-      attack: '',
-      sweetness: '',
-      acidity: '',
-      astringent: null,
-      bitterness: null,
-      alcohol: '',
-      balance: '',
-      afterTaste: ''
     }
   })
 

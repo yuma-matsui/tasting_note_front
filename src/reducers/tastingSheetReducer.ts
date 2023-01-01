@@ -5,7 +5,9 @@ const tastingSheetReducer: Reducer<TastingSheet, TastingSheetReducerAction> = (
   prevSheet,
   { payload: { name, value } }
 ) => {
-  const { appearance, flavor, taste } = { ...prevSheet }
+  const { appearance, flavor } = prevSheet
+  const prevAppearance = { ...appearance }
+  const prevFlavor = { ...flavor }
 
   switch (name) {
     case 'time':
@@ -14,35 +16,27 @@ const tastingSheetReducer: Reducer<TastingSheet, TastingSheetReducerAction> = (
     case 'brightness':
     case 'intensity':
     case 'consistency':
-      return { ...prevSheet, appearance: { ...appearance, [name]: value } }
+      return { ...prevSheet, appearance: { ...prevAppearance, [name]: value } }
     case 'appearanceColor':
     case 'appearanceImpression': {
-      const target = appearance[name]
-      if (!target.includes(value)) return { ...prevSheet, appearance: { ...appearance, [name]: [...target, value] } }
+      const target = prevAppearance[name]
+      if (!target.includes(value))
+        return { ...prevSheet, appearance: { ...prevAppearance, [name]: [...target, value] } }
 
       target.splice(target.indexOf(value), 1)
-      return { ...prevSheet, appearance: { ...appearance, [name]: target } }
+      return { ...prevSheet, appearance: { ...prevAppearance, [name]: target } }
     }
     case 'flavorFirstImpression':
     case 'flavorFruit':
     case 'flavorFlower':
     case 'flavorSpice':
     case 'flavorImpression': {
-      const target = flavor[name]
-      if (!target.includes(value)) return { ...prevSheet, flavor: { ...flavor, [name]: [...target, value] } }
+      const target = prevFlavor[name]
+      if (!target.includes(value)) return { ...prevSheet, flavor: { ...prevFlavor, [name]: [...target, value] } }
 
       target.splice(target.indexOf(value), 1)
-      return { ...prevSheet, flavor: { ...flavor, [name]: target } }
+      return { ...prevSheet, flavor: { ...prevFlavor, [name]: target } }
     }
-    case 'attack':
-    case 'sweetness':
-    case 'acidity':
-    case 'astringent':
-    case 'bitterness':
-    case 'balance':
-    case 'alcohol':
-    case 'afterTaste':
-      return { ...prevSheet, taste: { ...taste, [name]: value } }
     default:
       return { ...prevSheet, [name]: value }
   }
