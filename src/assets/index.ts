@@ -13,3 +13,5 @@ export { default as TASTE_ITEMS_WHITE } from './collections/taste/white/tasteIte
 
 export { default as CONCLUSION_ITEMS_RED } from './collections/conclusion/red/conclusionItemsRed'
 export { default as CONCLUSION_ITEMS_WHITE } from './collections/conclusion/white/conclusionItemsWhite'
+export { default as CONCLUSION_SELECT_OPTIONS_RED } from './collections/conclusion/red/conclusionSelectOptionsRed'
+export { default as CONCLUSION_SELECT_OPTIONS_WHITE } from './collections/conclusion/white/conclusionSelectOptionsWhite'
