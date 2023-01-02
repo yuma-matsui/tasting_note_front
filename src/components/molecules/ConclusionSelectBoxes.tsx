@@ -1,8 +1,10 @@
+import { FC, memo } from 'react'
+
 import { CONCLUSION_SELECT_OPTIONS_RED, CONCLUSION_SELECT_OPTIONS_WHITE } from '../../assets'
 import { useTastingSheetContext } from '../../hooks'
 import { PolymorphicSelectBox } from '../atoms'
 
-const ConclusionSelectBoxes = () => {
+const ConclusionSelectBoxes: FC = memo(() => {
   const {
     tastingSheet: { color }
   } = useTastingSheetContext()
@@ -15,6 +17,6 @@ const ConclusionSelectBoxes = () => {
       ))}
     </>
   )
-}
+})
 
 export default ConclusionSelectBoxes

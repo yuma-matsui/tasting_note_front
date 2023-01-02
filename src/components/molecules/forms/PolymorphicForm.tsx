@@ -1,10 +1,10 @@
-import { FC } from 'react'
+import { FC, memo } from 'react'
 import { useTastingSheetContext } from '../../../hooks'
 import { PolymorphicFormProps } from '../../../types'
 import { PolymorphicCheckBox } from '../../atoms'
 import BaseForm from './BaseForm'
 
-const PolymorphicForm: FC<PolymorphicFormProps> = ({ type, white, red, children }) => {
+const PolymorphicForm: FC<PolymorphicFormProps> = memo(({ type, white, red, children }) => {
   const {
     tastingSheet: { color }
   } = useTastingSheetContext()
@@ -33,6 +33,6 @@ const PolymorphicForm: FC<PolymorphicFormProps> = ({ type, white, red, children 
       </BaseForm>
     </>
   )
-}
+})
 
 export default PolymorphicForm
