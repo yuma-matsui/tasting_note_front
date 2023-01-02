@@ -1,5 +1,5 @@
 import { FC, useMemo, useReducer } from 'react'
-import { TASTING_TIME } from '../assets'
+import { TASTING_TIME, VINTAGES } from '../assets'
 import { TastingSheetContext } from '../contexts'
 import { tastingSheetReducer } from '../reducers'
 import { ReactNodeChildren } from '../types'
@@ -39,7 +39,7 @@ const TastingSheetProvider: FC<ReactNodeChildren> = ({ children }) => {
       optimumTemperature: '',
       glass: '',
       decantage: '',
-      vintage: 1900,
+      vintage: Math.max(...VINTAGES),
       country: '',
       grape: ''
     }

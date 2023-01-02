@@ -15,3 +15,4 @@ export { default as CONCLUSION_ITEMS_RED } from './collections/conclusion/red/co
 export { default as CONCLUSION_ITEMS_WHITE } from './collections/conclusion/white/conclusionItemsWhite'
 export { default as CONCLUSION_SELECT_OPTIONS_RED } from './collections/conclusion/red/conclusionSelectOptionsRed'
 export { default as CONCLUSION_SELECT_OPTIONS_WHITE } from './collections/conclusion/white/conclusionSelectOptionsWhite'
+export { default as VINTAGES } from './collections/conclusion/shared/vintages'
