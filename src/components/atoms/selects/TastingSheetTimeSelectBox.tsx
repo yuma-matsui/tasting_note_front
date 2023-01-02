@@ -1,23 +1,9 @@
 import { FC, memo } from 'react'
 import { TASTING_TIME } from '../../../assets'
-import { useTastingSheetContext, useTastingSheetOnChange } from '../../../hooks'
+import PolymorphicSelectBox from './PolymorphicSelectBox'
 
-const TastingSheetTimeSelectBox: FC = memo(() => {
-  const { tastingSheet } = useTastingSheetContext()
-  const { onChange } = useTastingSheetOnChange<'select'>()
-
-  return (
-    <label htmlFor="time">
-      テイスティング時間(分)
-      <select id="time" name="time" value={tastingSheet.time} onChange={onChange}>
-        {TASTING_TIME.map((time) => (
-          <option value={time} key={time}>
-            {time}
-          </option>
-        ))}
-      </select>
-    </label>
-  )
-})
+const TastingSheetTimeSelectBox: FC = memo(() => (
+  <PolymorphicSelectBox label="テイスティング時間(分)" name="time" options={TASTING_TIME.map((time) => String(time))} />
+))
 
 export default TastingSheetTimeSelectBox
