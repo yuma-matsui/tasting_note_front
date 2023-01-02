@@ -6,3 +6,4 @@ export { default as TastingSheetTimeSelectBox } from './selects/TastingSheetTime
 export { default as TastingSheetWineColorRadio } from './inputs/TastingSheetWineColorRadio'
 export { default as TastingSheetSettingSubmitButton } from './buttons/TastingSheetSettingSubmitButton'
 export { default as PolymorphicCheckBox } from './inputs/PolymorphicCheckBox'
+export { default as PolymorphicSelectBox } from './selects/PolymorphicSelectBox'
