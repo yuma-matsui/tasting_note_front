@@ -5,8 +5,10 @@ import { PolymorphicCheckBox } from '../../atoms'
 import BaseForm from './BaseForm'
 
 const PolymorphicForm: FC<PolymorphicFormProps> = ({ type, white, red, children }) => {
-  const { tastingSheet } = useTastingSheetContext()
-  const items = tastingSheet.color === 'white' ? white : red
+  const {
+    tastingSheet: { color }
+  } = useTastingSheetContext()
+  const items = color === 'white' ? white : red
 
   return (
     <>
