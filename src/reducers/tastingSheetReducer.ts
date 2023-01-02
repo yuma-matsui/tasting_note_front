@@ -5,7 +5,7 @@ const tastingSheetReducer: Reducer<TastingSheet, TastingSheetReducerAction> = (
   prevSheet,
   { payload: { name, value } }
 ) => {
-  const { appearance, flavor, taste } = { ...prevSheet }
+  const { appearance, flavor, taste, conclusion } = { ...prevSheet }
 
   switch (name) {
     case 'time':
@@ -43,6 +43,15 @@ const tastingSheetReducer: Reducer<TastingSheet, TastingSheetReducerAction> = (
     case 'alcohol':
     case 'afterTaste':
       return { ...prevSheet, taste: { ...taste, [name]: value } }
+    case 'evaluation':
+    case 'optimumTemperature':
+    case 'glass':
+    case 'decantage':
+    case 'country':
+    case 'grape':
+      return { ...prevSheet, conclusion: { ...conclusion, [name]: value } }
+    case 'vintage':
+      return { ...prevSheet, conclusion: { ...conclusion, [name]: Number(value) } }
     default:
       return { ...prevSheet, [name]: value }
   }

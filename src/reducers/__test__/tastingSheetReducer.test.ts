@@ -1,4 +1,4 @@
-import { AppearanceName, FlavorName, TasteName, TastingSheet, TastingSheetName } from '../../types'
+import { AppearanceName, ConclusionName, FlavorName, TasteName, TastingSheet, TastingSheetName } from '../../types'
 import tastingSheetReducer from '../tastingSheetReducer'
 
 describe('tastingSheetReducer', () => {
@@ -30,6 +30,15 @@ describe('tastingSheetReducer', () => {
       balance: '',
       alcohol: '',
       afterTaste: ''
+    },
+    conclusion: {
+      evaluation: '',
+      optimumTemperature: '',
+      glass: '',
+      decantage: '',
+      vintage: 1900,
+      country: '',
+      grape: ''
     }
   }
 
@@ -146,6 +155,30 @@ describe('tastingSheetReducer', () => {
         const action = { payload: { name, value } }
         const newSheet = tastingSheetReducer(initialSheet, action)
         expect(newSheet.taste[name]).toBe(value)
+      })
+    })
+  })
+  describe('conclusion', () => {
+    describe('evaluation, optimumTemperature, glass, decantage, country, grape', () => {
+      const testItems: [ConclusionName, string][] = [
+        ['evaluation', 'エレガントでミネラリー'],
+        ['optimumTemperature', '8度未満'],
+        ['glass', '中庸'],
+        ['decantage', '必要なし'],
+        ['country', 'フランス'],
+        ['grape', 'リースリング']
+      ]
+
+      it.each(testItems)('nameが%sの場合プロパティの値が「%s」に変更される', (name, value) => {
+        const action = { payload: { name, value } }
+        const newSheet = tastingSheetReducer(initialSheet, action)
+        expect(newSheet.conclusion[name]).toBe(value)
+      })
+      it('nameがvintageの場合プロパティの値が数値型のvalueに変更される', () => {
+        const name: ConclusionName = 'vintage'
+        const action = { payload: { name, value: '2022' } }
+        const newSheet = tastingSheetReducer(initialSheet, action)
+        expect(newSheet.conclusion[name]).toBe(2022)
       })
     })
   })

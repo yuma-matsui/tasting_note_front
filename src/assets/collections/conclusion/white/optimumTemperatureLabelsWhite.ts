@@ -1,0 +1,3 @@
+const OPTIMUM_TEMPERATURE_LABELS_WHITE = ['8度未満', '8〜10度', '11〜14度', '15〜18度', '19度以上']
+
+export default OPTIMUM_TEMPERATURE_LABELS_WHITE
