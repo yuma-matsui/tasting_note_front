@@ -10,10 +10,10 @@ const useTastingSheetFormItems = () => {
   const { conclusionItems } = useConclusionFormItems()
 
   const formItems = [
-    { type: '外観', items: appearanceItems },
-    { type: '香り', items: flavorItems },
-    { type: '味わい', items: tasteItems },
-    { type: 'まとめ', items: conclusionItems }
+    { type: 'appearance', items: appearanceItems },
+    { type: 'flavor', items: flavorItems },
+    { type: 'taste', items: tasteItems },
+    { type: 'conclusion', items: conclusionItems }
   ]
 
   return { formItems }
