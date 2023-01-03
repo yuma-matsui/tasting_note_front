@@ -1,19 +1,15 @@
 import { FC, memo } from 'react'
 
-import { CONCLUSION_SELECT_OPTIONS_RED, CONCLUSION_SELECT_OPTIONS_WHITE } from '../../assets'
-import { useTastingSheetContext } from '../../hooks'
+import useConclusionFormItems from '../../hooks/tasting_sheet/conclusion/useConclusionFormItems'
 import { PolymorphicSelectBox } from '../atoms'
 
 const ConclusionSelectBoxes: FC = memo(() => {
-  const {
-    tastingSheet: { color }
-  } = useTastingSheetContext()
-  const items = color === 'white' ? CONCLUSION_SELECT_OPTIONS_WHITE : CONCLUSION_SELECT_OPTIONS_RED
+  const { conclusionItems } = useConclusionFormItems('select')
 
   return (
     <>
-      {items.map(({ label, name, options }) => (
-        <PolymorphicSelectBox key={label} label={label} name={name} options={options.map((option) => String(option))} />
+      {conclusionItems.map(({ heading, name, labels }) => (
+        <PolymorphicSelectBox key={heading} label={heading} name={name} options={labels} />
       ))}
     </>
   )
