@@ -2,6 +2,7 @@ export type { default as TastingSheet } from './tasting_sheet/tastingSheet'
 export type { default as TastingSheetName } from './tasting_sheet/tastingSheetName'
 export type { default as TastingSheetFormItem } from './tasting_sheet/tastingSheetFormItem'
 export type { default as InputOrSelect } from './tasting_sheet/inputOrSelect'
+export type { default as FormItemClassProperty } from './tasting_sheet/formItemClassProperty'
 
 export type { default as AppearanceName } from './tasting_sheet/appearance/appearanceName'
 export type { default as Appearance } from './tasting_sheet/appearance/appearance'
