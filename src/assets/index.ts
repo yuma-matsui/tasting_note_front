@@ -8,6 +8,5 @@ export { default as FLAVOR_FORM_ITEMS } from './collections/flavor/shared/flavor
 export { default as TASTE_FORM_ITEMS } from './collections/taste/shared/tasteFormItems'
 
 export { default as CONCLUSION_FORM_ITEMS } from './collections/conclusion/shared/conclusionFormItems'
-export { default as CONCLUSION_SELECT_OPTIONS_RED } from './collections/conclusion/red/conclusionSelectOptionsRed'
-export { default as CONCLUSION_SELECT_OPTIONS_WHITE } from './collections/conclusion/white/conclusionSelectOptionsWhite'
+export { default as CONCLUSION_SELECT_OPTIONS } from './collections/conclusion/shared/conclusionSelectOptions'
 export { default as VINTAGES } from './collections/conclusion/shared/vintages'
