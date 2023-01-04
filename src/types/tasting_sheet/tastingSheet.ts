@@ -5,7 +5,7 @@ import Taste from './taste/taste'
 
 type TastingSheet = {
   name?: string
-  time: number
+  time: number | null
   color: string
   appearance: Appearance
   flavor: Flavor

@@ -5,13 +5,13 @@ import useTasteStatus from './taste/useTasteStatus'
 
 const useTastingSheetCheckBoxStatus = (type: string) => {
   switch (type) {
-    case '外観':
+    case 'appearance':
       return useAppearanceStatus
-    case '香り':
+    case 'flavor':
       return useFlavorStatus
-    case '味わい':
+    case 'taste':
       return useTasteStatus
-    case 'まとめ':
+    case 'conclusion':
       return useConclusionStatus
     default:
       throw new Error('不正な呼び出し方です。')
