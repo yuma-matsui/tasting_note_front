@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { TastingSheetForms } from '../organisms'
+import { TastingSheetConfirmationTab, TastingSheetForms } from '../organisms'
 import { NewTastingSheetSettingForm } from '../molecules'
 import { DefaultLayout } from '../templates'
 import { useTastingSheetFormItems } from '../../hooks'
@@ -12,6 +12,7 @@ const NewTastingSheetPage: FC = () => {
       <NewTastingSheetSettingForm />
       <hr />
       <TastingSheetForms formItems={formItems} />
+      <TastingSheetConfirmationTab formItems={formItems} />
     </DefaultLayout>
   )
 }
