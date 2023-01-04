@@ -7,9 +7,7 @@ const useAppearanceFormItems = () => {
     tastingSheet: { color }
   } = useTastingSheetContext()
 
-  const appearanceItems = [...APPEARANCE_FORM_ITEMS.map((item) => new FormItem({ color, ...item }).property)]
-
-  return { appearanceItems }
+  return [...APPEARANCE_FORM_ITEMS.map((item) => new FormItem({ color, ...item }).property)]
 }
 
 export default useAppearanceFormItems
