@@ -1,6 +1,15 @@
 import { FC } from 'react'
-import RouterConfig from './router/RouterConfig'
+import { ChakraProvider } from '@chakra-ui/react'
 
-const App: FC = () => <RouterConfig />
+import RouterConfig from './router/RouterConfig'
+import { TastingSheetProvider } from './providers'
+
+const App: FC = () => (
+  <ChakraProvider>
+    <TastingSheetProvider>
+      <RouterConfig />
+    </TastingSheetProvider>
+  </ChakraProvider>
+)
 
 export default App

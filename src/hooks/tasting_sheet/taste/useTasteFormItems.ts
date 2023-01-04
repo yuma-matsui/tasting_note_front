@@ -9,13 +9,11 @@ const useTasteFormItems = () => {
 
   const filterTarget = color === 'white' ? 'astringent' : 'bitterness'
 
-  const tasteItems = [
+  return [
     ...TASTE_FORM_ITEMS.map((item) => new FormItem({ color, ...item }).property).filter(
       ({ name }) => name !== filterTarget
     )
   ]
-
-  return { tasteItems }
 }
 
 export default useTasteFormItems
