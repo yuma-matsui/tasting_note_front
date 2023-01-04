@@ -1,17 +1,19 @@
 import { FC } from 'react'
-import { TastingSheetProvider } from '../../providers'
-import { NewTastingSheetSettingForm } from '../molecules'
 import { TastingSheetForms } from '../organisms'
+import { NewTastingSheetSettingForm } from '../molecules'
 import { DefaultLayout } from '../templates'
+import { useTastingSheetFormItems } from '../../hooks'
 
-const NewTastingSheetPage: FC = () => (
-  <DefaultLayout>
-    <TastingSheetProvider>
+const NewTastingSheetPage: FC = () => {
+  const { formItems } = useTastingSheetFormItems()
+
+  return (
+    <DefaultLayout>
       <NewTastingSheetSettingForm />
       <hr />
-      <TastingSheetForms />
-    </TastingSheetProvider>
-  </DefaultLayout>
-)
+      <TastingSheetForms formItems={formItems} />
+    </DefaultLayout>
+  )
+}
 
 export default NewTastingSheetPage

@@ -1,6 +1,5 @@
 export type { default as TastingSheet } from './tasting_sheet/tastingSheet'
 export type { default as TastingSheetName } from './tasting_sheet/tastingSheetName'
-export type { default as TastingSheetFormItem } from './tasting_sheet/tastingSheetFormItem'
 export type { default as InputOrSelect } from './tasting_sheet/inputOrSelect'
 export type { default as FormItemClassProperty } from './tasting_sheet/formItemClassProperty'
 
@@ -29,3 +28,4 @@ export type { default as PolymorphicFormProps } from './props/polymorphicFormPro
 export type { default as PolymorphicSelectBoxProps } from './props/polymorphicSelectBoxProps'
 export type { default as ConfirmationDataListProps } from './props/confirmationDataListProps'
 export type { default as ConclusionSelectBoxesProps } from './props/conclusionSelectBoxesProps'
+export type { default as FormItemsProps } from './props/formItemsProps'
