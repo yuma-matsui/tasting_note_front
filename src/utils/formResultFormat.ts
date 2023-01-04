@@ -1,9 +1,6 @@
-const formResultFormat = (target: string | object | number | null | undefined) => {
+const formResultFormat = (target: string | string[] | number | null | undefined) => {
   if (!target) return null
-  if (target instanceof Array) {
-    const array = Array.from(target)
-    return array.join('、')
-  }
+  if (target instanceof Array) return target.join('、')
   return String(target)
 }
 
