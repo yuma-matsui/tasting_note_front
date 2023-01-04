@@ -7,13 +7,13 @@ const TastingSheetForms: FC = memo(() => {
 
   return (
     <>
-      {formItems.map(({ type, items }) =>
-        type !== 'conclusion' ? (
-          <PolymorphicForm key={type} type={type} items={items} />
-        ) : (
+      {formItems.map(({ type, items, options }) =>
+        options && type === 'conclusion' ? (
           <PolymorphicForm key={type} type={type} items={items}>
-            <ConclusionSelectBoxes />
+            <ConclusionSelectBoxes items={options} />
           </PolymorphicForm>
+        ) : (
+          <PolymorphicForm key={type} type={type} items={items} />
         )
       )}
     </>
