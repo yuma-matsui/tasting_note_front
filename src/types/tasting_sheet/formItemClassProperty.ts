@@ -1,5 +1,7 @@
+import WineColor from './wineColor'
+
 type FormItemClassProperty = {
-  color: string
+  color: WineColor
   name: string
   heading: string
   subHeading?: string
