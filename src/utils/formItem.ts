@@ -8,17 +8,19 @@ class FormItem {
   }
 
   #getLabels() {
-    if (this.#property.labels instanceof Array) return this.#property.labels
+    const { color, labels } = this.#property
+    if (labels instanceof Array) return labels
 
-    return this.#property.color === 'white' ? this.#property.labels.white : this.#property.labels.red
+    return color === 'white' ? labels.white : labels.red
   }
 
   get property() {
+    const { heading, name, subHeading } = this.#property
     return {
-      heading: this.#property.heading,
-      name: this.#property.name,
-      labels: this.#getLabels(),
-      subHeading: this.#property.subHeading
+      heading,
+      name,
+      subHeading,
+      labels: this.#getLabels()
     }
   }
 }
