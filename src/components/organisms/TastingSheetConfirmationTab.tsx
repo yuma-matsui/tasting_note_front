@@ -1,29 +1,37 @@
-import { Tab, TabList, TabPanel, TabPanels, Tabs } from '@chakra-ui/react'
 import { FC, memo } from 'react'
+import { useConfirmationTabItems } from '../../hooks'
 
 import { FormItemsProps } from '../../types'
 import { formTitleFormat } from '../../utils'
 import { AppearanceTabItems, ConclusionTabItems, FlavorTabItems, TasteTabItems } from '../molecules'
 
-const TastingSheetConfirmationTab: FC<FormItemsProps> = memo(({ formItems }) => (
-  <Tabs variant="soft-rounded">
-    <TabList>
-      {formItems.map(({ type }) => (
-        <Tab key={type}>{formTitleFormat(type)}</Tab>
-      ))}
-    </TabList>
+const TastingSheetConfirmationTab: FC<FormItemsProps> = memo(({ formItems }) => {
+  const { selectedTab, onClickTabChange } = useConfirmationTabItems()
 
-    <TabPanels>
+  return (
+    <>
+      <div className="tabs tabs-boxed">
+        {formItems.map(({ type }) => (
+          <button
+            key={type}
+            type="button"
+            className={`tab ${selectedTab === type ? 'tab-active' : ''}`}
+            onClick={() => onClickTabChange(type)}
+          >
+            {formTitleFormat(type)}
+          </button>
+        ))}
+      </div>
       {formItems.map(({ type, items, options }) => (
-        <TabPanel>
-          {options && type === 'conclusion' && <ConclusionTabItems items={items} options={options} />}
-          {type === 'appearance' && <AppearanceTabItems items={items} />}
-          {type === 'flavor' && <FlavorTabItems items={items} />}
-          <TasteTabItems items={items} />
-        </TabPanel>
+        <div key={type}>
+          {options && selectedTab === 'conclusion' && <ConclusionTabItems items={items} options={options} />}
+          {selectedTab === 'appearance' && <AppearanceTabItems items={items} />}
+          {selectedTab === 'flavor' && <FlavorTabItems items={items} />}
+          {selectedTab === 'taste' && <TasteTabItems items={items} />}
+        </div>
       ))}
-    </TabPanels>
-  </Tabs>
-))
+    </>
+  )
+})
 
 export default TastingSheetConfirmationTab
