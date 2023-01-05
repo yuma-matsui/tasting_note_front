@@ -7,3 +7,4 @@ export { default as useAppearanceNameCheck } from './tasting_sheet/appearance/us
 export { default as useFlavorNameCheck } from './tasting_sheet/flavor/useFlavorNameCheck'
 export { default as useTasteNameCheck } from './tasting_sheet/taste/useTasteNameCheck'
 export { default as useConclusionNameCheck } from './tasting_sheet/conclusion/useConclusionNameCheck'
+export { default as useConfirmationTabItems } from './tasting_sheet/useConfirmationTabItems'
