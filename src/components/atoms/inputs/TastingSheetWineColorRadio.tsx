@@ -3,7 +3,7 @@ import { useTastingSheetContext, useTastingSheetOnChange } from '../../../hooks'
 import { WineColorRadioProps } from '../../../types'
 import BaseCheckBox from './BaseCheckBox'
 
-const TastingSheetWineColorRadio: FC<WineColorRadioProps> = memo(({ color }) => {
+const TastingSheetWineColorRadio: FC<WineColorRadioProps> = memo(({ color, register }) => {
   const { tastingSheet } = useTastingSheetContext()
   const { onChange } = useTastingSheetOnChange()
 
@@ -16,6 +16,7 @@ const TastingSheetWineColorRadio: FC<WineColorRadioProps> = memo(({ color }) => 
       onChange={onChange}
       checked={tastingSheet.color === color}
       text={color === 'white' ? '白' : '赤'}
+      register={register}
     />
   )
 })
