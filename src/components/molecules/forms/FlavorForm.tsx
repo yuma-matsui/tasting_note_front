@@ -1,4 +1,4 @@
-import useFlavorFormItems from '../../../hooks/tasting_sheet/flavor/useFlavorFormItems'
+import { useFlavorFormItems } from '../../../hooks'
 import PolymorphicForm from './PolymorphicForm'
 
 const FlavorForm = () => {

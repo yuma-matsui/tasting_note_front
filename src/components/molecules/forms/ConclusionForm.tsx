@@ -1,4 +1,4 @@
-import useConclusionFormItems from '../../../hooks/tasting_sheet/conclusion/useConclusionFormItems'
+import { useConclusionFormItems } from '../../../hooks'
 import ConclusionSelectBoxes from '../ConclusionSelectBoxes'
 import PolymorphicForm from './PolymorphicForm'
 

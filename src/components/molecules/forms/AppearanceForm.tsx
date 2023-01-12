@@ -1,4 +1,4 @@
-import useAppearanceFormItems from '../../../hooks/tasting_sheet/appearance/useAppearanceFormItems'
+import { useAppearanceFormItems } from '../../../hooks'
 import PolymorphicForm from './PolymorphicForm'
 
 const AppearanceForm = () => {

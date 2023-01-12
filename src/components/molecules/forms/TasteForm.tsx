@@ -1,4 +1,4 @@
-import useTasteFormItems from '../../../hooks/tasting_sheet/taste/useTasteFormItems'
+import { useTasteFormItems } from '../../../hooks'
 import PolymorphicForm from './PolymorphicForm'
 
 const TasteForm = () => {
