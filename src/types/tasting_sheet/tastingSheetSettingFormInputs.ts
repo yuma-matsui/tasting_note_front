@@ -1,9 +1,9 @@
 import WineColor from './wineColor'
 
-type TastingSheetFormInputs = {
+type TastingSheetSettingFormInputs = {
   name: string
   color: WineColor
   time: string
 }
 
-export default TastingSheetFormInputs
+export default TastingSheetSettingFormInputs

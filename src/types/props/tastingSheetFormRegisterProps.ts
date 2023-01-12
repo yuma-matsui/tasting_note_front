@@ -1,9 +1,8 @@
 import { UseFormRegister } from 'react-hook-form'
-
-import TastingSheetFormInputs from '../tasting_sheet/tastingSheetFormInputs'
+import TastingSheetSettingFormInputs from '../tasting_sheet/tastingSheetSettingFormInputs'
 
 type TastingSheetFormRegisterProps = {
-  register: UseFormRegister<TastingSheetFormInputs>
+  register: UseFormRegister<TastingSheetSettingFormInputs>
 }
 
 export default TastingSheetFormRegisterProps

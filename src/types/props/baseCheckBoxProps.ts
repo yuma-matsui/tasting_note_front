@@ -2,7 +2,7 @@ import { ChangeEvent } from 'react'
 import { UseFormRegister } from 'react-hook-form'
 
 import CheckBoxNames from '../tasting_sheet/checkBoxNames'
-import TastingSheetFormInputs from '../tasting_sheet/tastingSheetFormInputs'
+import TastingSheetSettingFormInputs from '../tasting_sheet/tastingSheetSettingFormInputs'
 
 type BaseCheckBoxProps = {
   type: string
@@ -13,7 +13,7 @@ type BaseCheckBoxProps = {
   checked: boolean
   disabled?: boolean
   text?: string
-  register: UseFormRegister<TastingSheetFormInputs>
+  register: UseFormRegister<TastingSheetSettingFormInputs>
 }
 
 export default BaseCheckBoxProps

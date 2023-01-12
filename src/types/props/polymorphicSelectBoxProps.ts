@@ -1,13 +1,13 @@
 import { UseFormRegister } from 'react-hook-form'
 
 import SelectBoxNames from '../tasting_sheet/selectBoxNames'
-import TastingSheetFormInputs from '../tasting_sheet/tastingSheetFormInputs'
+import TastingSheetSettingFormInputs from '../tasting_sheet/tastingSheetSettingFormInputs'
 
 type PolymorphicSelectBoxProps = {
   label: string
   options: string[]
   name: SelectBoxNames
-  register: UseFormRegister<TastingSheetFormInputs>
+  register: UseFormRegister<TastingSheetSettingFormInputs>
 }
 
 export default PolymorphicSelectBoxProps

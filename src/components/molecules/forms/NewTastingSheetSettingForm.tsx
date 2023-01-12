@@ -1,13 +1,13 @@
 import { FC, memo } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { TastingSheetFormInputs } from '../../../types'
 
+import { TastingSheetSettingFormInputs } from '../../../types'
 import { TastingSheetNameInput, TastingSheetSettingSubmitButton, TastingSheetTimeSelectBox } from '../../atoms'
 import TastingSheetWineColorRadios from '../TastingSheetWineColorRadios'
 
 const NewTastingSheetSettingForm: FC = memo(() => {
-  const { register, handleSubmit } = useForm<TastingSheetFormInputs>()
-  const onSubmit: SubmitHandler<TastingSheetFormInputs> = (data) => console.log(data)
+  const { register, handleSubmit } = useForm<TastingSheetSettingFormInputs>()
+  const onSubmit: SubmitHandler<TastingSheetSettingFormInputs> = (data) => console.log(data)
 
   return (
     <>

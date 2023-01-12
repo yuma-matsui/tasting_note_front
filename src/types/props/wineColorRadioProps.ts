@@ -1,10 +1,9 @@
 import { UseFormRegister } from 'react-hook-form'
-
-import TastingSheetFormInputs from '../tasting_sheet/tastingSheetFormInputs'
+import TastingSheetSettingFormInputs from '../tasting_sheet/tastingSheetSettingFormInputs'
 
 type WineColorRadioProps = {
   color: string
-  register: UseFormRegister<TastingSheetFormInputs>
+  register: UseFormRegister<TastingSheetSettingFormInputs>
 }
 
 export default WineColorRadioProps
