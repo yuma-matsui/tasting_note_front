@@ -4,12 +4,14 @@ import { useTastingSheetOnChange, useTastingSheetSelectValue } from '../../../ho
 import { PolymorphicSelectBoxProps } from '../../../types'
 import BaseSelectBox from './BaseSelectBox'
 
-const PolymorphicSelectBox: FC<PolymorphicSelectBoxProps> = memo(({ label, name, options }) => {
+const PolymorphicSelectBox: FC<PolymorphicSelectBoxProps> = memo(({ label, name, options, register }) => {
   const getValueHooks = useTastingSheetSelectValue(name)
   const { value } = getValueHooks(name)
   const { onChange } = useTastingSheetOnChange<'select'>()
 
-  return <BaseSelectBox label={label} name={name} onChange={onChange} value={value} options={options} />
+  return (
+    <BaseSelectBox label={label} name={name} onChange={onChange} value={value} options={options} register={register} />
+  )
 })
 
 export default PolymorphicSelectBox
