@@ -46,6 +46,8 @@
         "react/react-in-jsx-scope": "off",
         "react/function-component-definition": "off",
         "@typescript-eslint/consistent-type-definitions": "off",
+        "@typescript-eslint/no-misused-promises": "off",
+        "react/jsx-props-no-spreading": "off",
         "import/extensions": [
             "error",
             "ignorePackages",
