@@ -28,5 +28,4 @@ export type { default as PolymorphicFormProps } from './props/polymorphicFormPro
 export type { default as PolymorphicSelectBoxProps } from './props/polymorphicSelectBoxProps'
 export type { default as ConfirmationDataListProps } from './props/confirmationDataListProps'
 export type { default as ConclusionSelectBoxesProps } from './props/conclusionSelectBoxesProps'
-export type { default as FormItemsProps } from './props/formItemsProps'
 export type { default as ConfirmationTabItemsProps } from './props/confirmationTabItemsProps'

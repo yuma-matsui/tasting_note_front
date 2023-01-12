@@ -1,11 +1,11 @@
 import { FC, memo } from 'react'
-import { useConfirmationTabItems } from '../../hooks'
+import { useConfirmationTabItems, useTastingSheetFormItems } from '../../hooks'
 
-import { FormItemsProps } from '../../types'
 import { formTitleFormat } from '../../utils'
 import { AppearanceTabItems, ConclusionTabItems, FlavorTabItems, TasteTabItems } from '../molecules'
 
-const TastingSheetConfirmationTab: FC<FormItemsProps> = memo(({ formItems }) => {
+const TastingSheetConfirmationTab: FC = memo(() => {
+  const { formItems } = useTastingSheetFormItems()
   const { selectedTab, onClickTabChange } = useConfirmationTabItems()
 
   return (
