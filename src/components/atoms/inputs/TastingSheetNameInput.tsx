@@ -1,7 +1,8 @@
 import { FC, memo } from 'react'
 import { useTastingSheetContext, useTastingSheetOnChange } from '../../../hooks'
+import { TastingSheetFormRegisterProps } from '../../../types'
 
-const TastingSheetNameInput: FC = memo(() => {
+const TastingSheetNameInput: FC<TastingSheetFormRegisterProps> = memo(({ register }) => {
   const { tastingSheet } = useTastingSheetContext()
   const { onChange } = useTastingSheetOnChange()
 
@@ -10,11 +11,10 @@ const TastingSheetNameInput: FC = memo(() => {
       シート名(任意)
       <input
         type="text"
-        name="name"
         id="name"
         style={{ display: 'block' }}
         value={tastingSheet.name}
-        onChange={onChange}
+        {...register('name', { onChange })}
       />
     </label>
   )
