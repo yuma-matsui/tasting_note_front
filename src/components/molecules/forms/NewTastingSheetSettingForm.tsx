@@ -1,27 +1,10 @@
-import { FC, memo, useEffect, useState } from 'react'
-import { SubmitHandler, useForm } from 'react-hook-form'
+import { FC, memo } from 'react'
 
 import { TASTING_TIME, WINE_COLORS } from '../../../assets'
-import { TastingSheet } from '../../../types'
-import { initialTastingSheet } from '../../../utils'
+import { useTastingSheetForm } from '../../../hooks'
 
 const NewTastingSheetSettingForm: FC = memo(() => {
-  const [tastingSheet, setTastingSheet] = useState<TastingSheet>(initialTastingSheet)
-  const {
-    register,
-    handleSubmit,
-    formState: { isValid, isSubmitting, errors }
-  } = useForm<TastingSheet>({
-    defaultValues: initialTastingSheet,
-    mode: 'onChange'
-  })
-  const onSubmit: SubmitHandler<TastingSheet> = (data) => {
-    setTastingSheet((prev) => ({ ...prev, ...data }))
-  }
-
-  useEffect(() => {
-    console.log(tastingSheet)
-  }, [tastingSheet])
+  const { handleSubmit, onSubmit, register, isValid, isSubmitting, errors } = useTastingSheetForm()
 
   return (
     <div>
