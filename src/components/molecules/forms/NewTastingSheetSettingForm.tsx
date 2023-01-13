@@ -3,51 +3,16 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 
 import { TASTING_TIME, WINE_COLORS } from '../../../assets'
 import { TastingSheet } from '../../../types'
-
-const initialSheet: TastingSheet = {
-  name: '',
-  time: null,
-  color: 'white',
-  appearance: {
-    clarity: '',
-    brightness: '',
-    appearanceColor: [],
-    intensity: '',
-    consistency: '',
-    appearanceImpression: []
-  },
-  flavor: {
-    flavorFirstImpression: [],
-    flavorFruit: [],
-    flavorFlower: [],
-    flavorSpice: [],
-    flavorImpression: []
-  },
-  taste: {
-    attack: '',
-    sweetness: '',
-    acidity: '',
-    astringent: null,
-    bitterness: null,
-    alcohol: '',
-    balance: '',
-    afterTaste: ''
-  },
-  conclusion: {
-    evaluation: '',
-    optimumTemperature: '',
-    glass: '',
-    decantage: '',
-    vintage: null,
-    country: '',
-    grape: ''
-  }
-}
+import { initialTastingSheet } from '../../../utils'
 
 const NewTastingSheetSettingForm: FC = memo(() => {
-  const [tastingSheet, setTastingSheet] = useState<TastingSheet>(initialSheet)
-  const { register, handleSubmit } = useForm<TastingSheet>({
-    defaultValues: initialSheet,
+  const [tastingSheet, setTastingSheet] = useState<TastingSheet>(initialTastingSheet)
+  const {
+    register,
+    handleSubmit,
+    formState: { isValid, isSubmitting, errors }
+  } = useForm<TastingSheet>({
+    defaultValues: initialTastingSheet,
     mode: 'onChange'
   })
   const onSubmit: SubmitHandler<TastingSheet> = (data) => {
@@ -62,10 +27,12 @@ const NewTastingSheetSettingForm: FC = memo(() => {
     <div>
       <h2>テイスティングシートの設定</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <label htmlFor="name">
-          シート名(任意)
-          <input type="text" id="name" style={{ display: 'block' }} {...register('name')} />
-        </label>
+        <div>
+          <label htmlFor="name">
+            シート名(任意)
+            <input type="text" id="name" style={{ display: 'block' }} {...register('name')} />
+          </label>
+        </div>
 
         <div>
           <p>テイスティング時間</p>
@@ -78,6 +45,7 @@ const NewTastingSheetSettingForm: FC = memo(() => {
               ))}
             </select>
           </label>
+          <p>{errors.time && <span>必須項目です</span>}</p>
         </div>
 
         <div>
@@ -91,7 +59,7 @@ const NewTastingSheetSettingForm: FC = memo(() => {
             ))}
           </div>
         </div>
-        <input type="submit" value="テイスティングを始める" />
+        <input type="submit" value="テイスティングを始める" disabled={!isValid || isSubmitting} />
       </form>
     </div>
   )
