@@ -3,7 +3,7 @@ import FormItem from '../formItem'
 
 describe('FormItem', () => {
   describe('getter propertyのテスト', () => {
-    let formItem: FormItemClassProperty
+    let formItem: FormItemClassProperty<string>
     beforeEach(() => {
       formItem = {
         color: 'white',
