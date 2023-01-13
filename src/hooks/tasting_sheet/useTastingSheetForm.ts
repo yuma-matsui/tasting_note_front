@@ -1,18 +1,17 @@
-import { useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
 import { TastingSheet } from '../../types'
-import { initialTastingSheet } from '../../utils'
+import useTastingSheetContext from './useTastingSheetContext'
 
 const useTastingSheetForm = () => {
-  const [tastingSheet, setTastingSheet] = useState<TastingSheet>(initialTastingSheet)
+  const { tastingSheet, setTastingSheet } = useTastingSheetContext()
 
   const {
     register,
     handleSubmit,
     formState: { isValid, isSubmitting, errors }
   } = useForm<TastingSheet>({
-    defaultValues: initialTastingSheet,
+    defaultValues: tastingSheet,
     mode: 'onChange'
   })
 
@@ -26,8 +25,7 @@ const useTastingSheetForm = () => {
     isValid,
     isSubmitting,
     onSubmit,
-    errors,
-    tastingSheet
+    errors
   }
 }
 
