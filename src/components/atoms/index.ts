@@ -1,5 +1,2 @@
 export { default as FooterLink } from './links/FooterLink'
 export { default as HeaderLink } from './links/HeaderLink'
-export { default as TastingStartButton } from './buttons/TastingStartButton'
-export { default as PolymorphicCheckBox } from './inputs/PolymorphicCheckBox'
-export { default as PolymorphicSelectBox } from './selects/PolymorphicSelectBox'

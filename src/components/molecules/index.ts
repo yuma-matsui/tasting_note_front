@@ -1,5 +1,4 @@
 export { default as NewTastingSheetSettingForm } from './forms/NewTastingSheetSettingForm'
-export { default as PolymorphicForm } from './forms/PolymorphicForm'
 export { default as AppearanceForm } from './forms/AppearanceForm'
 export { default as FlavorForm } from './forms/FlavorForm'
 export { default as TasteForm } from './forms/TasteForm'
