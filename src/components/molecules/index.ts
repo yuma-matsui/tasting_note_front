@@ -6,7 +6,6 @@ export { default as TasteForm } from './forms/TasteForm'
 export { default as ConclusionForm } from './forms/ConclusionForm'
 
 export { default as ConclusionSelectBoxes } from './ConclusionSelectBoxes'
-export { default as TastingSheetWineColorRadios } from './TastingSheetWineColorRadios'
 export { default as TastingSheetConfirmationDataList } from './TastingSheetConfirmationDataList'
 
 export { default as AppearanceTabItems } from './tabs/AppearanceTabItems'
