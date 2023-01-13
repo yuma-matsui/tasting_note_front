@@ -1,10 +1,10 @@
-import { Dispatch } from 'react'
-import TastingSheetReducerAction from '../states/tastingSheetReducerAction'
+import { Dispatch, SetStateAction } from 'react'
+
 import TastingSheet from '../tasting_sheet/tastingSheet'
 
 type TastingSheetContextType = {
   tastingSheet: TastingSheet
-  dispatch: Dispatch<TastingSheetReducerAction>
+  setTastingSheet: Dispatch<SetStateAction<TastingSheet>>
 }
 
 export default TastingSheetContextType
