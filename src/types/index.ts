@@ -17,8 +17,6 @@ export type { default as Conclusion } from './tasting_sheet/conclusion/conclusio
 export type { default as TastingSheetContextType } from './contexts/tastingSheetContextType'
 
 export type { default as ReactNodeChildren } from './props/reactNodeChildren'
-export type { default as BaseCheckBoxProps } from './props/baseCheckBoxProps'
-export type { default as BaseSelectBoxProps } from './props/baseSelectBoxProps'
 export type { default as ConfirmationDataListProps } from './props/confirmationDataListProps'
 export type { default as ConclusionSelectBoxesProps } from './props/conclusionSelectBoxesProps'
 export type { default as ConfirmationTabItemsProps } from './props/confirmationTabItemsProps'
