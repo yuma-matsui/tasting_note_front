@@ -5,3 +5,4 @@ export { default as useConclusionFormItems } from './tasting_sheet/conclusion/us
 export { default as useConfirmationTabItems } from './tasting_sheet/useConfirmationTabItems'
 export { default as useTastingSheetForm } from './tasting_sheet/useTastingSheetForm'
 export { default as useTastingSheetContext } from './tasting_sheet/useTastingSheetContext'
+export { default as useTastingSheetInputsAttributes } from './tasting_sheet/useTastingSheetInputAttributes'

@@ -9,6 +9,8 @@ const useTastingSheetForm = () => {
   const {
     register,
     handleSubmit,
+    watch,
+    getValues,
     formState: { isValid, isSubmitting, errors }
   } = useForm<TastingSheet>({
     defaultValues: tastingSheet,
@@ -25,6 +27,8 @@ const useTastingSheetForm = () => {
     isValid,
     isSubmitting,
     onSubmit,
+    getValues,
+    watch,
     errors
   }
 }
