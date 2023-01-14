@@ -13,14 +13,14 @@ const NewTastingSheetSettingForm: FC = memo(() => {
         <div>
           <label htmlFor="name">
             シート名(任意)
-            <input type="text" id="name" style={{ display: 'block' }} {...register('name')} />
+            <input type="text" id="name" style={{ display: 'block' }} {...register('tastingSheet.name')} />
           </label>
         </div>
 
         <div>
           <p>テイスティング時間</p>
           <label htmlFor="time">
-            <select id="time" {...register('time', { required: true })}>
+            <select id="time" {...register('tastingSheet.time', { required: true })}>
               {TASTING_TIME.map((time) => (
                 <option value={String(time)} key={time}>
                   {time}
@@ -28,7 +28,7 @@ const NewTastingSheetSettingForm: FC = memo(() => {
               ))}
             </select>
           </label>
-          <p>{errors.time && <span>必須項目です</span>}</p>
+          <p>{errors.tastingSheet?.time && <span>必須項目です</span>}</p>
         </div>
 
         <div>
@@ -36,13 +36,13 @@ const NewTastingSheetSettingForm: FC = memo(() => {
           <div style={{ display: 'flex' }}>
             {WINE_COLORS.map((color) => (
               <label key={color} htmlFor={color}>
-                <input value={color} type="radio" id={color} {...register('color', { required: true })} />
+                <input value={color} type="radio" id={color} {...register('tastingSheet.color', { required: true })} />
                 {color === 'white' ? '白' : '赤'}
               </label>
             ))}
           </div>
         </div>
-        <input type="submit" value="テイスティングを始める" disabled={!isValid || isSubmitting} />
+        <input type="submit" value="テイスティングを始める" disabled={!isValid || isSubmitting} className="btn" />
       </form>
     </div>
   )
