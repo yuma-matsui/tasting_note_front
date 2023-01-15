@@ -4,7 +4,15 @@ import { useAppearanceFormItems, useTastingSheetForm, useTastingSheetInputsAttri
 
 const AppearanceForm: FC = memo(() => {
   const items = useAppearanceFormItems()
-  const { handleSubmit, onSubmit, errors, isValid, isSubmitting, register, getValues } = useTastingSheetForm()
+  const {
+    handleSubmit,
+    onSubmit,
+    errors: { tastingSheet: errors },
+    isValid,
+    isSubmitting,
+    register,
+    getValues
+  } = useTastingSheetForm()
   const { isMultipleInputs, isDisabled, getValidationMethod } = useTastingSheetInputsAttributes()
 
   return (
@@ -21,19 +29,19 @@ const AppearanceForm: FC = memo(() => {
               {labels.map((label) => (
                 <label key={label} htmlFor={`${name}[${label}]`}>
                   <input
-                    type={isMultipleInputs(getValues(`appearance.${name}`)) ? 'checkbox' : 'radio'}
+                    type={isMultipleInputs(getValues(`tastingSheet.appearance.${name}`)) ? 'checkbox' : 'radio'}
                     id={`${name}[${label}]`}
                     value={label}
-                    disabled={isDisabled(getValues(`appearance.${name}`), label)}
-                    {...register(`appearance.${name}`, {
-                      validate: getValidationMethod(getValues(`appearance.${name}`))
+                    disabled={isDisabled(getValues(`tastingSheet.appearance.${name}`), label)}
+                    {...register(`tastingSheet.appearance.${name}`, {
+                      validate: getValidationMethod(getValues(`tastingSheet.appearance.${name}`))
                     })}
                   />
                   {label}
                 </label>
               ))}
             </div>
-            <p>{errors.appearance && errors.appearance[name] && errors.appearance[name]?.message}</p>
+            <p>{errors?.appearance && errors.appearance[name] && errors.appearance[name]?.message}</p>
           </div>
         ))}
         <input type="submit" value="次へ" className="btn" disabled={!isValid || isSubmitting} />
