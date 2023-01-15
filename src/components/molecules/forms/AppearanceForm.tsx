@@ -1,6 +1,6 @@
 import { FC, memo } from 'react'
 
-import { useAppearanceFormItems, useTastingSheetForm } from '../../../hooks'
+import { useAppearanceFormItems, useTastingSheetForm, useTastingSheetInputsAttributes } from '../../../hooks'
 import { TastingSheetCheckBox, TastingSheetFormSubmitButton } from '../../atoms'
 import { TastingSheetFormWrapper } from '../../templates'
 
@@ -12,8 +12,10 @@ const AppearanceForm: FC = memo(() => {
     errors: { tastingSheet: errors },
     isValid,
     isSubmitting,
+    getValues,
     register
   } = useTastingSheetForm()
+  const { isDisabled } = useTastingSheetInputsAttributes()
 
   return (
     <TastingSheetFormWrapper title="appearance">
@@ -31,6 +33,7 @@ const AppearanceForm: FC = memo(() => {
                   id={`${name}[${label}]`}
                   name={`tastingSheet.appearance.${name}`}
                   value={label}
+                  disabled={isDisabled(getValues(`tastingSheet.appearance.${name}`), label)}
                   register={register}
                 />
               ))}

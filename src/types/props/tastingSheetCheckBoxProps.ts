@@ -7,6 +7,7 @@ type TastingSheetCheckBoxProps = {
   id: string
   value: string
   name: TastingSheetUseFormName
+  disabled: boolean
   register: UseFormRegister<TastingSheetFormState>
 }
 

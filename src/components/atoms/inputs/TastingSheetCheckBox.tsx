@@ -3,9 +3,9 @@ import { FC, memo } from 'react'
 import { useTastingSheetForm, useTastingSheetInputsAttributes } from '../../../hooks'
 import { TastingSheetCheckBoxProps } from '../../../types'
 
-const TastingSheetCheckBox: FC<TastingSheetCheckBoxProps> = memo(({ id, name, value, register }) => {
+const TastingSheetCheckBox: FC<TastingSheetCheckBoxProps> = memo(({ id, name, value, disabled, register }) => {
   const { getValues } = useTastingSheetForm()
-  const { isMultipleInputs, isDisabled, getValidationMethod } = useTastingSheetInputsAttributes()
+  const { isMultipleInputs, getValidationMethod } = useTastingSheetInputsAttributes()
 
   return (
     <label htmlFor={id}>
@@ -13,7 +13,7 @@ const TastingSheetCheckBox: FC<TastingSheetCheckBoxProps> = memo(({ id, name, va
         type={isMultipleInputs(getValues(name)) ? 'checkbox' : 'radio'}
         id={id}
         value={value}
-        disabled={isDisabled(getValues(name), value)}
+        disabled={disabled}
         {...register(name, {
           validate: getValidationMethod(getValues(name))
         })}
