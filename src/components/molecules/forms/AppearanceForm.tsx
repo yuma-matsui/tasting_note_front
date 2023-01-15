@@ -1,6 +1,7 @@
 import { FC, memo } from 'react'
 
-import { useAppearanceFormItems, useTastingSheetForm, useTastingSheetInputsAttributes } from '../../../hooks'
+import { useAppearanceFormItems, useTastingSheetForm } from '../../../hooks'
+import { TastingSheetCheckBox } from '../../atoms'
 import { TastingSheetFormWrapper } from '../../templates'
 
 const AppearanceForm: FC = memo(() => {
@@ -11,10 +12,8 @@ const AppearanceForm: FC = memo(() => {
     errors: { tastingSheet: errors },
     isValid,
     isSubmitting,
-    register,
-    getValues
+    register
   } = useTastingSheetForm()
-  const { isMultipleInputs, isDisabled, getValidationMethod } = useTastingSheetInputsAttributes()
 
   return (
     <TastingSheetFormWrapper title="appearance">
@@ -27,18 +26,13 @@ const AppearanceForm: FC = memo(() => {
             </h3>
             <div>
               {labels.map((label) => (
-                <label key={label} htmlFor={`${name}[${label}]`}>
-                  <input
-                    type={isMultipleInputs(getValues(`tastingSheet.appearance.${name}`)) ? 'checkbox' : 'radio'}
-                    id={`${name}[${label}]`}
-                    value={label}
-                    disabled={isDisabled(getValues(`tastingSheet.appearance.${name}`), label)}
-                    {...register(`tastingSheet.appearance.${name}`, {
-                      validate: getValidationMethod(getValues(`tastingSheet.appearance.${name}`))
-                    })}
-                  />
-                  {label}
-                </label>
+                <TastingSheetCheckBox
+                  key={label}
+                  id={`${name}[${label}]`}
+                  name={`tastingSheet.appearance.${name}`}
+                  value={label}
+                  register={register}
+                />
               ))}
             </div>
             <p>{errors?.appearance && errors.appearance[name] && errors.appearance[name]?.message}</p>

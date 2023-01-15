@@ -3,6 +3,7 @@ export type { default as FormItemClassProperty } from './tasting_sheet/formItemC
 export type { default as AbstractFormItem } from './tasting_sheet/abstractFormItem'
 export type { default as TastingSheetFormState } from './tasting_sheet/tastingSheetFormState'
 export type { default as TastingSheetPropertyType } from './tasting_sheet/tastingSheetPropertyType'
+export type { default as TastingSheetUseFormName } from './tasting_sheet/tastingSheetUseFormName'
 
 export type { default as AppearanceName } from './tasting_sheet/appearance/appearanceName'
 export type { default as Appearance } from './tasting_sheet/appearance/appearance'
@@ -23,3 +24,4 @@ export type { default as ConfirmationDataListProps } from './props/confirmationD
 export type { default as ConclusionSelectBoxesProps } from './props/conclusionSelectBoxesProps'
 export type { default as ConfirmationTabItemsProps } from './props/confirmationTabItemsProps'
 export type { default as FormWrapperProps } from './props/formWrapperProps'
+export type { default as TastingSheetCheckBoxProps } from './props/tastingSheetCheckBoxProps'
