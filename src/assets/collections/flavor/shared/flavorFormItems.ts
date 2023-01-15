@@ -1,3 +1,4 @@
+import { AbstractFormItem, FlavorName } from '../../../../types'
 import FLAVOR_FIRST_IMPRESSION_LABELS_RED from '../red/flavorFirstImpressionLabelsRed'
 import FLAVOR_FLOWER_LABELS_RED from '../red/flavorFlowerLabelsRed'
 import FLAVOR_FRUIT_LABELS_RED from '../red/flavorFruitLabelsRed'
@@ -9,7 +10,7 @@ import FLAVOR_FRUIT_LABELS_WHITE from '../white/flavorFruitLabelsWhite'
 import FLAVOR_IMPRESSION_LABELS_WHITE from '../white/flavorImpressionLabelsWhite'
 import FLAVOR_SPICE_LABELS_WHITE from '../white/flavorSpiceLabelsWhite'
 
-const FLAVOR_FORM_ITEMS = [
+const FLAVOR_FORM_ITEMS: AbstractFormItem<FlavorName>[] = [
   {
     heading: '第一印象',
     name: 'flavorFirstImpression',
