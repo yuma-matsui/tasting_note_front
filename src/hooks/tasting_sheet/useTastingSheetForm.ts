@@ -11,14 +11,14 @@ const useTastingSheetForm = () => {
   const {
     register,
     handleSubmit,
-    watch,
     getValues,
     setValue,
     formState: { isValid, isSubmitting, errors }
   } = useForm<TastingSheetFromState>({
     defaultValues: {
       tastingSheet: initialTastingSheet
-    }
+    },
+    mode: 'onChange'
   })
 
   const onSubmit: SubmitHandler<TastingSheetFromState> = useCallback(
@@ -39,7 +39,6 @@ const useTastingSheetForm = () => {
     isSubmitting,
     onSubmit,
     getValues,
-    watch,
     errors
   }
 }
