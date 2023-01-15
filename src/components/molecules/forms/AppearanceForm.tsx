@@ -1,7 +1,7 @@
 import { FC, memo } from 'react'
 
 import { useAppearanceFormItems, useTastingSheetForm } from '../../../hooks'
-import { TastingSheetCheckBox } from '../../atoms'
+import { TastingSheetCheckBox, TastingSheetFormSubmitButton } from '../../atoms'
 import { TastingSheetFormWrapper } from '../../templates'
 
 const AppearanceForm: FC = memo(() => {
@@ -38,7 +38,7 @@ const AppearanceForm: FC = memo(() => {
             <p>{errors?.appearance && errors.appearance[name] && errors.appearance[name]?.message}</p>
           </div>
         ))}
-        <input type="submit" value="次へ" className="btn" disabled={!isValid || isSubmitting} />
+        <TastingSheetFormSubmitButton disabled={!isValid || isSubmitting} />
       </form>
     </TastingSheetFormWrapper>
   )
