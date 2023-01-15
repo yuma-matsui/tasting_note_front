@@ -1,6 +1,6 @@
 import { useCallback, useEffect } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { TastingSheetFromState } from '../../types'
+import { TastingSheetFormState } from '../../types'
 
 import { initialTastingSheet } from '../../utils'
 import useTastingSheetContext from './useTastingSheetContext'
@@ -14,14 +14,14 @@ const useTastingSheetForm = () => {
     getValues,
     setValue,
     formState: { isValid, isSubmitting, errors }
-  } = useForm<TastingSheetFromState>({
+  } = useForm<TastingSheetFormState>({
     defaultValues: {
       tastingSheet: initialTastingSheet
     },
     mode: 'onChange'
   })
 
-  const onSubmit: SubmitHandler<TastingSheetFromState> = useCallback(
+  const onSubmit: SubmitHandler<TastingSheetFormState> = useCallback(
     (data) => {
       setTastingSheet((prev) => ({ ...prev, ...data.tastingSheet }))
     },

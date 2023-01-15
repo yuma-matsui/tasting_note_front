@@ -1,7 +1,7 @@
 import TastingSheet from './tastingSheet'
 
-type TastingSheetFromState = {
+type TastingSheetFormState = {
   tastingSheet: TastingSheet
 }
 
-export default TastingSheetFromState
+export default TastingSheetFormState

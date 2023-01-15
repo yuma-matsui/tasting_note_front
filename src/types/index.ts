@@ -1,7 +1,7 @@
 export type { default as TastingSheet } from './tasting_sheet/tastingSheet'
 export type { default as FormItemClassProperty } from './tasting_sheet/formItemClassProperty'
 export type { default as AbstractFormItem } from './tasting_sheet/abstractFormItem'
-export type { default as TastingSheetFromState } from './tasting_sheet/tastingSheetFormState'
+export type { default as TastingSheetFormState } from './tasting_sheet/tastingSheetFormState'
 
 export type { default as AppearanceName } from './tasting_sheet/appearance/appearanceName'
 export type { default as Appearance } from './tasting_sheet/appearance/appearance'
@@ -21,3 +21,4 @@ export type { default as ReactNodeChildren } from './props/reactNodeChildren'
 export type { default as ConfirmationDataListProps } from './props/confirmationDataListProps'
 export type { default as ConclusionSelectBoxesProps } from './props/conclusionSelectBoxesProps'
 export type { default as ConfirmationTabItemsProps } from './props/confirmationTabItemsProps'
+export type { default as FormWrapperProps } from './props/formWrapperProps'
