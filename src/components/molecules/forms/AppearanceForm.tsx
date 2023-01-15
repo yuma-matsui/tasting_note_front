@@ -1,6 +1,7 @@
 import { FC, memo } from 'react'
 
 import { useAppearanceFormItems, useTastingSheetForm, useTastingSheetInputsAttributes } from '../../../hooks'
+import { TastingSheetFormWrapper } from '../../templates'
 
 const AppearanceForm: FC = memo(() => {
   const items = useAppearanceFormItems()
@@ -16,8 +17,7 @@ const AppearanceForm: FC = memo(() => {
   const { isMultipleInputs, isDisabled, getValidationMethod } = useTastingSheetInputsAttributes()
 
   return (
-    <>
-      <h2>外観</h2>
+    <TastingSheetFormWrapper title="appearance">
       <form onSubmit={handleSubmit(onSubmit)}>
         {items.map(({ heading, name, labels, subHeading }) => (
           <div key={heading}>
@@ -46,7 +46,7 @@ const AppearanceForm: FC = memo(() => {
         ))}
         <input type="submit" value="次へ" className="btn" disabled={!isValid || isSubmitting} />
       </form>
-    </>
+    </TastingSheetFormWrapper>
   )
 })
 
