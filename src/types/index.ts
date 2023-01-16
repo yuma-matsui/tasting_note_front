@@ -25,3 +25,4 @@ export type { default as ConfirmationTabItemsProps } from './props/confirmationT
 export type { default as FormWrapperProps } from './props/formWrapperProps'
 export type { default as TastingSheetCheckBoxProps } from './props/tastingSheetCheckBoxProps'
 export type { default as ConclusionSelectBoxesProps } from './props/conclusionSelectBoxesProps'
+export type { default as TastingSheetSelectBoxProps } from './props/tastingSheetSelectBoxProps'

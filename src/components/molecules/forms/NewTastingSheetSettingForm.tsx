@@ -2,6 +2,7 @@ import { FC, memo } from 'react'
 
 import { TASTING_TIME, WINE_COLORS } from '../../../assets'
 import { useTastingSheetForm } from '../../../hooks'
+import { TastingSheetSelectBox } from '../../atoms'
 
 const NewTastingSheetSettingForm: FC = memo(() => {
   const { handleSubmit, onSubmit, register, isValid, isSubmitting, errors } = useTastingSheetForm()
@@ -19,16 +20,8 @@ const NewTastingSheetSettingForm: FC = memo(() => {
 
         <div>
           <p>テイスティング時間</p>
-          <label htmlFor="time">
-            <select id="time" {...register('tastingSheet.time', { required: true })}>
-              {TASTING_TIME.map((time) => (
-                <option value={String(time)} key={time}>
-                  {time}
-                </option>
-              ))}
-            </select>
-          </label>
-          <p>{errors.tastingSheet?.time && <span>必須項目です</span>}</p>
+          <TastingSheetSelectBox id="time" register={register} name="tastingSheet.time" options={TASTING_TIME} />
+          {errors.tastingSheet?.time && <span>1つ選択してください</span>}
         </div>
 
         <div>
