@@ -6,7 +6,7 @@ import WineColor from './wineColor'
 
 type TastingSheet = {
   name?: string
-  time: number | null
+  time: string
   color: WineColor
   appearance: Appearance
   flavor: Flavor

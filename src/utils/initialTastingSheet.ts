@@ -2,7 +2,7 @@ import { TastingSheet } from '../types'
 
 const initialTastingSheet: TastingSheet = {
   name: '',
-  time: null,
+  time: '',
   color: 'white',
   appearance: {
     clarity: '',
@@ -34,7 +34,7 @@ const initialTastingSheet: TastingSheet = {
     optimumTemperature: '',
     glass: '',
     decantage: '',
-    vintage: null,
+    vintage: '',
     country: '',
     grape: ''
   }
