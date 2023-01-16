@@ -2,7 +2,7 @@ import { FC, memo } from 'react'
 
 import { TASTING_TIME, WINE_COLORS } from '../../../assets'
 import { useTastingSheetForm } from '../../../hooks'
-import { TastingSheetSelectBox } from '../../atoms'
+import { TastingSheetCheckBox, TastingSheetSelectBox } from '../../atoms'
 
 const NewTastingSheetSettingForm: FC = memo(() => {
   const { handleSubmit, onSubmit, register, isValid, isSubmitting, errors } = useTastingSheetForm()
@@ -26,12 +26,16 @@ const NewTastingSheetSettingForm: FC = memo(() => {
 
         <div>
           <p>ワインの色</p>
-          <div style={{ display: 'flex' }}>
+          <div>
             {WINE_COLORS.map((color) => (
-              <label key={color} htmlFor={color}>
-                <input value={color} type="radio" id={color} {...register('tastingSheet.color', { required: true })} />
-                {color === 'white' ? '白' : '赤'}
-              </label>
+              <TastingSheetCheckBox
+                key={color}
+                id={color}
+                value={color}
+                register={register}
+                name="tastingSheet.color"
+                label={color === 'white' ? '白' : '赤'}
+              />
             ))}
           </div>
         </div>
