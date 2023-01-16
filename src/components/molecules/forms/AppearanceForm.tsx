@@ -38,7 +38,11 @@ const AppearanceForm: FC = memo(() => {
                 />
               ))}
             </div>
-            <p>{errors?.appearance && errors.appearance[name] && errors.appearance[name]?.message}</p>
+            {errors?.appearance && errors.appearance[name] && (
+              <p>
+                <span>{errors.appearance[name]?.message}</span>
+              </p>
+            )}
           </div>
         ))}
         <TastingSheetFormSubmitButton disabled={!isValid || isSubmitting} />

@@ -40,7 +40,7 @@ const FlavorForm: FC = memo(() => {
             </div>
             {errors?.flavor && errors.flavor[name] && (
               <p>
-                <span>errors.flavor[name]?.message</span>
+                <span>{errors.flavor[name]?.message}</span>
               </p>
             )}
           </div>
