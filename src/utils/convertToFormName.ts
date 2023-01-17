@@ -1,6 +1,6 @@
-import { AppearanceName, ConclusionName, FlavorName, TasteName, TastingSheetUseFormName } from '../types'
+import { TastingSheetAllName, TastingSheetUseFormName } from '../types'
 
-const convertToFormName = (name: AppearanceName | FlavorName | TasteName | ConclusionName): TastingSheetUseFormName => {
+const convertToFormName = (name: TastingSheetAllName): TastingSheetUseFormName => {
   switch (name) {
     case 'appearanceColor':
     case 'appearanceImpression':

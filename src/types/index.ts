@@ -4,6 +4,7 @@ export type { default as AbstractFormItem } from './tasting_sheet/abstractFormIt
 export type { default as TastingSheetFormState } from './tasting_sheet/tastingSheetFormState'
 export type { default as TastingSheetPropertyType } from './tasting_sheet/tastingSheetPropertyType'
 export type { default as TastingSheetUseFormName } from './tasting_sheet/tastingSheetUseFormName'
+export type { default as TastingSheetAllName } from './tasting_sheet/tastingSheetAllName'
 
 export type { default as AppearanceName } from './tasting_sheet/appearance/appearanceName'
 export type { default as Appearance } from './tasting_sheet/appearance/appearance'
