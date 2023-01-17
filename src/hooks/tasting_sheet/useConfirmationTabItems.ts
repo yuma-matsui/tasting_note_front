@@ -1,6 +1,10 @@
-import { useCallback, useState } from 'react'
+import { useState } from 'react'
 import { TastingSheetAllName, TastingSheetFormType } from '../../types'
 import { formResultFormat } from '../../utils'
+import isAppearanceName from '../../utils/isAppearanceName'
+import isConclusionName from '../../utils/isConclusionName'
+import isFlavorName from '../../utils/isFlavorName'
+import isTasteName from '../../utils/isTasteName'
 import useTastingSheetContext from './useTastingSheetContext'
 
 const useConfirmationTabItems = () => {
@@ -12,40 +16,12 @@ const useConfirmationTabItems = () => {
   const isShow = (type: TastingSheetFormType) => selectedTab === type
 
   const getFormResult = (name: TastingSheetAllName): string | null => {
-    switch (name) {
-      case 'clarity':
-      case 'brightness':
-      case 'appearanceColor':
-      case 'intensity':
-      case 'consistency':
-      case 'appearanceImpression':
-        return formResultFormat(tastingSheet.appearance[name])
-      case 'flavorFirstImpression':
-      case 'flavorFruit':
-      case 'flavorFlower':
-      case 'flavorSpice':
-      case 'flavorImpression':
-        return formResultFormat(tastingSheet.flavor[name])
-      case 'attack':
-      case 'sweetness':
-      case 'acidity':
-      case 'bitterness':
-      case 'astringent':
-      case 'alcohol':
-      case 'balance':
-      case 'afterTaste':
-        return formResultFormat(tastingSheet.taste[name])
-      case 'evaluation':
-      case 'optimumTemperature':
-      case 'glass':
-      case 'decantage':
-      case 'country':
-      case 'grape':
-      case 'vintage':
-        return formResultFormat(tastingSheet.conclusion[name])
-      default:
-        throw new Error('不正な呼び出し方です。')
-    }
+    let result: string | string[] | null | undefined
+    if (isAppearanceName(name)) result = tastingSheet.appearance[name]
+    if (isFlavorName(name)) result = tastingSheet.flavor[name]
+    if (isTasteName(name)) result = tastingSheet.taste[name]
+    if (isConclusionName(name)) result = tastingSheet.conclusion[name]
+    return formResultFormat(result)
   }
 
   return {
