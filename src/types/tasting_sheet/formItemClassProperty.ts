@@ -4,7 +4,7 @@ type FormItemClassProperty<T> = {
   color: WineColor
   name: T
   heading: string
-  subHeading?: string
+  subHeading?: string | undefined
   labels:
     | string[]
     | {

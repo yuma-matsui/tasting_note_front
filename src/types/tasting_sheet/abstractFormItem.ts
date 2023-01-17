@@ -7,7 +7,7 @@ type AbstractFormItem<T> = {
         white: string[]
         red: string[]
       }
-  subHeading?: string
+  subHeading?: string | undefined
 }
 
 export default AbstractFormItem
