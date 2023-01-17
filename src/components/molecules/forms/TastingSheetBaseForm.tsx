@@ -1,26 +1,20 @@
-import { FC, memo } from 'react'
+import { FC } from 'react'
+import { useGetFormItemsHooks, useTastingSheetForm, useTastingSheetInputsAttributes } from '../../../hooks'
 
-import { useConclusionFormItems, useTastingSheetForm, useTastingSheetInputsAttributes } from '../../../hooks'
+import { TastingSheetBaseFormProps } from '../../../types'
+import { convertToFormName } from '../../../utils'
 import { TastingSheetCheckBox, TastingSheetFormSubmitButton } from '../../atoms'
 import { TastingSheetFormWrapper } from '../../templates'
 import ConclusionSelectBoxes from '../ConclusionSelectBoxes'
 
-const ConclusionForm: FC = memo(() => {
-  const items = useConclusionFormItems()
-
-  const {
-    handleSubmit,
-    onSubmit,
-    errors: { tastingSheet: errors },
-    isValid,
-    isSubmitting,
-    getValues,
-    register
-  } = useTastingSheetForm()
+const TastingSheetBaseForm: FC<TastingSheetBaseFormProps> = ({ type }) => {
+  const getItemsHooks = useGetFormItemsHooks(type)
+  const items = getItemsHooks()
+  const { handleSubmit, onSubmit, lessThanTwoItems, isValid, isSubmitting, getValues, register } = useTastingSheetForm()
   const { isDisabled } = useTastingSheetInputsAttributes()
 
   return (
-    <TastingSheetFormWrapper title="conclusion">
+    <TastingSheetFormWrapper title={type}>
       <form onSubmit={handleSubmit(onSubmit)}>
         {items.map(({ heading, name, labels, subHeading }) => (
           <div key={heading}>
@@ -33,25 +27,25 @@ const ConclusionForm: FC = memo(() => {
                 <TastingSheetCheckBox
                   key={label}
                   id={`${name}[${label}]`}
-                  name={`tastingSheet.conclusion.${name}`}
                   value={label}
-                  disabled={isDisabled(getValues(`tastingSheet.conclusion.${name}`), label)}
+                  name={convertToFormName(name)}
+                  disabled={isDisabled(getValues(convertToFormName(name)), label)}
                   register={register}
                 />
               ))}
             </div>
-            {errors?.conclusion && errors.conclusion[name] && (
+            {lessThanTwoItems(name) && (
               <p>
-                <span>{errors.conclusion[name]?.message}</span>
+                <span>2つ選択してください</span>
               </p>
             )}
           </div>
         ))}
-        <ConclusionSelectBoxes register={register} />
+        {type === 'conclusion' && <ConclusionSelectBoxes register={register} />}
         <TastingSheetFormSubmitButton disabled={!isValid || isSubmitting} />
       </form>
     </TastingSheetFormWrapper>
   )
-})
+}
 
-export default ConclusionForm
+export default TastingSheetBaseForm
