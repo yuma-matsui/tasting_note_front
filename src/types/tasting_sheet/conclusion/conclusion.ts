@@ -3,7 +3,7 @@ type Conclusion = {
   optimumTemperature: string
   glass: string
   decantage: string
-  vintage: number | null
+  vintage: string
   country: string
   grape: string
 }

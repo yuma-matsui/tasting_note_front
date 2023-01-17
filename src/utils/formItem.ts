@@ -1,9 +1,9 @@
 import { FormItemClassProperty } from '../types'
 
-class FormItem {
-  readonly #property: FormItemClassProperty
+class FormItem<T> {
+  readonly #property: FormItemClassProperty<T>
 
-  constructor(property: FormItemClassProperty) {
+  constructor(property: FormItemClassProperty<T>) {
     this.#property = property
   }
 

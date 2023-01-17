@@ -1,3 +1,4 @@
+import { AbstractFormItem, TasteName } from '../../../../types'
 import ACIDITY_LABELS_RED from '../red/acidityLabelsRed'
 import ASTRINGENT_LABELS from '../red/astringentLabels'
 import BALANCE_LABELS_RED from '../red/balanceLabelsRed'
@@ -9,7 +10,7 @@ import ALCOHOL_LABELS from './alcoholLabels'
 import ATTACK_LABELS from './attackLabels'
 import SWEETNESS_LABELS from './sweetnessLabels'
 
-const TASTE_FORM_ITEMS = [
+const TASTE_FORM_ITEMS: AbstractFormItem<TasteName>[] = [
   {
     heading: 'アタック',
     name: 'attack',

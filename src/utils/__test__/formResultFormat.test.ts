@@ -4,9 +4,6 @@ describe('formResultFormat', () => {
   it('引数が文字列型の場合、引数をそのまま返す', () => {
     expect(formResultFormat('test')).toBe('test')
   })
-  it('引数が数値型の場合、文字列型に変換して返す', () => {
-    expect(formResultFormat(5)).toBe('5')
-  })
   it('引数がundefinedまたはnullの場合、nullを返す', () => {
     expect(formResultFormat(undefined)).toBe(null)
     expect(formResultFormat(null)).toBe(null)
