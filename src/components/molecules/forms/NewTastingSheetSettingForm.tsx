@@ -5,7 +5,7 @@ import { useTastingSheetForm } from '../../../hooks'
 import { TastingSheetCheckBox, TastingSheetSelectBox } from '../../atoms'
 
 const NewTastingSheetSettingForm: FC = memo(() => {
-  const { handleSubmit, onSubmit, register, isValid, isSubmitting, errors } = useTastingSheetForm()
+  const { handleSubmit, onSubmit, register, isValid, isSubmitting } = useTastingSheetForm()
 
   return (
     <div>
@@ -21,7 +21,6 @@ const NewTastingSheetSettingForm: FC = memo(() => {
         <div>
           <p>テイスティング時間</p>
           <TastingSheetSelectBox id="time" register={register} name="tastingSheet.time" options={TASTING_TIME} />
-          {errors.tastingSheet?.time && <span>1つ選択してください</span>}
         </div>
 
         <div>

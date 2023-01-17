@@ -1,6 +1,6 @@
 import { useCallback, useEffect } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { TastingSheetFormState } from '../../types'
+import { TastingSheetAllName, TastingSheetFormState } from '../../types'
 
 import { initialTastingSheet } from '../../utils'
 import useTastingSheetContext from './useTastingSheetContext'
@@ -32,6 +32,22 @@ const useTastingSheetForm = () => {
     setValue('tastingSheet', { ...tastingSheet })
   }, [setValue, tastingSheet])
 
+  const lessThanTwoItems = (name: TastingSheetAllName) => {
+    switch (name) {
+      case 'appearanceColor':
+      case 'appearanceImpression':
+        return errors.tastingSheet?.appearance !== undefined && errors.tastingSheet.appearance[name] !== undefined
+      case 'flavorFirstImpression':
+      case 'flavorFruit':
+      case 'flavorFlower':
+      case 'flavorSpice':
+      case 'flavorImpression':
+        return errors.tastingSheet?.flavor !== undefined && errors.tastingSheet.flavor[name] !== undefined
+      default:
+        return false
+    }
+  }
+
   return {
     register,
     handleSubmit,
@@ -39,7 +55,7 @@ const useTastingSheetForm = () => {
     isSubmitting,
     onSubmit,
     getValues,
-    errors
+    lessThanTwoItems
   }
 }
 
