@@ -1,3 +1,4 @@
+import { AbstractFormItem, ConclusionName } from '../../../../types'
 import EVALUATION_LABELS_RED from '../red/evaluationLabelsRed'
 import OPTIMUM_TEMPERATURE_LABELS_RED from '../red/optimumTemperatureLabelsRed'
 import EVALUATION_LABELS_WHITE from '../white/evaluationLabelsWhite'
@@ -5,7 +6,7 @@ import OPTIMUM_TEMPERATURE_LABELS_WHITE from '../white/optimumTemperatureLabelsW
 import DECANTAGE_LABELS from './decantageLabels'
 import GLASS_LABELS from './glassLabels'
 
-const CONCLUSION_FORM_ITEMS = [
+const CONCLUSION_FORM_ITEMS: AbstractFormItem<ConclusionName>[] = [
   {
     heading: '評価',
     name: 'evaluation',

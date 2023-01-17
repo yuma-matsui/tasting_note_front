@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import logo from '../../assets/images/demo_logo.jpg'
-import { TastingStartButton } from '../atoms'
+import { StartTastingButton } from '../atoms'
 import { OnlyFooterLayout } from '../templates'
 
 const WelcomePage: FC = () => (
@@ -48,7 +48,7 @@ const WelcomePage: FC = () => (
         </ul>
       </div>
       <div className="buttons">
-        <TastingStartButton />
+        <StartTastingButton />
         <button type="button">Googleでログイン</button>
       </div>
     </div>

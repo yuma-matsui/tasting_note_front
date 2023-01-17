@@ -1,50 +1,13 @@
-import { FC, useMemo, useReducer } from 'react'
+import { FC, useMemo, useState } from 'react'
 import { TastingSheetContext } from '../contexts'
-import { tastingSheetReducer } from '../reducers'
-import { ReactNodeChildren } from '../types'
+
+import { ReactNodeChildren, TastingSheet } from '../types'
+import { initialTastingSheet } from '../utils'
 
 const TastingSheetProvider: FC<ReactNodeChildren> = ({ children }) => {
-  const [tastingSheet, dispatch] = useReducer(tastingSheetReducer, {
-    name: '',
-    time: null,
-    color: 'white',
-    appearance: {
-      clarity: '',
-      brightness: '',
-      appearanceColor: [],
-      intensity: '',
-      consistency: '',
-      appearanceImpression: []
-    },
-    flavor: {
-      flavorFirstImpression: [],
-      flavorFruit: [],
-      flavorFlower: [],
-      flavorSpice: [],
-      flavorImpression: []
-    },
-    taste: {
-      attack: '',
-      sweetness: '',
-      acidity: '',
-      astringent: null,
-      bitterness: null,
-      alcohol: '',
-      balance: '',
-      afterTaste: ''
-    },
-    conclusion: {
-      evaluation: '',
-      optimumTemperature: '',
-      glass: '',
-      decantage: '',
-      vintage: null,
-      country: '',
-      grape: ''
-    }
-  })
+  const [tastingSheet, setTastingSheet] = useState<TastingSheet>(initialTastingSheet)
 
-  const tastingSheetState = useMemo(() => ({ tastingSheet, dispatch }), [tastingSheet])
+  const tastingSheetState = useMemo(() => ({ tastingSheet, setTastingSheet }), [tastingSheet])
 
   return <TastingSheetContext.Provider value={tastingSheetState}>{children}</TastingSheetContext.Provider>
 }

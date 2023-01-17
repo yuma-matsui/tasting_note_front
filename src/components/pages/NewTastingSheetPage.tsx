@@ -1,20 +1,22 @@
 import { FC } from 'react'
-import { TastingSheetConfirmationTab, TastingSheetForms } from '../organisms'
-import { NewTastingSheetSettingForm } from '../molecules'
+
+import { TastingSheetConfirmationTab } from '../organisms'
+import { NewTastingSheetSettingForm, TastingSheetBaseForm } from '../molecules'
 import { DefaultLayout } from '../templates'
-import { useTastingSheetFormItems } from '../../hooks'
+import { TastingSheetProvider } from '../../providers'
 
-const NewTastingSheetPage: FC = () => {
-  const { formItems } = useTastingSheetFormItems()
-
-  return (
-    <DefaultLayout>
+const NewTastingSheetPage: FC = () => (
+  <DefaultLayout>
+    <TastingSheetProvider>
       <NewTastingSheetSettingForm />
       <hr />
-      <TastingSheetForms formItems={formItems} />
-      <TastingSheetConfirmationTab formItems={formItems} />
-    </DefaultLayout>
-  )
-}
+      <TastingSheetBaseForm type="appearance" />
+      <TastingSheetBaseForm type="flavor" />
+      <TastingSheetBaseForm type="taste" />
+      <TastingSheetBaseForm type="conclusion" />
+      <TastingSheetConfirmationTab />
+    </TastingSheetProvider>
+  </DefaultLayout>
+)
 
 export default NewTastingSheetPage

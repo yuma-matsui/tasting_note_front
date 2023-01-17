@@ -1,9 +1,10 @@
+import { AbstractFormItem, ConclusionName } from '../../../../types'
 import GRAPES_RED from '../red/grapesRed'
 import GRAPES_WHITE from '../white/grapesWhite'
 import COUNTRIES from './countries'
 import VINTAGES from './vintages'
 
-const CONCLUSION_SELECT_OPTIONS = [
+const CONCLUSION_SELECT_OPTIONS: AbstractFormItem<ConclusionName>[] = [
   {
     heading: '収穫年',
     name: 'vintage',

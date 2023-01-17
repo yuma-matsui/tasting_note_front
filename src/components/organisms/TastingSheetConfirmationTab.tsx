@@ -1,12 +1,12 @@
 import { FC, memo } from 'react'
-import { useConfirmationTabItems } from '../../hooks'
 
-import { FormItemsProps } from '../../types'
+import { useConfirmationTabItems, useTastingSheetFormAllItems } from '../../hooks'
 import { formTitleFormat } from '../../utils'
-import { AppearanceTabItems, ConclusionTabItems, FlavorTabItems, TasteTabItems } from '../molecules'
+import { TastingSheetConfirmationDataList } from '../molecules'
 
-const TastingSheetConfirmationTab: FC<FormItemsProps> = memo(({ formItems }) => {
-  const { selectedTab, onClickTabChange } = useConfirmationTabItems()
+const TastingSheetConfirmationTab: FC = memo(() => {
+  const formItems = useTastingSheetFormAllItems()
+  const { isShow, onClickTabChange, getFormResult } = useConfirmationTabItems()
 
   return (
     <>
@@ -15,19 +15,26 @@ const TastingSheetConfirmationTab: FC<FormItemsProps> = memo(({ formItems }) => 
           <button
             key={type}
             type="button"
-            className={`tab ${selectedTab === type ? 'tab-active' : ''}`}
+            className={`tab ${isShow(type) ? 'tab-active' : ''}`}
             onClick={() => onClickTabChange(type)}
           >
             {formTitleFormat(type)}
           </button>
         ))}
       </div>
-      {formItems.map(({ type, items, options }) => (
+      {formItems.map(({ type, items }) => (
         <div key={type}>
-          {options && selectedTab === 'conclusion' && <ConclusionTabItems items={items} options={options} />}
-          {selectedTab === 'appearance' && <AppearanceTabItems items={items} />}
-          {selectedTab === 'flavor' && <FlavorTabItems items={items} />}
-          {selectedTab === 'taste' && <TasteTabItems items={items} />}
+          {items.map(
+            ({ heading, name, subHeading }) =>
+              isShow(type) && (
+                <TastingSheetConfirmationDataList
+                  key={heading}
+                  title={heading}
+                  subTitle={subHeading}
+                  content={getFormResult(name)}
+                />
+              )
+          )}
         </div>
       ))}
     </>

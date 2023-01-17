@@ -1,4 +1,5 @@
 import { APPEARANCE_FORM_ITEMS } from '../../../assets'
+import { AppearanceName } from '../../../types'
 import { FormItem } from '../../../utils'
 import useTastingSheetContext from '../useTastingSheetContext'
 
@@ -7,7 +8,7 @@ const useAppearanceFormItems = () => {
     tastingSheet: { color }
   } = useTastingSheetContext()
 
-  return [...APPEARANCE_FORM_ITEMS.map((item) => new FormItem({ color, ...item }).property)]
+  return [...APPEARANCE_FORM_ITEMS.map((item) => new FormItem<AppearanceName>({ color, ...item }).property)]
 }
 
 export default useAppearanceFormItems
