@@ -1,8 +1,8 @@
 import { useCallback, useEffect } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { TastingSheetAllName, TastingSheetFormState } from '../../types'
 
-import { initialTastingSheet } from '../../utils'
+import { TastingSheetAllName, TastingSheetFormState } from '../../types'
+import { initialTastingSheet, isFlavorName } from '../../utils'
 import useTastingSheetContext from './useTastingSheetContext'
 
 const useTastingSheetForm = () => {
@@ -33,19 +33,11 @@ const useTastingSheetForm = () => {
   }, [setValue, tastingSheet])
 
   const lessThanTwoItems = (name: TastingSheetAllName) => {
-    switch (name) {
-      case 'appearanceColor':
-      case 'appearanceImpression':
-        return errors.tastingSheet?.appearance !== undefined && errors.tastingSheet.appearance[name] !== undefined
-      case 'flavorFirstImpression':
-      case 'flavorFruit':
-      case 'flavorFlower':
-      case 'flavorSpice':
-      case 'flavorImpression':
-        return errors.tastingSheet?.flavor !== undefined && errors.tastingSheet.flavor[name] !== undefined
-      default:
-        return false
-    }
+    if (isFlavorName(name))
+      return errors.tastingSheet?.flavor !== undefined && errors.tastingSheet.flavor[name] !== undefined
+    if (name === 'appearanceColor' || name === 'appearanceImpression')
+      return errors.tastingSheet?.appearance !== undefined && errors.tastingSheet.appearance[name] !== undefined
+    return false
   }
 
   return {
