@@ -1,10 +1,6 @@
 import { useState } from 'react'
 import { TastingSheetAllName, TastingSheetFormType } from '../../types'
-import { formResultFormat } from '../../utils'
-import isAppearanceName from '../../utils/isAppearanceName'
-import isConclusionName from '../../utils/isConclusionName'
-import isFlavorName from '../../utils/isFlavorName'
-import isTasteName from '../../utils/isTasteName'
+import { formResultFormat, isAppearanceName, isConclusionName, isFlavorName, isTasteName } from '../../utils'
 import useTastingSheetContext from './useTastingSheetContext'
 
 const useConfirmationTabItems = () => {
