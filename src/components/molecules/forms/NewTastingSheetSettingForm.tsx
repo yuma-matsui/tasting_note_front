@@ -5,7 +5,7 @@ import { useTastingSheetForm } from '../../../hooks'
 import { TastingSheetCheckBox, TastingSheetSelectBox } from '../../atoms'
 
 const NewTastingSheetSettingForm: FC = memo(() => {
-  const { handleSubmit, onSubmit, register, isValid, isSubmitting } = useTastingSheetForm()
+  const { handleSubmit, onSubmit, register, isValid, isSubmitting, errors } = useTastingSheetForm()
 
   return (
     <div>
@@ -13,9 +13,19 @@ const NewTastingSheetSettingForm: FC = memo(() => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
           <label htmlFor="name">
-            シート名(任意)
-            <input type="text" id="name" style={{ display: 'block' }} {...register('tastingSheet.name')} />
+            シート名
+            <input
+              type="text"
+              id="name"
+              style={{ display: 'block' }}
+              {...register('tastingSheet.name', { required: true })}
+            />
           </label>
+          {errors.tastingSheet?.name && (
+            <p>
+              <span>シート名を入力してください</span>
+            </p>
+          )}
         </div>
 
         <div>

@@ -47,7 +47,8 @@ const useTastingSheetForm = () => {
     isSubmitting,
     onSubmit,
     getValues,
-    lessThanTwoItems
+    lessThanTwoItems,
+    errors
   }
 }
 
