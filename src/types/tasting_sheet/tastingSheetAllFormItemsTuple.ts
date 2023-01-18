@@ -1,25 +1,25 @@
-import AbstractFormItem from './abstractFormItem'
-import AppearanceName from './appearance/appearanceName'
-import ConclusionName from './conclusion/conclusionName'
-import FlavorName from './flavor/flavorName'
-import TasteName from './taste/tasteName'
+import TastingSheetFormItem from './tastingSheetFormItem'
 
 type TastingSheetAllFormItemsTuple = [
   {
     type: 'appearance'
-    items: AbstractFormItem<AppearanceName>[]
+    items: TastingSheetFormItem[]
+    options: []
   },
   {
     type: 'flavor'
-    items: AbstractFormItem<FlavorName>[]
+    items: TastingSheetFormItem[]
+    options: []
   },
   {
     type: 'taste'
-    items: AbstractFormItem<TasteName>[]
+    items: TastingSheetFormItem[]
+    options: []
   },
   {
     type: 'conclusion'
-    items: AbstractFormItem<ConclusionName>[]
+    items: TastingSheetFormItem[]
+    options: TastingSheetFormItem[]
   }
 ]
 

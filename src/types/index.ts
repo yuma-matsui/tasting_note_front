@@ -29,3 +29,4 @@ export type { default as TastingSheetCheckBoxProps } from './props/tastingSheetC
 export type { default as ConclusionSelectBoxesProps } from './props/conclusionSelectBoxesProps'
 export type { default as TastingSheetSelectBoxProps } from './props/tastingSheetSelectBoxProps'
 export type { default as TastingSheetBaseFormProps } from './props/tastingSheetBaseFormProps'
+export type { default as ConfirmationTabProps } from './props/confirmationTabProps'

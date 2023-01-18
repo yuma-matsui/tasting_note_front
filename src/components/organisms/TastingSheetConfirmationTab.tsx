@@ -1,11 +1,11 @@
 import { FC, memo } from 'react'
 
-import { useConfirmationTabItems, useTastingSheetFormAllItems } from '../../hooks'
+import { useConfirmationTabItems } from '../../hooks'
+import { ConfirmationTabProps } from '../../types'
 import { formTitleFormat } from '../../utils'
 import { TastingSheetConfirmationDataList } from '../molecules'
 
-const TastingSheetConfirmationTab: FC = memo(() => {
-  const formItems = useTastingSheetFormAllItems()
+const TastingSheetConfirmationTab: FC<ConfirmationTabProps> = memo(({ formItems }) => {
   const { isShow, onClickTabChange, getFormResult } = useConfirmationTabItems()
 
   return (
@@ -22,9 +22,9 @@ const TastingSheetConfirmationTab: FC = memo(() => {
           </button>
         ))}
       </div>
-      {formItems.map(({ type, items }) => (
+      {formItems.map(({ type, items, options }) => (
         <div key={type}>
-          {items.map(
+          {[...items, ...options].map(
             ({ heading, name, subHeading }) =>
               isShow(type) && (
                 <TastingSheetConfirmationDataList

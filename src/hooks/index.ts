@@ -7,4 +7,3 @@ export { default as useTastingSheetForm } from './tasting_sheet/useTastingSheetF
 export { default as useTastingSheetContext } from './tasting_sheet/useTastingSheetContext'
 export { default as useTastingSheetInputsAttributes } from './tasting_sheet/useTastingSheetInputAttributes'
 export { default as useTastingSheetFormAllItems } from './tasting_sheet/useTastingSheetFormAllItems'
-export { default as useGetFormItemsHooks } from './tasting_sheet/useGetFormItemsHooks'
