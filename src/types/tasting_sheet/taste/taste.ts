@@ -2,8 +2,8 @@ type Taste = {
   attack: string
   sweetness: string
   acidity: string
-  astringent?: string | null
-  bitterness?: string | null
+  astringent: string | null
+  bitterness: string | null
   balance: string
   alcohol: string
   afterTaste: string

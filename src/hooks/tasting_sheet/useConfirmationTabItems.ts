@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { TastingSheetAllName, TastingSheetFormType } from '../../types'
+import { TastingSheetAllName, TastingSheetFormType, TastingSheetPropertyType } from '../../types'
 import { formResultFormat, isAppearanceName, isConclusionName, isFlavorName, isTasteName } from '../../utils'
 import useTastingSheetContext from './useTastingSheetContext'
 
@@ -12,7 +12,7 @@ const useConfirmationTabItems = () => {
   const isShow = (type: TastingSheetFormType) => selectedTab === type
 
   const getFormResult = (name: TastingSheetAllName): string | null => {
-    let result: string | string[] | null | undefined
+    let result: TastingSheetPropertyType = ''
     if (isAppearanceName(name)) result = tastingSheet.appearance[name]
     if (isFlavorName(name)) result = tastingSheet.flavor[name]
     if (isTasteName(name)) result = tastingSheet.taste[name]

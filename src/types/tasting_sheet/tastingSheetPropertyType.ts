@@ -1,3 +1,3 @@
-type TastingSheetPropertyType = string | string[] | null | undefined
+type TastingSheetPropertyType = string | string[] | null
 
 export default TastingSheetPropertyType
