@@ -17,7 +17,7 @@ const NewTastingSheetSettingForm: FC<TastingSheetSettingFormProps> = memo(({ reg
           {...register('tastingSheet.name', { required: true })}
         />
       </label>
-      {errors.tastingSheet?.name && (
+      {errors && (
         <p>
           <span>シート名を入力してください</span>
         </p>

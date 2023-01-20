@@ -13,7 +13,11 @@ const useTastingSheetForm = () => {
     handleSubmit,
     getValues,
     setValue,
-    formState: { isValid, isSubmitting, errors }
+    formState: {
+      isValid,
+      isSubmitting,
+      errors: { tastingSheet: errors }
+    }
   } = useForm<TastingSheetFormState>({
     defaultValues: {
       tastingSheet: initialTastingSheet
@@ -33,10 +37,9 @@ const useTastingSheetForm = () => {
   }, [setValue, tastingSheet])
 
   const lessThanTwoItems = (name: TastingSheetAllName) => {
-    if (isFlavorName(name))
-      return errors.tastingSheet?.flavor !== undefined && errors.tastingSheet.flavor[name] !== undefined
+    if (isFlavorName(name)) return errors?.flavor !== undefined && errors.flavor[name] !== undefined
     if (name === 'appearanceColor' || name === 'appearanceImpression')
-      return errors.tastingSheet?.appearance !== undefined && errors.tastingSheet.appearance[name] !== undefined
+      return errors?.appearance !== undefined && errors.appearance[name] !== undefined
     return false
   }
 
