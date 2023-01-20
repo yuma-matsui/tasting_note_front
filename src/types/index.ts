@@ -30,3 +30,4 @@ export type { default as ConclusionSelectBoxesProps } from './props/conclusionSe
 export type { default as TastingSheetSelectBoxProps } from './props/tastingSheetSelectBoxProps'
 export type { default as TastingSheetBaseFormProps } from './props/tastingSheetBaseFormProps'
 export type { default as ConfirmationTabProps } from './props/confirmationTabProps'
+export type { default as TastingSheetSettingFormProps } from './props/tastingSheetSettingFormProps'
