@@ -2,7 +2,7 @@ import { FC, memo, ReactElement } from 'react'
 
 import { TastingSheetConfirmationTab } from '../organisms'
 import { NewTastingSheetSettingForm, TastingSheetBaseForm } from '../molecules'
-import { DefaultLayout, TastingSheetFormStepButtons } from '../templates'
+import { DefaultLayout, FormController } from '../templates'
 import { useMultiStepForm, useTastingSheetForm, useTastingSheetFormAllItems } from '../../hooks'
 
 const NewTastingSheetPage: FC = memo(() => {
@@ -24,20 +24,22 @@ const NewTastingSheetPage: FC = memo(() => {
     )),
     <TastingSheetConfirmationTab formItems={formItems} />
   ]
-  const { step, next, back, isFirstStep, isLastStep } = useMultiStepForm(steps)
+  const { step, next, back, isFirstStep, isLastStep, isAppearanceStep, isConclusionStep } = useMultiStepForm(steps)
 
   return (
     <DefaultLayout>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <TastingSheetFormStepButtons
+        <FormController
           back={back}
           next={next}
           isFirstStep={isFirstStep}
           isLastStep={isLastStep}
+          isAppearanceStep={isAppearanceStep}
+          isConclusionStep={isConclusionStep}
           disabled={!isValid || isSubmitting}
         >
           {step}
-        </TastingSheetFormStepButtons>
+        </FormController>
       </form>
     </DefaultLayout>
   )

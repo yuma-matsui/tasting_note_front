@@ -2,3 +2,4 @@ export { default as NewTastingSheetSettingForm } from './forms/NewTastingSheetSe
 export { default as TastingSheetBaseForm } from './forms/TastingSheetBaseForm'
 
 export { default as TastingSheetConfirmationDataList } from './TastingSheetConfirmationDataList'
+export { default as TastingSheetFormModalBox } from './TastingSheetFormModalBox'
