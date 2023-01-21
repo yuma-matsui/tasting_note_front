@@ -27,3 +27,5 @@ const useMultiStepForm = (steps: ReactElement[]) => {
     back
   }
 }
+
+export default useMultiStepForm
