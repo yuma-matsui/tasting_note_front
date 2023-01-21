@@ -3,10 +3,10 @@ import { FC, memo } from 'react'
 import { TASTING_TIME, WINE_COLORS } from '../../../assets'
 import { TastingSheetSettingFormProps } from '../../../types'
 import { TastingSheetCheckBox, TastingSheetSelectBox } from '../../atoms'
+import { TastingSheetFormWrapper } from '../../templates'
 
 const NewTastingSheetSettingForm: FC<TastingSheetSettingFormProps> = memo(({ register, errors }) => (
-  <div>
-    <h2>テイスティングシートの設定</h2>
+  <TastingSheetFormWrapper title="setting">
     <div>
       <label htmlFor="name">
         シート名
@@ -44,7 +44,7 @@ const NewTastingSheetSettingForm: FC<TastingSheetSettingFormProps> = memo(({ reg
         ))}
       </div>
     </div>
-  </div>
+  </TastingSheetFormWrapper>
 ))
 
 export default NewTastingSheetSettingForm

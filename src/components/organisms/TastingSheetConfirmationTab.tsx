@@ -4,12 +4,13 @@ import { useConfirmationTabItems } from '../../hooks'
 import { ConfirmationTabProps } from '../../types'
 import { formTitleFormat } from '../../utils'
 import { TastingSheetConfirmationDataList } from '../molecules'
+import { TastingSheetFormWrapper } from '../templates'
 
 const TastingSheetConfirmationTab: FC<ConfirmationTabProps> = memo(({ formItems }) => {
   const { isShow, onClickTabChange, getFormResult } = useConfirmationTabItems()
 
   return (
-    <>
+    <TastingSheetFormWrapper title="confirmation">
       <div className="tabs tabs-boxed">
         {formItems.map(({ type }) => (
           <button
@@ -37,7 +38,7 @@ const TastingSheetConfirmationTab: FC<ConfirmationTabProps> = memo(({ formItems 
           )}
         </div>
       ))}
-    </>
+    </TastingSheetFormWrapper>
   )
 })
 

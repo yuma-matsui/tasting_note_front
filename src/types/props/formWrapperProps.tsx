@@ -1,7 +1,8 @@
+import TastingSheetFormType from '../tasting_sheet/tastingSheetFormType'
 import ReactNodeChildren from './reactNodeChildren'
 
 type FormWrapperProps = ReactNodeChildren & {
-  title: string
+  title: TastingSheetFormType
 }
 
 export default FormWrapperProps
