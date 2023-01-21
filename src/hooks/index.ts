@@ -8,3 +8,4 @@ export { default as useTastingSheetContext } from './tasting_sheet/useTastingShe
 export { default as useTastingSheetInputsAttributes } from './tasting_sheet/useTastingSheetInputAttributes'
 export { default as useTastingSheetFormAllItems } from './tasting_sheet/useTastingSheetFormAllItems'
 export { default as useMultiStepForm } from './tasting_sheet/useMultiStepForm'
+export { default as useBeforeUnload } from './tasting_sheet/useBeforeUnload'
