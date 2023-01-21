@@ -2,8 +2,7 @@ import { ReactElement } from 'react'
 
 type FormControllerProps = {
   children: ReactElement | undefined
-  back: () => void
-  next: () => void
+  onClick: (type: 'back' | 'next', ref: React.RefObject<HTMLInputElement>) => void
   isFirstStep: boolean
   isLastStep: boolean
   isAppearanceStep: boolean

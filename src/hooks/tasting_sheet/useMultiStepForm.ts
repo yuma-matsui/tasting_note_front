@@ -1,4 +1,4 @@
-import { ReactElement, useState } from 'react'
+import { ReactElement, RefObject, useState } from 'react'
 
 const useMultiStepForm = (steps: ReactElement[]) => {
   const [currentStepIndex, setCurrentStepIndex] = useState<number>(0)
@@ -17,6 +17,12 @@ const useMultiStepForm = (steps: ReactElement[]) => {
     })
   }
 
+  const onClickPageControl = (type: 'back' | 'next', ref: RefObject<HTMLInputElement>) => {
+    ref.current?.click()
+    if (type === 'back') back()
+    if (type === 'next') next()
+  }
+
   return {
     currentStepIndex,
     steps,
@@ -25,8 +31,7 @@ const useMultiStepForm = (steps: ReactElement[]) => {
     isLastStep: currentStepIndex === steps.length - 1,
     isAppearanceStep: currentStepIndex === 1,
     isConclusionStep: currentStepIndex === steps.length - 2,
-    next,
-    back
+    onClickPageControl
   }
 }
 

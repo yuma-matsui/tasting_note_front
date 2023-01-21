@@ -6,7 +6,7 @@ import { FormControllerButton, ModalOpenButton } from '../atoms'
 import { TastingSheetFormModalBox } from '../molecules'
 
 const FormController: FC<FormControllerProps> = memo(
-  ({ children, back, next, isFirstStep, isLastStep, isAppearanceStep, isConclusionStep, disabled }) => {
+  ({ children, onClick, isFirstStep, isLastStep, isAppearanceStep, isConclusionStep, disabled }) => {
     useBeforeUnload()
 
     const submitRef = useRef<HTMLInputElement>(null)
@@ -20,12 +20,6 @@ const FormController: FC<FormControllerProps> = memo(
       return '次へ >>'
     }
 
-    const onClick = (type: 'next' | 'back') => {
-      submitRef.current?.click()
-      if (type === 'back') back()
-      if (type === 'next') next()
-    }
-
     return (
       <>
         {children}
@@ -33,10 +27,18 @@ const FormController: FC<FormControllerProps> = memo(
           (isAppearanceStep ? (
             <ModalOpenButton id={appearanceStepModalId} text="<< 戻る" />
           ) : (
-            <FormControllerButton value={getButtonText('back')} disabled={disabled} onClick={() => onClick('back')} />
+            <FormControllerButton
+              value={getButtonText('back')}
+              disabled={disabled}
+              onClick={() => onClick('back', submitRef)}
+            />
           ))}
         {!isLastStep ? (
-          <FormControllerButton value={getButtonText('next')} disabled={disabled} onClick={() => onClick('next')} />
+          <FormControllerButton
+            value={getButtonText('next')}
+            disabled={disabled}
+            onClick={() => onClick('next', submitRef)}
+          />
         ) : (
           <ModalOpenButton id={lastStepModalId} text="提出する" />
         )}
