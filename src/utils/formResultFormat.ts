@@ -1,7 +1,8 @@
-const formResultFormat = (target: string | string[] | null | undefined) => {
-  if (!target) return null
+import { TastingSheetPropertyType } from '../types'
+
+const formResultFormat = (target: TastingSheetPropertyType) => {
   if (target instanceof Array) return target.join('、')
-  return String(target)
+  return target
 }
 
 export default formResultFormat

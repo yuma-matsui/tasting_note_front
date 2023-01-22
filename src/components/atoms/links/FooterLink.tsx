@@ -1,14 +1,22 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import { FC, memo } from 'react'
 import { Link } from 'react-router-dom'
-import logo from '../../../assets/images/demo_logo.jpg'
 
-const FooterLink: FC = memo(() => (
-  <Link to="/" style={{ color: '#000', textDecoration: 'none' }}>
-    <div style={{ display: 'flex', alignItems: 'center' }}>
-      <img src={logo} alt="Footer Logo" style={{ width: '50px', height: '50px' }} />
-      <p>Tasting Note</p>
-    </div>
-  </Link>
+import { LinkProps } from '../../../types'
+import { FooterLogo } from '../../molecules'
+
+const FooterLink: FC<LinkProps> = memo(({ hasModal = false, modalId }) => (
+  <div>
+    {hasModal ? (
+      <label htmlFor={modalId}>
+        <FooterLogo />
+      </label>
+    ) : (
+      <Link to="/">
+        <FooterLogo />
+      </Link>
+    )}
+  </div>
 ))
 
 export default FooterLink

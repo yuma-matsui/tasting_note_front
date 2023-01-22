@@ -5,15 +5,16 @@ import { OnlyFooterLayout } from '../templates'
 
 const WelcomePage: FC = () => (
   <OnlyFooterLayout>
-    <div className="main-wrapper" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-      <div className="service-logo" style={{ display: 'flex', alignItems: 'center' }}>
-        <img style={{ width: '120px', height: '120px' }} src={logo} alt="logo" />
+    <div className="flex flex-col items-center">
+      <div className="flex items-center">
+        <img className="w-24 h-24" src={logo} alt="logo" />
         <div>
           <h1>Tasting Note</h1>
           <p>テイスティングを記録してソムリエに</p>
         </div>
       </div>
-      <div className="explanation-section">
+
+      <div>
         <h2>ABOUT</h2>
         <p>
           TastingNoteは
@@ -28,18 +29,10 @@ const WelcomePage: FC = () => (
           ワインテイスティングの記録が行えます。
         </p>
       </div>
-      <div
-        className="demo-image"
-        style={{
-          width: '400px',
-          height: '400px',
-          background: 'gray',
-          color: '#fff'
-        }}
-      >
-        サービスのデモ画像配置予定
-      </div>
-      <div className="explanation-section">
+
+      <div className="w-96 h-96 bg-gray-500 text-slate-50">サービスのデモ画像配置予定</div>
+
+      <div>
         <h2>WITH REGISTRATION</h2>
         <ul>
           <li>テイスティングシートの記録・管理</li>
@@ -47,7 +40,8 @@ const WelcomePage: FC = () => (
           <li>テイスティングしたワインの登録</li>
         </ul>
       </div>
-      <div className="buttons">
+
+      <div>
         <StartTastingButton />
         <button type="button">Googleでログイン</button>
       </div>

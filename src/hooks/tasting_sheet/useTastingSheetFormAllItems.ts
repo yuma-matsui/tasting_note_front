@@ -12,10 +12,10 @@ const useTastingSheetFormAllItems = (): TastingSheetAllFormItemsTuple => {
   const conclusionOptions = useConclusionFormItems('select')
 
   return [
-    { type: 'appearance', items: appearanceItems },
-    { type: 'flavor', items: flavorItems },
-    { type: 'taste', items: tasteItems },
-    { type: 'conclusion', items: [...conclusionItems, ...conclusionOptions] }
+    { type: 'appearance', items: appearanceItems, options: [] },
+    { type: 'flavor', items: flavorItems, options: [] },
+    { type: 'taste', items: tasteItems, options: [] },
+    { type: 'conclusion', items: conclusionItems, options: conclusionOptions }
   ]
 }
 
