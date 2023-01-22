@@ -17,7 +17,16 @@ const useMultiStepForm = (steps: ReactElement[]) => {
     })
   }
 
+  const isFirstStep = currentStepIndex === 0
   const isAppearanceStep = currentStepIndex === 1
+  const isConclusionStep = currentStepIndex === steps.length - 2
+
+  const getButtonText = (type: 'next' | 'back') => {
+    if (isFirstStep) return 'テイスティングを始める'
+    if (isConclusionStep && type === 'next') return '回答確認'
+    if (type === 'back') return '<< 戻る'
+    return '次へ >>'
+  }
 
   const onClickPageControl = (type: 'back' | 'next', ref: RefObject<HTMLInputElement>) => {
     if (type === 'back' && isAppearanceStep) {
@@ -34,11 +43,12 @@ const useMultiStepForm = (steps: ReactElement[]) => {
     currentStepIndex,
     steps,
     step: steps[currentStepIndex],
-    isFirstStep: currentStepIndex === 0,
+    isFirstStep,
     isLastStep: currentStepIndex === steps.length - 1,
     isAppearanceStep,
-    isConclusionStep: currentStepIndex === steps.length - 2,
-    onClickPageControl
+    isConclusionStep,
+    onClickPageControl,
+    getButtonText
   }
 }
 
