@@ -1,6 +1,6 @@
 import { FC, memo, useRef } from 'react'
 
-import { useBeforeUnload, useBlockBrowserBack } from '../../hooks'
+import { useBeforeUnload, useBlockBrowserBack, useResetTastingSheet } from '../../hooks'
 import { FormControllerProps } from '../../types'
 import { FormControllerButton, ModalOpenButton } from '../atoms'
 import { TastingSheetFormModalBox } from '../molecules'
@@ -9,6 +9,7 @@ const FormController: FC<FormControllerProps> = memo(
   ({ children, onClick, isFirstStep, isLastStep, disabled, backButtonText, nextButtonText }) => {
     useBeforeUnload()
     useBlockBrowserBack()
+    useResetTastingSheet()
 
     const submitRef = useRef<HTMLInputElement>(null)
     const lastStepModalId = 'last-step-modal'
