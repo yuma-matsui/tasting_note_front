@@ -9,3 +9,4 @@ export { default as useTastingSheetInputsAttributes } from './tasting_sheet/useT
 export { default as useTastingSheetFormAllItems } from './tasting_sheet/useTastingSheetFormAllItems'
 export { default as useMultiStepForm } from './tasting_sheet/useMultiStepForm'
 export { default as useBeforeUnload } from './tasting_sheet/useBeforeUnload'
+export { default as useBlockBrowserBack } from './tasting_sheet/useBlockBrowserBack'
