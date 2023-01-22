@@ -37,3 +37,4 @@ export type { default as FormControllerProps } from './props/formControllerProps
 export type { default as FormControllerButtonProps } from './props/formControllerButtonProps'
 export type { default as HeaderFooterProps } from './props/headerFooterProps'
 export type { default as LinkProps } from './props/linkProps'
+export type { default as StepsBarProps } from './props/stepsBarProps'
