@@ -1,10 +1,10 @@
 import { FC, memo } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { useTastingSheetContext } from '../../hooks'
-import { TastingSheetFormModalBoxProps } from '../../types'
+import { useTastingSheetContext } from '../../../hooks'
+import { ModalBoxProps } from '../../../types'
 
-const ModalBox: FC<TastingSheetFormModalBoxProps> = memo(({ id }) => {
+const TastingSheetFormModalBox: FC<ModalBoxProps> = memo(({ id }) => {
   const { tastingSheet } = useTastingSheetContext()
   const navigate = useNavigate()
 
@@ -34,4 +34,4 @@ const ModalBox: FC<TastingSheetFormModalBoxProps> = memo(({ id }) => {
   )
 })
 
-export default ModalBox
+export default TastingSheetFormModalBox
