@@ -24,8 +24,7 @@ const NewTastingSheetPage: FC = memo(() => {
     )),
     <TastingSheetConfirmationTab formItems={formItems} />
   ]
-  const { step, onClickPageControl, isFirstStep, isLastStep, isAppearanceStep, isConclusionStep } =
-    useMultiStepForm(steps)
+  const { step, onClickPageControl, isFirstStep, isLastStep, isConclusionStep } = useMultiStepForm(steps)
 
   return (
     <DefaultLayout>
@@ -34,7 +33,6 @@ const NewTastingSheetPage: FC = memo(() => {
           onClick={onClickPageControl}
           isFirstStep={isFirstStep}
           isLastStep={isLastStep}
-          isAppearanceStep={isAppearanceStep}
           isConclusionStep={isConclusionStep}
           disabled={!isValid || isSubmitting}
         >

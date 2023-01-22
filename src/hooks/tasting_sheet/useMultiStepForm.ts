@@ -17,7 +17,14 @@ const useMultiStepForm = (steps: ReactElement[]) => {
     })
   }
 
+  const isAppearanceStep = currentStepIndex === 1
+
   const onClickPageControl = (type: 'back' | 'next', ref: RefObject<HTMLInputElement>) => {
+    if (type === 'back' && isAppearanceStep) {
+      window.location.reload()
+      return
+    }
+
     ref.current?.click()
     if (type === 'back') back()
     if (type === 'next') next()
@@ -29,7 +36,7 @@ const useMultiStepForm = (steps: ReactElement[]) => {
     step: steps[currentStepIndex],
     isFirstStep: currentStepIndex === 0,
     isLastStep: currentStepIndex === steps.length - 1,
-    isAppearanceStep: currentStepIndex === 1,
+    isAppearanceStep,
     isConclusionStep: currentStepIndex === steps.length - 2,
     onClickPageControl
   }

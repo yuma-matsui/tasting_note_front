@@ -4,17 +4,11 @@ import { useNavigate } from 'react-router-dom'
 import { useTastingSheetContext } from '../../hooks'
 import { TastingSheetFormModalBoxProps } from '../../types'
 
-const ModalBox: FC<TastingSheetFormModalBoxProps> = memo(({ id, isLastStep }) => {
+const ModalBox: FC<TastingSheetFormModalBoxProps> = memo(({ id }) => {
   const { tastingSheet } = useTastingSheetContext()
   const navigate = useNavigate()
 
-  const denyButtonText = isLastStep ? 'Googleでログインして記録する' : '回答へ戻る'
-
-  const onClickConfirm = () => {
-    if (isLastStep) navigate('/')
-    window.location.reload()
-  }
-
+  const onClickConfirm = () => navigate('/')
   const onClickDeny = () => {
     // APIリクエスト
     console.log(tastingSheet)
@@ -30,15 +24,9 @@ const ModalBox: FC<TastingSheetFormModalBoxProps> = memo(({ id, isLastStep }) =>
             <button type="button" onClick={onClickConfirm}>
               OK
             </button>
-            {isLastStep ? (
-              <button type="button" onClick={onClickDeny} className="btn">
-                {denyButtonText}
-              </button>
-            ) : (
-              <label htmlFor={id} className="btn">
-                {denyButtonText}
-              </label>
-            )}
+            <button type="button" onClick={onClickDeny} className="btn">
+              Googleでログインして記録する
+            </button>
           </div>
         </div>
       </div>
