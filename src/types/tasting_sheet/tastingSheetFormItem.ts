@@ -1,6 +1,8 @@
+import TastingSheetAllName from './tastingSheetAllName'
+
 type TastingSheetFormItem = {
   heading: string
-  name: string
+  name: TastingSheetAllName
   labels: string[]
   subHeading?: string | undefined
 }

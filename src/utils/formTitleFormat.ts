@@ -1,4 +1,6 @@
-const formTitleFormat = (type: string) => {
+import { TastingSheetFormType } from '../types'
+
+const formTitleFormat = (type: TastingSheetFormType) => {
   switch (type) {
     case 'appearance':
       return '外観'
@@ -8,6 +10,10 @@ const formTitleFormat = (type: string) => {
       return '味わい'
     case 'conclusion':
       return 'まとめ'
+    case 'setting':
+      return '設定'
+    case 'confirmation':
+      return 'あなたの回答'
     default:
       throw new Error('不正な呼び出し方です。')
   }
