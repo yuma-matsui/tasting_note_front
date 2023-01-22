@@ -10,12 +10,7 @@ const NewTastingSheetSettingForm: FC<TastingSheetSettingFormProps> = memo(({ reg
     <div>
       <label htmlFor="name">
         シート名
-        <input
-          type="text"
-          id="name"
-          style={{ display: 'block' }}
-          {...register('tastingSheet.name', { required: true })}
-        />
+        <input type="text" id="name" className="block" {...register('tastingSheet.name', { required: true })} />
       </label>
       {errors && (
         <p>
