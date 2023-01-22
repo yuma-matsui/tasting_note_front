@@ -2,7 +2,7 @@ import { FC, memo, ReactElement } from 'react'
 
 import { TastingSheetConfirmationTab } from '../organisms'
 import { NewTastingSheetSettingForm, TastingSheetBaseForm } from '../molecules'
-import { DefaultLayout, FormController } from '../templates'
+import { FormController, LogoOnlyLayout } from '../templates'
 import { useMultiStepForm, useTastingSheetForm, useTastingSheetFormAllItems } from '../../hooks'
 
 const NewTastingSheetPage: FC = memo(() => {
@@ -27,7 +27,7 @@ const NewTastingSheetPage: FC = memo(() => {
   const { step, onClickPageControl, isFirstStep, isLastStep, getButtonText } = useMultiStepForm(steps)
 
   return (
-    <DefaultLayout>
+    <LogoOnlyLayout>
       <form onSubmit={handleSubmit(onSubmit)}>
         <FormController
           onClick={onClickPageControl}
@@ -40,7 +40,7 @@ const NewTastingSheetPage: FC = memo(() => {
           {step}
         </FormController>
       </form>
-    </DefaultLayout>
+    </LogoOnlyLayout>
   )
 })
 
