@@ -8,3 +8,5 @@ export { default as EditCheckModalBox } from './modals/EditCheckModalBox'
 
 export { default as FooterLogo } from './logos/FooterLogo'
 export { default as HeaderLogo } from './logos/HeaderLogo'
+
+export { default as StepsBar } from './StepsBar'

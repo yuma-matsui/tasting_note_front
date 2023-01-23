@@ -46,7 +46,6 @@ const useMultiStepForm = (steps: ReactElement[]) => {
     isFirstStep,
     isLastStep: currentStepIndex === steps.length - 1,
     isAppearanceStep,
-    isConclusionStep,
     onClickPageControl,
     getButtonText
   }
