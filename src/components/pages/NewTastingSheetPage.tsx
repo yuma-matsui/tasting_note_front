@@ -4,6 +4,7 @@ import { TastingSheetConfirmationTab } from '../organisms'
 import { NewTastingSheetSettingForm, StepsBar, TastingSheetBaseForm } from '../molecules'
 import { FormController, LogoOnlyLayout } from '../templates'
 import { useMultiStepForm, useTastingSheetForm, useTastingSheetFormAllItems } from '../../hooks'
+import { TastingSheetTimer } from '../atoms'
 
 const NewTastingSheetPage: FC = memo(() => {
   const formItems = useTastingSheetFormAllItems()
@@ -29,6 +30,7 @@ const NewTastingSheetPage: FC = memo(() => {
   return (
     <LogoOnlyLayout>
       <form onSubmit={handleSubmit(onSubmit)}>
+        {!isFirstStep && <TastingSheetTimer isLastStep={isLastStep} />}
         {!isFirstStep && !isLastStep && <StepsBar currentStepIndex={currentStepIndex} />}
         <FormController
           onClick={onClickPageControl}
