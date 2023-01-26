@@ -1,4 +1,5 @@
 name: build and deploy
+
 on:
   push:
     branches:
@@ -6,25 +7,24 @@ on:
 
 jobs:
   deploy:
-    run:
-      runs-on: ubuntu-latest
-      env:
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      steps:
-          - uses: actions/checkout@v3
+    runs-on: ubuntu-latest
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    steps:
+      - uses: actions/checkout@v3
 
-          - name: Install dependencies
-            run: npm install
+      - name: Install dependencies
+        run: npm install
 
-          - name: Build
-            run: npm run build
+      - name: Build
+        run: npm run build
 
-          - name: Deploy
-            uses: reggionick/s3-deploy@v3
-            with:
-              folder: build
-              bucket: ${{ secrets.AWS_BUCKET_NAME }}
-              bucket-region: ${{ secrets.AWS_REGION }}
-              dist-id: ${{ secrets.AWS_CF_DISTRIBUTION_ID }}
-              invalidation: /*
+      - name: Deploy
+        uses: reggionick/s3-deploy@v3
+        with:
+          folder: build
+          bucket: ${{ secrets.AWS_BUCKET_NAME }}
+          bucket-region: ${{ secrets.AWS_REGION }}
+          dist-id: ${{ secrets.AWS_CF_DISTRIBUTION_ID }}
+          invalidation: /*
