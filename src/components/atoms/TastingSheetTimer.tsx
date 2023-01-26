@@ -7,7 +7,7 @@ const TastingSheetTimer: FC<TastingSheetTimerProps> = memo(({ isLastStep }) => {
   const { convertToMin, convertToSecond, formatTime, secondTimer, timeUp, halfTime, leftAMinute } =
     useTastingSheetTimer()
 
-  const timerColor = `${halfTime ? 'text-orange-400' : 'text-black'} ${leftAMinute ? 'text-red-700' : ''}`
+  const timerColor = `${halfTime ? 'text-orange-400' : 'text-white'} ${leftAMinute ? 'text-red-700' : ''}`
 
   if (isLastStep) return null
   return (
