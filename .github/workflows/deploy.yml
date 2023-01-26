@@ -3,7 +3,7 @@ name: build and deploy
 on:
   push:
     branches:
-      - main
+      - development
 
 jobs:
   deploy:
@@ -28,3 +28,4 @@ jobs:
           bucket-region: ${{ secrets.AWS_REGION }}
           dist-id: ${{ secrets.AWS_CF_DISTRIBUTION_ID }}
           invalidation: /*
+          private: true
