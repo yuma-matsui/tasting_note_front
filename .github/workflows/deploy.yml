@@ -28,4 +28,5 @@ jobs:
           bucket-region: ${{ secrets.AWS_REGION }}
           dist-id: ${{ secrets.AWS_CF_DISTRIBUTION_ID }}
           invalidation: /*
+          delete-removed: true
           private: true
