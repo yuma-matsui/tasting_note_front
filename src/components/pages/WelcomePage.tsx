@@ -3,8 +3,6 @@ import logo from '../../assets/images/demo_logo.jpg'
 import { StartTastingButton } from '../atoms'
 import { OnlyFooterLayout } from '../templates'
 
-console.log(process.env.REACT_APP_API_URL)
-
 const WelcomePage: FC = () => (
   <OnlyFooterLayout>
     <div className="flex flex-col items-center">
