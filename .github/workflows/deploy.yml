@@ -12,6 +12,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Touch .env.production file
+        run: echo REACT_APP_API_URL=${{ secrets.REACT_APP_API_URL }} > .env.production
+
       - name: Install dependencies
         run: npm install
 
