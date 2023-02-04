@@ -1,6 +1,6 @@
 import { FC, memo } from 'react'
 
-import logo from '../../../assets/images/demo_logo.jpg'
+import logo from '../../../assets/images/logo.png'
 
 const HeaderLogo: FC = memo(() => (
   <div className="flex cursor-pointer">
