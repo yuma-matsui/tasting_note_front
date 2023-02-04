@@ -1,9 +1,7 @@
 import { FC } from 'react'
-import logo from '../../assets/images/demo_logo.jpg'
+import logo from '../../assets/images/logo.png'
 import { StartTastingButton } from '../atoms'
 import { OnlyFooterLayout } from '../templates'
-
-console.log(process.env.REACT_APP_API_URL)
 
 const WelcomePage: FC = () => (
   <OnlyFooterLayout>
