@@ -1,12 +1,14 @@
 import { FC } from 'react'
-import { TastingSheetProvider } from './providers'
+import { TastingSheetProvider, UserProvider } from './providers'
 
 import RouterConfig from './router/RouterConfig'
 
 const App: FC = () => (
-  <TastingSheetProvider>
-    <RouterConfig />
-  </TastingSheetProvider>
+  <UserProvider>
+    <TastingSheetProvider>
+      <RouterConfig />
+    </TastingSheetProvider>
+  </UserProvider>
 )
 
 export default App
