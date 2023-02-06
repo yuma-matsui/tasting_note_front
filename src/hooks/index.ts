@@ -13,3 +13,4 @@ export { default as useBlockBrowserBack } from './tasting_sheet/useBlockBrowserB
 export { default as useResetTastingSheet } from './tasting_sheet/useResetTastingSheet'
 export { default as useTastingSheetTimer } from './tasting_sheet/useTastingSheetTimer'
 export { default as useUserContext } from './useUserContext'
+export { default as useFirebaseAuth } from './useFirebaseAuth'
