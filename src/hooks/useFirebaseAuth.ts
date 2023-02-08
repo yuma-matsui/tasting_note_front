@@ -25,7 +25,7 @@ const useFirebaseAuth = () => {
     })
   })
 
-  const signIn = async () =>
+  const signIn = () =>
     setPersistence(auth, browserLocalPersistence).then(async () => {
       const loggedInUser = (await signInWithPopup(auth, new GoogleAuthProvider())).user
       setUser(loggedInUser)
