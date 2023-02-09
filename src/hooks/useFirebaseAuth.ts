@@ -25,14 +25,15 @@ const useFirebaseAuth = () => {
     })
   })
 
-  const signIn = async () =>
-    setPersistence(auth, browserLocalPersistence).then(async () => {
-      const loggedInUser = (await signInWithPopup(auth, new GoogleAuthProvider())).user
-      setUser(loggedInUser)
-    })
+  const signIn = () =>
+    setPersistence(auth, browserLocalPersistence).then(() =>
+      signInWithPopup(auth, new GoogleAuthProvider()).then((userCredential) => setUser(userCredential.user))
+    )
+
   const signOut = async () => {
     if (user) await auth.signOut()
   }
+
   const deleteAccount = async () => {
     if (user) await user.delete()
   }

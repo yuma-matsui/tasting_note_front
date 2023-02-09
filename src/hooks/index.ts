@@ -14,3 +14,4 @@ export { default as useResetTastingSheet } from './tasting_sheet/useResetTasting
 export { default as useTastingSheetTimer } from './tasting_sheet/useTastingSheetTimer'
 export { default as useUserContext } from './useUserContext'
 export { default as useFirebaseAuth } from './useFirebaseAuth'
+export { default as usePostTastingSheet } from './tasting_sheet/usePostTastingSheet'
