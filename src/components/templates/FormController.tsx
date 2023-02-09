@@ -36,7 +36,7 @@ const FormController: FC<FormControllerProps> = memo(
           (user === null ? (
             <ModalOpenButton id={lastStepModalId} text="提出する" />
           ) : (
-            <button type="button" onClick={postTastingSheet} className="button">
+            <button type="button" onClick={postTastingSheet} className="btn">
               提出する
             </button>
           ))}
