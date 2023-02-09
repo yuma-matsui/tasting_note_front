@@ -1,17 +1,16 @@
 import { FC, memo } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { useTastingSheetContext } from '../../../hooks'
+import { usePostTastingSheet } from '../../../hooks'
 import { ModalBoxProps } from '../../../types'
 
 const TastingSheetFormModalBox: FC<ModalBoxProps> = memo(({ id }) => {
-  const { tastingSheet } = useTastingSheetContext()
   const navigate = useNavigate()
+  const { signInAndPostTastingSheet } = usePostTastingSheet()
 
   const onClickConfirm = () => navigate('/')
-  const onClickDeny = () => {
-    // APIリクエスト
-    console.log(tastingSheet)
+  const onClickDeny = async () => {
+    await signInAndPostTastingSheet()
   }
 
   return (
