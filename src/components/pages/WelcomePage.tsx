@@ -1,4 +1,5 @@
 import { FC } from 'react'
+
 import logo from '../../assets/images/logo.png'
 import { useFirebaseAuth } from '../../hooks'
 import { StartTastingButton } from '../atoms'
