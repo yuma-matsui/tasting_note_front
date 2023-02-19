@@ -15,3 +15,4 @@ export { default as useTastingSheetTimer } from './tasting_sheet/useTastingSheet
 export { default as useUserContext } from './useUserContext'
 export { default as useFirebaseAuth } from './useFirebaseAuth'
 export { default as usePostTastingSheet } from './tasting_sheet/usePostTastingSheet'
+export { default as useAxios } from './useAxios'
