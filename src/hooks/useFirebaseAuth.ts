@@ -10,12 +10,14 @@ import {
 import { useEffect } from 'react'
 
 import { firebaseConfig } from '../lib'
+import useAxios from './useAxios'
 import useUserContext from './useUserContext'
 
 const useFirebaseAuth = () => {
   initializeApp(firebaseConfig)
   const auth = getAuth()
   const { user, setUser } = useUserContext()
+  const { client, getHeaders } = useAxios()
 
   useEffect(() => {
     auth.onAuthStateChanged((_user) => {
@@ -35,7 +37,11 @@ const useFirebaseAuth = () => {
   }
 
   const deleteAccount = async () => {
-    if (user) await user.delete()
+    if (!user) return
+    const headers = await getHeaders(user)
+    const userId = (await client.get<number>('/sessions', headers)).data
+    await client.delete(`/users/${userId}`, headers)
+    await user.delete()
   }
 
   return {
