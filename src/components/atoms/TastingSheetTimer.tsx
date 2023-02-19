@@ -4,10 +4,7 @@ import { useTastingSheetTimer } from '../../hooks'
 import { TastingSheetTimerProps } from '../../types'
 
 const TastingSheetTimer: FC<TastingSheetTimerProps> = memo(({ isLastStep }) => {
-  const { convertToMin, convertToSecond, formatTime, secondTimer, timeUp, halfTime, leftAMinute } =
-    useTastingSheetTimer()
-
-  const timerColor = `${halfTime ? 'text-orange-400' : 'text-white'} ${leftAMinute ? 'text-red-700' : ''}`
+  const { timeUp, timerClassName, styleForSecond, styleForMinute } = useTastingSheetTimer()
 
   if (isLastStep) return null
   return (
@@ -18,10 +15,11 @@ const TastingSheetTimer: FC<TastingSheetTimerProps> = memo(({ isLastStep }) => {
           <span>記録を続けられます</span>
         </div>
       ) : (
-        <p>
-          残り時間：
-          <span className={timerColor}>
-            {convertToMin(secondTimer)}:{formatTime(convertToSecond(secondTimer))}
+        <p className={timerClassName}>
+          <span className="countdown font-mono text-2xl">
+            残り時間
+            <span style={styleForMinute} />:
+            <span style={styleForSecond} />
           </span>
         </p>
       )}
