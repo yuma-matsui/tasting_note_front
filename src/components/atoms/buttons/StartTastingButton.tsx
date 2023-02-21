@@ -1,6 +1,7 @@
+import { memo } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const StartTastingButton = () => {
+const StartTastingButton = memo(() => {
   const navigate = useNavigate()
   const onClick = () => navigate('/tasting_sheets/new')
 
@@ -9,6 +10,6 @@ const StartTastingButton = () => {
       テイスティングを始める
     </button>
   )
-}
+})
 
 export default StartTastingButton
