@@ -22,15 +22,7 @@ const useTastingSheetTimer = () => {
   const convertToMin = (second: number) => Math.floor(second / SIXTY_SECONDS)
   const convertToSecond = (min: number) => min % SIXTY_SECONDS
 
-  const formatTime = (target: number) => {
-    if (target < 10) return `0${target}`
-    return target
-  }
-
-  const getTimerStyle = (target: number | string) =>
-    ({
-      '--value': target
-    } as CSSProperties)
+  const getTimerStyle = (target: number) => ({ '--value': target } as CSSProperties)
 
   const getTimerClassName = () => {
     const halfTime = secondTimer <= (Number(time) * SIXTY_SECONDS) / 2
@@ -52,7 +44,7 @@ const useTastingSheetTimer = () => {
   return {
     timeUp: secondTimer === 0,
     timerClassName: getTimerClassName(),
-    styleForMinute: getTimerStyle(formatTime(convertToMin(secondTimer))),
+    styleForMinute: getTimerStyle(convertToMin(secondTimer)),
     styleForSecond: getTimerStyle(convertToSecond(secondTimer))
   }
 }
