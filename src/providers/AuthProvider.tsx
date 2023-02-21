@@ -42,7 +42,7 @@ const AuthProvider: FC<ReactNodeChildren> = ({ children }) => {
     setDeleteAccountLoading(false)
   }, [currentUser, deleteUser, getHeaders, client])
 
-  const userState = useMemo(
+  const authState = useMemo(
     () => ({
       currentUser,
       setCurrentUser,
@@ -55,7 +55,7 @@ const AuthProvider: FC<ReactNodeChildren> = ({ children }) => {
     [currentUser, loading, error, deleteAccount, signIn, signOut]
   )
 
-  return <AuthContext.Provider value={userState}>{children}</AuthContext.Provider>
+  return <AuthContext.Provider value={authState}>{children}</AuthContext.Provider>
 }
 
 export default AuthProvider
