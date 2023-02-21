@@ -6,10 +6,7 @@ import { StartTastingButton } from '../atoms'
 import { OnlyFooterLayout } from '../templates'
 
 const WelcomePage: FC = memo(() => {
-  const { currentUser, signIn, loading, error } = useAuthContext()
-
-  if (error) return <p>やり直してください</p>
-  if (loading) return <p>...Loading</p>
+  const { signIn } = useAuthContext()
 
   return (
     <OnlyFooterLayout>
@@ -51,11 +48,9 @@ const WelcomePage: FC = memo(() => {
 
         <div>
           <StartTastingButton />
-          {!currentUser && (
-            <button type="button" onClick={signIn}>
-              Googleでログイン
-            </button>
-          )}
+          <button type="button" onClick={signIn}>
+            Googleでログイン
+          </button>
         </div>
       </div>
     </OnlyFooterLayout>
