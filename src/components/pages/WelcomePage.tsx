@@ -1,11 +1,12 @@
-import { FC } from 'react'
+import { FC, memo } from 'react'
+
 import logo from '../../assets/images/logo.png'
-import { useFirebaseAuth } from '../../hooks'
+import { useAuthContext } from '../../hooks'
 import { StartTastingButton } from '../atoms'
 import { OnlyFooterLayout } from '../templates'
 
-const WelcomePage: FC = () => {
-  const { signIn } = useFirebaseAuth()
+const WelcomePage: FC = memo(() => {
+  const { signIn } = useAuthContext()
 
   return (
     <OnlyFooterLayout>
@@ -54,6 +55,6 @@ const WelcomePage: FC = () => {
       </div>
     </OnlyFooterLayout>
   )
-}
+})
 
 export default WelcomePage

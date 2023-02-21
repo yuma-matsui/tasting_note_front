@@ -5,7 +5,7 @@ import {
   useBlockBrowserBack,
   usePostTastingSheet,
   useResetTastingSheet,
-  useUserContext
+  useAuthContext
 } from '../../hooks'
 import { FormControllerProps } from '../../types'
 import { FormControllerButton, ModalOpenButton } from '../atoms'
@@ -17,8 +17,9 @@ const FormController: FC<FormControllerProps> = memo(
     useBlockBrowserBack()
     useResetTastingSheet()
 
-    const { user } = useUserContext()
+    const { currentUser } = useAuthContext()
     const { postTastingSheet } = usePostTastingSheet()
+    const onClickPost = () => postTastingSheet(currentUser)
 
     const submitRef = useRef<HTMLInputElement>(null)
     const lastStepModalId = 'last-step-modal'
@@ -33,10 +34,10 @@ const FormController: FC<FormControllerProps> = memo(
           <FormControllerButton value={nextButtonText} disabled={disabled} onClick={() => onClick('next', submitRef)} />
         )}
         {isLastStep &&
-          (user === null ? (
+          (currentUser === null ? (
             <ModalOpenButton id={lastStepModalId} text="提出する" />
           ) : (
-            <button type="button" onClick={postTastingSheet} className="btn">
+            <button type="button" onClick={onClickPost} className="btn">
               提出する
             </button>
           ))}

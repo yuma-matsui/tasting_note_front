@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useLayoutEffect, useState } from 'react'
+import { CSSProperties, useCallback, useEffect, useLayoutEffect, useState } from 'react'
 
 import useTastingSheetContext from './useTastingSheetContext'
 
@@ -22,9 +22,12 @@ const useTastingSheetTimer = () => {
   const convertToMin = (second: number) => Math.floor(second / SIXTY_SECONDS)
   const convertToSecond = (min: number) => min % SIXTY_SECONDS
 
-  const formatTime = (target: number) => {
-    if (target < 10) return `0${target}`
-    return target
+  const getTimerStyle = (target: number) => ({ '--value': target } as CSSProperties)
+
+  const getTimerClassName = () => {
+    const halfTime = secondTimer <= (Number(time) * SIXTY_SECONDS) / 2
+    const leftAMinute = secondTimer <= SIXTY_SECONDS
+    return `${halfTime ? 'text-orange-400' : 'text-black'} ${leftAMinute ? 'text-red-700' : ''}`
   }
 
   useLayoutEffect(() => {
@@ -39,13 +42,10 @@ const useTastingSheetTimer = () => {
   }, [countDown, secondTimer])
 
   return {
-    convertToMin,
-    convertToSecond,
-    formatTime,
-    secondTimer,
     timeUp: secondTimer === 0,
-    halfTime: secondTimer <= (Number(time) * SIXTY_SECONDS) / 2,
-    leftAMinute: secondTimer <= SIXTY_SECONDS
+    timerClassName: getTimerClassName(),
+    styleForMinute: getTimerStyle(convertToMin(secondTimer)),
+    styleForSecond: getTimerStyle(convertToSecond(secondTimer))
   }
 }
 
