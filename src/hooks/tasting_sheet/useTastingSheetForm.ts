@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react'
+import { useEffect } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
 import { TastingSheetAllName, TastingSheetFormState } from '../../types'
@@ -25,12 +25,9 @@ const useTastingSheetForm = () => {
     mode: 'onChange'
   })
 
-  const onSubmit: SubmitHandler<TastingSheetFormState> = useCallback(
-    (data) => {
-      setTastingSheet((prev) => ({ ...prev, ...data.tastingSheet }))
-    },
-    [setTastingSheet]
-  )
+  const onSubmit: SubmitHandler<TastingSheetFormState> = (data) => {
+    setTastingSheet((prev) => ({ ...prev, ...data.tastingSheet }))
+  }
 
   useEffect(() => {
     setValue('tastingSheet', { ...tastingSheet })
