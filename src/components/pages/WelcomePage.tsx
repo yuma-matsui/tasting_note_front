@@ -1,12 +1,15 @@
 import { FC } from 'react'
 
 import logo from '../../assets/images/logo.png'
-import { useFirebaseAuth } from '../../hooks'
+import { useAuthContext } from '../../hooks'
 import { StartTastingButton } from '../atoms'
 import { OnlyFooterLayout } from '../templates'
 
 const WelcomePage: FC = () => {
-  const { signIn } = useFirebaseAuth()
+  const { currentUser, signIn, loading, error } = useAuthContext()
+
+  if (error) return <p>やり直してください</p>
+  if (loading) return <p>...Loading</p>
 
   return (
     <OnlyFooterLayout>
@@ -48,9 +51,11 @@ const WelcomePage: FC = () => {
 
         <div>
           <StartTastingButton />
-          <button type="button" onClick={signIn}>
-            Googleでログイン
-          </button>
+          {!currentUser && (
+            <button type="button" onClick={signIn}>
+              Googleでログイン
+            </button>
+          )}
         </div>
       </div>
     </OnlyFooterLayout>

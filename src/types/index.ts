@@ -21,7 +21,7 @@ export type { default as ConclusionName } from './tasting_sheet/conclusion/concl
 export type { default as Conclusion } from './tasting_sheet/conclusion/conclusion'
 
 export type { default as TastingSheetContextType } from './contexts/tastingSheetContextType'
-export type { default as UserContextType } from './contexts/userContextType'
+export type { default as AuthContextType } from './contexts/authContextType'
 
 export type { default as ReactNodeChildren } from './props/reactNodeChildren'
 export type { default as ConfirmationDataListProps } from './props/confirmationDataListProps'
