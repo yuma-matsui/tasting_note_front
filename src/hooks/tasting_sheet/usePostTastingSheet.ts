@@ -1,30 +1,25 @@
-import { useCallback, useEffect, useState } from 'react'
+import { User } from 'firebase/auth'
 import { useNavigate } from 'react-router-dom'
 
-import useFirebaseAuth from '../useFirebaseAuth'
-import useUserContext from '../useUserContext'
+import useAuthContext from '../useAuthContext'
 import useTastingSheetContext from './useTastingSheetContext'
 
 const usePostTastingSheet = () => {
   const navigate = useNavigate()
-  const { signIn } = useFirebaseAuth()
   const { tastingSheet } = useTastingSheetContext()
-  const { user } = useUserContext()
+  const { signIn } = useAuthContext()
 
-  const postTastingSheet = useCallback(() => {
-    console.log('APIリクエスト', tastingSheet, user)
+  const postTastingSheet = (user: User | null | undefined) => {
+    if (!user) return
+
+    console.log('APIリクエスト', user, tastingSheet)
     navigate('/')
-  }, [tastingSheet, user, navigate])
-
-  const [isChangedUser, setIsChangedUser] = useState(false)
-  const signInAndPostTastingSheet = async () => {
-    await signIn()
-    setIsChangedUser(true)
   }
 
-  useEffect(() => {
-    if (user && isChangedUser) postTastingSheet()
-  }, [user, postTastingSheet, isChangedUser])
+  const signInAndPostTastingSheet = async () => {
+    const user = (await signIn())?.user
+    postTastingSheet(user)
+  }
 
   return {
     postTastingSheet,
