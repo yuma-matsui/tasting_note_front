@@ -1,7 +1,13 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Tasting Note",
+  "name": "Tasting Note",
   "icons": [
+    {
+      "src": "images/icons/icon-512x512.ico",
+      "type": "image/ico",
+      "size": "512x512",
+      "purpose": "maskable any"
+    }
   ],
   "start_url": ".",
   "display": "standalone",
