@@ -2,7 +2,9 @@ name: jest
 
 on:
   pull_request:
-    branches: [development]
+    branches:
+      - main
+      - development
 
 jobs:
   test:
