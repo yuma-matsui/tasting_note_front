@@ -1,9 +1,9 @@
 type Flavor = {
-  flavorFirstImpression: string[]
-  flavorFruit: string[]
-  flavorFlower: string[]
-  flavorSpice: string[]
-  flavorImpression: string[]
+  flavorFirstImpressions: string[]
+  flavorFruits: string[]
+  flavorFlowers: string[]
+  flavorSpices: string[]
+  flavorImpressions: string[]
 }
 
 export default Flavor
