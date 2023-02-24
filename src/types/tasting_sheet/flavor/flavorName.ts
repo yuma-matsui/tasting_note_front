@@ -1,3 +1,3 @@
-type FlavorName = 'flavorFirstImpression' | 'flavorFruit' | 'flavorFlower' | 'flavorSpice' | 'flavorImpression'
+type FlavorName = 'flavorFirstImpressions' | 'flavorFruits' | 'flavorFlowers' | 'flavorSpices' | 'flavorImpressions'
 
 export default FlavorName

@@ -3,11 +3,11 @@ import isFlavorName from '../isFlavorName'
 
 describe('isFlavorName', () => {
   const testItems: [FlavorName][] = [
-    ['flavorFirstImpression'],
-    ['flavorFruit'],
-    ['flavorFlower'],
-    ['flavorSpice'],
-    ['flavorImpression']
+    ['flavorFirstImpressions'],
+    ['flavorFruits'],
+    ['flavorFlowers'],
+    ['flavorSpices'],
+    ['flavorImpressions']
   ]
   it.each(testItems)('引数が%sの場合、trueを返す', (name) => {
     expect(isFlavorName(name)).toBeTruthy()

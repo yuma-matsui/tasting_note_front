@@ -4,10 +4,10 @@ function isAppearanceName(name: string): name is AppearanceName {
   return (
     name === 'clarity' ||
     name === 'brightness' ||
-    name === 'appearanceColor' ||
+    name === 'appearanceColors' ||
     name === 'intensity' ||
     name === 'consistency' ||
-    name === 'appearanceImpression'
+    name === 'appearanceImpressions'
   )
 }
 

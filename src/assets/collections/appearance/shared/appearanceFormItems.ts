@@ -30,7 +30,7 @@ const APPEARANCE_FORM_ITEMS: AbstractFormItem<AppearanceName>[] = [
   },
   {
     heading: '色調',
-    name: 'appearanceColor',
+    name: 'appearanceColors',
     subHeading: '補助用語/メイン',
     labels: {
       white: APPEARANCE_COLOR_LABELS_WHITE,
@@ -52,7 +52,7 @@ const APPEARANCE_FORM_ITEMS: AbstractFormItem<AppearanceName>[] = [
   },
   {
     heading: '外観の印象',
-    name: 'appearanceImpression',
+    name: 'appearanceImpressions',
     subHeading: '若さ/成熟度',
     labels: {
       white: APPEARANCE_IMPRESSION_LABELS_WHITE,

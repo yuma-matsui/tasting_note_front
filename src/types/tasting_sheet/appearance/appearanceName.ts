@@ -1,9 +1,9 @@
 type AppearanceName =
   | 'clarity'
   | 'brightness'
-  | 'appearanceColor'
+  | 'appearanceColors'
   | 'intensity'
   | 'consistency'
-  | 'appearanceImpression'
+  | 'appearanceImpressions'
 
 export default AppearanceName
