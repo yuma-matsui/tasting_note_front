@@ -35,7 +35,7 @@ const useTastingSheetForm = () => {
 
   const lessThanTwoItems = (name: TastingSheetAllName) => {
     if (isFlavorName(name)) return errors?.flavor !== undefined && errors.flavor[name] !== undefined
-    if (name === 'appearanceColor' || name === 'appearanceImpression')
+    if (name === 'appearanceColors' || name === 'appearanceImpressions')
       return errors?.appearance !== undefined && errors.appearance[name] !== undefined
     return false
   }

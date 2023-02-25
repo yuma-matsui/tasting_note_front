@@ -7,17 +7,17 @@ const initialTastingSheet: TastingSheet = {
   appearance: {
     clarity: '',
     brightness: '',
-    appearanceColor: [],
+    appearanceColors: [],
     intensity: '',
     consistency: '',
-    appearanceImpression: []
+    appearanceImpressions: []
   },
   flavor: {
-    flavorFirstImpression: [],
-    flavorFruit: [],
-    flavorFlower: [],
-    flavorSpice: [],
-    flavorImpression: []
+    flavorFirstImpressions: [],
+    flavorFruits: [],
+    flavorFlowers: [],
+    flavorSpices: [],
+    flavorImpressions: []
   },
   taste: {
     attack: '',

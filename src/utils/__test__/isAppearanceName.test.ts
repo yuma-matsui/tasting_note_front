@@ -5,10 +5,10 @@ describe('isAppearanceName', () => {
   const testItems: [AppearanceName][] = [
     ['clarity'],
     ['brightness'],
-    ['appearanceColor'],
+    ['appearanceColors'],
     ['intensity'],
     ['consistency'],
-    ['appearanceImpression']
+    ['appearanceImpressions']
   ]
   it.each(testItems)('引数が%sの場合、trueを返す', (name) => {
     expect(isAppearanceName(name)).toBeTruthy()
