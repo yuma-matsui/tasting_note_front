@@ -19,7 +19,7 @@ const FormController: FC<FormControllerProps> = memo(
 
     const { currentUser } = useAuthContext()
     const { postTastingSheet } = usePostTastingSheet()
-    const onClickPost = () => postTastingSheet(currentUser)
+    const onClickPost = () => postTastingSheet()
 
     const submitRef = useRef<HTMLInputElement>(null)
     const lastStepModalId = 'last-step-modal'

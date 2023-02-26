@@ -7,19 +7,19 @@ import useTastingSheetContext from './useTastingSheetContext'
 const usePostTastingSheet = () => {
   const navigate = useNavigate()
   const { tastingSheet } = useTastingSheetContext()
-  const { signIn } = useAuthContext()
+  const { signIn, currentUser } = useAuthContext()
 
-  const postTastingSheet = (user: User | null | undefined) => {
-    if (!user) return
+  const postTastingSheet = (user?: User) => {
+    let postingUser: User | undefined | null = currentUser
+    if (user) postingUser = user
 
-    console.log('APIリクエスト', user, tastingSheet)
+    if (!postingUser) throw new Error('不正な呼び出し方です。')
+
+    console.log('APIリクエスト', postingUser, tastingSheet)
     navigate('/')
   }
 
-  const signInAndPostTastingSheet = async () => {
-    const user = (await signIn())?.user
-    postTastingSheet(user)
-  }
+  const signInAndPostTastingSheet = async () => postTastingSheet((await signIn())?.user)
 
   return {
     postTastingSheet,
