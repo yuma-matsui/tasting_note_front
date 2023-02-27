@@ -2,13 +2,14 @@ import { FC } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import { NewTastingSheetPage, SignedInWelcomePage, WelcomePage } from '../components/pages'
-import { useAuthContext } from '../hooks'
+import { useAuthContext, useTastingSheetContext } from '../hooks'
 
 const RouterConfig: FC = () => {
   const { currentUser, loading, error } = useAuthContext()
+  const { posting } = useTastingSheetContext()
 
   if (error) return <p>やり直してください</p>
-  if (loading) return <p>...Loading</p>
+  if (loading || posting) return <p>...Loading</p>
 
   return (
     <BrowserRouter>
