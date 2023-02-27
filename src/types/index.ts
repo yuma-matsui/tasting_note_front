@@ -40,3 +40,5 @@ export type { default as HeaderFooterProps } from './props/headerFooterProps'
 export type { default as LinkProps } from './props/linkProps'
 export type { default as StepsBarProps } from './props/stepsBarProps'
 export type { default as TastingSheetTimerProps } from './props/tastingSheetTimerProps'
+
+export type { default as TastingSheetApi } from './api/tastingSheetApi'

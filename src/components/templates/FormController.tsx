@@ -19,7 +19,7 @@ const FormController: FC<FormControllerProps> = memo(
 
     const { currentUser } = useAuthContext()
     const { postTastingSheet } = usePostTastingSheet()
-    const onClickPost = () => postTastingSheet(currentUser)
+    const onClickPost = () => postTastingSheet()
 
     const submitRef = useRef<HTMLInputElement>(null)
     const lastStepModalId = 'last-step-modal'
@@ -34,12 +34,12 @@ const FormController: FC<FormControllerProps> = memo(
           <FormControllerButton value={nextButtonText} disabled={disabled} onClick={() => onClick('next', submitRef)} />
         )}
         {isLastStep &&
-          (currentUser === null ? (
-            <ModalOpenButton id={lastStepModalId} text="提出する" />
-          ) : (
+          (currentUser ? (
             <button type="button" onClick={onClickPost} className="btn">
               提出する
             </button>
+          ) : (
+            <ModalOpenButton id={lastStepModalId} text="提出する" />
           ))}
         <input type="submit" hidden ref={submitRef} />
         <TastingSheetFormModalBox id={lastStepModalId} />

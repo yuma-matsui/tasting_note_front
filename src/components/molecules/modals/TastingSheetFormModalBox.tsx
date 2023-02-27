@@ -9,9 +9,7 @@ const TastingSheetFormModalBox: FC<ModalBoxProps> = memo(({ id }) => {
   const { signInAndPostTastingSheet } = usePostTastingSheet()
 
   const onClickConfirm = () => navigate('/')
-  const onClickDeny = async () => {
-    await signInAndPostTastingSheet()
-  }
+  const onClickDeny = () => signInAndPostTastingSheet()
 
   return (
     <>
