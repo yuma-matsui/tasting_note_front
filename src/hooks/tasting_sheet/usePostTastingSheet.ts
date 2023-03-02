@@ -8,12 +8,12 @@ import useTastingSheetContext from './useTastingSheetContext'
 
 const usePostTastingSheet = () => {
   const navigate = useNavigate()
-  const { tastingSheet, setPosting } = useTastingSheetContext()
+  const { tastingSheet, setRequesting } = useTastingSheetContext()
   const { signIn, currentUser } = useAuthContext()
   const { client, getHeaders } = useAxios()
 
   const postTastingSheet = async (user?: User) => {
-    setPosting(true)
+    setRequesting(true)
     let postingUser: User | undefined | null = currentUser
     if (user) postingUser = user
 
@@ -23,12 +23,11 @@ const usePostTastingSheet = () => {
       const response = (
         await client.post<TastingSheetApi>('/tasting_sheets', tastingSheet, await getHeaders(postingUser))
       ).data
-      console.log(response)
-      navigate('/')
+      navigate(`/tasting_sheets/${response.id}`)
     } catch (e) {
       if (e instanceof Error) throw e
     } finally {
-      setPosting(false)
+      setRequesting(false)
     }
   }
 
