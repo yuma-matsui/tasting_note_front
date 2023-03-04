@@ -1,16 +1,17 @@
 import { useLayoutEffect, useState } from 'react'
 
 import { TastingSheetApi } from '../../types'
-import useAuthContext from '../useAuthContext'
+import useAuthContext from '../context/useAuthContext'
 import useAxios from '../useAxios'
+import useTastingSheetsContext from '../context/useTastingSheetsContext'
 
 const useAllTastingSheets = () => {
   const { client, getHeaders } = useAxios()
   const { currentUser, loading } = useAuthContext()
+  const { tastingSheets, setTastingSheets } = useTastingSheetsContext()
 
   if (!currentUser) throw new Error('不正な呼び出し方です。')
 
-  const [tastingSheets, setTastingSheets] = useState<TastingSheetApi[]>([])
   const [fetching, setFetching] = useState(false)
   const fetchTastingSheets = async () => {
     setFetching(true)
@@ -32,7 +33,6 @@ const useAllTastingSheets = () => {
   }, [])
 
   return {
-    tastingSheets,
     hasTastingSheets: tastingSheets.length >= 1,
     fetching
   }

@@ -1,7 +1,7 @@
 import { FLAVOR_FORM_ITEMS } from '../../../assets'
 import { FlavorName } from '../../../types'
 import { FormItem } from '../../../utils'
-import useTastingSheetContext from '../useTastingSheetContext'
+import useTastingSheetContext from '../../context/useTastingSheetContext'
 
 const useFlavorFormItems = () => {
   const {

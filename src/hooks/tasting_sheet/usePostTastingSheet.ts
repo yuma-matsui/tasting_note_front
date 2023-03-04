@@ -2,9 +2,9 @@ import { User } from 'firebase/auth'
 import { useNavigate } from 'react-router-dom'
 
 import { TastingSheetApi } from '../../types'
-import useAuthContext from '../useAuthContext'
+import useAuthContext from '../context/useAuthContext'
 import useAxios from '../useAxios'
-import useTastingSheetContext from './useTastingSheetContext'
+import useTastingSheetContext from '../context/useTastingSheetContext'
 
 const usePostTastingSheet = () => {
   const navigate = useNavigate()

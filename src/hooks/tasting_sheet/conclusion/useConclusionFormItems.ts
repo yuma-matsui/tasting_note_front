@@ -1,7 +1,7 @@
 import { CONCLUSION_FORM_ITEMS, CONCLUSION_SELECT_OPTIONS } from '../../../assets'
 import { ConclusionName } from '../../../types'
 import { FormItem } from '../../../utils'
-import useTastingSheetContext from '../useTastingSheetContext'
+import useTastingSheetContext from '../../context/useTastingSheetContext'
 
 const useConclusionFormItems = (type?: 'select' | undefined) => {
   const {

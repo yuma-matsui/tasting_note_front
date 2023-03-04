@@ -1,6 +1,6 @@
 import { CSSProperties, useCallback, useEffect, useLayoutEffect, useState } from 'react'
 
-import useTastingSheetContext from './useTastingSheetContext'
+import useTastingSheetContext from '../context/useTastingSheetContext'
 
 const SIXTY_SECONDS = 60
 

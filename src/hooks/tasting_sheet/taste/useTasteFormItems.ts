@@ -1,7 +1,7 @@
 import { TASTE_FORM_ITEMS } from '../../../assets'
 import { TasteName } from '../../../types'
 import { FormItem } from '../../../utils'
-import useTastingSheetContext from '../useTastingSheetContext'
+import useTastingSheetContext from '../../context/useTastingSheetContext'
 
 const useTasteFormItems = () => {
   const {

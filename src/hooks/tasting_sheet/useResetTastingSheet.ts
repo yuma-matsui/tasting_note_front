@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { initialTastingSheet } from '../../utils'
 
-import useTastingSheetContext from './useTastingSheetContext'
+import useTastingSheetContext from '../context/useTastingSheetContext'
 
 const useResetTastingSheet = () => {
   const { setTastingSheet } = useTastingSheetContext()

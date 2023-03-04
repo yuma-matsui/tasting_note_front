@@ -4,7 +4,6 @@ export { default as useTasteFormItems } from './tasting_sheet/taste/useTasteForm
 export { default as useConclusionFormItems } from './tasting_sheet/conclusion/useConclusionFormItems'
 export { default as useConfirmationTabItems } from './tasting_sheet/useConfirmationTabItems'
 export { default as useTastingSheetForm } from './tasting_sheet/useTastingSheetForm'
-export { default as useTastingSheetContext } from './tasting_sheet/useTastingSheetContext'
 export { default as useTastingSheetInputsAttributes } from './tasting_sheet/useTastingSheetInputAttributes'
 export { default as useTastingSheetFormAllItems } from './tasting_sheet/useTastingSheetFormAllItems'
 export { default as useMultiStepForm } from './tasting_sheet/useMultiStepForm'
@@ -15,5 +14,8 @@ export { default as useTastingSheetTimer } from './tasting_sheet/useTastingSheet
 export { default as usePostTastingSheet } from './tasting_sheet/usePostTastingSheet'
 export { default as useAllTastingSheets } from './tasting_sheet/useAllTastingSheets'
 
-export { default as useAuthContext } from './useAuthContext'
+export { default as useTastingSheetContext } from './context/useTastingSheetContext'
+export { default as useAuthContext } from './context/useAuthContext'
+export { default as useTastingSheetsContext } from './context/useTastingSheetsContext'
+
 export { default as useAxios } from './useAxios'
