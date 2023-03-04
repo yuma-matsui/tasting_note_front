@@ -1,12 +1,15 @@
 import { FC, memo } from 'react'
+import { BsExclamationTriangle } from 'react-icons/bs'
 
-import { TastingSheetCardProps } from '../../types'
 import defaultImage from '../../assets/images/wineGlass.jpg'
-import { DeleteTastingSheetButton } from '../atoms'
+import DeleteTastingSheetModalBox from './modals/DeleteTastingSheetModalBox'
+import { TastingSheetCardProps } from '../../types'
+import { ModalOpenButton } from '../atoms'
 
 const TastingSheetCard: FC<TastingSheetCardProps> = memo(({ tastingSheet }) => {
   const bgColor = tastingSheet.color === 'red' ? 'bg-red-600' : 'bg-emerald-500'
   const textColor = tastingSheet.color === 'red' ? 'text-red-700' : 'text-emerald-500'
+  const modalId = 'delete-sheet-modal'
 
   return (
     <li className="mb-4">
@@ -19,7 +22,11 @@ const TastingSheetCard: FC<TastingSheetCardProps> = memo(({ tastingSheet }) => {
           <h2 className="card-title">{tastingSheet.name}</h2>
           <p>{tastingSheet.createdAt}</p>
           <div className="card-actions justify-end">
-            <DeleteTastingSheetButton id={tastingSheet.id} />
+            <div className="flex items-center">
+              <BsExclamationTriangle />
+              <ModalOpenButton id={modalId} text="削除" />
+            </div>
+            <DeleteTastingSheetModalBox id={modalId} tastingSheetId={tastingSheet.id} />
           </div>
         </div>
       </div>

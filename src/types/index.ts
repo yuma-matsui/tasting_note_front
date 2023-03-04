@@ -43,5 +43,8 @@ export type { default as StepsBarProps } from './props/stepsBarProps'
 export type { default as TastingSheetTimerProps } from './props/tastingSheetTimerProps'
 export type { default as TastingSheetListsProps } from './props/tastingSheetListsProps'
 export type { default as TastingSheetCardProps } from './props/tastingSheetCardProps'
+export type { default as BaseModalBoxProps } from './props/baseModalBoxProps'
+export type { default as DeleteTastingSheetModalBoxProps } from './props/deleteTastingSheetModalBoxProps'
+export type { default as ModalCloseLabelProps } from './props/modalCloseLabelProps'
 
 export type { default as TastingSheetApi } from './api/tastingSheetApi'
