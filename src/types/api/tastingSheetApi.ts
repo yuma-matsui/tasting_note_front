@@ -2,7 +2,7 @@ import TastingSheet from '../tasting_sheet/tastingSheet'
 
 type TastingSheetApi = TastingSheet & {
   id: number
-  userId: number
+  createdAt: string
 }
 
 export default TastingSheetApi

@@ -6,16 +6,17 @@ import { useAuthContext, useTastingSheetContext } from '../hooks'
 
 const RouterConfig: FC = () => {
   const { currentUser, loading, error } = useAuthContext()
-  const { posting } = useTastingSheetContext()
+  const { requesting } = useTastingSheetContext()
 
   if (error) return <p>やり直してください</p>
-  if (loading || posting) return <p>...Loading</p>
+  if (loading || requesting) return <p>...Loading</p>
 
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={currentUser ? <SignedInWelcomePage /> : <WelcomePage />} />
         <Route path="/tasting_sheets">
+          <Route path=":tastingSheetId" element={<p>個別ページ</p>} />
           <Route path="new" element={<NewTastingSheetPage />} />
         </Route>
       </Routes>
