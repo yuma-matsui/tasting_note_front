@@ -5,7 +5,7 @@ import useAuthContext from '../context/useAuthContext'
 import useAxios from '../useAxios'
 import useTastingSheetsContext from '../context/useTastingSheetsContext'
 
-const useAllTastingSheets = () => {
+const useFetchTastingSheets = () => {
   const { client, getHeaders } = useAxios()
   const { currentUser, loading } = useAuthContext()
   const { tastingSheets, setTastingSheets } = useTastingSheetsContext()
@@ -38,4 +38,4 @@ const useAllTastingSheets = () => {
   }
 }
 
-export default useAllTastingSheets
+export default useFetchTastingSheets

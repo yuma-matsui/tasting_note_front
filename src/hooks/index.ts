@@ -13,7 +13,7 @@ export { default as useResetTastingSheet } from './tasting_sheet/useResetTasting
 export { default as useTastingSheetTimer } from './tasting_sheet/useTastingSheetTimer'
 
 export { default as usePostTastingSheet } from './api/usePostTastingSheet'
-export { default as useAllTastingSheets } from './api/useAllTastingSheets'
+export { default as useFetchTastingSheets } from './api/useFetchTastingSheets'
 
 export { default as useTastingSheetContext } from './context/useTastingSheetContext'
 export { default as useAuthContext } from './context/useAuthContext'
