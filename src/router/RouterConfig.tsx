@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
-import { NewTastingSheetPage, SignedInWelcomePage, TastingSheetDetailPage, WelcomePage } from '../components/pages'
+import { NewTastingSheetPage, SignedInWelcomePage, WelcomePage } from '../components/pages'
 import { useAuthContext, useTastingSheetContext } from '../hooks'
 
 const RouterConfig: FC = () => {
@@ -16,7 +16,7 @@ const RouterConfig: FC = () => {
       <Routes>
         <Route path="/" element={currentUser ? <SignedInWelcomePage /> : <WelcomePage />} />
         <Route path="/tasting_sheets">
-          <Route path=":tastingSheetId" element={<TastingSheetDetailPage />} />
+          <Route path=":tastingSheetId" element={<p>個別ページ</p>} />
           <Route path="new" element={<NewTastingSheetPage />} />
         </Route>
       </Routes>
