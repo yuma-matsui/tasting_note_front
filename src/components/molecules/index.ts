@@ -1,5 +1,6 @@
 export { default as NewTastingSheetSettingForm } from './forms/NewTastingSheetSettingForm'
 export { default as TastingSheetBaseForm } from './forms/TastingSheetBaseForm'
+export { default as TastingSheetSearchForm } from './forms/TastingSheetSearchForm'
 
 export { default as TastingSheetFormModalBox } from './modals/TastingSheetFormModalBox'
 export { default as EditCheckModalBox } from './modals/EditCheckModalBox'
