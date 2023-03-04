@@ -5,12 +5,14 @@ import { TastingSheetApi } from '../../types'
 import useAuthContext from '../context/useAuthContext'
 import useAxios from '../useAxios'
 import useTastingSheetContext from '../context/useTastingSheetContext'
+import useTastingSheetsContext from '../context/useTastingSheetsContext'
 
 const usePostTastingSheet = () => {
   const navigate = useNavigate()
-  const { tastingSheet, setRequesting } = useTastingSheetContext()
+  const { tastingSheet } = useTastingSheetContext()
   const { signIn, currentUser } = useAuthContext()
   const { client, getHeaders } = useAxios()
+  const { setRequesting } = useTastingSheetsContext()
 
   const postTastingSheet = async (user?: User) => {
     setRequesting(true)
