@@ -1,13 +1,14 @@
 import { FC, memo } from 'react'
-import { BsExclamationTriangle } from 'react-icons/bs'
+import { useDeleteTastingSheet } from '../../../hooks'
 
-const DeleteTastingSheetButton: FC<{ id: number }> = memo(({ id }) => (
-  <button type="button">
-    <div className="flex items-center">
-      <BsExclamationTriangle />
-      <span className="ml-2">削除</span>
-    </div>
-  </button>
-))
+const DeleteTastingSheetButton: FC<{ id: number }> = memo(({ id }) => {
+  const { onClickDelete } = useDeleteTastingSheet(id)
+
+  return (
+    <button type="button" onClick={onClickDelete}>
+      削除
+    </button>
+  )
+})
 
 export default DeleteTastingSheetButton
