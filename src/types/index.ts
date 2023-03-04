@@ -22,6 +22,7 @@ export type { default as Conclusion } from './tasting_sheet/conclusion/conclusio
 
 export type { default as TastingSheetContextType } from './contexts/tastingSheetContextType'
 export type { default as AuthContextType } from './contexts/authContextType'
+export type { default as TastingSheetsContextType } from './contexts/tastingSheetsContextType'
 
 export type { default as ReactNodeChildren } from './props/reactNodeChildren'
 export type { default as ConfirmationDataListProps } from './props/confirmationDataListProps'
@@ -42,5 +43,8 @@ export type { default as StepsBarProps } from './props/stepsBarProps'
 export type { default as TastingSheetTimerProps } from './props/tastingSheetTimerProps'
 export type { default as TastingSheetListsProps } from './props/tastingSheetListsProps'
 export type { default as TastingSheetCardProps } from './props/tastingSheetCardProps'
+export type { default as BaseModalBoxProps } from './props/baseModalBoxProps'
+export type { default as DeleteTastingSheetModalBoxProps } from './props/deleteTastingSheetModalBoxProps'
+export type { default as ModalCloseLabelProps } from './props/modalCloseLabelProps'
 
 export type { default as TastingSheetApi } from './api/tastingSheetApi'

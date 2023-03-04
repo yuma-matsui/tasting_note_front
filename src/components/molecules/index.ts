@@ -4,6 +4,7 @@ export { default as TastingSheetSearchForm } from './forms/TastingSheetSearchFor
 
 export { default as TastingSheetFormModalBox } from './modals/TastingSheetFormModalBox'
 export { default as EditCheckModalBox } from './modals/EditCheckModalBox'
+export { default as DeleteTastingSheetModalBox } from './modals/DeleteTastingSheetModalBox'
 
 export { default as FooterLogo } from './logos/FooterLogo'
 export { default as HeaderLogo } from './logos/HeaderLogo'

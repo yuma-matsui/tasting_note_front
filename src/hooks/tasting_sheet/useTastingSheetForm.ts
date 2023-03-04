@@ -3,7 +3,7 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 
 import { TastingSheetAllName, TastingSheetFormState } from '../../types'
 import { initialTastingSheet, isFlavorName } from '../../utils'
-import useTastingSheetContext from './useTastingSheetContext'
+import useTastingSheetContext from '../context/useTastingSheetContext'
 
 const useTastingSheetForm = () => {
   const { tastingSheet, setTastingSheet } = useTastingSheetContext()
