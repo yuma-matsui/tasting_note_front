@@ -11,8 +11,9 @@ export { default as useBeforeUnload } from './tasting_sheet/useBeforeUnload'
 export { default as useBlockBrowserBack } from './tasting_sheet/useBlockBrowserBack'
 export { default as useResetTastingSheet } from './tasting_sheet/useResetTastingSheet'
 export { default as useTastingSheetTimer } from './tasting_sheet/useTastingSheetTimer'
-export { default as usePostTastingSheet } from './tasting_sheet/usePostTastingSheet'
-export { default as useAllTastingSheets } from './tasting_sheet/useAllTastingSheets'
+
+export { default as usePostTastingSheet } from './api/usePostTastingSheet'
+export { default as useAllTastingSheets } from './api/useAllTastingSheets'
 
 export { default as useTastingSheetContext } from './context/useTastingSheetContext'
 export { default as useAuthContext } from './context/useAuthContext'
