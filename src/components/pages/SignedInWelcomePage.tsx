@@ -1,7 +1,7 @@
 import { FC, memo } from 'react'
-import { useAllTastingSheets, useAuthContext } from '../../hooks'
+import { useAllTastingSheets } from '../../hooks'
 import { StartTastingButton } from '../atoms'
-import { SignedInTopPageInstruction } from '../organisms'
+import { SignedInTopPageInstruction, TastingSheetLists } from '../organisms'
 
 import { DefaultLayout } from '../templates'
 
@@ -13,7 +13,7 @@ const SignedInWelcomePage: FC = memo(() => {
   return (
     <DefaultLayout>
       <div className="flex flex-col items-center">
-        {hasTastingSheets ? <p>テイスティグシート一覧</p> : <SignedInTopPageInstruction />}
+        {hasTastingSheets ? <TastingSheetLists tastingSheets={tastingSheets} /> : <SignedInTopPageInstruction />}
         <StartTastingButton />
       </div>
     </DefaultLayout>
