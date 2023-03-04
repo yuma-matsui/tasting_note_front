@@ -1,12 +1,13 @@
 import { FC, memo } from 'react'
-import { useAllTastingSheets } from '../../hooks'
+import { useFetchTastingSheets, useTastingSheetsContext } from '../../hooks'
 import { StartTastingButton } from '../atoms'
 import { SignedInTopPageInstruction, TastingSheetLists } from '../organisms'
 
 import { DefaultLayout } from '../templates'
 
 const SignedInWelcomePage: FC = memo(() => {
-  const { tastingSheets, fetching, hasTastingSheets } = useAllTastingSheets()
+  const { tastingSheets } = useTastingSheetsContext()
+  const { fetching, hasTastingSheets } = useFetchTastingSheets()
 
   if (fetching) return <p>...Loading</p>
 

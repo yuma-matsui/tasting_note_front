@@ -4,9 +4,7 @@ import { initialTastingSheet } from '../utils'
 
 const TastingSheetContext = createContext<TastingSheetContextType>({
   tastingSheet: initialTastingSheet,
-  setTastingSheet: () => {},
-  requesting: false,
-  setRequesting: () => {}
+  setTastingSheet: () => {}
 })
 
 export default TastingSheetContext

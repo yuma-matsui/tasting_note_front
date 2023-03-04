@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { TastingSheetAllName, TastingSheetFormType, TastingSheetPropertyType } from '../../types'
 import { formResultFormat, isAppearanceName, isConclusionName, isFlavorName, isTasteName } from '../../utils'
-import useTastingSheetContext from './useTastingSheetContext'
+import useTastingSheetContext from '../context/useTastingSheetContext'
 
 const useConfirmationTabItems = () => {
   const { tastingSheet } = useTastingSheetContext()
