@@ -1,11 +1,12 @@
 import { FC, memo } from 'react'
-import { useAuthContext } from '../../hooks'
 
+import { useAuthContext, useOnClickAuth } from '../../hooks'
 import { HeaderFooterProps } from '../../types'
 import { FooterLink } from '../atoms'
 
 const Footer: FC<HeaderFooterProps> = memo(({ logoOnly = false, modalId }) => {
-  const { currentUser, deleteAccount, signOut } = useAuthContext()
+  const { currentUser } = useAuthContext()
+  const { onClickSignOut, onClickDeleteAccount } = useOnClickAuth()
 
   return (
     <footer className="flex flex-col items-center border-t border-gray-500 pt-4 mt-4">
@@ -17,12 +18,12 @@ const Footer: FC<HeaderFooterProps> = memo(({ logoOnly = false, modalId }) => {
           {currentUser && (
             <>
               <li>
-                <button type="button" onClick={signOut}>
+                <button type="button" onClick={onClickSignOut}>
                   ログアウト
                 </button>
               </li>
               <li>
-                <button type="button" onClick={deleteAccount} className="text-red-700">
+                <button type="button" onClick={onClickDeleteAccount} className="text-red-700">
                   アカウント削除
                 </button>
               </li>

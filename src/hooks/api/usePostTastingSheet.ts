@@ -6,6 +6,7 @@ import useAuthContext from '../context/useAuthContext'
 import useAxios from '../useAxios'
 import useTastingSheetContext from '../context/useTastingSheetContext'
 import useTastingSheetsContext from '../context/useTastingSheetsContext'
+import useToastContext from '../context/useToastContext'
 
 const usePostTastingSheet = () => {
   const navigate = useNavigate()
@@ -13,6 +14,7 @@ const usePostTastingSheet = () => {
   const { signIn, currentUser } = useAuthContext()
   const { client, getHeaders } = useAxios()
   const { setRequesting } = useTastingSheetsContext()
+  const { showToast } = useToastContext()
 
   const postTastingSheet = async (user?: User) => {
     setRequesting(true)
@@ -26,6 +28,7 @@ const usePostTastingSheet = () => {
         await client.post<TastingSheetApi>('/tasting_sheets', tastingSheet, await getHeaders(postingUser))
       ).data
       navigate(`/tasting_sheets/${response.id}`)
+      showToast('テイスティングシートを記録しました')
     } catch (e) {
       if (e instanceof Error) throw e
     } finally {
