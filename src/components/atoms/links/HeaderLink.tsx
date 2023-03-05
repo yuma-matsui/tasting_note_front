@@ -1,22 +1,8 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import { FC, memo } from 'react'
-import { Link } from 'react-router-dom'
 
-import { LinkProps } from '../../../types'
 import { HeaderLogo } from '../../molecules'
+import BaseLink from './BaseLink'
 
-const HeaderLink: FC<LinkProps> = memo(({ hasModal, modalId }) => (
-  <div>
-    {hasModal ? (
-      <label htmlFor={modalId}>
-        <HeaderLogo />
-      </label>
-    ) : (
-      <Link to="/">
-        <HeaderLogo />
-      </Link>
-    )}
-  </div>
-))
+const HeaderLink: FC = memo(() => <BaseLink logo={<HeaderLogo />} />)
 
 export default HeaderLink
