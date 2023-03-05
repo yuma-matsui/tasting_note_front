@@ -5,11 +5,11 @@ import {
   useBlockBrowserBack,
   usePostTastingSheet,
   useResetTastingSheet,
-  useAuthContext
+  useAuthContext,
+  useOnClickOpenModal
 } from '../../hooks'
 import { FormControllerProps } from '../../types'
-import { FormControllerButton, ModalOpenButton } from '../atoms'
-import { TastingSheetFormModalBox } from '../molecules'
+import { FormControllerButton, GoToTopPageButton, SignInAndPostButton } from '../atoms'
 
 const FormController: FC<FormControllerProps> = memo(
   ({ children, onClick, isFirstStep, isLastStep, disabled, backButtonText, nextButtonText }) => {
@@ -20,9 +20,17 @@ const FormController: FC<FormControllerProps> = memo(
     const { currentUser } = useAuthContext()
     const { postTastingSheet } = usePostTastingSheet()
     const onClickPost = () => postTastingSheet()
+    const { onClickOpenModal } = useOnClickOpenModal({
+      text: '記録せずに終了しますか？',
+      content: (
+        <>
+          <GoToTopPageButton text="OK" />
+          <SignInAndPostButton />
+        </>
+      )
+    })
 
     const submitRef = useRef<HTMLInputElement>(null)
-    const lastStepModalId = 'last-step-modal'
 
     return (
       <>
@@ -30,19 +38,14 @@ const FormController: FC<FormControllerProps> = memo(
         {!isFirstStep && (
           <FormControllerButton value={backButtonText} disabled={disabled} onClick={() => onClick('back', submitRef)} />
         )}
-        {!isLastStep && (
+        {isLastStep ? (
+          <button type="button" onClick={currentUser ? onClickPost : onClickOpenModal} className="btn">
+            提出する
+          </button>
+        ) : (
           <FormControllerButton value={nextButtonText} disabled={disabled} onClick={() => onClick('next', submitRef)} />
         )}
-        {isLastStep &&
-          (currentUser ? (
-            <button type="button" onClick={onClickPost} className="btn">
-              提出する
-            </button>
-          ) : (
-            <ModalOpenButton id={lastStepModalId} text="提出する" />
-          ))}
         <input type="submit" hidden ref={submitRef} />
-        <TastingSheetFormModalBox id={lastStepModalId} />
       </>
     )
   }

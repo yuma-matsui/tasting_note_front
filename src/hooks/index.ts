@@ -25,3 +25,5 @@ export { default as useModalContext } from './context/useModalContext'
 export { default as useOnClickAuth } from './auth/useOnClickAuth'
 
 export { default as useAxios } from './useAxios'
+export { default as useAutoCloseModal } from './useAutoCloseModal'
+export { default as useOnClickOpenModal } from './useOnClickOpenModal'
