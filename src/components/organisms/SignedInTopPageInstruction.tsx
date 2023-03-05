@@ -1,7 +1,7 @@
 import { FC, memo } from 'react'
 
 const SignedInTopPageInstruction: FC = memo(() => (
-  <div className="flex flex-col items-center">
+  <div className="flex flex-col items-center mb-4">
     <h1>テイスティングを記録しよう</h1>
     <div className="w-72 h-72 bg-gray-500 text-slate-50">サービスのデモ画像配置予定</div>
     <ul>
