@@ -21,4 +21,6 @@ export { default as useAuthContext } from './context/useAuthContext'
 export { default as useTastingSheetsContext } from './context/useTastingSheetsContext'
 export { default as useToastContext } from './context/useToastContext'
 
+export { default as useOnClickAuth } from './auth/useOnClickAuth'
+
 export { default as useAxios } from './useAxios'

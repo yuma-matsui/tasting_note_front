@@ -1,12 +1,12 @@
 import { FC, memo } from 'react'
 
 import logo from '../../assets/images/logo.png'
-import { useAuthContext } from '../../hooks'
+import { useOnClickAuth } from '../../hooks'
 import { StartTastingButton } from '../atoms'
 import { OnlyFooterLayout } from '../templates'
 
 const WelcomePage: FC = memo(() => {
-  const { signIn } = useAuthContext()
+  const { onClickSignIn } = useOnClickAuth()
 
   return (
     <OnlyFooterLayout>
@@ -48,7 +48,7 @@ const WelcomePage: FC = memo(() => {
 
         <div>
           <StartTastingButton />
-          <button type="button" onClick={signIn}>
+          <button type="button" onClick={onClickSignIn}>
             Googleでログイン
           </button>
         </div>
