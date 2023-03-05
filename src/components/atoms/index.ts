@@ -13,3 +13,5 @@ export { default as TastingSheetSelectBox } from './selects/TastingSheetSelectBo
 export { default as TastingSheetTimer } from './TastingSheetTimer'
 
 export { default as ModalCloseLabel } from './labels/ModalCloseLabel'
+
+export { default as BaseToast } from './toasts/BaseToast'
