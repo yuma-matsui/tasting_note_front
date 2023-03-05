@@ -9,7 +9,7 @@ const BaseModalBox: FC<BaseModalProps> = memo(({ text, content, visible, closeTe
 
   return (
     <>
-      <input type="checkbox" className="modal-toggle" checked={visible} />
+      <input type="checkbox" className="modal-toggle" checked={visible} onChange={() => {}} />
       <div className="modal">
         <div className="modal-box">
           <p>{text}</p>
