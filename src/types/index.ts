@@ -39,7 +39,6 @@ export type { default as ModalOpenButtonProps } from './props/modalOpenButtonPro
 export type { default as ModalBoxProps } from './props/modalBoxProps'
 export type { default as FormControllerProps } from './props/formControllerProps'
 export type { default as FormControllerButtonProps } from './props/formControllerButtonProps'
-export type { default as HeaderFooterProps } from './props/headerFooterProps'
 export type { default as BaseLinkProps } from './props/baseLinkProps'
 export type { default as StepsBarProps } from './props/stepsBarProps'
 export type { default as TastingSheetTimerProps } from './props/tastingSheetTimerProps'
