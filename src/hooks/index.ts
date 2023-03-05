@@ -19,5 +19,6 @@ export { default as useDeleteTastingSheet } from './api/useDeleteTastingSheet'
 export { default as useTastingSheetContext } from './context/useTastingSheetContext'
 export { default as useAuthContext } from './context/useAuthContext'
 export { default as useTastingSheetsContext } from './context/useTastingSheetsContext'
+export { default as useToastContext } from './context/useToastContext'
 
 export { default as useAxios } from './useAxios'
