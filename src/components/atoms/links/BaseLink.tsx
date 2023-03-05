@@ -1,21 +1,19 @@
 import { FC, memo } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
-import { useOnClickOpenModal } from '../../../hooks'
+import { useCheckEditingForm, useOnClickOpenModal } from '../../../hooks'
 import { BaseLinkProps } from '../../../types'
 import GoToTopPageButton from '../buttons/GoToTopPageButton'
 
-const NEW_TASTING_SHEETS_PATH = '/tasting_sheets/new'
-
 const BaseLink: FC<BaseLinkProps> = memo(({ logo }) => {
-  const { pathname } = useLocation()
+  const { isEditing } = useCheckEditingForm()
   const { onClickOpenModal } = useOnClickOpenModal({
     text: '記録の途中ですがよろしいですか？',
     content: <GoToTopPageButton text="OK" />,
     closeText: '回答にもどる'
   })
 
-  return pathname === NEW_TASTING_SHEETS_PATH ? (
+  return isEditing ? (
     <button type="button" onClick={onClickOpenModal}>
       {logo}
     </button>
