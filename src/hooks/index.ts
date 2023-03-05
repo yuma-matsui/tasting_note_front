@@ -20,6 +20,7 @@ export { default as useTastingSheetContext } from './context/useTastingSheetCont
 export { default as useAuthContext } from './context/useAuthContext'
 export { default as useTastingSheetsContext } from './context/useTastingSheetsContext'
 export { default as useToastContext } from './context/useToastContext'
+export { default as useModalContext } from './context/useModalContext'
 
 export { default as useOnClickAuth } from './auth/useOnClickAuth'
 
