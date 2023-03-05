@@ -3,7 +3,6 @@ export { default as TastingSheetBaseForm } from './forms/TastingSheetBaseForm'
 export { default as TastingSheetSearchForm } from './forms/TastingSheetSearchForm'
 
 export { default as EditCheckModalBox } from './modals/EditCheckModalBox'
-export { default as DeleteTastingSheetModalBox } from './modals/DeleteTastingSheetModalBox'
 export { default as BaseModal } from './modals/BaseModal'
 
 export { default as FooterLogo } from './logos/FooterLogo'
