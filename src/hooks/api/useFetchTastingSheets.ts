@@ -7,28 +7,28 @@ import useTastingSheetsContext from '../context/useTastingSheetsContext'
 
 const useFetchTastingSheets = () => {
   const { client, getHeaders } = useAxios()
-  const { currentUser, loading } = useAuthContext()
+  const { currentUser } = useAuthContext()
   const { tastingSheets, setTastingSheets } = useTastingSheetsContext()
 
   if (!currentUser) throw new Error('不正な呼び出し方です。')
 
   const [fetching, setFetching] = useState(false)
-  const fetchTastingSheets = async () => {
-    setFetching(true)
-    try {
-      const response = (await client.get<TastingSheetApi[]>('/tasting_sheets', await getHeaders(currentUser))).data
-      setTastingSheets(response)
-    } catch (e) {
-      if (e instanceof Error) throw e
-    } finally {
-      setFetching(false)
-    }
-  }
-
   useLayoutEffect(() => {
-    if (!loading) {
-      fetchTastingSheets().catch(() => {})
+    const fetchTastingSheets = async () => {
+      setFetching(true)
+      try {
+        const response = (await client.get<TastingSheetApi[]>('/tasting_sheets', await getHeaders(currentUser))).data
+        setTastingSheets(response)
+      } catch (e) {
+        if (e instanceof Error) throw e
+      } finally {
+        setFetching(false)
+      }
     }
+
+    fetchTastingSheets().catch((e: Error) => {
+      throw e
+    })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
