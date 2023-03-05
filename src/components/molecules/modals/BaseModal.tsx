@@ -1,11 +1,13 @@
 import { FC, memo } from 'react'
-import { useModalContext } from '../../../hooks'
 
+import { useAutoCloseModal, useModalContext } from '../../../hooks'
 import { BaseModalProps } from '../../../types'
 
 const BaseModalBox: FC<BaseModalProps> = memo(({ text, content, visible, closeText }) => {
   const { setVisible } = useModalContext()
   const onClickClose = () => setVisible(false)
+
+  useAutoCloseModal()
 
   return (
     <>
