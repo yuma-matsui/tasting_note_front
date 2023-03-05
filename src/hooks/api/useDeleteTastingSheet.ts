@@ -18,12 +18,12 @@ const useDeleteTastingSheet = (id: number) => {
       const response = (await client.delete<TastingSheetApi[]>(`/tasting_sheets/${id}`, await getHeaders(currentUser)))
         .data
       setTastingSheets(response)
-      showToast('テイスティングシートを削除しました')
     } catch (e) {
       if (e instanceof Error) throw e
     } finally {
       setRequesting(false)
     }
+    showToast('テイスティングシートを削除しました')
   }
 
   return {
