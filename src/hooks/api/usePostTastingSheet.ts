@@ -28,12 +28,12 @@ const usePostTastingSheet = () => {
         await client.post<TastingSheetApi>('/tasting_sheets', tastingSheet, await getHeaders(postingUser))
       ).data
       navigate(`/tasting_sheets/${response.id}`)
-      showToast('テイスティングシートを記録しました')
     } catch (e) {
       if (e instanceof Error) throw e
     } finally {
       setRequesting(false)
     }
+    showToast('テイスティングシートを記録しました')
   }
 
   const signInAndPostTastingSheet = async () => {

@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app'
 import { browserLocalPersistence, getAuth, setPersistence, User } from 'firebase/auth'
-import { FC, useCallback, useEffect, useMemo, useState } from 'react'
+import { FC, useCallback, useLayoutEffect, useMemo, useState } from 'react'
 import { useAuthState, useDeleteUser, useSignInWithGoogle, useSignOut } from 'react-firebase-hooks/auth'
 
 import { AuthContext } from '../contexts'
@@ -23,7 +23,7 @@ const AuthProvider: FC<ReactNodeChildren> = ({ children }) => {
   const loading = signInLoading || authLoading || signOutLoading || deleteLoading || deleteAccountLoading
   const error = signInError || authError || signOutError || deleteError
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setCurrentUser(authUser)
   }, [authUser, setCurrentUser])
 
