@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { TastingSheetProvider, AuthProvider, TastingSheetsProvider, ToastProvider, ModalProvider } from './providers'
+import { TastingSheetProvider, AuthProvider, TastingSheetsProvider, ToastProvider } from './providers'
 
 import RouterConfig from './router/RouterConfig'
 
@@ -8,9 +8,7 @@ const App: FC = () => (
     <TastingSheetProvider>
       <TastingSheetsProvider>
         <ToastProvider>
-          <ModalProvider>
-            <RouterConfig />
-          </ModalProvider>
+          <RouterConfig />
         </ToastProvider>
       </TastingSheetsProvider>
     </TastingSheetProvider>

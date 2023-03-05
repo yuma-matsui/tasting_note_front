@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import { NewTastingSheetPage, SignedInWelcomePage, WelcomePage } from '../components/pages'
 import { useAuthContext, useTastingSheetsContext } from '../hooks'
+import { ModalProvider } from '../providers'
 
 const RouterConfig: FC = () => {
   const { currentUser, loading, error } = useAuthContext()
@@ -13,13 +14,15 @@ const RouterConfig: FC = () => {
 
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={currentUser ? <SignedInWelcomePage /> : <WelcomePage />} />
-        <Route path="/tasting_sheets">
-          <Route path=":tastingSheetId" element={<p>個別ページ</p>} />
-          <Route path="new" element={<NewTastingSheetPage />} />
-        </Route>
-      </Routes>
+      <ModalProvider>
+        <Routes>
+          <Route path="/" element={currentUser ? <SignedInWelcomePage /> : <WelcomePage />} />
+          <Route path="/tasting_sheets">
+            <Route path=":tastingSheetId" element={<p>個別ページ</p>} />
+            <Route path="new" element={<NewTastingSheetPage />} />
+          </Route>
+        </Routes>
+      </ModalProvider>
     </BrowserRouter>
   )
 }
