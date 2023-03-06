@@ -20,7 +20,11 @@ export { default as useTastingSheetContext } from './context/useTastingSheetCont
 export { default as useAuthContext } from './context/useAuthContext'
 export { default as useTastingSheetsContext } from './context/useTastingSheetsContext'
 export { default as useToastContext } from './context/useToastContext'
+export { default as useModalContext } from './context/useModalContext'
 
 export { default as useOnClickAuth } from './auth/useOnClickAuth'
 
 export { default as useAxios } from './useAxios'
+export { default as useAutoCloseModal } from './useAutoCloseModal'
+export { default as useOnClickOpenModal } from './useOnClickOpenModal'
+export { default as useCheckEditingForm } from './useCheckEditingForm'

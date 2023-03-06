@@ -2,14 +2,18 @@ import { FC, memo } from 'react'
 import { BsExclamationTriangle } from 'react-icons/bs'
 
 import defaultImage from '../../assets/images/wineGlass.jpg'
-import DeleteTastingSheetModalBox from './modals/DeleteTastingSheetModalBox'
 import { TastingSheetCardProps } from '../../types'
-import { ModalOpenButton } from '../atoms'
+import { DeleteTastingSheetButton } from '../atoms'
+import { useOnClickOpenModal } from '../../hooks'
 
 const TastingSheetCard: FC<TastingSheetCardProps> = memo(({ tastingSheet }) => {
   const bgColor = tastingSheet.color === 'red' ? 'bg-red-600' : 'bg-emerald-500'
   const textColor = tastingSheet.color === 'red' ? 'text-red-700' : 'text-emerald-500'
-  const modalId = 'delete-sheet-modal'
+  const { onClickOpenModal } = useOnClickOpenModal({
+    text: '本当に削除してもよろしいですか？',
+    content: <DeleteTastingSheetButton id={tastingSheet.id} />,
+    closeText: 'いいえ'
+  })
 
   return (
     <li className="mb-4">
@@ -24,9 +28,10 @@ const TastingSheetCard: FC<TastingSheetCardProps> = memo(({ tastingSheet }) => {
           <div className="card-actions justify-end">
             <div className="flex items-center">
               <BsExclamationTriangle />
-              <ModalOpenButton id={modalId} text="削除" />
+              <button type="button" onClick={onClickOpenModal}>
+                削除
+              </button>
             </div>
-            <DeleteTastingSheetModalBox id={modalId} tastingSheetId={tastingSheet.id} />
           </div>
         </div>
       </div>
