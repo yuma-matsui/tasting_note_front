@@ -12,14 +12,18 @@ import { FormControllerProps } from '../../types'
 import { FormControllerButton, GoToTopPageButton, SignInAndPostButton } from '../atoms'
 
 const FormController: FC<FormControllerProps> = memo(
-  ({ children, onClick, isFirstStep, isLastStep, disabled, backButtonText, nextButtonText }) => {
+  ({ children, onClick, isFirstStep, isAppearanceStep, isLastStep, disabled, backButtonText, nextButtonText }) => {
     useBeforeUnload()
     useBlockBrowserBack()
     useResetTastingSheet()
 
     const { currentUser } = useAuthContext()
+
     const { postTastingSheet } = usePostTastingSheet()
     const onClickPost = () => postTastingSheet()
+
+    const submitRef = useRef<HTMLInputElement>(null)
+
     const { onClickOpenModal } = useOnClickOpenModal({
       text: '記録せずに終了しますか？',
       content: (
@@ -29,14 +33,26 @@ const FormController: FC<FormControllerProps> = memo(
         </>
       )
     })
-
-    const submitRef = useRef<HTMLInputElement>(null)
+    const { onClickOpenModal: onClickBackAndOpenModal } = useOnClickOpenModal({
+      text: '記録の途中ですがよろしいですか？',
+      content: (
+        <button type="button" onClick={() => window.location.reload()}>
+          はい
+        </button>
+      ),
+      closeText: 'いいえ'
+    })
 
     return (
       <>
         {children}
-        {!isFirstStep && (
+        {!isFirstStep && !isAppearanceStep && (
           <FormControllerButton value={backButtonText} disabled={disabled} onClick={() => onClick('back', submitRef)} />
+        )}
+        {isAppearanceStep && (
+          <button type="button" className="btn" onClick={onClickBackAndOpenModal}>
+            {backButtonText}
+          </button>
         )}
         {isLastStep ? (
           <button type="button" onClick={currentUser ? onClickPost : onClickOpenModal} className="btn">
