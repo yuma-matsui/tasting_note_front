@@ -1,17 +1,17 @@
 import { FC, memo } from 'react'
 
-import { useAuthContext, useOnClickAuth } from '../../hooks'
-import { HeaderFooterProps } from '../../types'
+import { useAuthContext, useCheckEditingForm, useOnClickAuth } from '../../hooks'
 import { FooterLink } from '../atoms'
 
-const Footer: FC<HeaderFooterProps> = memo(({ logoOnly = false, modalId }) => {
+const Footer: FC = memo(() => {
   const { currentUser } = useAuthContext()
+  const { isEditing } = useCheckEditingForm()
   const { onClickSignOut, onClickDeleteAccount } = useOnClickAuth()
 
   return (
     <footer className="flex flex-col items-center border-t border-gray-500 pt-4 mt-4">
-      <FooterLink hasModal={logoOnly} modalId={modalId} />
-      {!logoOnly && (
+      <FooterLink />
+      {!isEditing && (
         <ul className="flex list-none">
           <li className="mr-4">利用規約</li>
           <li>プライバシーポリシー</li>

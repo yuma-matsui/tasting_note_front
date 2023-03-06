@@ -29,11 +29,6 @@ const useMultiStepForm = (steps: ReactElement[]) => {
   }
 
   const onClickPageControl = (type: 'back' | 'next', ref: RefObject<HTMLInputElement>) => {
-    if (type === 'back' && isAppearanceStep) {
-      window.location.reload()
-      return
-    }
-
     ref.current?.click()
     if (type === 'back') back()
     if (type === 'next') next()

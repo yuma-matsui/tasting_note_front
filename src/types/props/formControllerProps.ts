@@ -5,6 +5,7 @@ type FormControllerProps = {
   onClick: (type: 'back' | 'next', ref: React.RefObject<HTMLInputElement>) => void
   isFirstStep: boolean
   isLastStep: boolean
+  isAppearanceStep: boolean
   backButtonText: string
   nextButtonText: string
   disabled: boolean
