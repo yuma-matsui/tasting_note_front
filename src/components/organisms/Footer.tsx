@@ -1,12 +1,17 @@
 import { FC, memo } from 'react'
 
-import { useAuthContext, useCheckEditingForm, useOnClickAuth } from '../../hooks'
-import { FooterLink } from '../atoms'
+import { useAuthContext, useCheckEditingForm, useOnClickAuth, useOnClickOpenModal } from '../../hooks'
+import { DeleteAccountButton, FooterLink } from '../atoms'
 
 const Footer: FC = memo(() => {
   const { currentUser } = useAuthContext()
   const { isEditing } = useCheckEditingForm()
-  const { onClickSignOut, onClickDeleteAccount } = useOnClickAuth()
+  const { onClickSignOut } = useOnClickAuth()
+  const { onClickOpenModal } = useOnClickOpenModal({
+    text: '本当に削除してもよろしいですか？',
+    content: <DeleteAccountButton />,
+    closeText: 'いいえ'
+  })
 
   return (
     <footer className="flex flex-col items-center border-t border-gray-500 pt-4 mt-4">
@@ -23,7 +28,7 @@ const Footer: FC = memo(() => {
                 </button>
               </li>
               <li>
-                <button type="button" onClick={onClickDeleteAccount} className="text-red-700">
+                <button type="button" onClick={onClickOpenModal} className="text-red-700">
                   アカウント削除
                 </button>
               </li>
