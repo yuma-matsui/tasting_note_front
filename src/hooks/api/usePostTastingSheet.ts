@@ -11,6 +11,7 @@ import useToastContext from '../context/useToastContext'
 const usePostTastingSheet = () => {
   const navigate = useNavigate()
   const { tastingSheet } = useTastingSheetContext()
+  const { setTastingSheets } = useTastingSheetsContext()
   const { signIn, currentUser } = useAuthContext()
   const { client, getHeaders } = useAxios()
   const { setRequesting } = useTastingSheetsContext()
@@ -25,9 +26,11 @@ const usePostTastingSheet = () => {
 
     try {
       const response = (
-        await client.post<TastingSheetApi>('/tasting_sheets', tastingSheet, await getHeaders(postingUser))
+        await client.post<TastingSheetApi[]>('/tasting_sheets', tastingSheet, await getHeaders(postingUser))
       ).data
-      navigate(`/tasting_sheets/${response.id}`)
+      setTastingSheets(response)
+      const target = Math.max(...[...response.map((sheet) => sheet.id)])
+      navigate(`/tasting_sheets/${target}`)
     } catch (e) {
       if (e instanceof Error) throw e
     } finally {
