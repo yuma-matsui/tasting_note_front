@@ -2,6 +2,7 @@ import { FC, ReactElement, useCallback, useEffect, useMemo, useState } from 'rea
 import { createPortal } from 'react-dom'
 import { useLocation } from 'react-router-dom'
 
+import { CloseModalButton } from '../components/atoms'
 import { BaseModal } from '../components/molecules'
 import { ModalContext } from '../contexts'
 import { ReactNodeChildren, ShowModalProps } from '../types'
@@ -9,28 +10,28 @@ import { ReactNodeChildren, ShowModalProps } from '../types'
 const ModalProvider: FC<ReactNodeChildren> = ({ children }) => {
   const [visible, setVisible] = useState(false)
   const [modalText, setModalText] = useState('')
-  const [modalContent, setModalContent] = useState<ReactElement>(<span />)
-  const [modalCloseText, setModalCloseText] = useState<string | undefined>('')
+  const [modalLeftButton, setModalLeftButton] = useState<ReactElement>(<span />)
+  const [modalRightButton, setModalRightButton] = useState<ReactElement>(<span />)
   const { pathname } = useLocation()
 
   useEffect(() => {
     setVisible(false)
   }, [pathname])
 
-  const showModal = useCallback(({ text, content, closeText }: ShowModalProps) => {
+  const showModal = useCallback(({ text, leftButton, rightButton }: ShowModalProps) => {
     setModalText(text)
-    setModalContent(content)
-    setModalCloseText(closeText)
+    setModalLeftButton(leftButton ?? <CloseModalButton onClick={() => setVisible(false)} />)
+    setModalRightButton(rightButton)
     setVisible(true)
   }, [])
 
-  const modalState = useMemo(() => ({ showModal, setVisible }), [showModal])
+  const modalState = useMemo(() => ({ showModal }), [showModal])
 
   return (
     <ModalContext.Provider value={modalState}>
       {children}
       {createPortal(
-        <BaseModal text={modalText} content={modalContent} visible={visible} closeText={modalCloseText} />,
+        <BaseModal text={modalText} leftButton={modalLeftButton} rightButton={modalRightButton} visible={visible} />,
         document.body
       )}
     </ModalContext.Provider>
