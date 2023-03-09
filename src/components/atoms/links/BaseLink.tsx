@@ -9,8 +9,7 @@ const BaseLink: FC<BaseLinkProps> = memo(({ logo }) => {
   const { isEditing } = useCheckEditingForm()
   const { onClickOpenModal } = useOnClickOpenModal({
     text: '記録の途中ですがよろしいですか？',
-    content: <GoToTopPageButton text="OK" />,
-    closeText: '回答にもどる'
+    rightButton: <GoToTopPageButton text="OK" />
   })
 
   return isEditing ? (

@@ -26,21 +26,16 @@ const FormController: FC<FormControllerProps> = memo(
 
     const { onClickOpenModal } = useOnClickOpenModal({
       text: '記録せずに終了しますか？',
-      content: (
-        <>
-          <GoToTopPageButton text="OK" />
-          <SignInAndPostButton />
-        </>
-      )
+      leftButton: <GoToTopPageButton text="OK" />,
+      rightButton: <SignInAndPostButton />
     })
     const { onClickOpenModal: onClickBackAndOpenModal } = useOnClickOpenModal({
       text: '記録の途中ですがよろしいですか？',
-      content: (
+      rightButton: (
         <button type="button" onClick={() => window.location.reload()}>
           はい
         </button>
-      ),
-      closeText: 'いいえ'
+      )
     })
 
     return (
