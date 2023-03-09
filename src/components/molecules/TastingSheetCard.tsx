@@ -11,8 +11,7 @@ const TastingSheetCard: FC<TastingSheetCardProps> = memo(({ tastingSheet }) => {
   const textColor = tastingSheet.color === 'red' ? 'text-red-700' : 'text-emerald-500'
   const { onClickOpenModal } = useOnClickOpenModal({
     text: '本当に削除してもよろしいですか？',
-    content: <DeleteTastingSheetButton id={tastingSheet.id} />,
-    closeText: 'いいえ'
+    rightButton: <DeleteTastingSheetButton id={tastingSheet.id} />
   })
 
   return (

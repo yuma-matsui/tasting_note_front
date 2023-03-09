@@ -2,9 +2,9 @@ import { ReactElement } from 'react'
 
 type BaseModalProps = {
   text: string
-  content: ReactElement
+  leftButton: ReactElement
+  rightButton: ReactElement
   visible: boolean
-  closeText: string | undefined
 }
 
 export default BaseModalProps

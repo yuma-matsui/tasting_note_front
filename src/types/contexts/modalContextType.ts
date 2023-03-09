@@ -1,10 +1,7 @@
-import { Dispatch, SetStateAction } from 'react'
-
 import ShowModalProps from '../props/showModalProps'
 
 type ModalContextType = {
-  showModal: ({ text, content, closeText }: ShowModalProps) => void
-  setVisible: Dispatch<SetStateAction<boolean>>
+  showModal: ({ text, leftButton, rightButton }: ShowModalProps) => void
 }
 
 export default ModalContextType
