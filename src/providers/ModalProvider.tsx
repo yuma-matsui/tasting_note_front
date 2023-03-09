@@ -1,7 +1,8 @@
-import { FC, ReactElement, useCallback, useMemo, useState } from 'react'
+import { FC, ReactElement, useCallback, useEffect, useMemo, useState } from 'react'
 import { createPortal } from 'react-dom'
-import { BaseModal } from '../components/molecules'
+import { useLocation } from 'react-router-dom'
 
+import { BaseModal } from '../components/molecules'
 import { ModalContext } from '../contexts'
 import { ReactNodeChildren, ShowModalProps } from '../types'
 
@@ -10,6 +11,11 @@ const ModalProvider: FC<ReactNodeChildren> = ({ children }) => {
   const [modalText, setModalText] = useState('')
   const [modalContent, setModalContent] = useState<ReactElement>(<span />)
   const [modalCloseText, setModalCloseText] = useState<string | undefined>('')
+  const { pathname } = useLocation()
+
+  useEffect(() => {
+    setVisible(false)
+  }, [pathname])
 
   const showModal = useCallback(({ text, content, closeText }: ShowModalProps) => {
     setModalText(text)
