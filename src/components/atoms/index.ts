@@ -7,6 +7,7 @@ export { default as DeleteTastingSheetButton } from './buttons/DeleteTastingShee
 export { default as GoToTopPageButton } from './buttons/GoToTopPageButton'
 export { default as SignInAndPostButton } from './buttons/SignInAndPostButton'
 export { default as DeleteAccountButton } from './buttons/DeleteAccountButton'
+export { default as CloseModalButton } from './buttons/CloseModalButton'
 
 export { default as TastingSheetCheckBox } from './inputs/TastingSheetCheckBox'
 export { default as TastingSheetSelectBox } from './selects/TastingSheetSelectBox'
