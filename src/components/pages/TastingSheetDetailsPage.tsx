@@ -4,7 +4,7 @@ import { useFetchATastingSheet, useTastingSheetContext, useTastingSheetLabels } 
 import { TastingSheetDetailsTab } from '../organisms'
 import { DefaultLayout } from '../templates'
 
-const TastingSheetDetailPage: FC = () => {
+const TastingSheetDetailsPage: FC = () => {
   const { fetching } = useFetchATastingSheet()
   const { tastingSheet } = useTastingSheetContext()
   const labels = useTastingSheetLabels()
@@ -19,4 +19,4 @@ const TastingSheetDetailPage: FC = () => {
   )
 }
 
-export default TastingSheetDetailPage
+export default TastingSheetDetailsPage
