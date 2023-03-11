@@ -9,8 +9,13 @@ const useConclusionLabels = (type?: 'select' | undefined) => {
   } = useTastingSheetContext()
 
   const items = type === 'select' ? CONCLUSION_SELECT_OPTIONS : CONCLUSION_FORM_ITEMS
+  const filterTarget = color === 'white' ? 'decantage' : ''
 
-  return [...items.map((item) => new FormItem<ConclusionName>({ color, ...item }).property)]
+  return [
+    ...items
+      .map((item) => new FormItem<ConclusionName>({ color, ...item }).property)
+      .filter(({ name }) => name !== filterTarget)
+  ]
 }
 
 export default useConclusionLabels
