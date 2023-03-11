@@ -3,7 +3,7 @@ import { TasteName } from '../../../types'
 import { FormItem } from '../../../utils'
 import useTastingSheetContext from '../../context/useTastingSheetContext'
 
-const useTasteFormItems = () => {
+const useTasteLabels = () => {
   const {
     tastingSheet: { color }
   } = useTastingSheetContext()
@@ -17,4 +17,4 @@ const useTasteFormItems = () => {
   ]
 }
 
-export default useTasteFormItems
+export default useTasteLabels

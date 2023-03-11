@@ -3,7 +3,7 @@ import { FlavorName } from '../../../types'
 import { FormItem } from '../../../utils'
 import useTastingSheetContext from '../../context/useTastingSheetContext'
 
-const useFlavorFormItems = () => {
+const useFlavorLabels = () => {
   const {
     tastingSheet: { color }
   } = useTastingSheetContext()
@@ -11,4 +11,4 @@ const useFlavorFormItems = () => {
   return [...FLAVOR_FORM_ITEMS.map((item) => new FormItem<FlavorName>({ color, ...item }).property)]
 }
 
-export default useFlavorFormItems
+export default useFlavorLabels

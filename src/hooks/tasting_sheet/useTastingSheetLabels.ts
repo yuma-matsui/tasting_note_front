@@ -1,21 +1,21 @@
 import { TastingSheetLabelsTuple } from '../../types'
-import useAppearanceFormItems from './appearance/useAppearanceFormItems'
-import useConclusionFormItems from './conclusion/useConclusionFormItems'
-import useFlavorFormItems from './flavor/useFlavorFormItems'
-import useTasteFormItems from './taste/useTasteFormItems'
+import useAppearanceLabels from './appearance/useAppearanceLabels'
+import useConclusionLabels from './conclusion/useConclusionLabels'
+import useFlavorLabels from './flavor/useFlavorLabels'
+import useTasteLabels from './taste/useTasteLabels'
 
 const useTastingSheetLabels = (): TastingSheetLabelsTuple => {
-  const appearanceItems = useAppearanceFormItems()
-  const flavorItems = useFlavorFormItems()
-  const tasteItems = useTasteFormItems()
-  const conclusionItems = useConclusionFormItems()
-  const conclusionOptions = useConclusionFormItems('select')
+  const appearanceLabels = useAppearanceLabels()
+  const flavorLabels = useFlavorLabels()
+  const tasteLabels = useTasteLabels()
+  const conclusionLabels = useConclusionLabels()
+  const conclusionOptions = useConclusionLabels('select')
 
   return [
-    { type: 'appearance', items: appearanceItems, options: [] },
-    { type: 'flavor', items: flavorItems, options: [] },
-    { type: 'taste', items: tasteItems, options: [] },
-    { type: 'conclusion', items: conclusionItems, options: conclusionOptions }
+    { type: 'appearance', items: appearanceLabels, options: [] },
+    { type: 'flavor', items: flavorLabels, options: [] },
+    { type: 'taste', items: tasteLabels, options: [] },
+    { type: 'conclusion', items: conclusionLabels, options: conclusionOptions }
   ]
 }
 
