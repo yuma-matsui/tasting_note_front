@@ -15,6 +15,7 @@ export { default as useTastingSheetTimer } from './tasting_sheet/useTastingSheet
 export { default as usePostTastingSheet } from './api/usePostTastingSheet'
 export { default as useFetchTastingSheets } from './api/useFetchTastingSheets'
 export { default as useDeleteTastingSheet } from './api/useDeleteTastingSheet'
+export { default as useFetchATastingSheet } from './api/useFetchATastingSheet'
 
 export { default as useTastingSheetContext } from './context/useTastingSheetContext'
 export { default as useAuthContext } from './context/useAuthContext'
