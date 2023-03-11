@@ -33,7 +33,7 @@ const initialTastingSheet: TastingSheet = {
     evaluation: '',
     optimumTemperature: '',
     glass: '',
-    decantage: '',
+    decantage: null,
     vintage: '',
     country: '',
     grape: ''
