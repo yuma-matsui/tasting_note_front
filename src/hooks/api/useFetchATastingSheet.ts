@@ -1,8 +1,8 @@
 import { useCallback, useLayoutEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { TastingSheetApi } from '../../types'
-import { initialTastingSheet } from '../../utils'
 import useAuthContext from '../context/useAuthContext'
+import useTastingSheetContext from '../context/useTastingSheetContext'
 import useAxios from '../useAxios'
 
 const useFetchATastingSheet = () => {
@@ -11,14 +11,10 @@ const useFetchATastingSheet = () => {
   const target = Number(tastingSheetId)
 
   const { client, getHeaders } = useAxios()
+  const { setTastingSheet } = useTastingSheetContext()
   const { currentUser } = useAuthContext()
 
   const [fetching, setFetching] = useState(false)
-  const [tastingSheet, setTastingSheet] = useState<TastingSheetApi>({
-    ...initialTastingSheet,
-    id: 0,
-    createdAt: ''
-  })
   const fetchATastingSheet = useCallback(async () => {
     setFetching(true)
     if (!currentUser) return
@@ -34,7 +30,7 @@ const useFetchATastingSheet = () => {
     } finally {
       setFetching(false)
     }
-  }, [currentUser, client, target, getHeaders, navigate])
+  }, [currentUser, client, target, getHeaders, navigate, setTastingSheet])
 
   useLayoutEffect(() => {
     if (currentUser)
@@ -45,7 +41,6 @@ const useFetchATastingSheet = () => {
   }, [currentUser])
 
   return {
-    tastingSheet,
     fetching
   }
 }
