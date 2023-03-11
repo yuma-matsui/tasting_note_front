@@ -1,4 +1,5 @@
 import { FC, memo } from 'react'
+import { Link } from 'react-router-dom'
 import { BsExclamationTriangle } from 'react-icons/bs'
 
 import defaultImage from '../../assets/images/wineGlass.jpg'
@@ -17,10 +18,12 @@ const TastingSheetCard: FC<TastingSheetCardProps> = memo(({ tastingSheet }) => {
   return (
     <li className="mb-4">
       <div className={`card w-96 shadow-xl relative ${bgColor}`}>
-        <figure>
-          <img src={defaultImage} alt="wine" />
-        </figure>
-        <p className={`absolute top-2 left-2 ${textColor}`}>No Image</p>
+        <Link to={`/tasting_sheets/${tastingSheet.id}`}>
+          <figure>
+            <img src={defaultImage} alt="wine" />
+          </figure>
+          <p className={`absolute top-2 left-2 ${textColor}`}>No Image</p>
+        </Link>
         <div className="card-body text-white">
           <h2 className="card-title">{tastingSheet.name}</h2>
           <p>{tastingSheet.createdAt}</p>

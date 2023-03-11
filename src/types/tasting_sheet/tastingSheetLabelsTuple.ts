@@ -1,6 +1,6 @@
 import TastingSheetFormItem from './tastingSheetFormItem'
 
-type TastingSheetAllFormItemsTuple = [
+type TastingSheetLabelsTuple = [
   {
     type: 'appearance'
     items: TastingSheetFormItem[]
@@ -23,4 +23,4 @@ type TastingSheetAllFormItemsTuple = [
   }
 ]
 
-export default TastingSheetAllFormItemsTuple
+export default TastingSheetLabelsTuple

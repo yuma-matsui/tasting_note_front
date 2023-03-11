@@ -18,9 +18,7 @@ const usePostTastingSheet = () => {
 
   const postTastingSheet = async (user?: User) => {
     setRequesting(true)
-    let postingUser: User | undefined | null = currentUser
-    if (user) postingUser = user
-
+    const postingUser = currentUser ?? user
     if (!postingUser) throw new Error('不正な呼び出し方です。')
 
     try {

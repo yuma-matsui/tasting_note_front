@@ -3,7 +3,7 @@ import { ConclusionName } from '../../../types'
 import { FormItem } from '../../../utils'
 import useTastingSheetContext from '../../context/useTastingSheetContext'
 
-const useConclusionFormItems = (type?: 'select' | undefined) => {
+const useConclusionLabels = (type?: 'select' | undefined) => {
   const {
     tastingSheet: { color }
   } = useTastingSheetContext()
@@ -13,4 +13,4 @@ const useConclusionFormItems = (type?: 'select' | undefined) => {
   return [...items.map((item) => new FormItem<ConclusionName>({ color, ...item }).property)]
 }
 
-export default useConclusionFormItems
+export default useConclusionLabels

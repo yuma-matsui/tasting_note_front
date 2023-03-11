@@ -1,19 +1,19 @@
 import { FC, memo, ReactElement } from 'react'
 
-import { TastingSheetConfirmationTab } from '../organisms'
 import { NewTastingSheetSettingForm, StepsBar, TastingSheetBaseForm } from '../molecules'
 import { DefaultLayout, FormController } from '../templates'
-import { useMultiStepForm, useTastingSheetForm, useTastingSheetFormAllItems } from '../../hooks'
+import { useMultiStepForm, useTastingSheetForm, useTastingSheetLabels } from '../../hooks'
 import { TastingSheetTimer } from '../atoms'
+import { TastingSheetDetailsTab } from '../organisms'
 
 const NewTastingSheetPage: FC = memo(() => {
-  const formItems = useTastingSheetFormAllItems()
+  const labels = useTastingSheetLabels()
   const { handleSubmit, isValid, isSubmitting, onSubmit, register, errors, lessThanTwoItems, getValues } =
     useTastingSheetForm()
 
   const steps: ReactElement[] = [
     <NewTastingSheetSettingForm register={register} errors={errors} />,
-    ...formItems.map(({ type, items, options }) => (
+    ...labels.map(({ type, items, options }) => (
       <TastingSheetBaseForm
         type={type}
         items={items}
@@ -23,7 +23,7 @@ const NewTastingSheetPage: FC = memo(() => {
         getValues={getValues}
       />
     )),
-    <TastingSheetConfirmationTab formItems={formItems} />
+    <TastingSheetDetailsTab labels={labels} />
   ]
   const { step, onClickPageControl, isFirstStep, isAppearanceStep, isLastStep, getButtonText, currentStepIndex } =
     useMultiStepForm(steps)
