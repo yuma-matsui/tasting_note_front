@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
-import { NewTastingSheetPage, SignedInWelcomePage, WelcomePage } from '../components/pages'
+import { NewTastingSheetPage, SignedInWelcomePage, TastingSheetDetailPage, WelcomePage } from '../components/pages'
 import { useAuthContext, useTastingSheetsContext } from '../hooks'
 import { ModalProvider } from '../providers'
 
@@ -18,7 +18,7 @@ const RouterConfig: FC = () => {
         <Routes>
           <Route path="/" element={currentUser ? <SignedInWelcomePage /> : <WelcomePage />} />
           <Route path="/tasting_sheets">
-            <Route path=":tastingSheetId" element={<p>個別ページ</p>} />
+            <Route path=":tastingSheetId" element={<TastingSheetDetailPage />} />
             <Route path="new" element={<NewTastingSheetPage />} />
           </Route>
         </Routes>
