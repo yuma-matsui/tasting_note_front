@@ -18,9 +18,9 @@ const AuthProvider: FC<ReactNodeChildren> = ({ children }) => {
   const [deleteAccountLoading, setDeleteAccountLoading] = useState(false)
   const [signInWithGoogle, , signInLoading, signInError] = useSignInWithGoogle(auth)
   const [authUser, authLoading, authError] = useAuthState(auth)
-  const [signOut, signOutLoading, signOutError] = useSignOut(auth)
+  const [signOut, , signOutError] = useSignOut(auth)
   const [deleteUser, deleteLoading, deleteError] = useDeleteUser(auth)
-  const loading = signInLoading || authLoading || signOutLoading || deleteLoading || deleteAccountLoading
+  const loading = signInLoading || authLoading || deleteLoading || deleteAccountLoading
   const error = signInError || authError || signOutError || deleteError
 
   useLayoutEffect(() => {
