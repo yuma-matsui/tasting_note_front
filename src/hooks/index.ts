@@ -2,7 +2,7 @@ export { default as useAppearanceFormItems } from './tasting_sheet/appearance/us
 export { default as useFlavorFormItems } from './tasting_sheet/flavor/useFlavorFormItems'
 export { default as useTasteFormItems } from './tasting_sheet/taste/useTasteFormItems'
 export { default as useConclusionFormItems } from './tasting_sheet/conclusion/useConclusionFormItems'
-export { default as useConfirmationTabItems } from './tasting_sheet/useConfirmationTabItems'
+export { default as useDetailsTabItems } from './tasting_sheet/useDetailsTabItems'
 export { default as useTastingSheetForm } from './tasting_sheet/useTastingSheetForm'
 export { default as useTastingSheetInputsAttributes } from './tasting_sheet/useTastingSheetInputAttributes'
 export { default as useTastingSheetFormAllItems } from './tasting_sheet/useTastingSheetFormAllItems'

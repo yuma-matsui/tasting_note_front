@@ -1,7 +1,7 @@
 import TastingSheetAllFormItemsTuple from '../tasting_sheet/tastingSheetAllFormItemsTuple'
 
-type ConfirmationTabProps = {
+type DetailsTabProps = {
   formItems: TastingSheetAllFormItemsTuple
 }
 
-export default ConfirmationTabProps
+export default DetailsTabProps

@@ -3,7 +3,7 @@ import { TastingSheetAllName, TastingSheetFormType, TastingSheetPropertyType } f
 import { formResultFormat, isAppearanceName, isConclusionName, isFlavorName, isTasteName } from '../../utils'
 import useTastingSheetContext from '../context/useTastingSheetContext'
 
-const useConfirmationTabItems = () => {
+const useDetailsTabItems = () => {
   const { tastingSheet } = useTastingSheetContext()
   const [selectedTab, setSelectedTab] = useState<string>('appearance')
 
@@ -27,4 +27,4 @@ const useConfirmationTabItems = () => {
   }
 }
 
-export default useConfirmationTabItems
+export default useDetailsTabItems

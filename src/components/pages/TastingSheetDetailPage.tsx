@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
 import { useFetchATastingSheet, useTastingSheetContext, useTastingSheetFormAllItems } from '../../hooks'
-import { TastingSheetConfirmationTab } from '../organisms'
+import { TastingSheetDetailsTab } from '../organisms'
 import { DefaultLayout } from '../templates'
 
 const TastingSheetDetailPage: FC = () => {
@@ -14,7 +14,7 @@ const TastingSheetDetailPage: FC = () => {
   return (
     <DefaultLayout>
       <h2>{tastingSheet.name}</h2>
-      <TastingSheetConfirmationTab formItems={formItems} />
+      <TastingSheetDetailsTab formItems={formItems} />
     </DefaultLayout>
   )
 }
