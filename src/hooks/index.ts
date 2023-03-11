@@ -23,7 +23,6 @@ export { default as useToastContext } from './context/useToastContext'
 export { default as useModalContext } from './context/useModalContext'
 
 export { default as useOnClickAuth } from './auth/useOnClickAuth'
-export { default as useHasTastingSheet } from './auth/useHasTastingSheet'
 
 export { default as useAxios } from './useAxios'
 export { default as useOnClickOpenModal } from './useOnClickOpenModal'
