@@ -11,7 +11,6 @@ import useToastContext from '../context/useToastContext'
 const usePostTastingSheet = () => {
   const navigate = useNavigate()
   const { tastingSheet } = useTastingSheetContext()
-  const { setTastingSheets } = useTastingSheetsContext()
   const { signIn, currentUser } = useAuthContext()
   const { client, getHeaders } = useAxios()
   const { setRequesting } = useTastingSheetsContext()
@@ -19,18 +18,14 @@ const usePostTastingSheet = () => {
 
   const postTastingSheet = async (user?: User) => {
     setRequesting(true)
-    let postingUser: User | undefined | null = currentUser
-    if (user) postingUser = user
-
+    const postingUser = currentUser ?? user
     if (!postingUser) throw new Error('不正な呼び出し方です。')
 
     try {
       const response = (
-        await client.post<TastingSheetApi[]>('/tasting_sheets', tastingSheet, await getHeaders(postingUser))
+        await client.post<TastingSheetApi>('/tasting_sheets', tastingSheet, await getHeaders(postingUser))
       ).data
-      setTastingSheets(response)
-      const target = Math.max(...[...response.map((sheet) => sheet.id)])
-      navigate(`/tasting_sheets/${target}`)
+      navigate(`/tasting_sheets/${response.id}`)
     } catch (e) {
       if (e instanceof Error) throw e
     } finally {
