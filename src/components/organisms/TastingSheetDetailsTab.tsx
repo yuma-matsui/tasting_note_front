@@ -6,13 +6,13 @@ import { formTitleFormat } from '../../utils'
 import { TastingSheetDetailsDataList } from '../molecules'
 import { TastingSheetFormWrapper } from '../templates'
 
-const TastingSheetDetailsTab: FC<DetailsTabProps> = memo(({ formItems }) => {
+const TastingSheetDetailsTab: FC<DetailsTabProps> = memo(({ labels }) => {
   const { isShow, onClickTabChange, getFormResult } = useDetailsTabItems()
 
   return (
     <TastingSheetFormWrapper title="confirmation">
       <div className="tabs tabs-boxed">
-        {formItems.map(({ type }) => (
+        {labels.map(({ type }) => (
           <button
             key={type}
             type="button"
@@ -23,7 +23,7 @@ const TastingSheetDetailsTab: FC<DetailsTabProps> = memo(({ formItems }) => {
           </button>
         ))}
       </div>
-      {formItems.map(({ type, items, options }) => (
+      {labels.map(({ type, items, options }) => (
         <div key={type}>
           {[...items, ...options].map(
             ({ heading, name, subHeading }) =>

@@ -23,7 +23,7 @@ const NewTastingSheetPage: FC = memo(() => {
         getValues={getValues}
       />
     )),
-    <TastingSheetDetailsTab formItems={labels} />
+    <TastingSheetDetailsTab labels={labels} />
   ]
   const { step, onClickPageControl, isFirstStep, isAppearanceStep, isLastStep, getButtonText, currentStepIndex } =
     useMultiStepForm(steps)

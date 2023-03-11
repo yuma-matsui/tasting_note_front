@@ -14,7 +14,7 @@ const TastingSheetDetailPage: FC = () => {
   return (
     <DefaultLayout>
       <h2>{tastingSheet.name}</h2>
-      <TastingSheetDetailsTab formItems={labels} />
+      <TastingSheetDetailsTab labels={labels} />
     </DefaultLayout>
   )
 }

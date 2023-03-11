@@ -1,7 +1,7 @@
 import TastingSheetLabelsTuple from '../tasting_sheet/tastingSheetLabelsTuple'
 
 type DetailsTabProps = {
-  formItems: TastingSheetLabelsTuple
+  labels: TastingSheetLabelsTuple
 }
 
 export default DetailsTabProps
