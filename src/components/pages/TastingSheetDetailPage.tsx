@@ -1,15 +1,20 @@
 import { FC } from 'react'
 
-import { useFetchATastingSheet } from '../../hooks'
+import { useFetchATastingSheet, useTastingSheetContext, useTastingSheetFormAllItems } from '../../hooks'
+import { TastingSheetConfirmationTab } from '../organisms'
 import { DefaultLayout } from '../templates'
 
 const TastingSheetDetailPage: FC = () => {
-  const { tastingSheet, fetching } = useFetchATastingSheet()
+  const { fetching } = useFetchATastingSheet()
+  const { tastingSheet } = useTastingSheetContext()
+  const formItems = useTastingSheetFormAllItems()
+
   if (fetching) return <p>...Loading</p>
 
   return (
     <DefaultLayout>
-      <p>{tastingSheet.id}</p>
+      <h2>{tastingSheet.name}</h2>
+      <TastingSheetConfirmationTab formItems={formItems} />
     </DefaultLayout>
   )
 }
