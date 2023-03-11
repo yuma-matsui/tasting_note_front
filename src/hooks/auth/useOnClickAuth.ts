@@ -20,21 +20,21 @@ const useOnClickAuth = () => {
   const onClickSignOut = async () => {
     try {
       await signOut()
+      navigate('/')
     } catch (e) {
       if (e instanceof Error) throw e
     }
     showToast('ログアウトしました')
-    navigate('/')
   }
 
   const onClickDeleteAccount = async () => {
     try {
       await deleteAccount()
+      navigate('/')
     } catch (e) {
       if (e instanceof Error) throw e
     }
     showToast('アカウントを削除しました')
-    navigate('/')
   }
 
   return {
