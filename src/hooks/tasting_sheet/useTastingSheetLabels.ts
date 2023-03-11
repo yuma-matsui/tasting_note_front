@@ -1,10 +1,10 @@
-import { TastingSheetAllFormItemsTuple } from '../../types'
+import { TastingSheetLabelsTuple } from '../../types'
 import useAppearanceFormItems from './appearance/useAppearanceFormItems'
 import useConclusionFormItems from './conclusion/useConclusionFormItems'
 import useFlavorFormItems from './flavor/useFlavorFormItems'
 import useTasteFormItems from './taste/useTasteFormItems'
 
-const useTastingSheetFormAllItems = (): TastingSheetAllFormItemsTuple => {
+const useTastingSheetLabels = (): TastingSheetLabelsTuple => {
   const appearanceItems = useAppearanceFormItems()
   const flavorItems = useFlavorFormItems()
   const tasteItems = useTasteFormItems()
@@ -19,4 +19,4 @@ const useTastingSheetFormAllItems = (): TastingSheetAllFormItemsTuple => {
   ]
 }
 
-export default useTastingSheetFormAllItems
+export default useTastingSheetLabels

@@ -6,7 +6,7 @@ export type { default as TastingSheetPropertyType } from './tasting_sheet/tastin
 export type { default as TastingSheetUseFormName } from './tasting_sheet/tastingSheetUseFormName'
 export type { default as TastingSheetAllName } from './tasting_sheet/tastingSheetAllName'
 export type { default as TastingSheetFormType } from './tasting_sheet/tastingSheetFormType'
-export type { default as TastingSheetAllFormItemsTuple } from './tasting_sheet/tastingSheetAllFormItemsTuple'
+export type { default as TastingSheetLabelsTuple } from './tasting_sheet/tastingSheetLabelsTuple'
 
 export type { default as AppearanceName } from './tasting_sheet/appearance/appearanceName'
 export type { default as Appearance } from './tasting_sheet/appearance/appearance'
