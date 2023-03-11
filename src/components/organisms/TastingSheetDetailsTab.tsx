@@ -1,18 +1,18 @@
 import { FC, memo } from 'react'
+import { useDetailsTabItems } from '../../hooks'
 
-import { useConfirmationTabItems } from '../../hooks'
-import { ConfirmationTabProps } from '../../types'
+import { DetailsTabProps } from '../../types'
 import { formTitleFormat } from '../../utils'
-import { TastingSheetConfirmationDataList } from '../molecules'
+import { TastingSheetDetailsDataList } from '../molecules'
 import { TastingSheetFormWrapper } from '../templates'
 
-const TastingSheetConfirmationTab: FC<ConfirmationTabProps> = memo(({ formItems }) => {
-  const { isShow, onClickTabChange, getFormResult } = useConfirmationTabItems()
+const TastingSheetDetailsTab: FC<DetailsTabProps> = memo(({ labels }) => {
+  const { isShow, onClickTabChange, getFormResult } = useDetailsTabItems()
 
   return (
     <TastingSheetFormWrapper title="confirmation">
       <div className="tabs tabs-boxed">
-        {formItems.map(({ type }) => (
+        {labels.map(({ type }) => (
           <button
             key={type}
             type="button"
@@ -23,12 +23,12 @@ const TastingSheetConfirmationTab: FC<ConfirmationTabProps> = memo(({ formItems 
           </button>
         ))}
       </div>
-      {formItems.map(({ type, items, options }) => (
+      {labels.map(({ type, items, options }) => (
         <div key={type}>
           {[...items, ...options].map(
             ({ heading, name, subHeading }) =>
               isShow(type) && (
-                <TastingSheetConfirmationDataList
+                <TastingSheetDetailsDataList
                   key={heading}
                   title={heading}
                   subTitle={subHeading}
@@ -42,4 +42,4 @@ const TastingSheetConfirmationTab: FC<ConfirmationTabProps> = memo(({ formItems 
   )
 })
 
-export default TastingSheetConfirmationTab
+export default TastingSheetDetailsTab

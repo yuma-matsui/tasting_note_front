@@ -3,14 +3,19 @@ import { ConclusionName } from '../../../types'
 import { FormItem } from '../../../utils'
 import useTastingSheetContext from '../../context/useTastingSheetContext'
 
-const useConclusionFormItems = (type?: 'select' | undefined) => {
+const useConclusionLabels = (type?: 'select' | undefined) => {
   const {
     tastingSheet: { color }
   } = useTastingSheetContext()
 
   const items = type === 'select' ? CONCLUSION_SELECT_OPTIONS : CONCLUSION_FORM_ITEMS
+  const filterTarget = color === 'white' ? 'decantage' : ''
 
-  return [...items.map((item) => new FormItem<ConclusionName>({ color, ...item }).property)]
+  return [
+    ...items
+      .map((item) => new FormItem<ConclusionName>({ color, ...item }).property)
+      .filter(({ name }) => name !== filterTarget)
+  ]
 }
 
-export default useConclusionFormItems
+export default useConclusionLabels

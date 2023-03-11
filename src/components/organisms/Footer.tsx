@@ -9,8 +9,7 @@ const Footer: FC = memo(() => {
   const { onClickSignOut } = useOnClickAuth()
   const { onClickOpenModal } = useOnClickOpenModal({
     text: '本当に削除してもよろしいですか？',
-    content: <DeleteAccountButton />,
-    closeText: 'いいえ'
+    rightButton: <DeleteAccountButton />
   })
 
   return (
