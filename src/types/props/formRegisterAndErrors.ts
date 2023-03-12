@@ -2,9 +2,9 @@ import { FieldError, FieldErrorsImpl, Merge, UseFormRegister } from 'react-hook-
 
 import TastingSheetFormState from '../tasting_sheet/tastingSheetFormState'
 
-type TastingSheetSettingFormProps = {
+type FormRegisterAndErrors = {
   register: UseFormRegister<TastingSheetFormState>
   errors: Merge<FieldError, FieldErrorsImpl<TastingSheetFormState>> | undefined
 }
 
-export default TastingSheetSettingFormProps
+export default FormRegisterAndErrors

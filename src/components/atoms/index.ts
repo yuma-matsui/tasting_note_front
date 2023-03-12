@@ -10,7 +10,10 @@ export { default as DeleteAccountButton } from './buttons/DeleteAccountButton'
 export { default as CloseModalButton } from './buttons/CloseModalButton'
 
 export { default as TastingSheetCheckBox } from './inputs/TastingSheetCheckBox'
+export { default as TastingSheetNameInput } from './inputs/TastingSheetNameInput'
+
 export { default as TastingSheetSelectBox } from './selects/TastingSheetSelectBox'
+
 export { default as TastingSheetTimer } from './TastingSheetTimer'
 
 export { default as BaseToast } from './toasts/BaseToast'

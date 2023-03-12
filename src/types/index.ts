@@ -34,7 +34,6 @@ export type { default as ConclusionSelectBoxesProps } from './props/conclusionSe
 export type { default as TastingSheetSelectBoxProps } from './props/tastingSheetSelectBoxProps'
 export type { default as TastingSheetBaseFormProps } from './props/tastingSheetBaseFormProps'
 export type { default as DetailsTabProps } from './props/detailsTabProps'
-export type { default as TastingSheetSettingFormProps } from './props/tastingSheetSettingFormProps'
 export type { default as FormControllerProps } from './props/formControllerProps'
 export type { default as FormControllerButtonProps } from './props/formControllerButtonProps'
 export type { default as BaseLinkProps } from './props/baseLinkProps'
@@ -44,5 +43,6 @@ export type { default as TastingSheetListsProps } from './props/tastingSheetList
 export type { default as TastingSheetCardProps } from './props/tastingSheetCardProps'
 export type { default as BaseModalProps } from './props/baseModalProps'
 export type { default as ShowModalProps } from './props/showModalProps'
+export type { default as FormRegisterAndErrors } from './props/formRegisterAndErrors'
 
 export type { default as TastingSheetApi } from './api/tastingSheetApi'
