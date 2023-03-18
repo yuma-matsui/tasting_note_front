@@ -8,6 +8,7 @@ export { default as GoToTopPageButton } from './buttons/GoToTopPageButton'
 export { default as SignInAndPostButton } from './buttons/SignInAndPostButton'
 export { default as DeleteAccountButton } from './buttons/DeleteAccountButton'
 export { default as CloseModalButton } from './buttons/CloseModalButton'
+export { default as GoToNewWinePageButton } from './buttons/GoToNewWinePageButton'
 
 export { default as TastingSheetCheckBox } from './inputs/TastingSheetCheckBox'
 export { default as TastingSheetNameInput } from './inputs/TastingSheetNameInput'
