@@ -1,13 +1,14 @@
 import { FC } from 'react'
 import { Navigate, useLocation } from 'react-router-dom'
+
 import { NewWinePage } from '../components/pages'
 import { useAuthContext } from '../hooks'
-import { SheetNameAndId } from '../types'
+import { TastingSheetStateForWine } from '../types'
 
 const NewWinePageWrapper: FC = () => {
   const { currentUser } = useAuthContext()
   const location = useLocation()
-  const state = location.state as null | SheetNameAndId
+  const state = location.state as null | TastingSheetStateForWine
 
   return !currentUser || !state ? <Navigate to="/" /> : <NewWinePage />
 }

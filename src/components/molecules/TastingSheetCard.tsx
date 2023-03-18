@@ -5,7 +5,7 @@ import { BsExclamationTriangle } from 'react-icons/bs'
 import defaultImage from '../../assets/images/wineGlass.jpg'
 import { TastingSheetCardProps } from '../../types'
 import { DeleteTastingSheetButton } from '../atoms'
-import { useOnClickOpenModal, useTastingSheetCardColor, useTastingSheetIdNameState } from '../../hooks'
+import { useOnClickOpenModal, useTastingSheetCardColor, useTastingSheetStateForWine } from '../../hooks'
 
 const TastingSheetCard: FC<TastingSheetCardProps> = memo(({ tastingSheet }) => {
   const { bgColor, textColor } = useTastingSheetCardColor(tastingSheet)
@@ -13,7 +13,7 @@ const TastingSheetCard: FC<TastingSheetCardProps> = memo(({ tastingSheet }) => {
     text: '本当に削除してもよろしいですか？',
     rightButton: <DeleteTastingSheetButton id={tastingSheet.id} />
   })
-  const state = useTastingSheetIdNameState(tastingSheet)
+  const state = useTastingSheetStateForWine(tastingSheet)
 
   return (
     <li className="mb-4">
