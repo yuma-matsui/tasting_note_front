@@ -2,8 +2,8 @@ import { AuthError, User, UserCredential } from 'firebase/auth'
 import { Dispatch, SetStateAction } from 'react'
 
 type AuthContextType = {
-  currentUser: User | null | undefined
-  setCurrentUser: Dispatch<SetStateAction<User | null | undefined>>
+  currentUser: User | null
+  setCurrentUser: Dispatch<SetStateAction<User | null>>
   signIn: () => Promise<UserCredential | undefined> | void
   signOut: () => Promise<boolean> | void
   deleteAccount: () => Promise<void> | void
