@@ -5,15 +5,15 @@ import { BsExclamationTriangle } from 'react-icons/bs'
 import defaultImage from '../../assets/images/wineGlass.jpg'
 import { TastingSheetCardProps } from '../../types'
 import { DeleteTastingSheetButton } from '../atoms'
-import { useOnClickOpenModal } from '../../hooks'
+import { useOnClickOpenModal, useTastingSheetCardColor, useTastingSheetIdNameState } from '../../hooks'
 
 const TastingSheetCard: FC<TastingSheetCardProps> = memo(({ tastingSheet }) => {
-  const bgColor = tastingSheet.color === 'red' ? 'bg-red-600' : 'bg-emerald-500'
-  const textColor = tastingSheet.color === 'red' ? 'text-red-700' : 'text-emerald-500'
+  const { bgColor, textColor } = useTastingSheetCardColor(tastingSheet)
   const { onClickOpenModal } = useOnClickOpenModal({
     text: '本当に削除してもよろしいですか？',
     rightButton: <DeleteTastingSheetButton id={tastingSheet.id} />
   })
+  const state = useTastingSheetIdNameState(tastingSheet)
 
   return (
     <li className="mb-4">
@@ -27,7 +27,7 @@ const TastingSheetCard: FC<TastingSheetCardProps> = memo(({ tastingSheet }) => {
         <p className="absolute top-1/2 text-gray-700">
           テイスティングしたワイン・画像の登録は
           <span>
-            <Link to="/wines/new" className={`${textColor} text-lg font-bold`}>
+            <Link to="/wines/new" state={state} className={`${textColor} text-lg font-bold`}>
               こちら
             </Link>
             から
