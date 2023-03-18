@@ -1,6 +1,7 @@
 import { FC, useState } from 'react'
 
 import { useFetchATastingSheet, useTastingSheetContext, useTastingSheetLabels } from '../../hooks'
+import { GoToNewWinePageButton } from '../atoms'
 import { UpdateSheetNameForm } from '../molecules'
 import { TastingSheetDetailsTab } from '../organisms'
 import { DefaultLayout } from '../templates'
@@ -28,6 +29,7 @@ const TastingSheetDetailsPage: FC = () => {
         </div>
       )}
       <TastingSheetDetailsTab labels={labels} />
+      <GoToNewWinePageButton />
     </DefaultLayout>
   )
 }

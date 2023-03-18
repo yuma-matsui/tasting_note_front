@@ -18,12 +18,21 @@ const TastingSheetCard: FC<TastingSheetCardProps> = memo(({ tastingSheet }) => {
   return (
     <li className="mb-4">
       <div className={`card w-96 shadow-xl relative ${bgColor}`}>
-        <Link to={`/tasting_sheets/${tastingSheet.id}`}>
-          <figure>
+        <figure>
+          <Link to={`/tasting_sheets/${tastingSheet.id}`}>
             <img src={defaultImage} alt="wine" />
-          </figure>
-          <p className={`absolute top-2 left-2 ${textColor}`}>No Image</p>
-        </Link>
+          </Link>
+        </figure>
+        <p className={`absolute top-2 left-2 ${textColor}`}>No Image</p>
+        <p className="absolute top-1/2 text-gray-700">
+          テイスティングしたワイン・画像の登録は
+          <span>
+            <Link to="/wines/new" className={`${textColor} text-lg font-bold`}>
+              こちら
+            </Link>
+            から
+          </span>
+        </p>
         <div className="card-body text-white">
           <h2 className="card-title">{tastingSheet.name}</h2>
           <p>{tastingSheet.createdAt}</p>
