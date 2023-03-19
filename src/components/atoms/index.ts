@@ -16,6 +16,7 @@ export { default as WineTextInput } from './inputs/WineTextInput'
 export { default as WineMemoTextArea } from './inputs/WineMemoTextArea'
 
 export { default as TastingSheetSelectBox } from './selects/TastingSheetSelectBox'
+export { default as WineSelectBox } from './selects/WineSelectBox'
 
 export { default as TastingSheetTimer } from './TastingSheetTimer'
 
