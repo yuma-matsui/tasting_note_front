@@ -8,6 +8,7 @@ type TastingSheetSelectBoxProps = {
   register: UseFormRegister<TastingSheetFormState>
   name: TastingSheetUseFormName
   options: string[]
+  label: string
 }
 
 export default TastingSheetSelectBoxProps

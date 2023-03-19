@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom'
 
 import { useCheckEditingForm, useOnClickOpenModal } from '../../../hooks'
 import { BaseLinkProps } from '../../../types'
-import GoToTopPageButton from '../buttons/GoToTopPageButton'
+import GoToAnotherPageButton from '../buttons/GoToAnotherPageButton'
 
 const BaseLink: FC<BaseLinkProps> = memo(({ logo }) => {
   const { isEditing } = useCheckEditingForm()
   const { onClickOpenModal } = useOnClickOpenModal({
-    text: '記録の途中ですがよろしいですか？',
-    rightButton: <GoToTopPageButton text="OK" />
+    text: '編集途中ですがよろしいですか？',
+    rightButton: <GoToAnotherPageButton to="/" text="OK" />
   })
 
   return isEditing ? (

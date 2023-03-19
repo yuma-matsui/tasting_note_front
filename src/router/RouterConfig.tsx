@@ -1,9 +1,10 @@
 import { FC } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
-import { NewTastingSheetPage, NewWinePage, TastingSheetDetailsPage } from '../components/pages'
+import { NewTastingSheetPage, TastingSheetDetailsPage } from '../components/pages'
 import { useAuthContext, useTastingSheetsContext } from '../hooks'
 import { ModalProvider } from '../providers'
+import NewWinePageWrapper from './NewWinePageWrapper'
 import SignedInWrapper from './SignedInWrapper'
 import WelcomePageWrapper from './WelcomePageWrapper'
 
@@ -24,7 +25,7 @@ const RouterConfig: FC = () => {
             <Route path="new" element={<NewTastingSheetPage />} />
           </Route>
           <Route path="/wines">
-            <Route path="new" element={<SignedInWrapper page={<NewWinePage />} />} />
+            <Route path="new" element={<NewWinePageWrapper />} />
           </Route>
         </Routes>
       </ModalProvider>
