@@ -7,6 +7,7 @@ export type { default as TastingSheetUseFormName } from './tasting_sheet/tasting
 export type { default as TastingSheetAllName } from './tasting_sheet/tastingSheetAllName'
 export type { default as TastingSheetFormType } from './tasting_sheet/tastingSheetFormType'
 export type { default as TastingSheetLabelsTuple } from './tasting_sheet/tastingSheetLabelsTuple'
+export type { default as TastingSheetStateForWine } from './tasting_sheet/tastingSheetStateForWine'
 
 export type { default as AppearanceName } from './tasting_sheet/appearance/appearanceName'
 export type { default as Appearance } from './tasting_sheet/appearance/appearance'
@@ -19,6 +20,10 @@ export type { default as Taste } from './tasting_sheet/taste/taste'
 
 export type { default as ConclusionName } from './tasting_sheet/conclusion/conclusionName'
 export type { default as Conclusion } from './tasting_sheet/conclusion/conclusion'
+
+export type { default as Wine } from './wine/wine'
+export type { default as WineFormState } from './wine/wineFormState'
+export type { default as WineUseFormName } from './wine/wineUseFormName'
 
 export type { default as TastingSheetContextType } from './contexts/tastingSheetContextType'
 export type { default as AuthContextType } from './contexts/authContextType'
@@ -44,5 +49,7 @@ export type { default as TastingSheetCardProps } from './props/tastingSheetCardP
 export type { default as BaseModalProps } from './props/baseModalProps'
 export type { default as ShowModalProps } from './props/showModalProps'
 export type { default as FormRegisterAndErrors } from './props/formRegisterAndErrors'
+export type { default as WineTextInputProps } from './props/wineTextInputProps'
+export type { default as WineSelectBoxProps } from './props/wineSelectBoxProps'
 
 export type { default as TastingSheetApi } from './api/tastingSheetApi'
