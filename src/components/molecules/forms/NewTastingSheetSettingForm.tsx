@@ -8,11 +8,13 @@ import { TastingSheetFormWrapper } from '../../templates'
 const NewTastingSheetSettingForm: FC<FormRegisterAndErrors> = memo(({ register, errors }) => (
   <TastingSheetFormWrapper title="setting">
     <TastingSheetNameInput register={register} errors={errors} />
-
-    <div>
-      <p>テイスティング時間</p>
-      <TastingSheetSelectBox id="time" register={register} name="tastingSheet.time" options={TASTING_TIME} />
-    </div>
+    <TastingSheetSelectBox
+      id="time"
+      register={register}
+      name="tastingSheet.time"
+      options={TASTING_TIME}
+      label="テイスティング時間"
+    />
 
     <div>
       <p>ワインの色</p>
