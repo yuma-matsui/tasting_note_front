@@ -12,6 +12,8 @@ export { default as GoToNewWinePageButton } from './buttons/GoToNewWinePageButto
 
 export { default as TastingSheetCheckBox } from './inputs/TastingSheetCheckBox'
 export { default as TastingSheetNameInput } from './inputs/TastingSheetNameInput'
+export { default as WineTextInput } from './inputs/WineTextInput'
+export { default as WineMemoTextArea } from './inputs/WineMemoTextArea'
 
 export { default as TastingSheetSelectBox } from './selects/TastingSheetSelectBox'
 
