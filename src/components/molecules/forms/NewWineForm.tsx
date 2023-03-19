@@ -13,8 +13,11 @@ const NewWineForm: FC = memo(() => {
     onSubmit,
     tastingSheetId,
     tastingSheetName,
-    selectBoxOptions: { vintages, countries, grapes, alcoholPercentages }
+    selectBoxOptions: { vintages, countries, grapes, alcoholPercentages },
+    posting
   } = useWineForm()
+
+  if (posting) return <p>...Loading</p>
 
   return (
     <>
