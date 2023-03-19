@@ -8,7 +8,7 @@ import {
   useOnClickOpenModal
 } from '../../hooks'
 import { FormControllerProps } from '../../types'
-import { FormControllerButton, GoToTopPageButton, SignInAndPostButton } from '../atoms'
+import { FormControllerButton, GoToAnotherPageButton, SignInAndPostButton } from '../atoms'
 
 const FormController: FC<FormControllerProps> = memo(
   ({ children, onClick, isFirstStep, isAppearanceStep, isLastStep, disabled, backButtonText, nextButtonText }) => {
@@ -24,7 +24,7 @@ const FormController: FC<FormControllerProps> = memo(
 
     const { onClickOpenModal } = useOnClickOpenModal({
       text: '記録せずに終了しますか？',
-      leftButton: <GoToTopPageButton text="OK" />,
+      leftButton: <GoToAnotherPageButton to="/" text="OK" />,
       rightButton: <SignInAndPostButton />
     })
     const { onClickOpenModal: onClickBackAndOpenModal } = useOnClickOpenModal({

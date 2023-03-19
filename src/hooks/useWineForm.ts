@@ -52,6 +52,7 @@ const useWineForm = () => {
     isSubmitting,
     errors,
     tastingSheetName,
+    tastingSheetId,
     selectBoxOptions
   }
 }

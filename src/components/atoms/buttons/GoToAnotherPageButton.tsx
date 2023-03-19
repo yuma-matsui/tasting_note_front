@@ -1,9 +1,9 @@
 import { FC, memo } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const GoToTopPageButton: FC<{ text: string }> = memo(({ text }) => {
+const GoToAnotherPageButton: FC<{ text: string; to: string }> = memo(({ text, to }) => {
   const navigate = useNavigate()
-  const onClick = () => navigate('/')
+  const onClick = () => navigate(to)
 
   return (
     <button type="button" onClick={onClick}>
@@ -12,4 +12,4 @@ const GoToTopPageButton: FC<{ text: string }> = memo(({ text }) => {
   )
 })
 
-export default GoToTopPageButton
+export default GoToAnotherPageButton

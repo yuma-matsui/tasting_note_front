@@ -1,7 +1,7 @@
 import { FC, memo } from 'react'
 
 import { useWineForm } from '../../../hooks'
-import { WineMemoTextArea, WineSelectBox, WineTextInput } from '../../atoms'
+import { GoToAnotherPageButton, WineMemoTextArea, WineSelectBox, WineTextInput } from '../../atoms'
 
 const NewWineForm: FC = memo(() => {
   const {
@@ -11,6 +11,7 @@ const NewWineForm: FC = memo(() => {
     isValid,
     errors,
     onSubmit,
+    tastingSheetId,
     tastingSheetName,
     selectBoxOptions: { vintages, countries, grapes, alcoholPercentages }
   } = useWineForm()
@@ -34,6 +35,7 @@ const NewWineForm: FC = memo(() => {
           options={alcoholPercentages}
         />
         <WineMemoTextArea register={register} />
+        <GoToAnotherPageButton to={`/tasting_sheets/${tastingSheetId}`} text="シートへ戻る" />
         <input type="submit" className="btn" disabled={isSubmitting || !isValid} />
       </form>
     </>
