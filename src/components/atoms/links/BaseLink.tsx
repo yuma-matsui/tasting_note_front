@@ -8,7 +8,7 @@ import GoToTopPageButton from '../buttons/GoToTopPageButton'
 const BaseLink: FC<BaseLinkProps> = memo(({ logo }) => {
   const { isEditing } = useCheckEditingForm()
   const { onClickOpenModal } = useOnClickOpenModal({
-    text: '記録の途中ですがよろしいですか？',
+    text: '編集途中ですがよろしいですか？',
     rightButton: <GoToTopPageButton text="OK" />
   })
 
