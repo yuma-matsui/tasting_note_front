@@ -2,7 +2,6 @@ import { FC, memo, useRef } from 'react'
 
 import {
   useBeforeUnload,
-  useBlockBrowserBack,
   usePostTastingSheet,
   useResetTastingSheet,
   useAuthContext,
@@ -14,7 +13,6 @@ import { FormControllerButton, GoToTopPageButton, SignInAndPostButton } from '..
 const FormController: FC<FormControllerProps> = memo(
   ({ children, onClick, isFirstStep, isAppearanceStep, isLastStep, disabled, backButtonText, nextButtonText }) => {
     useBeforeUnload()
-    useBlockBrowserBack()
     useResetTastingSheet()
 
     const { currentUser } = useAuthContext()

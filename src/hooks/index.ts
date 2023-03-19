@@ -4,7 +4,6 @@ export { default as useTastingSheetInputsAttributes } from './tasting_sheet/useT
 export { default as useTastingSheetLabels } from './tasting_sheet/useTastingSheetLabels'
 export { default as useMultiStepForm } from './tasting_sheet/useMultiStepForm'
 export { default as useBeforeUnload } from './tasting_sheet/useBeforeUnload'
-export { default as useBlockBrowserBack } from './tasting_sheet/useBlockBrowserBack'
 export { default as useResetTastingSheet } from './tasting_sheet/useResetTastingSheet'
 export { default as useTastingSheetTimer } from './tasting_sheet/useTastingSheetTimer'
 export { default as useTastingSheetCardColor } from './tasting_sheet/useTastingSheetCardColor'
