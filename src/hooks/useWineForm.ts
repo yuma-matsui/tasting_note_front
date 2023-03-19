@@ -3,10 +3,12 @@ import { useLocation } from 'react-router-dom'
 
 import { ALCOHOL_PERCENTAGES, COUNTRIES, GRAPES_RED, GRAPES_WHITE, VINTAGES } from '../assets'
 import { TastingSheetStateForWine, WineFormState } from '../types'
+import usePostWine from './api/usePostWine'
 
 const useWineForm = () => {
   const location = useLocation()
   const { id: tastingSheetId, name: tastingSheetName, color } = location.state as TastingSheetStateForWine
+  const { posting, postWine } = usePostWine()
 
   const {
     register,
@@ -33,8 +35,12 @@ const useWineForm = () => {
     mode: 'onChange'
   })
 
-  const onSubmit: SubmitHandler<WineFormState> = (data) => {
-    console.log(data.wine, 'をpostします')
+  const onSubmit: SubmitHandler<WineFormState> = async (data) => {
+    try {
+      await postWine(data.wine)
+    } catch (e) {
+      if (e instanceof Error) throw e
+    }
   }
 
   const selectBoxOptions = {
@@ -53,7 +59,8 @@ const useWineForm = () => {
     errors,
     tastingSheetName,
     tastingSheetId,
-    selectBoxOptions
+    selectBoxOptions,
+    posting
   }
 }
 
