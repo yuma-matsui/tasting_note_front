@@ -15,21 +15,18 @@ const NewTastingSheetSettingForm: FC<FormRegisterAndErrors> = memo(({ register, 
       options={TASTING_TIME}
       label="テイスティング時間"
     />
-
     <div>
       <p>ワインの色</p>
-      <div>
-        {WINE_COLORS.map((color) => (
-          <TastingSheetCheckBox
-            key={color}
-            id={color}
-            value={color}
-            register={register}
-            name="tastingSheet.color"
-            label={color === 'white' ? '白' : '赤'}
-          />
-        ))}
-      </div>
+      {WINE_COLORS.map((color) => (
+        <TastingSheetCheckBox
+          key={color}
+          id={color}
+          value={color}
+          register={register}
+          name="tastingSheet.color"
+          label={color === 'white' ? '白' : '赤'}
+        />
+      ))}
     </div>
   </TastingSheetFormWrapper>
 ))
