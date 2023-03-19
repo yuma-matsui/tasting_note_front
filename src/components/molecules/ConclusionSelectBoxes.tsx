@@ -7,12 +7,14 @@ import { TastingSheetSelectBox } from '../atoms'
 const ConclusionSelectBoxes: FC<ConclusionSelectBoxesProps> = memo(({ register, options }) => (
   <>
     {options.map(({ heading, name, labels }) => (
-      <div key={heading}>
-        <h3>{heading}</h3>
-        <div>
-          <TastingSheetSelectBox id={name} register={register} name={convertToFormName(name)} options={labels} />
-        </div>
-      </div>
+      <TastingSheetSelectBox
+        key={heading}
+        id={name}
+        register={register}
+        name={convertToFormName(name)}
+        options={labels}
+        label={heading}
+      />
     ))}
   </>
 ))

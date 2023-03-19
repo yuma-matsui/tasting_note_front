@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app'
-import { browserLocalPersistence, getAuth, setPersistence, User } from 'firebase/auth'
+import { browserLocalPersistence, getAuth, setPersistence, User, onAuthStateChanged } from 'firebase/auth'
 import { FC, useCallback, useLayoutEffect, useMemo, useState } from 'react'
 import { useAuthState, useDeleteUser, useSignInWithGoogle, useSignOut } from 'react-firebase-hooks/auth'
 
@@ -9,7 +9,7 @@ import { firebaseConfig } from '../lib'
 import { ReactNodeChildren } from '../types'
 
 const AuthProvider: FC<ReactNodeChildren> = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState<User | null | undefined>(null)
+  const [currentUser, setCurrentUser] = useState<User | null>(null)
 
   initializeApp(firebaseConfig)
   const auth = getAuth()
@@ -17,15 +17,17 @@ const AuthProvider: FC<ReactNodeChildren> = ({ children }) => {
 
   const [deleteAccountLoading, setDeleteAccountLoading] = useState(false)
   const [signInWithGoogle, , signInLoading, signInError] = useSignInWithGoogle(auth)
-  const [authUser, authLoading, authError] = useAuthState(auth)
+  const [, authLoading, authError] = useAuthState(auth)
   const [signOut, , signOutError] = useSignOut(auth)
   const [deleteUser, deleteLoading, deleteError] = useDeleteUser(auth)
   const loading = signInLoading || authLoading || deleteLoading || deleteAccountLoading
   const error = signInError || authError || signOutError || deleteError
 
   useLayoutEffect(() => {
-    setCurrentUser(authUser)
-  }, [authUser, setCurrentUser])
+    onAuthStateChanged(auth, (user) => {
+      setCurrentUser(user)
+    })
+  }, [auth, setCurrentUser])
 
   const signIn = useCallback(
     async () => setPersistence(auth, browserLocalPersistence).then(() => signInWithGoogle()),
