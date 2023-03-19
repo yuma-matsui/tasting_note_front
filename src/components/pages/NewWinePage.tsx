@@ -1,5 +1,12 @@
 import { FC } from 'react'
 
-const NewWinePage: FC = () => <h1>Wine作成ページ</h1>
+import { NewWineForm } from '../molecules'
+import { DefaultLayout } from '../templates'
+
+const NewWinePage: FC = () => (
+  <DefaultLayout>
+    <NewWineForm />
+  </DefaultLayout>
+)
 
 export default NewWinePage
