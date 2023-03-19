@@ -2,7 +2,7 @@ import { FC, memo } from 'react'
 
 import { TASTING_TIME, WINE_COLORS } from '../../../assets'
 import { FormRegisterAndErrors } from '../../../types'
-import { TastingSheetCheckBox, TastingSheetNameInput, TastingSheetSelectBox } from '../../atoms'
+import { GoToTopPageButton, TastingSheetCheckBox, TastingSheetNameInput, TastingSheetSelectBox } from '../../atoms'
 import { TastingSheetFormWrapper } from '../../templates'
 
 const NewTastingSheetSettingForm: FC<FormRegisterAndErrors> = memo(({ register, errors }) => (
@@ -28,6 +28,7 @@ const NewTastingSheetSettingForm: FC<FormRegisterAndErrors> = memo(({ register, 
         />
       ))}
     </div>
+    <GoToTopPageButton text="戻る" />
   </TastingSheetFormWrapper>
 ))
 
