@@ -1,4 +1,5 @@
 import { FC, memo } from 'react'
+
 import { TastingSheetSelectBoxProps } from '../../../types'
 
 const TastingSheetSelectBox: FC<TastingSheetSelectBoxProps> = memo(({ id, register, name, options, label }) => (
