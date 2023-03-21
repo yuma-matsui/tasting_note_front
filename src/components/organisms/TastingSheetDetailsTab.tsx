@@ -24,7 +24,7 @@ const TastingSheetDetailsTab: FC<DetailsTabProps> = memo(({ labels }) => {
         ))}
       </div>
       {labels.map(({ type, items, options }) => (
-        <div key={type}>
+        <dl key={type}>
           {[...items, ...options].map(
             ({ heading, name, subHeading }) =>
               isShow(type) && (
@@ -36,7 +36,7 @@ const TastingSheetDetailsTab: FC<DetailsTabProps> = memo(({ labels }) => {
                 />
               )
           )}
-        </div>
+        </dl>
       ))}
     </TastingSheetFormWrapper>
   )
