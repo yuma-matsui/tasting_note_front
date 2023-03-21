@@ -14,6 +14,7 @@ export { default as useFetchTastingSheets } from './api/useFetchTastingSheets'
 export { default as useDeleteTastingSheet } from './api/useDeleteTastingSheet'
 export { default as useFetchATastingSheet } from './api/useFetchATastingSheet'
 export { default as useUpdateTastingSheetName } from './api/useUpdateTastingSheetName'
+export { default as usePostWine } from './api/usePostWine'
 
 export { default as useTastingSheetContext } from './context/useTastingSheetContext'
 export { default as useAuthContext } from './context/useAuthContext'

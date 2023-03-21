@@ -3,7 +3,7 @@ import { useDetailsTabItems } from '../../hooks'
 
 import { DetailsTabProps } from '../../types'
 import { formTitleFormat } from '../../utils'
-import { TastingSheetDetailsDataList } from '../molecules'
+import { SheetOrWineDetailsDataList } from '../molecules'
 import { TastingSheetFormWrapper } from '../templates'
 
 const TastingSheetDetailsTab: FC<DetailsTabProps> = memo(({ labels }) => {
@@ -24,11 +24,11 @@ const TastingSheetDetailsTab: FC<DetailsTabProps> = memo(({ labels }) => {
         ))}
       </div>
       {labels.map(({ type, items, options }) => (
-        <div key={type}>
+        <dl key={type}>
           {[...items, ...options].map(
             ({ heading, name, subHeading }) =>
               isShow(type) && (
-                <TastingSheetDetailsDataList
+                <SheetOrWineDetailsDataList
                   key={heading}
                   title={heading}
                   subTitle={subHeading}
@@ -36,7 +36,7 @@ const TastingSheetDetailsTab: FC<DetailsTabProps> = memo(({ labels }) => {
                 />
               )
           )}
-        </div>
+        </dl>
       ))}
     </TastingSheetFormWrapper>
   )

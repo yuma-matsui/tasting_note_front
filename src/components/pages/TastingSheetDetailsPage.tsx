@@ -1,35 +1,30 @@
-import { FC, useState } from 'react'
+import { FC } from 'react'
 
-import { useFetchATastingSheet, useTastingSheetContext, useTastingSheetLabels } from '../../hooks'
-import { GoToNewWinePageButton } from '../atoms'
-import { UpdateSheetNameForm } from '../molecules'
-import { TastingSheetDetailsTab } from '../organisms'
+import { useFetchATastingSheet, useTastingSheetLabels } from '../../hooks'
+import { GoToAnotherPageButton, GoToNewWinePageButton } from '../atoms'
+import TastingSheetDetailsTitle from '../molecules/TastingSheetDetailsTitle'
+import { TastingSheetDetailsTab, WineDetails } from '../organisms'
 import { DefaultLayout } from '../templates'
 
 const TastingSheetDetailsPage: FC = () => {
-  const { fetching } = useFetchATastingSheet()
-  const { tastingSheet } = useTastingSheetContext()
+  const { fetching, wine } = useFetchATastingSheet()
   const labels = useTastingSheetLabels()
-
-  const [isEditing, setIsEditing] = useState(false)
-  const onClick = () => setIsEditing(true)
 
   if (fetching) return <p>...Loading</p>
 
   return (
     <DefaultLayout>
-      {isEditing ? (
-        <UpdateSheetNameForm setIsEditing={setIsEditing} />
-      ) : (
-        <div className="flex">
-          <h2>{tastingSheet.name}</h2>
-          <button type="button" className="btn" onClick={onClick}>
-            変更
-          </button>
-        </div>
-      )}
+      <TastingSheetDetailsTitle />
       <TastingSheetDetailsTab labels={labels} />
-      <GoToNewWinePageButton />
+      {!wine && <GoToNewWinePageButton />}
+      {wine && (
+        <>
+          <div className="divider" />
+          <WineDetails wine={wine} />
+        </>
+      )}
+      <div className="divider" />
+      <GoToAnotherPageButton text="戻る" to="/" />
     </DefaultLayout>
   )
 }

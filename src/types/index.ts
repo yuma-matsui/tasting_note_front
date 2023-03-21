@@ -53,3 +53,4 @@ export type { default as WineTextInputProps } from './props/wineTextInputProps'
 export type { default as WineSelectBoxProps } from './props/wineSelectBoxProps'
 
 export type { default as TastingSheetApi } from './api/tastingSheetApi'
+export type { default as WineApi } from './api/wineApi'
