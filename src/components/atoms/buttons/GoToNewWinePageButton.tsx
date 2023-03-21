@@ -10,7 +10,8 @@ const GoToNewWinePageButton: FC = memo(() => {
   const state = useTastingSheetStateForWine({
     ...tastingSheet,
     id: Number(tastingSheetId),
-    createdAt: ''
+    createdAt: '',
+    wine: null
   })
 
   const onClick = () => navigate('/wines/new', { state })
