@@ -2,7 +2,7 @@ import { FC, memo } from 'react'
 
 import { DetailsDataListProps } from '../../types'
 
-const TastingSheetDetailsDataList: FC<DetailsDataListProps> = memo(({ title, subTitle, content }) => (
+const SheetOrWineDetailsDataList: FC<DetailsDataListProps> = memo(({ title, subTitle, content }) => (
   <>
     <dt>
       {title} {subTitle && <span>{subTitle}</span>}
@@ -11,4 +11,4 @@ const TastingSheetDetailsDataList: FC<DetailsDataListProps> = memo(({ title, sub
   </>
 ))
 
-export default TastingSheetDetailsDataList
+export default SheetOrWineDetailsDataList

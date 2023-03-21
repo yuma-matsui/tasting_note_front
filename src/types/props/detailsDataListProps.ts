@@ -1,6 +1,6 @@
 type DetailsDataListProps = {
   title: string
-  subTitle: string | undefined
+  subTitle?: string | undefined
   content: string | null
 }
 
