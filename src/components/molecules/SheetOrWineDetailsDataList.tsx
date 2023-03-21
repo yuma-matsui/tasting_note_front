@@ -7,7 +7,7 @@ const SheetOrWineDetailsDataList: FC<DetailsDataListProps> = memo(({ title, subT
     <dt>
       {title} {subTitle && <span>{subTitle}</span>}
     </dt>
-    <dd>{content}</dd>
+    <dd className="text-lg pl-2">{content}</dd>
   </>
 ))
 
