@@ -39,7 +39,7 @@ const NewWineForm: FC = memo(() => {
         />
         <WineMemoTextArea register={register} />
         <GoToAnotherPageButton to={`/tasting_sheets/${tastingSheetId}`} text="シートへ戻る" />
-        <input type="submit" className="btn" disabled={isSubmitting || !isValid} />
+        <input type="submit" value="登録" className="btn" disabled={isSubmitting || !isValid} />
       </form>
     </>
   )
