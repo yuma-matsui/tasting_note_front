@@ -1,6 +1,7 @@
 import { useCallback, useLayoutEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { TastingSheetApi } from '../../types'
+
+import { TastingSheetApi, WineApi } from '../../types'
 import useAuthContext from '../context/useAuthContext'
 import useTastingSheetContext from '../context/useTastingSheetContext'
 import useAxios from '../useAxios'
@@ -14,6 +15,7 @@ const useFetchATastingSheet = () => {
   const { setTastingSheet } = useTastingSheetContext()
   const { currentUser } = useAuthContext()
 
+  const [wine, setWine] = useState<WineApi | null>(null)
   const [fetching, setFetching] = useState(false)
   const fetchATastingSheet = useCallback(async () => {
     setFetching(true)
@@ -23,8 +25,12 @@ const useFetchATastingSheet = () => {
       const response = (
         await client.get<TastingSheetApi | null>(`/tasting_sheets/${target}`, await getHeaders(currentUser))
       ).data
-      if (response) setTastingSheet(response)
-      if (!response) navigate('/')
+      if (!response) {
+        navigate('/')
+      } else {
+        setTastingSheet(response)
+        setWine(response.wine)
+      }
     } catch (e) {
       if (e instanceof Error) throw e
     } finally {
@@ -41,7 +47,8 @@ const useFetchATastingSheet = () => {
   }, [currentUser])
 
   return {
-    fetching
+    fetching,
+    wine
   }
 }
 
