@@ -1,13 +1,9 @@
 import { TASTE_FORM_ITEMS } from '../../../assets'
 import { TasteName } from '../../../types'
+import WineColor from '../../../types/tasting_sheet/wineColor'
 import { FormItem } from '../../../utils'
-import useTastingSheetContext from '../../context/useTastingSheetContext'
 
-const useTasteLabels = () => {
-  const {
-    tastingSheet: { color }
-  } = useTastingSheetContext()
-
+const useTasteLabels = (color: WineColor) => {
   const filterTarget = color === 'white' ? 'astringent' : 'bitterness'
 
   return [

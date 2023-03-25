@@ -2,12 +2,13 @@ import { FC, memo, ReactElement } from 'react'
 
 import { NewTastingSheetSettingForm, StepsBar, TastingSheetBaseForm } from '../molecules'
 import { DefaultLayout, FormController } from '../templates'
-import { useMultiStepForm, useTastingSheetForm, useTastingSheetLabels } from '../../hooks'
+import { useMultiStepForm, useTastingSheetContext, useTastingSheetForm, useTastingSheetLabels } from '../../hooks'
 import { TastingSheetTimer } from '../atoms'
 import { TastingSheetDetailsTab } from '../organisms'
 
 const NewTastingSheetPage: FC = memo(() => {
-  const labels = useTastingSheetLabels()
+  const { tastingSheet } = useTastingSheetContext()
+  const labels = useTastingSheetLabels(tastingSheet.color)
   const { handleSubmit, isValid, isSubmitting, onSubmit, register, errors, lessThanTwoItems, getValues } =
     useTastingSheetForm()
 
@@ -23,7 +24,7 @@ const NewTastingSheetPage: FC = memo(() => {
         getValues={getValues}
       />
     )),
-    <TastingSheetDetailsTab labels={labels} />
+    <TastingSheetDetailsTab tastingSheet={tastingSheet} />
   ]
   const { step, onClickPageControl, isFirstStep, isAppearanceStep, isLastStep, getButtonText, currentStepIndex } =
     useMultiStepForm(steps)

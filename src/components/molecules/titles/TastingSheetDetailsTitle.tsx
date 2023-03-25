@@ -1,10 +1,9 @@
 import { FC, memo, useState } from 'react'
 
-import { useTastingSheetContext } from '../../../hooks'
+import { TastingSheetApi } from '../../../types'
 import UpdateSheetNameForm from '../forms/UpdateSheetNameForm'
 
-const TastingSheetDetailsTitle: FC = memo(() => {
-  const { tastingSheet } = useTastingSheetContext()
+const TastingSheetDetailsTitle: FC<{ tastingSheet: TastingSheetApi }> = memo(({ tastingSheet }) => {
   const [isEditing, setIsEditing] = useState(false)
   const onClick = () => setIsEditing(true)
 

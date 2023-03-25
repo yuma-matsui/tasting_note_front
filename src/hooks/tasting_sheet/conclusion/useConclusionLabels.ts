@@ -1,13 +1,9 @@
 import { CONCLUSION_FORM_ITEMS, CONCLUSION_SELECT_OPTIONS } from '../../../assets'
 import { ConclusionName } from '../../../types'
+import WineColor from '../../../types/tasting_sheet/wineColor'
 import { FormItem } from '../../../utils'
-import useTastingSheetContext from '../../context/useTastingSheetContext'
 
-const useConclusionLabels = (type?: 'select' | undefined) => {
-  const {
-    tastingSheet: { color }
-  } = useTastingSheetContext()
-
+const useConclusionLabels = (color: WineColor, type?: 'select' | undefined) => {
   const items = type === 'select' ? CONCLUSION_SELECT_OPTIONS : CONCLUSION_FORM_ITEMS
   const filterTarget = color === 'white' ? 'decantage' : ''
 
