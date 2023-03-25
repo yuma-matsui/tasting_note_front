@@ -1,13 +1,14 @@
 import { FC, memo } from 'react'
-import { useDetailsTabItems } from '../../hooks'
+import { useDetailsTabItems, useTastingSheetLabels } from '../../hooks'
 
-import { DetailsTabProps } from '../../types'
+import { TastingSheet } from '../../types'
 import { formTitleFormat } from '../../utils'
 import { SheetOrWineDetailsDataList } from '../molecules'
 import { TastingSheetFormWrapper } from '../templates'
 
-const TastingSheetDetailsTab: FC<DetailsTabProps> = memo(({ labels }) => {
-  const { isShow, onClickTabChange, getFormResult } = useDetailsTabItems()
+const TastingSheetDetailsTab: FC<{ tastingSheet: TastingSheet }> = memo(({ tastingSheet }) => {
+  const labels = useTastingSheetLabels(tastingSheet.color)
+  const { isShow, onClickTabChange, getFormResult } = useDetailsTabItems(tastingSheet)
 
   return (
     <TastingSheetFormWrapper title="confirmation">

@@ -1,15 +1,16 @@
 import { TastingSheetLabelsTuple } from '../../types'
+import WineColor from '../../types/tasting_sheet/wineColor'
 import useAppearanceLabels from './appearance/useAppearanceLabels'
 import useConclusionLabels from './conclusion/useConclusionLabels'
 import useFlavorLabels from './flavor/useFlavorLabels'
 import useTasteLabels from './taste/useTasteLabels'
 
-const useTastingSheetLabels = (): TastingSheetLabelsTuple => {
-  const appearanceLabels = useAppearanceLabels()
-  const flavorLabels = useFlavorLabels()
-  const tasteLabels = useTasteLabels()
-  const conclusionLabels = useConclusionLabels()
-  const conclusionOptions = useConclusionLabels('select')
+const useTastingSheetLabels = (color: WineColor): TastingSheetLabelsTuple => {
+  const appearanceLabels = useAppearanceLabels(color)
+  const flavorLabels = useFlavorLabels(color)
+  const tasteLabels = useTasteLabels(color)
+  const conclusionLabels = useConclusionLabels(color)
+  const conclusionOptions = useConclusionLabels(color, 'select')
 
   return [
     { type: 'appearance', items: appearanceLabels, options: [] },

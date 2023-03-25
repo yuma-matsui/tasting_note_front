@@ -38,7 +38,6 @@ export type { default as TastingSheetCheckBoxProps } from './props/tastingSheetC
 export type { default as ConclusionSelectBoxesProps } from './props/conclusionSelectBoxesProps'
 export type { default as TastingSheetSelectBoxProps } from './props/tastingSheetSelectBoxProps'
 export type { default as TastingSheetBaseFormProps } from './props/tastingSheetBaseFormProps'
-export type { default as DetailsTabProps } from './props/detailsTabProps'
 export type { default as FormControllerProps } from './props/formControllerProps'
 export type { default as FormControllerButtonProps } from './props/formControllerButtonProps'
 export type { default as BaseLinkProps } from './props/baseLinkProps'
