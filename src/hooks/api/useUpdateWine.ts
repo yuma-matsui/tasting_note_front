@@ -19,8 +19,8 @@ const useUpdateWine = () => {
     if (!currentUser) throw new Error('不正な呼び出し方です。')
 
     try {
-      const { data } = await client.put<WineApi>(`/wines/${wineId}`, wine, await getHeaders(currentUser))
-      navigate(`/tasting_sheets/${data.tastingSheetId}`)
+      const { data: wineApi } = await client.put<WineApi>(`/wines/${wineId}`, wine, await getHeaders(currentUser))
+      navigate(`/tasting_sheets/${wineApi.tastingSheetId}`)
     } catch (e) {
       if (e instanceof Error) throw e
     } finally {

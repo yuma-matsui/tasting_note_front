@@ -19,8 +19,8 @@ const usePostWine = () => {
     if (!currentUser) throw new Error('不正な呼び出し方です。')
 
     try {
-      const response = (await client.post<Wine>('/wines', wine, await getHeaders(currentUser))).data
-      navigate(`/tasting_sheets/${response.tastingSheetId}`)
+      const { data: wineApi } = await client.post<Wine>('/wines', wine, await getHeaders(currentUser))
+      navigate(`/tasting_sheets/${wineApi.tastingSheetId}`)
     } catch (e) {
       if (e instanceof Error) throw e
     } finally {

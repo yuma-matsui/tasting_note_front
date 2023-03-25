@@ -22,14 +22,15 @@ const useFetchATastingSheet = () => {
     if (!currentUser) return
 
     try {
-      const response = (
-        await client.get<TastingSheetApi | null>(`/tasting_sheets/${target}`, await getHeaders(currentUser))
-      ).data
-      if (!response) {
+      const { data: tastingSheetApi } = await client.get<TastingSheetApi | null>(
+        `/tasting_sheets/${target}`,
+        await getHeaders(currentUser)
+      )
+      if (!tastingSheetApi) {
         navigate('/')
       } else {
-        setTastingSheet(response)
-        setWine(response.wine)
+        setTastingSheet(tastingSheetApi)
+        setWine(tastingSheetApi.wine)
       }
     } catch (e) {
       if (e instanceof Error) throw e
