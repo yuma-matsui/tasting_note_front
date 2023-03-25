@@ -6,8 +6,8 @@ import TastingSheetDetailsTitle from '../molecules/titles/TastingSheetDetailsTit
 import { TastingSheetDetailsTab, WineDetails } from '../organisms'
 import { DefaultLayout } from '../templates'
 
-const TastingSheetDetailsPage: FC = () => {
-  const { fetching, wine } = useFetchATastingSheet()
+const TastingSheetDetailsPage: FC<{ tastingSheetId: number }> = ({ tastingSheetId }) => {
+  const { fetching, wine } = useFetchATastingSheet(tastingSheetId)
   const labels = useTastingSheetLabels()
 
   if (fetching) return <p>...Loading</p>
