@@ -1,7 +1,7 @@
 import { FC, memo, useState } from 'react'
 
-import { useTastingSheetContext } from '../../hooks'
-import UpdateSheetNameForm from './forms/UpdateSheetNameForm'
+import { useTastingSheetContext } from '../../../hooks'
+import UpdateSheetNameForm from '../forms/UpdateSheetNameForm'
 
 const TastingSheetDetailsTitle: FC = memo(() => {
   const { tastingSheet } = useTastingSheetContext()

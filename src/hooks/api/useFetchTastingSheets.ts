@@ -17,8 +17,11 @@ const useFetchTastingSheets = () => {
     const fetchTastingSheets = async () => {
       setFetching(true)
       try {
-        const response = (await client.get<TastingSheetApi[]>('/tasting_sheets', await getHeaders(currentUser))).data
-        setTastingSheets(response)
+        const { data: tastingSheetsApi } = await client.get<TastingSheetApi[]>(
+          '/tasting_sheets',
+          await getHeaders(currentUser)
+        )
+        setTastingSheets(tastingSheetsApi)
       } catch (e) {
         if (e instanceof Error) throw e
       } finally {

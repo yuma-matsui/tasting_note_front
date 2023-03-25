@@ -22,10 +22,12 @@ const usePostTastingSheet = () => {
     if (!postingUser) throw new Error('不正な呼び出し方です。')
 
     try {
-      const response = (
-        await client.post<TastingSheetApi>('/tasting_sheets', tastingSheet, await getHeaders(postingUser))
-      ).data
-      navigate(`/tasting_sheets/${response.id}`)
+      const { data: tastingSheetApi } = await client.post<TastingSheetApi>(
+        '/tasting_sheets',
+        tastingSheet,
+        await getHeaders(postingUser)
+      )
+      navigate(`/tasting_sheets/${tastingSheetApi.id}`)
     } catch (e) {
       if (e instanceof Error) throw e
     } finally {

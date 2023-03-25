@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { NewTastingSheetPage, TastingSheetDetailsPage } from '../components/pages'
 import { useAuthContext, useTastingSheetsContext } from '../hooks'
 import { ModalProvider } from '../providers'
+import EditWinePageWrapper from './EditWinePageWrapper'
 import NewWinePageWrapper from './NewWinePageWrapper'
 import SignedInWrapper from './SignedInWrapper'
 import WelcomePageWrapper from './WelcomePageWrapper'
@@ -26,6 +27,9 @@ const RouterConfig: FC = () => {
           </Route>
           <Route path="/wines">
             <Route path="new" element={<NewWinePageWrapper />} />
+            <Route path="edit">
+              <Route path=":wineId" element={<EditWinePageWrapper />} />
+            </Route>
           </Route>
         </Routes>
       </ModalProvider>
