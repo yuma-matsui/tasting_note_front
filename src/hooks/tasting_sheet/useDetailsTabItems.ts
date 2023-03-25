@@ -1,10 +1,9 @@
 import { useState } from 'react'
-import { TastingSheetAllName, TastingSheetFormType, TastingSheetPropertyType } from '../../types'
-import { formResultFormat, isAppearanceName, isConclusionName, isFlavorName, isTasteName } from '../../utils'
-import useTastingSheetContext from '../context/useTastingSheetContext'
 
-const useDetailsTabItems = () => {
-  const { tastingSheet } = useTastingSheetContext()
+import { TastingSheet, TastingSheetAllName, TastingSheetFormType, TastingSheetPropertyType } from '../../types'
+import { formResultFormat, isAppearanceName, isConclusionName, isFlavorName, isTasteName } from '../../utils'
+
+const useDetailsTabItems = (tastingSheet: TastingSheet) => {
   const [selectedTab, setSelectedTab] = useState<string>('appearance')
 
   const onClickTabChange = (type: string) => setSelectedTab(type)
