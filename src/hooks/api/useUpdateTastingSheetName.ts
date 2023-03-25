@@ -20,10 +20,12 @@ const useUpdateTastingSheetName = () => {
     setRequesting(true)
 
     try {
-      const response = (
-        await client.put<TastingSheetApi>(`/tasting_sheets/${target}`, tastingSheet, await getHeaders(currentUser))
-      ).data
-      setTastingSheet(response)
+      const { data: tastingSheetApi } = await client.put<TastingSheetApi>(
+        `/tasting_sheets/${target}`,
+        tastingSheet,
+        await getHeaders(currentUser)
+      )
+      setTastingSheet(tastingSheetApi)
     } catch (e) {
       if (e instanceof Error) throw e
     } finally {

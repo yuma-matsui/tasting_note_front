@@ -2,7 +2,7 @@ import { FC } from 'react'
 
 import { useFetchATastingSheet, useTastingSheetLabels } from '../../hooks'
 import { GoToAnotherPageButton, GoToNewWinePageButton } from '../atoms'
-import TastingSheetDetailsTitle from '../molecules/TastingSheetDetailsTitle'
+import TastingSheetDetailsTitle from '../molecules/titles/TastingSheetDetailsTitle'
 import { TastingSheetDetailsTab, WineDetails } from '../organisms'
 import { DefaultLayout } from '../templates'
 

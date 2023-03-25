@@ -1,11 +1,11 @@
 import { FC } from 'react'
 
-import { NewWineForm } from '../molecules'
+import { WineForm } from '../molecules'
 import { DefaultLayout } from '../templates'
 
 const NewWinePage: FC = () => (
   <DefaultLayout>
-    <NewWineForm />
+    <WineForm />
   </DefaultLayout>
 )
 

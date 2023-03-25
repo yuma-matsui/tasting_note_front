@@ -38,7 +38,7 @@ const AuthProvider: FC<ReactNodeChildren> = ({ children }) => {
     if (!currentUser) return
     setDeleteAccountLoading(true)
     const headers = await getHeaders(currentUser)
-    const userId = (await client.get<number>('/sessions', headers)).data
+    const { data: userId } = await client.get<number>('/sessions', headers)
     await client.delete(`/users/${userId}`, headers)
     await deleteUser()
     setDeleteAccountLoading(false)
