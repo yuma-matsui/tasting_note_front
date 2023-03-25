@@ -1,9 +1,10 @@
 import { FC, memo } from 'react'
 
 import { useWineForm } from '../../../hooks'
+import { WineApi } from '../../../types'
 import { GoToAnotherPageButton, WineMemoTextArea, WineSelectBox, WineTextInput } from '../../atoms'
 
-const NewWineForm: FC = memo(() => {
+const WineForm: FC<{ wine?: WineApi }> = memo(({ wine }) => {
   const {
     register,
     handleSubmit,
@@ -14,15 +15,15 @@ const NewWineForm: FC = memo(() => {
     tastingSheetId,
     tastingSheetName,
     selectBoxOptions: { vintages, countries, grapes, alcoholPercentages },
-    posting
-  } = useWineForm()
+    requesting
+  } = useWineForm(wine)
 
-  if (posting) return <p>...Loading</p>
+  if (requesting) return <p>...Loading</p>
 
   return (
     <>
       <h2>
-        シート名: <span className="font-bold">{tastingSheetName}</span>のワインを登録
+        シート名: <span className="font-bold">{tastingSheetName}</span>のワインを{wine ? '編集' : '登録'}
       </h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <WineTextInput name="wine.name" label="ワイン名" register={register} errors={errors} required />
@@ -39,10 +40,10 @@ const NewWineForm: FC = memo(() => {
         />
         <WineMemoTextArea register={register} />
         <GoToAnotherPageButton to={`/tasting_sheets/${tastingSheetId}`} text="シートへ戻る" />
-        <input type="submit" value="登録" className="btn" disabled={isSubmitting || !isValid} />
+        <input type="submit" value={wine ? '更新' : '登録'} className="btn" disabled={isSubmitting || !isValid} />
       </form>
     </>
   )
 })
 
-export default NewWineForm
+export default WineForm

@@ -2,13 +2,21 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { useLocation } from 'react-router-dom'
 
 import { ALCOHOL_PERCENTAGES, COUNTRIES, GRAPES_RED, GRAPES_WHITE, VINTAGES } from '../assets'
-import { TastingSheetStateForWine, WineFormState } from '../types'
+import { TastingSheetStateForWine, WineApi, WineFormState } from '../types'
 import usePostWine from './api/usePostWine'
+import useUpdateWine from './api/useUpdateWine'
 
-const useWineForm = () => {
+const useWineForm = (wine?: WineApi) => {
   const location = useLocation()
   const { id: tastingSheetId, name: tastingSheetName, color } = location.state as TastingSheetStateForWine
+
+  const getGrapes = () => {
+    if (wine) return GRAPES_RED.includes(wine.grape) ? GRAPES_RED : GRAPES_WHITE
+    return color === 'red' ? GRAPES_RED : GRAPES_WHITE
+  }
+
   const { posting, postWine } = usePostWine()
+  const { updating, updateWine } = useUpdateWine()
 
   const {
     register,
@@ -20,7 +28,7 @@ const useWineForm = () => {
     }
   } = useForm<WineFormState>({
     defaultValues: {
-      wine: {
+      wine: wine ?? {
         name: '',
         image: null,
         vintage: '',
@@ -37,7 +45,8 @@ const useWineForm = () => {
 
   const onSubmit: SubmitHandler<WineFormState> = async (data) => {
     try {
-      await postWine(data.wine)
+      if (wine) await updateWine(data.wine, wine.id)
+      if (!wine) await postWine(data.wine)
     } catch (e) {
       if (e instanceof Error) throw e
     }
@@ -47,7 +56,7 @@ const useWineForm = () => {
     vintages: VINTAGES,
     countries: COUNTRIES,
     alcoholPercentages: ALCOHOL_PERCENTAGES,
-    grapes: color === 'red' ? GRAPES_RED : GRAPES_WHITE
+    grapes: getGrapes()
   }
 
   return {
@@ -60,7 +69,7 @@ const useWineForm = () => {
     tastingSheetName,
     tastingSheetId,
     selectBoxOptions,
-    posting
+    requesting: posting || updating
   }
 }
 
