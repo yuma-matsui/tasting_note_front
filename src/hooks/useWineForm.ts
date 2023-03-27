@@ -1,3 +1,4 @@
+import { ChangeEvent, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useLocation } from 'react-router-dom'
 
@@ -21,6 +22,7 @@ const useWineForm = (wine?: WineApi) => {
   const {
     register,
     handleSubmit,
+    setValue,
     formState: {
       isValid,
       isSubmitting,
@@ -59,6 +61,15 @@ const useWineForm = (wine?: WineApi) => {
     grapes: getGrapes()
   }
 
+  const [imageFile, setImageFile] = useState<File | null>(null)
+  const onChangeImageFile = (e: ChangeEvent<HTMLInputElement>) => {
+    const { files } = e.target
+    if (files && files[0]) {
+      setImageFile(files[0])
+      setValue('wine.image', files[0].name)
+    }
+  }
+
   return {
     register,
     onSubmit,
@@ -69,7 +80,9 @@ const useWineForm = (wine?: WineApi) => {
     tastingSheetName,
     tastingSheetId,
     selectBoxOptions,
-    requesting: posting || updating
+    requesting: posting || updating,
+    imageFile,
+    onChangeImageFile
   }
 }
 

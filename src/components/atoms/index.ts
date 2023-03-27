@@ -15,11 +15,13 @@ export { default as DeleteWineButton } from './buttons/DeleteWineButton'
 export { default as TastingSheetCheckBox } from './inputs/TastingSheetCheckBox'
 export { default as TastingSheetNameInput } from './inputs/TastingSheetNameInput'
 export { default as WineTextInput } from './inputs/WineTextInput'
+export { default as WineImageInput } from './inputs/WineImageInput'
 export { default as WineMemoTextArea } from './inputs/WineMemoTextArea'
 
 export { default as TastingSheetSelectBox } from './selects/TastingSheetSelectBox'
 export { default as WineSelectBox } from './selects/WineSelectBox'
 
 export { default as TastingSheetTimer } from './TastingSheetTimer'
+export { default as WineImagePreview } from './WineImagePreview'
 
 export { default as BaseToast } from './toasts/BaseToast'
