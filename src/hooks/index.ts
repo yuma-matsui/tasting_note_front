@@ -16,6 +16,7 @@ export { default as useFetchATastingSheet } from './api/useFetchATastingSheet'
 export { default as useUpdateTastingSheetName } from './api/useUpdateTastingSheetName'
 export { default as usePostWine } from './api/usePostWine'
 export { default as useUpdateWine } from './api/useUpdateWine'
+export { default as usePostWineImageToS3 } from './api/usePostWineImageToS3'
 
 export { default as useTastingSheetContext } from './context/useTastingSheetContext'
 export { default as useAuthContext } from './context/useAuthContext'
