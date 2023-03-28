@@ -14,16 +14,19 @@ const TastingSheetCard: FC<TastingSheetCardProps> = memo(({ tastingSheet }) => {
     rightButton: <DeleteTastingSheetButton id={tastingSheet.id} />
   })
   const state = useTastingSheetStateForWine(tastingSheet)
+  const cardImage = tastingSheet.wine?.image
+    ? `${process.env.REACT_APP_CF_DOMAIN}/${tastingSheet.wine.image}`
+    : defaultImage
 
   return (
     <li className="mb-4">
       <div className={`card w-96 shadow-xl relative ${bgColor}`}>
         <figure>
           <Link to={`/tasting_sheets/${tastingSheet.id}`}>
-            <img src={defaultImage} alt="wine" />
+            <img src={cardImage} alt="wine" />
           </Link>
         </figure>
-        <p className={`absolute top-2 left-2 ${textColor}`}>No Image</p>
+        {!tastingSheet.wine?.image && <p className={`absolute top-2 left-2 ${textColor}`}>No Image</p>}
         {!tastingSheet.wine && (
           <p className="absolute top-1/2 text-gray-700">
             テイスティングしたワイン・画像の登録は

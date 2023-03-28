@@ -4,6 +4,7 @@ import { useWineForm } from '../../../hooks'
 import { WineApi } from '../../../types'
 import {
   GoToAnotherPageButton,
+  WineImage,
   WineImageInput,
   WineImagePreview,
   WineMemoTextArea,
@@ -37,6 +38,7 @@ const WineForm: FC<{ wine?: WineApi }> = memo(({ wine }) => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <WineTextInput name="wine.name" label="ワイン名" register={register} errors={errors} required />
         <WineImageInput onChangeImageFile={onChangeImageFile} />
+        {wine?.image && !imageFile && <WineImage filename={wine.image} />}
         {imageFile && <WineImagePreview imageFile={imageFile} />}
         <WineSelectBox name="wine.vintage" label="収穫年" register={register} options={vintages} />
         <WineSelectBox name="wine.country" label="生産国" register={register} options={countries} />
