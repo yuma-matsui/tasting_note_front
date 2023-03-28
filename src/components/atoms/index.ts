@@ -23,5 +23,6 @@ export { default as WineSelectBox } from './selects/WineSelectBox'
 
 export { default as TastingSheetTimer } from './TastingSheetTimer'
 export { default as WineImagePreview } from './WineImagePreview'
+export { default as WineImage } from './WineImage'
 
 export { default as BaseToast } from './toasts/BaseToast'
