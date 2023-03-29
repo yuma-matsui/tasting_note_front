@@ -9,16 +9,12 @@ const usePostWineImageToS3 = () => {
   const { client, getHeaders } = useAxios()
   const [posting, setPosting] = useState(false)
 
-  const postWineImageToS3 = async (file: File) => {
+  const postWineImageToS3 = async (file: File, filename: string) => {
     if (!currentUser) throw new Error('不正な呼び出し方です')
 
     setPosting(true)
     try {
-      const { data: signedUrl } = await client.post<string>(
-        '/images',
-        { filename: file.name },
-        await getHeaders(currentUser)
-      )
+      const { data: signedUrl } = await client.post<string>('/images', { filename }, await getHeaders(currentUser))
       await axios.put(signedUrl, file)
     } catch (e) {
       if (e instanceof Error) throw e
