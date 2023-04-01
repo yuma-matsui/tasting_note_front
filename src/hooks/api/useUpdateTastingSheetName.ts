@@ -2,17 +2,17 @@ import { useParams } from 'react-router-dom'
 
 import { TastingSheet } from '../../types'
 import useAuthContext from '../context/useAuthContext'
-import useTastingSheetsContext from '../context/useTastingSheetsContext'
 import useToastContext from '../context/useToastContext'
 import useAxios from '../useAxios'
+import useRequestingContext from '../context/useRequestingContext'
 
 const useUpdateTastingSheetName = () => {
   const { tastingSheetId } = useParams()
   const target = Number(tastingSheetId)
 
   const { currentUser } = useAuthContext()
-  const { setRequesting } = useTastingSheetsContext()
   const { client, getHeaders } = useAxios()
+  const { setRequesting } = useRequestingContext()
   const { showToast } = useToastContext()
 
   const updateSheetName = async (tastingSheet: TastingSheet) => {
