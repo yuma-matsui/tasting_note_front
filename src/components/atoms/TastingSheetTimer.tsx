@@ -1,10 +1,13 @@
 import { FC, memo } from 'react'
 
 import { useTastingSheetTimer } from '../../hooks'
-import { TastingSheetTimerProps } from '../../types'
+import { TastingSheet } from '../../types'
 
-const TastingSheetTimer: FC<TastingSheetTimerProps> = memo(({ isLastStep }) => {
-  const { timeUp, timerClassName, styleForSecond, styleForMinute } = useTastingSheetTimer()
+const TastingSheetTimer: FC<{
+  tastingSheet: TastingSheet
+  isLastStep: boolean
+}> = memo(({ tastingSheet, isLastStep }) => {
+  const { timeUp, timerClassName, styleForSecond, styleForMinute } = useTastingSheetTimer(tastingSheet)
 
   if (isLastStep) return null
   return (

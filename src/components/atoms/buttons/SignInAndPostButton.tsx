@@ -1,8 +1,12 @@
 import { FC, memo } from 'react'
-import { usePostTastingSheet } from '../../../hooks'
 
-const SignInAndPostButton: FC = memo(() => {
-  const { signInAndPostTastingSheet } = usePostTastingSheet()
+import { usePostTastingSheet } from '../../../hooks'
+import { TastingSheet } from '../../../types'
+
+const SignInAndPostButton: FC<{
+  tastingSheet: TastingSheet
+}> = memo(({ tastingSheet }) => {
+  const { signInAndPostTastingSheet } = usePostTastingSheet(tastingSheet)
   const onClick = () => signInAndPostTastingSheet()
 
   return (
