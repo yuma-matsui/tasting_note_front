@@ -4,14 +4,14 @@ import { useNavigate } from 'react-router-dom'
 import { TastingSheet, TastingSheetApi } from '../../types'
 import useAuthContext from '../context/useAuthContext'
 import useAxios from '../useAxios'
-import useTastingSheetsContext from '../context/useTastingSheetsContext'
 import useToastContext from '../context/useToastContext'
+import useRequestingContext from '../context/useRequestingContext'
 
 const usePostTastingSheet = (tastingSheet: TastingSheet) => {
   const navigate = useNavigate()
   const { signIn, currentUser } = useAuthContext()
   const { client, getHeaders } = useAxios()
-  const { setRequesting } = useTastingSheetsContext()
+  const { setRequesting } = useRequestingContext()
   const { showToast } = useToastContext()
 
   const postTastingSheet = async (user?: User) => {
