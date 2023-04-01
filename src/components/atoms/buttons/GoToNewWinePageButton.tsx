@@ -1,18 +1,14 @@
 import { FC, memo } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
-import { useTastingSheetContext, useTastingSheetStateForWine } from '../../../hooks'
+import { useTastingSheetStateForWine } from '../../../hooks'
+import { TastingSheetApi } from '../../../types'
 
-const GoToNewWinePageButton: FC = memo(() => {
+const GoToNewWinePageButton: FC<{
+  tastingSheet: TastingSheetApi
+}> = memo(({ tastingSheet }) => {
   const navigate = useNavigate()
-  const { tastingSheetId } = useParams()
-  const { tastingSheet } = useTastingSheetContext()
-  const state = useTastingSheetStateForWine({
-    ...tastingSheet,
-    id: Number(tastingSheetId),
-    createdAt: '',
-    wine: null
-  })
+  const state = useTastingSheetStateForWine(tastingSheet)
 
   const onClick = () => navigate('/wines/new', { state })
 

@@ -1,5 +1,6 @@
 export { default as useDetailsTabItems } from './tasting_sheet/useDetailsTabItems'
 export { default as useTastingSheetForm } from './tasting_sheet/useTastingSheetForm'
+export { default as useTastingSheetUpdateForm } from './tasting_sheet/useTastingSheetUpdateForm'
 export { default as useTastingSheetInputsAttributes } from './tasting_sheet/useTastingSheetInputAttributes'
 export { default as useTastingSheetLabels } from './tasting_sheet/useTastingSheetLabels'
 export { default as useMultiStepForm } from './tasting_sheet/useMultiStepForm'

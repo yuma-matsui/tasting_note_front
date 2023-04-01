@@ -8,7 +8,7 @@ const TastingSheetDetailsTitle: FC<{ tastingSheet: TastingSheetApi }> = memo(({ 
   const onClick = () => setIsEditing(true)
 
   return isEditing ? (
-    <UpdateSheetNameForm setIsEditing={setIsEditing} />
+    <UpdateSheetNameForm tastingSheet={tastingSheet} />
   ) : (
     <h2>
       {tastingSheet.name}
