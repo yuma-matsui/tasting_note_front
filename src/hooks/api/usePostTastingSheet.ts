@@ -1,16 +1,14 @@
 import { User } from 'firebase/auth'
 import { useNavigate } from 'react-router-dom'
 
-import { TastingSheetApi } from '../../types'
+import { TastingSheet, TastingSheetApi } from '../../types'
 import useAuthContext from '../context/useAuthContext'
 import useAxios from '../useAxios'
-import useTastingSheetContext from '../context/useTastingSheetContext'
 import useTastingSheetsContext from '../context/useTastingSheetsContext'
 import useToastContext from '../context/useToastContext'
 
-const usePostTastingSheet = () => {
+const usePostTastingSheet = (tastingSheet: TastingSheet) => {
   const navigate = useNavigate()
-  const { tastingSheet } = useTastingSheetContext()
   const { signIn, currentUser } = useAuthContext()
   const { client, getHeaders } = useAxios()
   const { setRequesting } = useTastingSheetsContext()

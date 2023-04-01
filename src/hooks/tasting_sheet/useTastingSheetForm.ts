@@ -1,12 +1,13 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
-import { TastingSheetAllName, TastingSheetFormState } from '../../types'
+import { TastingSheet, TastingSheetAllName, TastingSheetFormState } from '../../types'
 import { initialTastingSheet, isFlavorName } from '../../utils'
-import useTastingSheetContext from '../context/useTastingSheetContext'
 
 const useTastingSheetForm = () => {
-  const { tastingSheet, setTastingSheet } = useTastingSheetContext()
+  const [tastingSheet, setTastingSheet] = useState<TastingSheet>({
+    ...initialTastingSheet
+  })
 
   const {
     register,
@@ -48,7 +49,8 @@ const useTastingSheetForm = () => {
     onSubmit,
     getValues,
     lessThanTwoItems,
-    errors
+    errors,
+    tastingSheet
   }
 }
 

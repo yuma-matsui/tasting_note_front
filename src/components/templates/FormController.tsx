@@ -1,23 +1,26 @@
 import { FC, memo, useRef } from 'react'
 
-import {
-  useBeforeUnload,
-  usePostTastingSheet,
-  useResetTastingSheet,
-  useAuthContext,
-  useOnClickOpenModal
-} from '../../hooks'
+import { useBeforeUnload, usePostTastingSheet, useAuthContext, useOnClickOpenModal } from '../../hooks'
 import { FormControllerProps } from '../../types'
 import { FormControllerButton, GoToAnotherPageButton, SignInAndPostButton } from '../atoms'
 
 const FormController: FC<FormControllerProps> = memo(
-  ({ children, onClick, isFirstStep, isAppearanceStep, isLastStep, disabled, backButtonText, nextButtonText }) => {
+  ({
+    children,
+    onClick,
+    isFirstStep,
+    isAppearanceStep,
+    isLastStep,
+    disabled,
+    backButtonText,
+    nextButtonText,
+    tastingSheet
+  }) => {
     useBeforeUnload()
-    useResetTastingSheet()
 
     const { currentUser } = useAuthContext()
 
-    const { postTastingSheet } = usePostTastingSheet()
+    const { postTastingSheet } = usePostTastingSheet(tastingSheet)
     const onClickPost = () => postTastingSheet()
 
     const submitRef = useRef<HTMLInputElement>(null)
@@ -25,7 +28,7 @@ const FormController: FC<FormControllerProps> = memo(
     const { onClickOpenModal } = useOnClickOpenModal({
       text: '記録せずに終了しますか？',
       leftButton: <GoToAnotherPageButton to="/" text="OK" />,
-      rightButton: <SignInAndPostButton />
+      rightButton: <SignInAndPostButton tastingSheet={tastingSheet} />
     })
     const { onClickOpenModal: onClickBackAndOpenModal } = useOnClickOpenModal({
       text: '記録の途中ですがよろしいですか？',
