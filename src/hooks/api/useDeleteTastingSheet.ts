@@ -1,14 +1,11 @@
-import { TastingSheetApi } from '../../types'
 import useAuthContext from '../context/useAuthContext'
 import useRequestingContext from '../context/useRequestingContext'
-import useTastingSheetsContext from '../context/useTastingSheetsContext'
 import useToastContext from '../context/useToastContext'
 import useAxios from '../useAxios'
 
 const useDeleteTastingSheet = (id: number) => {
   const { client, getHeaders } = useAxios()
   const { currentUser } = useAuthContext()
-  const { setTastingSheets } = useTastingSheetsContext()
   const { showToast } = useToastContext()
   const { setRequesting } = useRequestingContext()
 
@@ -17,11 +14,7 @@ const useDeleteTastingSheet = (id: number) => {
 
     setRequesting(true)
     try {
-      const { data: tastingSheetsApi } = await client.delete<TastingSheetApi[]>(
-        `/tasting_sheets/${id}`,
-        await getHeaders(currentUser)
-      )
-      setTastingSheets(tastingSheetsApi)
+      await client.delete(`/tasting_sheets/${id}`, await getHeaders(currentUser))
     } catch (e) {
       if (e instanceof Error) throw e
     } finally {
