@@ -2,7 +2,7 @@ import { FC } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import { NewTastingSheetPage } from '../components/pages'
-import { useAuthContext, useTastingSheetsContext } from '../hooks'
+import { useAuthContext, useRequestingContext } from '../hooks'
 import { ModalProvider } from '../providers'
 import EditWinePageWrapper from './EditWinePageWrapper'
 import NewWinePageWrapper from './NewWinePageWrapper'
@@ -11,7 +11,7 @@ import WelcomePageWrapper from './WelcomePageWrapper'
 
 const RouterConfig: FC = () => {
   const { loading, error } = useAuthContext()
-  const { requesting } = useTastingSheetsContext()
+  const { requesting } = useRequestingContext()
 
   if (error) return <p>やり直してください</p>
   if (loading || requesting) return <p>...Loading</p>
