@@ -1,13 +1,10 @@
 import { CSSProperties, useCallback, useEffect, useLayoutEffect, useState } from 'react'
 
-import useTastingSheetContext from '../context/useTastingSheetContext'
+import { TastingSheet } from '../../types'
 
 const SIXTY_SECONDS = 60
 
-const useTastingSheetTimer = () => {
-  const {
-    tastingSheet: { time }
-  } = useTastingSheetContext()
+const useTastingSheetTimer = ({ time }: TastingSheet) => {
   const [secondTimer, setSecondTimer] = useState(Number(time) * SIXTY_SECONDS)
 
   const countDown = useCallback(

@@ -2,15 +2,14 @@ import { FC, memo, ReactElement } from 'react'
 
 import { NewTastingSheetSettingForm, StepsBar, TastingSheetBaseForm } from '../molecules'
 import { DefaultLayout, FormController } from '../templates'
-import { useMultiStepForm, useTastingSheetContext, useTastingSheetForm, useTastingSheetLabels } from '../../hooks'
+import { useMultiStepForm, useTastingSheetForm, useTastingSheetLabels } from '../../hooks'
 import { TastingSheetTimer } from '../atoms'
 import { TastingSheetDetailsTab } from '../organisms'
 
 const NewTastingSheetPage: FC = memo(() => {
-  const { tastingSheet } = useTastingSheetContext()
-  const labels = useTastingSheetLabels(tastingSheet.color)
-  const { handleSubmit, isValid, isSubmitting, onSubmit, register, errors, lessThanTwoItems, getValues } =
+  const { handleSubmit, isValid, isSubmitting, onSubmit, register, errors, lessThanTwoItems, getValues, tastingSheet } =
     useTastingSheetForm()
+  const labels = useTastingSheetLabels(tastingSheet.color)
 
   const steps: ReactElement[] = [
     <NewTastingSheetSettingForm register={register} errors={errors} />,
@@ -32,7 +31,7 @@ const NewTastingSheetPage: FC = memo(() => {
   return (
     <DefaultLayout>
       <form onSubmit={handleSubmit(onSubmit)}>
-        {!isFirstStep && <TastingSheetTimer isLastStep={isLastStep} />}
+        {!isFirstStep && <TastingSheetTimer tastingSheet={tastingSheet} isLastStep={isLastStep} />}
         {!isFirstStep && !isLastStep && <StepsBar currentStepIndex={currentStepIndex} />}
         <FormController
           onClick={onClickPageControl}
@@ -42,6 +41,7 @@ const NewTastingSheetPage: FC = memo(() => {
           disabled={!isValid || isSubmitting}
           backButtonText={getButtonText('back')}
           nextButtonText={getButtonText('next')}
+          tastingSheet={tastingSheet}
         >
           {step}
         </FormController>
