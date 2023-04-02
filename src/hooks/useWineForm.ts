@@ -13,7 +13,8 @@ import useAuthContext from './context/useAuthContext'
 const useWineForm = (wine?: WineApi) => {
   const { showBoundary } = useErrorBoundary()
   const location = useLocation()
-  const { id: tastingSheetId, name: tastingSheetName, color } = location.state as TastingSheetStateForWine
+  const { id, name: tastingSheetName, color } = location.state as TastingSheetStateForWine
+  const tastingSheetId = wine?.tastingSheetId ?? id
 
   const getGrapes = () => {
     if (wine) return GRAPES_RED.includes(wine.grape) ? GRAPES_RED : GRAPES_WHITE
