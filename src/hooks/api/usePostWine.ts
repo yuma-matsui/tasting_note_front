@@ -15,8 +15,8 @@ const usePostWine = () => {
   const [posting, setPosting] = useState(false)
 
   const postWine = async (wine: Wine) => {
+    if (!currentUser) return
     setPosting(true)
-    if (!currentUser) throw new Error('不正な呼び出し方です。')
 
     try {
       const { data: wineApi } = await client.post<Wine>('/wines', wine, await getHeaders(currentUser))

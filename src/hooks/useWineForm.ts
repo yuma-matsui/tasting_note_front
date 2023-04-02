@@ -51,7 +51,7 @@ const useWineForm = (wine?: WineApi) => {
   const { currentUser } = useAuthContext()
   const [imageFile, setImageFile] = useState<File | null>(null)
   const onChangeImageFile = (e: ChangeEvent<HTMLInputElement>) => {
-    if (!currentUser) throw new Error('不正な呼び出し方です。')
+    if (!currentUser) return
 
     const { files } = e.target
     if (files && files[0]) {

@@ -11,11 +11,11 @@ const useFetchTastingSheets = () => {
   const { client, getHeaders } = useAxios()
   const { currentUser } = useAuthContext()
 
-  if (!currentUser) throw new Error('不正な呼び出し方です。')
-
   useLayoutEffect(() => {
     const fetchTastingSheets = async () => {
+      if (!currentUser) return
       setFetching(true)
+
       try {
         const { data: tastingSheetsApi } = await client.get<TastingSheetApi[]>(
           '/tasting_sheets',

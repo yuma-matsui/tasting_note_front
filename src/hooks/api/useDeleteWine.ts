@@ -14,9 +14,9 @@ const useDeleteWine = (wine: WineApi) => {
   const { setRequesting } = useRequestingContext()
 
   const onClickDeleteWine = async () => {
-    if (!currentUser) throw new Error('不正な呼び出し方です。')
-
+    if (!currentUser) return
     setRequesting(true)
+
     try {
       await client.delete(`/wines/${wine.id}`, await getHeaders(currentUser))
       navigate(`/tasting_sheets/${wine.tastingSheetId}`)

@@ -20,8 +20,8 @@ const useFetchATastingSheet = (tastingSheetId: number) => {
   })
   const [fetching, setFetching] = useState(false)
   const fetchATastingSheet = useCallback(async () => {
+    if (!currentUser) return
     setFetching(true)
-    if (!currentUser) throw new Error('不正な呼び出し方です。')
 
     try {
       const { data: tastingSheetApi } = await client.get<TastingSheetApi | null>(

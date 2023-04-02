@@ -10,9 +10,9 @@ const useDeleteTastingSheet = (id: number) => {
   const { setRequesting } = useRequestingContext()
 
   const onClickDelete = async () => {
-    if (!currentUser) throw new Error('不正な呼び出し方です。')
-
+    if (!currentUser) return
     setRequesting(true)
+
     try {
       await client.delete(`/tasting_sheets/${id}`, await getHeaders(currentUser))
     } catch (e) {

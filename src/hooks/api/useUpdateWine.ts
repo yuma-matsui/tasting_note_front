@@ -15,8 +15,8 @@ const useUpdateWine = () => {
   const [updating, setUpdating] = useState(false)
 
   const updateWine = async (wine: Wine, wineId: number) => {
+    if (!currentUser) return
     setUpdating(true)
-    if (!currentUser) throw new Error('不正な呼び出し方です。')
 
     try {
       const { data: wineApi } = await client.put<WineApi>(`/wines/${wineId}`, wine, await getHeaders(currentUser))

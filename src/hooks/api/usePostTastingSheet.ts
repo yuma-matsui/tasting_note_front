@@ -14,7 +14,7 @@ const usePostTastingSheet = () => {
   const { showToast } = useToastContext()
 
   const postTastingSheet = async (tastingSheet: TastingSheet) => {
-    if (!currentUser) throw new Error('不正な呼び出し方です。')
+    if (!currentUser) return
     setRequesting(true)
 
     try {

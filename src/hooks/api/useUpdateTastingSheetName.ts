@@ -16,7 +16,7 @@ const useUpdateTastingSheetName = () => {
   const { showToast } = useToastContext()
 
   const updateSheetName = async (tastingSheet: TastingSheet) => {
-    if (!currentUser || Number.isNaN(target)) throw new Error('不正な呼び出し方です。')
+    if (!currentUser || Number.isNaN(target)) return
     setRequesting(true)
 
     try {
