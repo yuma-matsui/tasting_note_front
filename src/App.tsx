@@ -5,13 +5,13 @@ import { AuthProvider, RequestingProvider, ToastProvider } from './providers'
 import RouterConfig from './router/RouterConfig'
 
 const App: FC = () => (
-  <AuthProvider>
-    <RequestingProvider>
-      <ToastProvider>
+  <ToastProvider>
+    <AuthProvider>
+      <RequestingProvider>
         <RouterConfig />
-      </ToastProvider>
-    </RequestingProvider>
-  </AuthProvider>
+      </RequestingProvider>
+    </AuthProvider>
+  </ToastProvider>
 )
 
 export default App
