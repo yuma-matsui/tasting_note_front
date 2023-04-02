@@ -8,14 +8,7 @@ const useOnClickAuth = () => {
   const { showToast } = useToastContext()
   const navigate = useNavigate()
 
-  const onClickSignIn = async () => {
-    try {
-      await signIn()
-    } catch (e) {
-      if (e instanceof Error) throw e
-    }
-    showToast('ログインしました')
-  }
+  const onClickSignIn = () => signIn()
 
   const onClickSignOut = async () => {
     try {
