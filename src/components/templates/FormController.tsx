@@ -1,6 +1,12 @@
 import { FC, memo, useRef } from 'react'
 
-import { useBeforeUnload, usePostTastingSheet, useAuthContext, useOnClickOpenModal } from '../../hooks'
+import {
+  useBeforeUnload,
+  usePostTastingSheet,
+  useAuthContext,
+  useOnClickOpenModal,
+  usePostTastingSheetAfterSignIn
+} from '../../hooks'
 import { FormControllerProps } from '../../types'
 import { FormControllerButton, GoToAnotherPageButton, SignInAndPostButton } from '../atoms'
 
@@ -17,11 +23,12 @@ const FormController: FC<FormControllerProps> = memo(
     tastingSheet
   }) => {
     useBeforeUnload()
+    usePostTastingSheetAfterSignIn()
 
     const { currentUser } = useAuthContext()
 
-    const { postTastingSheet } = usePostTastingSheet(tastingSheet)
-    const onClickPost = () => postTastingSheet()
+    const { postTastingSheet } = usePostTastingSheet()
+    const onClickPost = () => postTastingSheet(tastingSheet)
 
     const submitRef = useRef<HTMLInputElement>(null)
 
