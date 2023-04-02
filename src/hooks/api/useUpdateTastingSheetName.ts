@@ -1,4 +1,5 @@
 import { useParams } from 'react-router-dom'
+import { useErrorBoundary } from 'react-error-boundary'
 
 import { TastingSheet } from '../../types'
 import useAuthContext from '../context/useAuthContext'
@@ -9,6 +10,7 @@ import useRequestingContext from '../context/useRequestingContext'
 const useUpdateTastingSheetName = () => {
   const { tastingSheetId } = useParams()
   const target = Number(tastingSheetId)
+  const { showBoundary } = useErrorBoundary()
 
   const { currentUser } = useAuthContext()
   const { client, getHeaders } = useAxios()
@@ -22,7 +24,7 @@ const useUpdateTastingSheetName = () => {
     try {
       await client.put(`/tasting_sheets/${target}`, tastingSheet, await getHeaders(currentUser))
     } catch (e) {
-      if (e instanceof Error) throw e
+      if (e instanceof Error) showBoundary(e)
     } finally {
       setRequesting(false)
     }

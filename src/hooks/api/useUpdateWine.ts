@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useErrorBoundary } from 'react-error-boundary'
 
 import { Wine, WineApi } from '../../types'
 import useAuthContext from '../context/useAuthContext'
@@ -8,6 +9,8 @@ import useAxios from '../useAxios'
 
 const useUpdateWine = () => {
   const navigate = useNavigate()
+  const { showBoundary } = useErrorBoundary()
+
   const { client, getHeaders } = useAxios()
   const { currentUser } = useAuthContext()
   const { showToast } = useToastContext()
@@ -22,7 +25,7 @@ const useUpdateWine = () => {
       const { data: wineApi } = await client.put<WineApi>(`/wines/${wineId}`, wine, await getHeaders(currentUser))
       navigate(`/tasting_sheets/${wineApi.tastingSheetId}`)
     } catch (e) {
-      if (e instanceof Error) throw e
+      if (e instanceof Error) showBoundary(e)
     } finally {
       setUpdating(false)
     }

@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom'
+import { useErrorBoundary } from 'react-error-boundary'
 
 import { WineApi } from '../../types'
 import useAuthContext from '../context/useAuthContext'
@@ -12,6 +13,7 @@ const useDeleteWine = (wine: WineApi) => {
   const { client, getHeaders } = useAxios()
   const { showToast } = useToastContext()
   const { setRequesting } = useRequestingContext()
+  const { showBoundary } = useErrorBoundary()
 
   const onClickDeleteWine = async () => {
     if (!currentUser) return
@@ -21,7 +23,7 @@ const useDeleteWine = (wine: WineApi) => {
       await client.delete(`/wines/${wine.id}`, await getHeaders(currentUser))
       navigate(`/tasting_sheets/${wine.tastingSheetId}`)
     } catch (e) {
-      if (e instanceof Error) throw e
+      if (e instanceof Error) showBoundary(e)
     } finally {
       setRequesting(false)
     }

@@ -1,13 +1,16 @@
 import axios from 'axios'
 import { useState } from 'react'
+import { useErrorBoundary } from 'react-error-boundary'
 
 import useAuthContext from '../context/useAuthContext'
 import useAxios from '../useAxios'
 
 const usePostWineImageToS3 = () => {
+  const [posting, setPosting] = useState(false)
+  const { showBoundary } = useErrorBoundary()
+
   const { currentUser } = useAuthContext()
   const { client, getHeaders } = useAxios()
-  const [posting, setPosting] = useState(false)
 
   const postWineImageToS3 = async (file: File, filename: string) => {
     if (!currentUser) return
@@ -17,7 +20,7 @@ const usePostWineImageToS3 = () => {
       const { data: signedUrl } = await client.post<string>('/images', { filename }, await getHeaders(currentUser))
       await axios.put(signedUrl, file)
     } catch (e) {
-      if (e instanceof Error) throw e
+      if (e instanceof Error) showBoundary(e)
     } finally {
       setPosting(false)
     }

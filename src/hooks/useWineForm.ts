@@ -1,6 +1,7 @@
 import { ChangeEvent, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useLocation } from 'react-router-dom'
+import { useErrorBoundary } from 'react-error-boundary'
 
 import { ALCOHOL_PERCENTAGES, COUNTRIES, GRAPES_RED, GRAPES_WHITE, VINTAGES } from '../assets'
 import { TastingSheetStateForWine, WineApi, WineFormState } from '../types'
@@ -10,6 +11,7 @@ import useUpdateWine from './api/useUpdateWine'
 import useAuthContext from './context/useAuthContext'
 
 const useWineForm = (wine?: WineApi) => {
+  const { showBoundary } = useErrorBoundary()
   const location = useLocation()
   const { id: tastingSheetId, name: tastingSheetName, color } = location.state as TastingSheetStateForWine
 
@@ -67,7 +69,7 @@ const useWineForm = (wine?: WineApi) => {
       if (wine) await updateWine(data.wine, wine.id)
       if (!wine) await postWine(data.wine)
     } catch (e) {
-      if (e instanceof Error) throw e
+      if (e instanceof Error) showBoundary(e)
     }
   }
 
