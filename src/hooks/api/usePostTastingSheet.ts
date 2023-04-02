@@ -1,4 +1,3 @@
-import { User } from 'firebase/auth'
 import { useNavigate } from 'react-router-dom'
 
 import { TastingSheet, TastingSheetApi } from '../../types'
@@ -7,44 +6,35 @@ import useAxios from '../useAxios'
 import useToastContext from '../context/useToastContext'
 import useRequestingContext from '../context/useRequestingContext'
 
-const usePostTastingSheet = (tastingSheet: TastingSheet) => {
+const usePostTastingSheet = () => {
   const navigate = useNavigate()
-  const { signIn, currentUser } = useAuthContext()
+  const { currentUser } = useAuthContext()
   const { client, getHeaders } = useAxios()
   const { setRequesting } = useRequestingContext()
   const { showToast } = useToastContext()
 
-  const postTastingSheet = async (user?: User) => {
+  const postTastingSheet = async (tastingSheet: TastingSheet) => {
+    if (!currentUser) throw new Error('不正な呼び出し方です。')
     setRequesting(true)
-    const postingUser = currentUser ?? user
-    if (!postingUser) throw new Error('不正な呼び出し方です。')
 
     try {
       const { data: tastingSheetApi } = await client.post<TastingSheetApi>(
         '/tasting_sheets',
         tastingSheet,
-        await getHeaders(postingUser)
+        await getHeaders(currentUser)
       )
       navigate(`/tasting_sheets/${tastingSheetApi.id}`)
     } catch (e) {
       if (e instanceof Error) throw e
     } finally {
       setRequesting(false)
+      window.localStorage.clear()
     }
     showToast('テイスティングシートを記録しました')
   }
 
-  const signInAndPostTastingSheet = async () => {
-    try {
-      await postTastingSheet((await signIn())?.user)
-    } catch (e) {
-      if (e instanceof Error) throw e
-    }
-  }
-
   return {
-    postTastingSheet,
-    signInAndPostTastingSheet
+    postTastingSheet
   }
 }
 

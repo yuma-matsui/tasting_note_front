@@ -8,6 +8,7 @@ export { default as useBeforeUnload } from './tasting_sheet/useBeforeUnload'
 export { default as useTastingSheetTimer } from './tasting_sheet/useTastingSheetTimer'
 export { default as useTastingSheetCardColor } from './tasting_sheet/useTastingSheetCardColor'
 export { default as useTastingSheetStateForWine } from './tasting_sheet/useTastingSheetStateForWine'
+export { default as useSetTastingSheetAndSignIn } from './tasting_sheet/useSetTastingSheetAndSignIn'
 
 export { default as usePostTastingSheet } from './api/usePostTastingSheet'
 export { default as useFetchTastingSheets } from './api/useFetchTastingSheets'
@@ -17,6 +18,7 @@ export { default as useUpdateTastingSheetName } from './api/useUpdateTastingShee
 export { default as usePostWine } from './api/usePostWine'
 export { default as useUpdateWine } from './api/useUpdateWine'
 export { default as usePostWineImageToS3 } from './api/usePostWineImageToS3'
+export { default as usePostTastingSheetAfterSignIn } from './api/usePostTastingSheetAfterSignIn'
 
 export { default as useAuthContext } from './context/useAuthContext'
 export { default as useToastContext } from './context/useToastContext'
