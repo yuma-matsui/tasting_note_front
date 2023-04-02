@@ -10,10 +10,9 @@ import TastingSheetPageWrapper from './TastingSheetPageWrapper'
 import WelcomePageWrapper from './WelcomePageWrapper'
 
 const RouterConfig: FC = () => {
-  const { loading, error } = useAuthContext()
+  const { loading } = useAuthContext()
   const { requesting } = useRequestingContext()
 
-  if (error) return <p>やり直してください</p>
   if (loading || requesting) return <p>...Loading</p>
 
   return (

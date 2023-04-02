@@ -8,11 +8,11 @@ import {
   signInWithRedirect,
   GoogleAuthProvider
 } from 'firebase/auth'
-import { FC, useCallback, useEffect, useLayoutEffect, useMemo, useState } from 'react'
+import { FC, useCallback, useLayoutEffect, useMemo, useState } from 'react'
 import { useAuthState, useDeleteUser, useSignOut } from 'react-firebase-hooks/auth'
 
 import { AuthContext } from '../contexts'
-import { useAxios, useDisplayToastAfterSignedIn } from '../hooks'
+import { useAxios, useDisplayToastAfterSignedIn, useThrowAuthError } from '../hooks'
 import { firebaseConfig } from '../lib'
 import { ReactNodeChildren } from '../types'
 
@@ -34,7 +34,7 @@ const AuthProvider: FC<ReactNodeChildren> = ({ children }) => {
   const error = authError || authChangeError || signOutError || deleteError
 
   useDisplayToastAfterSignedIn(currentUser)
-
+  useThrowAuthError(error)
   useLayoutEffect(() => {
     onAuthStateChanged(auth, (user) => {
       setCurrentUser(user)
