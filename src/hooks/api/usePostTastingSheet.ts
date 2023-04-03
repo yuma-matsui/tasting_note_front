@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom'
+import { useErrorBoundary } from 'react-error-boundary'
 
 import { TastingSheet, TastingSheetApi } from '../../types'
 import useAuthContext from '../context/useAuthContext'
@@ -12,9 +13,10 @@ const usePostTastingSheet = () => {
   const { client, getHeaders } = useAxios()
   const { setRequesting } = useRequestingContext()
   const { showToast } = useToastContext()
+  const { showBoundary } = useErrorBoundary()
 
   const postTastingSheet = async (tastingSheet: TastingSheet) => {
-    if (!currentUser) throw new Error('不正な呼び出し方です。')
+    if (!currentUser) return
     setRequesting(true)
 
     try {
@@ -25,7 +27,7 @@ const usePostTastingSheet = () => {
       )
       navigate(`/tasting_sheets/${tastingSheetApi.id}`)
     } catch (e) {
-      if (e instanceof Error) throw e
+      if (e instanceof Error) showBoundary(e)
     } finally {
       setRequesting(false)
       window.localStorage.clear()

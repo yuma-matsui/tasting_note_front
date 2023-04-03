@@ -1,9 +1,12 @@
+import { useErrorBoundary } from 'react-error-boundary'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
 import { TastingSheetApi, TastingSheetFormState } from '../../types'
 import useUpdateTastingSheetName from '../api/useUpdateTastingSheetName'
 
 const useTastingSheetUpdateForm = (tastingSheet: TastingSheetApi) => {
+  const { showBoundary } = useErrorBoundary()
+
   const { updateSheetName } = useUpdateTastingSheetName()
   const {
     register,
@@ -24,7 +27,7 @@ const useTastingSheetUpdateForm = (tastingSheet: TastingSheetApi) => {
     try {
       await updateSheetName(data.tastingSheet)
     } catch (e) {
-      if (e instanceof Error) throw e
+      if (e instanceof Error) showBoundary(e)
     }
   }
 

@@ -8,21 +8,19 @@ import {
   signInWithRedirect,
   GoogleAuthProvider
 } from 'firebase/auth'
-import { FC, useCallback, useEffect, useLayoutEffect, useMemo, useState } from 'react'
+import { FC, useCallback, useLayoutEffect, useMemo, useState } from 'react'
 import { useAuthState, useDeleteUser, useSignOut } from 'react-firebase-hooks/auth'
 
 import { AuthContext } from '../contexts'
-import { useAxios, useToastContext } from '../hooks'
+import { useAxios, useDisplayToastAfterSignedIn, useThrowAuthError } from '../hooks'
 import { firebaseConfig } from '../lib'
 import { ReactNodeChildren } from '../types'
-import { SIGNED_IN_KEY, TASTING_SHEET_KEY } from '../utils'
 
 const AuthProvider: FC<ReactNodeChildren> = ({ children }) => {
   initializeApp(firebaseConfig)
   const auth = getAuth()
 
   const { client, getHeaders } = useAxios()
-  const { showToast } = useToastContext()
 
   const [currentUser, setCurrentUser] = useState<User | null>(null)
   const [signInLoading, setSignInLoading] = useState(false)
@@ -35,20 +33,13 @@ const AuthProvider: FC<ReactNodeChildren> = ({ children }) => {
   const loading = signInLoading || authChangeLoading || deleteLoading || deleteAccountLoading
   const error = authError || authChangeError || signOutError || deleteError
 
+  useDisplayToastAfterSignedIn(currentUser)
+  useThrowAuthError(error)
   useLayoutEffect(() => {
     onAuthStateChanged(auth, (user) => {
       setCurrentUser(user)
     })
   }, [auth, setCurrentUser])
-
-  useEffect(() => {
-    const justAfterSignedIn =
-      window.localStorage.getItem(SIGNED_IN_KEY) && !window.localStorage.getItem(TASTING_SHEET_KEY)
-    if (currentUser && justAfterSignedIn) {
-      showToast('ログインしました')
-      window.localStorage.clear()
-    }
-  }, [currentUser, showToast])
 
   const signIn = useCallback(() => {
     setSignInLoading(true)

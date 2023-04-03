@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
-import { NewTastingSheetPage } from '../components/pages'
+import { Error404Page, NewTastingSheetPage } from '../components/pages'
 import { useAuthContext, useRequestingContext } from '../hooks'
 import { ModalProvider } from '../providers'
 import EditWinePageWrapper from './EditWinePageWrapper'
@@ -10,10 +10,9 @@ import TastingSheetPageWrapper from './TastingSheetPageWrapper'
 import WelcomePageWrapper from './WelcomePageWrapper'
 
 const RouterConfig: FC = () => {
-  const { loading, error } = useAuthContext()
+  const { loading } = useAuthContext()
   const { requesting } = useRequestingContext()
 
-  if (error) return <p>やり直してください</p>
   if (loading || requesting) return <p>...Loading</p>
 
   return (
@@ -22,15 +21,18 @@ const RouterConfig: FC = () => {
         <Routes>
           <Route path="/" element={<WelcomePageWrapper />} />
           <Route path="/tasting_sheets">
+            <Route index element={<Error404Page />} />
             <Route path=":tastingSheetId" element={<TastingSheetPageWrapper />} />
             <Route path="new" element={<NewTastingSheetPage />} />
           </Route>
           <Route path="/wines">
+            <Route index element={<Error404Page />} />
             <Route path="new" element={<NewWinePageWrapper />} />
             <Route path="edit">
               <Route path=":wineId" element={<EditWinePageWrapper />} />
             </Route>
           </Route>
+          <Route path="*" element={<Error404Page />} />
         </Routes>
       </ModalProvider>
     </BrowserRouter>
