@@ -4,7 +4,7 @@ import { createPortal } from 'react-dom'
 import { BaseToast } from '../components/atoms'
 import { ToastContext } from '../contexts'
 import { useAuthContext, useRequestingContext } from '../hooks'
-import { ReactNodeChildren } from '../types'
+import { ReactNodeChildren, ToastProps, ToastType } from '../types'
 
 const DISPLAYING_MILLISECOND = 2000
 
@@ -14,10 +14,12 @@ const ToastProvider: FC<ReactNodeChildren> = ({ children }) => {
 
   const [visible, setVisible] = useState(false)
   const [toastText, setToastText] = useState<string>('')
+  const [toastType, setToastType] = useState<ToastType>('success')
 
   const showToast = useCallback(
-    (text: string) => {
+    ({ text, type }: ToastProps) => {
       if (loading || requesting) return
+      if (type) setToastType(type)
       setToastText(text)
       setVisible(true)
       window.setTimeout(() => setVisible(false), DISPLAYING_MILLISECOND)
@@ -30,7 +32,7 @@ const ToastProvider: FC<ReactNodeChildren> = ({ children }) => {
   return (
     <ToastContext.Provider value={toastState}>
       {children}
-      {createPortal(<BaseToast text={toastText} visible={visible} />, document.body)}
+      {createPortal(<BaseToast text={toastText} visible={visible} type={toastType} />, document.body)}
     </ToastContext.Provider>
   )
 }

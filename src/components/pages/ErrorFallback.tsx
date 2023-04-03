@@ -8,7 +8,10 @@ const ErrorFallback = ({ error }: FallbackProps) => {
 
   useEffect(() => {
     if (error instanceof Error) console.error(error.message)
-    showToast('通信エラーが発生しました')
+    showToast({
+      text: '通信エラーが発生しました',
+      type: 'error'
+    })
   }, [error, showToast])
 
   return (

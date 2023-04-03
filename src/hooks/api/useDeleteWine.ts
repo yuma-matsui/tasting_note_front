@@ -27,7 +27,9 @@ const useDeleteWine = (wine: WineApi) => {
     } finally {
       setRequesting(false)
     }
-    showToast('ワインを削除しました')
+    showToast({
+      text: 'ワインを削除しました'
+    })
   }
 
   return {
