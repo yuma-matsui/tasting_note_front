@@ -28,7 +28,9 @@ const usePostWine = () => {
     } finally {
       setPosting(false)
     }
-    showToast('ワインを登録しました')
+    showToast({
+      text: 'ワインを登録しました'
+    })
   }
 
   return {

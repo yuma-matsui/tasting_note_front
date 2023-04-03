@@ -24,7 +24,7 @@ const useOnClickAuth = () => {
     } catch (e) {
       if (e instanceof Error) showBoundary(e)
     }
-    showToast('ログアウトしました')
+    showToast({ text: 'ログアウトしました' })
   }
 
   const onClickDeleteAccount = async () => {
@@ -34,7 +34,7 @@ const useOnClickAuth = () => {
     } catch (e) {
       if (e instanceof Error) showBoundary(e)
     }
-    showToast('アカウントを削除しました')
+    showToast({ text: 'アカウントを削除しました' })
   }
 
   return {
