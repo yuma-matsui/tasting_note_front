@@ -1,5 +1,6 @@
-import { useCallback, useLayoutEffect, useState } from 'react'
+import { useLayoutEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useErrorBoundary } from 'react-error-boundary'
 
 import { TastingSheetApi } from '../../types'
 import { initialTastingSheet } from '../../utils'
@@ -8,6 +9,7 @@ import useAxios from '../useAxios'
 
 const useFetchATastingSheet = (tastingSheetId: number) => {
   const navigate = useNavigate()
+  const { showBoundary } = useErrorBoundary()
 
   const { client, getHeaders } = useAxios()
   const { currentUser } = useAuthContext()
@@ -19,31 +21,29 @@ const useFetchATastingSheet = (tastingSheetId: number) => {
     wine: null
   })
   const [fetching, setFetching] = useState(false)
-  const fetchATastingSheet = useCallback(async () => {
-    setFetching(true)
-    if (!currentUser) throw new Error('不正な呼び出し方です。')
-
-    try {
-      const { data: tastingSheetApi } = await client.get<TastingSheetApi | null>(
-        `/tasting_sheets/${tastingSheetId}`,
-        await getHeaders(currentUser)
-      )
-      if (!tastingSheetApi) navigate('/')
-      if (tastingSheetApi) setTastingSheet(tastingSheetApi)
-    } catch (e) {
-      if (e instanceof Error) throw e
-    } finally {
-      setFetching(false)
-    }
-  }, [currentUser, client, tastingSheetId, getHeaders, navigate])
 
   useLayoutEffect(() => {
-    if (currentUser)
-      fetchATastingSheet().catch((e: Error) => {
-        throw e
-      })
+    const fetchATastingSheet = async () => {
+      if (!currentUser) return
+      setFetching(true)
+
+      try {
+        const { data: tastingSheetApi } = await client.get<TastingSheetApi | null>(
+          `/tasting_sheets/${tastingSheetId}`,
+          await getHeaders(currentUser)
+        )
+        if (!tastingSheetApi) navigate('/')
+        if (tastingSheetApi) setTastingSheet(tastingSheetApi)
+      } catch (e) {
+        if (e instanceof Error) showBoundary(e)
+      } finally {
+        setFetching(false)
+      }
+    }
+
+    fetchATastingSheet().catch((e: Error) => showBoundary(e))
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentUser])
+  }, [])
 
   return {
     fetching,

@@ -1,4 +1,5 @@
 import { useLayoutEffect, useState } from 'react'
+import { useErrorBoundary } from 'react-error-boundary'
 
 import { TastingSheetApi } from '../../types'
 import useAuthContext from '../context/useAuthContext'
@@ -7,15 +8,16 @@ import useAxios from '../useAxios'
 const useFetchTastingSheets = () => {
   const [tastingSheets, setTastingSheets] = useState<TastingSheetApi[]>([])
   const [fetching, setFetching] = useState(false)
+  const { showBoundary } = useErrorBoundary()
 
   const { client, getHeaders } = useAxios()
   const { currentUser } = useAuthContext()
 
-  if (!currentUser) throw new Error('不正な呼び出し方です。')
-
   useLayoutEffect(() => {
     const fetchTastingSheets = async () => {
+      if (!currentUser) return
       setFetching(true)
+
       try {
         const { data: tastingSheetsApi } = await client.get<TastingSheetApi[]>(
           '/tasting_sheets',
@@ -23,15 +25,13 @@ const useFetchTastingSheets = () => {
         )
         setTastingSheets(tastingSheetsApi)
       } catch (e) {
-        if (e instanceof Error) throw e
+        if (e instanceof Error) showBoundary(e)
       } finally {
         setFetching(false)
       }
     }
 
-    fetchTastingSheets().catch((e: Error) => {
-      throw e
-    })
+    fetchTastingSheets().catch((e: Error) => showBoundary(e))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 

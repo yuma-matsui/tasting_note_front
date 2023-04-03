@@ -1,10 +1,13 @@
 import { useNavigate } from 'react-router-dom'
+import { useErrorBoundary } from 'react-error-boundary'
 
 import useAuthContext from '../context/useAuthContext'
 import useToastContext from '../context/useToastContext'
 import { SIGNED_IN_KEY } from '../../utils'
 
 const useOnClickAuth = () => {
+  const { showBoundary } = useErrorBoundary()
+
   const { deleteAccount, signOut, signIn } = useAuthContext()
   const { showToast } = useToastContext()
   const navigate = useNavigate()
@@ -19,7 +22,7 @@ const useOnClickAuth = () => {
       await signOut()
       navigate('/')
     } catch (e) {
-      if (e instanceof Error) throw e
+      if (e instanceof Error) showBoundary(e)
     }
     showToast('ログアウトしました')
   }
@@ -29,7 +32,7 @@ const useOnClickAuth = () => {
       await deleteAccount()
       navigate('/')
     } catch (e) {
-      if (e instanceof Error) throw e
+      if (e instanceof Error) showBoundary(e)
     }
     showToast('アカウントを削除しました')
   }

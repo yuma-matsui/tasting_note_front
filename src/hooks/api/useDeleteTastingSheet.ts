@@ -1,3 +1,5 @@
+import { useErrorBoundary } from 'react-error-boundary'
+
 import useAuthContext from '../context/useAuthContext'
 import useRequestingContext from '../context/useRequestingContext'
 import useToastContext from '../context/useToastContext'
@@ -8,15 +10,16 @@ const useDeleteTastingSheet = (id: number) => {
   const { currentUser } = useAuthContext()
   const { showToast } = useToastContext()
   const { setRequesting } = useRequestingContext()
+  const { showBoundary } = useErrorBoundary()
 
   const onClickDelete = async () => {
-    if (!currentUser) throw new Error('不正な呼び出し方です。')
-
+    if (!currentUser) return
     setRequesting(true)
+
     try {
       await client.delete(`/tasting_sheets/${id}`, await getHeaders(currentUser))
     } catch (e) {
-      if (e instanceof Error) throw e
+      if (e instanceof Error) showBoundary(e)
     } finally {
       setRequesting(false)
     }
