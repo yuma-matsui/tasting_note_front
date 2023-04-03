@@ -11,7 +11,9 @@ const useDisplayToastAfterSignedIn = (user: User | null) => {
     const justAfterSignedIn =
       window.localStorage.getItem(SIGNED_IN_KEY) && !window.localStorage.getItem(TASTING_SHEET_KEY)
     if (user && justAfterSignedIn) {
-      showToast('ログインしました')
+      showToast({
+        text: 'ログインしました'
+      })
       window.localStorage.clear()
     }
   }, [user, showToast])

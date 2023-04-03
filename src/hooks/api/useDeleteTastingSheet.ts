@@ -23,7 +23,9 @@ const useDeleteTastingSheet = (id: number) => {
     } finally {
       setRequesting(false)
     }
-    showToast('テイスティングシートを削除しました')
+    showToast({
+      text: 'テイスティングシートを削除しました'
+    })
   }
 
   return {

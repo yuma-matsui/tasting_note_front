@@ -29,7 +29,9 @@ const useUpdateWine = () => {
     } finally {
       setUpdating(false)
     }
-    showToast('ワインを更新しました')
+    showToast({
+      text: 'ワインを更新しました'
+    })
   }
 
   return {

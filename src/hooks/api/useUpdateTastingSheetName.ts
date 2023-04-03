@@ -28,7 +28,9 @@ const useUpdateTastingSheetName = () => {
     } finally {
       setRequesting(false)
     }
-    showToast('シート名を変更しました')
+    showToast({
+      text: 'シート名を変更しました'
+    })
   }
 
   return {
