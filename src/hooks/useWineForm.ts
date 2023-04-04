@@ -21,9 +21,9 @@ const useWineForm = (wine?: WineApi) => {
     return color === 'red' ? GRAPES_RED : GRAPES_WHITE
   }
 
-  const { posting, postWine } = usePostWine()
-  const { updating, updateWine } = useUpdateWine()
-  const { posting: imagePosting, postWineImageToS3 } = usePostWineImageToS3()
+  const { postWine } = usePostWine()
+  const { updateWine } = useUpdateWine()
+  const { postWineImageToS3 } = usePostWineImageToS3()
 
   const {
     register,
@@ -91,7 +91,6 @@ const useWineForm = (wine?: WineApi) => {
     tastingSheetName,
     tastingSheetId,
     selectBoxOptions,
-    requesting: posting || updating || imagePosting,
     imageFile,
     onChangeImageFile
   }

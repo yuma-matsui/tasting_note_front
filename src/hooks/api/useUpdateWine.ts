@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useErrorBoundary } from 'react-error-boundary'
 
@@ -6,6 +5,7 @@ import { Wine, WineApi } from '../../types'
 import useAuthContext from '../context/useAuthContext'
 import useToastContext from '../context/useToastContext'
 import useAxios from '../useAxios'
+import useRequestingContext from '../context/useRequestingContext'
 
 const useUpdateWine = () => {
   const navigate = useNavigate()
@@ -14,12 +14,11 @@ const useUpdateWine = () => {
   const { client, getHeaders } = useAxios()
   const { currentUser } = useAuthContext()
   const { showToast } = useToastContext()
-
-  const [updating, setUpdating] = useState(false)
+  const { setRequesting } = useRequestingContext()
 
   const updateWine = async (wine: Wine, wineId: number) => {
     if (!currentUser) return
-    setUpdating(true)
+    setRequesting(true)
 
     try {
       const { data: wineApi } = await client.put<WineApi>(`/wines/${wineId}`, wine, await getHeaders(currentUser))
@@ -27,7 +26,7 @@ const useUpdateWine = () => {
     } catch (e) {
       if (e instanceof Error) showBoundary(e)
     } finally {
-      setUpdating(false)
+      setRequesting(false)
     }
     showToast({
       text: 'ワインを更新しました'
@@ -35,7 +34,6 @@ const useUpdateWine = () => {
   }
 
   return {
-    updating,
     updateWine
   }
 }

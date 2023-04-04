@@ -23,12 +23,9 @@ const WineForm: FC<{ wine?: WineApi }> = memo(({ wine }) => {
     tastingSheetId,
     tastingSheetName,
     selectBoxOptions: { vintages, countries, grapes, alcoholPercentages },
-    requesting,
     imageFile,
     onChangeImageFile
   } = useWineForm(wine)
-
-  if (requesting) return <p>...Loading</p>
 
   return (
     <>
