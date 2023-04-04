@@ -1,7 +1,7 @@
 import { FC, memo } from 'react'
 
 import { useFetchATastingSheet } from '../../hooks'
-import { GoToAnotherPageButton, GoToNewWinePageButton } from '../atoms'
+import { GoToAnotherPageButton, GoToNewWinePageButton, LoadingSpinner } from '../atoms'
 import TastingSheetDetailsTitle from '../molecules/titles/TastingSheetDetailsTitle'
 import { TastingSheetDetailsTab, WineDetails } from '../organisms'
 import { DefaultLayout } from '../templates'
@@ -9,7 +9,7 @@ import { DefaultLayout } from '../templates'
 const TastingSheetDetailsPage: FC<{ tastingSheetId: number }> = memo(({ tastingSheetId }) => {
   const { fetching, tastingSheet } = useFetchATastingSheet(tastingSheetId)
 
-  if (fetching) return <p>...Loading</p>
+  if (fetching) return <LoadingSpinner />
 
   return (
     <DefaultLayout>

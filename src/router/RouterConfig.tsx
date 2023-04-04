@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Error404Page, NewTastingSheetPage } from '../components/pages'
 import { useAuthContext, useRequestingContext } from '../hooks'
 import { ModalProvider } from '../providers'
+import { LoadingSpinner } from '../components/atoms'
 import EditWinePageWrapper from './EditWinePageWrapper'
 import NewWinePageWrapper from './NewWinePageWrapper'
 import TastingSheetPageWrapper from './TastingSheetPageWrapper'
@@ -13,7 +14,7 @@ const RouterConfig: FC = () => {
   const { loading } = useAuthContext()
   const { requesting } = useRequestingContext()
 
-  if (loading || requesting) return <p>...Loading</p>
+  if (loading || requesting) return <LoadingSpinner />
 
   return (
     <BrowserRouter>
