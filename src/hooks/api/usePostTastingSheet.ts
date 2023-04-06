@@ -33,7 +33,8 @@ const usePostTastingSheet = () => {
       window.localStorage.clear()
     }
     showToast({
-      text: 'テイスティングシートを記録しました'
+      text: 'テイスティングシートを記録しました',
+      type: 'success'
     })
   }
 

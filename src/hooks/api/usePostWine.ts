@@ -28,7 +28,8 @@ const usePostWine = () => {
       setRequesting(false)
     }
     showToast({
-      text: 'ワインを登録しました'
+      text: 'ワインを登録しました',
+      type: 'success'
     })
   }
 

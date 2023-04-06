@@ -1,11 +1,14 @@
 import { CSSProperties, useCallback, useEffect, useLayoutEffect, useState } from 'react'
 
 import { TastingSheet } from '../../types'
+import useToastContext from '../context/useToastContext'
 
 const SIXTY_SECONDS = 60
 
 const useTastingSheetTimer = ({ time }: TastingSheet) => {
-  const [secondTimer, setSecondTimer] = useState(Number(time) * SIXTY_SECONDS)
+  const [isJustBeforeTimeUp, setIsJustBeforeTimeUp] = useState(false)
+  const [secondTimer, setSecondTimer] = useState(0)
+  const { showToast } = useToastContext()
 
   const countDown = useCallback(
     () =>
@@ -21,11 +24,11 @@ const useTastingSheetTimer = ({ time }: TastingSheet) => {
 
   const getTimerStyle = (target: number) => ({ '--value': target } as CSSProperties)
 
-  const getTimerClassName = () => {
-    const halfTime = secondTimer <= (Number(time) * SIXTY_SECONDS) / 2
-    const leftAMinute = secondTimer <= SIXTY_SECONDS
-    return `${halfTime ? 'text-orange-400' : 'text-black'} ${leftAMinute ? 'text-red-700' : ''}`
-  }
+  const timeUp = secondTimer === 0 && isJustBeforeTimeUp
+  const halfTime = secondTimer <= (Number(time) * SIXTY_SECONDS) / 2 && secondTimer !== 0
+  const leftAMinute = secondTimer <= SIXTY_SECONDS && secondTimer !== 0
+
+  const getTimerClassName = () => `${halfTime ? 'text-orange-400' : 'text-black'} ${leftAMinute ? 'text-red-700' : ''}`
 
   useLayoutEffect(() => {
     setSecondTimer(Number(time) * SIXTY_SECONDS)
@@ -33,13 +36,23 @@ const useTastingSheetTimer = ({ time }: TastingSheet) => {
 
   useEffect(() => {
     const timer = window.setInterval(countDown, 1000)
-    if (secondTimer === 0) window.clearInterval(timer)
+    if (timeUp) window.clearInterval(timer)
 
     return () => window.clearInterval(timer)
-  }, [countDown, secondTimer])
+  }, [countDown, timeUp])
+
+  useEffect(() => {
+    if (secondTimer === 1) setIsJustBeforeTimeUp(true)
+  }, [secondTimer])
+
+  useEffect(() => {
+    if (halfTime) showToast({ text: '残り時間半分です', type: 'warning' })
+    if (leftAMinute) showToast({ text: '残り時間1分です', type: 'warning' })
+    if (timeUp) showToast({ text: '時間切れです', type: 'error' })
+  }, [halfTime, leftAMinute, showToast, timeUp])
 
   return {
-    timeUp: secondTimer === 0,
+    timeUp,
     timerClassName: getTimerClassName(),
     styleForMinute: getTimerStyle(convertToMin(secondTimer)),
     styleForSecond: getTimerStyle(convertToSecond(secondTimer))
