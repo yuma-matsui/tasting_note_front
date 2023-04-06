@@ -2,7 +2,7 @@ import ToastType from './toastType'
 
 type ToastProps = {
   text: string
-  type?: ToastType
+  type: ToastType
 }
 
 export default ToastProps

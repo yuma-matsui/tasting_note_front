@@ -19,7 +19,7 @@ const ToastProvider: FC<ReactNodeChildren> = ({ children }) => {
   const showToast = useCallback(
     ({ text, type }: ToastProps) => {
       if (loading || requesting) return
-      if (type) setToastType(type)
+      setToastType(type)
       setToastText(text)
       setVisible(true)
       window.setTimeout(() => setVisible(false), DISPLAYING_MILLISECOND)

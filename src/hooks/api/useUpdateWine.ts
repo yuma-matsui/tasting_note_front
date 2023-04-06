@@ -29,7 +29,8 @@ const useUpdateWine = () => {
       setRequesting(false)
     }
     showToast({
-      text: 'ワインを更新しました'
+      text: 'ワインを更新しました',
+      type: 'success'
     })
   }
 
