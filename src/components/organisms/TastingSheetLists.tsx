@@ -6,7 +6,7 @@ import TastingSheetCards from './TastingSheetCards'
 import { useTastingSheetsPagination } from '../../hooks'
 
 const TastingSheetLists: FC<TastingSheetListsProps> = memo(({ tastingSheets }) => {
-  const { pageNumber, next, back, displayingTastingSheets, isFirstPage, isLastPage } =
+  const { pageNumber, next, back, displayingTastingSheets, isFirstPage, isLastPage, isMoreThanFiveSheets } =
     useTastingSheetsPagination(tastingSheets)
 
   return (
@@ -18,13 +18,15 @@ const TastingSheetLists: FC<TastingSheetListsProps> = memo(({ tastingSheets }) =
         <span>{tastingSheets.length}件</span>
       </p>
       <TastingSheetCards tastingSheets={displayingTastingSheets} />
-      <PaginationButtons
-        pageNumber={pageNumber}
-        back={back}
-        next={next}
-        isFirstPage={isFirstPage}
-        isLastPage={isLastPage}
-      />
+      {isMoreThanFiveSheets && (
+        <PaginationButtons
+          pageNumber={pageNumber}
+          back={back}
+          next={next}
+          isFirstPage={isFirstPage}
+          isLastPage={isLastPage}
+        />
+      )}
     </div>
   )
 })
