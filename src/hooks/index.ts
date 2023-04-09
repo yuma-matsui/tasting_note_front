@@ -9,6 +9,8 @@ export { default as useTastingSheetTimer } from './tasting_sheet/useTastingSheet
 export { default as useTastingSheetCardColor } from './tasting_sheet/useTastingSheetCardColor'
 export { default as useTastingSheetStateForWine } from './tasting_sheet/useTastingSheetStateForWine'
 export { default as useSetTastingSheetAndSignIn } from './tasting_sheet/useSetTastingSheetAndSignIn'
+export { default as useTastingSheetSearchForm } from './tasting_sheet/useTastingSheetSearchForm'
+export { default as useFilteredTastingSheets } from './tasting_sheet/useFilteredTastingSheets'
 
 export { default as usePostTastingSheet } from './api/usePostTastingSheet'
 export { default as useFetchTastingSheets } from './api/useFetchTastingSheets'
@@ -34,3 +36,4 @@ export { default as useOnClickOpenModal } from './useOnClickOpenModal'
 export { default as useCheckEditingForm } from './useCheckEditingForm'
 export { default as useWineForm } from './useWineForm'
 export { default as useTastingSheetsPagination } from './useTastingSheetsPagination'
+export { default as useToggleSideBar } from './useToggleSideBar'

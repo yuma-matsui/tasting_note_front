@@ -1,22 +1,23 @@
 import { FC, memo } from 'react'
 
-import { TastingSheetListsProps } from '../../types'
-import { PaginationButtons, TastingSheetSearchForm } from '../molecules'
+import { PaginationButtons, TastingSheetListsTitle } from '../molecules'
 import TastingSheetCards from './TastingSheetCards'
+import { TastingSheetApi } from '../../types'
 import { useTastingSheetsPagination } from '../../hooks'
 
-const TastingSheetLists: FC<TastingSheetListsProps> = memo(({ tastingSheets }) => {
+const TastingSheetLists: FC<{
+  tastingSheets: TastingSheetApi[]
+  onClickToggleSideBar: () => void
+}> = memo(({ tastingSheets, onClickToggleSideBar }) => {
   const { pageNumber, next, back, displayingTastingSheets, isFirstPage, isLastPage, isMoreThanFiveSheets } =
     useTastingSheetsPagination(tastingSheets)
 
   return (
-    <div className="flex flex-col">
-      <h2>シート一覧</h2>
-      <TastingSheetSearchForm />
-      <p>
-        シート件数：
-        <span>{tastingSheets.length}件</span>
-      </p>
+    <div className="flex flex-col items-center">
+      <TastingSheetListsTitle tastingSheets={tastingSheets} />
+      <button type="button" className="btn drawer-button" onClick={onClickToggleSideBar}>
+        絞り込む
+      </button>
       <TastingSheetCards tastingSheets={displayingTastingSheets} />
       {isMoreThanFiveSheets && (
         <PaginationButtons
