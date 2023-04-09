@@ -2,20 +2,19 @@ import { ChangeEvent, Dispatch, FormEvent, SetStateAction, useState } from 'reac
 
 import { COUNTRIES, GRAPES_RED, GRAPES_WHITE } from '../../assets'
 import { TastingSheetFilter } from '../../types'
+import { FILTER_DEFAULT_VALUE, initialFilter } from '../../utils'
 
 const useTastingSheetSearchForm = (setFilter: Dispatch<SetStateAction<TastingSheetFilter>>) => {
   const onSubmit = (e: FormEvent<HTMLFormElement>) => e.preventDefault()
 
-  const defaultValue = '指定なし'
-
-  const [color, setColor] = useState(defaultValue)
-  const [country, setCountry] = useState(defaultValue)
-  const [grape, setGrape] = useState(defaultValue)
+  const [color, setColor] = useState(FILTER_DEFAULT_VALUE)
+  const [country, setCountry] = useState(FILTER_DEFAULT_VALUE)
+  const [grape, setGrape] = useState(FILTER_DEFAULT_VALUE)
 
   const onChangeColor = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.name === 'color') setFilter((prev) => ({ ...prev, [e.target.name]: e.target.value }))
     setColor(e.target.value)
-    setGrape(defaultValue)
+    setGrape(FILTER_DEFAULT_VALUE)
   }
 
   const onChangeCountry = (e: ChangeEvent<HTMLSelectElement>) => {
@@ -33,13 +32,11 @@ const useTastingSheetSearchForm = (setFilter: Dispatch<SetStateAction<TastingShe
   if (color === 'white') grapeOptions = GRAPES_WHITE
 
   const onClickAllClear = () => {
-    setColor(defaultValue)
-    setCountry(defaultValue)
-    setGrape(defaultValue)
+    setColor(FILTER_DEFAULT_VALUE)
+    setCountry(FILTER_DEFAULT_VALUE)
+    setGrape(FILTER_DEFAULT_VALUE)
     setFilter({
-      color: defaultValue,
-      country: defaultValue,
-      grape: defaultValue
+      ...initialFilter
     })
   }
 
