@@ -8,6 +8,7 @@ export type { default as TastingSheetAllName } from './tasting_sheet/tastingShee
 export type { default as TastingSheetFormType } from './tasting_sheet/tastingSheetFormType'
 export type { default as TastingSheetLabelsTuple } from './tasting_sheet/tastingSheetLabelsTuple'
 export type { default as TastingSheetStateForWine } from './tasting_sheet/tastingSheetStateForWine'
+export type { default as TastingSheetFilter } from './tasting_sheet/tastingSheetFilter'
 
 export type { default as AppearanceName } from './tasting_sheet/appearance/appearanceName'
 export type { default as Appearance } from './tasting_sheet/appearance/appearance'
