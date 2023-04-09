@@ -1,7 +1,7 @@
 export { default as NewTastingSheetSettingForm } from './forms/NewTastingSheetSettingForm'
 export { default as TastingSheetBaseForm } from './forms/TastingSheetBaseForm'
-export { default as TastingSheetSearchForm } from './forms/TastingSheetSearchForm'
 export { default as WineForm } from './forms/WineForm'
+export { default as TastingSheetSearchForm } from './forms/TastingSheetSearchForm'
 
 export { default as BaseModal } from './modals/BaseModal'
 
@@ -12,5 +12,7 @@ export { default as SheetOrWineDetailsDataList } from './SheetOrWineDetailsDataL
 export { default as StepsBar } from './StepsBar'
 export { default as TastingSheetCard } from './TastingSheetCard'
 export { default as PaginationButtons } from './PaginationButtons'
+export { default as SearchColorRadios } from './SearchColorRadios'
 
 export { default as WineDetailsTitle } from './titles/WineDetailsTitle'
+export { default as TastingSheetListsTitle } from './titles/TastingSheetListsTitle'

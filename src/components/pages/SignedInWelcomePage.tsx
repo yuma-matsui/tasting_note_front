@@ -2,7 +2,7 @@ import { FC, memo } from 'react'
 
 import { useFetchTastingSheets } from '../../hooks'
 import { LoadingSpinner, StartTastingButton } from '../atoms'
-import { SignedInTopPageInstruction, TastingSheetLists } from '../organisms'
+import { SignedInTopPageInstruction, TastingSheetListsWithSideBar } from '../organisms'
 import { DefaultLayout } from '../templates'
 
 const SignedInWelcomePage: FC = memo(() => {
@@ -13,7 +13,11 @@ const SignedInWelcomePage: FC = memo(() => {
   ) : (
     <DefaultLayout>
       <div className="flex flex-col items-center">
-        {hasTastingSheets ? <TastingSheetLists tastingSheets={tastingSheets} /> : <SignedInTopPageInstruction />}
+        {hasTastingSheets ? (
+          <TastingSheetListsWithSideBar tastingSheets={tastingSheets} />
+        ) : (
+          <SignedInTopPageInstruction />
+        )}
         <StartTastingButton />
       </div>
     </DefaultLayout>
