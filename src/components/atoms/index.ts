@@ -14,6 +14,7 @@ export { default as CloseModalButton } from './buttons/CloseModalButton'
 export { default as GoToNewWinePageButton } from './buttons/GoToNewWinePageButton'
 export { default as DeleteWineButton } from './buttons/DeleteWineButton'
 export { default as SignInButton } from './buttons/SignInButton'
+export { default as SignOutButton } from './buttons/SignOutButton'
 
 export { default as TastingSheetCheckBox } from './inputs/TastingSheetCheckBox'
 export { default as TastingSheetNameInput } from './inputs/TastingSheetNameInput'
