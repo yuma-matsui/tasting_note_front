@@ -1,41 +1,36 @@
 import { FC, memo } from 'react'
 
-import { useAuthContext, useCheckEditingForm, useOnClickAuth, useOnClickOpenModal } from '../../hooks'
-import { DeleteAccountButton, FooterLink } from '../atoms'
+import { useAuthContext, useCheckEditingForm } from '../../hooks'
+import { DeleteAccountButton, FooterLink, PrivacyPolicyLink, SignOutButton, TermOfServiceLink } from '../atoms'
 
 const Footer: FC = memo(() => {
   const { currentUser } = useAuthContext()
   const { isEditing } = useCheckEditingForm()
-  const { onClickSignOut } = useOnClickAuth()
-  const { onClickOpenModal } = useOnClickOpenModal({
-    text: '本当に削除してもよろしいですか？',
-    rightButton: <DeleteAccountButton />
-  })
 
   return (
     <footer className="flex flex-col items-center border-t border-gray-500 pt-4 mt-4">
       <FooterLink />
       {!isEditing && (
         <ul className="flex list-none">
-          <li className="mr-4">利用規約</li>
-          <li>プライバシーポリシー</li>
+          <li className="mr-4">
+            <TermOfServiceLink />
+          </li>
+          <li>
+            <PrivacyPolicyLink />
+          </li>
           {currentUser && (
             <>
               <li>
-                <button type="button" onClick={onClickSignOut}>
-                  ログアウト
-                </button>
+                <SignOutButton />
               </li>
               <li>
-                <button type="button" onClick={onClickOpenModal} className="text-red-700">
-                  アカウント削除
-                </button>
+                <DeleteAccountButton />
               </li>
             </>
           )}
         </ul>
       )}
-      <p>&copy; 2022 yuma-matsui</p>
+      <p>&copy; 2023 yuma-matsui</p>
     </footer>
   )
 })

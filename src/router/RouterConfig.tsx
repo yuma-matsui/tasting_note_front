@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
-import { Error404Page, NewTastingSheetPage } from '../components/pages'
+import { Error404Page, NewTastingSheetPage, PrivacyPolicyPage, TermOfServicePage } from '../components/pages'
 import { useAuthContext, useRequestingContext } from '../hooks'
 import { ModalProvider } from '../providers'
 import { LoadingSpinner } from '../components/atoms'
@@ -21,6 +21,8 @@ const RouterConfig: FC = () => {
       <ModalProvider>
         <Routes>
           <Route path="/" element={<WelcomePageWrapper />} />
+          <Route path="/pp" element={<PrivacyPolicyPage />} />
+          <Route path="/tos" element={<TermOfServicePage />} />
           <Route path="/tasting_sheets">
             <Route index element={<Error404Page />} />
             <Route path=":tastingSheetId" element={<TastingSheetPageWrapper />} />
