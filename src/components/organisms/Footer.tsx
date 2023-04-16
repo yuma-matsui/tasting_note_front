@@ -1,8 +1,7 @@
 import { FC, memo } from 'react'
-import { Link } from 'react-router-dom'
 
 import { useAuthContext, useCheckEditingForm, useOnClickAuth, useOnClickOpenModal } from '../../hooks'
-import { DeleteAccountButton, FooterLink } from '../atoms'
+import { DeleteAccountButton, FooterLink, PrivacyPolicyLink, TermOfServiceLink } from '../atoms'
 
 const Footer: FC = memo(() => {
   const { currentUser } = useAuthContext()
@@ -19,10 +18,10 @@ const Footer: FC = memo(() => {
       {!isEditing && (
         <ul className="flex list-none">
           <li className="mr-4">
-            <Link to="/tos">利用規約</Link>
+            <TermOfServiceLink />
           </li>
           <li>
-            <Link to="/pp">プライバシーポリシー</Link>
+            <PrivacyPolicyLink />
           </li>
           {currentUser && (
             <>
