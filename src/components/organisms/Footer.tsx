@@ -18,7 +18,9 @@ const Footer: FC = memo(() => {
       <FooterLink />
       {!isEditing && (
         <ul className="flex list-none">
-          <li className="mr-4">利用規約</li>
+          <li className="mr-4">
+            <Link to="/tos">利用規約</Link>
+          </li>
           <li>
             <Link to="/pp">プライバシーポリシー</Link>
           </li>
