@@ -1,4 +1,5 @@
 import { FC, memo } from 'react'
+import { Link } from 'react-router-dom'
 
 import { useAuthContext, useCheckEditingForm, useOnClickAuth, useOnClickOpenModal } from '../../hooks'
 import { DeleteAccountButton, FooterLink } from '../atoms'
@@ -18,7 +19,9 @@ const Footer: FC = memo(() => {
       {!isEditing && (
         <ul className="flex list-none">
           <li className="mr-4">利用規約</li>
-          <li>プライバシーポリシー</li>
+          <li>
+            <Link to="/pp">プライバシーポリシー</Link>
+          </li>
           {currentUser && (
             <>
               <li>
@@ -35,7 +38,7 @@ const Footer: FC = memo(() => {
           )}
         </ul>
       )}
-      <p>&copy; 2022 yuma-matsui</p>
+      <p>&copy; 2023 yuma-matsui</p>
     </footer>
   )
 })
