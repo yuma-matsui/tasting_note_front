@@ -1,6 +1,8 @@
 export { default as FooterLink } from './links/FooterLink'
 export { default as HeaderLink } from './links/HeaderLink'
 export { default as WineEditLink } from './links/WineEditLink'
+export { default as PrivacyPolicyLink } from './links/PrivacyPolicyLink'
+export { default as TermOfServiceLink } from './links/TermOfServiceLink'
 
 export { default as StartTastingButton } from './buttons/StartTastingButton'
 export { default as FormControllerButton } from './buttons/FormControllerButton'
@@ -12,6 +14,7 @@ export { default as CloseModalButton } from './buttons/CloseModalButton'
 export { default as GoToNewWinePageButton } from './buttons/GoToNewWinePageButton'
 export { default as DeleteWineButton } from './buttons/DeleteWineButton'
 export { default as SignInButton } from './buttons/SignInButton'
+export { default as SignOutButton } from './buttons/SignOutButton'
 
 export { default as TastingSheetCheckBox } from './inputs/TastingSheetCheckBox'
 export { default as TastingSheetNameInput } from './inputs/TastingSheetNameInput'
