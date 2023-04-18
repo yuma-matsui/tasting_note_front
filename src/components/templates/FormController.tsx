@@ -1,8 +1,8 @@
 import { FC, memo, useRef } from 'react'
 
-import { useBeforeUnload, useOnClickOpenModal } from '../../hooks'
+import { useBeforeUnload } from '../../hooks'
 import { FormControllerProps } from '../../types'
-import { FormControllerButton, PostTastingSheetButton } from '../atoms'
+import { ConfirmationAndBackButton, FormControllerButton, PostTastingSheetButton } from '../atoms'
 
 const FormController: FC<FormControllerProps> = memo(
   ({
@@ -19,26 +19,13 @@ const FormController: FC<FormControllerProps> = memo(
     useBeforeUnload()
     const submitRef = useRef<HTMLInputElement>(null)
 
-    const { onClickOpenModal: onClickBackAndOpenModal } = useOnClickOpenModal({
-      text: '記録の途中ですがよろしいですか？',
-      rightButton: (
-        <button type="button" onClick={() => window.location.reload()}>
-          はい
-        </button>
-      )
-    })
-
     return (
       <>
         {children}
         {!isFirstStep && !isAppearanceStep && (
           <FormControllerButton value={backButtonText} disabled={disabled} onClick={() => onClick('back', submitRef)} />
         )}
-        {isAppearanceStep && (
-          <button type="button" className="btn" onClick={onClickBackAndOpenModal}>
-            {backButtonText}
-          </button>
-        )}
+        {isAppearanceStep && <ConfirmationAndBackButton tastingSheet={tastingSheet} />}
         {isLastStep ? (
           <PostTastingSheetButton tastingSheet={tastingSheet} />
         ) : (
