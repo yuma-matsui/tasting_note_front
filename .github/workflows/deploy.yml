@@ -3,7 +3,7 @@ name: build and deploy
 on:
   push:
     branches:
-      - main
+      - hotfix/fix-sign-in-method
 
 jobs:
   deploy:
