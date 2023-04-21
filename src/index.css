@@ -5,5 +5,5 @@
 @tailwind utilities;
 
 .base-btn {
-  @apply rounded-full shadow-md px-8 py-2 border-transparent text-white
+  @apply rounded-full shadow-md px-8 py-2 border-transparent text-white cursor-pointer
 }
