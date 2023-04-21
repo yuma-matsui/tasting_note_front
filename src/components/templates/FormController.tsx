@@ -23,13 +23,23 @@ const FormController: FC<FormControllerProps> = memo(
       <>
         {children}
         {!isFirstStep && !isAppearanceStep && (
-          <FormControllerButton value={backButtonText} disabled={disabled} onClick={() => onClick('back', submitRef)} />
+          <FormControllerButton
+            value={backButtonText}
+            disabled={disabled}
+            onClick={() => onClick('back', submitRef)}
+            tastingSheet={tastingSheet}
+          />
         )}
         {isAppearanceStep && <ConfirmationAndBackButton tastingSheet={tastingSheet} />}
         {isLastStep ? (
           <PostTastingSheetButton tastingSheet={tastingSheet} />
         ) : (
-          <FormControllerButton value={nextButtonText} disabled={disabled} onClick={() => onClick('next', submitRef)} />
+          <FormControllerButton
+            value={nextButtonText}
+            disabled={disabled}
+            onClick={() => onClick('next', submitRef)}
+            tastingSheet={tastingSheet}
+          />
         )}
         <input type="submit" hidden ref={submitRef} />
       </>
