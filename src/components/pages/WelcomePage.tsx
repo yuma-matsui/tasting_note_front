@@ -20,7 +20,7 @@ const WelcomePage: FC = memo(() => (
         <p>
           TastingNoteは
           <br />
-          J.S.Aソムリエ故障資格認定試験
+          J.S.Aソムリエ呼称資格認定試験
           <br />
           2次試験対策用のアプリです。
         </p>
