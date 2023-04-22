@@ -9,9 +9,11 @@ const Footer: FC = memo(() => {
 
   return (
     <footer>
-      <FooterLink />
-      {!isEditing && <FooterNavigation />}
-      <p className="text-gray-700">&copy;2023 yuma-matsui</p>
+      <div className="flex flex-col items-center pt-4 border-t">
+        <FooterLink />
+        {!isEditing && <FooterNavigation />}
+        <p className="text-gray-700">&copy;2023 yuma-matsui</p>
+      </div>
     </footer>
   )
 })
