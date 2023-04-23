@@ -1,9 +1,11 @@
 import { FC, memo } from 'react'
 
-import { StepsBarProps, TastingSheetFormType } from '../../types'
+import { TastingSheetFormType } from '../../types'
 import { formTitleFormat } from '../../utils'
 
-const StepsBar: FC<StepsBarProps> = memo(({ currentStepIndex }) => {
+const StepsBar: FC<{
+  currentStepIndex: number
+}> = memo(({ currentStepIndex }) => {
   const steps: { name: TastingSheetFormType; condition: boolean }[] = [
     { name: 'appearance', condition: currentStepIndex >= 1 },
     { name: 'flavor', condition: currentStepIndex >= 2 },
