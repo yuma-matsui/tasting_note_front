@@ -8,7 +8,7 @@ const Footer: FC = memo(() => {
   const { isEditing } = useCheckEditingForm()
 
   return (
-    <footer>
+    <footer className="mt-6 w-full md:w-96">
       <div className="flex flex-col items-center pt-4 border-t">
         <FooterLink />
         {!isEditing && <FooterNavigation />}
