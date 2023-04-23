@@ -13,7 +13,7 @@
 }
 
 .main-wrapper {
-  @apply sub-wrapper px-5
+  @apply sub-wrapper px-5 md:px-0
 }
 
 .demo-img-wrapper {
