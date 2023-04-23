@@ -1,52 +1,21 @@
 import { FC, memo } from 'react'
 
-import logo from '../../assets/images/logo.png'
 import { SignInButton, StartTastingButton } from '../atoms'
-import { OnlyFooterLayout } from '../templates'
+import { TopPageTitle, WelcomePageAboutSection, WelcomePageWithRegistrationSection } from '../molecules'
+import { Footer } from '../organisms'
 
 const WelcomePage: FC = memo(() => (
-  <OnlyFooterLayout>
-    <div className="flex flex-col items-center">
-      <div className="flex items-center">
-        <img className="w-24 h-24" src={logo} alt="logo" />
-        <div>
-          <h1>Tasting Note</h1>
-          <p>テイスティングを記録してソムリエに</p>
-        </div>
-      </div>
-
-      <div>
-        <h2>ABOUT</h2>
-        <p>
-          TastingNoteは
-          <br />
-          J.S.Aソムリエ呼称資格認定試験
-          <br />
-          2次試験対策用のアプリです。
-        </p>
-        <p>
-          本番同様のテイスティングシートを使って
-          <br />
-          ワインテイスティングの記録が行えます。
-        </p>
-      </div>
-
-      <div className="w-96 h-96 bg-gray-500 text-slate-50">サービスのデモ画像配置予定</div>
-
-      <div>
-        <h2>WITH REGISTRATION</h2>
-        <ul>
-          <li>テイスティングシートの記録・管理</li>
-          <li>記録したテイスティングシートの検索</li>
-          <li>テイスティングしたワインの登録</li>
-        </ul>
-      </div>
-      <div>
-        <StartTastingButton />
-        <SignInButton />
-      </div>
+  <div className="px-5 w-full md:w-96 mx-auto">
+    <TopPageTitle />
+    <WelcomePageAboutSection />
+    <div className="h-96 w-full md:w-96 bg-gray-700 text-white mb-4">サービスのデモ画像配置予定</div>
+    <WelcomePageWithRegistrationSection />
+    <div className="w-full md:w-96 flex justify-between">
+      <StartTastingButton />
+      <SignInButton />
     </div>
-  </OnlyFooterLayout>
+    <Footer />
+  </div>
 ))
 
 export default WelcomePage
