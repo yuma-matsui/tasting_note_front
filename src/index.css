@@ -23,3 +23,7 @@
 section {
   @apply mb-4
 }
+
+.label {
+  @apply justify-start
+}

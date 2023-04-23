@@ -10,6 +10,8 @@ export { default as useTastingSheetCardColor } from './tasting_sheet/useTastingS
 export { default as useTastingSheetStateForWine } from './tasting_sheet/useTastingSheetStateForWine'
 export { default as useTastingSheetSearchForm } from './tasting_sheet/useTastingSheetSearchForm'
 export { default as useFilteredTastingSheets } from './tasting_sheet/useFilteredTastingSheets'
+export { default as useGetRadioOrCheckBoxType } from './tasting_sheet/useGetRadioOrCheckBoxType'
+export { default as useGetCheckBoxClassName } from './tasting_sheet/useGetCheckBoxClassName'
 
 export { default as usePostTastingSheet } from './api/usePostTastingSheet'
 export { default as useFetchTastingSheets } from './api/useFetchTastingSheets'
