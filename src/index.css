@@ -8,6 +8,18 @@
   @apply rounded-full shadow-md px-8 py-2 border-transparent text-white cursor-pointer
 }
 
+.sub-wrapper {
+  @apply w-full md:w-96
+}
+
+.main-wrapper {
+  @apply sub-wrapper mx-auto
+}
+
+.demo-img-wrapper {
+  @apply sub-wrapper h-96
+}
+
 section {
   @apply mb-4
 }
