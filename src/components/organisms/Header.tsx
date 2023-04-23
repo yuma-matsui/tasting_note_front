@@ -3,7 +3,7 @@ import { FC, memo } from 'react'
 import { HeaderLink } from '../atoms'
 
 const Header: FC = memo(() => (
-  <header className="flex flex-col items-center border-b border-solid border-red-800">
+  <header className="border-b border-b-theme-red drop-shadow-md mb-8 pb-2 sub-wrapper">
     <HeaderLink />
   </header>
 ))
