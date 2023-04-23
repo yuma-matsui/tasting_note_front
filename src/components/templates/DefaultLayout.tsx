@@ -6,8 +6,10 @@ import { Footer, Header } from '../organisms'
 const DefaultLayout: FC<ReactNodeChildren> = memo(({ children }) => (
   <>
     <Header />
-    {children}
-    <Footer />
+    <div className="main-wrapper">
+      {children}
+      <Footer />
+    </div>
   </>
 ))
 
