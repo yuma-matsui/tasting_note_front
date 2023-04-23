@@ -9,11 +9,11 @@
 }
 
 .sub-wrapper {
-  @apply w-full md:w-96
+  @apply w-full md:w-96 mx-auto
 }
 
 .main-wrapper {
-  @apply sub-wrapper mx-auto
+  @apply sub-wrapper px-5
 }
 
 .demo-img-wrapper {
