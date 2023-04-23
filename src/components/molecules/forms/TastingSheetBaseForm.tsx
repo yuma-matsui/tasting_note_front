@@ -28,6 +28,7 @@ const TastingSheetBaseForm: FC<TastingSheetBaseFormProps> = memo(
                   name={convertToFormName(name)}
                   disabled={isDisabled(getValues(convertToFormName(name)), label)}
                   register={register}
+                  color={getValues('tastingSheet.color')}
                 />
               ))}
             </div>
