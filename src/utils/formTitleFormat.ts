@@ -11,7 +11,7 @@ const formTitleFormat = (type: TastingSheetFormType) => {
     case 'conclusion':
       return 'まとめ'
     case 'setting':
-      return '設定'
+      return 'テイスティングシートの設定'
     case 'confirmation':
       return 'あなたの回答'
     default:
