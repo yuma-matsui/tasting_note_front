@@ -4,7 +4,7 @@ import { FormRegisterAndErrors } from '../../../types'
 const TastingSheetNameInput: FC<FormRegisterAndErrors> = memo(({ register, errors }) => (
   <div className="form-control w-full max-w-xs my-6">
     <label htmlFor="name" className="label flex flex-col items-center">
-      <span className="label-text mb-2 leading-6 text-base">シート名</span>
+      <span className="label-text mb-2 leading-6">シート名</span>
       <input
         type="text"
         id="name"

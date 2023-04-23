@@ -27,3 +27,7 @@ section {
 .label {
   @apply justify-start
 }
+
+.label-text {
+  @apply text-base
+}

@@ -27,7 +27,7 @@ const TastingSheetCheckBox: FC<TastingSheetCheckBoxProps> = memo(
           })}
           className={className}
         />
-        <span className="label-text text-base ml-2">{label ?? value}</span>
+        <span className="label-text ml-2">{label ?? value}</span>
       </label>
     )
   }

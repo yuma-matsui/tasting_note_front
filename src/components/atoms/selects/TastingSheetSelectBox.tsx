@@ -4,7 +4,7 @@ import { TastingSheetSelectBoxProps } from '../../../types'
 
 const TastingSheetSelectBox: FC<TastingSheetSelectBoxProps> = memo(({ id, register, name, options, label }) => (
   <label htmlFor={id} className="mb-6 label flex flex-col">
-    <span className="label-text mb-2 leading-6 text-base">{label}</span>
+    <span className="label-text mb-2 leading-6">{label}</span>
     <select
       id={id}
       {...register(name, { required: true })}
