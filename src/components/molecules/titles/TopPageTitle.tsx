@@ -3,11 +3,11 @@ import { FC, memo } from 'react'
 import logo from '../../../assets/images/logo.png'
 
 const TopPageTitle: FC = memo(() => (
-  <div className="flex items-center">
-    <img className="w-14 h-14" src={logo} alt="logo" />
-    <div className="ml-2 flex flex-col">
-      <h1 className="text-theme-red font-bold text-2xl tracking-wide">Tasting Note</h1>
-      <p className="text-xs mt-1">テイスティングを記録してソムリエに</p>
+  <div className="flex my-8">
+    <img className="w-16 h-16" src={logo} alt="logo" />
+    <div className="ml-2 flex flex-col justify-between">
+      <h1 className="text-theme-red font-bold text-3xl tracking-wider">Tasting Note</h1>
+      <p className="mt-1 leading-5">テイスティングを記録してソムリエに</p>
     </div>
   </div>
 ))
