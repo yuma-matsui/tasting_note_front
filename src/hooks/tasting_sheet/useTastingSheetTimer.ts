@@ -28,7 +28,13 @@ const useTastingSheetTimer = ({ time }: TastingSheet) => {
   const halfTime = secondTimer <= (Number(time) * SIXTY_SECONDS) / 2 && secondTimer !== 0
   const leftAMinute = secondTimer <= SIXTY_SECONDS && secondTimer !== 0
 
-  const getTimerClassName = () => `${halfTime ? 'text-orange-400' : 'text-black'} ${leftAMinute ? 'text-red-700' : ''}`
+  const getTimerColor = () => {
+    let color = 'text-black'
+    if (halfTime) color = 'text-theme-yellow'
+    if (timeUp || leftAMinute) color = 'text-theme-red'
+
+    return color
+  }
 
   useLayoutEffect(() => {
     setSecondTimer(Number(time) * SIXTY_SECONDS)
@@ -52,8 +58,7 @@ const useTastingSheetTimer = ({ time }: TastingSheet) => {
   }, [halfTime, leftAMinute, showToast, timeUp])
 
   return {
-    timeUp,
-    timerClassName: getTimerClassName(),
+    timerClassName: getTimerColor(),
     styleForMinute: getTimerStyle(convertToMin(secondTimer)),
     styleForSecond: getTimerStyle(convertToSecond(secondTimer))
   }

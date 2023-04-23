@@ -28,6 +28,7 @@ export { default as SearchColorRadio } from './inputs/SearchColorRadio'
 export { default as TastingSheetSelectBox } from './selects/TastingSheetSelectBox'
 export { default as WineSelectBox } from './selects/WineSelectBox'
 export { default as SearchSelectBox } from './selects/SearchSelectBox'
+export { default as TastingSheetTimeSelectBox } from './selects/TastingSheetTimeSelectBox'
 
 export { default as TastingSheetTimer } from './TastingSheetTimer'
 export { default as WineImagePreview } from './WineImagePreview'

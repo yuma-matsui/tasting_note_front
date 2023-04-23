@@ -13,7 +13,7 @@
 }
 
 .main-wrapper {
-  @apply sub-wrapper px-5
+  @apply sub-wrapper px-5 md:px-0
 }
 
 .demo-img-wrapper {
@@ -30,4 +30,16 @@ section {
 
 .label-text {
   @apply text-base
+}
+
+.steps .step-success:after {
+  @apply text-white
+}
+
+.steps .step:after {
+  @apply text-white
+}
+
+.checkbox-success, .checkbox-error {
+  --chkfg: 4 100% 100%;
 }

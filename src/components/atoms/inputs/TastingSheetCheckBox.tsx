@@ -9,11 +9,11 @@ import {
 import { TastingSheetCheckBoxProps } from '../../../types'
 
 const TastingSheetCheckBox: FC<TastingSheetCheckBoxProps> = memo(
-  ({ id, name, value, disabled = false, register, label }) => {
+  ({ id, name, value, disabled = false, register, label, color }) => {
     const { getValues } = useTastingSheetForm()
     const { isMultipleInputs, getValidationMethod } = useTastingSheetInputsAttributes()
     const { type } = useGetRadioOrCheckBoxType(isMultipleInputs(getValues(name)))
-    const className = useGetCheckBoxClassName(type)
+    const { className } = useGetCheckBoxClassName(type, color)
 
     return (
       <label htmlFor={id} className="label cursor-pointer">

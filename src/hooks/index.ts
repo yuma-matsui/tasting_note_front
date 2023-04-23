@@ -39,3 +39,4 @@ export { default as useTastingSheetsPagination } from './useTastingSheetsPaginat
 export { default as useToggleSideBar } from './useToggleSideBar'
 export { default as useStartTastingButtonStyles } from './useStartTastingButtonStyles'
 export { default as useGetButtonClassName } from './useGetButtonClassName'
+export { default as useGetButtonFlexType } from './useGetButtonsFlexType'

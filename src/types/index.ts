@@ -39,7 +39,6 @@ export type { default as TastingSheetSelectBoxProps } from './props/tastingSheet
 export type { default as TastingSheetBaseFormProps } from './props/tastingSheetBaseFormProps'
 export type { default as FormControllerProps } from './props/formControllerProps'
 export type { default as BaseLinkProps } from './props/baseLinkProps'
-export type { default as StepsBarProps } from './props/stepsBarProps'
 export type { default as TastingSheetCardProps } from './props/tastingSheetCardProps'
 export type { default as BaseModalProps } from './props/baseModalProps'
 export type { default as ShowModalProps } from './props/showModalProps'

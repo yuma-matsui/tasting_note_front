@@ -1,23 +1,13 @@
 import { FC, memo } from 'react'
 
 import { TastingSheetSelectBoxProps } from '../../../types'
+import BaseSelectBox from './BaseSelectBox'
 
 const TastingSheetSelectBox: FC<TastingSheetSelectBoxProps> = memo(({ id, register, name, options, label }) => (
-  <label htmlFor={id} className="mb-6 label flex flex-col">
-    <span className="label-text mb-2 leading-6">{label}</span>
-    <select
-      id={id}
-      {...register(name, { required: true })}
-      className="select select-bordered w-full max-w-xs border-black select-sm"
-    >
-      <option disabled>{`${label}を選択してください`}</option>
-      {options.map((option) => (
-        <option key={option} value={option}>
-          {option}
-        </option>
-      ))}
-    </select>
-  </label>
+  <div>
+    <h3 className="text-lg font-semibold p-2 bg-gray-300 border-y border-gray-400 box-content">{label}</h3>
+    <BaseSelectBox id={id} register={register} name={name} options={options} label={label} />
+  </div>
 ))
 
 export default TastingSheetSelectBox
