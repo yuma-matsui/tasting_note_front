@@ -32,7 +32,9 @@ const NewTastingSheetPage: FC = memo(() => {
     <DefaultLayout>
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col items-center">
         {!isFirstStep && <TastingSheetTimer tastingSheet={tastingSheet} isLastStep={isLastStep} />}
-        {!isFirstStep && !isLastStep && <StepsBar currentStepIndex={currentStepIndex} />}
+        {!isFirstStep && !isLastStep && (
+          <StepsBar currentStepIndex={currentStepIndex} color={getValues('tastingSheet.color')} />
+        )}
         <FormController
           onClick={onClickPageControl}
           isFirstStep={isFirstStep}

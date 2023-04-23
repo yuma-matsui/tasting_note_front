@@ -31,3 +31,11 @@ section {
 .label-text {
   @apply text-base
 }
+
+.steps .step-success:after {
+  @apply text-white
+}
+
+.steps .step:after {
+  @apply text-white
+}
