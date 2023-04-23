@@ -13,7 +13,7 @@ const NewTastingSheetSettingForm: FC<FormRegisterAndErrors> = memo(({ register, 
       register={register}
       name="tastingSheet.time"
       options={TASTING_TIME}
-      label="テイスティング時間"
+      label="テイスティング時間（分）"
     />
     <div>
       <p>ワインの色</p>
