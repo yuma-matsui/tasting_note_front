@@ -39,3 +39,7 @@ section {
 .steps .step:after {
   @apply text-white
 }
+
+.checkbox-success, .checkbox-error {
+  --chkfg: 4 100% 100%;
+}
