@@ -1,9 +1,10 @@
 import { FC, memo } from 'react'
 
-import { TASTING_TIME, WINE_COLORS } from '../../../assets'
+import { TASTING_TIME } from '../../../assets'
 import { FormRegisterAndErrors } from '../../../types'
-import { TastingSheetCheckBox, TastingSheetNameInput, TastingSheetSelectBox } from '../../atoms'
+import { TastingSheetNameInput, TastingSheetSelectBox } from '../../atoms'
 import { TastingSheetFormWrapper } from '../../templates'
+import WineColorRadios from '../WineColorRadios'
 
 const NewTastingSheetSettingForm: FC<FormRegisterAndErrors> = memo(({ register, errors }) => (
   <TastingSheetFormWrapper title="setting">
@@ -13,21 +14,9 @@ const NewTastingSheetSettingForm: FC<FormRegisterAndErrors> = memo(({ register, 
       register={register}
       name="tastingSheet.time"
       options={TASTING_TIME}
-      label="テイスティング時間"
+      label="テイスティング時間（分）"
     />
-    <div>
-      <p>ワインの色</p>
-      {WINE_COLORS.map((color) => (
-        <TastingSheetCheckBox
-          key={color}
-          id={color}
-          value={color}
-          register={register}
-          name="tastingSheet.color"
-          label={color === 'white' ? '白' : '赤'}
-        />
-      ))}
-    </div>
+    <WineColorRadios register={register} />
   </TastingSheetFormWrapper>
 ))
 

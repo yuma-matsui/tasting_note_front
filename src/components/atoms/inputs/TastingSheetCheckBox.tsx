@@ -1,25 +1,33 @@
 import { FC, memo } from 'react'
 
-import { useTastingSheetForm, useTastingSheetInputsAttributes } from '../../../hooks'
+import {
+  useGetCheckBoxClassName,
+  useGetRadioOrCheckBoxType,
+  useTastingSheetForm,
+  useTastingSheetInputsAttributes
+} from '../../../hooks'
 import { TastingSheetCheckBoxProps } from '../../../types'
 
 const TastingSheetCheckBox: FC<TastingSheetCheckBoxProps> = memo(
   ({ id, name, value, disabled = false, register, label }) => {
     const { getValues } = useTastingSheetForm()
     const { isMultipleInputs, getValidationMethod } = useTastingSheetInputsAttributes()
+    const { type } = useGetRadioOrCheckBoxType(isMultipleInputs(getValues(name)))
+    const className = useGetCheckBoxClassName(type)
 
     return (
-      <label htmlFor={id}>
+      <label htmlFor={id} className="label cursor-pointer">
         <input
-          type={isMultipleInputs(getValues(name)) ? 'checkbox' : 'radio'}
+          type={type}
           id={id}
           value={value}
           disabled={disabled}
           {...register(name, {
             validate: getValidationMethod(getValues(name))
           })}
+          className={className}
         />
-        {label ?? value}
+        <span className="label-text ml-2">{label ?? value}</span>
       </label>
     )
   }
