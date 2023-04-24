@@ -4,10 +4,10 @@ import { DetailsDataListProps } from '../../types'
 
 const SheetOrWineDetailsDataList: FC<DetailsDataListProps> = memo(({ title, subTitle, content }) => (
   <>
-    <dt>
-      {title} {subTitle && <span>{subTitle}</span>}
+    <dt className="form-heading-text">
+      {title} {subTitle && <span className="form-subheading-text">{subTitle}</span>}
     </dt>
-    <dd className="text-lg pl-2">{content}</dd>
+    <dd className="p-2">{content}</dd>
   </>
 ))
 

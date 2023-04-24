@@ -23,7 +23,8 @@ module.exports = {
           ...require('daisyui/src/colors/themes')['[data-theme=light]'],
           primary: '#3b82f6',
           success: '#60d394',
-          error: '#ee6055'
+          error: '#ee6055',
+          warning: '#ffd97d'
         }
       }
     ]

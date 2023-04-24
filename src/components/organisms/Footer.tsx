@@ -12,7 +12,7 @@ const Footer: FC = memo(() => {
       <div className="flex flex-col items-center pt-4 border-t drop-shadow-md">
         <FooterLink />
         {!isEditing && <FooterNavigation />}
-        <p className="text-gray-700">&copy;2023 yuma-matsui</p>
+        <p className={`text-gray-700 ${isEditing ? 'mt-2' : ''}`}>&copy;2023 yuma-matsui</p>
       </div>
     </footer>
   )

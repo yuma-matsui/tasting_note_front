@@ -4,6 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  @apply font-body
+}
+
 .base-btn {
   @apply rounded-full shadow-md px-8 py-2 border-transparent text-white cursor-pointer
 }
@@ -42,4 +46,30 @@ section {
 
 .checkbox-success, .checkbox-error {
   --chkfg: 4 100% 100%;
+}
+
+.tab-success {
+  @apply text-theme-green opacity-50
+}
+
+.tab-error {
+  @apply text-theme-red opacity-50
+}
+
+.tabs-boxed .tab-active.tab-success {
+  background-color: hsl(var(--su) / var(--tw-bg-opacity));
+  opacity: 1;
+}
+
+.tabs-boxed .tab-active.tab-error {
+  background-color: hsl(var(--er) / var(--tw-bg-opacity));
+  opacity: 1;
+}
+
+.form-heading-text {
+  @apply text-lg font-semibold p-2 bg-gray-300 border-y border-gray-400 box-content
+}
+
+.form-subheading-text {
+  @apply ml-2 text-base font-normal
 }
