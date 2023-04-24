@@ -22,7 +22,7 @@ const useMultiStepForm = (steps: ReactElement[]) => {
   const isConclusionStep = currentStepIndex === steps.length - 2
 
   const getButtonText = (type: 'next' | 'back') => {
-    if (isFirstStep) return 'テイスティングを始める'
+    if (isFirstStep) return 'テイスティングをはじめる'
     if (isConclusionStep && type === 'next') return '回答確認'
     if (type === 'back') return '<< 戻る'
     return '次へ >>'

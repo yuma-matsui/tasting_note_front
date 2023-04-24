@@ -13,6 +13,13 @@ export { default as StepsBar } from './StepsBar'
 export { default as TastingSheetCard } from './TastingSheetCard'
 export { default as PaginationButtons } from './PaginationButtons'
 export { default as SearchColorRadios } from './SearchColorRadios'
+export { default as WineColorRadios } from './WineColorRadios'
+
+export { default as WelcomePageAboutSection } from './sections/WelcomePageAboutSection'
+export { default as WelcomePageWithRegistrationSection } from './sections/WelcomePageWithRegistrationSection'
 
 export { default as WineDetailsTitle } from './titles/WineDetailsTitle'
 export { default as TastingSheetListsTitle } from './titles/TastingSheetListsTitle'
+export { default as TopPageTitle } from './titles/TopPageTitle'
+
+export { default as FooterNavigation } from './navigation/FooterNavigation'

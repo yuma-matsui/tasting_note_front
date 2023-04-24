@@ -7,21 +7,14 @@ import { TastingSheetTimer } from '../atoms'
 import { TastingSheetDetailsTab } from '../organisms'
 
 const NewTastingSheetPage: FC = memo(() => {
-  const { handleSubmit, isValid, isSubmitting, onSubmit, register, errors, lessThanTwoItems, getValues, tastingSheet } =
+  const { handleSubmit, isValid, isSubmitting, onSubmit, register, errors, getValues, tastingSheet } =
     useTastingSheetForm()
   const labels = useTastingSheetLabels(tastingSheet.color)
 
   const steps: ReactElement[] = [
     <NewTastingSheetSettingForm register={register} errors={errors} />,
     ...labels.map(({ type, items, options }) => (
-      <TastingSheetBaseForm
-        type={type}
-        items={items}
-        options={options}
-        register={register}
-        lessThanTwoItems={lessThanTwoItems}
-        getValues={getValues}
-      />
+      <TastingSheetBaseForm type={type} items={items} options={options} register={register} getValues={getValues} />
     )),
     <TastingSheetDetailsTab tastingSheet={tastingSheet} />
   ]
@@ -30,9 +23,11 @@ const NewTastingSheetPage: FC = memo(() => {
 
   return (
     <DefaultLayout>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col items-center">
         {!isFirstStep && <TastingSheetTimer tastingSheet={tastingSheet} isLastStep={isLastStep} />}
-        {!isFirstStep && !isLastStep && <StepsBar currentStepIndex={currentStepIndex} />}
+        {!isFirstStep && !isLastStep && (
+          <StepsBar currentStepIndex={currentStepIndex} color={getValues('tastingSheet.color')} />
+        )}
         <FormController
           onClick={onClickPageControl}
           isFirstStep={isFirstStep}

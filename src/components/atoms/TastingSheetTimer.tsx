@@ -7,26 +7,17 @@ const TastingSheetTimer: FC<{
   tastingSheet: TastingSheet
   isLastStep: boolean
 }> = memo(({ tastingSheet, isLastStep }) => {
-  const { timeUp, timerClassName, styleForSecond, styleForMinute } = useTastingSheetTimer(tastingSheet)
+  const { timerClassName, styleForSecond, styleForMinute } = useTastingSheetTimer(tastingSheet)
 
   if (isLastStep) return null
   return (
-    <div>
-      {timeUp ? (
-        <div>
-          <p>Time&apos;s up</p>
-          <span>記録を続けられます</span>
-        </div>
-      ) : (
-        <p className={timerClassName}>
-          <span className="countdown font-mono text-2xl">
-            残り時間
-            <span style={styleForMinute} />:
-            <span style={styleForSecond} />
-          </span>
-        </p>
-      )}
-    </div>
+    <p className="mb-4">
+      残り時間：
+      <span className="countdown text-lg">
+        <span style={styleForMinute} className={timerClassName} />：
+        <span style={styleForSecond} className={timerClassName} />
+      </span>
+    </p>
   )
 })
 

@@ -1,25 +1,29 @@
 import { FC, memo } from 'react'
 
-import { useTastingSheetInputsAttributes } from '../../../hooks'
+import { useGetIsMultipleInputs, useTastingSheetInputsAttributes } from '../../../hooks'
 import { TastingSheetBaseFormProps } from '../../../types'
 import { convertToFormName } from '../../../utils'
 import { TastingSheetCheckBox } from '../../atoms'
 import { TastingSheetFormWrapper } from '../../templates'
 import ConclusionSelectBoxes from '../ConclusionSelectBoxes'
 
-const TastingSheetBaseForm: FC<TastingSheetBaseFormProps> = memo(
-  ({ type, items, options, register, lessThanTwoItems, getValues }) => {
-    const { isDisabled } = useTastingSheetInputsAttributes()
+const TastingSheetBaseForm: FC<TastingSheetBaseFormProps> = memo(({ type, items, options, register, getValues }) => {
+  const { isDisabled } = useTastingSheetInputsAttributes()
+  const { isMultipleInputs } = useGetIsMultipleInputs()
 
-    return (
-      <TastingSheetFormWrapper title={type}>
+  return (
+    <TastingSheetFormWrapper title={type}>
+      <div className="w-full mt-4 mb-6 border-black border-2 drop-shadow-md">
         {items.map(({ heading, name, labels, subHeading }) => (
           <div key={heading}>
-            <h3>
+            <h3 className="form-heading-text">
               {heading}
-              {subHeading && <span>{subHeading}</span>}
+              {subHeading && <span className="form-subheading-text">{subHeading}</span>}
+              {isMultipleInputs(name) && (
+                <span className="text-slate-500 text-base font-normal block text-right">2つ選択してください</span>
+              )}
             </h3>
-            <div>
+            <div className="flex flex-wrap p-2">
               {labels.map((label) => (
                 <TastingSheetCheckBox
                   key={label}
@@ -28,20 +32,16 @@ const TastingSheetBaseForm: FC<TastingSheetBaseFormProps> = memo(
                   name={convertToFormName(name)}
                   disabled={isDisabled(getValues(convertToFormName(name)), label)}
                   register={register}
+                  color={getValues('tastingSheet.color')}
                 />
               ))}
             </div>
-            {lessThanTwoItems(name) && (
-              <p>
-                <span>2つ選択してください</span>
-              </p>
-            )}
           </div>
         ))}
         {type === 'conclusion' && <ConclusionSelectBoxes register={register} options={options} />}
-      </TastingSheetFormWrapper>
-    )
-  }
-)
+      </div>
+    </TastingSheetFormWrapper>
+  )
+})
 
 export default TastingSheetBaseForm

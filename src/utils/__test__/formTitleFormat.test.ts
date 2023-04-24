@@ -7,7 +7,7 @@ describe('formTitleFormat', () => {
     ['flavor', '香り'],
     ['taste', '味わい'],
     ['conclusion', 'まとめ'],
-    ['setting', '設定'],
+    ['setting', 'テイスティングシートの設定'],
     ['confirmation', 'あなたの回答']
   ]
   it.each(testCases)('%sを引数に与えた場合%sが返る', (input, expected) => {

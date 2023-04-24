@@ -9,7 +9,7 @@ const TastingSheetFormWrapper: FC<FormWrapperProps> = memo(({ title, children })
 
   return (
     <>
-      {isEditing && <h2>{formTitleFormat(title)}</h2>}
+      {isEditing && <h2 className="font-semibold text-xl text-center">{formTitleFormat(title)}</h2>}
       {children}
     </>
   )

@@ -1,3 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  @apply font-body
+}
+
+.base-btn {
+  @apply rounded-full shadow-md px-8 py-2 border-transparent text-white cursor-pointer
+}
+
+.sub-wrapper {
+  @apply w-full md:w-96 mx-auto
+}
+
+.main-wrapper {
+  @apply sub-wrapper px-5 md:px-0
+}
+
+.demo-img-wrapper {
+  @apply sub-wrapper h-96
+}
+
+section {
+  @apply mb-4
+}
+
+.label {
+  @apply justify-start
+}
+
+.label-text {
+  @apply text-base
+}
+
+.steps .step-success:after {
+  @apply text-white
+}
+
+.steps .step:after {
+  @apply text-white
+}
+
+.checkbox-success, .checkbox-error {
+  --chkfg: 4 100% 100%;
+}
+
+.tab-success {
+  @apply text-theme-green opacity-50
+}
+
+.tab-error {
+  @apply text-theme-red opacity-50
+}
+
+.tabs-boxed .tab-active.tab-success {
+  background-color: hsl(var(--su) / var(--tw-bg-opacity));
+  opacity: 1;
+}
+
+.tabs-boxed .tab-active.tab-error {
+  background-color: hsl(var(--er) / var(--tw-bg-opacity));
+  opacity: 1;
+}
+
+.form-heading-text {
+  @apply text-lg font-semibold p-2 bg-gray-300 border-y border-gray-400 box-content
+}
+
+.form-subheading-text {
+  @apply ml-2 text-base font-normal
+}
