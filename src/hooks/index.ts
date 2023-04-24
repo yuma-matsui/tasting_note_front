@@ -42,3 +42,4 @@ export { default as useStartTastingButtonStyles } from './useStartTastingButtonS
 export { default as useGetButtonClassName } from './useGetButtonClassName'
 export { default as useGetButtonFlexType } from './useGetButtonsFlexType'
 export { default as useGetToastClassName } from './useGetToastClassName'
+export { default as useGetTabButtonClassName } from './useGetTabButtonClassName'
