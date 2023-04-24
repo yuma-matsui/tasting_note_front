@@ -16,9 +16,9 @@ const TastingSheetBaseForm: FC<TastingSheetBaseFormProps> = memo(({ type, items,
       <div className="w-full mt-4 mb-6 border-black border-2 drop-shadow-md">
         {items.map(({ heading, name, labels, subHeading }) => (
           <div key={heading}>
-            <h3 className="text-lg font-semibold p-2 bg-gray-300 border-y border-gray-400 box-content">
+            <h3 className="form-heading-text">
               {heading}
-              {subHeading && <span className="ml-2 text-base font-normal">{subHeading}</span>}
+              {subHeading && <span className="form-subheading-text">{subHeading}</span>}
               {isMultipleInputs(name) && (
                 <span className="text-slate-500 text-base font-normal block text-right">2つ選択してください</span>
               )}
