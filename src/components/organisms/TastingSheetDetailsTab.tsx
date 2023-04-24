@@ -1,5 +1,5 @@
 import { FC, memo } from 'react'
-import { useDetailsTabItems, useTastingSheetLabels } from '../../hooks'
+import { useDetailsTabItems, useGetTabButtonClassName, useTastingSheetLabels } from '../../hooks'
 
 import { TastingSheet } from '../../types'
 import { formTitleFormat } from '../../utils'
@@ -9,36 +9,39 @@ import { TastingSheetFormWrapper } from '../templates'
 const TastingSheetDetailsTab: FC<{ tastingSheet: TastingSheet }> = memo(({ tastingSheet }) => {
   const labels = useTastingSheetLabels(tastingSheet.color)
   const { isShow, onClickTabChange, getFormResult } = useDetailsTabItems(tastingSheet)
+  const { getTabButtonClassName } = useGetTabButtonClassName()
 
   return (
     <TastingSheetFormWrapper title="confirmation">
-      <div className="tabs tabs-boxed">
+      <div className="tabs tabs-boxed mt-4 w-full flex justify-between drop-shadow-md">
         {labels.map(({ type }) => (
           <button
             key={type}
             type="button"
-            className={`tab ${isShow(type) ? 'tab-active' : ''}`}
+            className={getTabButtonClassName(tastingSheet, isShow(type))}
             onClick={() => onClickTabChange(type)}
           >
             {formTitleFormat(type)}
           </button>
         ))}
       </div>
-      {labels.map(({ type, items, options }) => (
-        <dl key={type}>
-          {[...items, ...options].map(
-            ({ heading, name, subHeading }) =>
-              isShow(type) && (
-                <SheetOrWineDetailsDataList
-                  key={heading}
-                  title={heading}
-                  subTitle={subHeading}
-                  content={getFormResult(name)}
-                />
-              )
-          )}
-        </dl>
-      ))}
+      <div className="my-6 w-full border-black border-2 drop-shadow-md">
+        {labels.map(({ type, items, options }) => (
+          <dl key={type}>
+            {[...items, ...options].map(
+              ({ heading, name, subHeading }) =>
+                isShow(type) && (
+                  <SheetOrWineDetailsDataList
+                    key={heading}
+                    title={heading}
+                    subTitle={subHeading}
+                    content={getFormResult(name)}
+                  />
+                )
+            )}
+          </dl>
+        ))}
+      </div>
     </TastingSheetFormWrapper>
   )
 })
