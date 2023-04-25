@@ -9,7 +9,7 @@ body {
 }
 
 .base-btn {
-  @apply rounded-full shadow-md px-8 py-2 border-transparent text-white cursor-pointer
+  @apply rounded-full shadow-md px-6 py-2 border-transparent text-white cursor-pointer
 }
 
 .sub-wrapper {
