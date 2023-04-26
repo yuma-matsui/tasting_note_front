@@ -9,7 +9,7 @@ const Footer: FC = memo(() => {
 
   return (
     <footer className="mt-6 main-wrapper">
-      <div className="flex flex-col items-center pt-4 border-t drop-shadow-md">
+      <div className="flex flex-col items-center pt-4 border-t">
         <FooterLink />
         {!isEditing && <FooterNavigation />}
         <p className={`text-gray-700 ${isEditing ? 'mt-2' : ''}`}>&copy;2023 yuma-matsui</p>
