@@ -19,6 +19,7 @@ const WineColorRadios: FC<{
           register={register}
           name="tastingSheet.color"
           label={color === 'white' ? '白' : '赤'}
+          color={color}
         />
       ))}
     </div>
