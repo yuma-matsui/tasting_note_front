@@ -7,7 +7,7 @@ const useStartTastingButtonStyles = () => {
 
   const className = currentUser
     ? 'rounded-full shadow-md bg-transparent border-8 border-theme-yellow text-theme-yellow font-black bottom-2 sticky text-lg px-4 py-2'
-    : 'base-btn bg-theme-red'
+    : 'base-btn bg-theme-red w-40'
 
   return {
     text,
