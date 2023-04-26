@@ -5,7 +5,7 @@ import logo from '../../../assets/images/logo.png'
 const TopPageTitle: FC = memo(() => (
   <div className="flex my-8">
     <img className="w-16 h-16" src={logo} alt="logo" />
-    <div className="ml-2 flex flex-col justify-between">
+    <div className="ml-2 flex flex-col justify-between font-mincho">
       <h1 className="text-theme-red font-bold text-3xl tracking-wider">Tasting Note</h1>
       <p className="text-xs">テイスティングを記録してソムリエに</p>
     </div>
