@@ -79,22 +79,22 @@ section {
   @apply ml-2 text-base font-normal
 }
 
-.tos-section {
+.tos-pp-wrapper {
   @apply mb-6 leading-loose break-words
 }
 
-.tos-section h2 {
-  @apply font-semibold text-lg border-b pb-1 mb-4
+.tos-pp-wrapper h2 {
+  @apply font-semibold text-lg border-b pb-1 my-6
 }
 
-.tos-section p {
+.tos-pp-wrapper p {
   @apply mb-4
 }
 
-.tos-section ol {
+.tos-pp-wrapper ol {
   @apply list-decimal pl-6 mt-4
 }
 
-.tos-section li {
+.tos-pp-wrapper li {
   @apply mb-2
 }
