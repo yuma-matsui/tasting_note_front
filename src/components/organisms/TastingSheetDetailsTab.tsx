@@ -25,7 +25,7 @@ const TastingSheetDetailsTab: FC<{ tastingSheet: TastingSheet }> = memo(({ tasti
           </button>
         ))}
       </div>
-      <div className="my-6 w-full border-black border-2 drop-shadow-md">
+      <div className="my-6 w-full border-black border-2">
         {labels.map(({ type, items, options }) => (
           <dl key={type}>
             {[...items, ...options].map(

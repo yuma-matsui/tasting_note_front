@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&family=Zen+Old+Mincho&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -8,12 +9,16 @@ body {
   @apply font-body
 }
 
+.font-mincho {
+  font-family: 'Zen Old Mincho', serif;
+}
+
 .base-btn {
-  @apply rounded-full shadow-md px-8 py-2 border-transparent text-white cursor-pointer
+  @apply rounded-full shadow-md px-6 py-2 border-transparent text-white cursor-pointer
 }
 
 .sub-wrapper {
-  @apply w-full md:w-96 mx-auto
+  @apply w-full md:w-192 mx-auto
 }
 
 .main-wrapper {
@@ -72,4 +77,24 @@ section {
 
 .form-subheading-text {
   @apply ml-2 text-base font-normal
+}
+
+.tos-pp-wrapper {
+  @apply mb-6 leading-loose break-words
+}
+
+.tos-pp-wrapper h2 {
+  @apply font-semibold text-lg border-b pb-1 my-6
+}
+
+.tos-pp-wrapper p {
+  @apply mb-4
+}
+
+.tos-pp-wrapper ol {
+  @apply list-decimal pl-6 mt-4
+}
+
+.tos-pp-wrapper li {
+  @apply mb-2
 }
