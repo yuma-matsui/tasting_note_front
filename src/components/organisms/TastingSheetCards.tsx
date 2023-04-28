@@ -8,7 +8,9 @@ const TastingSheetCards: FC<{
 }> = memo(({ tastingSheets }) => (
   <ul className="list-none">
     {tastingSheets.map((tastingSheet) => (
-      <TastingSheetCard key={tastingSheet.id} tastingSheet={tastingSheet} />
+      <li key={tastingSheet.id} className="mb-8">
+        <TastingSheetCard tastingSheet={tastingSheet} />
+      </li>
     ))}
   </ul>
 ))
