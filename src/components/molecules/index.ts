@@ -19,7 +19,6 @@ export { default as WelcomePageAboutSection } from './sections/WelcomePageAboutS
 export { default as WelcomePageWithRegistrationSection } from './sections/WelcomePageWithRegistrationSection'
 
 export { default as WineDetailsTitle } from './titles/WineDetailsTitle'
-export { default as TastingSheetListsTitle } from './titles/TastingSheetListsTitle'
 export { default as TopPageTitle } from './titles/TopPageTitle'
 
 export { default as FooterNavigation } from './navigation/FooterNavigation'
