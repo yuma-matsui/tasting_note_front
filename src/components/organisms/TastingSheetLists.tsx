@@ -20,8 +20,8 @@ const TastingSheetLists: FC<{
           <button type="button" className="text-gray-400 drawer-button" onClick={onClickToggleSideBar}>
             絞り込む
           </button>
-          <p>
-            シート件数：<span>{`${tastingSheets.length}件`}</span>
+          <p className="text-sm">
+            シート件数：<span className="text-lg font-semibold">{tastingSheets.length}</span>件
           </p>
         </div>
         <TastingSheetCards tastingSheets={displayingTastingSheets} />
