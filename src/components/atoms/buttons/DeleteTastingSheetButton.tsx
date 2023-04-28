@@ -5,7 +5,7 @@ const DeleteTastingSheetButton: FC<{ id: number }> = memo(({ id }) => {
   const { onClickDelete } = useDeleteTastingSheet(id)
 
   return (
-    <button type="button" onClick={onClickDelete}>
+    <button type="button" onClick={onClickDelete} className="text-theme-red">
       削除
     </button>
   )
