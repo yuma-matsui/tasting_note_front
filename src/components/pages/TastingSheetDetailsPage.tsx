@@ -1,11 +1,11 @@
 import { FC, memo } from 'react'
-import { Link } from 'react-router-dom'
 
 import { useFetchATastingSheet } from '../../hooks'
 import { GoToNewWinePageButton, LoadingSpinner } from '../atoms'
 import TastingSheetDetailsTitle from '../molecules/titles/TastingSheetDetailsTitle'
 import { TastingSheetDetailsTab, WineDetails } from '../organisms'
 import { DefaultLayout } from '../templates'
+import { DetailsPageBottomButtons } from '../molecules'
 
 const TastingSheetDetailsPage: FC<{ tastingSheetId: number }> = memo(({ tastingSheetId }) => {
   const { fetching, tastingSheet } = useFetchATastingSheet(tastingSheetId)
@@ -23,12 +23,7 @@ const TastingSheetDetailsPage: FC<{ tastingSheetId: number }> = memo(({ tastingS
         </>
       )}
       {!tastingSheet.wine && (
-        <div className="flex justify-between items-center">
-          <Link to="/" className="text-gray-400">
-            戻る
-          </Link>
-          <GoToNewWinePageButton tastingSheet={tastingSheet} />
-        </div>
+        <DetailsPageBottomButtons rightButton={<GoToNewWinePageButton tastingSheet={tastingSheet} />} />
       )}
     </DefaultLayout>
   )
