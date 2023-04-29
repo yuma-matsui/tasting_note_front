@@ -2,9 +2,9 @@ import { FC, memo } from 'react'
 import { WineTextInputProps } from '../../../types'
 
 const WineTextInput: FC<WineTextInputProps> = memo(({ name, label, register, required, errors }) => (
-  <div className="form-control w-full max-w-md mb-4">
-    <label htmlFor={name} className="label flex flex-col items-start md:items-center">
-      <span className="label-text mb-2 text-left">
+  <div className="wine-form-control">
+    <label htmlFor={name} className="wine-form-label">
+      <span className="wine-form-label-text">
         {label} {name !== 'wine.name' && <span className="text-slate-500 text-sm">任意</span>}
       </span>
       <input
