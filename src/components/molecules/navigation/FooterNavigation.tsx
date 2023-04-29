@@ -1,7 +1,14 @@
 import { FC, memo } from 'react'
+import { Link } from 'react-router-dom'
 
 import { useAuthContext } from '../../../hooks'
-import { DeleteAccountButton, FooterLinkWrapper } from '../../atoms'
+import {
+  DeleteAccountButton,
+  FooterLinkWrapper,
+  PrivacyPolicyLink,
+  SignOutButton,
+  TermOfServiceLink
+} from '../../atoms'
 
 const FooterNavigation: FC = memo(() => {
   const { currentUser } = useAuthContext()
@@ -10,15 +17,23 @@ const FooterNavigation: FC = memo(() => {
     <nav className="my-4">
       <ul className="flex flex-col items-center md:flex-row md:items-start text-sm">
         <li className="mb-2">
-          <FooterLinkWrapper text="利用規約" />
+          <FooterLinkWrapper
+            text="利用規約"
+            defaultLink={<TermOfServiceLink />}
+            linkOnModal={<Link to="/tos">はい</Link>}
+          />
         </li>
         <li className="mb-2 md:ml-4">
-          <FooterLinkWrapper text="プライバシーポリシー" />
+          <FooterLinkWrapper
+            text="プライバシーポリシー"
+            defaultLink={<PrivacyPolicyLink />}
+            linkOnModal={<Link to="/pp">はい</Link>}
+          />
         </li>
         {currentUser && (
           <>
             <li className="mb-2 md:ml-4">
-              <FooterLinkWrapper text="ログアウト" />
+              <FooterLinkWrapper text="ログアウト" defaultLink={<SignOutButton />} linkOnModal={<SignOutButton />} />
             </li>
             <li className="md:ml-4">
               <DeleteAccountButton />
