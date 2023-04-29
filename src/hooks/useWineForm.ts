@@ -4,21 +4,28 @@ import { useLocation } from 'react-router-dom'
 import { useErrorBoundary } from 'react-error-boundary'
 
 import { ALCOHOL_PERCENTAGES, COUNTRIES, GRAPES_RED, GRAPES_WHITE, VINTAGES } from '../assets'
-import { TastingSheetStateForWine, WineApi, WineFormState } from '../types'
+import { TastingSheetStateForWine, WineApi, WineColor, WineFormState } from '../types'
 import usePostWine from './api/usePostWine'
 import usePostWineImageToS3 from './api/usePostWineImageToS3'
 import useUpdateWine from './api/useUpdateWine'
 import useAuthContext from './context/useAuthContext'
+import useGetButtonClassName from './useGetButtonClassName'
 
 const useWineForm = (wine?: WineApi) => {
   const { showBoundary } = useErrorBoundary()
   const location = useLocation()
-  const { id, name: tastingSheetName, color } = location.state as TastingSheetStateForWine
+  const { id, color } = location.state as TastingSheetStateForWine
   const tastingSheetId = wine?.tastingSheetId ?? id
 
   const getGrapes = () => {
     if (wine) return GRAPES_RED.includes(wine.grape) ? GRAPES_RED : GRAPES_WHITE
     return color === 'red' ? GRAPES_RED : GRAPES_WHITE
+  }
+
+  const getWineColor = () => {
+    let wineColor: WineColor = 'white'
+    if (wine && GRAPES_RED.includes(wine.grape)) wineColor = 'red'
+    return wineColor
   }
 
   const { postWine } = usePostWine()
@@ -50,6 +57,9 @@ const useWineForm = (wine?: WineApi) => {
     },
     mode: 'onChange'
   })
+
+  const disabled = isSubmitting || !isValid
+  const { className: submitButtonClassName } = useGetButtonClassName(color ?? getWineColor(), disabled)
 
   const { currentUser } = useAuthContext()
   const [imageFile, setImageFile] = useState<File | null>(null)
@@ -85,14 +95,13 @@ const useWineForm = (wine?: WineApi) => {
     register,
     onSubmit,
     handleSubmit,
-    isValid,
-    isSubmitting,
+    disabled,
     errors,
-    tastingSheetName,
     tastingSheetId,
     selectBoxOptions,
     imageFile,
-    onChangeImageFile
+    onChangeImageFile,
+    submitButtonClassName
   }
 }
 

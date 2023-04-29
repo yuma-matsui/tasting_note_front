@@ -11,14 +11,14 @@ const WineDetailsTitle: FC<{ wine: WineApi }> = memo(({ wine }) => {
   })
 
   return (
-    <h3>
+    <h2 className="page-title mb-4">
       {wine.name}
-      <span className="text-red-400">
+      <span className="text-gray-400 text-sm font-normal ml-2">
         <button type="button" onClick={onClickOpenModal}>
           削除
         </button>
       </span>
-    </h3>
+    </h2>
   )
 })
 

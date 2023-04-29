@@ -6,7 +6,7 @@ const BaseModal: FC<BaseModalProps> = memo(({ text, leftButton, rightButton, vis
   <>
     <input type="checkbox" className="modal-toggle" checked={visible} onChange={() => {}} />
     <div className="modal">
-      <div className="modal-box">
+      <div className="modal-box mx-0">
         <p>{text}</p>
         <div className="modal-action flex items-center">
           {leftButton}

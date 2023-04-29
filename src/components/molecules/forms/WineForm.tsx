@@ -1,6 +1,6 @@
 import { FC, memo } from 'react'
 
-import { useWineForm } from '../../../hooks'
+import { useOnClickOpenModal, useWineForm } from '../../../hooks'
 import { WineApi } from '../../../types'
 import {
   GoToAnotherPageButton,
@@ -16,23 +16,25 @@ const WineForm: FC<{ wine?: WineApi }> = memo(({ wine }) => {
   const {
     register,
     handleSubmit,
-    isSubmitting,
-    isValid,
+    disabled,
     errors,
     onSubmit,
     tastingSheetId,
-    tastingSheetName,
     selectBoxOptions: { vintages, countries, grapes, alcoholPercentages },
     imageFile,
-    onChangeImageFile
+    onChangeImageFile,
+    submitButtonClassName
   } = useWineForm(wine)
+
+  const { onClickOpenModal } = useOnClickOpenModal({
+    text: '編集中ですがよろしいですか？',
+    rightButton: <GoToAnotherPageButton to={`/tasting_sheets/${tastingSheetId}`} text="OK" />
+  })
 
   return (
     <>
-      <h2>
-        シート名: <span className="font-bold">{tastingSheetName}</span>のワインを{wine ? '編集' : '登録'}
-      </h2>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <h2 className="page-title">ワインの{wine ? '編集' : '登録'}</h2>
+      <form onSubmit={handleSubmit(onSubmit)} className="my-4 flex flex-col sm:items-center">
         <WineTextInput name="wine.name" label="ワイン名" register={register} errors={errors} required />
         <WineImageInput onChangeImageFile={onChangeImageFile} />
         {wine?.image && !imageFile && <WineImage filename={wine.image} />}
@@ -48,8 +50,12 @@ const WineForm: FC<{ wine?: WineApi }> = memo(({ wine }) => {
           options={alcoholPercentages}
         />
         <WineMemoTextArea register={register} />
-        <GoToAnotherPageButton to={`/tasting_sheets/${tastingSheetId}`} text="シートへ戻る" />
-        <input type="submit" value={wine ? '更新' : '登録'} className="btn" disabled={isSubmitting || !isValid} />
+        <div className="flex justify-between w-full max-w-md">
+          <button type="button" className="text-gray-400" onClick={onClickOpenModal}>
+            戻る
+          </button>
+          <input type="submit" value={wine ? '更新' : '登録'} className={submitButtonClassName} disabled={disabled} />
+        </div>
       </form>
     </>
   )

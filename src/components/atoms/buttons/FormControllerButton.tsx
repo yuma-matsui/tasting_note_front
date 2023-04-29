@@ -9,7 +9,7 @@ const FormControllerButton: FC<{
   onClick: () => void
   tastingSheet: TastingSheet
 }> = memo(({ value, disabled, onClick, tastingSheet }) => {
-  const { className } = useGetButtonClassName(tastingSheet, value, disabled)
+  const { className } = useGetButtonClassName(tastingSheet.color, disabled, value)
 
   return <input type="button" value={value} disabled={disabled} onClick={onClick} className={className} />
 })
