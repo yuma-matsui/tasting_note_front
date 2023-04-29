@@ -9,7 +9,7 @@ const PostTastingSheetButton: FC<{
   tastingSheet: TastingSheet
 }> = memo(({ tastingSheet }) => {
   const { currentUser } = useAuthContext()
-  const { className } = useGetButtonClassName(tastingSheet)
+  const { className } = useGetButtonClassName(tastingSheet.color)
   const { postTastingSheet } = usePostTastingSheet()
   const { onClickOpenModal } = useOnClickOpenModal({
     text: '記録せずに終了しますか？',

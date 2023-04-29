@@ -9,6 +9,7 @@ import usePostWine from './api/usePostWine'
 import usePostWineImageToS3 from './api/usePostWineImageToS3'
 import useUpdateWine from './api/useUpdateWine'
 import useAuthContext from './context/useAuthContext'
+import useGetButtonClassName from './useGetButtonClassName'
 
 const useWineForm = (wine?: WineApi) => {
   const { showBoundary } = useErrorBoundary()
@@ -51,6 +52,9 @@ const useWineForm = (wine?: WineApi) => {
     mode: 'onChange'
   })
 
+  const disabled = isSubmitting || !isValid
+  const { className: submitButtonClassName } = useGetButtonClassName(color, disabled)
+
   const { currentUser } = useAuthContext()
   const [imageFile, setImageFile] = useState<File | null>(null)
   const onChangeImageFile = (e: ChangeEvent<HTMLInputElement>) => {
@@ -85,13 +89,13 @@ const useWineForm = (wine?: WineApi) => {
     register,
     onSubmit,
     handleSubmit,
-    isValid,
-    isSubmitting,
+    disabled,
     errors,
     tastingSheetId,
     selectBoxOptions,
     imageFile,
-    onChangeImageFile
+    onChangeImageFile,
+    submitButtonClassName
   }
 }
 

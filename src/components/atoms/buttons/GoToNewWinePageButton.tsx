@@ -9,7 +9,7 @@ const GoToNewWinePageButton: FC<{
 }> = memo(({ tastingSheet }) => {
   const navigate = useNavigate()
   const state = useTastingSheetStateForWine(tastingSheet)
-  const { className } = useGetButtonClassName(tastingSheet)
+  const { className } = useGetButtonClassName(tastingSheet.color)
 
   const onClick = () => navigate('/wines/new', { state })
 

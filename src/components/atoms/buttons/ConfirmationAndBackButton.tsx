@@ -6,7 +6,7 @@ import { TastingSheet } from '../../../types'
 const ConfirmationAndBackButton: FC<{
   tastingSheet: TastingSheet
 }> = memo(({ tastingSheet }) => {
-  const { className } = useGetButtonClassName(tastingSheet)
+  const { className } = useGetButtonClassName(tastingSheet.color)
 
   return (
     <button type="button" className={className} onClick={() => window.location.reload()}>

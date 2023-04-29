@@ -9,7 +9,7 @@ const UpdateSheetNameForm: FC<{
 }> = memo(({ tastingSheet }) => {
   const { register, handleSubmit, isValid, isSubmitting, errors, onSubmit } = useTastingSheetUpdateForm(tastingSheet)
   const disabled = isSubmitting || !isValid
-  const { className } = useGetButtonClassName(tastingSheet, disabled)
+  const { className } = useGetButtonClassName(tastingSheet.color, disabled)
   const buttonMargin = errors ? 'mt-1' : 'mt-7'
 
   return (
