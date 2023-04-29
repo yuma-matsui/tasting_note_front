@@ -98,3 +98,7 @@ section {
 .tos-pp-wrapper li {
   @apply mb-2
 }
+
+.page-title {
+  @apply text-xl font-semibold text-center
+}

@@ -13,7 +13,7 @@ const TastingSheetDetailsTitle: FC<{ tastingSheet: TastingSheetApi }> = memo(({ 
     <UpdateSheetNameForm tastingSheet={tastingSheet} />
   ) : (
     <div className="flex items-center justify-center">
-      <h2 className="text-xl font-semibold text-center">{tastingSheet.name}</h2>
+      <h2 className="page-title">{tastingSheet.name}</h2>
       <span className="text-xs font-normal text-white ml-2">
         <button
           type="button"
