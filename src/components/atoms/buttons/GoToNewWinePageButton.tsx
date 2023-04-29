@@ -14,7 +14,7 @@ const GoToNewWinePageButton: FC<{
   const onClick = () => navigate('/wines/new', { state })
 
   return (
-    <button type="button" onClick={onClick} className={`${className} block mx-auto`}>
+    <button type="button" onClick={onClick} className={className}>
       ワインの登録
     </button>
   )

@@ -1,4 +1,5 @@
 import { FC, memo } from 'react'
+import { Link } from 'react-router-dom'
 
 import { useFetchATastingSheet } from '../../hooks'
 import { GoToNewWinePageButton, LoadingSpinner } from '../atoms'
@@ -21,7 +22,14 @@ const TastingSheetDetailsPage: FC<{ tastingSheetId: number }> = memo(({ tastingS
           <WineDetails wine={tastingSheet.wine} />
         </>
       )}
-      {!tastingSheet.wine && <GoToNewWinePageButton tastingSheet={tastingSheet} />}
+      {!tastingSheet.wine && (
+        <div className="flex justify-between items-center">
+          <Link to="/" className="text-gray-400">
+            戻る
+          </Link>
+          <GoToNewWinePageButton tastingSheet={tastingSheet} />
+        </div>
+      )}
     </DefaultLayout>
   )
 })
