@@ -22,7 +22,7 @@ const TastingSheetSearchForm: FC<{
   } = useTastingSheetSearchForm(setFilter)
 
   return (
-    <form className="mb-8" onSubmit={onSubmit}>
+    <form className="flex flex-col" onSubmit={onSubmit}>
       <SearchColorRadios selectedColor={color} onChange={onChangeColor} />
       <SearchSelectBox
         options={countries}
@@ -38,7 +38,7 @@ const TastingSheetSearchForm: FC<{
         onChange={onChangeGrape}
         selectedOption={grape}
       />
-      <button type="button" onClick={onClickAllClear} className="btn">
+      <button type="button" onClick={onClickAllClear} className="text-gray-500 text-left">
         クリア
       </button>
     </form>
