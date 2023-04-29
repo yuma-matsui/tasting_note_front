@@ -1,8 +1,7 @@
 import { FC, memo } from 'react'
 import { Link } from 'react-router-dom'
 
-import { WineApi } from '../../../types'
-import WineColor from '../../../types/tasting_sheet/wineColor'
+import { WineApi, WineColor } from '../../../types'
 
 const CardInsideLink: FC<{
   text: string
