@@ -38,7 +38,7 @@ const TastingSheetSearchForm: FC<{
         onChange={onChangeGrape}
         selectedOption={grape}
       />
-      <button type="button" onClick={onClickAllClear} className="text-gray-500 text-left">
+      <button type="button" onClick={onClickAllClear} className="text-gray-400 text-left">
         クリア
       </button>
     </form>
