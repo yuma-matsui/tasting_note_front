@@ -11,7 +11,7 @@ const TastingSheetSearchSideBar: FC<{
     <div className="drawer-content">{children}</div>
     <div className="drawer-side">
       <input type="button" className="drawer-overlay" onClick={onClickToggleSideBar} />
-      <div className="menu p-4 w-1/3 bg-base-100 text-base-content">{sideBarContent}</div>
+      <div className="menu px-2 py-4 w-2/3 md:w-1/3 bg-base-100 text-base-content">{visible && sideBarContent}</div>
     </div>
   </div>
 ))
