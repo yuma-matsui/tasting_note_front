@@ -13,6 +13,9 @@ module.exports = {
       },
       fontFamily: {
         body: ['"Source Sans Pro"', '"Hiragino Sans"', 'sans-serif']
+      },
+      spacing: {
+        192: '768px'
       }
     }
   },

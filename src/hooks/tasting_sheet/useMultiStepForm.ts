@@ -1,7 +1,11 @@
-import { ReactElement, RefObject, useState } from 'react'
+import { ReactElement, RefObject, useEffect, useState } from 'react'
 
 const useMultiStepForm = (steps: ReactElement[]) => {
   const [currentStepIndex, setCurrentStepIndex] = useState(0)
+
+  useEffect(() => {
+    window.scroll(0, 0)
+  }, [currentStepIndex])
 
   const next = () => {
     setCurrentStepIndex((index) => {

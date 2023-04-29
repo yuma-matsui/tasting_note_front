@@ -13,7 +13,7 @@ const TastingSheetBaseForm: FC<TastingSheetBaseFormProps> = memo(({ type, items,
 
   return (
     <TastingSheetFormWrapper title={type}>
-      <div className="w-full mt-4 mb-6 border-black border-2 drop-shadow-md">
+      <div className="w-full mt-4 mb-6 border-black border-2">
         {items.map(({ heading, name, labels, subHeading }) => (
           <div key={heading}>
             <h3 className="form-heading-text">

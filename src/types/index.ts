@@ -9,6 +9,7 @@ export type { default as TastingSheetFormType } from './tasting_sheet/tastingShe
 export type { default as TastingSheetLabelsTuple } from './tasting_sheet/tastingSheetLabelsTuple'
 export type { default as TastingSheetStateForWine } from './tasting_sheet/tastingSheetStateForWine'
 export type { default as TastingSheetFilter } from './tasting_sheet/tastingSheetFilter'
+export type { default as WineColor } from './tasting_sheet/wineColor'
 
 export type { default as AppearanceName } from './tasting_sheet/appearance/appearanceName'
 export type { default as Appearance } from './tasting_sheet/appearance/appearance'

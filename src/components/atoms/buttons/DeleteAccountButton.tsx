@@ -14,7 +14,7 @@ const DeleteAccountButton: FC = memo(() => {
   })
 
   return (
-    <button type="button" onClick={onClickOpenModal} className="text-theme-pink">
+    <button type="button" onClick={onClickOpenModal} className="text-gray-400">
       アカウント削除
     </button>
   )
