@@ -13,6 +13,7 @@ export { default as useFilteredTastingSheets } from './tasting_sheet/useFiltered
 export { default as useGetRadioOrCheckBoxType } from './tasting_sheet/useGetRadioOrCheckBoxType'
 export { default as useGetCheckBoxClassName } from './tasting_sheet/useGetCheckBoxClassName'
 export { default as useGetIsMultipleInputs } from './tasting_sheet/useGetIsMultipleInputs'
+export { default as useHasWineAndImage } from './tasting_sheet/useHasWineAndImage'
 
 export { default as usePostTastingSheet } from './api/usePostTastingSheet'
 export { default as useFetchTastingSheets } from './api/useFetchTastingSheets'
