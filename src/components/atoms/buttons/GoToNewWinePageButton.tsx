@@ -1,7 +1,7 @@
 import { FC, memo } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { useTastingSheetStateForWine } from '../../../hooks'
+import { useGetButtonClassName, useTastingSheetStateForWine } from '../../../hooks'
 import { TastingSheetApi } from '../../../types'
 
 const GoToNewWinePageButton: FC<{
@@ -9,11 +9,12 @@ const GoToNewWinePageButton: FC<{
 }> = memo(({ tastingSheet }) => {
   const navigate = useNavigate()
   const state = useTastingSheetStateForWine(tastingSheet)
+  const { className } = useGetButtonClassName(tastingSheet.color)
 
   const onClick = () => navigate('/wines/new', { state })
 
   return (
-    <button type="button" className="btn" onClick={onClick}>
+    <button type="button" onClick={onClick} className={className}>
       ワインの登録
     </button>
   )

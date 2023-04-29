@@ -17,7 +17,7 @@ const TastingSheetLists: FC<{
       <h2 className="text-xl mb-4">シート一覧</h2>
       <div>
         <div className="mx-1 mb-4 flex justify-between">
-          <button type="button" className="text-gray-400 drawer-button" onClick={onClickToggleSideBar}>
+          <button type="button" className="drawer-button" onClick={onClickToggleSideBar}>
             絞り込む
           </button>
           <p className="text-sm">

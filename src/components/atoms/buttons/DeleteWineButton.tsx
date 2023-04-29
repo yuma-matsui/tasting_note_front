@@ -7,7 +7,7 @@ const DeleteWineButton: FC<{ wine: WineApi }> = memo(({ wine }) => {
   const { onClickDeleteWine } = useDeleteWine(wine)
 
   return (
-    <button type="button" onClick={onClickDeleteWine}>
+    <button type="button" onClick={onClickDeleteWine} className="text-theme-red">
       削除
     </button>
   )

@@ -14,6 +14,7 @@ export { default as TastingSheetCard } from './TastingSheetCard'
 export { default as PaginationButtons } from './PaginationButtons'
 export { default as SearchColorRadios } from './SearchColorRadios'
 export { default as WineColorRadios } from './WineColorRadios'
+export { default as DetailsPageBottomButtons } from './DetailsPageBottomButtons'
 
 export { default as WelcomePageAboutSection } from './sections/WelcomePageAboutSection'
 export { default as WelcomePageWithRegistrationSection } from './sections/WelcomePageWithRegistrationSection'

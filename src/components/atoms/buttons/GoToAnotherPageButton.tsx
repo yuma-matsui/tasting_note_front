@@ -1,7 +1,10 @@
 import { FC, memo } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const GoToAnotherPageButton: FC<{ text: string; to: string }> = memo(({ text, to }) => {
+const GoToAnotherPageButton: FC<{
+  text: string
+  to: string
+}> = memo(({ text, to }) => {
   const navigate = useNavigate()
   const onClick = () => navigate(to)
 

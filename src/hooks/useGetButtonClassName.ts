@@ -1,6 +1,6 @@
-import { TastingSheet } from '../types'
+import { WineColor } from '../types'
 
-const useGetButtonClassName = ({ color }: TastingSheet, value?: string, disabled = false) => {
+const useGetButtonClassName = (color: WineColor, disabled = false, value?: string) => {
   let className = 'base-btn '
   if (color === 'red') className += 'bg-theme-red'
   if (value !== 'テイスティングをはじめる' && color === 'white') className += 'bg-theme-green'

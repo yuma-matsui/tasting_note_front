@@ -98,3 +98,19 @@ section {
 .tos-pp-wrapper li {
   @apply mb-2
 }
+
+.page-title {
+  @apply text-xl font-semibold text-center
+}
+
+.wine-form-control {
+  @apply form-control w-full max-w-md mb-4
+}
+
+.wine-form-label {
+  @apply label flex flex-col items-start
+}
+
+.wine-form-label-text {
+  @apply label-text mb-2
+}
