@@ -19,7 +19,7 @@ const TastingSheetDetailsPage: FC<{ tastingSheetId: number }> = memo(({ tastingS
       {tastingSheet.wine && (
         <>
           <div className="divider my-6" />
-          <WineDetails wine={tastingSheet.wine} />
+          <WineDetails wine={tastingSheet.wine} tastingSheet={tastingSheet} />
         </>
       )}
       {!tastingSheet.wine && (
