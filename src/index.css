@@ -108,7 +108,7 @@ section {
 }
 
 .wine-form-label {
-  @apply label flex flex-col items-start md:items-center
+  @apply label flex flex-col items-start
 }
 
 .wine-form-label-text {
