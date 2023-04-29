@@ -6,7 +6,7 @@ const SearchColorRadios: FC<{
   selectedColor: string
   onChange: (e: ChangeEvent<HTMLInputElement>) => void
 }> = memo(({ selectedColor, onChange }) => (
-  <div className="flex mb-4">
+  <div className="mb-4 md:flex">
     {['white', 'red', '指定なし'].map((color) => (
       <SearchColorRadio key={color} color={color} checked={selectedColor === color} onChange={onChange} />
     ))}
