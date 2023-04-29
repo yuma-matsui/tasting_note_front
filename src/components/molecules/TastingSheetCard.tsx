@@ -28,12 +28,7 @@ const TastingSheetCard: FC<TastingSheetCardProps> = memo(({ tastingSheet }) => {
           <img src={cardImage} alt="wine" />
         </Link>
         {!hasWine && (
-          <CardInsideLink
-            text="テイスティングしたワイン・画像の登録は"
-            to="/wines/new"
-            textColor={textColor}
-            state={state}
-          />
+          <CardInsideLink text="テイスティングしたワインの登録は" to="/wines/new" textColor={textColor} state={state} />
         )}
         {tastingSheet.wine && !tastingSheet.wine.image && (
           <CardInsideLink

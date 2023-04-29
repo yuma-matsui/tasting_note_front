@@ -18,7 +18,7 @@ const CardInsideLink: FC<{
 }> = memo(({ text, to, textColor, state }) => (
   <p className="absolute top-36 w-full text-center px-2">
     {text}
-    <span className={`${textColor} text-lg font-bold`}>
+    <span className={`${textColor} text-lg font-bold ml-1`}>
       <Link to={to} state={state}>
         こちら
       </Link>
