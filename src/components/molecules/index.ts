@@ -18,6 +18,7 @@ export { default as DetailsPageBottomButtons } from './DetailsPageBottomButtons'
 
 export { default as WelcomePageAboutSection } from './sections/WelcomePageAboutSection'
 export { default as WelcomePageWithRegistrationSection } from './sections/WelcomePageWithRegistrationSection'
+export { default as WelcomePageImagesSection } from './sections/WelcomePageImagesSection'
 
 export { default as WineDetailsTitle } from './titles/WineDetailsTitle'
 export { default as TopPageTitle } from './titles/TopPageTitle'
