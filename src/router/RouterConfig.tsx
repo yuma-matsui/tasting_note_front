@@ -16,12 +16,14 @@ import EditWinePageWrapper from './EditWinePageWrapper'
 import NewWinePageWrapper from './NewWinePageWrapper'
 import TastingSheetPageWrapper from './TastingSheetPageWrapper'
 import WelcomePageWrapper from './WelcomePageWrapper'
+import AuthErrorPage from '../components/pages/AuthErrorPage'
 
 const RouterConfig: FC = () => {
-  const { loading } = useAuthContext()
+  const { loading, error } = useAuthContext()
   const { requesting } = useRequestingContext()
 
   if (loading || requesting) return <LoadingSpinner />
+  if (error) return <AuthErrorPage error={error} />
 
   return (
     <BrowserRouter>
