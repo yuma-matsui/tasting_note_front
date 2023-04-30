@@ -34,7 +34,7 @@ const usePostTastingSheet = () => {
       setRequesting(false)
     }
     showToast({
-      text: 'テイスティングシートを記録しました',
+      text: 'シートを記録しました',
       type: 'success'
     })
   }
