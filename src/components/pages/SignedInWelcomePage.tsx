@@ -18,8 +18,8 @@ const SignedInWelcomePage: FC = memo(() => {
         ) : (
           <SignedInTopPageInstruction />
         )}
-        <StartTastingButton />
       </div>
+      <StartTastingButton />
     </DefaultLayout>
   )
 })
