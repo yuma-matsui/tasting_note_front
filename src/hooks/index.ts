@@ -31,7 +31,6 @@ export { default as useModalContext } from './context/useModalContext'
 export { default as useRequestingContext } from './context/useRequestingContext'
 
 export { default as useOnClickAuth } from './auth/useOnClickAuth'
-export { default as useThrowAuthError } from './auth/useThrowAuthError'
 
 export { default as useAxios } from './useAxios'
 export { default as useOnClickOpenModal } from './useOnClickOpenModal'
