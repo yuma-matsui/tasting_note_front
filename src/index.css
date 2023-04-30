@@ -114,3 +114,14 @@ section {
 .wine-form-label-text {
   @apply label-text mb-2
 }
+
+@layer utilities {
+  .hidden-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .hidden-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
