@@ -4,7 +4,7 @@ import { FC, useCallback, useLayoutEffect, useMemo, useState } from 'react'
 import { useAuthState, useDeleteUser, useSignOut, useSignInWithGoogle } from 'react-firebase-hooks/auth'
 
 import { AuthContext } from '../contexts'
-import { useAxios, useThrowAuthError } from '../hooks'
+import { useAxios } from '../hooks'
 import { firebaseConfig } from '../lib'
 import { ReactNodeChildren } from '../types'
 
@@ -24,7 +24,6 @@ const AuthProvider: FC<ReactNodeChildren> = ({ children }) => {
   const loading = signInLoading || authChangeLoading || deleteLoading || deleteAccountLoading
   const error = signInError || authChangeError || signOutError || deleteError || deleteAccountError
 
-  useThrowAuthError(error)
   useLayoutEffect(() => {
     onAuthStateChanged(auth, (user) => {
       setCurrentUser(user)
