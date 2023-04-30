@@ -27,8 +27,8 @@ const RouterConfig: FC = () => {
 
   return (
     <BrowserRouter>
-      <ModalProvider>
-        <ErrorBoundary FallbackComponent={ErrorFallbackForApi}>
+      <ErrorBoundary FallbackComponent={ErrorFallbackForApi}>
+        <ModalProvider>
           <Routes>
             <Route path="/" element={<WelcomePageWrapper />} />
             <Route path="/pp" element={<PrivacyPolicyPage />} />
@@ -47,8 +47,8 @@ const RouterConfig: FC = () => {
             </Route>
             <Route path="*" element={<Error404Page />} />
           </Routes>
-        </ErrorBoundary>
-      </ModalProvider>
+        </ModalProvider>
+      </ErrorBoundary>
     </BrowserRouter>
   )
 }
