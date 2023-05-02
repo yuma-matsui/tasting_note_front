@@ -2,13 +2,13 @@ import { FC, memo } from 'react'
 import { FcGoogle } from 'react-icons/fc'
 
 import { TastingSheet } from '../../../types'
-import { useSignInAndPostTastingSheet } from '../../../hooks'
+import { useSetSheetToLocalStorageAndSignIn } from '../../../hooks'
 
 const SignInAndPostButton: FC<{
   tastingSheet: TastingSheet
 }> = memo(({ tastingSheet }) => {
-  const { signInAndPostTastingSheet } = useSignInAndPostTastingSheet()
-  const onClick = () => signInAndPostTastingSheet(tastingSheet)
+  const { setTastingSheetAndSignIn } = useSetSheetToLocalStorageAndSignIn()
+  const onClick = () => setTastingSheetAndSignIn(tastingSheet)
 
   return (
     <button type="button" onClick={onClick} className="base-btn bg-theme-green">

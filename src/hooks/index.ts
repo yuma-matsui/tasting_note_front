@@ -14,6 +14,7 @@ export { default as useGetRadioOrCheckBoxType } from './tasting_sheet/useGetRadi
 export { default as useGetCheckBoxClassName } from './tasting_sheet/useGetCheckBoxClassName'
 export { default as useGetIsMultipleInputs } from './tasting_sheet/useGetIsMultipleInputs'
 export { default as useHasWineAndImage } from './tasting_sheet/useHasWineAndImage'
+export { default as useSetSheetToLocalStorageAndSignIn } from './tasting_sheet/useSetSheetToLocalStorageAndSignIn'
 
 export { default as usePostTastingSheet } from './api/usePostTastingSheet'
 export { default as useFetchTastingSheets } from './api/useFetchTastingSheets'
@@ -23,7 +24,7 @@ export { default as useUpdateTastingSheetName } from './api/useUpdateTastingShee
 export { default as usePostWine } from './api/usePostWine'
 export { default as useUpdateWine } from './api/useUpdateWine'
 export { default as usePostWineImageToS3 } from './api/usePostWineImageToS3'
-export { default as useSignInAndPostTastingSheet } from './api/useSignInAndPostTastingSheet'
+export { default as usePostTastingSheetAfterSignIn } from './api/usePostTastingSheetAfterSignIn'
 
 export { default as useAuthContext } from './context/useAuthContext'
 export { default as useToastContext } from './context/useToastContext'
@@ -32,6 +33,7 @@ export { default as useRequestingContext } from './context/useRequestingContext'
 
 export { default as useOnClickAuth } from './auth/useOnClickAuth'
 export { default as useUrgentSignOut } from './auth/useUrgentSignOut'
+export { default as useDisplayToastAfterSignedIn } from './auth/useDisplayToastAfterSignedIn'
 
 export { default as useAxios } from './useAxios'
 export { default as useOnClickOpenModal } from './useOnClickOpenModal'
