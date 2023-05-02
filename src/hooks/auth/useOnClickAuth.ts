@@ -3,6 +3,7 @@ import { useErrorBoundary } from 'react-error-boundary'
 
 import useAuthContext from '../context/useAuthContext'
 import useToastContext from '../context/useToastContext'
+import { SIGNED_IN_KEY } from '../../utils'
 
 const useOnClickAuth = () => {
   const { showBoundary } = useErrorBoundary()
@@ -11,16 +12,9 @@ const useOnClickAuth = () => {
   const { showToast } = useToastContext()
   const navigate = useNavigate()
 
-  const onClickSignIn = async () => {
-    try {
-      await signIn()
-    } catch (e) {
-      if (e instanceof Error) showBoundary(e)
-    }
-    showToast({
-      text: 'ログインしました',
-      type: 'success'
-    })
+  const onClickSignIn = () => {
+    signIn()
+    window.localStorage.setItem(SIGNED_IN_KEY, 'signedIn')
   }
 
   const onClickSignOut = async () => {
