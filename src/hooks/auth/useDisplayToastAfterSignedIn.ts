@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 import useToastContext from '../context/useToastContext'
 import { SIGNED_IN_KEY, TASTING_SHEET_KEY } from '../../utils'
 
-const useDisplayToastAfterSignedIn = (user: User | null) => {
+const useDisplayToastAfterSignedIn = (user: User | null | undefined) => {
   const { showToast } = useToastContext()
 
   useEffect(() => {

@@ -3,7 +3,6 @@ import { AuthContextType } from '../types'
 
 const AuthContext = createContext<AuthContextType>({
   currentUser: null,
-  setCurrentUser: () => {},
   loading: false,
   error: undefined,
   signIn: () => {},
