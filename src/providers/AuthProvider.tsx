@@ -1,44 +1,26 @@
-import { initializeApp } from 'firebase/app'
-import {
-  browserLocalPersistence,
-  getAuth,
-  setPersistence,
-  User,
-  onAuthStateChanged,
-  signInWithRedirect,
-  GoogleAuthProvider
-} from 'firebase/auth'
-import { FC, useCallback, useLayoutEffect, useMemo, useState } from 'react'
+import { browserLocalPersistence, setPersistence, signInWithRedirect, GoogleAuthProvider } from 'firebase/auth'
+import { FC, useCallback, useMemo, useState } from 'react'
 import { useAuthState, useDeleteUser, useSignOut } from 'react-firebase-hooks/auth'
 
+import { auth } from '../lib'
 import { AuthContext } from '../contexts'
 import { useAxios, useDisplayToastAfterSignedIn } from '../hooks'
-import { firebaseConfig } from '../lib'
 import { ReactNodeChildren } from '../types'
 
 const AuthProvider: FC<ReactNodeChildren> = ({ children }) => {
-  initializeApp(firebaseConfig)
-  const auth = getAuth()
-
   const { client, getHeaders } = useAxios()
 
-  const [currentUser, setCurrentUser] = useState<User | null>(null)
+  const [currentUser, authChangeLoading, authChangeError] = useAuthState(auth)
   const [signInLoading, setSignInLoading] = useState(false)
   const [signInError, setSignInError] = useState<Error | null>(null)
   const [deleteAccountLoading, setDeleteAccountLoading] = useState(false)
   const [deleteAccountApiError, setDeleteAccountApiError] = useState<Error>()
-  const [, authChangeLoading, authChangeError] = useAuthState(auth)
   const [signOut, , signOutError] = useSignOut(auth)
   const [deleteUser, deleteLoading, deleteError] = useDeleteUser(auth)
   const loading = signInLoading || authChangeLoading || deleteLoading || deleteAccountLoading
   const error = signInError || authChangeError || signOutError || deleteError || deleteAccountApiError
 
   useDisplayToastAfterSignedIn(currentUser)
-  useLayoutEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      setCurrentUser(user)
-    })
-  }, [auth, setCurrentUser])
 
   const signIn = useCallback(() => {
     setSignInLoading(true)
@@ -49,7 +31,7 @@ const AuthProvider: FC<ReactNodeChildren> = ({ children }) => {
         if (e instanceof Error) setSignInError(e)
       })
       .finally(() => setSignInLoading(false))
-  }, [auth])
+  }, [])
 
   const deleteAccount = useCallback(async () => {
     if (!currentUser) return
@@ -70,7 +52,6 @@ const AuthProvider: FC<ReactNodeChildren> = ({ children }) => {
   const authState = useMemo(
     () => ({
       currentUser,
-      setCurrentUser,
       loading,
       error,
       signIn,
