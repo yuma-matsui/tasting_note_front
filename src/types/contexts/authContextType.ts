@@ -2,7 +2,7 @@ import { AuthError, User } from 'firebase/auth'
 
 type AuthContextType = {
   currentUser: User | null | undefined
-  signIn: () => void
+  signIn: () => Promise<void> | void
   signOut: () => Promise<boolean> | void
   deleteAccount: () => Promise<void> | void
   loading: boolean
