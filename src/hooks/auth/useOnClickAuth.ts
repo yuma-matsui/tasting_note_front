@@ -12,9 +12,13 @@ const useOnClickAuth = () => {
   const { showToast } = useToastContext()
   const navigate = useNavigate()
 
-  const onClickSignIn = () => {
-    signIn()
-    window.localStorage.setItem(SIGNED_IN_KEY, 'signedIn')
+  const onClickSignIn = async () => {
+    try {
+      await signIn()
+      window.localStorage.setItem(SIGNED_IN_KEY, 'signedIn')
+    } catch (e) {
+      if (e instanceof Error) showBoundary(e)
+    }
   }
 
   const onClickSignOut = async () => {
