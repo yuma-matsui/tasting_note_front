@@ -1,4 +1,4 @@
-import { browserLocalPersistence, setPersistence, signInWithRedirect, GoogleAuthProvider } from 'firebase/auth'
+import { signInWithRedirect, GoogleAuthProvider } from 'firebase/auth'
 import { FC, useCallback, useMemo, useState } from 'react'
 import { useAuthState, useDeleteUser, useSignOut } from 'react-firebase-hooks/auth'
 
@@ -22,15 +22,16 @@ const AuthProvider: FC<ReactNodeChildren> = ({ children }) => {
 
   useDisplayToastAfterSignedIn(currentUser)
 
-  const signIn = useCallback(() => {
+  const signIn = useCallback(async () => {
     setSignInLoading(true)
 
-    setPersistence(auth, browserLocalPersistence)
-      .then(() => signInWithRedirect(auth, new GoogleAuthProvider()))
-      .catch((e) => {
-        if (e instanceof Error) setSignInError(e)
-      })
-      .finally(() => setSignInLoading(false))
+    try {
+      await signInWithRedirect(auth, new GoogleAuthProvider())
+    } catch (e) {
+      if (e instanceof Error) setSignInError(e)
+    } finally {
+      setSignInLoading(false)
+    }
   }, [])
 
   const deleteAccount = useCallback(async () => {
