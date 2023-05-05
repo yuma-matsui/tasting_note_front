@@ -1,13 +1,16 @@
-import { signInWithRedirect, GoogleAuthProvider, AuthError } from 'firebase/auth'
+import { initializeApp } from 'firebase/app'
+import { signInWithRedirect, GoogleAuthProvider, AuthError, getAuth } from 'firebase/auth'
 import { FC, useCallback, useMemo, useState } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
 
-import { auth } from '../lib'
 import { AuthContext } from '../contexts'
 import { useDisplayToastAfterSignedIn } from '../hooks'
 import { ReactNodeChildren } from '../types'
+import { firebaseConfig } from '../lib'
 
 const AuthProvider: FC<ReactNodeChildren> = ({ children }) => {
+  const auth = getAuth(initializeApp(firebaseConfig))
+
   const [authError, setAuthError] = useState<AuthError | Error | undefined>()
   const [authLoading, setAuthLoading] = useState(false)
   const [currentUser, authChangeLoading, authChangeError] = useAuthState(auth)
@@ -28,7 +31,7 @@ const AuthProvider: FC<ReactNodeChildren> = ({ children }) => {
     } finally {
       setSignInLoading(false)
     }
-  }, [])
+  }, [auth])
 
   const authState = useMemo(
     () => ({

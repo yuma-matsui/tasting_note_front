@@ -18,8 +18,8 @@ const useOnClickAuth = () => {
 
   const onClickSignIn = async () => {
     try {
-      await signIn()
       window.localStorage.setItem(SIGNED_IN_KEY, 'signedIn')
+      await signIn()
     } catch (e) {
       if (e instanceof Error) showBoundary(e)
     }
