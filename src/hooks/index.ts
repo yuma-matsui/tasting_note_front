@@ -24,7 +24,6 @@ export { default as useUpdateTastingSheetName } from './api/useUpdateTastingShee
 export { default as usePostWine } from './api/usePostWine'
 export { default as useUpdateWine } from './api/useUpdateWine'
 export { default as usePostWineImageToS3 } from './api/usePostWineImageToS3'
-export { default as usePostTastingSheetAfterSignIn } from './api/usePostTastingSheetAfterSignIn'
 
 export { default as useAuthContext } from './context/useAuthContext'
 export { default as useToastContext } from './context/useToastContext'
@@ -33,7 +32,8 @@ export { default as useRequestingContext } from './context/useRequestingContext'
 
 export { default as useOnClickAuth } from './auth/useOnClickAuth'
 export { default as useUrgentSignOut } from './auth/useUrgentSignOut'
-export { default as useDisplayToastAfterSignedIn } from './auth/useDisplayToastAfterSignedIn'
+export { default as useSignInRedirect } from './auth/useSignInRedirect'
+export { default as useSignIn } from './auth/useSignIn'
 
 export { default as useAxios } from './useAxios'
 export { default as useOnClickOpenModal } from './useOnClickOpenModal'
