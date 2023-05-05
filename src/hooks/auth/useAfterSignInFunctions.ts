@@ -21,10 +21,9 @@ const useAfterSignInFunctions = () => {
   }, [navigate, showToast])
 
   const postSheetAfterSignIn = useCallback(
-    async (localStorageSheet: string) => {
-      const sheet = JSON.parse(localStorageSheet) as TastingSheet
+    async (tastingSheet: TastingSheet) => {
       try {
-        await postTastingSheet(sheet)
+        await postTastingSheet(tastingSheet)
       } catch (e) {
         if (e instanceof Error) showBoundary(e)
       }
