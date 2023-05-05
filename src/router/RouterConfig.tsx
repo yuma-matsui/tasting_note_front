@@ -7,6 +7,7 @@ import {
   ErrorFallbackForApi,
   NewTastingSheetPage,
   PrivacyPolicyPage,
+  SignInPage,
   TermOfServicePage
 } from '../components/pages'
 import { useAuthContext, useRequestingContext } from '../hooks'
@@ -31,6 +32,7 @@ const RouterConfig: FC = () => {
         <ModalProvider>
           <Routes>
             <Route path="/" element={<WelcomePageWrapper />} />
+            <Route path="/login" element={<SignInPage />} />
             <Route path="/pp" element={<PrivacyPolicyPage />} />
             <Route path="/tos" element={<TermOfServicePage />} />
             <Route path="/tasting_sheets">

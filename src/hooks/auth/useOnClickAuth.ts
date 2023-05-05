@@ -1,25 +1,17 @@
 import { useNavigate } from 'react-router-dom'
 import { useErrorBoundary } from 'react-error-boundary'
 
-import useAuthContext from '../context/useAuthContext'
 import useToastContext from '../context/useToastContext'
-import { SIGNED_IN_KEY } from '../../utils'
+import useSignOutUser from './useSignOutUser'
+import useDeleteAccount from './useDeleteAccount'
 
 const useOnClickAuth = () => {
   const { showBoundary } = useErrorBoundary()
 
-  const { deleteAccount, signOut, signIn } = useAuthContext()
+  const { signOut } = useSignOutUser()
+  const { deleteAccount } = useDeleteAccount()
   const { showToast } = useToastContext()
   const navigate = useNavigate()
-
-  const onClickSignIn = async () => {
-    try {
-      await signIn()
-      window.localStorage.setItem(SIGNED_IN_KEY, 'signedIn')
-    } catch (e) {
-      if (e instanceof Error) showBoundary(e)
-    }
-  }
 
   const onClickSignOut = async () => {
     try {
@@ -48,7 +40,6 @@ const useOnClickAuth = () => {
   }
 
   return {
-    onClickSignIn,
     onClickDeleteAccount,
     onClickSignOut
   }
