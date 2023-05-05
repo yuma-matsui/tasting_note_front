@@ -6,8 +6,8 @@ const AuthContext = createContext<AuthContextType>({
   loading: false,
   error: undefined,
   signIn: () => {},
-  signOut: () => {},
-  deleteAccount: () => {}
+  deleteAccount: () => {},
+  setAuthError: () => {}
 })
 
 export default AuthContext

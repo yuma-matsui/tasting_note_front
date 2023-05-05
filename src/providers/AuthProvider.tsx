@@ -1,6 +1,6 @@
-import { signInWithRedirect, GoogleAuthProvider } from 'firebase/auth'
+import { signInWithRedirect, GoogleAuthProvider, AuthError } from 'firebase/auth'
 import { FC, useCallback, useMemo, useState } from 'react'
-import { useAuthState, useDeleteUser, useSignOut } from 'react-firebase-hooks/auth'
+import { useAuthState, useDeleteUser } from 'react-firebase-hooks/auth'
 
 import { auth } from '../lib'
 import { AuthContext } from '../contexts'
@@ -10,15 +10,15 @@ import { ReactNodeChildren } from '../types'
 const AuthProvider: FC<ReactNodeChildren> = ({ children }) => {
   const { client, getHeaders } = useAxios()
 
+  const [authError, setAuthError] = useState<AuthError | Error | undefined>()
   const [currentUser, authChangeLoading, authChangeError] = useAuthState(auth)
   const [signInLoading, setSignInLoading] = useState(false)
   const [signInError, setSignInError] = useState<Error | null>(null)
   const [deleteAccountLoading, setDeleteAccountLoading] = useState(false)
   const [deleteAccountApiError, setDeleteAccountApiError] = useState<Error>()
-  const [signOut, , signOutError] = useSignOut(auth)
   const [deleteUser, deleteLoading, deleteError] = useDeleteUser(auth)
   const loading = signInLoading || authChangeLoading || deleteLoading || deleteAccountLoading
-  const error = signInError || authChangeError || signOutError || deleteError || deleteAccountApiError
+  const error = signInError || authChangeError || deleteError || deleteAccountApiError || authError
 
   useDisplayToastAfterSignedIn(currentUser)
 
@@ -57,9 +57,9 @@ const AuthProvider: FC<ReactNodeChildren> = ({ children }) => {
       error,
       signIn,
       deleteAccount,
-      signOut
+      setAuthError
     }),
-    [currentUser, loading, error, deleteAccount, signIn, signOut]
+    [currentUser, loading, error, deleteAccount, signIn]
   )
 
   return <AuthContext.Provider value={authState}>{children}</AuthContext.Provider>
