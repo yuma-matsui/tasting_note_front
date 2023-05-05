@@ -6,7 +6,6 @@ const AuthContext = createContext<AuthContextType>({
   currentUser: null,
   loading: false,
   error: undefined,
-  signIn: () => {},
   setAuthLoading: () => {},
   setAuthError: () => {}
 })
