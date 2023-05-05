@@ -1,4 +1,5 @@
 import { createContext } from 'react'
+
 import { AuthContextType } from '../types'
 
 const AuthContext = createContext<AuthContextType>({
@@ -6,7 +7,7 @@ const AuthContext = createContext<AuthContextType>({
   loading: false,
   error: undefined,
   signIn: () => {},
-  deleteAccount: () => {},
+  setAuthLoading: () => {},
   setAuthError: () => {}
 })
 
