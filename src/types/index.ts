@@ -51,3 +51,5 @@ export type { default as ToastType } from './props/toastType'
 
 export type { default as TastingSheetApi } from './api/tastingSheetApi'
 export type { default as WineApi } from './api/wineApi'
+
+export type { default as SignUpForm } from './user/signUpForm'
