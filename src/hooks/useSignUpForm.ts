@@ -25,13 +25,13 @@ const useSignUpForm = (tastingSheet: TastingSheet | null) => {
 
   const onSubmit: SubmitHandler<SignUpForm> = async ({ email, password }) => {
     try {
-      reset()
       const user = await createUserWithEmailAndPassword(email, password)
+      reset()
       if (tastingSheet) postTastingSheet(tastingSheet, user?.user).catch((e: Error) => showBoundary(e))
+      if (!tastingSheet && user?.user) showToast({ text: '登録しました', type: 'success' })
     } catch (e) {
       if (e instanceof Error) showBoundary(e)
     }
-    if (!tastingSheet) showToast({ text: '登録しました', type: 'success' })
   }
 
   const { className: submitButtonClassName } = useGetButtonClassName('red', disabled)
