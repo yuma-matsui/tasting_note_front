@@ -1,7 +1,7 @@
 import { FC, memo } from 'react'
 
 import { useFetchTastingSheets } from '../../hooks'
-import { LoadingSpinner, StartTastingButton } from '../atoms'
+import { LoadingSpinner, StartTastingLink } from '../atoms'
 import { SignedInTopPageInstruction, TastingSheetListsWithSideBar } from '../organisms'
 import { DefaultLayout } from '../templates'
 
@@ -19,7 +19,7 @@ const SignedInWelcomePage: FC = memo(() => {
           <SignedInTopPageInstruction />
         )}
       </div>
-      <StartTastingButton />
+      <StartTastingLink text="テイスティングをはじめる" />
     </DefaultLayout>
   )
 })
