@@ -1,10 +1,19 @@
 import { FC } from 'react'
-import { DefaultLayout } from '../templates'
+import { useLocation } from 'react-router-dom'
 
-const SignUpPage: FC = () => (
-  <DefaultLayout>
-    <h2>サインアップ</h2>
-  </DefaultLayout>
-)
+import { DefaultLayout } from '../templates'
+import SignUpForm from '../molecules/forms/SignUpForm'
+import { TastingSheet } from '../../types'
+
+const SignUpPage: FC = () => {
+  const location = useLocation()
+  const tastingSheet = location.state as TastingSheet
+
+  return (
+    <DefaultLayout>
+      <SignUpForm tastingSheet={tastingSheet} />
+    </DefaultLayout>
+  )
+}
 
 export default SignUpPage
