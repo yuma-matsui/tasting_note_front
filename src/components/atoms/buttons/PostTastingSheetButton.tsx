@@ -3,7 +3,7 @@ import { FC, memo } from 'react'
 import { useAuthContext, useGetButtonClassName, useOnClickOpenModal, usePostTastingSheet } from '../../../hooks'
 import { TastingSheet } from '../../../types'
 import GoToAnotherPageButton from './GoToAnotherPageButton'
-import SignInAndPostButton from './SignInAndPostButton'
+import { SignInOrUpAndPostLinks } from '../../molecules'
 
 const PostTastingSheetButton: FC<{
   tastingSheet: TastingSheet
@@ -14,7 +14,7 @@ const PostTastingSheetButton: FC<{
   const { onClickOpenModal } = useOnClickOpenModal({
     text: '記録せずに終了しますか？',
     leftButton: <GoToAnotherPageButton to="/" text="OK" />,
-    rightButton: <SignInAndPostButton tastingSheet={tastingSheet} />
+    rightButton: <SignInOrUpAndPostLinks tastingSheet={tastingSheet} />
   })
 
   const onClick = currentUser ? () => postTastingSheet(tastingSheet) : onClickOpenModal

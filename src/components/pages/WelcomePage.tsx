@@ -1,6 +1,6 @@
 import { FC, memo } from 'react'
 
-import { SignInLink, StartTastingButton } from '../atoms'
+import { SignInLink, SignUpLink, StartTastingLink } from '../atoms'
 import {
   TopPageTitle,
   WelcomePageAboutSection,
@@ -16,10 +16,11 @@ const WelcomePage: FC = memo(() => (
       <WelcomePageAboutSection />
       <WelcomePageImagesSection />
       <WelcomePageWithRegistrationSection />
-      <div className="flex justify-between">
-        <StartTastingButton />
+      <div className="flex justify-between mb-6">
+        <SignUpLink />
         <SignInLink />
       </div>
+      <StartTastingLink text="すぐにはじめる" />
     </div>
     <Footer />
   </>

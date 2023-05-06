@@ -30,7 +30,6 @@ const usePostTastingSheet = () => {
       if (e instanceof Error) showBoundary(e)
     } finally {
       setRequesting(false)
-      window.localStorage.clear()
     }
     showToast({
       text: 'シートを記録しました',
