@@ -8,6 +8,7 @@ import {
   NewTastingSheetPage,
   PrivacyPolicyPage,
   SignInPage,
+  SignUpPage,
   TermOfServicePage
 } from '../components/pages'
 import { useAuthContext, useRequestingContext } from '../hooks'
@@ -18,6 +19,7 @@ import NewWinePageWrapper from './NewWinePageWrapper'
 import TastingSheetPageWrapper from './TastingSheetPageWrapper'
 import WelcomePageWrapper from './WelcomePageWrapper'
 import AuthErrorPage from '../components/pages/AuthErrorPage'
+import AuthPageWrapper from './AuthPageWrapper'
 
 const RouterConfig: FC = () => {
   const { loading, error } = useAuthContext()
@@ -32,7 +34,8 @@ const RouterConfig: FC = () => {
         <ModalProvider>
           <Routes>
             <Route path="/" element={<WelcomePageWrapper />} />
-            <Route path="/login" element={<SignInPage />} />
+            <Route path="/signin" element={<AuthPageWrapper page={<SignInPage />} />} />
+            <Route path="/signup" element={<AuthPageWrapper page={<SignUpPage />} />} />
             <Route path="/pp" element={<PrivacyPolicyPage />} />
             <Route path="/tos" element={<TermOfServicePage />} />
             <Route path="/tasting_sheets">
