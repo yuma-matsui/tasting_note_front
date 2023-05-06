@@ -25,8 +25,8 @@ const useSignUpForm = (tastingSheet: TastingSheet | null) => {
 
   const onSubmit: SubmitHandler<SignUpForm> = async ({ email, password }) => {
     try {
-      const user = await createUserWithEmailAndPassword(email, password)
       reset()
+      const user = await createUserWithEmailAndPassword(email, password)
       if (tastingSheet) postTastingSheet(tastingSheet, user?.user).catch((e: Error) => showBoundary(e))
     } catch (e) {
       if (e instanceof Error) showBoundary(e)
