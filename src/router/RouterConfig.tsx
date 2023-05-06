@@ -7,6 +7,7 @@ import {
   ErrorFallbackForApi,
   NewTastingSheetPage,
   PrivacyPolicyPage,
+  ResetPasswordPage,
   SignInPage,
   SignUpPage,
   TermOfServicePage
@@ -36,6 +37,7 @@ const RouterConfig: FC = () => {
             <Route path="/" element={<WelcomePageWrapper />} />
             <Route path="/signin" element={<AuthPageWrapper page={<SignInPage />} />} />
             <Route path="/signup" element={<AuthPageWrapper page={<SignUpPage />} />} />
+            <Route path="/reset_password" element={<AuthPageWrapper page={<ResetPasswordPage />} />} />
             <Route path="/pp" element={<PrivacyPolicyPage />} />
             <Route path="/tos" element={<TermOfServicePage />} />
             <Route path="/tasting_sheets">
