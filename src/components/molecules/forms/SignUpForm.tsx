@@ -28,7 +28,7 @@ const SignUpForm: FC<{
           register={register}
           error={errors.passwordConfirmation}
         />
-        <input type="submit" value="登録" disabled={disabled} className={submitButtonClassName} />
+        <input type="submit" value="登録" disabled={disabled} className={`${submitButtonClassName} w-28 self-center`} />
       </form>
     </>
   )
