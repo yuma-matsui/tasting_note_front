@@ -32,8 +32,6 @@ export { default as useRequestingContext } from './context/useRequestingContext'
 
 export { default as useOnClickAuth } from './auth/useOnClickAuth'
 export { default as useUrgentSignOut } from './auth/useUrgentSignOut'
-export { default as useSignInRedirect } from './auth/useSignInRedirect'
-export { default as useSignIn } from './auth/useSignIn'
 
 export { default as useAxios } from './useAxios'
 export { default as useOnClickOpenModal } from './useOnClickOpenModal'

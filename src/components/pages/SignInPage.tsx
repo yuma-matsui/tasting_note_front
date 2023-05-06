@@ -1,13 +1,11 @@
 import { FC } from 'react'
 
-import { LoadingSpinner } from '../atoms'
-import { useSignIn, useSignInRedirect } from '../../hooks'
+import { DefaultLayout } from '../templates'
 
-const SignInPage: FC = () => {
-  useSignInRedirect()
-  useSignIn()
-
-  return <LoadingSpinner />
-}
+const SignInPage: FC = () => (
+  <DefaultLayout>
+    <h2>ログイン</h2>
+  </DefaultLayout>
+)
 
 export default SignInPage
