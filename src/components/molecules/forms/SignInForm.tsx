@@ -1,34 +1,28 @@
 import { FC, memo } from 'react'
 
-import { useSignUpForm } from '../../../hooks'
+import { TastingSheet } from '../../../types'
+import { useSignInForm } from '../../../hooks'
 import { AuthFormInput, AuthFormSubmitInput, LoadingSpinner } from '../../atoms'
 import { getFirebaseErrorMessage } from '../../../utils'
-import { TastingSheet } from '../../../types'
 
-const SignUpForm: FC<{
+const SignInForm: FC<{
   tastingSheet: TastingSheet | null
 }> = memo(({ tastingSheet }) => {
-  const { register, handleSubmit, onSubmit, errors, authError, loading } = useSignUpForm(tastingSheet)
+  const { loading, authError, register, handleSubmit, onSubmit, errors } = useSignInForm(tastingSheet)
 
   if (loading) return <LoadingSpinner isAuthPage />
 
   return (
     <>
-      <h2 className="page-title">サインアップ</h2>
+      <h2 className="page-title">ログイン</h2>
       {authError && <p className="user-form-error-message">{getFirebaseErrorMessage(authError.message)}</p>}
       <form onSubmit={handleSubmit(onSubmit)} className="user-form">
         <AuthFormInput label="メールアドレス" name="email" register={register} error={errors.email} />
         <AuthFormInput label="パスワード" name="password" register={register} error={errors.password} />
-        <AuthFormInput
-          label="確認用"
-          name="passwordConfirmation"
-          register={register}
-          error={errors.passwordConfirmation}
-        />
-        <AuthFormSubmitInput value="登録" color="red" />
+        <AuthFormSubmitInput value="ログイン" color="white" />
       </form>
     </>
   )
 })
 
-export default SignUpForm
+export default SignInForm
