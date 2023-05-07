@@ -3,8 +3,9 @@ const getFirebaseErrorMessage = (errorMessage: string) => {
     case 'Firebase: Error (auth/email-already-in-use).':
       return 'すでに登録されています。'
     case 'Firebase: Error (auth/wrong-password).':
+      return 'パスワードが違います。'
     case 'Firebase: Error (auth/user-not-found).':
-      return 'メールアドレスかパスワードが違います。'
+      return 'メールアドレスが違います。'
     default:
       return '時間をおいてからもう一度ためしてください。'
   }
