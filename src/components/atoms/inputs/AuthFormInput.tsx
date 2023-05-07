@@ -1,13 +1,13 @@
 import { FC, memo } from 'react'
 import { FieldError, FieldErrorsImpl, Merge, UseFormRegister } from 'react-hook-form'
 
-import { SignUpForm } from '../../../types'
+import { AuthForm } from '../../../types'
 
 const AuthFormInput: FC<{
   name: 'email' | 'password' | 'passwordConfirmation'
   label: string
-  register: UseFormRegister<SignUpForm>
-  error: Merge<FieldError, FieldErrorsImpl<SignUpForm>> | undefined
+  register: UseFormRegister<AuthForm>
+  error: Merge<FieldError, FieldErrorsImpl<AuthForm>> | undefined
 }> = memo(({ name, label, register, error }) => (
   <div className="user-form-control">
     <label htmlFor={name} className="user-form-label">

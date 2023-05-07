@@ -2,8 +2,10 @@ import getFirebaseErrorMessage from '../getFirebaseErrorMessage'
 
 describe('getFirebaseErrorMessage', () => {
   const testCases: [string, string][] = [
-    ['Firebase: Error (auth/email-already-in-use).', 'すでに登録されているメールアドレスです'],
-    ['other case', '登録に失敗しました。時間をおいてから再度ためしてください']
+    ['Firebase: Error (auth/email-already-in-use).', 'すでに登録されています。'],
+    ['other case', '時間をおいてからもう一度ためしてください。'],
+    ['Firebase: Error (auth/wrong-password).', 'メールアドレスかパスワードが違います。'],
+    ['Firebase: Error (auth/user-not-found).', 'メールアドレスかパスワードが違います。']
   ]
   it.each(testCases)('%sを引数に与えた場合%sが返る', (input, expected) => {
     const result = getFirebaseErrorMessage(input)

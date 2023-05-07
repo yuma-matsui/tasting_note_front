@@ -2,7 +2,7 @@ export { default as NewTastingSheetSettingForm } from './forms/NewTastingSheetSe
 export { default as TastingSheetBaseForm } from './forms/TastingSheetBaseForm'
 export { default as WineForm } from './forms/WineForm'
 export { default as TastingSheetSearchForm } from './forms/TastingSheetSearchForm'
-export { default as SingUpForm } from './forms/SignUpForm'
+export { default as AuthForm } from './forms/AuthForm'
 
 export { default as BaseModal } from './modals/BaseModal'
 

@@ -103,6 +103,10 @@ section {
   @apply text-xl font-semibold text-center
 }
 
+.wine-form, .user-form {
+  @apply my-4 flex flex-col sm:items-center
+}
+
 .wine-form-control, .user-form-control {
   @apply form-control w-full max-w-md mb-4
 }
@@ -113,6 +117,10 @@ section {
 
 .wine-form-label-text, .user-form-label-text {
   @apply label-text mb-2
+}
+
+.user-form-error-message {
+  @apply text-theme-red my-4 text-center font-semibold
 }
 
 @layer utilities {

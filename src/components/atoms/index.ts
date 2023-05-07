@@ -27,6 +27,7 @@ export { default as WineImageInput } from './inputs/WineImageInput'
 export { default as WineMemoTextArea } from './inputs/WineMemoTextArea'
 export { default as SearchColorRadio } from './inputs/SearchColorRadio'
 export { default as AuthFormInput } from './inputs/AuthFormInput'
+export { default as AuthFormSubmitInput } from './inputs/AuthFormSubmitInput'
 
 export { default as TastingSheetSelectBox } from './selects/TastingSheetSelectBox'
 export { default as WineSelectBox } from './selects/WineSelectBox'
