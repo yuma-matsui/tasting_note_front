@@ -5,7 +5,6 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useErrorBoundary } from 'react-error-boundary'
 
 import { SignUpForm, TastingSheet } from '../types'
-import useGetButtonClassName from './useGetButtonClassName'
 import { signUpFormSchema } from '../utils'
 import useSignUpOrInAndPostTastingSheet from './api/useSignUpOrInAndPostTastingSheet'
 
@@ -18,7 +17,7 @@ const useSignUpForm = (tastingSheet: TastingSheet | null) => {
     register,
     handleSubmit,
     reset,
-    formState: { isSubmitting: disabled, errors }
+    formState: { errors }
   } = useForm<SignUpForm>({ resolver: yupResolver(signUpFormSchema) })
 
   const onSubmit: SubmitHandler<SignUpForm> = async ({ email, password }) => {
@@ -35,16 +34,12 @@ const useSignUpForm = (tastingSheet: TastingSheet | null) => {
     }
   }
 
-  const { className: submitButtonClassName } = useGetButtonClassName('red', disabled)
-
   return {
     register,
-    disabled,
     handleSubmit,
     errors,
     authError,
     onSubmit,
-    submitButtonClassName,
     loading
   }
 }
