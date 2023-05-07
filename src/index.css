@@ -103,15 +103,15 @@ section {
   @apply text-xl font-semibold text-center
 }
 
-.wine-form-control {
+.wine-form-control, .user-form-control {
   @apply form-control w-full max-w-md mb-4
 }
 
-.wine-form-label {
+.wine-form-label, .user-form-label {
   @apply label flex flex-col items-start
 }
 
-.wine-form-label-text {
+.wine-form-label-text, .user-form-label-text {
   @apply label-text mb-2
 }
 

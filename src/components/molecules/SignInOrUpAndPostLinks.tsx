@@ -9,14 +9,14 @@ const SignInOrUpAndPostLinks: FC<{
   const textColor = tastingSheet.color === 'red' ? 'text-theme-red' : 'text-theme-green'
 
   return (
-    <p className="text-sm">
-      <span className={`text-base mr-1 ml-2 ${textColor}`}>
+    <p className="text-xs">
+      <span className={`text-sm mr-1 ml-2 ${textColor}`}>
         <Link to="/signup" state={tastingSheet}>
           サインアップ
         </Link>
       </span>
       または
-      <span className={`text-base mx-1 ${textColor}`}>
+      <span className={`text-sm mx-1 ${textColor}`}>
         <Link to="/signin" state={tastingSheet}>
           サインイン
         </Link>

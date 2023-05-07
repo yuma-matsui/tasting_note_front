@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom'
+import { User } from 'firebase/auth'
 import { useErrorBoundary } from 'react-error-boundary'
 
 import { TastingSheet, TastingSheetApi } from '../../types'
@@ -15,15 +16,16 @@ const usePostTastingSheet = () => {
   const { showToast } = useToastContext()
   const { showBoundary } = useErrorBoundary()
 
-  const postTastingSheet = async (tastingSheet: TastingSheet) => {
-    if (!currentUser) return
+  const postTastingSheet = async (tastingSheet: TastingSheet, user?: User) => {
+    const postingUser = user ?? currentUser
+    if (!postingUser) return
 
     setRequesting(true)
     try {
       const { data: tastingSheetApi } = await client.post<TastingSheetApi>(
         '/tasting_sheets',
         tastingSheet,
-        await getHeaders(currentUser)
+        await getHeaders(postingUser)
       )
       navigate(`/tasting_sheets/${tastingSheetApi.id}`)
     } catch (e) {
