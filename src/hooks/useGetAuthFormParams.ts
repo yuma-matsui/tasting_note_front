@@ -17,7 +17,8 @@ const useGetAuthFormParams = ({ type }: { type: 'signIn' | 'signUp' }) => {
     tastingSheet,
     authFunction: isSignIn ? signInWithEmailAndPassword : createUserWithEmailAndPassword,
     loading: isSignIn ? signInLoading : createLoading,
-    authError: isSignIn ? signInError : createError
+    authError: isSignIn ? signInError : createError,
+    type
   }
 }
 

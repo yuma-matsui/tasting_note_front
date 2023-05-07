@@ -1,17 +1,18 @@
-import { getAuth } from 'firebase/auth'
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth'
 import { useErrorBoundary } from 'react-error-boundary'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 
-import { AuthForm, TastingSheet } from '../types'
-import { signInFormSchema } from '../utils'
-import useSignUpOrInAndPostTastingSheet from './api/useSignUpOrInAndPostTastingSheet'
+import { AuthForm, AuthFormProps, WineColor } from '../../types'
+import useSignUpOrInAndPostTastingSheet from '../api/useSignUpOrInAndPostTastingSheet'
+import { signInFormSchema, signUpFormSchema } from '../../utils'
 
-const useSignInForm = (tastingSheet: TastingSheet | null) => {
-  const [signInWithEmailAndPassword, , loading, authError] = useSignInWithEmailAndPassword(getAuth())
+const useAuthForm = ({ tastingSheet, authFunction, type }: AuthFormProps) => {
   const { showBoundary } = useErrorBoundary()
   const { signUpOrInAndPostTastingSheet } = useSignUpOrInAndPostTastingSheet()
+
+  const isSignIn = type === 'signIn'
+  const schema = isSignIn ? signInFormSchema : signUpFormSchema
+  const btnColor: WineColor = isSignIn ? 'white' : 'red'
 
   const {
     register,
@@ -19,17 +20,17 @@ const useSignInForm = (tastingSheet: TastingSheet | null) => {
     reset,
     formState: { errors }
   } = useForm<AuthForm>({
-    resolver: yupResolver(signInFormSchema)
+    resolver: yupResolver(schema)
   })
 
   const onSubmit: SubmitHandler<AuthForm> = async ({ email, password }) => {
     try {
-      const user = await signInWithEmailAndPassword(email, password)
+      const user = await authFunction(email, password)
       reset()
       await signUpOrInAndPostTastingSheet({
         user: user?.user,
         tastingSheet,
-        type: 'signIn'
+        type
       })
     } catch (e) {
       if (e instanceof Error) showBoundary(e)
@@ -37,13 +38,15 @@ const useSignInForm = (tastingSheet: TastingSheet | null) => {
   }
 
   return {
-    loading,
-    authError,
     register,
     handleSubmit,
     errors,
-    onSubmit
+    onSubmit,
+    isSignIn,
+    title: isSignIn ? 'ログイン' : 'サインアップ',
+    btnValue: isSignIn ? 'ログイン' : '登録',
+    btnColor
   }
 }
 
-export default useSignInForm
+export default useAuthForm
