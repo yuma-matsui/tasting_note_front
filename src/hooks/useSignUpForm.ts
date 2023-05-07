@@ -4,7 +4,7 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useErrorBoundary } from 'react-error-boundary'
 
-import { SignUpForm, TastingSheet } from '../types'
+import { AuthForm, TastingSheet } from '../types'
 import { signUpFormSchema } from '../utils'
 import useSignUpOrInAndPostTastingSheet from './api/useSignUpOrInAndPostTastingSheet'
 
@@ -18,9 +18,9 @@ const useSignUpForm = (tastingSheet: TastingSheet | null) => {
     handleSubmit,
     reset,
     formState: { errors }
-  } = useForm<SignUpForm>({ resolver: yupResolver(signUpFormSchema) })
+  } = useForm<AuthForm>({ resolver: yupResolver(signUpFormSchema) })
 
-  const onSubmit: SubmitHandler<SignUpForm> = async ({ email, password }) => {
+  const onSubmit: SubmitHandler<AuthForm> = async ({ email, password }) => {
     try {
       const user = await createUserWithEmailAndPassword(email, password)
       reset()

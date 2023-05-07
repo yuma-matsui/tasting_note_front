@@ -1,7 +1,7 @@
-type SignUpForm = {
+type AuthForm = {
   email: string
   password: string
   passwordConfirmation: string
 }
 
-export default SignUpForm
+export default AuthForm
