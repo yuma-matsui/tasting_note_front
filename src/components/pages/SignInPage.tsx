@@ -1,17 +1,18 @@
 import { FC } from 'react'
-import { useLocation } from 'react-router-dom'
 
 import { DefaultLayout } from '../templates'
 import { SignInForm } from '../molecules'
-import { TastingSheet } from '../../types'
+import { useGetAuthFormParams } from '../../hooks'
+import { LoadingSpinner } from '../atoms'
 
 const SignInPage: FC = () => {
-  const location = useLocation()
-  const tastingSheet = location.state as TastingSheet
+  const { tastingSheet, authFunction, loading, authError } = useGetAuthFormParams({ type: 'signIn' })
+
+  if (loading) return <LoadingSpinner />
 
   return (
     <DefaultLayout>
-      <SignInForm tastingSheet={tastingSheet} />
+      <SignInForm tastingSheet={tastingSheet} authFunction={authFunction} authError={authError} />
     </DefaultLayout>
   )
 }
