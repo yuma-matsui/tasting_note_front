@@ -15,7 +15,7 @@ const useDeleteAccount = () => {
     setAuthLoading(true)
     try {
       const headers = await getHeaders(currentUser)
-      const { data: userId } = await client.get<number>('/sessions', headers)
+      const { data: userId } = await client.get<number>('/users', headers)
       await client.delete(`/users/${userId}`, headers)
       await deleteUser()
     } catch (e) {
