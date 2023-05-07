@@ -49,6 +49,7 @@ export type { default as WineSelectBoxProps } from './props/wineSelectBoxProps'
 export type { default as ToastProps } from './props/toastProps'
 export type { default as ToastType } from './props/toastType'
 export type { default as AuthFormProps } from './props/authFormProps'
+export type { default as ResetPasswordFormProps } from './props/resetPasswordFormProps'
 
 export type { default as TastingSheetApi } from './api/tastingSheetApi'
 export type { default as WineApi } from './api/wineApi'

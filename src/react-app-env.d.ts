@@ -11,5 +11,6 @@ namespace NodeJS {
     readonly REACT_APP_FIREBASE_MEASUREMENT_ID: string
     readonly REACT_APP_API_URL: string
     readonly REACT_APP_CF_DOMAIN: string
+    readonly REACT_APP_SEND_EMAIL_URL: string
   }
 }
