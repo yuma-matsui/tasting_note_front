@@ -6,29 +6,30 @@ import { useErrorBoundary } from 'react-error-boundary'
 
 import { SignUpForm, TastingSheet } from '../types'
 import useGetButtonClassName from './useGetButtonClassName'
-import userFormSchema from '../utils/userFormSchema'
-import useToastContext from './context/useToastContext'
-import usePostTastingSheet from './api/usePostTastingSheet'
+import { signUpFormSchema } from '../utils'
+import useSignUpOrInAndPostTastingSheet from './api/useSignUpOrInAndPostTastingSheet'
 
 const useSignUpForm = (tastingSheet: TastingSheet | null) => {
   const [createUserWithEmailAndPassword, , loading, authError] = useCreateUserWithEmailAndPassword(getAuth())
-  const { showToast } = useToastContext()
   const { showBoundary } = useErrorBoundary()
-  const { postTastingSheet } = usePostTastingSheet()
+  const { signUpOrInAndPostTastingSheet } = useSignUpOrInAndPostTastingSheet()
 
   const {
     register,
     handleSubmit,
     reset,
     formState: { isSubmitting: disabled, errors }
-  } = useForm<SignUpForm>({ resolver: yupResolver(userFormSchema) })
+  } = useForm<SignUpForm>({ resolver: yupResolver(signUpFormSchema) })
 
   const onSubmit: SubmitHandler<SignUpForm> = async ({ email, password }) => {
     try {
       const user = await createUserWithEmailAndPassword(email, password)
       reset()
-      if (tastingSheet) postTastingSheet(tastingSheet, user?.user).catch((e: Error) => showBoundary(e))
-      if (!tastingSheet && user?.user) showToast({ text: '登録しました', type: 'success' })
+      await signUpOrInAndPostTastingSheet({
+        user: user?.user,
+        tastingSheet,
+        type: 'signUp'
+      })
     } catch (e) {
       if (e instanceof Error) showBoundary(e)
     }
