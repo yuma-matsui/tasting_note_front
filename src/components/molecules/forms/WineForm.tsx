@@ -34,7 +34,7 @@ const WineForm: FC<{ wine?: WineApi }> = memo(({ wine }) => {
   return (
     <>
       <h2 className="page-title">ワインの{wine ? '編集' : '登録'}</h2>
-      <form onSubmit={handleSubmit(onSubmit)} className="my-4 flex flex-col sm:items-center">
+      <form onSubmit={handleSubmit(onSubmit)} className="wine-form">
         <WineTextInput name="wine.name" label="ワイン名" register={register} errors={errors} required />
         <WineImageInput onChangeImageFile={onChangeImageFile} />
         {wine?.image && !imageFile && <WineImage filename={wine.image} />}

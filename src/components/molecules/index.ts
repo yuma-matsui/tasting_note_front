@@ -2,6 +2,8 @@ export { default as NewTastingSheetSettingForm } from './forms/NewTastingSheetSe
 export { default as TastingSheetBaseForm } from './forms/TastingSheetBaseForm'
 export { default as WineForm } from './forms/WineForm'
 export { default as TastingSheetSearchForm } from './forms/TastingSheetSearchForm'
+export { default as AuthForm } from './forms/AuthForm'
+export { default as ResetPasswordForm } from './forms/ResetPasswordForm'
 
 export { default as BaseModal } from './modals/BaseModal'
 
@@ -15,6 +17,7 @@ export { default as PaginationButtons } from './PaginationButtons'
 export { default as SearchColorRadios } from './SearchColorRadios'
 export { default as WineColorRadios } from './WineColorRadios'
 export { default as DetailsPageBottomButtons } from './DetailsPageBottomButtons'
+export { default as SignInOrUpAndPostLinks } from './SignInOrUpAndPostLinks'
 
 export { default as WelcomePageAboutSection } from './sections/WelcomePageAboutSection'
 export { default as WelcomePageWithRegistrationSection } from './sections/WelcomePageWithRegistrationSection'

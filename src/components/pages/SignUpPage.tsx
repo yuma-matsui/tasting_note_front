@@ -1,12 +1,12 @@
 import { FC } from 'react'
 
 import { DefaultLayout } from '../templates'
-import { AuthForm } from '../molecules'
 import { useGetAuthFormParams } from '../../hooks'
 import { LoadingSpinner } from '../atoms'
+import { AuthForm } from '../molecules'
 
-const SignInPage: FC = () => {
-  const { tastingSheet, authFunction, loading, authError, type } = useGetAuthFormParams({ type: 'signIn' })
+const SignUpPage: FC = () => {
+  const { tastingSheet, authFunction, loading, authError, type } = useGetAuthFormParams({ type: 'signUp' })
 
   if (loading) return <LoadingSpinner />
 
@@ -17,4 +17,4 @@ const SignInPage: FC = () => {
   )
 }
 
-export default SignInPage
+export default SignUpPage
