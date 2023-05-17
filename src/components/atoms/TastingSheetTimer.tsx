@@ -13,7 +13,7 @@ const TastingSheetTimer: FC<{
   return (
     <p className="mb-4">
       残り時間：
-      <span className="countdown text-lg">
+      <span className="countdown text-lg leading-none">
         <span style={styleForMinute} className={timerClassName} />：
         <span style={styleForSecond} className={timerClassName} />
       </span>
