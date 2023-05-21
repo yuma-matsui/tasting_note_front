@@ -1,7 +1,7 @@
 import { FC, memo } from 'react'
 
-import useDeleteWine from '../../../hooks/api/useDeleteWine'
 import { WineApi } from '../../../types'
+import { useDeleteWine } from '../../../hooks'
 
 const DeleteWineButton: FC<{ wine: WineApi }> = memo(({ wine }) => {
   const { onClickDeleteWine } = useDeleteWine(wine)
