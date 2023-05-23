@@ -1,9 +1,8 @@
 import { FC, memo } from 'react'
-import { UseFormRegister } from 'react-hook-form'
 
-import { WineFormState } from '../../../types'
+import { WineMemoTextAreaProps } from '../../../types'
 
-const WineMemoTextArea: FC<{ register: UseFormRegister<WineFormState> }> = memo(({ register }) => (
+const WineMemoTextArea: FC<WineMemoTextAreaProps> = memo(({ register }) => (
   <div className="wine-form-control">
     <label htmlFor="wine.memo" className="wine-form-label">
       <span className="wine-form-label-text">
