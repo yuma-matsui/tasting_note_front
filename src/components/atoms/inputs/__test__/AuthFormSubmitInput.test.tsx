@@ -8,30 +8,30 @@ jest.mock('../../../../hooks/useGetButtonClassName', () => () => ({
   className: mockClassName
 }))
 
-const value = 'test'
-const color: WineColor = 'red'
-const setUp = () => {
+const setUp = ({ value, color }: { value: string; color: WineColor }) => {
   render(<AuthFormSubmitInput value={value} color={color} />)
-  const button = screen.getByRole('button')
 
   return {
-    button
+    button: screen.getByRole('button')
   }
 }
 
 describe('AuthFormSubmitInput', () => {
+  const value = 'test'
+  const color: WineColor = 'red'
+
   it('typeがsubmitであること', () => {
-    const { button } = setUp()
+    const { button } = setUp({ value, color })
     expect(button).toHaveAttribute('type', 'submit')
   })
 
   it('useGetButtonClassNameで取得したclassNameをもつ', () => {
-    const { button } = setUp()
+    const { button } = setUp({ value, color })
     expect(button).toHaveClass(mockClassName)
   })
 
   it('valueが表示される', () => {
-    const { button } = setUp()
+    const { button } = setUp({ value, color })
     expect(button).toHaveValue(value)
   })
 })
