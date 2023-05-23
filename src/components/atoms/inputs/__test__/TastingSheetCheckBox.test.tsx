@@ -43,7 +43,7 @@ const setUp = ({ id, name, value, register, label, disabled = false, color }: Ta
 }
 
 describe('TastingSheetCheckBox', () => {
-  let params: TastingSheetCheckBoxProps = {} as TastingSheetCheckBoxProps
+  let params: TastingSheetCheckBoxProps
   const initialParams: TastingSheetCheckBoxProps = {
     id: 'test-id',
     name: 'tastingSheet.color',
