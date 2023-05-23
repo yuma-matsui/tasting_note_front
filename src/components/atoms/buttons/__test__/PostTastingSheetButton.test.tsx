@@ -24,29 +24,38 @@ jest.mock('../../../../hooks/useGetButtonClassName', () => () => ({
   className: mockClassName
 }))
 
+const setUp = ({ tastingSheet }: { tastingSheet: TastingSheet }) => {
+  const utils = render(<PostTastingSheetButton tastingSheet={tastingSheet} />)
+
+  return {
+    ...utils,
+    button: screen.getByRole('button')
+  }
+}
+
 describe('PostTastingSheetButton', () => {
   const tastingSheet = {} as TastingSheet
 
   it('"提出する"が表示される', () => {
-    render(<PostTastingSheetButton tastingSheet={tastingSheet} />)
-    expect(screen.getByText('提出する')).toBeInTheDocument()
+    const { getByText } = setUp({ tastingSheet })
+    expect(getByText('提出する')).toBeInTheDocument()
   })
 
   it('useGetButtonClassNameで取得するclassNameをもつ', () => {
-    render(<PostTastingSheetButton tastingSheet={tastingSheet} />)
-    expect(screen.getByRole('button')).toHaveClass(mockClassName)
+    const { button } = setUp({ tastingSheet })
+    expect(button).toHaveClass(mockClassName)
   })
 
   it('currentUserが存在する場合、postTastingSheetが呼ばれる', () => {
-    render(<PostTastingSheetButton tastingSheet={tastingSheet} />)
-    userEvent.click(screen.getByRole('button'))
+    const { button } = setUp({ tastingSheet })
+    userEvent.click(button)
 
     expect(mockPostTastingSheet).toHaveBeenCalledWith(tastingSheet)
   })
 
   it('currentUserが存在する場合、onClickOpenModalが呼ばれない', () => {
-    render(<PostTastingSheetButton tastingSheet={tastingSheet} />)
-    userEvent.click(screen.getByRole('button'))
+    const { button } = setUp({ tastingSheet })
+    userEvent.click(button)
 
     expect(mockOnClickOpenModal).not.toHaveBeenCalled()
   })
