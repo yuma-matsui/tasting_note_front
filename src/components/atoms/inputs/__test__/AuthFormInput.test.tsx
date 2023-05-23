@@ -1,62 +1,65 @@
-import { FieldError, FieldErrorsImpl, Merge, UseFormRegister } from 'react-hook-form'
-import { render, screen } from '@testing-library/react'
+import { render } from '@testing-library/react'
 
-import { AuthForm } from '../../../../types'
+import { AuthFormInputProps } from '../../../../types'
 import AuthFormInput from '../AuthFormInput'
 
-type InputType = 'email' | 'password' | 'passwordConfirmation'
+const setUp = ({ name, label, register, error }: AuthFormInputProps) => {
+  const utils = render(<AuthFormInput name={name} label={label} register={register} error={error} />)
+
+  return {
+    ...utils
+  }
+}
 
 describe('AuthFormInput', () => {
-  let name: InputType = 'email'
-  const label = 'test'
-  const mockRegister = jest.fn()
-  const register = mockRegister as UseFormRegister<AuthForm>
-  let error = {} as Merge<FieldError, FieldErrorsImpl<AuthForm>> | undefined
+  let props: AuthFormInputProps
+  const initialProps: AuthFormInputProps = {
+    name: 'email',
+    label: 'test',
+    register: jest.fn(),
+    error: undefined
+  }
 
   beforeEach(() => {
-    name = 'email'
-    error = {}
+    props = { ...initialProps }
   })
 
   it('labelが画面に表示される', () => {
-    render(<AuthFormInput name={name} label={label} register={register} error={error} />)
-    expect(screen.getByText(label)).toBeInTheDocument()
+    const { getByText } = setUp(props)
+    expect(getByText(props.label)).toBeInTheDocument()
   })
 
   describe('input type', () => {
-    const testCases: [InputType, 'text' | 'password'][] = [
+    const testCases: ['email' | 'password' | 'passwordConfirmation', 'text' | 'password'][] = [
       ['email', 'text'],
       ['password', 'password'],
-      ['password', 'password']
+      ['passwordConfirmation', 'password']
     ]
 
     it.each(testCases)('nameが%sの場合は%sになる', (type, result) => {
-      name = type
-      render(<AuthFormInput name={name} label={label} register={register} error={error} />)
-      expect(screen.getByLabelText(label)).toHaveAttribute('type', result)
+      props.name = type
+      const { getByLabelText } = setUp(props)
+      expect(getByLabelText(props.label)).toHaveAttribute('type', result)
     })
   })
 
   describe('error message', () => {
     it('errorが存在する場合はerror messageが表示される', () => {
-      error = {
+      props.error = {
         message: 'error'
       }
-      render(<AuthFormInput name={name} label={label} register={register} error={error} />)
-
-      expect(screen.getByText('error')).toBeInTheDocument()
+      const { getByText } = setUp(props)
+      expect(getByText('error')).toBeInTheDocument()
     })
 
     it('errorが存在しない場合はエラーが表示されない', () => {
-      error = undefined
-      render(<AuthFormInput name={name} label={label} register={register} error={error} />)
-
-      expect(screen.queryByRole('paragraph')).not.toBeInTheDocument()
+      const { queryByRole } = setUp(props)
+      expect(queryByRole('paragraph')).not.toBeInTheDocument()
     })
   })
 
   it('registerが呼び出される', () => {
-    render(<AuthFormInput name={name} label={label} register={register} error={error} />)
-    expect(mockRegister).toHaveBeenCalled()
+    setUp(props)
+    expect(props.register).toHaveBeenCalled()
   })
 })
