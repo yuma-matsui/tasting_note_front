@@ -2,15 +2,13 @@ import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import SearchColorRadio from '../SearchColorRadio'
+import SearchColorRadioProps from '../../../../types/props/searchColorRadioProps'
 
 const mockLabel = 'mock label'
 jest.mock('../../../../hooks/useGetSearchRadioLabel', () => () => mockLabel)
 
-const color = '指定なし'
-const mockOnChange = jest.fn()
-
-const setUp = ({ checked }: { checked: boolean }) => {
-  const utils = render(<SearchColorRadio color={color} checked={checked} onChange={mockOnChange} />)
+const setUp = ({ color, checked, onChange }: SearchColorRadioProps) => {
+  const utils = render(<SearchColorRadio color={color} checked={checked} onChange={onChange} />)
 
   return {
     ...utils,
@@ -19,25 +17,38 @@ const setUp = ({ checked }: { checked: boolean }) => {
 }
 
 describe('SearchColorRadio', () => {
+  let props: SearchColorRadioProps
+  const initialProps: SearchColorRadioProps = {
+    color: 'red',
+    checked: false,
+    onChange: jest.fn()
+  }
+
+  beforeEach(() => {
+    props = { ...initialProps }
+  })
+
   it('useGetSearchRadioLabelで受けとった値が表示される', () => {
-    const { getByText } = setUp({ checked: false })
+    const { getByText } = setUp(props)
     expect(getByText(mockLabel)).toBeInTheDocument()
   })
 
   it('クリックされた時にonChange関数が呼ばれる', () => {
-    const { radio } = setUp({ checked: false })
+    const { radio } = setUp(props)
     userEvent.click(radio)
-    expect(mockOnChange).toHaveBeenCalled()
+
+    expect(props.onChange).toHaveBeenCalled()
   })
 
   describe('checked', () => {
     it('falseの場合にcheckedがfalseになる', () => {
-      const { radio } = setUp({ checked: false })
+      const { radio } = setUp(props)
       expect(radio).not.toBeChecked()
     })
 
     it('trueの場合にcheckedがtrueになる', () => {
-      const { radio } = setUp({ checked: true })
+      props.checked = true
+      const { radio } = setUp(props)
       expect(radio).toBeChecked()
     })
   })
