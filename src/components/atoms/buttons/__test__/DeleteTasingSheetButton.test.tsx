@@ -10,11 +10,10 @@ jest.mock('../../../../hooks/api/useDeleteTastingSheet', () => () => ({
 
 const setUp = () => {
   const utils = render(<DeleteTastingSheetButton id={1} />)
-  const button = screen.getByRole('button')
 
   return {
     ...utils,
-    button
+    button: screen.getByRole('button')
   }
 }
 

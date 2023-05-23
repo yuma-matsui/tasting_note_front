@@ -6,11 +6,10 @@ import { TastingSheet, WineColor } from '../../../../types'
 
 const setUp = ({ tastingSheet }: { tastingSheet: TastingSheet }) => {
   const utils = render(<ConfirmationAndBackButton tastingSheet={tastingSheet} />)
-  const button = screen.getByRole('button')
 
   return {
     ...utils,
-    button
+    button: screen.getByRole('button')
   }
 }
 

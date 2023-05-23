@@ -5,11 +5,10 @@ import CloseModalButton from '../CloseModalButton'
 
 const setUp = ({ onClick }: { onClick: () => void }) => {
   const utils = render(<CloseModalButton onClick={onClick} />)
-  const button = screen.getByRole('button')
 
   return {
     ...utils,
-    button
+    button: screen.getByRole('button')
   }
 }
 

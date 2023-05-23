@@ -15,11 +15,10 @@ jest.mock('../../../../hooks/useOnClickOpenModal', () => () => ({
 
 const setUp = () => {
   const utils = render(<DeleteAccountButton />)
-  const button = screen.getByRole('button')
 
   return {
     ...utils,
-    button
+    button: screen.getByRole('button')
   }
 }
 

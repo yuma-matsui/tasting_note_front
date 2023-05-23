@@ -11,11 +11,10 @@ jest.mock('../../../../hooks/api/useDeleteWine', () => () => ({
 
 const setUp = ({ wine }: { wine: WineApi }) => {
   const utils = render(<DeleteWineButton wine={wine} />)
-  const button = screen.getByRole('button')
 
   return {
     ...utils,
-    button
+    button: screen.getByRole('button')
   }
 }
 
