@@ -2,7 +2,12 @@ import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import ConfirmationAndBackButton from '../ConfirmationAndBackButton'
-import { TastingSheet, WineColor } from '../../../../types'
+import { TastingSheet } from '../../../../types'
+
+const mockClassName = 'mock-class'
+jest.mock('../../../../hooks/useGetButtonClassName', () => () => ({
+  className: mockClassName
+}))
 
 const setUp = ({ tastingSheet }: { tastingSheet: TastingSheet }) => {
   const utils = render(<ConfirmationAndBackButton tastingSheet={tastingSheet} />)
@@ -22,17 +27,9 @@ describe('ConfirmationAndBackButton', () => {
     expect(getByText('戻る', { exact: false })).toBeInTheDocument()
   })
 
-  describe('className', () => {
-    const testCases: [WineColor, string][] = [
-      ['red', 'bg-theme-red'],
-      ['white', 'bg-theme-green']
-    ]
-    it.each(testCases)('colorが%sの場合に%sをもつ', (color, result) => {
-      tastingSheet.color = color
-      const { queryByRole } = setUp({ tastingSheet })
-
-      expect(queryByRole('button')).toHaveClass(result)
-    })
+  it('useGetButtonClassNameで取得したclassNameをもつ', () => {
+    const { button } = setUp({ tastingSheet })
+    expect(button).toHaveClass(mockClassName)
   })
 
   it('クリックされた時にwindow.location.reloadが呼ばれる', () => {
