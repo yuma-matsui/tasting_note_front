@@ -21,7 +21,7 @@ const setUp = ({ value, disabled, onClick, tastingSheet }: FormControllerButtonP
 }
 
 describe('FormControllerButton', () => {
-  let props: FormControllerButtonProps = {} as FormControllerButtonProps
+  let props: FormControllerButtonProps
   const initialProps = {
     value: 'test',
     disabled: false,
