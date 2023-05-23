@@ -8,15 +8,24 @@ jest.mock('../../../../hooks/auth/useOnClickAuth', () => () => ({
   onClickSignOut: mockOnClickSignOut
 }))
 
+const setUp = () => {
+  const utils = render(<SignOutButton />)
+
+  return {
+    ...utils,
+    button: screen.getByRole('button')
+  }
+}
+
 describe('SignOutButton', () => {
   it('"ログアウト"が表示される', () => {
-    render(<SignOutButton />)
-    expect(screen.getByText('ログアウト')).toBeInTheDocument()
+    const { getByText } = setUp()
+    expect(getByText('ログアウト')).toBeInTheDocument()
   })
 
   it('クリックされた場合、onClickSignOutが呼ばれる', () => {
-    render(<SignOutButton />)
-    userEvent.click(screen.getByRole('button'))
+    const { button } = setUp()
+    userEvent.click(button)
 
     expect(mockOnClickSignOut).toHaveBeenCalled()
   })
