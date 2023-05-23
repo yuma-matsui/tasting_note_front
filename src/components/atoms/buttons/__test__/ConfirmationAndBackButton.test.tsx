@@ -4,12 +4,23 @@ import userEvent from '@testing-library/user-event'
 import ConfirmationAndBackButton from '../ConfirmationAndBackButton'
 import { TastingSheet, WineColor } from '../../../../types'
 
+const setUp = ({ tastingSheet }: { tastingSheet: TastingSheet }) => {
+  const utils = render(<ConfirmationAndBackButton tastingSheet={tastingSheet} />)
+  const button = screen.getByRole('button')
+
+  return {
+    ...utils,
+    button
+  }
+}
+
 describe('ConfirmationAndBackButton', () => {
   const tastingSheet = {} as TastingSheet
 
   it('"戻る"が表示される', () => {
-    render(<ConfirmationAndBackButton tastingSheet={tastingSheet} />)
-    expect(screen.getByText('戻る', { exact: false })).toBeInTheDocument()
+    const { getByText } = setUp({ tastingSheet })
+
+    expect(getByText('戻る', { exact: false })).toBeInTheDocument()
   })
 
   describe('className', () => {
@@ -19,8 +30,9 @@ describe('ConfirmationAndBackButton', () => {
     ]
     it.each(testCases)('colorが%sの場合に%sをもつ', (color, result) => {
       tastingSheet.color = color
-      render(<ConfirmationAndBackButton tastingSheet={tastingSheet} />)
-      expect(screen.queryByRole('button')).toHaveClass(result)
+      const { queryByRole } = setUp({ tastingSheet })
+
+      expect(queryByRole('button')).toHaveClass(result)
     })
   })
 
@@ -30,9 +42,9 @@ describe('ConfirmationAndBackButton', () => {
       configurable: true,
       value: { reload: onReloadMock }
     })
-    render(<ConfirmationAndBackButton tastingSheet={tastingSheet} />)
-    userEvent.click(screen.getByRole('button'))
+    const { button } = setUp({ tastingSheet })
 
+    userEvent.click(button)
     expect(onReloadMock).toHaveBeenCalled()
   })
 })
