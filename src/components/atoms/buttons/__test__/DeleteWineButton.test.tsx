@@ -5,22 +5,30 @@ import DeleteWineButton from '../DeleteWineButton'
 import { WineApi } from '../../../../types'
 
 const mockOnClickDeleteWine = jest.fn()
-
 jest.mock('../../../../hooks/api/useDeleteWine', () => () => ({
   onClickDeleteWine: mockOnClickDeleteWine
 }))
+
+const setUp = ({ wine }: { wine: WineApi }) => {
+  const utils = render(<DeleteWineButton wine={wine} />)
+
+  return {
+    ...utils,
+    button: screen.getByRole('button')
+  }
+}
 
 describe('DeleteWineButton', () => {
   const wine = {} as WineApi
 
   it('"削除"が表示される', () => {
-    render(<DeleteWineButton wine={wine} />)
-    expect(screen.getByText('削除')).toBeInTheDocument()
+    const { getByText } = setUp({ wine })
+    expect(getByText('削除')).toBeInTheDocument()
   })
 
   it('クリックされた場合、onClickDeleteWineが呼ばれる', () => {
-    render(<DeleteWineButton wine={wine} />)
-    userEvent.click(screen.getByRole('button'))
+    const { button } = setUp({ wine })
+    userEvent.click(button)
 
     expect(mockOnClickDeleteWine).toHaveBeenCalled()
   })

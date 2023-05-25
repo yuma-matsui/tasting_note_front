@@ -1,8 +1,8 @@
-import { ChangeEvent, FC, memo } from 'react'
+import { FC, memo } from 'react'
 
-const WineImageInput: FC<{
-  onChangeImageFile: (e: ChangeEvent<HTMLInputElement>) => void
-}> = memo(({ onChangeImageFile }) => (
+import { WineImageInputProps } from '../../../types'
+
+const WineImageInput: FC<WineImageInputProps> = memo(({ onChangeImageFile }) => (
   <div className="wine-form-control">
     <label htmlFor="image" className="wine-form-label">
       <span className="wine-form-label-text">画像</span>

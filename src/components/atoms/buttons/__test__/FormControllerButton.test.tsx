@@ -2,45 +2,64 @@ import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import FormControllerButton from '../FormControllerButton'
-import { TastingSheet } from '../../../../types'
+import { FormControllerButtonProps, TastingSheet } from '../../../../types'
 
 const mockClassName = 'mock-class'
-
 jest.mock('../../../../hooks/useGetButtonClassName', () => () => ({
   className: mockClassName
 }))
 
+const setUp = ({ value, disabled, onClick, tastingSheet }: FormControllerButtonProps) => {
+  const utils = render(
+    <FormControllerButton value={value} disabled={disabled} onClick={onClick} tastingSheet={tastingSheet} />
+  )
+
+  return {
+    ...utils,
+    button: screen.getByRole('button')
+  }
+}
+
 describe('FormControllerButton', () => {
-  const value = 'test'
-  const tastingSheet = {} as TastingSheet
-  const mockOnClick = jest.fn()
+  let props: FormControllerButtonProps
+  const initialProps = {
+    value: 'test',
+    disabled: false,
+    tastingSheet: {} as TastingSheet,
+    onClick: jest.fn()
+  }
+
+  beforeEach(() => {
+    props = { ...initialProps }
+  })
 
   it('valueに与えた文字列が表示される', () => {
-    render(<FormControllerButton value={value} disabled={false} onClick={mockOnClick} tastingSheet={tastingSheet} />)
-    expect(screen.getByText(value)).toBeInTheDocument()
+    const { getByText } = setUp(props)
+    expect(getByText(props.value)).toBeInTheDocument()
   })
 
   describe('disable', () => {
     it('disabledがfalseの時はボタンが有効状態になる', () => {
-      render(<FormControllerButton value={value} disabled={false} onClick={mockOnClick} tastingSheet={tastingSheet} />)
-      expect(screen.getByRole('button')).toBeEnabled()
+      const { button } = setUp(props)
+      expect(button).toBeEnabled()
     })
 
     it('disabledがtrueの時はボタンが無効状態になる', () => {
-      render(<FormControllerButton value={value} disabled onClick={mockOnClick} tastingSheet={tastingSheet} />)
-      expect(screen.getByRole('button')).toBeDisabled()
+      props.disabled = true
+      const { button } = setUp(props)
+      expect(button).toBeDisabled()
     })
 
     it('useGetButtonClassNameで取得したclassNameをもつ', () => {
-      render(<FormControllerButton value={value} disabled onClick={mockOnClick} tastingSheet={tastingSheet} />)
-      expect(screen.getByRole('button')).toHaveClass(mockClassName)
+      const { button } = setUp(props)
+      expect(button).toHaveClass(mockClassName)
     })
 
     it('クリックされた時にonClickに与えた関数が実行される', () => {
-      render(<FormControllerButton value={value} disabled={false} onClick={mockOnClick} tastingSheet={tastingSheet} />)
-      userEvent.click(screen.getByRole('button'))
+      const { button } = setUp(props)
+      userEvent.click(button)
 
-      expect(mockOnClick).toHaveBeenCalled()
+      expect(props.onClick).toHaveBeenCalled()
     })
   })
 })

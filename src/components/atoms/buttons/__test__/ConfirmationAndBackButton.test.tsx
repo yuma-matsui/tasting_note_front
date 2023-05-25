@@ -2,26 +2,34 @@ import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import ConfirmationAndBackButton from '../ConfirmationAndBackButton'
-import { TastingSheet, WineColor } from '../../../../types'
+import { TastingSheet } from '../../../../types'
+
+const mockClassName = 'mock-class'
+jest.mock('../../../../hooks/useGetButtonClassName', () => () => ({
+  className: mockClassName
+}))
+
+const setUp = ({ tastingSheet }: { tastingSheet: TastingSheet }) => {
+  const utils = render(<ConfirmationAndBackButton tastingSheet={tastingSheet} />)
+
+  return {
+    ...utils,
+    button: screen.getByRole('button')
+  }
+}
 
 describe('ConfirmationAndBackButton', () => {
   const tastingSheet = {} as TastingSheet
 
   it('"戻る"が表示される', () => {
-    render(<ConfirmationAndBackButton tastingSheet={tastingSheet} />)
-    expect(screen.getByText('戻る', { exact: false })).toBeInTheDocument()
+    const { getByText } = setUp({ tastingSheet })
+
+    expect(getByText('戻る', { exact: false })).toBeInTheDocument()
   })
 
-  describe('className', () => {
-    const testCases: [WineColor, string][] = [
-      ['red', 'bg-theme-red'],
-      ['white', 'bg-theme-green']
-    ]
-    it.each(testCases)('colorが%sの場合に%sをもつ', (color, result) => {
-      tastingSheet.color = color
-      render(<ConfirmationAndBackButton tastingSheet={tastingSheet} />)
-      expect(screen.queryByRole('button')).toHaveClass(result)
-    })
+  it('useGetButtonClassNameで取得したclassNameをもつ', () => {
+    const { button } = setUp({ tastingSheet })
+    expect(button).toHaveClass(mockClassName)
   })
 
   it('クリックされた時にwindow.location.reloadが呼ばれる', () => {
@@ -30,9 +38,9 @@ describe('ConfirmationAndBackButton', () => {
       configurable: true,
       value: { reload: onReloadMock }
     })
-    render(<ConfirmationAndBackButton tastingSheet={tastingSheet} />)
-    userEvent.click(screen.getByRole('button'))
+    const { button } = setUp({ tastingSheet })
 
+    userEvent.click(button)
     expect(onReloadMock).toHaveBeenCalled()
   })
 })

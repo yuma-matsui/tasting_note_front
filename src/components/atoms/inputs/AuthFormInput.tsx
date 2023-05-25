@@ -1,14 +1,8 @@
 import { FC, memo } from 'react'
-import { FieldError, FieldErrorsImpl, Merge, UseFormRegister } from 'react-hook-form'
 
-import { AuthForm } from '../../../types'
+import { AuthFormInputProps } from '../../../types'
 
-const AuthFormInput: FC<{
-  name: 'email' | 'password' | 'passwordConfirmation'
-  label: string
-  register: UseFormRegister<AuthForm>
-  error: Merge<FieldError, FieldErrorsImpl<AuthForm>> | undefined
-}> = memo(({ name, label, register, error }) => (
+const AuthFormInput: FC<AuthFormInputProps> = memo(({ name, label, register, error }) => (
   <div className="user-form-control">
     <label htmlFor={name} className="user-form-label">
       <span className="user-form-label-text">{label}</span>
