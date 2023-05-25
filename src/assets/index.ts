@@ -14,3 +14,5 @@ export { default as TASTE_FORM_ITEMS } from './collections/taste/shared/tasteFor
 
 export { default as CONCLUSION_FORM_ITEMS } from './collections/conclusion/shared/conclusionFormItems'
 export { default as CONCLUSION_SELECT_OPTIONS } from './collections/conclusion/shared/conclusionSelectOptions'
+
+export { default as metaContents } from './metaContents'
