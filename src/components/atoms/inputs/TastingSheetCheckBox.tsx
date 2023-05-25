@@ -22,6 +22,7 @@ const TastingSheetCheckBox: FC<TastingSheetCheckBoxProps> = memo(
           id={id}
           value={value}
           disabled={disabled}
+          readOnly
           {...register(name, {
             validate: getValidationMethod(getValues(name))
           })}

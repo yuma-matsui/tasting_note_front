@@ -8,7 +8,7 @@ type TastingSheetCheckBoxProps = {
   id: string
   value: string
   name: TastingSheetUseFormName
-  label?: string
+  label?: string | undefined
   disabled?: boolean
   register: UseFormRegister<TastingSheetFormState>
   color: WineColor

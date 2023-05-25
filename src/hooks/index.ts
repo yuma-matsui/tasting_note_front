@@ -23,6 +23,7 @@ export { default as useUpdateTastingSheetName } from './api/useUpdateTastingShee
 export { default as usePostWine } from './api/usePostWine'
 export { default as useUpdateWine } from './api/useUpdateWine'
 export { default as usePostWineImageToS3 } from './api/usePostWineImageToS3'
+export { default as useDeleteWine } from './api/useDeleteWine'
 
 export { default as useAuthContext } from './context/useAuthContext'
 export { default as useToastContext } from './context/useToastContext'

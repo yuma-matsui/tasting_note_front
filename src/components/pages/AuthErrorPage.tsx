@@ -1,8 +1,9 @@
 import { AuthError } from 'firebase/auth'
 import { FC, memo, useEffect } from 'react'
 
-import { FooterLogo, HeaderLogo } from '../molecules'
+import { FooterLogo, HeadMeta, HeaderLogo } from '../molecules'
 import { useToastContext, useUrgentSignOut } from '../../hooks'
+import { metaContents } from '../../assets'
 
 const AuthErrorPage: FC<{
   error: Error | AuthError
@@ -20,8 +21,10 @@ const AuthErrorPage: FC<{
     })
   })
 
+  const { title, description } = metaContents.apiError
+
   return (
-    <>
+    <HeadMeta title={title} description={description} error>
       <header className="border-b border-b-theme-red mb-8 py-2 sub-wrapper">
         <HeaderLogo />
       </header>
@@ -40,7 +43,7 @@ const AuthErrorPage: FC<{
           <p className="text-gray-700 mt-4">&copy;2023 yuma-matsui</p>
         </div>
       </footer>
-    </>
+    </HeadMeta>
   )
 })
 

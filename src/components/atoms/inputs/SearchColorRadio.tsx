@@ -1,12 +1,9 @@
-import { ChangeEvent, FC, memo } from 'react'
+import { FC, memo } from 'react'
 
 import { useGetSearchRadioLabel } from '../../../hooks'
+import SearchColorRadioProps from '../../../types/props/searchColorRadioProps'
 
-const SearchColorRadio: FC<{
-  color: string
-  checked: boolean
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void
-}> = memo(({ color, checked, onChange }) => {
+const SearchColorRadio: FC<SearchColorRadioProps> = memo(({ color, checked, onChange }) => {
   const label = useGetSearchRadioLabel(color)
 
   return (
