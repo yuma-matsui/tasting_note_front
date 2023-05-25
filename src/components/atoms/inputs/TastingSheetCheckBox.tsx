@@ -22,11 +22,11 @@ const TastingSheetCheckBox: FC<TastingSheetCheckBoxProps> = memo(
           id={id}
           value={value}
           disabled={disabled}
+          readOnly
           {...register(name, {
             validate: getValidationMethod(getValues(name))
           })}
           className={className}
-          onChange={() => {}}
         />
         <span className="label-text ml-2">{label ?? value}</span>
       </label>

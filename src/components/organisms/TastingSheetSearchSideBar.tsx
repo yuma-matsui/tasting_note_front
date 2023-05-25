@@ -7,7 +7,7 @@ const TastingSheetSearchSideBar: FC<{
   onClickToggleSideBar: () => void
 }> = memo(({ sideBarContent, children, visible, onClickToggleSideBar }) => (
   <div className="drawer">
-    <input type="checkbox" className="drawer-toggle" checked={visible} onChange={() => {}} />
+    <input type="checkbox" className="drawer-toggle" checked={visible} readOnly />
     <div className="drawer-content hidden-scrollbar">{children}</div>
     <div className="drawer-side">
       <input type="button" className="drawer-overlay" onClick={onClickToggleSideBar} />
