@@ -22,7 +22,7 @@ const TastingSheetCard: FC<TastingSheetCardProps> = memo(({ tastingSheet }) => {
   })
 
   return (
-    <div className={`card w-full sm:w-96 drop-shadow-lg relative ${bgColor}`}>
+    <div className={`card drop-shadow-lg relative ${bgColor}`}>
       <figure className="relative">
         <Link to={`/tasting_sheets/${tastingSheet.id}`}>
           <img src={cardImage} alt="wine" />
