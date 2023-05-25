@@ -1,12 +1,14 @@
 import { FC, memo, ReactElement } from 'react'
 
-import { NewTastingSheetSettingForm, StepsBar, TastingSheetBaseForm } from '../molecules'
+import { HeadMeta, NewTastingSheetSettingForm, StepsBar, TastingSheetBaseForm } from '../molecules'
 import { DefaultLayout, FormController } from '../templates'
 import { useMultiStepForm, useTastingSheetForm, useTastingSheetLabels } from '../../hooks'
 import { TastingSheetTimer } from '../atoms'
 import { TastingSheetDetailsTab } from '../organisms'
+import { metaContents } from '../../assets'
 
 const NewTastingSheetPage: FC = memo(() => {
+  const { title, description, path } = metaContents.newSheet
   const { handleSubmit, isValid, isSubmitting, onSubmit, register, errors, getValues, tastingSheet } =
     useTastingSheetForm()
   const labels = useTastingSheetLabels(tastingSheet.color)
@@ -22,26 +24,28 @@ const NewTastingSheetPage: FC = memo(() => {
     useMultiStepForm(steps)
 
   return (
-    <DefaultLayout>
-      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col items-center">
-        {!isFirstStep && <TastingSheetTimer tastingSheet={tastingSheet} isLastStep={isLastStep} />}
-        {!isFirstStep && !isLastStep && (
-          <StepsBar currentStepIndex={currentStepIndex} color={getValues('tastingSheet.color')} />
-        )}
-        <FormController
-          onClick={onClickPageControl}
-          isFirstStep={isFirstStep}
-          isLastStep={isLastStep}
-          isAppearanceStep={isAppearanceStep}
-          disabled={!isValid || isSubmitting}
-          backButtonText={getButtonText('back')}
-          nextButtonText={getButtonText('next')}
-          tastingSheet={tastingSheet}
-        >
-          {step}
-        </FormController>
-      </form>
-    </DefaultLayout>
+    <HeadMeta title={title} description={description} path={path}>
+      <DefaultLayout>
+        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col items-center">
+          {!isFirstStep && <TastingSheetTimer tastingSheet={tastingSheet} isLastStep={isLastStep} />}
+          {!isFirstStep && !isLastStep && (
+            <StepsBar currentStepIndex={currentStepIndex} color={getValues('tastingSheet.color')} />
+          )}
+          <FormController
+            onClick={onClickPageControl}
+            isFirstStep={isFirstStep}
+            isLastStep={isLastStep}
+            isAppearanceStep={isAppearanceStep}
+            disabled={!isValid || isSubmitting}
+            backButtonText={getButtonText('back')}
+            nextButtonText={getButtonText('next')}
+            tastingSheet={tastingSheet}
+          >
+            {step}
+          </FormController>
+        </form>
+      </DefaultLayout>
+    </HeadMeta>
   )
 })
 
