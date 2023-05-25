@@ -1,17 +1,18 @@
 import { FC, ReactNode, memo } from 'react'
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet-async'
 
 const HeadMeta: FC<{
   title: string
   description: string
   path?: string
+  error?: boolean
   children: ReactNode
-}> = memo(({ title, description, path, children }) => (
+}> = memo(({ title, description, path, error = false, children }) => (
   <>
     <Helmet>
-      <title>{title} | Tasting Note</title>
+      <title>{title}</title>
       <meta name="description" content={description} />
-      <link rel="canonical" href={`https://tasting-note.com${path ?? ''}`} />
+      {!error && <link rel="canonical" href={`https://tasting-note.com${path ?? ''}`} />}
     </Helmet>
     {children}
   </>
