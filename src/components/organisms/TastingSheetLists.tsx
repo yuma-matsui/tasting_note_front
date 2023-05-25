@@ -1,4 +1,5 @@
 import { FC, memo } from 'react'
+import { GrNote } from 'react-icons/gr'
 
 import { PaginationButtons } from '../molecules'
 import TastingSheetCards from './TastingSheetCards'
@@ -24,7 +25,14 @@ const TastingSheetLists: FC<{
             シート件数：<span className="text-lg font-semibold">{tastingSheets.length}</span>件
           </p>
         </div>
-        <TastingSheetCards tastingSheets={displayingTastingSheets} />
+        {displayingTastingSheets.length > 0 ? (
+          <TastingSheetCards tastingSheets={displayingTastingSheets} />
+        ) : (
+          <div className="mt-10">
+            <GrNote className="w-20 h-20 block mx-auto" />
+            <p className="text-center mt-4 text-lg">一致するシートはありません</p>
+          </div>
+        )}
       </div>
       {isMoreThanFiveSheets && (
         <PaginationButtons
