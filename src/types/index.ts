@@ -57,6 +57,7 @@ export type { default as WineMemoTextAreaProps } from './props/wineMemoTextAreaP
 export type { default as CardInsideLinkProps } from './props/cardInsideLinkProps'
 export type { default as FooterLinkWrapperProps } from './props/footerLinkWrapperProps'
 export type { default as PostTastingSheetButtonProps } from './props/postTastingSheetButtonProps'
+export type { default as WineEditLinkProps } from './props/wineEditLinkProps'
 
 export type { default as TastingSheetApi } from './api/tastingSheetApi'
 export type { default as WineApi } from './api/wineApi'
