@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { MemoryRouter } from 'react-router-dom'
+import { RouterProvider, createMemoryRouter } from 'react-router-dom'
 
 import { BaseLinkProps } from '../../../../types'
 import BaseLink from '../BaseLink'
@@ -11,9 +11,23 @@ jest.mock('../../../../hooks/useOnClickOpenModal', () => () => ({
 }))
 
 const setUp = ({ logo, isEditing }: BaseLinkProps) => {
-  const utils = render(<BaseLink logo={logo} isEditing={isEditing} />, { wrapper: MemoryRouter })
+  const router = createMemoryRouter(
+    [
+      {
+        path: '/test',
+        element: <BaseLink logo={logo} isEditing={isEditing} />
+      },
+      {
+        path: '/',
+        element: <p>test</p>
+      }
+    ],
+    { initialEntries: ['/test'] }
+  )
+  const utils = render(<RouterProvider router={router} />)
 
   return {
+    router,
     ...utils
   }
 }
@@ -66,6 +80,13 @@ describe('BaseLink', () => {
     test('buttonタグが表示されない', () => {
       const { queryByRole } = setUp(props)
       expect(queryByRole('button')).not.toBeInTheDocument()
+    })
+
+    test('クリックされた場合、トップページに遷移する', () => {
+      const { router, getByRole } = setUp(props)
+      userEvent.click(getByRole('link'))
+
+      expect(router.state.location.pathname).toEqual('/')
     })
   })
 })
