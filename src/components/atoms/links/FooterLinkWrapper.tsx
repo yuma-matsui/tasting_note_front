@@ -1,13 +1,9 @@
-import { FC, ReactElement, memo } from 'react'
+import { FC, memo } from 'react'
 
-import { useCheckEditingForm, useOnClickOpenModal } from '../../../hooks'
+import { useOnClickOpenModal } from '../../../hooks'
+import { FooterLinkWrapperProps } from '../../../types'
 
-const FooterLinkWrapper: FC<{
-  text: string
-  defaultLink: ReactElement
-  linkOnModal: ReactElement
-}> = memo(({ text, defaultLink, linkOnModal }) => {
-  const { isEditing } = useCheckEditingForm()
+const FooterLinkWrapper: FC<FooterLinkWrapperProps> = memo(({ text, defaultLink, linkOnModal, isEditing }) => {
   const { onClickOpenModal } = useOnClickOpenModal({
     text: '編集途中ですがよろしいですか？',
     rightButton: linkOnModal

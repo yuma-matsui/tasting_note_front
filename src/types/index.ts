@@ -55,6 +55,7 @@ export type { default as AuthFormInputProps } from './props/authFormInputProps'
 export type { default as WineImageInputProps } from './props/wineImageInputProps'
 export type { default as WineMemoTextAreaProps } from './props/wineMemoTextAreaProps'
 export type { default as CardInsideLinkProps } from './props/cardInsideLinkProps'
+export type { default as FooterLinkWrapperProps } from './props/footerLinkWrapperProps'
 
 export type { default as TastingSheetApi } from './api/tastingSheetApi'
 export type { default as WineApi } from './api/wineApi'
