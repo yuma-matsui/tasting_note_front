@@ -1,6 +1,6 @@
 import { FC, memo, useRef } from 'react'
 
-import { useBeforeUnload } from '../../hooks'
+import { useAuthContext, useBeforeUnload } from '../../hooks'
 import { FormControllerProps } from '../../types'
 import { ConfirmationAndBackButton, FormControllerButton, PostTastingSheetButton } from '../atoms'
 import useGetButtonsFlexType from '../../hooks/useGetButtonsFlexType'
@@ -19,6 +19,7 @@ const FormController: FC<FormControllerProps> = memo(
   }) => {
     useBeforeUnload()
     const submitRef = useRef<HTMLInputElement>(null)
+    const { currentUser } = useAuthContext()
     const { getButtonsFlexType } = useGetButtonsFlexType()
 
     return (
@@ -35,7 +36,7 @@ const FormController: FC<FormControllerProps> = memo(
           )}
           {isAppearanceStep && <ConfirmationAndBackButton tastingSheet={tastingSheet} />}
           {isLastStep ? (
-            <PostTastingSheetButton tastingSheet={tastingSheet} />
+            <PostTastingSheetButton tastingSheet={tastingSheet} currentUser={currentUser} />
           ) : (
             <FormControllerButton
               value={nextButtonText}

@@ -1,14 +1,11 @@
 import { FC, memo } from 'react'
 
-import { useAuthContext, useGetButtonClassName, useOnClickOpenModal, usePostTastingSheet } from '../../../hooks'
-import { TastingSheet } from '../../../types'
+import { useGetButtonClassName, useOnClickOpenModal, usePostTastingSheet } from '../../../hooks'
+import { PostTastingSheetButtonProps } from '../../../types'
 import GoToAnotherPageButton from './GoToAnotherPageButton'
 import { SignInOrUpAndPostLinks } from '../../molecules'
 
-const PostTastingSheetButton: FC<{
-  tastingSheet: TastingSheet
-}> = memo(({ tastingSheet }) => {
-  const { currentUser } = useAuthContext()
+const PostTastingSheetButton: FC<PostTastingSheetButtonProps> = memo(({ tastingSheet, currentUser }) => {
   const { className } = useGetButtonClassName(tastingSheet.color, false, '提出する')
   const { postTastingSheet } = usePostTastingSheet()
   const { onClickOpenModal } = useOnClickOpenModal({

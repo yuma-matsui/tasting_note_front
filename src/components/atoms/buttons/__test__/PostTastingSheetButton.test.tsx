@@ -1,13 +1,9 @@
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { User } from 'firebase/auth'
 
-import { TastingSheet } from '../../../../types'
+import { PostTastingSheetButtonProps, TastingSheet } from '../../../../types'
 import PostTastingSheetButton from '../PostTastingSheetButton'
-
-const mockCurrentUser = 'test-user'
-jest.mock('../../../../hooks/context/useAuthContext', () => () => ({
-  currentUser: mockCurrentUser
-}))
 
 const mockPostTastingSheet = jest.fn()
 jest.mock('../../../../hooks/api/usePostTastingSheet', () => () => ({
@@ -24,8 +20,8 @@ jest.mock('../../../../hooks/useGetButtonClassName', () => () => ({
   className: mockClassName
 }))
 
-const setUp = ({ tastingSheet }: { tastingSheet: TastingSheet }) => {
-  const utils = render(<PostTastingSheetButton tastingSheet={tastingSheet} />)
+const setUp = ({ tastingSheet, currentUser }: PostTastingSheetButtonProps) => {
+  const utils = render(<PostTastingSheetButton tastingSheet={tastingSheet} currentUser={currentUser} />)
 
   return {
     ...utils,
@@ -34,29 +30,42 @@ const setUp = ({ tastingSheet }: { tastingSheet: TastingSheet }) => {
 }
 
 describe('PostTastingSheetButton', () => {
-  const tastingSheet = {} as TastingSheet
+  let props: PostTastingSheetButtonProps
+  const initialProps: PostTastingSheetButtonProps = {
+    tastingSheet: {} as TastingSheet,
+    currentUser: {} as User
+  }
 
-  it('"提出する"が表示される', () => {
-    const { getByText } = setUp({ tastingSheet })
+  beforeEach(() => {
+    props = { ...initialProps }
+  })
+
+  test('"提出する"が表示される', () => {
+    const { getByText } = setUp(props)
     expect(getByText('提出する')).toBeInTheDocument()
   })
 
-  it('useGetButtonClassNameで取得するclassNameをもつ', () => {
-    const { button } = setUp({ tastingSheet })
+  test('useGetButtonClassNameで取得するclassNameをもつ', () => {
+    const { button } = setUp(props)
     expect(button).toHaveClass(mockClassName)
   })
 
-  it('currentUserが存在する場合、postTastingSheetが呼ばれる', () => {
-    const { button } = setUp({ tastingSheet })
-    userEvent.click(button)
+  describe('currenUserが存在する場合', () => {
+    test('クリックされた時にpostTastingSheetが呼ばれる', () => {
+      const { button } = setUp(props)
+      userEvent.click(button)
 
-    expect(mockPostTastingSheet).toHaveBeenCalledWith(tastingSheet)
+      expect(mockPostTastingSheet).toHaveBeenCalledWith(props.tastingSheet)
+    })
   })
 
-  it('currentUserが存在する場合、onClickOpenModalが呼ばれない', () => {
-    const { button } = setUp({ tastingSheet })
-    userEvent.click(button)
+  describe('currentUserが存在しない場合', () => {
+    test('クリックされた時にonClickOpenModalが呼ばれる', () => {
+      props.currentUser = null
+      const { button } = setUp(props)
+      userEvent.click(button)
 
-    expect(mockOnClickOpenModal).not.toHaveBeenCalled()
+      expect(mockOnClickOpenModal).toHaveBeenCalled()
+    })
   })
 })
