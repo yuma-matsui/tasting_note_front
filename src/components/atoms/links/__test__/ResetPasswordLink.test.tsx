@@ -1,12 +1,24 @@
 import { render } from '@testing-library/react'
-import { MemoryRouter } from 'react-router-dom'
+import { RouterProvider, createMemoryRouter } from 'react-router-dom'
+import userEvent from '@testing-library/user-event'
 
 import ResetPasswordLink from '../ResetPasswordLink'
 
 const setUp = () => {
-  const utils = render(<ResetPasswordLink />, { wrapper: MemoryRouter })
+  const router = createMemoryRouter([
+    {
+      path: '/',
+      element: <ResetPasswordLink />
+    },
+    {
+      path: '/reset_password',
+      element: <p>reset password</p>
+    }
+  ])
+  const utils = render(<RouterProvider router={router} />)
 
   return {
+    router,
     ...utils
   }
 }
@@ -25,5 +37,12 @@ describe('ResetPasswordLink', () => {
   test('hrefに/reset_passwordを持つaタグが表示される', () => {
     const { getByRole } = setUp()
     expect(getByRole('link')).toHaveAttribute('href', '/reset_password')
+  })
+
+  test('クリックされた場合、/reset_passwordに遷移する', () => {
+    const { router, getByRole } = setUp()
+    userEvent.click(getByRole('link'))
+
+    expect(router.state.location.pathname).toEqual('/reset_password')
   })
 })
