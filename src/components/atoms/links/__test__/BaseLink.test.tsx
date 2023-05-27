@@ -1,32 +1,28 @@
-import { render, screen } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { MemoryRouter } from 'react-router-dom'
 
 import { BaseLinkProps } from '../../../../types'
 import BaseLink from '../BaseLink'
 
-jest.mock('../../../../hooks/useCheckEditingForm', () => () => ({
-  isEditing: true
-}))
-
 const mockOnClickOpenModal = jest.fn()
 jest.mock('../../../../hooks/useOnClickOpenModal', () => () => ({
   onClickOpenModal: mockOnClickOpenModal
 }))
 
-const setUp = ({ logo }: BaseLinkProps) => {
-  const utils = render(<BaseLink logo={logo} />, { wrapper: MemoryRouter })
+const setUp = ({ logo, isEditing }: BaseLinkProps) => {
+  const utils = render(<BaseLink logo={logo} isEditing={isEditing} />, { wrapper: MemoryRouter })
 
   return {
-    ...utils,
-    button: screen.getByRole('button')
+    ...utils
   }
 }
 
 describe('BaseLink', () => {
   let props: BaseLinkProps
   const initialProps: BaseLinkProps = {
-    logo: <p>logo</p>
+    logo: <p>logo</p>,
+    isEditing: true
   }
 
   beforeEach(() => {
@@ -38,20 +34,38 @@ describe('BaseLink', () => {
     expect(getByText('logo')).toBeInTheDocument()
   })
 
-  test('isEditingがtrueの場合buttonが表示される', () => {
-    const { button } = setUp(props)
-    expect(button).toBeInTheDocument()
+  describe('isEditingがtrueの場合', () => {
+    test('buttonが表示される', () => {
+      const { getByRole } = setUp(props)
+      expect(getByRole('button')).toBeInTheDocument()
+    })
+
+    test('aタグが表示されない', () => {
+      const { queryByRole } = setUp(props)
+      expect(queryByRole('link')).not.toBeInTheDocument()
+    })
+
+    test('buttonが押された場合onClickOpenModalが呼ばれる', () => {
+      const { getByRole } = setUp(props)
+      userEvent.click(getByRole('button'))
+
+      expect(mockOnClickOpenModal).toHaveBeenCalled()
+    })
   })
 
-  test('isEditingがtrueの場合aタグが表示されない', () => {
-    const { queryByRole } = setUp(props)
-    expect(queryByRole('link')).not.toBeInTheDocument()
-  })
+  describe('isEditingがfalseの場合', () => {
+    beforeEach(() => {
+      props.isEditing = false
+    })
 
-  test('buttonが押された場合onClickOpenModalが呼ばれる', () => {
-    const { button } = setUp(props)
-    userEvent.click(button)
+    test('aタグが表示される', () => {
+      const { getByRole } = setUp(props)
+      expect(getByRole('link')).toBeInTheDocument()
+    })
 
-    expect(mockOnClickOpenModal).toHaveBeenCalled()
+    test('buttonタグが表示されない', () => {
+      const { queryByRole } = setUp(props)
+      expect(queryByRole('button')).not.toBeInTheDocument()
+    })
   })
 })
