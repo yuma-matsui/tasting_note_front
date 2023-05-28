@@ -60,6 +60,7 @@ export type { default as PostTastingSheetButtonProps } from './props/postTasting
 export type { default as WineEditLinkProps } from './props/wineEditLinkProps'
 export type { default as SearchSelectBoxProps } from './props/searchSelectBoxProps'
 export type { default as BaseToastProps } from './props/baseToastProps'
+export type { default as TastingSheetTimerProps } from './props/tastingSheetTimerProps'
 
 export type { default as TastingSheetApi } from './api/tastingSheetApi'
 export type { default as WineApi } from './api/wineApi'
