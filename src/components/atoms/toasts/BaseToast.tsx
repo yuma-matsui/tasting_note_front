@@ -1,17 +1,15 @@
 import { FC, memo } from 'react'
 
-import { ToastType } from '../../../types'
+import { BaseToastProps } from '../../../types'
 import { useGetToastClassName } from '../../../hooks'
 
-const BaseToast: FC<{
-  text: string
-  visible: boolean
-  type: ToastType
-}> = memo(({ text, visible, type }) => {
-  const { toastClassName, toastColorClass } = useGetToastClassName(type, visible)
+const BaseToast: FC<BaseToastProps> = memo(({ text, visible, type }) => {
+  const { toastColorClass } = useGetToastClassName(type)
+
+  if (!visible) return null
 
   return (
-    <div className={toastClassName}>
+    <div className="toast toast-top toast-end">
       <div className={toastColorClass}>
         <div>
           <span className="text-white">{text}</span>
