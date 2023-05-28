@@ -1,8 +1,4 @@
-export { default as FooterLink } from './links/FooterLink'
-export { default as HeaderLink } from './links/HeaderLink'
 export { default as WineEditLink } from './links/WineEditLink'
-export { default as PrivacyPolicyLink } from './links/PrivacyPolicyLink'
-export { default as TermOfServiceLink } from './links/TermOfServiceLink'
 export { default as FooterLinkWrapper } from './links/FooterLinkWrapper'
 export { default as CardInsideLink } from './links/CardInsideLink'
 export { default as SignInLink } from './links/SignInLink'

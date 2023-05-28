@@ -1,17 +1,12 @@
 import { FC, memo } from 'react'
 import { Link } from 'react-router-dom'
 
-import { useAuthContext } from '../../../hooks'
-import {
-  DeleteAccountButton,
-  FooterLinkWrapper,
-  PrivacyPolicyLink,
-  SignOutButton,
-  TermOfServiceLink
-} from '../../atoms'
+import { useAuthContext, useCheckEditingForm } from '../../../hooks'
+import { DeleteAccountButton, FooterLinkWrapper, SignOutButton } from '../../atoms'
 
 const FooterNavigation: FC = memo(() => {
   const { currentUser } = useAuthContext()
+  const { isEditing } = useCheckEditingForm()
 
   return (
     <nav className="my-4">
@@ -19,21 +14,28 @@ const FooterNavigation: FC = memo(() => {
         <li className="mb-2">
           <FooterLinkWrapper
             text="利用規約"
-            defaultLink={<TermOfServiceLink />}
+            defaultLink={<Link to="/tos">利用規約</Link>}
             linkOnModal={<Link to="/tos">はい</Link>}
+            isEditing={isEditing}
           />
         </li>
         <li className="mb-2 md:ml-4">
           <FooterLinkWrapper
             text="プライバシーポリシー"
-            defaultLink={<PrivacyPolicyLink />}
+            defaultLink={<Link to="/pp">プライバシーポリシー</Link>}
             linkOnModal={<Link to="/pp">はい</Link>}
+            isEditing={isEditing}
           />
         </li>
         {currentUser && (
           <>
             <li className="mb-2 md:ml-4">
-              <FooterLinkWrapper text="ログアウト" defaultLink={<SignOutButton />} linkOnModal={<SignOutButton />} />
+              <FooterLinkWrapper
+                text="ログアウト"
+                defaultLink={<SignOutButton />}
+                linkOnModal={<SignOutButton />}
+                isEditing={isEditing}
+              />
             </li>
             <li className="md:ml-4">
               <DeleteAccountButton />
