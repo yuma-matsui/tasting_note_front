@@ -1,15 +1,13 @@
 import { FC, memo } from 'react'
 
 import { useTastingSheetTimer } from '../../hooks'
-import { TastingSheet } from '../../types'
+import { TastingSheetTimerProps } from '../../types'
 
-const TastingSheetTimer: FC<{
-  tastingSheet: TastingSheet
-  isLastStep: boolean
-}> = memo(({ tastingSheet, isLastStep }) => {
+const TastingSheetTimer: FC<TastingSheetTimerProps> = memo(({ tastingSheet, isLastStep }) => {
   const { timerClassName, styleForSecond, styleForMinute } = useTastingSheetTimer(tastingSheet)
 
   if (isLastStep) return null
+
   return (
     <p className="mb-4">
       残り時間：
