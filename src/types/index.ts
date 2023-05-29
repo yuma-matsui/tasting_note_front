@@ -63,6 +63,7 @@ export type { default as BaseToastProps } from './props/baseToastProps'
 export type { default as TastingSheetTimerProps } from './props/tastingSheetTimerProps'
 export type { default as TastingSheetSearchFormProps } from './props/tastingSheetSearchFormProps'
 export type { default as DemoImageContainerProps } from './props/demoImageContainerProps'
+export type { default as HeadMetaProps } from './props/headMetaProps'
 
 export type { default as TastingSheetApi } from './api/tastingSheetApi'
 export type { default as WineApi } from './api/wineApi'
