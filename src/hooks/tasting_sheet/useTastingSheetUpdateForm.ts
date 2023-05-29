@@ -34,8 +34,7 @@ const useTastingSheetUpdateForm = (tastingSheet: TastingSheetApi) => {
   return {
     register,
     handleSubmit,
-    isValid,
-    isSubmitting,
+    disabled: isSubmitting || !isValid,
     errors,
     onSubmit
   }

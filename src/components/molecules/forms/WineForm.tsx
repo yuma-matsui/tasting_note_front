@@ -12,7 +12,7 @@ import {
   WineTextInput
 } from '../../atoms'
 
-const WineForm: FC<{ wine?: WineApi }> = memo(({ wine }) => {
+const WineForm: FC<{ wine?: WineApi | undefined }> = memo(({ wine }) => {
   const {
     register,
     handleSubmit,
