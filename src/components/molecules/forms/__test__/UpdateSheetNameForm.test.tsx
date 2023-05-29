@@ -26,12 +26,11 @@ const setUp = (tastingSheet: TastingSheetApi) => {
 describe('UpdateSheetNameForm', () => {
   const tastingSheet = {} as TastingSheetApi
 
-  let useUpdateFormReturnValue = {} as typeof initialReturnValue
+  let useUpdateFormReturnValue: typeof initialReturnValue
   const initialReturnValue = {
     register: jest.fn(),
     handleSubmit: jest.fn(),
-    isValid: true,
-    isSubmitting: false,
+    disabled: false,
     errors: false,
     onSubmit: jest.fn()
   }
@@ -72,27 +71,18 @@ describe('UpdateSheetNameForm', () => {
       })
     })
 
-    describe('disabled', () => {
-      test.each([
-        [false, false],
-        [true, false],
-        [true, true]
-      ])('isSubmittingが%p、isValidが%pの場合、disabledになる', (isSubmitting, isValid) => {
-        useUpdateFormReturnValue.isSubmitting = isSubmitting
-        useUpdateFormReturnValue.isValid = isValid
+    describe('useTastingSheetUpdateForm', () => {
+      test('disabledの値とsubmitボタンのdisabledが同じ値になる', () => {
+        const { button } = setUp(tastingSheet)
+        expect(button).toBeEnabled()
+      })
+
+      test('isSubmittingがfalse、isValidがtrueの場合、disabledにならない', () => {
+        useUpdateFormReturnValue.disabled = true
         ;(mockUseTastingSheetUpdateForm as jest.Mock).mockImplementation(() => useUpdateFormReturnValue)
 
         const { button } = setUp(tastingSheet)
         expect(button).toBeDisabled()
-      })
-
-      test('isSubmittingがfalse、isValidがtrueの場合、disabledにならない', () => {
-        useUpdateFormReturnValue.isSubmitting = false
-        useUpdateFormReturnValue.isValid = true
-        ;(mockUseTastingSheetUpdateForm as jest.Mock).mockImplementation(() => useUpdateFormReturnValue)
-
-        const { button } = setUp(tastingSheet)
-        expect(button).toBeEnabled()
       })
     })
 
