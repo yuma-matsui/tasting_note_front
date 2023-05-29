@@ -1,13 +1,11 @@
-import { Dispatch, FC, SetStateAction, memo } from 'react'
+import { FC, memo } from 'react'
 
 import SearchColorRadios from '../SearchColorRadios'
 import { SearchSelectBox } from '../../atoms'
 import { useTastingSheetSearchForm } from '../../../hooks'
-import { TastingSheetFilter } from '../../../types'
+import { TastingSheetSearchFormProps } from '../../../types'
 
-const TastingSheetSearchForm: FC<{
-  setFilter: Dispatch<SetStateAction<TastingSheetFilter>>
-}> = memo(({ setFilter }) => {
+const TastingSheetSearchForm: FC<TastingSheetSearchFormProps> = memo(({ setFilter }) => {
   const {
     onSubmit,
     color,
