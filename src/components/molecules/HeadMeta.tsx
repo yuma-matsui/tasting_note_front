@@ -1,13 +1,9 @@
-import { FC, ReactNode, memo } from 'react'
+import { FC, memo } from 'react'
 import { Helmet } from 'react-helmet-async'
 
-const HeadMeta: FC<{
-  title: string
-  description: string
-  path?: string
-  error?: boolean
-  children: ReactNode
-}> = memo(({ title, description, path, error = false, children }) => (
+import { HeadMetaProps } from '../../types'
+
+const HeadMeta: FC<HeadMetaProps> = memo(({ title, description, path, error = false, children }) => (
   <>
     <Helmet>
       <title>{title}</title>

@@ -18,7 +18,7 @@ const SignInOrUpAndPostLinks: FC<{
       または
       <span className={`text-sm mx-1 ${textColor}`}>
         <Link to="/signin" state={tastingSheet}>
-          サインイン
+          ログイン
         </Link>
       </span>
       して記録
