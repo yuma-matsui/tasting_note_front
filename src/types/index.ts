@@ -66,6 +66,7 @@ export type { default as DemoImageContainerProps } from './props/demoImageContai
 export type { default as HeadMetaProps } from './props/headMetaProps'
 export type { default as PaginationButtonsProps } from './props/paginationButtonsProps'
 export type { default as SearchColorRadiosProps } from './props/SearchColorRadiosProps'
+export type { default as StepsBarProps } from './props/stepsBarProps'
 
 export type { default as TastingSheetApi } from './api/tastingSheetApi'
 export type { default as WineApi } from './api/wineApi'
