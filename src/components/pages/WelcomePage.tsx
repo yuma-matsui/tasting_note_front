@@ -21,7 +21,7 @@ const WelcomePage: FC = memo(() => {
         <WelcomePageAboutSection />
         <WelcomePageImagesSection />
         <WelcomePageWithRegistrationSection />
-        <div className="flex justify-between mb-6">
+        <div className="flex justify-between mb-6 mx-auto sm:w-96">
           <SignUpLink />
           <SignInLink />
         </div>
