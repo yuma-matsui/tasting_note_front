@@ -8,7 +8,7 @@ const Header: FC = memo(() => {
   const { isEditing } = useCheckEditingForm()
 
   return (
-    <header className="mb-8 main-wrapper py-4">
+    <header className="main-wrapper py-4">
       <BaseLink logo={<HeaderLogo />} isEditing={isEditing} />
     </header>
   )

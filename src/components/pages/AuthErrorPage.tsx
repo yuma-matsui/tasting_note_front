@@ -25,7 +25,7 @@ const AuthErrorPage: FC<{
 
   return (
     <HeadMeta title={title} description={description} error>
-      <header className="mb-8 py-4 main-wrapper">
+      <header className="py-4 main-wrapper">
         <HeaderLogo />
       </header>
       <div className="main-wrapper">
