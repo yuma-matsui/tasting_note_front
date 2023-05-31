@@ -15,7 +15,7 @@ const TastingSheetNameInput: FC<FormRegisterAndErrors> = memo(({ register, error
     </label>
     {errors && (
       <p>
-        <span className="text-theme-pink">シート名を入力してください</span>
+        <span className="text-theme-red">シート名を入力してください</span>
       </p>
     )}
   </div>

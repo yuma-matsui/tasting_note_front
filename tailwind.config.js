@@ -6,11 +6,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'theme-red': '#ee6055',
-        'theme-green': '#60d394',
-        'theme-emerald': '#aaf683',
-        'theme-yellow': '#ffd97d',
-        'theme-pink': '#ff9b85'
+        'theme-red': '#C7243A',
+        'theme-green': '#009250',
+        'theme-emerald': '#5EC84E',
+        'theme-yellow': '#F0BA32'
       },
       fontFamily: {
         body: ['"Source Sans Pro"', '"Hiragino Sans"', 'sans-serif']
@@ -26,9 +25,9 @@ module.exports = {
         light: {
           ...require('daisyui/src/colors/themes')['[data-theme=light]'],
           primary: '#3b82f6',
-          success: '#60d394',
-          error: '#ee6055',
-          warning: '#ffd97d'
+          success: '#009250',
+          error: '#C7243A',
+          warning: '#F0BA32'
         }
       }
     ]

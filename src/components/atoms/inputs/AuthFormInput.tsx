@@ -15,7 +15,7 @@ const AuthFormInput: FC<AuthFormInputProps> = memo(({ name, label, register, err
     </label>
     {error && (
       <p>
-        <span className="text-theme-pink">{error.message}</span>
+        <span className="text-theme-red">{error.message}</span>
       </p>
     )}
   </div>
