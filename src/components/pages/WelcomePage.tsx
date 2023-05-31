@@ -25,7 +25,7 @@ const WelcomePage: FC = memo(() => {
           <SignUpLink />
           <SignInLink />
         </div>
-        <StartTastingLink text="すぐにはじめる" />
+        <StartTastingLink text="登録しないではじめる" />
       </div>
       <Footer />
     </HeadMeta>

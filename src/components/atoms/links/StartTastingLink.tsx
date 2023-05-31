@@ -11,10 +11,11 @@ const StartTastingLink: FC<{
       rounded-full
       shadow-md
       bg-transparent
-      border-8
-      border-theme-yellow
-      text-theme-yellow
-      font-bold bottom-2
+      border
+      border-theme-red
+      text-theme-red
+      font-semibold
+      bottom-2
       text-lg
       py-2
       mt-4
