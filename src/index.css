@@ -15,12 +15,12 @@ body {
 
 .top-page-section-heading {
   @apply
-  text-theme-sub-red
+  text-theme-red
   tracking-wider
   font-mincho
   font-extrabold
   border-b
-  border-theme-sub-red
+  border-theme-red
   border-l-8
   pb-1
   pl-2
