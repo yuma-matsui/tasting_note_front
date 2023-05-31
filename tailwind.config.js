@@ -9,7 +9,8 @@ module.exports = {
         'theme-red': '#C7243A',
         'theme-green': '#009250',
         'theme-emerald': '#5EC84E',
-        'theme-yellow': '#F0BA32'
+        'theme-yellow': '#F0BA32',
+        'theme-sub-red': '#A00E0E'
       },
       fontFamily: {
         body: ['"Source Sans Pro"', '"Hiragino Sans"', 'sans-serif']

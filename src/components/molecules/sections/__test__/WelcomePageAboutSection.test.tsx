@@ -13,6 +13,6 @@ const setUp = () => {
 describe('WelcomePageAboutSection', () => {
   test('"ABOUT"が表示される', () => {
     const { getByRole } = setUp()
-    expect(getByRole('heading', { name: 'ABOUT' })).toBeInTheDocument()
+    expect(getByRole('heading', { name: 'About' })).toBeInTheDocument()
   })
 })

@@ -13,6 +13,20 @@ body {
   font-family: 'Zen Old Mincho', serif;
 }
 
+.top-page-section-heading {
+  @apply
+  text-theme-sub-red
+  tracking-wider
+  font-mincho
+  font-extrabold
+  border-b
+  border-theme-sub-red
+  border-l-8
+  pb-1
+  pl-2
+  mb-5
+}
+
 .base-btn {
   @apply rounded-full shadow-md px-6 py-2 border-transparent text-white cursor-pointer
 }
