@@ -9,6 +9,10 @@ body {
   @apply font-body
 }
 
+.root {
+  @apply m-0 flex flex-col min-h-screen
+}
+
 .font-mincho {
   font-family: 'Zen Old Mincho', serif;
 }
