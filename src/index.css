@@ -18,7 +18,7 @@ body {
 }
 
 .sub-wrapper {
-  @apply w-full md:w-192 mx-auto
+  @apply w-full md:w-162 mx-auto
 }
 
 .main-wrapper {
