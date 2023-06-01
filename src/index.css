@@ -59,12 +59,20 @@ section {
   @apply text-base
 }
 
-.steps .step-success:after {
-  @apply text-white
+.steps .step.step-success:after {
+  @apply bg-theme-green
+}
+
+.steps .step.step-error:after {
+  @apply bg-theme-red
 }
 
 .steps .step:after {
-  @apply text-white
+  @apply text-white bg-gray-300
+}
+
+.steps .step:before {
+  @apply bg-gray-300
 }
 
 .checkbox-success, .checkbox-error {
