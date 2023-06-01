@@ -20,7 +20,7 @@ const TastingSheetBaseForm: FC<TastingSheetBaseFormProps> = memo(({ type, items,
               {heading}
               {subHeading && <span className="form-subheading-text">{subHeading}</span>}
               {isMultipleInputs(name) && (
-                <span className="text-slate-500 text-base font-normal block text-right">2つ選択してください</span>
+                <span className="text-theme-red text-sm font-normal block py-1">2つ選択してください</span>
               )}
             </h3>
             <div className="flex flex-wrap p-2">
