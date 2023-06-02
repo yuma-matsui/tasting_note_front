@@ -9,7 +9,6 @@ const StartTastingLink: FC<{
     to="/tasting_sheets/new"
     className={`
       rounded-full
-      shadow-md
       bg-transparent
       border
       border-theme-red
