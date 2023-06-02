@@ -15,11 +15,7 @@ const TastingSheetDetailsTitle: FC<{ tastingSheet: TastingSheetApi }> = memo(({ 
     <div className="flex items-center justify-center">
       <h2 className="page-title">{tastingSheet.name}</h2>
       <span className="text-xs font-normal text-white ml-2">
-        <button
-          type="button"
-          className={`rounded-full shadow-md py-1 px-2 border-transparent ${bgColor}`}
-          onClick={onClick}
-        >
+        <button type="button" className={`rounded-full py-1 px-2 border-transparent ${bgColor}`} onClick={onClick}>
           変更
         </button>
       </span>

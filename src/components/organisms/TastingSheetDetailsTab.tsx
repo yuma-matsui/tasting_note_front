@@ -13,7 +13,7 @@ const TastingSheetDetailsTab: FC<{ tastingSheet: TastingSheet }> = memo(({ tasti
 
   return (
     <TastingSheetFormWrapper title="confirmation">
-      <div className="tabs tabs-boxed mt-4 w-full flex justify-between drop-shadow-md">
+      <div className="tabs tabs-boxed mt-4 w-full flex justify-between">
         {labels.map(({ type }) => (
           <button
             key={type}
