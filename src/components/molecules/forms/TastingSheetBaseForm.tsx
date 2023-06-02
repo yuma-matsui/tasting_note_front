@@ -23,7 +23,7 @@ const TastingSheetBaseForm: FC<TastingSheetBaseFormProps> = memo(({ type, items,
                 <span className="text-theme-red text-sm font-normal block py-1">2つ選択してください</span>
               )}
             </h3>
-            <div className="flex flex-wrap p-2">
+            <div className="flex flex-wrap">
               {labels.map((label) => (
                 <TastingSheetCheckBox
                   key={label}

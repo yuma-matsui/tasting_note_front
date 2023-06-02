@@ -55,6 +55,10 @@ section {
   @apply justify-start
 }
 
+.flex.flex-wrap .label {
+  @apply w-1/2 border-b border-r p-4
+}
+
 .label-text {
   @apply text-base
 }
