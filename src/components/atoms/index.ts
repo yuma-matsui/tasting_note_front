@@ -17,6 +17,7 @@ export { default as SignOutButton } from './buttons/SignOutButton'
 export { default as PostTastingSheetButton } from './buttons/PostTastingSheetButton'
 export { default as ConfirmationAndBackButton } from './buttons/ConfirmationAndBackButton'
 export { default as FinishTastingButton } from './buttons/FinishTastingButton'
+export { default as SaveSheetButton } from './buttons/SaveSheetButton'
 
 export { default as TastingSheetCheckBox } from './inputs/TastingSheetCheckBox'
 export { default as TastingSheetNameInput } from './inputs/TastingSheetNameInput'
