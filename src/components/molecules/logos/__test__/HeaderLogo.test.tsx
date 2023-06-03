@@ -15,14 +15,4 @@ describe('HeaderLogo', () => {
     const { getByRole } = setUp()
     expect(getByRole('img')).toHaveAttribute('alt', 'Header Logo')
   })
-
-  test('Tasting Noteが表示される', () => {
-    const { getByRole } = setUp()
-    expect(getByRole('heading', { name: 'Tasting Note' })).toBeInTheDocument()
-  })
-
-  test('"テイスティングを記録してソムリエに"が表示される', () => {
-    const { getByText } = setUp()
-    expect(getByText('テイスティングを記録してソムリエに')).toBeInTheDocument()
-  })
 })

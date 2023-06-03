@@ -1,10 +1,13 @@
 import WineColor from '../../types/tasting_sheet/wineColor'
+import useCheckCheckBoxStatus from '../useCheckCheckBoxStatus'
 
-const useGetCheckBoxClassName = (type: string, color: WineColor | undefined) => {
-  let className = type === 'checkbox' ? 'checkbox checkbox-sm ' : 'radio radio-sm '
+const useGetCheckBoxClassName = (type: string, color: WineColor) => {
+  const { isCheckBox, isRed, isWhite } = useCheckCheckBoxStatus(type, color)
+  let className = isCheckBox ? 'checkbox checkbox-sm' : 'radio radio-sm'
+
   let boxColor = ''
-  if (color === 'red') boxColor += type === 'checkbox' ? 'checkbox-error' : 'radio-error'
-  if (color === 'white') boxColor += type === 'checkbox' ? 'checkbox-success' : 'radio-success'
+  if (isRed) boxColor += isCheckBox ? ' checkbox-error' : ' radio-error'
+  if (isWhite) boxColor += isCheckBox ? ' checkbox-success' : ' radio-success'
   className += boxColor
 
   return {

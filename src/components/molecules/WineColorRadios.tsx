@@ -5,9 +5,9 @@ import { TastingSheetCheckBox } from '../atoms'
 import { WineColorRadiosProps } from '../../types'
 
 const WineColorRadios: FC<WineColorRadiosProps> = memo(({ register }) => (
-  <div className="flex flex-col items-center w-full mb-6">
-    <span className="mb-2">ワインの色</span>
-    <div className="flex justify-between md:justify-around w-1/2">
+  <div className="flex flex-col items-center form-control w-full max-w-xs mb-6">
+    <span className="mb-2 self-start">ワインの色</span>
+    <div className="flex justify-around w-full">
       {WINE_COLORS.map((color) => (
         <TastingSheetCheckBox
           key={color}

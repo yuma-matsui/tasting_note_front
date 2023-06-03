@@ -1,20 +1,20 @@
 import { FC, memo } from 'react'
 
 const WelcomePageAboutSection: FC = memo(() => (
-  <section>
-    <h2 className="text-theme-green">ABOUT</h2>
+  <section className="mb-5">
+    <h2 className="top-page-section-heading">About</h2>
     <p className="mt-2">
       TastingNoteは
-      <br />
+      <br className="sm:hidden" />
       <span className="inline-block mt-2">
         J.S.Aソムリエ呼称資格認定試験
-        <br />
+        <br className="sm:hidden" />
         2次試験対策用のアプリです。
       </span>
     </p>
     <p className="mt-2">
       本番同様のテイスティングシートを使って
-      <br />
+      <br className="sm:hidden" />
       ワインテイスティングの記録が行えます。
     </p>
   </section>

@@ -16,7 +16,7 @@ const WineTextInput: FC<WineTextInputProps> = memo(({ name, label, register, req
     </label>
     {errors && name === 'wine.name' && (
       <p>
-        <span className="text-theme-pink">入力必須です</span>
+        <span className="text-theme-red">入力必須です</span>
       </p>
     )}
   </div>

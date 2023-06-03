@@ -28,8 +28,8 @@ const useMultiStepForm = (steps: ReactElement[]) => {
   const getButtonText = (type: 'next' | 'back') => {
     if (isFirstStep) return 'テイスティングをはじめる'
     if (isConclusionStep && type === 'next') return '回答確認'
-    if (type === 'back') return '<< 戻る'
-    return '次へ >>'
+    if (type === 'back') return '戻る'
+    return '次へ'
   }
 
   const onClickPageControl = (type: 'back' | 'next', ref: RefObject<HTMLInputElement>) => {
