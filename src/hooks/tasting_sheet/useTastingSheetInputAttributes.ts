@@ -19,10 +19,16 @@ const useTastingSheetInputsAttributes = () => {
     }
   }
 
+  const isChecked = (checkedLabel: string | string[] | null, label: string) => {
+    if (isMultipleInputs(checkedLabel)) return checkedLabel.includes(label)
+    return checkedLabel === label
+  }
+
   return {
     isMultipleInputs,
     isDisabled,
-    getValidationMethod
+    getValidationMethod,
+    isChecked
   }
 }
 

@@ -13,7 +13,7 @@ const setUp = () => {
 describe('WelcomePageWithRegistrationSection', () => {
   test('WITH REGISTRATIONが表示される', () => {
     const { getByText } = setUp()
-    expect(getByText('WITH REGISTRATION')).toBeInTheDocument()
+    expect(getByText('With Registration')).toBeInTheDocument()
   })
 
   test('liタグが3つ表示される', () => {

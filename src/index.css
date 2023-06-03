@@ -9,16 +9,41 @@ body {
   @apply font-body
 }
 
+.root {
+  @apply m-0 flex flex-col min-h-screen
+}
+
 .font-mincho {
   font-family: 'Zen Old Mincho', serif;
 }
 
+.top-page-section-heading {
+  @apply
+  text-theme-red
+  tracking-wider
+  font-mincho
+  font-extrabold
+  border-b
+  border-theme-red
+  border-l-8
+  pb-1
+  pl-2
+  mb-5
+}
+
 .base-btn {
-  @apply rounded-full shadow-md px-6 py-2 border-transparent text-white cursor-pointer
+  @apply
+  rounded-full
+  px-6
+  py-2
+  border-transparent
+  text-white
+  cursor-pointer
+  text-center
 }
 
 .sub-wrapper {
-  @apply w-full md:w-192 mx-auto
+  @apply w-full md:w-162 mx-auto
 }
 
 .main-wrapper {
@@ -37,16 +62,28 @@ section {
   @apply justify-start
 }
 
+.flex.flex-wrap .label {
+  @apply w-1/2 border-b border-r p-4
+}
+
 .label-text {
   @apply text-base
 }
 
-.steps .step-success:after {
-  @apply text-white
+.steps .step.step-success:after {
+  @apply bg-theme-green
+}
+
+.steps .step.step-error:after {
+  @apply bg-theme-red
 }
 
 .steps .step:after {
-  @apply text-white
+  @apply text-white bg-gray-300
+}
+
+.steps .step:before {
+  @apply bg-gray-300
 }
 
 .checkbox-success, .checkbox-error {
@@ -79,6 +116,10 @@ section {
   @apply ml-2 text-base font-normal
 }
 
+.form-section-border {
+  @apply border-black border-2 mb-4
+}
+
 .tos-pp-wrapper {
   @apply mb-6 leading-loose break-words
 }
@@ -100,7 +141,16 @@ section {
 }
 
 .page-title {
-  @apply text-xl font-semibold text-center
+  @apply
+  font-semibold
+  text-xl
+  text-center
+  w-full
+  text-white
+  py-2
+  rounded
+  bg-zinc-500
+  font-mincho
 }
 
 .wine-form, .user-form {
@@ -121,6 +171,10 @@ section {
 
 .user-form-error-message {
   @apply text-theme-red my-4 text-center font-semibold
+}
+
+.btn-group .btn {
+  @apply bg-zinc-500 border-zinc-500
 }
 
 @layer utilities {

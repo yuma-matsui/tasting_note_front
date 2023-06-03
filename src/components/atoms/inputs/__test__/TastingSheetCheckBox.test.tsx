@@ -18,12 +18,15 @@ const mockClassName = 'mock-class'
 jest.mock('../../../../hooks/tasting_sheet/useGetCheckBoxClassName', () => () => ({
   className: mockClassName
 }))
+jest.mock('../../../../hooks/useGetLabelClassName', () => () => ({
+  className: mockClassName
+}))
 
 jest.mock('../../../../hooks/tasting_sheet/useTastingSheetForm', () => () => ({
   getValues: jest.fn()
 }))
 
-const setUp = ({ id, name, value, register, label, disabled = false, color }: TastingSheetCheckBoxProps) => {
+const setUp = ({ id, name, value, register, label, disabled = false, color, checked }: TastingSheetCheckBoxProps) => {
   const utils = render(
     <TastingSheetCheckBox
       id={id}
@@ -33,6 +36,7 @@ const setUp = ({ id, name, value, register, label, disabled = false, color }: Ta
       label={label}
       disabled={disabled}
       color={color}
+      checked={checked ?? false}
     />
   )
 
@@ -50,7 +54,8 @@ describe('TastingSheetCheckBox', () => {
     value: 'test-value',
     register: jest.fn() as UseFormRegister<TastingSheetFormState>,
     label: 'test-label',
-    color: 'red'
+    color: 'red',
+    checked: false
   }
 
   beforeEach(() => {
@@ -60,6 +65,11 @@ describe('TastingSheetCheckBox', () => {
   it('useGetCheckBoxClassNameで返された値をclassNameにもつ', () => {
     const { input } = setUp(params)
     expect(input).toHaveClass(mockClassName)
+  })
+
+  it('useGetLabelClassNameで返された値をclassNameにもつ', () => {
+    const { input } = setUp(params)
+    expect(input.parentElement?.className.includes(mockClassName)).toBeTruthy()
   })
 
   describe('label', () => {

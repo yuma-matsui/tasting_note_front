@@ -15,8 +15,8 @@ const TastingSheetLists: FC<{
 
   return (
     <div className="flex flex-col items-center">
-      <h2 className="text-xl mb-4">シート一覧</h2>
-      <div className="w-full sm:w-96">
+      <h2 className="page-title">シート一覧</h2>
+      <div className="w-full sm:w-96 mt-4">
         <div className="mb-4 flex justify-between">
           <button type="button" className="drawer-button" onClick={onClickToggleSideBar}>
             絞り込む

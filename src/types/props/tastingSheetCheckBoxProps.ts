@@ -12,6 +12,7 @@ type TastingSheetCheckBoxProps = {
   disabled?: boolean
   register: UseFormRegister<TastingSheetFormState>
   color: WineColor
+  checked?: boolean
 }
 
 export default TastingSheetCheckBoxProps

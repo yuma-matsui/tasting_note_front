@@ -11,11 +11,6 @@ jest.mock('react', () => ({
   useState: jest.fn()
 }))
 
-const mockBgColor = 'mock-bg-color'
-jest.mock('../../../../hooks/tasting_sheet/useTastingSheetCardColor', () => () => ({
-  bgColor: mockBgColor
-}))
-
 jest.mock('../../forms/UpdateSheetNameForm', () => () => <p>MockUpdateSheetNameForm</p>)
 
 const setUp = (tastingSheet: TastingSheetApi) => {
@@ -50,18 +45,13 @@ describe('TastingSheetDetailsTitle', () => {
     })
 
     test('tastingSheet名が表示される', () => {
-      const { getByRole } = setUp(tastingSheet)
-      expect(getByRole('heading', { name: tastingSheet.name })).toBeInTheDocument()
+      const { getByText } = setUp(tastingSheet)
+      expect(getByText(tastingSheet.name)).toBeInTheDocument()
     })
 
     test('変更のbuttonが表示される', () => {
       const { getByRole } = setUp(tastingSheet)
       expect(getByRole('button', { name: '変更' })).toBeInTheDocument()
-    })
-
-    test('useTastingSheetCardColorで取得したbgColorをclassNameにもつ', () => {
-      const { getByRole } = setUp(tastingSheet)
-      expect(getByRole('button')).toHaveClass(mockBgColor)
     })
 
     test('buttonがクリックされるとsetState関数が呼ばれる', () => {
