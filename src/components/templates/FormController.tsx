@@ -2,7 +2,13 @@ import { FC, memo, useRef } from 'react'
 
 import { useAuthContext, useBeforeUnload } from '../../hooks'
 import { FormControllerProps } from '../../types'
-import { ConfirmationAndBackButton, FormControllerButton, PostTastingSheetButton } from '../atoms'
+import {
+  ConfirmationAndBackButton,
+  FinishTastingButton,
+  FormControllerButton,
+  PostTastingSheetButton,
+  SaveSheetButton
+} from '../atoms'
 import useGetButtonsFlexType from '../../hooks/useGetButtonsFlexType'
 
 const FormController: FC<FormControllerProps> = memo(
@@ -25,6 +31,7 @@ const FormController: FC<FormControllerProps> = memo(
     return (
       <>
         {children}
+        {isLastStep && !currentUser && <FinishTastingButton />}
         <div className={`w-full flex ${getButtonsFlexType(isFirstStep)}`}>
           {!isFirstStep && !isAppearanceStep && (
             <FormControllerButton
@@ -35,9 +42,9 @@ const FormController: FC<FormControllerProps> = memo(
             />
           )}
           {isAppearanceStep && <ConfirmationAndBackButton tastingSheet={tastingSheet} />}
-          {isLastStep ? (
-            <PostTastingSheetButton tastingSheet={tastingSheet} currentUser={currentUser} />
-          ) : (
+          {isLastStep && currentUser && <PostTastingSheetButton tastingSheet={tastingSheet} />}
+          {isLastStep && !currentUser && <SaveSheetButton tastingSheet={tastingSheet} />}
+          {!isLastStep && (
             <FormControllerButton
               value={nextButtonText}
               disabled={disabled}
