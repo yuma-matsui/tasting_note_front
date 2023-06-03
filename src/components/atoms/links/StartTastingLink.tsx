@@ -11,8 +11,8 @@ const StartTastingLink: FC<{
       rounded-full
       bg-transparent
       border
-      border-theme-red
-      text-theme-red
+      border-sub-red
+      text-sub-red
       font-semibold
       bottom-2
       text-lg
