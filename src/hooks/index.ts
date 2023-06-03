@@ -51,3 +51,4 @@ export { default as useShowErrorAndWarningToast } from './useShowErrorAndWarning
 export { default as useGetAuthFormParams } from './useGetAuthFormParams'
 export { default as useResetPasswordFormParams } from './useResetPasswordFormParams'
 export { default as useCheckButtonStatus } from './useCheckButtonStatus'
+export { default as useGetLabelClassName } from './useGetLabelClassName'

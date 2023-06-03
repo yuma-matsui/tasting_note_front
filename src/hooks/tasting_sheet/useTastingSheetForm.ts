@@ -14,6 +14,7 @@ const useTastingSheetForm = () => {
     handleSubmit,
     getValues,
     setValue,
+    watch,
     formState: {
       isValid,
       isSubmitting,
@@ -42,7 +43,8 @@ const useTastingSheetForm = () => {
     onSubmit,
     getValues,
     errors,
-    tastingSheet
+    tastingSheet,
+    watchedSheet: watch().tastingSheet
   }
 }
 

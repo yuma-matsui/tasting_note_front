@@ -7,7 +7,8 @@ import { useGetIsMultipleInputs } from '../../../../hooks'
 
 jest.mock('../../../../hooks/tasting_sheet/useGetIsMultipleInputs')
 jest.mock('../../../../hooks/tasting_sheet/useTastingSheetInputAttributes', () => () => ({
-  isDisabled: jest.fn()
+  isDisabled: jest.fn(),
+  isChecked: jest.fn()
 }))
 
 jest.mock('../../../templates/TastingSheetFormWrapper', () => ({ children }: { children: ReactNode }) => (

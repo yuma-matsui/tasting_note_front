@@ -8,7 +8,7 @@ import { TastingSheetFormWrapper } from '../../templates'
 import ConclusionSelectBoxes from '../ConclusionSelectBoxes'
 
 const TastingSheetBaseForm: FC<TastingSheetBaseFormProps> = memo(({ type, items, options, register, getValues }) => {
-  const { isDisabled } = useTastingSheetInputsAttributes()
+  const { isDisabled, isChecked } = useTastingSheetInputsAttributes()
   const { isMultipleInputs } = useGetIsMultipleInputs()
 
   return (
@@ -32,6 +32,7 @@ const TastingSheetBaseForm: FC<TastingSheetBaseFormProps> = memo(({ type, items,
                   name={convertToFormName(name)}
                   disabled={isDisabled(getValues(convertToFormName(name)), label)}
                   register={register}
+                  checked={isChecked(getValues(convertToFormName(name)), label)}
                   color={getValues('tastingSheet.color')}
                 />
               ))}
