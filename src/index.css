@@ -173,6 +173,10 @@ section {
   @apply text-theme-red my-4 text-center font-semibold
 }
 
+.btn-group .btn {
+  @apply bg-zinc-500 border-zinc-500
+}
+
 @layer utilities {
   .hidden-scrollbar {
     -ms-overflow-style: none;
