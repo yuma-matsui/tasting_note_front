@@ -13,7 +13,7 @@ const setUp = (tastingSheets: TastingSheetApi[]) => {
 }
 
 describe('TastingSheetCards', () => {
-  let tastingSheets = [] as TastingSheetApi[]
+  let tastingSheets: TastingSheetApi[]
 
   beforeEach(() => {
     tastingSheets = []

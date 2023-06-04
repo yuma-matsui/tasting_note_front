@@ -64,7 +64,7 @@ describe('TastingSheetLists', () => {
     expect(props.onClickToggleSideBar).toHaveBeenCalled()
   })
 
-  test('tastingSheetsの要素数がspanタグで表示される', () => {
+  test('tastingSheetsの要素数が表示される', () => {
     const { getByText } = setUp(props)
     expect(getByText(props.tastingSheets.length)).toBeInTheDocument()
   })
