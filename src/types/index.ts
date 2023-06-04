@@ -70,6 +70,7 @@ export type { default as StepsBarProps } from './props/stepsBarProps'
 export type { default as WineColorRadiosProps } from './props/wineColorRadiosProps'
 export type { default as TastingSheetListsProps } from './props/tastingSheetListsProps'
 export type { default as TastingSheetSearchSideBarProps } from './props/tastingSheetSearchSideBarProps'
+export type { default as WineDetailsProps } from './props/wineDetailsProps'
 
 export type { default as TastingSheetApi } from './api/tastingSheetApi'
 export type { default as WineApi } from './api/wineApi'
