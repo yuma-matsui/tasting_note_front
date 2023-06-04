@@ -3,13 +3,10 @@ import { GrNote } from 'react-icons/gr'
 
 import { PaginationButtons } from '../molecules'
 import TastingSheetCards from './TastingSheetCards'
-import { TastingSheetApi } from '../../types'
+import { TastingSheetListsProps } from '../../types'
 import { useTastingSheetsPagination } from '../../hooks'
 
-const TastingSheetLists: FC<{
-  tastingSheets: TastingSheetApi[]
-  onClickToggleSideBar: () => void
-}> = memo(({ tastingSheets, onClickToggleSideBar }) => {
+const TastingSheetLists: FC<TastingSheetListsProps> = memo(({ tastingSheets, onClickToggleSideBar }) => {
   const { pageNumber, next, back, displayingTastingSheets, isFirstPage, isLastPage, isMoreThanFiveSheets } =
     useTastingSheetsPagination(tastingSheets)
 
