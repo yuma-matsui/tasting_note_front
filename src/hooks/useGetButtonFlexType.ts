@@ -1,4 +1,4 @@
-const useGetButtonsFlexType = () => {
+const useGetButtonFlexType = () => {
   const getButtonFlexType = (isFirstStep: boolean) => (isFirstStep ? 'justify-center' : 'justify-between')
 
   return {
@@ -6,4 +6,4 @@ const useGetButtonsFlexType = () => {
   }
 }
 
-export default useGetButtonsFlexType
+export default useGetButtonFlexType
