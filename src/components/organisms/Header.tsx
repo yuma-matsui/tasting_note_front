@@ -1,8 +1,8 @@
 import { FC, memo } from 'react'
 
 import { useCheckEditingForm } from '../../hooks'
-import BaseLink from '../atoms/links/BaseLink'
 import { HeaderLogo } from '../molecules'
+import { BaseLink } from '../atoms'
 
 const Header: FC = memo(() => {
   const { isEditing } = useCheckEditingForm()

@@ -5,6 +5,7 @@ export { default as SignInLink } from './links/SignInLink'
 export { default as StartTastingLink } from './links/StartTastingLink'
 export { default as SignUpLink } from './links/SignUpLink'
 export { default as ResetPasswordLink } from './links/ResetPasswordLink'
+export { default as BaseLink } from './links/BaseLink'
 
 export { default as FormControllerButton } from './buttons/FormControllerButton'
 export { default as DeleteTastingSheetButton } from './buttons/DeleteTastingSheetButton'
