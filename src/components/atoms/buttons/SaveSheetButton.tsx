@@ -11,7 +11,7 @@ const SaveSheetButton: FC<{
   const { className } = useGetButtonClassName(tastingSheet.color)
 
   const { onClickOpenModal } = useOnClickOpenModal({
-    text: 'ログインまたはサインアップを行います',
+    text: 'サインアップまたはログインを行います',
     leftButton: <SignUpLink tastingSheet={tastingSheet} />,
     rightButton: <SignInLink tastingSheet={tastingSheet} />
   })
