@@ -1,8 +1,9 @@
 import { FC, memo } from 'react'
-import { Link } from 'react-router-dom'
 
 import { TastingSheet } from '../../../types'
 import { useGetButtonClassName, useOnClickOpenModal } from '../../../hooks'
+import SignUpLink from '../links/SignUpLink'
+import SignInLink from '../links/SignInLink'
 
 const SaveSheetButton: FC<{
   tastingSheet: TastingSheet
@@ -11,16 +12,8 @@ const SaveSheetButton: FC<{
 
   const { onClickOpenModal } = useOnClickOpenModal({
     text: 'ログインまたはサインアップを行います',
-    leftButton: (
-      <Link to="/signin" state={tastingSheet}>
-        ログイン
-      </Link>
-    ),
-    rightButton: (
-      <Link to="/signup" state={tastingSheet}>
-        サインアップ
-      </Link>
-    )
+    leftButton: <SignUpLink tastingSheet={tastingSheet} />,
+    rightButton: <SignInLink tastingSheet={tastingSheet} />
   })
 
   return (
