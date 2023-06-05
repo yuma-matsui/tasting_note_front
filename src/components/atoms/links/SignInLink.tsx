@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { TastingSheet } from '../../../types'
 
 const SignInLink: FC<{
-  tastingSheet?: TastingSheet
+  tastingSheet?: TastingSheet | undefined
 }> = memo(({ tastingSheet }) => (
   <Link to="/signin" state={tastingSheet} className="base-btn bg-theme-green w-40 !px-0">
     <div className="flex items-center justify-center">

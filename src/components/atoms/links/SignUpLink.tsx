@@ -5,7 +5,7 @@ import { MdAppRegistration } from 'react-icons/md'
 import { TastingSheet } from '../../../types'
 
 const SignUpLink: FC<{
-  tastingSheet?: TastingSheet
+  tastingSheet?: TastingSheet | undefined
 }> = memo(({ tastingSheet }) => (
   <Link to="/signup" state={tastingSheet} className="base-btn bg-theme-red w-40 !px-0">
     <div className="flex items-center justify-center">
