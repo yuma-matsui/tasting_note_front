@@ -59,7 +59,7 @@ describe('SignedInWelcomePage', () => {
       ;(mockUseFetchTastingSheets as jest.Mock).mockImplementation(() => useFetchTastingSheetsReturnValue)
 
       const { getByText, queryByText } = setUp()
-      expect(getByText('MockedLoadingSpinner'))
+      expect(getByText('MockedLoadingSpinner')).toBeInTheDocument()
       expect(queryByText(`Mocked${componentName}`)).not.toBeInTheDocument()
     }
   )

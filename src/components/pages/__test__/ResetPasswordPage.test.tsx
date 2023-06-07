@@ -59,7 +59,7 @@ describe('ResetPasswordPage', () => {
       ;(mockUseResetPasswordFormParams as jest.Mock).mockImplementation(() => useResetPasswordFormParamsReturnValue)
 
       const { getByText, queryByText } = setUp()
-      expect(getByText('MockedLoadingSpinner'))
+      expect(getByText('MockedLoadingSpinner')).toBeInTheDocument()
       expect(queryByText(`Mocked${componentName}`)).not.toBeInTheDocument()
     }
   )
