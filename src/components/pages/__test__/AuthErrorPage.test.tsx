@@ -2,15 +2,9 @@
 
 import { render } from '@testing-library/react'
 import { AuthError } from 'firebase/auth'
-import React from 'react'
 
 import { ReactNodeChildren } from '../../../types'
 import AuthErrorPage from '../AuthErrorPage'
-
-// jest.mock('react', () => ({
-//   ...jest.requireActual('react'),
-//   useEffect: jest.fn().mockImplementation((hooks: () => void) => hooks())
-// }))
 
 jest.mock('../../molecules/HeadMeta', () => ({ children }: ReactNodeChildren) => (
   <>
