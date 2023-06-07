@@ -26,5 +26,6 @@ export { default as WelcomePageImagesSection } from './sections/WelcomePageImage
 
 export { default as WineDetailsTitle } from './titles/WineDetailsTitle'
 export { default as TopPageTitle } from './titles/TopPageTitle'
+export { default as TastingSheetDetailsTitle } from './titles/TastingSheetDetailsTitle'
 
 export { default as FooterNavigation } from './navigation/FooterNavigation'
