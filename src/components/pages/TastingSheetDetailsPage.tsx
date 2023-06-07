@@ -2,10 +2,9 @@ import { FC, memo } from 'react'
 
 import { useFetchATastingSheet } from '../../hooks'
 import { GoToNewWinePageButton, LoadingSpinner } from '../atoms'
-import TastingSheetDetailsTitle from '../molecules/titles/TastingSheetDetailsTitle'
 import { TastingSheetDetailsTab, WineDetails } from '../organisms'
 import { DefaultLayout } from '../templates'
-import { DetailsPageBottomButtons, HeadMeta } from '../molecules'
+import { DetailsPageBottomButtons, HeadMeta, TastingSheetDetailsTitle } from '../molecules'
 
 const TastingSheetDetailsPage: FC<{ tastingSheetId: number }> = memo(({ tastingSheetId }) => {
   const { fetching, tastingSheet } = useFetchATastingSheet(tastingSheetId)
