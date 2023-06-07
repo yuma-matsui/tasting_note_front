@@ -72,7 +72,7 @@ const PrivacyPolicyPage: FC = () => {
         </div>
 
         <p className="mb-4">附則</p>
-        <p>本ポリシーは2023年5月8日から施行します。</p>
+        <p>本ポリシーは2023年6月15日から施行します。</p>
       </DefaultLayout>
     </HeadMeta>
   )
