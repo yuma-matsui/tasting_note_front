@@ -3,12 +3,13 @@ import { RouterProvider, createMemoryRouter } from 'react-router-dom'
 import userEvent from '@testing-library/user-event'
 
 import SignInLink from '../SignInLink'
+import { TastingSheet } from '../../../../types'
 
-const setUp = () => {
+const setUp = (tastingSheet?: TastingSheet) => {
   const router = createMemoryRouter([
     {
       path: '/',
-      element: <SignInLink />
+      element: <SignInLink tastingSheet={tastingSheet} />
     },
     {
       path: '/signin',
@@ -39,5 +40,13 @@ describe('SignInLink', () => {
     userEvent.click(getByRole('link'))
 
     expect(router.state.location.pathname).toEqual('/signin')
+  })
+
+  test('propsにtastingSheetがある場合、クリックされた時にstateが更新される', () => {
+    const tastingSheet = { name: 'test' } as TastingSheet
+    const { router, getByRole } = setUp(tastingSheet)
+    userEvent.click(getByRole('link'))
+
+    expect(router.state.location.state).toBe(tastingSheet)
   })
 })
