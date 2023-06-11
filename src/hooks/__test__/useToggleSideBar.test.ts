@@ -1,43 +1,25 @@
-/* eslint-disable @typescript-eslint/no-unsafe-return */
-
-import React from 'react'
-import { renderHook } from '@testing-library/react'
+import { cleanup, renderHook } from '@testing-library/react'
+import { act } from 'react-dom/test-utils'
 
 import useToggleSideBar from '../useToggleSideBar'
 
-jest.mock('react', () => ({
-  ...jest.requireActual('react'),
-  useState: jest.fn()
-}))
-
-const setUp = () => {
-  const { result } = renderHook(() => useToggleSideBar())
-
-  return {
-    ...result.current
-  }
-}
-
 describe('useToggleSideBar', () => {
-  const mockIsOpen = false
-  const mockSetIsOpen = jest.fn()
-
   beforeEach(() => {
-    jest.spyOn(React, 'useState').mockReturnValue([mockIsOpen, mockSetIsOpen])
+    cleanup()
   })
 
   describe('isOpen', () => {
-    test('useStateで取得したisOpenが返る', () => {
-      const { isOpen } = setUp()
-      expect(isOpen).toEqual(mockIsOpen)
+    test('初期値がfalseになる', () => {
+      const { result } = renderHook(() => useToggleSideBar())
+      expect(result.current.isOpen).toEqual(false)
     })
-  })
 
-  describe('onClickToggleSideBar', () => {
-    test('実行時にsetIsOpenが実行される', () => {
-      const { onClickToggleSideBar } = setUp()
-      onClickToggleSideBar()
-      expect(mockSetIsOpen).toHaveBeenCalledWith(expect.any(Function))
+    test('setIsOpen実行後、trueになる', async () => {
+      const { result } = renderHook(() => useToggleSideBar())
+      expect(result.current.isOpen).toEqual(false)
+
+      await act(() => result.current.onClickToggleSideBar())
+      expect(result.current.isOpen).toEqual(true)
     })
   })
 })
