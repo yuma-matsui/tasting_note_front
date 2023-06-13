@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react'
+import { cleanup, renderHook } from '@testing-library/react'
 
 import mockUseToastContext from '../context/useToastContext'
 import useShowErrorAndWarningToast from '../useShowErrorAndWarningToast'
@@ -8,6 +8,7 @@ jest.mock('../context/useToastContext')
 describe('useShowErrorAndWarningToast', () => {
   const mockShowToast = jest.fn()
   const mockSetTimeout = jest.spyOn(global, 'setTimeout')
+  const mockClearTimeout = jest.spyOn(global, 'clearTimeout')
 
   beforeEach(() => {
     ;(mockUseToastContext as jest.Mock).mockImplementation(() => ({
@@ -26,5 +27,11 @@ describe('useShowErrorAndWarningToast', () => {
   test('setTimeoutが実行される', () => {
     renderHook(() => useShowErrorAndWarningToast())
     expect(mockSetTimeout).toHaveBeenCalledWith(expect.any(Function), 3000)
+  })
+
+  test('unmount時にclearTimeoutが実行される', () => {
+    renderHook(() => useShowErrorAndWarningToast())
+    cleanup()
+    expect(mockClearTimeout).toHaveBeenCalled()
   })
 })
