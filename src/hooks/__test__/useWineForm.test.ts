@@ -1,14 +1,15 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 
 import React from 'react'
-import { renderHook } from '@testing-library/react'
 import Form from 'react-hook-form'
 import ErrorBoundary from 'react-error-boundary'
 import Router from 'react-router-dom'
+import { renderHook } from '@testing-library/react'
+import { act } from 'react-dom/test-utils'
 
-import { WineApi } from '../../types'
 import useWineForm from '../useWineForm'
 import mockUseAuthContext from '../context/useAuthContext'
+import { WineApi, WineFormState } from '../../types'
 import { ALCOHOL_PERCENTAGES, COUNTRIES, GRAPES_RED, GRAPES_WHITE, VINTAGES } from '../../assets'
 
 jest.mock('react', () => ({
@@ -16,14 +17,19 @@ jest.mock('react', () => ({
   useState: jest.fn()
 }))
 
+const mockPostWine = jest.fn()
 jest.mock('../api/usePostWine', () => () => ({
-  postWine: jest.fn()
+  postWine: mockPostWine
 }))
+
+const mockPostWineImageToS3 = jest.fn()
 jest.mock('../api/usePostWineImageToS3', () => () => ({
-  postWineImageToS3: jest.fn()
+  postWineImageToS3: mockPostWineImageToS3
 }))
+
+const mockUpdateWine = jest.fn()
 jest.mock('../api/useUpdateWine', () => () => ({
-  updateWine: jest.fn()
+  updateWine: mockUpdateWine
 }))
 
 jest.mock('../context/useAuthContext')
@@ -63,7 +69,7 @@ describe('useWineForm', () => {
     color: 'red'
   }
 
-  const mockImageFile = 'mockImageFile'
+  let mockImageFile: string | null
   const mockSetImageFile = jest.fn()
 
   const mockRegister = jest.fn()
@@ -75,6 +81,7 @@ describe('useWineForm', () => {
 
   beforeEach(() => {
     wine = {} as WineApi
+    mockImageFile = null
     mockIsValid = false
     mockIsSubmitting = false
     ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({
@@ -120,6 +127,49 @@ describe('useWineForm', () => {
     test('useFormで取得したhandleSubmitが返る', () => {
       const { handleSubmit } = setUp()
       expect(handleSubmit).toEqual(mockHandleSubmit)
+    })
+  })
+
+  describe('onSubmit', () => {
+    let mockData: WineFormState
+
+    beforeEach(() => {
+      mockData = { wine }
+    })
+
+    describe('引数のdataがwine.imageを持ち、imageFileも存在する場合', () => {
+      beforeEach(() => {
+        mockImageFile = 'test'
+        mockData.wine.image = 'test'
+
+        jest.spyOn(React, 'useState').mockReturnValue([mockImageFile, mockSetImageFile])
+      })
+
+      test('postWineImageToS3が実行される', async () => {
+        const { result } = renderHook(() => useWineForm())
+
+        await act(() => result.current.onSubmit(mockData))
+        expect(mockPostWineImageToS3).toHaveBeenCalledWith(mockImageFile, mockData.wine.image)
+      })
+    })
+
+    describe('wineが存在する場合', () => {
+      beforeEach(() => {
+        wine.id = 1
+      })
+      test('updateWineが呼ばれる', async () => {
+        const { result } = renderHook(() => useWineForm(wine))
+        await act(() => result.current.onSubmit(mockData))
+        expect(mockUpdateWine).toHaveBeenCalledWith(mockData.wine, wine.id)
+      })
+    })
+
+    describe('wineが存在しない場合', () => {
+      test('postWineが実行される', async () => {
+        const { result } = renderHook(() => useWineForm())
+        await act(() => result.current.onSubmit(mockData))
+        expect(mockPostWine).toHaveBeenCalledWith(mockData.wine)
+      })
     })
   })
 
