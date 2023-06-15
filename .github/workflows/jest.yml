@@ -22,6 +22,11 @@ jobs:
           path: ~/.npm
           key: npm-${{ hashFiles('package-lock.json') }}
           restore-keys: npm-
+      - name: Prepare .env.test file
+        run: |
+          cat << EOF > .env.test
+          REACT_APP_CF_DOMAIN=${{ secrets.REACT_APP_CF_DOMAIN }}
+          EOF
       - name: Npm install
         run: npm install
       - name: Run test
