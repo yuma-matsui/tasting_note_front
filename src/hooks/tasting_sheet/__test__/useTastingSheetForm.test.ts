@@ -7,7 +7,7 @@ import { act } from 'react-dom/test-utils'
 
 import useTastingSheetForm from '../useTastingSheetForm'
 import { initialTastingSheet } from '../../../utils'
-import { TastingSheetFormState } from '../../../types'
+import { TastingSheet, TastingSheetFormState } from '../../../types'
 
 jest.mock('react-hook-form', () => ({
   ...jest.requireActual('react-hook-form'),
@@ -129,5 +129,20 @@ describe('useTastingSheetForm', () => {
       expect(mockWatch).toHaveBeenCalled()
       expect(result.current.watchedSheet).toMatchObject(mockWatchedTastingSheet)
     })
+  })
+
+  test('実行時にuseFormで取得したsetValueが呼ばれる', () => {
+    renderHook(() => useTastingSheetForm())
+    expect(mockSetValue).toHaveBeenCalledWith('tastingSheet', initialTastingSheet)
+  })
+
+  test('tastingSheetの値が変わった時にuseFormで取得したsetValueが実行される', async () => {
+    const mockData: TastingSheetFormState = {
+      tastingSheet: {} as TastingSheet
+    }
+
+    const { result } = renderHook(() => useTastingSheetForm())
+    await act(() => result.current.onSubmit(mockData))
+    expect(mockSetValue).toHaveBeenCalledTimes(2)
   })
 })
