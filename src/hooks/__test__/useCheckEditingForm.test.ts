@@ -27,11 +27,8 @@ describe('useCheckEditingForm', () => {
       ['/pp', false]
     ])('useLocationで取得したpathnameが$sの場合、%pを返す', (pathname, result) => {
       jest.spyOn(Router, 'useLocation').mockReturnValue({
-        pathname,
-        state: null,
-        key: '',
-        search: '',
-        hash: ''
+        ...jest.requireActual('react-router-dom'),
+        pathname
       })
 
       const { isEditing } = setUp()
