@@ -3,11 +3,17 @@ import { act } from 'react-dom/test-utils'
 
 import { TastingSheetApi } from '../../types'
 import useTastingSheetsPagination from '../useTastingSheetsPagination'
+import { initialTastingSheet } from '../../utils'
 
 const setUpTastingSheets = (sheetsCount: number) => {
   const tastingSheets: TastingSheetApi[] = []
   for (let index = 0; index < sheetsCount; index += 1) {
-    tastingSheets.push({} as TastingSheetApi)
+    tastingSheets.push({
+      ...initialTastingSheet,
+      id: index,
+      createdAt: 'test',
+      wine: null
+    })
   }
 
   return tastingSheets
