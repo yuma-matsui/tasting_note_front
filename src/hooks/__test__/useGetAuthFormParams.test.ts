@@ -47,11 +47,8 @@ describe('useGetAuthFormParams', () => {
 
   beforeEach(() => {
     jest.spyOn(Router, 'useLocation').mockReturnValue({
-      state,
-      key: 'test',
-      hash: 'test',
-      search: 'test',
-      pathname: '/'
+      ...jest.requireActual('react-router-dom'),
+      state
     })
 
     jest
