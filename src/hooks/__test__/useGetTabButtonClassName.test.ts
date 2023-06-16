@@ -2,6 +2,7 @@ import { renderHook } from '@testing-library/react'
 
 import useGetTabButtonClassName from '../useGetTabButtonClassName'
 import { TastingSheet, WineColor } from '../../types'
+import { initialTastingSheet } from '../../utils'
 
 const setUp = () => {
   const { result } = renderHook(() => useGetTabButtonClassName())
@@ -22,7 +23,7 @@ describe('useGetTabButtonClassName', () => {
   ]
 
   beforeEach(() => {
-    tastingSheet = {} as TastingSheet
+    tastingSheet = { ...initialTastingSheet }
   })
 
   describe('getTabButtonClassName', () => {
