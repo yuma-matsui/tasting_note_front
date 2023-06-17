@@ -1,9 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
+
 import Router, { RouterProvider, createMemoryRouter } from 'react-router-dom'
 import { render } from '@testing-library/react'
 
-import { useAuthContext as mockUseAuthContext } from '../../hooks'
 import EditWinePageWrapper from '../EditWinePageWrapper'
+import { useAuthContext as mockUseAuthContext } from '../../hooks'
+import { wineTestData } from '../../utils'
 
 jest.mock('../../hooks/context/useAuthContext')
 
@@ -39,60 +41,74 @@ const setUp = () => {
 }
 
 describe('EditWinePageWrapper', () => {
-  const useLocationParams = {
-    state: { wine: {} },
-    key: '',
-    pathname: '',
-    search: '',
-    hash: ''
-  }
-
+  let currentUser: boolean
   beforeEach(() => {
+    currentUser = true
     ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({
-      currentUser: true
+      currentUser
     }))
 
     jest.spyOn(Router, 'useParams').mockReturnValue({
       wineId: '1'
     })
-    jest.spyOn(Router, 'useLocation').mockReturnValue(useLocationParams)
+    jest.spyOn(Router, 'useLocation').mockReturnValue({
+      ...jest.requireActual('react-router-dom'),
+      state: {
+        wine: { ...wineTestData }
+      }
+    })
   })
 
-  test('currentUserが存在して、wineIdが数字の文字列、stateにwineが存在する場合はEditWinePageが表示される', () => {
-    const { getByText } = setUp()
-    expect(getByText('MockedEditWinePage')).toBeInTheDocument()
+  describe('currentUserが存在して、wineIdが数字の文字列、stateにwineが存在する場合', () => {
+    test('EditWinePageが表示される', () => {
+      const { getByText } = setUp()
+      expect(getByText('MockedEditWinePage')).toBeInTheDocument()
+    })
   })
 
-  test('currentUserが存在しない場合、トップページにリダイレクトされる', () => {
-    ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({
-      currentUser: false
-    }))
+  describe('currentUserが存在しない場合', () => {
+    beforeEach(() => {
+      currentUser = false
+      ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({
+        currentUser
+      }))
+    })
 
-    const { router, queryByText } = setUp()
-    expect(queryByText('MockedEditWinePage')).not.toBeInTheDocument()
-    expect(router.state.location.pathname).toEqual('/')
-  })
-
-  describe('wineIdが数字以外の文字列の場合、トップページにリダイレクトされる', () => {
-    test.each([['test'], ['string']])('%sの場合', (wineId) => {
-      jest.spyOn(Router, 'useParams').mockReturnValue({
-        wineId
-      })
-
+    test('トップページにリダイレクトされる', () => {
       const { router, queryByText } = setUp()
       expect(queryByText('MockedEditWinePage')).not.toBeInTheDocument()
       expect(router.state.location.pathname).toEqual('/')
     })
   })
 
-  test('location.stateにwineが存在しない場合、トップページにリダイレクトされる', () => {
-    jest.spyOn(Router, 'useLocation').mockReturnValue({
-      ...useLocationParams,
-      state: null
+  describe('wineIdが数字以外の文字列の場合', () => {
+    describe.each([['test'], ['string']])('%sの場合', (wineId) => {
+      beforeEach(() => {
+        jest.spyOn(Router, 'useParams').mockReturnValue({
+          wineId
+        })
+      })
+
+      test('トップページにリダイレクトされる', () => {
+        const { router, queryByText } = setUp()
+        expect(queryByText('MockedEditWinePage')).not.toBeInTheDocument()
+        expect(router.state.location.pathname).toEqual('/')
+      })
+    })
+  })
+
+  describe('location.stateにwineが存在しない場合', () => {
+    beforeEach(() => {
+      jest.spyOn(Router, 'useLocation').mockReturnValue({
+        ...jest.requireActual('react-router-dom'),
+        state: null
+      })
     })
 
-    const { router, queryByText } = setUp()
-    expect(queryByText('MockedEditWinePage')).not.toBeInTheDocument()
-    expect(router.state.location.pathname).toEqual('/')
+    test('トップページにリダイレクトされる', () => {
+      const { router, queryByText } = setUp()
+      expect(queryByText('MockedEditWinePage')).not.toBeInTheDocument()
+      expect(router.state.location.pathname).toEqual('/')
+    })
   })
 })
