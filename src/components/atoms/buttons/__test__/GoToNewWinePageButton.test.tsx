@@ -1,9 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
-import { render, screen } from '@testing-library/react'
+
 import userEvent from '@testing-library/user-event'
+import { render, screen } from '@testing-library/react'
 
 import GoToNewWinePageButton from '../GoToNewWinePageButton'
 import { TastingSheetApi } from '../../../../types'
+import { initialTastingSheet } from '../../../../utils'
 
 const mockNavigate = jest.fn()
 jest.mock('react-router-dom', () => ({
@@ -33,7 +35,12 @@ const setUp = ({ tastingSheet }: { tastingSheet: TastingSheetApi }) => {
 }
 
 describe('GoToNewWinePageButton', () => {
-  const tastingSheet = {} as TastingSheetApi
+  const tastingSheet = {
+    ...initialTastingSheet,
+    id: 1,
+    createdAt: 'test',
+    wine: null
+  }
 
   it('"ワインの登録"が表示される', () => {
     const { getByText } = setUp({ tastingSheet })

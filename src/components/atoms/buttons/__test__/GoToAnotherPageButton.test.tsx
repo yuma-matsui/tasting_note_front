@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
-import { render, screen } from '@testing-library/react'
+
 import userEvent from '@testing-library/user-event'
+import { render, screen } from '@testing-library/react'
 
 import GoToAnotherPageButton from '../GoToAnotherPageButton'
 

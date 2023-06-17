@@ -1,8 +1,9 @@
-import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { render, screen } from '@testing-library/react'
 
-import { TastingSheet } from '../../../../types'
 import SaveSheetButton from '../SaveSheetButton'
+import { TastingSheet } from '../../../../types'
+import { initialTastingSheet } from '../../../../utils'
 
 const mockOnClickOpenModal = jest.fn()
 jest.mock('../../../../hooks/useOnClickOpenModal', () => () => ({
@@ -23,7 +24,7 @@ const setUp = (tastingSheet: TastingSheet) => {
 }
 
 describe('SaveSheetButton', () => {
-  const tastingSheet = {} as TastingSheet
+  const tastingSheet = { ...initialTastingSheet }
 
   test('buttonが表示される', () => {
     const { button } = setUp(tastingSheet)
