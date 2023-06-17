@@ -6,7 +6,7 @@ import { renderHook } from '@testing-library/react'
 import { act } from 'react-dom/test-utils'
 
 import useTastingSheetUpdateForm from '../useTastingSheetUpdateForm'
-import { TastingSheetApi, TastingSheetFormState } from '../../../types'
+import { initialTastingSheet } from '../../../utils'
 
 jest.mock('react-hook-form', () => ({
   ...jest.requireActual('react-hook-form'),
@@ -29,7 +29,12 @@ describe('useTastingSheetUpdateForm', () => {
   const mockErrors = {}
   let isValid: boolean
   let isSubmitting: boolean
-  const tastingSheet = {} as TastingSheetApi
+  const tastingSheet = {
+    ...initialTastingSheet,
+    id: 1,
+    createdAt: 'test',
+    wine: null
+  }
 
   beforeEach(() => {
     isSubmitting = false
@@ -58,7 +63,6 @@ describe('useTastingSheetUpdateForm', () => {
   describe('register', () => {
     test('useFormで取得したregisterが返る', () => {
       const { result } = renderHook(() => useTastingSheetUpdateForm(tastingSheet))
-
       expect(result.current.register).toEqual(mockRegister)
     })
   })
@@ -66,7 +70,6 @@ describe('useTastingSheetUpdateForm', () => {
   describe('handleSubmit', () => {
     test('useFormで取得したhandleSubmitが返る', () => {
       const { result } = renderHook(() => useTastingSheetUpdateForm(tastingSheet))
-
       expect(result.current.handleSubmit).toEqual(mockHandleSubmit)
     })
   })
@@ -74,7 +77,6 @@ describe('useTastingSheetUpdateForm', () => {
   describe('errors', () => {
     test('useFormで取得したerrorsが返る', () => {
       const { result } = renderHook(() => useTastingSheetUpdateForm(tastingSheet))
-
       expect(result.current.errors).toEqual(mockErrors)
     })
   })
@@ -111,10 +113,9 @@ describe('useTastingSheetUpdateForm', () => {
 
   describe('onSubmit', () => {
     test('実行時にupdateSheetNameが呼ばれる', async () => {
-      const mockData = { tastingSheet: {} } as TastingSheetFormState
+      const mockData = { tastingSheet }
 
       const { result } = renderHook(() => useTastingSheetUpdateForm(tastingSheet))
-
       await act(() => result.current.onSubmit(mockData))
       expect(mockUpdateSheetName).toHaveBeenCalledWith(mockData.tastingSheet)
     })
