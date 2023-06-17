@@ -1,9 +1,9 @@
-import { render } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { render } from '@testing-library/react'
 import { RouterProvider, createMemoryRouter } from 'react-router-dom'
 
-import { BaseLinkProps } from '../../../../types'
 import BaseLink from '../BaseLink'
+import { BaseLinkProps } from '../../../../types'
 
 const mockOnClickOpenModal = jest.fn()
 jest.mock('../../../../hooks/useOnClickOpenModal', () => () => ({
