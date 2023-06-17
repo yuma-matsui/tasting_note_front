@@ -6,8 +6,8 @@ import Form from 'react-hook-form'
 import { renderHook } from '@testing-library/react'
 import { act } from 'react-dom/test-utils'
 
-import { AuthForm, ResetPasswordFormProps } from '../../../types'
 import useResetPasswordForm from '../useResetPasswordForm'
+import { AuthForm, ResetPasswordFormProps } from '../../../types'
 
 jest.mock('react-hook-form', () => ({
   ...jest.requireActual('react-hook-form'),
@@ -110,31 +110,33 @@ describe('useAuthForm', () => {
   })
 
   describe('onSubmit', () => {
-    const mockData = {
-      email: 'test@example.com'
-    } as AuthForm
+    let mockData: AuthForm
+
+    beforeEach(() => {
+      mockData = {
+        email: 'test@example.com',
+        password: 'test',
+        passwordConfirmation: 'test'
+      }
+    })
 
     test('sendEmailが実行される', async () => {
       const { result } = renderHook(() => useResetPasswordForm(resetPasswordFormProps))
-
       await act(() => result.current.onSubmit(mockData))
-
-      expect(mockSendEmail).toHaveBeenCalledWith(mockData.email, { url: process.env.REACT_APP_SEND_EMAIL_URL })
+      expect(mockSendEmail).toHaveBeenCalledWith(mockData.email, {
+        url: process.env.REACT_APP_SEND_EMAIL_URL
+      })
     })
 
     test('reset関数が実行される', async () => {
       const { result } = renderHook(() => useResetPasswordForm(resetPasswordFormProps))
-
       await act(() => result.current.onSubmit(mockData))
-
       expect(mockReset).toHaveBeenCalled()
     })
 
     test('setIsSentが呼ばれる', async () => {
       const { result } = renderHook(() => useResetPasswordForm(resetPasswordFormProps))
-
       await act(() => result.current.onSubmit(mockData))
-
       expect(mockSetIsSent).toHaveBeenCalled()
     })
   })
