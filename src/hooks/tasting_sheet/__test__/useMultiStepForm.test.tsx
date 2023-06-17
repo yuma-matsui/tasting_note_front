@@ -1,6 +1,6 @@
+import React, { ReactElement } from 'react'
 import { renderHook } from '@testing-library/react'
 import { act } from 'react-dom/test-utils'
-import React, { ReactElement } from 'react'
 
 import useMultiStepForm from '../useMultiStepForm'
 
@@ -29,7 +29,6 @@ describe('useMultiStepForm', () => {
   describe('currentStepIndex', () => {
     test('初期値は0になる', () => {
       const { result } = renderHook(() => useMultiStepForm(steps))
-
       expect(result.current.currentStepIndex).toEqual(0)
     })
   })
@@ -55,13 +54,11 @@ describe('useMultiStepForm', () => {
   describe('isFirstStep', () => {
     test('初期値はtrue', () => {
       const { result } = renderHook(() => useMultiStepForm(steps))
-
       expect(result.current.isFirstStep).toBeTruthy()
     })
 
     test('currentStepIndexが0以外の場合falseになる', async () => {
       const { result } = renderHook(() => useMultiStepForm(steps))
-
       await act(() => result.current.onClickPageControl('next', mockRef))
       expect(result.current.isFirstStep).toBeFalsy()
     })
@@ -70,7 +67,6 @@ describe('useMultiStepForm', () => {
   describe('isLastStep', () => {
     test('初期値はfalse', () => {
       const { result } = renderHook(() => useMultiStepForm(steps))
-
       expect(result.current.isLastStep).toBeFalsy()
     })
 
@@ -91,13 +87,11 @@ describe('useMultiStepForm', () => {
   describe('isAppearanceStep', () => {
     test('初期値はfalse', () => {
       const { result } = renderHook(() => useMultiStepForm(steps))
-
       expect(result.current.isAppearanceStep).toBeFalsy()
     })
 
     test('currentStepIndexが1の場合はtrueになる', async () => {
       const { result } = renderHook(() => useMultiStepForm(steps))
-
       await act(() => result.current.onClickPageControl('next', mockRef))
       expect(result.current.isAppearanceStep).toBeTruthy()
     })
@@ -117,7 +111,6 @@ describe('useMultiStepForm', () => {
 
           const { currentStepIndex } = result.current
           await act(() => result.current.onClickPageControl('next', mockRef))
-
           expect(currentStepIndex).toEqual(result.current.currentStepIndex)
         })
       })
@@ -128,7 +121,6 @@ describe('useMultiStepForm', () => {
 
           const { currentStepIndex } = result.current
           await act(() => result.current.onClickPageControl('next', mockRef))
-
           expect(result.current.currentStepIndex).toEqual(currentStepIndex + 1)
         })
       })
@@ -141,7 +133,6 @@ describe('useMultiStepForm', () => {
 
           const { currentStepIndex } = result.current
           await act(() => result.current.onClickPageControl('back', mockRef))
-
           expect(currentStepIndex).toEqual(result.current.currentStepIndex)
         })
       })
@@ -151,8 +142,8 @@ describe('useMultiStepForm', () => {
           const { result } = renderHook(() => useMultiStepForm(steps))
 
           await act(() => result.current.onClickPageControl('next', mockRef))
-          const { currentStepIndex } = result.current
 
+          const { currentStepIndex } = result.current
           await act(() => result.current.onClickPageControl('back', mockRef))
           expect(result.current.currentStepIndex).toEqual(currentStepIndex - 1)
         })
@@ -164,8 +155,6 @@ describe('useMultiStepForm', () => {
     describe('isFirstStepがtrueの場合', () => {
       test('テイスティングをはじめるが返る', () => {
         const { result } = renderHook(() => useMultiStepForm(steps))
-
-        expect(result.current.isFirstStep).toBeTruthy()
         expect(result.current.getButtonText('back')).toEqual('テイスティングをはじめる')
       })
     })
@@ -173,9 +162,7 @@ describe('useMultiStepForm', () => {
     describe('isFirstStepがfalse、引数にbackが渡された場合', () => {
       test('"戻る"が返る', async () => {
         const { result } = renderHook(() => useMultiStepForm(steps))
-
         await act(() => result.current.onClickPageControl('next', mockRef))
-
         expect(result.current.getButtonText('back')).toEqual('戻る')
       })
     })
@@ -186,7 +173,6 @@ describe('useMultiStepForm', () => {
 
         await act(() => result.current.onClickPageControl('next', mockRef))
         expect(result.current.currentStepIndex).toEqual(steps.length - 2)
-
         expect(result.current.getButtonText('next')).toEqual('回答確認')
       })
     })
