@@ -1,8 +1,8 @@
 import { render } from '@testing-library/react'
 
+import SignedInWelcomePage from '../SignedInWelcomePage'
 import { useFetchTastingSheets as mockUseFetchTastingSheets } from '../../../hooks'
 import { ReactNodeChildren } from '../../../types'
-import SignedInWelcomePage from '../SignedInWelcomePage'
 
 jest.mock('../../molecules/HeadMeta', () => ({ children }: ReactNodeChildren) => (
   <>
@@ -20,7 +20,6 @@ jest.mock('../../templates/DefaultLayout', () => ({ children }: ReactNodeChildre
 
 jest.mock('../../atoms/LoadingSpinner', () => () => <p>MockedLoadingSpinner</p>)
 jest.mock('../../atoms/links/StartTastingLink', () => () => <p>MockedStartTastingLink</p>)
-
 jest.mock('../../organisms/SignedInTopPageInstruction', () => () => <p>MockedSignedInTopPageInstruction</p>)
 jest.mock('../../organisms/TastingSheetListsWithSideBar', () => () => <p>MockedTastingSheetListsWithSideBar</p>)
 
@@ -52,28 +51,38 @@ describe('SignedInWelcomePage', () => {
     expect(getByText(`Mocked${componentName}`)).toBeInTheDocument()
   })
 
-  test.each([['HeadMeta'], ['DefaultLayout'], ['ResetPasswordForm']])(
-    'loadingがtrueの場合、LoadingSpinnerが表示されて%sが表示されない',
-    (componentName) => {
+  describe('loadingがtrueの場合', () => {
+    beforeEach(() => {
       useFetchTastingSheetsReturnValue.fetching = true
       ;(mockUseFetchTastingSheets as jest.Mock).mockImplementation(() => useFetchTastingSheetsReturnValue)
+    })
 
-      const { getByText, queryByText } = setUp()
-      expect(getByText('MockedLoadingSpinner')).toBeInTheDocument()
-      expect(queryByText(`Mocked${componentName}`)).not.toBeInTheDocument()
-    }
-  )
-
-  test('fetchingがfalse、hasTastingSheetsがfalseの場合にSignedInTopPageInstructionが表示される', () => {
-    const { getByText } = setUp()
-    expect(getByText('MockedSignedInTopPageInstruction')).toBeInTheDocument()
+    test.each([['HeadMeta'], ['DefaultLayout'], ['ResetPasswordForm']])(
+      'LoadingSpinnerが表示されて%sが表示されない',
+      (componentName) => {
+        const { getByText, queryByText } = setUp()
+        expect(getByText('MockedLoadingSpinner')).toBeInTheDocument()
+        expect(queryByText(`Mocked${componentName}`)).not.toBeInTheDocument()
+      }
+    )
   })
 
-  test('fetchingがfalse、hasTastingSheetsがtrueの場合にTastingSheetListsWithSideBarが表示される', () => {
-    useFetchTastingSheetsReturnValue.hasTastingSheets = true
-    ;(mockUseFetchTastingSheets as jest.Mock).mockImplementation(() => useFetchTastingSheetsReturnValue)
+  describe('fetchingがfalse、hasTastingSheetsがfalseの場合', () => {
+    test('SignedInTopPageInstructionが表示される', () => {
+      const { getByText } = setUp()
+      expect(getByText('MockedSignedInTopPageInstruction')).toBeInTheDocument()
+    })
+  })
 
-    const { getByText } = setUp()
-    expect(getByText('MockedTastingSheetListsWithSideBar')).toBeInTheDocument()
+  describe('fetchingがfalse、hasTastingSheetsがtrueの場合', () => {
+    beforeEach(() => {
+      useFetchTastingSheetsReturnValue.hasTastingSheets = true
+      ;(mockUseFetchTastingSheets as jest.Mock).mockImplementation(() => useFetchTastingSheetsReturnValue)
+    })
+
+    test('TastingSheetListsWithSideBarが表示される', () => {
+      const { getByText } = setUp()
+      expect(getByText('MockedTastingSheetListsWithSideBar')).toBeInTheDocument()
+    })
   })
 })
