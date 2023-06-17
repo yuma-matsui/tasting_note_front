@@ -1,7 +1,7 @@
 import { renderHook } from '@testing-library/react'
 
-import { WineColor } from '../../types'
 import useGetLabelClassName from '../useGetLabelClassName'
+import { WineColor } from '../../types'
 
 const setUp = (color: WineColor, checked: boolean) => {
   const { result } = renderHook(() => useGetLabelClassName(color, checked))

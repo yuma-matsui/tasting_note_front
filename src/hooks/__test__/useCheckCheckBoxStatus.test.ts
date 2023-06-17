@@ -1,7 +1,7 @@
 import { renderHook } from '@testing-library/react'
 
-import { WineColor } from '../../types'
 import useCheckCheckBoxStatus from '../useCheckCheckBoxStatus'
+import { WineColor } from '../../types'
 
 const setUp = (type: string, color: WineColor) => {
   const { result } = renderHook(() => useCheckCheckBoxStatus(type, color))

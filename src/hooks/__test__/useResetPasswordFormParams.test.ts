@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 
 import React from 'react'
-import { renderHook } from '@testing-library/react'
 import Auth from 'react-firebase-hooks/auth'
+import { renderHook } from '@testing-library/react'
 
 import useResetPasswordFormParams from '../useResetPasswordFormParams'
 
