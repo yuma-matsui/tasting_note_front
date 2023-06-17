@@ -1,12 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
+
 import { render, screen } from '@testing-library/react'
 
-import { useAuthContext as mockUseAuthContext, useGetButtonFlexType as mockUseGetButtonFlexType } from '../../../hooks'
-import { FormControllerProps, TastingSheet } from '../../../types'
 import FormController from '../FormController'
+import { useAuthContext as mockUseAuthContext, useGetButtonFlexType as mockUseGetButtonFlexType } from '../../../hooks'
+import { FormControllerProps } from '../../../types'
+import { initialTastingSheet } from '../../../utils'
 
 jest.mock('../../../hooks/tasting_sheet/useBeforeUnload')
-
 jest.mock('../../../hooks/context/useAuthContext')
 jest.mock('../../../hooks/useGetButtonFlexType')
 
@@ -50,6 +51,9 @@ const setUp = ({
 
 describe('FromController', () => {
   let props: FormControllerProps
+  let currentUser: boolean
+  const mockedClassName = 'mock-class'
+
   const initialProps: FormControllerProps = {
     children: <p>MockedChildren</p>,
     onClick: jest.fn(),
@@ -59,13 +63,14 @@ describe('FromController', () => {
     disabled: false,
     backButtonText: 'test-back-button-text',
     nextButtonText: 'test-next-button-text',
-    tastingSheet: {} as TastingSheet
+    tastingSheet: { ...initialTastingSheet }
   }
 
   beforeEach(() => {
+    currentUser = false
     props = { ...initialProps }
     ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({
-      currentUser: false
+      currentUser
     }))
     ;(mockUseGetButtonFlexType as jest.Mock).mockImplementation(() => ({
       getButtonFlexType: jest.fn()
@@ -73,7 +78,6 @@ describe('FromController', () => {
   })
 
   test('useGetButtonFlexTypeで取得したclassNameをもつ要素が表示される', () => {
-    const mockedClassName = 'mock-class'
     ;(mockUseGetButtonFlexType as jest.Mock).mockImplementation(() => ({
       getButtonFlexType: jest.fn(() => mockedClassName)
     }))
@@ -88,37 +92,50 @@ describe('FromController', () => {
   })
 
   describe('FinishTastingButton', () => {
-    test('isLastStepがtrue、currentUserがfalseの場合に表示される', () => {
-      props.isLastStep = true
-      const { getByText } = setUp(props)
-      expect(getByText('MockedFinishTastingButton')).toBeInTheDocument()
+    describe('isLastStepがtrue、currentUserがfalseの場合', () => {
+      test('表示される', () => {
+        props.isLastStep = true
+        const { getByText } = setUp(props)
+        expect(getByText('MockedFinishTastingButton')).toBeInTheDocument()
+      })
     })
 
-    test.each([
+    describe.each([
       [false, false],
       [true, true],
       [false, true]
-    ])('isLastStepが%p、currenUserが%pの場合は表示されない', (isLastStep, currentUser) => {
-      props.isLastStep = isLastStep
-      ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({
-        currentUser
-      }))
-
-      const { queryByText } = setUp(props)
-      expect(queryByText('MockedFinishTastingButton')).not.toBeInTheDocument()
+    ])('isLastStepが%p、currentUserが%pの場合', (isLastStep, isCurrentUser) => {
+      beforeEach(() => {
+        props.isLastStep = isLastStep
+        currentUser = isCurrentUser
+        ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({
+          currentUser
+        }))
+      })
+      test('表示されない', () => {
+        const { queryByText } = setUp(props)
+        expect(queryByText('MockedFinishTastingButton')).not.toBeInTheDocument()
+      })
     })
   })
 
   describe('ConfirmationAndBackButton', () => {
-    test('isAppearanceStepがfalseの場合は表示されない', () => {
-      const { queryByText } = setUp(props)
-      expect(queryByText('MockedConfirmationAndBackButton')).not.toBeInTheDocument()
+    describe('isAppearanceStepがfalseの場合', () => {
+      test('表示されない', () => {
+        const { queryByText } = setUp(props)
+        expect(queryByText('MockedConfirmationAndBackButton')).not.toBeInTheDocument()
+      })
     })
 
-    test('isAppearanceStepがtrueの場合は表示される', () => {
-      props.isAppearanceStep = true
-      const { getByText } = setUp(props)
-      expect(getByText('MockedConfirmationAndBackButton')).toBeInTheDocument()
+    describe('isAppearanceStepがtrueの場合', () => {
+      beforeEach(() => {
+        props.isAppearanceStep = true
+      })
+
+      test('は表示される', () => {
+        const { getByText } = setUp(props)
+        expect(getByText('MockedConfirmationAndBackButton')).toBeInTheDocument()
+      })
     })
   })
 
@@ -128,88 +145,115 @@ describe('FromController', () => {
   })
 
   describe('PostTastingSheetButton', () => {
-    test('isLastStepがtrue、currenUserがtrueの場合は表示される', () => {
-      props.isLastStep = true
-      ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({
-        currentUser: true
-      }))
+    describe('isLastStepがtrue、currenUserがtrueの場合', () => {
+      beforeEach(() => {
+        props.isLastStep = true
+        currentUser = true
+        ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({
+          currentUser
+        }))
+      })
 
-      const { getByText } = setUp(props)
-      expect(getByText('MockedPostTastingSheetButton')).toBeInTheDocument()
+      test('表示される', () => {
+        const { getByText } = setUp(props)
+        expect(getByText('MockedPostTastingSheetButton')).toBeInTheDocument()
+      })
     })
 
-    test.each([
+    describe.each([
       [false, false],
       [false, true],
       [true, false]
-    ])('isLastStepが%p、currentUserが%pの場合は表示されない', (isLastStep, currentUser) => {
-      props.isLastStep = isLastStep
-      ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({
-        currentUser
-      }))
+    ])('isLastStepが%p、currentUserが%pの場合', (isLastStep, isCurrentUser) => {
+      beforeEach(() => {
+        props.isLastStep = isLastStep
+        currentUser = isCurrentUser
+        ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({
+          currentUser
+        }))
+      })
 
-      const { queryByText } = setUp(props)
-      expect(queryByText('MockedPostTastingSheetButton')).not.toBeInTheDocument()
+      test('表示されない', () => {
+        const { queryByText } = setUp(props)
+        expect(queryByText('MockedPostTastingSheetButton')).not.toBeInTheDocument()
+      })
     })
   })
 
   describe('SaveSheetButton', () => {
-    test('isLastStepがtrue、currenUserがfalseの場合は表示される', () => {
-      props.isLastStep = true
-      const { getByText } = setUp(props)
-      expect(getByText('MockedSaveSheetButton')).toBeInTheDocument()
+    describe('isLastStepがtrue、currenUserがfalseの場合', () => {
+      beforeEach(() => {
+        props.isLastStep = true
+      })
+
+      test('表示される', () => {
+        const { getByText } = setUp(props)
+        expect(getByText('MockedSaveSheetButton')).toBeInTheDocument()
+      })
     })
 
-    test.each([
+    describe.each([
       [false, false],
       [false, true],
       [true, true]
-    ])('isLastStepが%p、currentUserが%pの場合は表示されない', (isLastStep, currentUser) => {
-      props.isLastStep = isLastStep
-      ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({ currentUser }))
+    ])('isLastStepが%p、currentUserが%pの場合', (isLastStep, isCurrentUser) => {
+      beforeEach(() => {
+        props.isLastStep = isLastStep
+        currentUser = isCurrentUser
+        ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({ currentUser }))
+      })
 
-      const { queryByText } = setUp(props)
-      expect(queryByText('MockedSaveSheetButton')).not.toBeInTheDocument()
+      test('表示されない', () => {
+        const { queryByText } = setUp(props)
+        expect(queryByText('MockedSaveSheetButton')).not.toBeInTheDocument()
+      })
     })
   })
 
   describe('FormControllerButton', () => {
-    test.each([
+    describe.each([
       [false, false, false, 2],
       [false, false, true, 1],
       [false, true, false, 1],
       [true, false, false, 1],
       [true, true, false, 1]
     ])(
-      'isFirstStepが%p、isAppearanceStepが%p、isLastStepが%pの場合、%d個表示される',
+      'isFirstStepが%p、isAppearanceStepが%p、isLastStepが%pの場合',
       (isFirstStep, isAppearanceStep, isLastStep, result) => {
-        props = {
-          ...props,
-          isFirstStep,
-          isAppearanceStep,
-          isLastStep
-        }
-        const { getAllByText } = setUp(props)
-        expect(getAllByText('MockedFormControllerButton').length).toEqual(result)
+        beforeEach(() => {
+          props = {
+            ...props,
+            isFirstStep,
+            isAppearanceStep,
+            isLastStep
+          }
+        })
+
+        test(`${result}個表示される`, () => {
+          const { getAllByText } = setUp(props)
+          expect(getAllByText('MockedFormControllerButton').length).toEqual(result)
+        })
       }
     )
 
-    test.each([
+    describe.each([
       [false, true, true],
       [true, false, true],
       [true, true, true]
-    ])(
-      'isFirstStepが%p、isAppearanceStepが%p、isLastStepが%pの場合は表示されない',
-      (isFirstStep, isAppearanceStep, isLastStep) => {
+    ])('isFirstStepが%p、isAppearanceStepが%p、isLastStepが%pの場合は', (isFirstStep, isAppearanceStep, isLastStep) => {
+      beforeEach(() => {
         props = {
           ...props,
           isFirstStep,
           isAppearanceStep,
           isLastStep
         }
+      })
+
+      test('表示されない', () => {
         const { queryByText } = setUp(props)
         expect(queryByText('MockedFormControllerButton')).not.toBeInTheDocument()
-      }
-    )
+      })
+    })
   })
 })
