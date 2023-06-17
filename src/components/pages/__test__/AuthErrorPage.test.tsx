@@ -1,10 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 
 import { render } from '@testing-library/react'
-import { AuthError } from 'firebase/auth'
 
-import { ReactNodeChildren } from '../../../types'
 import AuthErrorPage from '../AuthErrorPage'
+import { ReactNodeChildren } from '../../../types'
 
 jest.mock('../../molecules/HeadMeta', () => ({ children }: ReactNodeChildren) => (
   <>
@@ -24,7 +23,7 @@ jest.mock('../../../hooks/context/useToastContext', () => () => ({
 jest.mock('../../molecules/logos/HeaderLogo', () => () => <p>MockedHeaderLogo</p>)
 jest.mock('../../molecules/logos/FooterLogo', () => () => <p>MockedFooterLogo</p>)
 
-const setUp = (error: Error | AuthError) => {
+const setUp = (error: Error) => {
   const utils = render(<AuthErrorPage error={error} />)
 
   return {
@@ -33,9 +32,7 @@ const setUp = (error: Error | AuthError) => {
 }
 
 describe('AuthErrorPage', () => {
-  const error = {
-    message: 'test-message'
-  } as Error
+  const error = new Error('test')
 
   const mockError = jest.spyOn(console, 'error')
   beforeEach(() => {
