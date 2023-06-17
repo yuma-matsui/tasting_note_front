@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react'
 
-import { SearchColorRadiosProps } from '../../../types'
 import SearchColorRadios from '../SearchColorRadios'
+import { SearchColorRadiosProps } from '../../../types'
 
 jest.mock('../../atoms/inputs/SearchColorRadio', () => () => <p>SearchColorRadio</p>)
 

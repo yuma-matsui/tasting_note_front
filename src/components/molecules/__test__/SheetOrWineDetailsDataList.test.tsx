@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react'
 
-import { DetailsDataListProps } from '../../../types'
 import SheetOrWineDetailsDataList from '../SheetOrWineDetailsDataList'
+import { DetailsDataListProps } from '../../../types'
 
 const setUp = ({ title, subTitle, content }: DetailsDataListProps) => {
   const utils = render(<SheetOrWineDetailsDataList title={title} subTitle={subTitle} content={content} />)

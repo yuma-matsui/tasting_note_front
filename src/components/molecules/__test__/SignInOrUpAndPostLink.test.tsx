@@ -1,9 +1,12 @@
+import userEvent from '@testing-library/user-event'
 import { render } from '@testing-library/react'
 import { RouterProvider, createMemoryRouter } from 'react-router-dom'
-import userEvent from '@testing-library/user-event'
 
-import { TastingSheet, WineColor } from '../../../types'
 import SignInOrUpAndPostLinks from '../SignInOrUpAndPostLinks'
+import { TastingSheet, WineColor } from '../../../types'
+import { initialTastingSheet } from '../../../utils'
+
+type TestCases = [WineColor, string][]
 
 const setUp = (tastingSheet: TastingSheet) => {
   const router = createMemoryRouter([
@@ -31,12 +34,13 @@ const setUp = (tastingSheet: TastingSheet) => {
 
 describe('SignInOrUpAndPostLink', () => {
   let tastingSheet: TastingSheet
-  const initialSheet = {
-    color: 'red'
-  } as TastingSheet
+  const testCases: TestCases = [
+    ['red', 'text-theme-red'],
+    ['white', 'text-theme-green']
+  ]
 
   beforeEach(() => {
-    tastingSheet = { ...initialSheet }
+    tastingSheet = { ...initialTastingSheet }
   })
 
   test.each([['サインアップ'], ['ログイン']])('%sが表示される', (result) => {
@@ -52,11 +56,8 @@ describe('SignInOrUpAndPostLink', () => {
     expect(getByRole('link', { name: text })).toHaveAttribute('href', href)
   })
 
-  test.each([
-    ['red', 'text-theme-red'],
-    ['white', 'text-theme-green']
-  ])('tastingSheetのcolorが%sの場合、%sのclassNameを持つ', (color, className) => {
-    tastingSheet.color = color as WineColor
+  test.each(testCases)('tastingSheetのcolorが%sの場合、%sのclassNameを持つ', (color, className) => {
+    tastingSheet.color = color
     const { queryAllByRole } = setUp(tastingSheet)
     const links = queryAllByRole('link')
 

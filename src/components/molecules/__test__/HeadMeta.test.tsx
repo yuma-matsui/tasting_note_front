@@ -2,8 +2,8 @@ import { ReactNode } from 'react'
 import { render } from '@testing-library/react'
 import { HelmetProvider } from 'react-helmet-async'
 
-import { HeadMetaProps } from '../../../types'
 import HeadMeta from '../HeadMeta'
+import { HeadMetaProps } from '../../../types'
 
 jest.mock('react-helmet-async', () => ({
   Helmet: ({ children }: { children: ReactNode }) => (

@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react'
 
-import { StepsBarProps, WineColor } from '../../../types'
 import StepsBar from '../StepsBar'
+import { StepsBarProps, WineColor } from '../../../types'
 
 const setUp = ({ currentStepIndex, color }: StepsBarProps) => {
   const utils = render(<StepsBar currentStepIndex={currentStepIndex} color={color} />)
