@@ -1,7 +1,8 @@
 import { renderHook } from '@testing-library/react'
 
-import { TastingSheetApi, WineColor } from '../../../types'
 import useTastingSheetCardColor from '../useTastingSheetCardColor'
+import { TastingSheetApi, WineColor } from '../../../types'
+import { initialTastingSheet } from '../../../utils'
 
 type TestCases = [WineColor, string, string][]
 
@@ -13,7 +14,12 @@ describe('useTastingSheetCardColor', () => {
   ]
 
   beforeEach(() => {
-    tastingSheet = {} as TastingSheetApi
+    tastingSheet = {
+      ...initialTastingSheet,
+      id: 1,
+      createdAt: 'test',
+      wine: null
+    }
   })
 
   describe.each(testCases)('tastingSheetのcolorが%sの場合', (color, bgColor, textColor) => {
@@ -23,13 +29,11 @@ describe('useTastingSheetCardColor', () => {
 
     test(`bgColorが${bgColor}になる`, () => {
       const { result } = renderHook(() => useTastingSheetCardColor(tastingSheet))
-
       expect(result.current.bgColor).toEqual(bgColor)
     })
 
     test(`textColorが${textColor}になる`, () => {
       const { result } = renderHook(() => useTastingSheetCardColor(tastingSheet))
-
       expect(result.current.textColor).toEqual(textColor)
     })
   })
