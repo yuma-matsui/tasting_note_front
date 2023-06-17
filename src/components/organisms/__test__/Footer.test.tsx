@@ -1,4 +1,5 @@
 import { render } from '@testing-library/react'
+
 import Footer from '../Footer'
 
 jest.mock('../../molecules/logos/FooterLogo', () => () => <p>MockedFooterLogo</p>)

@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react'
 
-import { ReactNodeChildren } from '../../../types'
 import TermOfServicePage from '../TermOfServicePage'
+import { ReactNodeChildren } from '../../../types'
 
 jest.mock('../../molecules/HeadMeta', () => ({ children }: ReactNodeChildren) => (
   <>
