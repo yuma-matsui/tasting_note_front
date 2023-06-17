@@ -1,8 +1,8 @@
 import { render } from '@testing-library/react'
 
+import NewTastingSheetPage from '../NewTastingSheetPage'
 import { useMultiStepForm as mockUseMultiStepForm } from '../../../hooks'
 import { ReactNodeChildren } from '../../../types'
-import NewTastingSheetPage from '../NewTastingSheetPage'
 
 jest.mock('../../molecules/HeadMeta', () => ({ children }: ReactNodeChildren) => (
   <>
@@ -26,13 +26,9 @@ jest.mock('../../templates/FormController', () => ({ children }: ReactNodeChildr
 ))
 
 jest.mock('../../molecules/forms/NewTastingSheetSettingForm', () => () => <p>MockedNewTastingSheetForm</p>)
-
 jest.mock('../../molecules/forms/TastingSheetBaseForm', () => () => <p>MockedTastingSheetBaseForm</p>)
-
 jest.mock('../../organisms/TastingSheetDetailsTab', () => () => <p>MockedTastingSheetDetailsTab</p>)
-
 jest.mock('../../atoms/TastingSheetTimer', () => () => <p>MockedTastingSheetTimer</p>)
-
 jest.mock('../../molecules/StepsBar', () => () => <p>MockedStepsBar</p>)
 
 jest.mock('../../../hooks/tasting_sheet/useMultiStepForm')
@@ -91,40 +87,52 @@ describe('NewTastingSheetPage', () => {
   })
 
   describe('TastingSheetTimer', () => {
-    test('isFirstStepがfalseの場合は表示される', () => {
-      const { getByText } = setUp()
-      expect(getByText('MockedTastingSheetTimer')).toBeInTheDocument()
+    describe('isFirstStepがfalseの場合', () => {
+      test('表示される', () => {
+        const { getByText } = setUp()
+        expect(getByText('MockedTastingSheetTimer')).toBeInTheDocument()
+      })
     })
 
-    test('isFirstStepがtrueの場合は表示されない', () => {
-      useMultiStepFormReturnValue.isFirstStep = true
-      ;(mockUseMultiStepForm as jest.Mock).mockImplementation(() => useMultiStepFormReturnValue)
+    describe('isFirstStepがtrueの場合', () => {
+      beforeEach(() => {
+        useMultiStepFormReturnValue.isFirstStep = true
+        ;(mockUseMultiStepForm as jest.Mock).mockImplementation(() => useMultiStepFormReturnValue)
+      })
 
-      const { queryByText } = setUp()
-      expect(queryByText('MockedTastingSheetTimer')).not.toBeInTheDocument()
+      test('表示されない', () => {
+        const { queryByText } = setUp()
+        expect(queryByText('MockedTastingSheetTimer')).not.toBeInTheDocument()
+      })
     })
   })
 
   describe('StepsBar', () => {
-    test('isFirstStepがfalse、isLastStepがfalseの場合のみ表示される', () => {
-      const { getByText } = setUp()
-      expect(getByText('MockedStepsBar')).toBeInTheDocument()
+    describe('isFirstStepがfalse、isLastStepがfalseの場合', () => {
+      test('表示される', () => {
+        const { getByText } = setUp()
+        expect(getByText('MockedStepsBar')).toBeInTheDocument()
+      })
     })
 
-    test.each([
+    describe.each([
       [false, true],
       [true, false],
       [true, true]
-    ])('isFirstStepが%p、isLastStepが%pの場合は表示されない', (isFirstStep, isLastStep) => {
-      useMultiStepFormReturnValue = {
-        ...initialStepFormReturnValue,
-        isFirstStep,
-        isLastStep
-      }
-      ;(mockUseMultiStepForm as jest.Mock).mockImplementation(() => useMultiStepFormReturnValue)
+    ])('isFirstStepが%p、isLastStepが%pの場合', (isFirstStep, isLastStep) => {
+      beforeEach(() => {
+        useMultiStepFormReturnValue = {
+          ...initialStepFormReturnValue,
+          isFirstStep,
+          isLastStep
+        }
+        ;(mockUseMultiStepForm as jest.Mock).mockImplementation(() => useMultiStepFormReturnValue)
+      })
 
-      const { queryByText } = setUp()
-      expect(queryByText('MockedStepsBar')).not.toBeInTheDocument()
+      test('表示されない', () => {
+        const { queryByText } = setUp()
+        expect(queryByText('MockedStepsBar')).not.toBeInTheDocument()
+      })
     })
   })
 })
