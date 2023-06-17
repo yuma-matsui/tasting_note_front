@@ -14,6 +14,7 @@ describe('useTastingSheetSearchForm', () => {
   let mockInputEvent: ReactInputEvent
   let mockSelectEvent: ReactSelectEvent
   let mockFormEvent: ReactFormEvent
+  const mockPreventDefault = jest.fn()
   const mockSetFilter = jest.fn()
 
   beforeEach(() => {
@@ -33,8 +34,6 @@ describe('useTastingSheetSearchForm', () => {
   })
 
   describe('onSubmit', () => {
-    const mockPreventDefault = jest.fn()
-
     test('preventDefaultが実行される', async () => {
       mockFormEvent.preventDefault = mockPreventDefault
       const { result } = renderHook(() => useTastingSheetSearchForm(mockSetFilter))
@@ -47,7 +46,6 @@ describe('useTastingSheetSearchForm', () => {
   describe('color', () => {
     test('初期値は"指定なし"', () => {
       const { result } = renderHook(() => useTastingSheetSearchForm(mockSetFilter))
-
       expect(result.current.color).toEqual('指定なし')
     })
   })
@@ -55,7 +53,6 @@ describe('useTastingSheetSearchForm', () => {
   describe('country', () => {
     test('初期値は"指定なし"', () => {
       const { result } = renderHook(() => useTastingSheetSearchForm(mockSetFilter))
-
       expect(result.current.country).toEqual('指定なし')
     })
   })
@@ -63,7 +60,6 @@ describe('useTastingSheetSearchForm', () => {
   describe('grape', () => {
     test('初期値は"指定なし"', () => {
       const { result } = renderHook(() => useTastingSheetSearchForm(mockSetFilter))
-
       expect(result.current.grape).toEqual('指定なし')
     })
   })
@@ -83,9 +79,6 @@ describe('useTastingSheetSearchForm', () => {
     test('colorが引数eのtarget.valueの値に変更される', async () => {
       mockInputEvent.target.value = 'test'
       const { result } = renderHook(() => useTastingSheetSearchForm(mockSetFilter))
-
-      expect(result.current.color).toEqual('指定なし')
-
       await act(() => result.current.onChangeColor(mockInputEvent))
       expect(result.current.color).toEqual('test')
     })
@@ -97,7 +90,6 @@ describe('useTastingSheetSearchForm', () => {
 
       test('setFilterが実行される', async () => {
         const { result } = renderHook(() => useTastingSheetSearchForm(mockSetFilter))
-
         await act(() => result.current.onChangeColor(mockInputEvent))
         expect(mockSetFilter).toHaveBeenCalledWith(expect.any(Function))
       })
@@ -108,8 +100,6 @@ describe('useTastingSheetSearchForm', () => {
     test('countryが引数eのtarget.valueの値に変更される', async () => {
       mockSelectEvent.target.value = 'test'
       const { result } = renderHook(() => useTastingSheetSearchForm(mockSetFilter))
-
-      expect(result.current.country).toEqual('指定なし')
 
       await act(() => result.current.onChangeCountry(mockSelectEvent))
       expect(result.current.country).toEqual('test')
@@ -122,7 +112,6 @@ describe('useTastingSheetSearchForm', () => {
 
       test('setFilterが実行される', async () => {
         const { result } = renderHook(() => useTastingSheetSearchForm(mockSetFilter))
-
         await act(() => result.current.onChangeCountry(mockSelectEvent))
         expect(mockSetFilter).toHaveBeenCalledWith(expect.any(Function))
       })
@@ -133,8 +122,6 @@ describe('useTastingSheetSearchForm', () => {
     test('grapeが引数eのtarget.valueの値に変更される', async () => {
       mockSelectEvent.target.value = 'test'
       const { result } = renderHook(() => useTastingSheetSearchForm(mockSetFilter))
-
-      expect(result.current.grape).toEqual('指定なし')
 
       await act(() => result.current.onChangeGrape(mockSelectEvent))
       expect(result.current.grape).toEqual('test')
@@ -147,7 +134,6 @@ describe('useTastingSheetSearchForm', () => {
 
       test('setFilterが実行される', async () => {
         const { result } = renderHook(() => useTastingSheetSearchForm(mockSetFilter))
-
         await act(() => result.current.onChangeGrape(mockSelectEvent))
         expect(mockSetFilter).toHaveBeenCalledWith(expect.any(Function))
       })
@@ -157,7 +143,6 @@ describe('useTastingSheetSearchForm', () => {
   describe('countries', () => {
     test('COUNTRIESを返す', () => {
       const { result } = renderHook(() => useTastingSheetSearchForm(mockSetFilter))
-
       expect(result.current.countries).toEqual(COUNTRIES)
     })
   })
@@ -180,7 +165,6 @@ describe('useTastingSheetSearchForm', () => {
   describe('onClickAllClear', () => {
     test('setFilterが呼ばれる', async () => {
       const { result } = renderHook(() => useTastingSheetSearchForm(mockSetFilter))
-
       await act(() => result.current.onClickAllClear())
       expect(mockSetFilter).toHaveBeenCalledWith(initialFilter)
     })
