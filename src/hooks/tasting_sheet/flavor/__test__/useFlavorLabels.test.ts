@@ -1,7 +1,7 @@
 import { renderHook } from '@testing-library/react'
 
-import { WineColor } from '../../../../types'
 import useFlavorLabels from '../useFlavorLabels'
+import { WineColor } from '../../../../types'
 
 const setUp = (color: WineColor) => {
   const { result } = renderHook(() => useFlavorLabels(color))

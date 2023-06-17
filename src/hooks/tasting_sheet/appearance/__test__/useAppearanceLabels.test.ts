@@ -1,4 +1,5 @@
 import { renderHook } from '@testing-library/react'
+
 import { WineColor } from '../../../../types'
 import useAppearanceLabels from '../useAppearanceLabels'
 

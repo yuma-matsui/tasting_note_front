@@ -1,6 +1,7 @@
 import { renderHook } from '@testing-library/react'
-import { WineColor } from '../../../../types'
+
 import useConclusionLabels from '../useConclusionLabels'
+import { WineColor } from '../../../../types'
 
 const setUp = (color: WineColor, type?: 'select' | undefined) => {
   const { result } = renderHook(() => useConclusionLabels(color, type))
