@@ -1,26 +1,37 @@
 import React from 'react'
 import { renderHook } from '@testing-library/react'
 
-import { TastingSheetApi } from '../../../types'
 import useFilteredTastingSheets from '../useFilteredTastingSheets'
+import { TastingSheetApi } from '../../../types'
+import { initialTastingSheet } from '../../../utils'
 
 describe('useFilteredTastingSheets', () => {
-  const tastingSheets = [
+  const tastingSheets: TastingSheetApi[] = [
     {
+      ...initialTastingSheet,
       color: 'red',
       conclusion: {
+        ...initialTastingSheet.conclusion,
         grape: 'カベルネ・ソーヴィニヨン',
         country: 'フランス'
-      }
+      },
+      id: 1,
+      createdAt: 'test',
+      wine: null
     },
     {
+      ...initialTastingSheet,
       color: 'white',
       conclusion: {
+        ...initialTastingSheet.conclusion,
         grape: 'シャルドネ',
         country: 'イタリア'
-      }
+      },
+      id: 2,
+      createdAt: 'test',
+      wine: null
     }
-  ] as TastingSheetApi[]
+  ]
 
   const defaultFilter = {
     color: '指定なし',
@@ -38,7 +49,6 @@ describe('useFilteredTastingSheets', () => {
       jest.spyOn(React, 'useState').mockReturnValue(['test', mockSetFilter])
 
       const { result } = renderHook(() => useFilteredTastingSheets(tastingSheets))
-
       expect(result.current.setFilter).toEqual(mockSetFilter)
     })
   })
@@ -49,7 +59,6 @@ describe('useFilteredTastingSheets', () => {
         jest.spyOn(React, 'useState').mockReturnValue([defaultFilter, jest.fn()])
 
         const { result } = renderHook(() => useFilteredTastingSheets(tastingSheets))
-
         expect(result.current.filteredTastingSheets).toMatchObject(tastingSheets)
       })
     })
@@ -59,8 +68,6 @@ describe('useFilteredTastingSheets', () => {
         jest.spyOn(React, 'useState').mockReturnValue([{ ...defaultFilter, color: 'red' }, jest.fn()])
 
         const { result } = renderHook(() => useFilteredTastingSheets(tastingSheets))
-
-        expect(tastingSheets.length).toEqual(2)
         expect(result.current.filteredTastingSheets.length).toEqual(1)
       })
     })
@@ -70,8 +77,6 @@ describe('useFilteredTastingSheets', () => {
         jest.spyOn(React, 'useState').mockReturnValue([{ ...defaultFilter, country: 'イタリア' }, jest.fn()])
 
         const { result } = renderHook(() => useFilteredTastingSheets(tastingSheets))
-
-        expect(tastingSheets.length).toEqual(2)
         expect(result.current.filteredTastingSheets.length).toEqual(1)
       })
     })
@@ -81,8 +86,6 @@ describe('useFilteredTastingSheets', () => {
         jest.spyOn(React, 'useState').mockReturnValue([{ ...defaultFilter, grape: 'シャルドネ' }, jest.fn()])
 
         const { result } = renderHook(() => useFilteredTastingSheets(tastingSheets))
-
-        expect(tastingSheets.length).toEqual(2)
         expect(result.current.filteredTastingSheets.length).toEqual(1)
       })
     })
