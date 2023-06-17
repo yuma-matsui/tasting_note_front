@@ -1,7 +1,8 @@
 import { render } from '@testing-library/react'
 
-import { ReactNodeChildren, WineApi } from '../../../types'
 import EditWinePage from '../EditWinePage'
+import { ReactNodeChildren, WineApi } from '../../../types'
+import { wineTestData } from '../../../utils'
 
 jest.mock('../../molecules/HeadMeta', () => ({ children }: ReactNodeChildren) => (
   <>
@@ -28,7 +29,7 @@ const setUp = (wine: WineApi) => {
 }
 
 describe('EditWinePage', () => {
-  const wine = {} as WineApi
+  const wine = { ...wineTestData }
 
   test.each([['HeadMeta'], ['DefaultLayout'], ['WineForm']])('%sが表示される', (componentName) => {
     const { getByText } = setUp(wine)
