@@ -11,6 +11,7 @@ import useWineForm from '../useWineForm'
 import mockUseAuthContext from '../context/useAuthContext'
 import { WineApi, WineFormState } from '../../types'
 import { ALCOHOL_PERCENTAGES, COUNTRIES, GRAPES_RED, GRAPES_WHITE, VINTAGES } from '../../assets'
+import { wineTestData } from '../../utils'
 
 jest.mock('react', () => ({
   ...jest.requireActual('react'),
@@ -75,12 +76,12 @@ describe('useWineForm', () => {
   const mockRegister = jest.fn()
   const mockHandleSubmit = jest.fn()
   const mockSetValue = jest.fn()
-  let mockIsValid = false
-  let mockIsSubmitting = false
+  let mockIsValid: boolean
+  let mockIsSubmitting: boolean
   const mockErrors = {}
 
   beforeEach(() => {
-    wine = {} as WineApi
+    wine = wineTestData
     mockImageFile = null
     mockIsValid = false
     mockIsSubmitting = false
@@ -154,9 +155,6 @@ describe('useWineForm', () => {
     })
 
     describe('wineが存在する場合', () => {
-      beforeEach(() => {
-        wine.id = 1
-      })
       test('updateWineが呼ばれる', async () => {
         const { result } = renderHook(() => useWineForm(wine))
         await act(() => result.current.onSubmit(mockData))
@@ -205,78 +203,101 @@ describe('useWineForm', () => {
   })
 
   describe('tastingSheetId', () => {
-    test('wineが存在しない場合はuseLocationで取得したstateのidが返る', () => {
-      const { tastingSheetId } = setUp()
-      expect(tastingSheetId).toEqual(locationState.id)
+    describe('wineが存在しない場合', () => {
+      test('useLocationで取得したstateのidが返る', () => {
+        const { tastingSheetId } = setUp()
+        expect(tastingSheetId).toEqual(locationState.id)
+      })
     })
 
-    test('wineが存在する場合はwineのtastingSheetIdプロパティの値が返る', () => {
-      wine.tastingSheetId = 5
-      const { tastingSheetId } = setUp(wine)
-      expect(tastingSheetId).toEqual(wine.tastingSheetId)
+    describe('wineが存在する場合', () => {
+      test('wineのtastingSheetIdプロパティの値が返る', () => {
+        const { tastingSheetId } = setUp(wine)
+        expect(tastingSheetId).toEqual(wine.tastingSheetId)
+      })
     })
   })
 
   describe('selectBoxOptions', () => {
-    test('vintagesプロパティはVINTAGESコレクション', () => {
-      const {
-        selectBoxOptions: { vintages }
-      } = setUp()
-      expect(vintages).toEqual(VINTAGES)
+    describe('vintages', () => {
+      test('VINTAGESを返す', () => {
+        const {
+          selectBoxOptions: { vintages }
+        } = setUp()
+        expect(vintages).toEqual(VINTAGES)
+      })
     })
 
-    test('countriesプロパティはCOUNTRIESコレクション', () => {
-      const {
-        selectBoxOptions: { countries }
-      } = setUp()
-      expect(countries).toEqual(COUNTRIES)
+    describe('countries', () => {
+      test('COUNTRIESを返す', () => {
+        const {
+          selectBoxOptions: { countries }
+        } = setUp()
+        expect(countries).toEqual(COUNTRIES)
+      })
     })
 
-    test('alcoholPercentagesプロパティはALCOHOL_PERCENTAGESコレクション', () => {
-      const {
-        selectBoxOptions: { alcoholPercentages }
-      } = setUp()
-      expect(alcoholPercentages).toEqual(ALCOHOL_PERCENTAGES)
+    describe('alcoholPercentages', () => {
+      test('ALCOHOL_PERCENTAGESを返す', () => {
+        const {
+          selectBoxOptions: { alcoholPercentages }
+        } = setUp()
+        expect(alcoholPercentages).toEqual(ALCOHOL_PERCENTAGES)
+      })
     })
 
     describe('grapes', () => {
       describe('wineが存在する場合', () => {
-        test('wineのgrapeプロパティが黒ぶどうの場合、GRAPES_REDを返す', () => {
-          wine.grape = 'アリアニコ'
-          const {
-            selectBoxOptions: { grapes }
-          } = setUp(wine)
-          expect(grapes).toEqual(GRAPES_RED)
+        describe('wineのgrapeプロパティが黒ぶどうの場合', () => {
+          beforeEach(() => {
+            wine.grape = 'アリアニコ'
+          })
+
+          test('GRAPES_REDを返す', () => {
+            const {
+              selectBoxOptions: { grapes }
+            } = setUp(wine)
+            expect(grapes).toEqual(GRAPES_RED)
+          })
         })
 
-        test('wineのgrapeプロパティが白ぶどうの場合、GRAPES_WHITEを返す', () => {
-          wine.grape = '甲州'
-          const {
-            selectBoxOptions: { grapes }
-          } = setUp(wine)
-          expect(grapes).toEqual(GRAPES_WHITE)
+        describe('wineのgrapeプロパティが白ぶどうの場合', () => {
+          beforeEach(() => {
+            wine.grape = '甲州'
+          })
+
+          test('GRAPES_WHITEを返す', () => {
+            const {
+              selectBoxOptions: { grapes }
+            } = setUp(wine)
+            expect(grapes).toEqual(GRAPES_WHITE)
+          })
         })
       })
 
       describe('wineが存在しない場合', () => {
-        test('useLocationで取得したcolorがredの場合、GRAPES_REDを返す', () => {
-          const {
-            selectBoxOptions: { grapes }
-          } = setUp()
-          expect(grapes).toEqual(GRAPES_RED)
+        describe('useLocationで取得したcolorがredの場合', () => {
+          test('GRAPES_REDを返す', () => {
+            const {
+              selectBoxOptions: { grapes }
+            } = setUp()
+            expect(grapes).toEqual(GRAPES_RED)
+          })
         })
 
-        test('useLocationで取得したcolorがwhiteの場合、GRAPES_REDを返す', () => {
-          locationState.color = 'white'
-          jest.spyOn(Router, 'useLocation').mockReturnValue({
-            ...jest.requireActual('react-router-dom'),
-            state: locationState
-          })
+        describe('useLocationで取得したcolorがwhiteの場合', () => {
+          test('GRAPES_WHITEを返す', () => {
+            locationState.color = 'white'
+            jest.spyOn(Router, 'useLocation').mockReturnValue({
+              ...jest.requireActual('react-router-dom'),
+              state: locationState
+            })
 
-          const {
-            selectBoxOptions: { grapes }
-          } = setUp()
-          expect(grapes).toEqual(GRAPES_WHITE)
+            const {
+              selectBoxOptions: { grapes }
+            } = setUp()
+            expect(grapes).toEqual(GRAPES_WHITE)
+          })
         })
       })
     })
