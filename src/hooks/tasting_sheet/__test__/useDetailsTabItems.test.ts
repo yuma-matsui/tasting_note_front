@@ -4,8 +4,8 @@ import React from 'react'
 import { renderHook } from '@testing-library/react'
 import { act } from 'react-dom/test-utils'
 
-import { TastingSheet, TastingSheetAllName, TastingSheetFormType } from '../../../types'
 import useDetailsTabItems from '../useDetailsTabItems'
+import { TastingSheet, TastingSheetAllName, TastingSheetFormType } from '../../../types'
 import {
   initialTastingSheet,
   formResultFormat as mockFormResultFormat,
@@ -27,7 +27,7 @@ describe('useDetailsTabItems', () => {
   let tastingSheet: TastingSheet
 
   beforeEach(() => {
-    tastingSheet = initialTastingSheet
+    tastingSheet = { ...initialTastingSheet }
     jest.restoreAllMocks()
   })
 
@@ -41,10 +41,10 @@ describe('useDetailsTabItems', () => {
         ['setting', false],
         ['confirmation', false]
       ]
-      test.each(testCases)('引数が%sの場合、%pを返す', (type, value) => {
+      test.each(testCases)('引数が%sの場合、%pを返す', (type, isShowResult) => {
         const { result } = renderHook(() => useDetailsTabItems(tastingSheet))
 
-        expect(result.current.isShow(type)).toEqual(value)
+        expect(result.current.isShow(type)).toEqual(isShowResult)
       })
     })
 
@@ -57,11 +57,11 @@ describe('useDetailsTabItems', () => {
         ['setting', false],
         ['confirmation', false]
       ]
-      test.each(testCases)('引数が%sの場合、%pを返す', async (type, value) => {
+      test.each(testCases)('引数が%sの場合、%pを返す', async (type, isShowResult) => {
         const { result } = renderHook(() => useDetailsTabItems(tastingSheet))
 
         await act(() => result.current.onClickTabChange('flavor'))
-        expect(result.current.isShow(type)).toEqual(value)
+        expect(result.current.isShow(type)).toEqual(isShowResult)
       })
     })
 
@@ -74,11 +74,11 @@ describe('useDetailsTabItems', () => {
         ['setting', false],
         ['confirmation', false]
       ]
-      test.each(testCases)('引数が%sの場合、%pを返す', async (type, value) => {
+      test.each(testCases)('引数が%sの場合、%pを返す', async (type, isShowResult) => {
         const { result } = renderHook(() => useDetailsTabItems(tastingSheet))
 
         await act(() => result.current.onClickTabChange('taste'))
-        expect(result.current.isShow(type)).toEqual(value)
+        expect(result.current.isShow(type)).toEqual(isShowResult)
       })
     })
 
@@ -91,11 +91,11 @@ describe('useDetailsTabItems', () => {
         ['setting', false],
         ['confirmation', false]
       ]
-      test.each(testCases)('引数が%sの場合、%pを返す', async (type, value) => {
+      test.each(testCases)('引数が%sの場合、%pを返す', async (type, isShowResult) => {
         const { result } = renderHook(() => useDetailsTabItems(tastingSheet))
 
         await act(() => result.current.onClickTabChange('conclusion'))
-        expect(result.current.isShow(type)).toEqual(value)
+        expect(result.current.isShow(type)).toEqual(isShowResult)
       })
     })
   })
@@ -103,13 +103,11 @@ describe('useDetailsTabItems', () => {
   describe('onClickTabChange', () => {
     test('実行時にsetSelectedTabが実行される', async () => {
       const mockSetSelectedTab = jest.fn()
-      const mockUseState = jest.spyOn(React, 'useState').mockReturnValue(['appearance', mockSetSelectedTab])
+      jest.spyOn(React, 'useState').mockReturnValue(['appearance', mockSetSelectedTab])
 
       const { result } = renderHook(() => useDetailsTabItems(tastingSheet))
       await act(() => result.current.onClickTabChange('appearance'))
       expect(mockSetSelectedTab).toHaveBeenCalled()
-
-      mockUseState.mockReset()
     })
   })
 
