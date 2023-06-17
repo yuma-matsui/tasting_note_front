@@ -1,8 +1,9 @@
 import { renderHook } from '@testing-library/react'
 
 import mockDefaultImage from '../../../assets/images/wineGlass.jpg'
-import { TastingSheetApi, WineApi } from '../../../types'
 import useHasWineAndImage from '../useHasWineAndImage'
+import { TastingSheetApi } from '../../../types'
+import { initialTastingSheet, wineTestData } from '../../../utils'
 
 jest.mock('../../../assets/images/wineGlass.jpg')
 
@@ -10,15 +11,16 @@ describe('useHasWineAndImage', () => {
   let tastingSheet: TastingSheetApi
 
   beforeEach(() => {
-    tastingSheet = {} as TastingSheetApi
+    tastingSheet = {
+      ...initialTastingSheet,
+      id: 1,
+      createdAt: '',
+      wine: null
+    }
   })
 
   describe('hasWine', () => {
     describe('tastingSheetがwineを持たない場合', () => {
-      beforeEach(() => {
-        tastingSheet.wine = null
-      })
-
       test('falseを返す', () => {
         const { result } = renderHook(() => useHasWineAndImage(tastingSheet))
         expect(result.current.hasWine).toBeFalsy()
@@ -27,7 +29,7 @@ describe('useHasWineAndImage', () => {
 
     describe('tastingSheetがwineを持つ場合', () => {
       beforeEach(() => {
-        tastingSheet.wine = {} as WineApi
+        tastingSheet.wine = { ...wineTestData }
       })
 
       test('trueを返す', () => {
@@ -41,27 +43,25 @@ describe('useHasWineAndImage', () => {
     describe('tastingSheetがwine.imageを持つ場合', () => {
       beforeEach(() => {
         tastingSheet.wine = {
+          ...wineTestData,
           image: 'test'
-        } as WineApi
+        }
       })
 
       test('trueを返す', () => {
         const { result } = renderHook(() => useHasWineAndImage(tastingSheet))
-
         expect(result.current.hasWineImage).toBeTruthy()
       })
     })
 
     describe('tastingSheetがwine.imageを持たない場合', () => {
-      beforeEach(() => {
-        tastingSheet.wine = {
-          image: null
-        } as WineApi
-      })
-
       test('falseを返す', () => {
-        const { result } = renderHook(() => useHasWineAndImage(tastingSheet))
+        tastingSheet.wine = {
+          ...wineTestData,
+          image: null
+        }
 
+        const { result } = renderHook(() => useHasWineAndImage(tastingSheet))
         expect(result.current.hasWineImage).toBeFalsy()
       })
     })
@@ -72,8 +72,9 @@ describe('useHasWineAndImage', () => {
       const mockImage = 'test'
       beforeEach(() => {
         tastingSheet.wine = {
+          ...wineTestData,
           image: mockImage
-        } as WineApi
+        }
       })
 
       test('文字列、https://images.tasting-note.com/{wine.image}を返す', () => {
@@ -85,8 +86,9 @@ describe('useHasWineAndImage', () => {
     describe('tastingSheetがwine.imageを持たない場合', () => {
       beforeEach(() => {
         tastingSheet.wine = {
+          ...wineTestData,
           image: null
-        } as WineApi
+        }
       })
 
       test('defaultImageを返す', () => {
