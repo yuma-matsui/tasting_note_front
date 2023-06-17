@@ -7,7 +7,6 @@ import { act } from 'react-dom/test-utils'
 
 import useTastingSheetForm from '../useTastingSheetForm'
 import { initialTastingSheet } from '../../../utils'
-import { TastingSheet, TastingSheetFormState } from '../../../types'
 
 jest.mock('react-hook-form', () => ({
   ...jest.requireActual('react-hook-form'),
@@ -24,6 +23,9 @@ describe('useTastingSheetForm', () => {
   const mockIsValid = false
   const mockIsSubmitting = false
   const mockErrors = {}
+  const mockData = {
+    tastingSheet: { ...initialTastingSheet }
+  }
 
   beforeEach(() => {
     jest.spyOn(Form, 'useForm').mockReturnValue({
@@ -113,10 +115,7 @@ describe('useTastingSheetForm', () => {
     })
 
     test('setTastingSheetが呼ばれる', async () => {
-      const mockData = { tastingSheet: {} } as TastingSheetFormState
-
       const { result } = renderHook(() => useTastingSheetForm())
-
       await act(() => result.current.onSubmit(mockData))
       expect(mockSetTastingSheet).toHaveBeenCalledWith(expect.any(Function))
     })
@@ -125,24 +124,21 @@ describe('useTastingSheetForm', () => {
   describe('watchedSheet', () => {
     test('useFormで取得したwatchが実行される', () => {
       const { result } = renderHook(() => useTastingSheetForm())
-
       expect(mockWatch).toHaveBeenCalled()
       expect(result.current.watchedSheet).toMatchObject(mockWatchedTastingSheet)
     })
   })
 
-  test('実行時にuseFormで取得したsetValueが呼ばれる', () => {
-    renderHook(() => useTastingSheetForm())
-    expect(mockSetValue).toHaveBeenCalledWith('tastingSheet', initialTastingSheet)
-  })
+  describe('useEffect', () => {
+    test('実行時にsetValueが呼ばれる', () => {
+      renderHook(() => useTastingSheetForm())
+      expect(mockSetValue).toHaveBeenCalledWith('tastingSheet', initialTastingSheet)
+    })
 
-  test('tastingSheetの値が変わった時にuseFormで取得したsetValueが実行される', async () => {
-    const mockData: TastingSheetFormState = {
-      tastingSheet: {} as TastingSheet
-    }
-
-    const { result } = renderHook(() => useTastingSheetForm())
-    await act(() => result.current.onSubmit(mockData))
-    expect(mockSetValue).toHaveBeenCalledTimes(2)
+    test('tastingSheetの値が変わった場合、setValueが実行される', async () => {
+      const { result } = renderHook(() => useTastingSheetForm())
+      await act(() => result.current.onSubmit(mockData))
+      expect(mockSetValue).toHaveBeenCalledTimes(2)
+    })
   })
 })
