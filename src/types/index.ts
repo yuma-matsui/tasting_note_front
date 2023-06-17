@@ -72,6 +72,9 @@ export type { default as TastingSheetListsProps } from './props/tastingSheetList
 export type { default as TastingSheetSearchSideBarProps } from './props/tastingSheetSearchSideBarProps'
 export type { default as WineDetailsProps } from './props/wineDetailsProps'
 
+export type { default as UseCheckButtonStatusProps } from './hooks/useCheckButtonStatusProps'
+export type { default as UseGetAuthFormParamsProps } from './hooks/useGetAuthFormParamsProps'
+
 export type { default as TastingSheetApi } from './api/tastingSheetApi'
 export type { default as WineApi } from './api/wineApi'
 
