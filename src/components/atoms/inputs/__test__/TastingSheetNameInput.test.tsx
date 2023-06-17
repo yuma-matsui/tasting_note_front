@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react'
 
-import { FormRegisterAndErrors } from '../../../../types'
 import TastingSheetNameInput from '../TastingSheetNameInput'
+import { FormRegisterAndErrors } from '../../../../types'
 
 const setUp = ({ register, errors }: FormRegisterAndErrors) => {
   const utils = render(<TastingSheetNameInput register={register} errors={errors} />)
