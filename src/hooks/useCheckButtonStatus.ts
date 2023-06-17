@@ -1,6 +1,6 @@
-import { WineColor } from '../types'
+import { UseCheckButtonStatusProps } from '../types'
 
-const useCheckButtonStatus = ({ value, color }: { value?: string | undefined; color?: WineColor }) => ({
+const useCheckButtonStatus = ({ value, color }: UseCheckButtonStatusProps) => ({
   isBack: value === '戻る',
   isNext: value === '次へ',
   isStart: value === 'テイスティングをはじめる',

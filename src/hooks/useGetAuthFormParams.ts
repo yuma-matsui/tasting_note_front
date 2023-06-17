@@ -2,9 +2,9 @@ import { getAuth } from 'firebase/auth'
 import { useCreateUserWithEmailAndPassword, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth'
 import { useLocation } from 'react-router-dom'
 
-import { TastingSheet } from '../types'
+import { TastingSheet, UseGetAuthFormParamsProps } from '../types'
 
-const useGetAuthFormParams = ({ type }: { type: 'signIn' | 'signUp' }) => {
+const useGetAuthFormParams = ({ type }: UseGetAuthFormParamsProps) => {
   const location = useLocation()
   const tastingSheet = location.state as TastingSheet
 
