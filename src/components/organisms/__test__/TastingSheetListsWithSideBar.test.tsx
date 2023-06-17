@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react'
-import { ReactNode } from 'react'
 
-import { TastingSheetApi } from '../../../types'
 import TastingSheetListsWithSideBar from '../TastingSheetListsWithSideBar'
+import { ReactNodeChildren, TastingSheetApi } from '../../../types'
+import { initialTastingSheet } from '../../../utils'
 
-jest.mock('../TastingSheetSearchSideBar', () => ({ children }: { children: ReactNode }) => (
+jest.mock('../TastingSheetSearchSideBar', () => ({ children }: ReactNodeChildren) => (
   <>
     <p>MockedTastingSheetSearchSideBar</p>
     {children}
@@ -32,7 +32,14 @@ const setUp = (tastingSheets: TastingSheetApi[]) => {
 }
 
 describe('TastingSheetListsWithSideBar', () => {
-  const tastingSheets = [] as TastingSheetApi[]
+  const tastingSheets = [
+    {
+      ...initialTastingSheet,
+      id: 1,
+      createdAt: 'test',
+      wine: null
+    }
+  ]
 
   test.each([['TastingSheetSearchSideBar'], ['TastingSheetLists']])('%sが表示される', (componentName) => {
     const { getByText } = setUp(tastingSheets)
