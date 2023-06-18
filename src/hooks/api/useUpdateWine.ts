@@ -1,11 +1,11 @@
 import { useNavigate } from 'react-router-dom'
 import { useErrorBoundary } from 'react-error-boundary'
 
-import { Wine, WineApi } from '../../types'
 import useAuthContext from '../context/useAuthContext'
 import useToastContext from '../context/useToastContext'
 import useAxios from '../useAxios'
 import useRequestingContext from '../context/useRequestingContext'
+import { Wine, WineApi } from '../../types'
 
 const useUpdateWine = () => {
   const navigate = useNavigate()
