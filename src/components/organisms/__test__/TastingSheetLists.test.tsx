@@ -84,7 +84,7 @@ describe('TastingSheetLists', () => {
   describe('useTastingSheetsPagination', () => {
     describe('isMoreThanFiveSheets', () => {
       describe('falseの場合', () => {
-        test('falseの場合はPaginationButtonsが表示されない', () => {
+        test('PaginationButtonsが表示されない', () => {
           const { queryByText } = setUp(props)
           expect(queryByText('MockedPaginationButtons')).not.toBeInTheDocument()
         })
@@ -96,7 +96,7 @@ describe('TastingSheetLists', () => {
           ;(mockUseTastingSheetsPagination as jest.Mock).mockImplementation(() => usePaginationReturnValue)
         })
 
-        test('trueの場合はPaginationButtonsが表示される', () => {
+        test('PaginationButtonsが表示される', () => {
           const { getByText } = setUp(props)
           expect(getByText('MockedPaginationButtons')).toBeInTheDocument()
         })
@@ -117,7 +117,7 @@ describe('TastingSheetLists', () => {
       })
 
       describe('要素数が1以上の場合', () => {
-        test('要素数が1以上の場合はTastingSheetCardsが表示される', () => {
+        test('TastingSheetCardsが表示される', () => {
           const { getByText } = setUp(props)
           expect(getByText('MockedTastingSheetCards')).toBeInTheDocument()
         })
