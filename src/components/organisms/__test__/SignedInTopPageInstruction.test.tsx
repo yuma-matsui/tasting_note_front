@@ -1,4 +1,5 @@
 import { render } from '@testing-library/react'
+
 import SignedInTopPageInstruction from '../SignedInTopPageInstruction'
 
 jest.mock('../../molecules/sections/WelcomePageImagesSection', () => () => <p>MockedWelcomePageImagesSection</p>)

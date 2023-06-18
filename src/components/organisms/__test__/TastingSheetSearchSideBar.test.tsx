@@ -1,8 +1,8 @@
-import { render } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { render } from '@testing-library/react'
 
-import { TastingSheetSearchSideBarProps } from '../../../types'
 import TastingSheetSearchSideBar from '../TastingSheetSearchSideBar'
+import { TastingSheetSearchSideBarProps } from '../../../types'
 
 const setUp = ({ sideBarContent, children, visible, onClickToggleSideBar }: TastingSheetSearchSideBarProps) => {
   const utils = render(

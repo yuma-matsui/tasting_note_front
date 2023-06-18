@@ -1,8 +1,8 @@
-import { render } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { render } from '@testing-library/react'
 
-import { PaginationButtonsProps } from '../../../types'
 import PaginationButtons from '../PaginationButtons'
+import { PaginationButtonsProps } from '../../../types'
 
 const setUp = ({ pageNumber, back, next, isFirstPage, isLastPage }: PaginationButtonsProps) => {
   const utils = render(

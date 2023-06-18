@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
+
 import Router, { RouterProvider, createMemoryRouter } from 'react-router-dom'
 import { render } from '@testing-library/react'
 
-import { useAuthContext as mockUseAuthContext } from '../../hooks'
 import TastingSheetPageWrapper from '../TastingSheetPageWrapper'
+import { useAuthContext as mockUseAuthContext } from '../../hooks'
 
 jest.mock('../../hooks/context/useAuthContext')
 jest.mock('react-router-dom', () => ({
@@ -37,37 +38,52 @@ const setUp = () => {
 }
 
 describe('TastingSheetPageWrapper', () => {
+  let currentUser: boolean
+
   beforeEach(() => {
-    ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({
-      currentUser: true
-    }))
+    currentUser = true
+
     jest.spyOn(Router, 'useParams').mockReturnValue({
       tastingSheetId: '1'
     })
-  })
-
-  test('currentUserが存在して、tastingSheetIdが数字の文字列の場合、TastingSheetDetailsPageが表示される', () => {
-    const { getByText } = setUp()
-    expect(getByText('MockedTastingSheetDetailsPage')).toBeInTheDocument()
-  })
-
-  test('currentUserが存在しない場合、トップページにリダイレクトされる', () => {
     ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({
-      currentUser: false
+      currentUser
     }))
-
-    const { router, queryByText } = setUp()
-    expect(queryByText('MockedTastingSheetDetailsPage')).not.toBeInTheDocument()
-    expect(router.state.location.pathname).toEqual('/')
   })
 
-  test('tastingSheetIdが数字以外の文字列の場合、トップページにリダイレクトされる', () => {
-    jest.spyOn(Router, 'useParams').mockReturnValue({
-      tastingSheetId: 'test'
+  describe('currentUserが存在して、tastingSheetIdが数字の文字列の場合', () => {
+    test('TastingSheetDetailsPageが表示される', () => {
+      const { getByText } = setUp()
+      expect(getByText('MockedTastingSheetDetailsPage')).toBeInTheDocument()
+    })
+  })
+
+  describe('currentUserが存在しない場合', () => {
+    beforeEach(() => {
+      currentUser = false
+      ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({
+        currentUser
+      }))
     })
 
-    const { router, queryByText } = setUp()
-    expect(queryByText('MockedTastingSheetDetailsPage')).not.toBeInTheDocument()
-    expect(router.state.location.pathname).toEqual('/')
+    test('トップページにリダイレクトされる', () => {
+      const { router, queryByText } = setUp()
+      expect(queryByText('MockedTastingSheetDetailsPage')).not.toBeInTheDocument()
+      expect(router.state.location.pathname).toEqual('/')
+    })
+  })
+
+  describe('tastingSheetIdが数字以外の文字列の場合', () => {
+    beforeEach(() => {
+      jest.spyOn(Router, 'useParams').mockReturnValue({
+        tastingSheetId: 'test'
+      })
+    })
+
+    test('トップページにリダイレクトされる', () => {
+      const { router, queryByText } = setUp()
+      expect(queryByText('MockedTastingSheetDetailsPage')).not.toBeInTheDocument()
+      expect(router.state.location.pathname).toEqual('/')
+    })
   })
 })

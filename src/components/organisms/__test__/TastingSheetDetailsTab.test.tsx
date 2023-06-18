@@ -1,17 +1,17 @@
-import { render } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { ReactNode } from 'react'
+import { render } from '@testing-library/react'
 
 import {
   useDetailsTabItems as mockUseDetailsTabItems,
   useGetTabButtonClassName as mockUseGetTabButtonClassName,
   useTastingSheetLabels as mockUseTastingSheetLabels
 } from '../../../hooks'
-import { TastingSheet, TastingSheetLabelsTuple } from '../../../types'
+import { ReactNodeChildren, TastingSheet, TastingSheetLabelsTuple } from '../../../types'
 import TastingSheetDetailsTab from '../TastingSheetDetailsTab'
 import TastingSheetFormItem from '../../../types/tasting_sheet/tastingSheetFormItem'
+import { initialTastingSheet } from '../../../utils'
 
-jest.mock('../../templates/TastingSheetFormWrapper', () => ({ children }: { children: ReactNode }) => (
+jest.mock('../../templates/TastingSheetFormWrapper', () => ({ children }: ReactNodeChildren) => (
   <>
     <h2>MockedTastingSheetFormWrapper</h2>
     {children}
@@ -36,11 +36,10 @@ const setUp = (tastingSheet: TastingSheet) => {
 }
 
 describe('TastingSheetDetailsTab', () => {
-  const tastingSheet = {} as TastingSheet
-
+  const tastingSheet = { ...initialTastingSheet }
   const mockedLabelItems = [{ heading: 'test' }, { heading: 'test2' }] as TastingSheetFormItem[]
-
   const mockedLabelOptions = [{ heading: 'test3' }, { heading: 'test4' }] as TastingSheetFormItem[]
+  const mockClassName = 'mock-class'
 
   const labels = [
     {
@@ -90,7 +89,7 @@ describe('TastingSheetDetailsTab', () => {
     expect(getByText('MockedTastingSheetFormWrapper'))
   })
 
-  test('ボタンタグがlabelsの要素数表示される', () => {
+  test('buttonタグがlabelsの要素数表示される', () => {
     const { getAllByRole } = setUp(tastingSheet)
     expect(getAllByRole('button').length).toEqual(labels.length)
   })
@@ -102,8 +101,7 @@ describe('TastingSheetDetailsTab', () => {
     expect(useDetailsTabItemsReturnValue.onClickTabChange).toHaveBeenCalledTimes(labels.length)
   })
 
-  test('ボタンタグはgetTabButtonClassNameで取得したclassNameをもつ', () => {
-    const mockClassName = 'mock-class'
+  test('buttonタグはgetTabButtonClassNameで取得したclassNameをもつ', () => {
     useGetTabButtonClassNameReturnValue.getTabButtonClassName = jest.fn(() => mockClassName)
     ;(mockUseGetTabButtonClassName as jest.Mock).mockImplementation(() => useGetTabButtonClassNameReturnValue)
 

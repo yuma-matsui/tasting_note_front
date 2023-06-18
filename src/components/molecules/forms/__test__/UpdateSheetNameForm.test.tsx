@@ -1,9 +1,10 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import { act } from 'react-dom/test-utils'
 
-import { TastingSheetApi } from '../../../../types'
 import UpdateSheetNameForm from '../UpdateSheetNameForm'
+import { TastingSheetApi } from '../../../../types'
 import { useTastingSheetUpdateForm as mockUseTastingSheetUpdateForm } from '../../../../hooks'
+import { initialTastingSheet } from '../../../../utils'
 
 jest.mock('../../../../hooks/tasting_sheet/useTastingSheetUpdateForm')
 
@@ -24,7 +25,12 @@ const setUp = (tastingSheet: TastingSheetApi) => {
 }
 
 describe('UpdateSheetNameForm', () => {
-  const tastingSheet = {} as TastingSheetApi
+  const tastingSheet = {
+    ...initialTastingSheet,
+    id: 1,
+    createdAt: 'test',
+    wine: null
+  }
 
   let useUpdateFormReturnValue: typeof initialReturnValue
   const initialReturnValue = {

@@ -1,8 +1,8 @@
-import { render } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { render } from '@testing-library/react'
 
-import { SearchSelectBoxProps } from '../../../../types'
 import SearchSelectBox from '../SearchSelectBox'
+import { SearchSelectBoxProps } from '../../../../types'
 
 const setUp = ({ options, id, label, onChange, selectedOption }: SearchSelectBoxProps) => {
   const utils = render(

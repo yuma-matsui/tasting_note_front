@@ -2,8 +2,8 @@ import { fireEvent, render } from '@testing-library/react'
 import { act } from 'react-dom/test-utils'
 import { AuthError } from 'firebase/auth'
 
-import { ResetPasswordFormProps } from '../../../../types'
 import ResetPasswordForm from '../ResetPasswordForm'
+import { ResetPasswordFormProps } from '../../../../types'
 import { useResetPasswordForm } from '../../../../hooks'
 import { getFirebaseErrorMessage } from '../../../../utils'
 

@@ -1,8 +1,7 @@
 import { render, screen } from '@testing-library/react'
-import { UseFormRegister } from 'react-hook-form'
 
-import { TastingSheetCheckBoxProps, TastingSheetFormState } from '../../../../types'
 import TastingSheetCheckBox from '../TastingSheetCheckBox'
+import { TastingSheetCheckBoxProps } from '../../../../types'
 
 const mockType = 'text'
 jest.mock('../../../../hooks/tasting_sheet/useGetRadioOrCheckBoxType', () => () => ({
@@ -52,7 +51,7 @@ describe('TastingSheetCheckBox', () => {
     id: 'test-id',
     name: 'tastingSheet.color',
     value: 'test-value',
-    register: jest.fn() as UseFormRegister<TastingSheetFormState>,
+    register: jest.fn(),
     label: 'test-label',
     color: 'red',
     checked: false

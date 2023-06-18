@@ -1,13 +1,17 @@
 import { render } from '@testing-library/react'
+
 import { useFetchATastingSheet as mockUseFetchATastingSheet } from '../../../hooks'
-import { ReactNodeChildren, TastingSheetApi, WineApi } from '../../../types'
+import { ReactNodeChildren, TastingSheetApi } from '../../../types'
 import TastingSheetDetailsPage from '../TastingSheetDetailsPage'
+import { initialTastingSheet, wineTestData } from '../../../utils'
 
 jest.mock('../../../hooks/api/useFetchATastingSheet')
 
 jest.mock('../../atoms/LoadingSpinner', () => () => <p>MockedLoadingSpinner</p>)
-
 jest.mock('../../molecules/DetailsPageBottomButtons', () => () => <p>MockedDetailsPageBottomButtons</p>)
+jest.mock('../../molecules/titles/TastingSheetDetailsTitle', () => () => <p>MockedTastingSheetDetailsTitle</p>)
+jest.mock('../../organisms/TastingSheetDetailsTab', () => () => <p>MockedTastingSheetDetailsTab</p>)
+jest.mock('../../organisms/WineDetails', () => () => <p>MockedWineDetails</p>)
 
 jest.mock('../../molecules/HeadMeta', () => ({ children }: ReactNodeChildren) => (
   <>
@@ -23,10 +27,6 @@ jest.mock('../../templates/DefaultLayout', () => ({ children }: ReactNodeChildre
   </>
 ))
 
-jest.mock('../../molecules/titles/TastingSheetDetailsTitle', () => () => <p>MockedTastingSheetDetailsTitle</p>)
-jest.mock('../../organisms/TastingSheetDetailsTab', () => () => <p>MockedTastingSheetDetailsTab</p>)
-jest.mock('../../organisms/WineDetails', () => () => <p>MockedWineDetails</p>)
-
 const setUp = (tastingSheetId: number) => {
   const utils = render(<TastingSheetDetailsPage tastingSheetId={tastingSheetId} />)
 
@@ -35,17 +35,27 @@ const setUp = (tastingSheetId: number) => {
   }
 }
 
+type UseFetchATastingSheetReturnValue = {
+  fetching: boolean
+  tastingSheet: TastingSheetApi
+}
+
 describe('TastingSheetDetailsPage', () => {
   const tastingSheetId = 1
-
-  let useFetchATastingSheetReturnValue: typeof initialReturnValue
-  const initialReturnValue = {
-    fetching: false,
-    tastingSheet: {} as TastingSheetApi
-  }
+  let useFetchATastingSheetReturnValue: UseFetchATastingSheetReturnValue
+  let tastingSheet: TastingSheetApi
 
   beforeEach(() => {
-    useFetchATastingSheetReturnValue = { ...initialReturnValue }
+    tastingSheet = {
+      ...initialTastingSheet,
+      id: 1,
+      createdAt: 'test',
+      wine: null
+    }
+    useFetchATastingSheetReturnValue = {
+      fetching: false,
+      tastingSheet
+    }
     ;(mockUseFetchATastingSheet as jest.Mock).mockImplementation(() => useFetchATastingSheetReturnValue)
   })
 
@@ -57,49 +67,61 @@ describe('TastingSheetDetailsPage', () => {
     }
   )
 
-  test.each([['HeadMeta'], ['DefaultLayout'], ['TastingSheetDetailsTitle'], ['TastingSheetDetailsTab']])(
-    'fetchingがtrueの場合、LoadingSpinnerが表示されて%sが表示されない',
-    (componentName) => {
+  describe('fetchingがtrueの場合', () => {
+    beforeEach(() => {
       useFetchATastingSheetReturnValue.fetching = true
       ;(mockUseFetchATastingSheet as jest.Mock).mockImplementation(() => useFetchATastingSheetReturnValue)
-
-      const { getByText, queryByText } = setUp(tastingSheetId)
-      expect(getByText('MockedLoadingSpinner')).toBeInTheDocument()
-      expect(queryByText(`Mocked${componentName}`)).not.toBeInTheDocument()
-    }
-  )
-
-  describe('WineDetails', () => {
-    test('tastingSheetがwineを持たない場合は表示されない', () => {
-      const { queryByText } = setUp(tastingSheetId)
-      expect(queryByText('MockedWineDetails')).not.toBeInTheDocument()
     })
 
-    test('tastingSheetがwineを持つ場合は表示される', () => {
-      useFetchATastingSheetReturnValue.tastingSheet = {
-        wine: {} as WineApi
-      } as TastingSheetApi
-      ;(mockUseFetchATastingSheet as jest.Mock).mockImplementation(() => useFetchATastingSheetReturnValue)
+    test.each([['HeadMeta'], ['DefaultLayout'], ['TastingSheetDetailsTitle'], ['TastingSheetDetailsTab']])(
+      'LoadingSpinnerが表示されて%sが表示されない',
+      (componentName) => {
+        const { getByText, queryByText } = setUp(tastingSheetId)
+        expect(getByText('MockedLoadingSpinner')).toBeInTheDocument()
+        expect(queryByText(`Mocked${componentName}`)).not.toBeInTheDocument()
+      }
+    )
+  })
 
-      const { getByText } = setUp(tastingSheetId)
-      expect(getByText('MockedWineDetails')).toBeInTheDocument()
+  describe('WineDetails', () => {
+    describe('tastingSheetがwineを持たない場合', () => {
+      test('表示されない', () => {
+        const { queryByText } = setUp(tastingSheetId)
+        expect(queryByText('MockedWineDetails')).not.toBeInTheDocument()
+      })
+    })
+
+    describe('tastingSheetがwineを持つ場合', () => {
+      beforeEach(() => {
+        useFetchATastingSheetReturnValue.tastingSheet.wine = { ...wineTestData }
+        ;(mockUseFetchATastingSheet as jest.Mock).mockImplementation(() => useFetchATastingSheetReturnValue)
+      })
+
+      test('表示される', () => {
+        const { getByText } = setUp(tastingSheetId)
+        expect(getByText('MockedWineDetails')).toBeInTheDocument()
+      })
     })
   })
 
   describe('DetailsPageBottomButtons', () => {
-    test('tastingSheetがwineを持たない場合は表示される', () => {
-      const { getByText } = setUp(tastingSheetId)
-      expect(getByText('MockedDetailsPageBottomButtons')).toBeInTheDocument()
+    describe('tastingSheetがwineを持たない場合', () => {
+      test('表示される', () => {
+        const { getByText } = setUp(tastingSheetId)
+        expect(getByText('MockedDetailsPageBottomButtons')).toBeInTheDocument()
+      })
     })
 
-    test('tastingSheetがwineを持つ場合は表示されない', () => {
-      useFetchATastingSheetReturnValue.tastingSheet = {
-        wine: {} as WineApi
-      } as TastingSheetApi
-      ;(mockUseFetchATastingSheet as jest.Mock).mockImplementation(() => useFetchATastingSheetReturnValue)
+    describe('tastingSheetがwineを持つ場合', () => {
+      beforeEach(() => {
+        useFetchATastingSheetReturnValue.tastingSheet.wine = { ...wineTestData }
+        ;(mockUseFetchATastingSheet as jest.Mock).mockImplementation(() => useFetchATastingSheetReturnValue)
+      })
 
-      const { queryByText } = setUp(tastingSheetId)
-      expect(queryByText('MockedDetailsPageBottomButtons')).not.toBeInTheDocument()
+      test('表示されない', () => {
+        const { queryByText } = setUp(tastingSheetId)
+        expect(queryByText('MockedDetailsPageBottomButtons')).not.toBeInTheDocument()
+      })
     })
   })
 })

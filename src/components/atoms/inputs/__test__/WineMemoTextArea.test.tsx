@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react'
 
-import { WineMemoTextAreaProps } from '../../../../types'
 import WineMemoTextArea from '../WineMemoTextArea'
+import { WineMemoTextAreaProps } from '../../../../types'
 
 const setUp = ({ register }: WineMemoTextAreaProps) => {
   const utils = render(<WineMemoTextArea register={register} />)

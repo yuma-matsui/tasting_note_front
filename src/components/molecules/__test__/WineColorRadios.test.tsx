@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react'
 
-import { WineColorRadiosProps } from '../../../types'
 import WineColorRadios from '../WineColorRadios'
+import { WineColorRadiosProps } from '../../../types'
 
 jest.mock('../../atoms/inputs/TastingSheetCheckBox', () => () => <p>TastingSheetCheckBox</p>)
 

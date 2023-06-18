@@ -1,8 +1,8 @@
 import { render } from '@testing-library/react'
 
+import ResetPasswordPage from '../ResetPasswordPage'
 import { useResetPasswordFormParams as mockUseResetPasswordFormParams } from '../../../hooks'
 import { ReactNodeChildren } from '../../../types'
-import ResetPasswordPage from '../ResetPasswordPage'
 
 jest.mock('../../molecules/HeadMeta', () => ({ children }: ReactNodeChildren) => (
   <>
@@ -19,7 +19,6 @@ jest.mock('../../templates/DefaultLayout', () => ({ children }: ReactNodeChildre
 ))
 
 jest.mock('../../atoms/LoadingSpinner', () => () => <p>MockedLoadingSpinner</p>)
-
 jest.mock('../../molecules/forms/ResetPasswordForm', () => () => <p>MockedResetPasswordForm</p>)
 
 jest.mock('../../../hooks/useResetPasswordFormParams')
@@ -52,15 +51,19 @@ describe('ResetPasswordPage', () => {
     expect(getByText(`Mocked${componentName}`)).toBeInTheDocument()
   })
 
-  test.each([['HeadMeta'], ['DefaultLayout'], ['ResetPasswordForm']])(
-    'loadingがtrueの場合、LoadingSpinnerが表示されて%sが表示されない',
-    (componentName) => {
+  describe('loadingがtrueの場合', () => {
+    beforeEach(() => {
       useResetPasswordFormParamsReturnValue.loading = true
       ;(mockUseResetPasswordFormParams as jest.Mock).mockImplementation(() => useResetPasswordFormParamsReturnValue)
+    })
 
-      const { getByText, queryByText } = setUp()
-      expect(getByText('MockedLoadingSpinner')).toBeInTheDocument()
-      expect(queryByText(`Mocked${componentName}`)).not.toBeInTheDocument()
-    }
-  )
+    test.each([['HeadMeta'], ['DefaultLayout'], ['ResetPasswordForm']])(
+      'LoadingSpinnerが表示されて%sが表示されない',
+      (componentName) => {
+        const { getByText, queryByText } = setUp()
+        expect(getByText('MockedLoadingSpinner')).toBeInTheDocument()
+        expect(queryByText(`Mocked${componentName}`)).not.toBeInTheDocument()
+      }
+    )
+  })
 })
