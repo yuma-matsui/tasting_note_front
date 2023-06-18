@@ -2,13 +2,13 @@
 
 Tasting NoteのフロントエンドRepositoryです。
 
-# サービスURL
+## サービスURL
 - https://tasting-note.com
 
-# サービスRepository
+## サービスRepository
 - https://github.com/yuma-matsui/tasting_note
 
-# 開発環境
+## 開発環境
 * Docker 23.0.5
 * docker-compose 2.17.3
 * Node.js 18.12.1
