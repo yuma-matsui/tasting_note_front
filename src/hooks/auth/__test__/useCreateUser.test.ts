@@ -7,6 +7,7 @@ import { act } from 'react-dom/test-utils'
 
 import mockUseAxios from '../../useAxios'
 import useCreateUser from '../useCreateUser'
+import { headersTestData } from '../../../utils'
 
 jest.mock('react-error-boundary', () => ({
   ...jest.requireActual('react-error-boundary'),
@@ -25,11 +26,6 @@ describe('useCreateUser', () => {
     post: jest.fn()
   }
   const mockGetHeaders = jest.fn()
-  const mockHeaders = {
-    headers: {
-      Authorization: 'Bearer test'
-    }
-  }
 
   beforeEach(() => {
     jest.spyOn(ErrorBoundary, 'useErrorBoundary').mockReturnValue({
@@ -37,7 +33,7 @@ describe('useCreateUser', () => {
       showBoundary: jest.fn()
     })
 
-    mockGetHeaders.mockImplementation(() => mockHeaders)
+    mockGetHeaders.mockImplementation(() => headersTestData)
     ;(mockUseAxios as jest.Mock).mockImplementation(() => ({
       client: mockClient,
       getHeaders: mockGetHeaders
@@ -56,7 +52,7 @@ describe('useCreateUser', () => {
             email: user.email
           }
         },
-        mockHeaders
+        headersTestData
       )
     })
   })
