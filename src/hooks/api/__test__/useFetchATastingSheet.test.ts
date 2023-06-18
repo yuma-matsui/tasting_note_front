@@ -20,10 +20,6 @@ jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useNavigate: jest.fn()
 }))
-jest.mock('react', () => ({
-  ...jest.requireActual('react'),
-  useState: jest.fn()
-}))
 
 jest.mock('../../context/useAuthContext')
 jest.mock('../../useAxios')
@@ -41,6 +37,7 @@ describe('useFetchATastingSheet', () => {
   const tastingSheetId = 999
   let resultSheet: TastingSheetApi | null
 
+  const mockUseState = jest.spyOn(React, 'useState')
   const mockClient = {
     get: jest.fn()
   }
@@ -73,8 +70,7 @@ describe('useFetchATastingSheet', () => {
       getHeaders: mockGetHeaders
     }))
 
-    jest
-      .spyOn(React, 'useState')
+    mockUseState
       .mockReturnValueOnce([
         {
           ...initialTastingSheet,
@@ -94,69 +90,88 @@ describe('useFetchATastingSheet', () => {
   })
 
   describe('useFetchATastingSheet', () => {
-    describe('fetching', () => {
-      test('useStateで取得したfetchingが返る', () => {
-        const { result } = setUp(tastingSheetId)
-        expect(result.current.fetching).toEqual(mockFetching)
+    describe('currentUserが存在しない場合', () => {
+      beforeEach(() => {
+        currentUser = false
+        ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({
+          currentUser
+        }))
+      })
+
+      test('何も実行されない', async () => {
+        await act(() => setUp(tastingSheetId))
+        expect(mockSetFetching).not.toHaveBeenCalled()
+        expect(mockClient.get).not.toHaveBeenCalled()
+        expect(mockGetHeaders).not.toHaveBeenCalled()
+        expect(mockNavigate).not.toHaveBeenCalled()
+        expect(mockSetTastingSheet).not.toHaveBeenCalled()
+      })
+    })
+
+    describe('currentUserが存在する場合', () => {
+      test('setFetchingが2回実行される', async () => {
+        await act(() => setUp(tastingSheetId))
+        expect(mockSetFetching).toHaveBeenCalledTimes(2)
+        expect(mockSetFetching).toHaveBeenCalledWith(true)
+        expect(mockSetFetching).toHaveBeenCalledWith(false)
+      })
+
+      test('client.getが実行される', async () => {
+        await act(() => setUp(tastingSheetId))
+        expect(mockClient.get).toHaveBeenCalledWith(`/tasting_sheets/${tastingSheetId}`, headersTestData)
+      })
+
+      test('getHeadersが実行される', async () => {
+        await act(() => setUp(tastingSheetId))
+        expect(mockGetHeaders).toHaveBeenCalledWith(currentUser)
+      })
+
+      describe('client.getの結果がnullの場合', () => {
+        beforeEach(() => {
+          resultSheet = null
+          mockClient.get.mockImplementation(() => ({
+            data: resultSheet
+          }))
+        })
+
+        test('navigateが実行される', async () => {
+          await act(() => setUp(tastingSheetId))
+          expect(mockNavigate).toHaveBeenCalledWith('/')
+        })
+      })
+
+      describe('client.getの結果が存在する場合', () => {
+        test('setTastingSheetが実行される', async () => {
+          await act(() => setUp(tastingSheetId))
+          expect(mockSetTastingSheet).toHaveBeenCalledWith(resultSheet)
+        })
       })
     })
 
     describe('tastingSheet', () => {
-      describe('currentUserが存在しない場合', () => {
-        beforeEach(() => {
-          currentUser = true
-          ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({
-            currentUser
-          }))
-        })
+      beforeEach(() => {
+        mockUseState.mockRestore()
+      })
 
-        test('initialTastingSheetが返る', () => {
-          const { result } = setUp(tastingSheetId)
-          expect(result.current.tastingSheet).toEqual({
-            ...initialTastingSheet,
-            id: 0,
-            createdAt: 'test',
-            wine: null
-          })
+      describe('client.getに成功した場合', () => {
+        test('APIで取得したtastingSheetを返す', async () => {
+          const { result } = await act(() => setUp(tastingSheetId))
+          expect(result.current.tastingSheet).toEqual(resultSheet)
         })
       })
 
-      describe('currentUserが存在する場合', () => {
-        test('setFetchingが2回実行される', async () => {
-          await act(() => setUp(tastingSheetId))
-          expect(mockSetFetching).toHaveBeenCalledTimes(2)
-          expect(mockSetFetching).toHaveBeenCalledWith(true)
-          expect(mockSetFetching).toHaveBeenCalledWith(false)
+      describe('client.getに失敗した場合', () => {
+        beforeEach(() => {
+          mockClient.get.mockImplementation(() => ({ data: null }))
         })
 
-        test('client.getが実行される', async () => {
-          await act(() => setUp(tastingSheetId))
-          expect(mockClient.get).toHaveBeenCalledWith(`/tasting_sheets/${tastingSheetId}`, headersTestData)
-        })
-
-        test('getHeadersが実行される', async () => {
-          await act(() => setUp(tastingSheetId))
-          expect(mockGetHeaders).toHaveBeenCalledWith(currentUser)
-        })
-
-        describe('client.getの結果がnullの場合', () => {
-          beforeEach(() => {
-            resultSheet = null
-            mockClient.get.mockImplementation(() => ({
-              data: resultSheet
-            }))
-          })
-
-          test('navigateが実行される', async () => {
-            await act(() => setUp(tastingSheetId))
-            expect(mockNavigate).toHaveBeenCalledWith('/')
-          })
-        })
-
-        describe('client.getの結果が存在する場合', () => {
-          test('setTastingSheetが実行される', async () => {
-            await act(() => setUp(tastingSheetId))
-            expect(mockSetTastingSheet).toHaveBeenCalledWith(resultSheet)
+        test('初期値が返る', async () => {
+          const { result } = await act(() => setUp(tastingSheetId))
+          expect(result.current.tastingSheet).toEqual({
+            ...initialTastingSheet,
+            id: 0,
+            createdAt: '',
+            wine: null
           })
         })
       })
