@@ -45,7 +45,7 @@ describe('FooterNavigation', () => {
     })
   })
 
-  describe('currenUserが存在しない場合', () => {
+  describe('currenUserが存在する場合', () => {
     beforeEach(() => {
       currentUser = true
       ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({
