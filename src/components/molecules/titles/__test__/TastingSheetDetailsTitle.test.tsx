@@ -1,10 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
-import { useState as useStateMock } from 'react'
-import { render } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
 
-import { TastingSheetApi } from '../../../../types'
+import React from 'react'
+import userEvent from '@testing-library/user-event'
+import { render } from '@testing-library/react'
+
 import TastingSheetDetailsTitle from '../TastingSheetDetailsTitle'
+import { TastingSheetApi } from '../../../../types'
+import { initialTastingSheet } from '../../../../utils'
 
 jest.mock('react', () => ({
   ...jest.requireActual('react'),
@@ -23,27 +25,33 @@ const setUp = (tastingSheet: TastingSheetApi) => {
 
 describe('TastingSheetDetailsTitle', () => {
   const tastingSheet = {
-    name: 'test'
-  } as TastingSheetApi
-  const mockSetState = jest.fn()
+    ...initialTastingSheet,
+    name: 'test',
+    id: 1,
+    createdAt: 'test',
+    wine: null
+  }
+  let isEditing: boolean
+  const mockSetIsEditing = jest.fn()
 
   beforeEach(() => {
-    ;(useStateMock as jest.Mock).mockClear()
+    isEditing = false
+    jest.spyOn(React, 'useState').mockReturnValue([isEditing, mockSetIsEditing])
   })
 
   describe('isEditingがtrueの場合', () => {
+    beforeEach(() => {
+      isEditing = true
+      jest.spyOn(React, 'useState').mockReturnValue([isEditing, mockSetIsEditing])
+    })
+
     test('UpdateSheetNameFormが表示される', () => {
-      ;(useStateMock as jest.Mock).mockImplementation(() => [true, mockSetState])
       const { getByText } = setUp(tastingSheet)
       expect(getByText('MockUpdateSheetNameForm')).toBeInTheDocument()
     })
   })
 
   describe('isEditingがfalseの場合', () => {
-    beforeEach(() => {
-      ;(useStateMock as jest.Mock).mockImplementation(() => [false, mockSetState])
-    })
-
     test('tastingSheet名が表示される', () => {
       const { getByText } = setUp(tastingSheet)
       expect(getByText(tastingSheet.name)).toBeInTheDocument()
@@ -54,11 +62,11 @@ describe('TastingSheetDetailsTitle', () => {
       expect(getByRole('button', { name: '変更' })).toBeInTheDocument()
     })
 
-    test('buttonがクリックされるとsetState関数が呼ばれる', () => {
+    test('buttonがクリックされるとsetIsEditingが呼ばれる', () => {
       const { getByRole } = setUp(tastingSheet)
       userEvent.click(getByRole('button'))
 
-      expect(mockSetState).toHaveBeenCalledWith(true)
+      expect(mockSetIsEditing).toHaveBeenCalledWith(true)
     })
   })
 })

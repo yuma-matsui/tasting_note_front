@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react'
 
-import { FormWrapperProps } from '../../../types'
 import TastingSheetFormWrapper from '../TastingSheetFormWrapper'
+import { FormWrapperProps } from '../../../types'
 import { useCheckEditingForm as mockUseCheckEditingForm } from '../../../hooks'
 
 jest.mock('../../../hooks/useCheckEditingForm')
@@ -18,14 +18,16 @@ const setUp = ({ title, children }: FormWrapperProps) => {
 }
 
 describe('TastingSheetFormWrapper', () => {
+  let isEditing: boolean
   const props: FormWrapperProps = {
     title: 'appearance',
     children: <p>MockedChildren</p>
   }
 
   beforeEach(() => {
+    isEditing = false
     ;(mockUseCheckEditingForm as jest.Mock).mockImplementation(() => ({
-      isEditing: false
+      isEditing
     }))
   })
 
@@ -35,17 +37,25 @@ describe('TastingSheetFormWrapper', () => {
   })
 
   describe('isEditing', () => {
-    test('falseの場合、見出しが表示されない', () => {
-      const { queryByRole } = setUp(props)
-      expect(queryByRole('heading')).not.toBeInTheDocument()
+    describe('falseの場合', () => {
+      test('見出しが表示されない', () => {
+        const { queryByRole } = setUp(props)
+        expect(queryByRole('heading')).not.toBeInTheDocument()
+      })
     })
 
-    test('trueの場合、見出しが表示される', () => {
-      ;(mockUseCheckEditingForm as jest.Mock).mockImplementation(() => ({
-        isEditing: true
-      }))
-      const { getByRole } = setUp(props)
-      expect(getByRole('heading', { name: mockedTitle })).toBeInTheDocument()
+    describe('trueの場合', () => {
+      beforeEach(() => {
+        isEditing = true
+        ;(mockUseCheckEditingForm as jest.Mock).mockImplementation(() => ({
+          isEditing
+        }))
+      })
+
+      test('見出しが表示される', () => {
+        const { getByRole } = setUp(props)
+        expect(getByRole('heading', { name: mockedTitle })).toBeInTheDocument()
+      })
     })
   })
 })

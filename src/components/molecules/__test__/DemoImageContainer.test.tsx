@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 
-import { DemoImageContainerProps } from '../../../types'
 import DemoImageContainer from '../DemoImageContainer'
+import { DemoImageContainerProps } from '../../../types'
 
 const setUp = ({ text, src, alt }: DemoImageContainerProps) => {
   const utils = render(<DemoImageContainer text={text} src={src} alt={alt} />)

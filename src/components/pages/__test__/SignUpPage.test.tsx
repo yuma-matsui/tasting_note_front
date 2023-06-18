@@ -1,8 +1,8 @@
 import { render } from '@testing-library/react'
 
+import SignUpPage from '../SignUpPage'
 import { useGetAuthFormParams as mockUseGetAuthFormParams } from '../../../hooks'
 import { ReactNodeChildren } from '../../../types'
-import SignUpPage from '../SignUpPage'
 
 jest.mock('../../molecules/HeadMeta', () => ({ children }: ReactNodeChildren) => (
   <>
@@ -19,7 +19,6 @@ jest.mock('../../templates/DefaultLayout', () => ({ children }: ReactNodeChildre
 ))
 
 jest.mock('../../atoms/LoadingSpinner', () => () => <p>MockedLoadingSpinner</p>)
-
 jest.mock('../../molecules/forms/AuthForm', () => () => <p>MockedAuthForm</p>)
 
 jest.mock('../../../hooks/useGetAuthFormParams')
@@ -52,15 +51,19 @@ describe('ResetPasswordPage', () => {
     expect(getByText(`Mocked${componentName}`)).toBeInTheDocument()
   })
 
-  test.each([['HeadMeta'], ['DefaultLayout'], ['AuthForm']])(
-    'loadingがtrueの場合、LoadingSpinnerが表示されて%sが表示されない',
-    (componentName) => {
+  describe('loadingがtrueの場合', () => {
+    beforeEach(() => {
       useGetAuthFormParamsReturnValue.loading = true
       ;(mockUseGetAuthFormParams as jest.Mock).mockImplementation(() => useGetAuthFormParamsReturnValue)
+    })
 
-      const { getByText, queryByText } = setUp()
-      expect(getByText('MockedLoadingSpinner')).toBeInTheDocument()
-      expect(queryByText(`Mocked${componentName}`)).not.toBeInTheDocument()
-    }
-  )
+    test.each([['HeadMeta'], ['DefaultLayout'], ['AuthForm']])(
+      'LoadingSpinnerが表示されて%sが表示されない',
+      (componentName) => {
+        const { getByText, queryByText } = setUp()
+        expect(getByText('MockedLoadingSpinner')).toBeInTheDocument()
+        expect(queryByText(`Mocked${componentName}`)).not.toBeInTheDocument()
+      }
+    )
+  })
 })

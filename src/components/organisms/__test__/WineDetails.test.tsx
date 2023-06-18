@@ -1,14 +1,12 @@
 import { render } from '@testing-library/react'
 
-import { TastingSheetApi, WineApi, WineDetailsProps } from '../../../types'
 import WineDetails from '../WineDetails'
+import { WineDetailsProps } from '../../../types'
+import { initialTastingSheet, wineTestData } from '../../../utils'
 
 jest.mock('../../molecules/titles/WineDetailsTitle', () => () => <p>MockedWineDetailsTitle</p>)
-
 jest.mock('../../molecules/DetailsPageBottomButtons', () => () => <p>MockedDetailsPageBottomButtons</p>)
-
 jest.mock('../../atoms/WineImage', () => () => <p>MockedWineImage</p>)
-
 jest.mock('../WineDetailLists', () => () => <p>MockedWineDetailLists</p>)
 
 const setUp = ({ tastingSheet, wine }: WineDetailsProps) => {
@@ -24,8 +22,13 @@ describe('WineDetails', () => {
 
   beforeEach(() => {
     props = {
-      tastingSheet: {} as TastingSheetApi,
-      wine: {} as WineApi
+      tastingSheet: {
+        ...initialTastingSheet,
+        id: 1,
+        createdAt: 'test',
+        wine: null
+      },
+      wine: { ...wineTestData }
     }
   })
 

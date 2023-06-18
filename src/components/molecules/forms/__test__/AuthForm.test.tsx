@@ -2,10 +2,10 @@ import { fireEvent, render } from '@testing-library/react'
 import { AuthError } from 'firebase/auth'
 import { act } from 'react-dom/test-utils'
 
-import { AuthFormProps, TastingSheet } from '../../../../types'
 import AuthForm from '../AuthForm'
+import { AuthFormProps } from '../../../../types'
 import { useAuthForm as mockUseAuthForm } from '../../../../hooks'
-import { getFirebaseErrorMessage as mockGetFirebaseErrorMessage } from '../../../../utils'
+import { initialTastingSheet, getFirebaseErrorMessage as mockGetFirebaseErrorMessage } from '../../../../utils'
 
 jest.mock('../../../../hooks/auth/useAuthForm')
 jest.mock('../../../../utils/getFirebaseErrorMessage')
@@ -29,7 +29,7 @@ const setUp = ({ tastingSheet, authFunction, authError, type }: AuthFormProps) =
 describe('AuthForm', () => {
   let props: AuthFormProps
   const initialProps: AuthFormProps = {
-    tastingSheet: {} as TastingSheet,
+    tastingSheet: { ...initialTastingSheet },
     authFunction: jest.fn(),
     authError: {
       message: 'error-test'

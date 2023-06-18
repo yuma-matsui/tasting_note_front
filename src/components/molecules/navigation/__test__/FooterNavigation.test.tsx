@@ -1,11 +1,9 @@
 import { render } from '@testing-library/react'
 
 import FooterNavigation from '../FooterNavigation'
+import { useAuthContext as mockUseAuthContext } from '../../../../hooks'
 
-let mockCurrentUser = false
-jest.mock('../../../../hooks/context/useAuthContext', () => () => ({
-  currentUser: mockCurrentUser
-}))
+jest.mock('../../../../hooks/context/useAuthContext')
 
 jest.mock('../../../../hooks/useCheckEditingForm', () => () => ({
   isEditing: false
@@ -22,8 +20,12 @@ const setUp = () => {
 }
 
 describe('FooterNavigation', () => {
+  let currentUser: boolean
   beforeEach(() => {
-    mockCurrentUser = false
+    currentUser = false
+    ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({
+      currentUser
+    }))
   })
 
   test('navタグが表示される', () => {
@@ -36,14 +38,22 @@ describe('FooterNavigation', () => {
     expect(getByRole('list')).toBeInTheDocument()
   })
 
-  describe('currentUser', () => {
-    test('存在しない場合', () => {
+  describe('currentUserが存在しない場合', () => {
+    test('liタグが2つ表示される', () => {
       const { getAllByRole } = setUp()
       expect(getAllByRole('listitem').length).toEqual(2)
     })
+  })
 
-    test('存在する場合', () => {
-      mockCurrentUser = true
+  describe('currenUserが存在する場合', () => {
+    beforeEach(() => {
+      currentUser = true
+      ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({
+        currentUser
+      }))
+    })
+
+    test('liタグが4つ表示される', () => {
       const { getAllByRole } = setUp()
       expect(getAllByRole('listitem').length).toEqual(4)
     })

@@ -1,10 +1,11 @@
-import { render } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { render } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 
-import { TastingSheetApi, TastingSheetCardProps, WineApi } from '../../../types'
 import TastingSheetCard from '../TastingSheetCard'
+import { TastingSheetCardProps } from '../../../types'
 import { useHasWineAndImage as mockUseHasWineAndImage } from '../../../hooks'
+import { initialTastingSheet, wineTestData } from '../../../utils'
 
 const mockBgColor = 'mock-bg-color'
 const mockTextColor = 'mock-text-color'
@@ -14,7 +15,6 @@ jest.mock('../../../hooks/tasting_sheet/useTastingSheetCardColor', () => () => (
 }))
 
 jest.mock('../../../hooks/tasting_sheet/useHasWineAndImage')
-
 jest.mock('../../../hooks/tasting_sheet/useTastingSheetStateForWine', () => () => 'mock-state')
 
 const mockOnClickOpenModal = jest.fn()
@@ -34,9 +34,6 @@ const setUp = ({ tastingSheet }: TastingSheetCardProps) => {
 
 describe('TastingSheetCard', () => {
   let props: TastingSheetCardProps
-  const initialProps: TastingSheetCardProps = {
-    tastingSheet: {} as TastingSheetApi
-  }
 
   let useHasWineAndImageReturnValue: typeof initialReturnValue
   const initialReturnValue = {
@@ -46,7 +43,15 @@ describe('TastingSheetCard', () => {
   }
 
   beforeEach(() => {
-    props = { ...initialProps }
+    props = {
+      tastingSheet: {
+        ...initialTastingSheet,
+        id: 1,
+        createdAt: 'test',
+        wine: null
+      }
+    }
+
     useHasWineAndImageReturnValue = { ...initialReturnValue }
     ;(mockUseHasWineAndImage as jest.Mock).mockImplementation(() => useHasWineAndImageReturnValue)
   })
@@ -91,7 +96,6 @@ describe('TastingSheetCard', () => {
   })
 
   test('/tasting_sheets/:tastingSheet.idをhrefにもつlinkタグが表示される', () => {
-    props.tastingSheet.id = 1
     const { getByRole } = setUp(props)
     expect(getByRole('link')).toHaveAttribute('href', `/tasting_sheets/${props.tastingSheet.id}`)
   })
@@ -126,13 +130,13 @@ describe('TastingSheetCard', () => {
   })
 
   test('tastingSheet.wineが存在して、wine.imageが存在しない場合、CardInsideLinkが表示される', () => {
-    props.tastingSheet.wine = {} as WineApi
+    props.tastingSheet.wine = { ...wineTestData }
     const { getByText } = setUp(props)
     expect(getByText('CardInsideLink')).toBeInTheDocument()
   })
 
   test('tastingSheet.wine.imageが存在する場合、CardInsideLinkは表示されない', () => {
-    props.tastingSheet.wine = { image: 'test' } as WineApi
+    props.tastingSheet.wine = { ...wineTestData, image: 'test' }
     const { queryByText } = setUp(props)
     expect(queryByText('CardInsideLink')).not.toBeInTheDocument()
   })

@@ -1,6 +1,7 @@
 import { render } from '@testing-library/react'
-import { WineTextInputProps } from '../../../../types'
+
 import WineTextInput from '../WineTextInput'
+import { WineTextInputProps } from '../../../../types'
 
 const setUp = ({ name, label, register, required, errors }: WineTextInputProps) => {
   const utils = render(

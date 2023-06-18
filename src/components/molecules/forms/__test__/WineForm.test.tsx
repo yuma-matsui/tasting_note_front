@@ -1,10 +1,11 @@
-import { fireEvent, render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { fireEvent, render, screen } from '@testing-library/react'
 import { act } from 'react-dom/test-utils'
 
-import { WineApi } from '../../../../types'
 import WineForm from '../WineForm'
+import { WineApi } from '../../../../types'
 import { useWineForm as mockUseWineForm } from '../../../../hooks'
+import { wineTestData } from '../../../../utils'
 
 jest.mock('../../../../hooks/useWineForm')
 
@@ -30,7 +31,7 @@ const setUp = (wine?: WineApi | undefined) => {
 }
 
 describe('WineForm', () => {
-  let wine = {} as WineApi | undefined
+  let wine: WineApi | undefined
 
   const mockSubmitButtonClassName = 'mock-class'
   let useWineFormReturnValue: typeof initialReturnValue
@@ -53,7 +54,7 @@ describe('WineForm', () => {
   }
 
   beforeEach(() => {
-    wine = {} as WineApi
+    wine = { ...wineTestData }
 
     useWineFormReturnValue = { ...initialReturnValue }
     ;(mockUseWineForm as jest.Mock).mockImplementation(() => useWineFormReturnValue)
@@ -171,7 +172,7 @@ describe('WineForm', () => {
       })
 
       test('wineのimageプロパティが存在すれば表示される', () => {
-        wine = { image: 'test' } as WineApi
+        wine = { ...wineTestData, image: 'test' }
         const { getByText } = setUp(wine)
 
         expect(getByText('WineImage')).toBeInTheDocument()
@@ -191,7 +192,7 @@ describe('WineForm', () => {
     })
 
     test('imageFileが存在する場合は表示されない', () => {
-      wine = { image: 'test ' } as WineApi
+      wine = { ...wineTestData, image: 'test ' }
 
       const { queryByText } = setUp(wine)
       expect(queryByText('WineImage')).not.toBeInTheDocument()

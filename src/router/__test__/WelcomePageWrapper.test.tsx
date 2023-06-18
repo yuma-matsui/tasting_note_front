@@ -17,23 +17,33 @@ const setUp = () => {
 }
 
 describe('WelcomePageWrapper', () => {
+  let currentUser: boolean
+
   beforeEach(() => {
+    currentUser = true
     ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({
-      currentUser: true
+      currentUser
     }))
   })
 
-  test('currentUserが存在する場合、SignedInWelcomePageが表示される', () => {
-    const { getByText } = setUp()
-    expect(getByText('MockedSignedInWelcomePage')).toBeInTheDocument()
+  describe('currentUserが存在する場合', () => {
+    test('SignedInWelcomePageが表示される', () => {
+      const { getByText } = setUp()
+      expect(getByText('MockedSignedInWelcomePage')).toBeInTheDocument()
+    })
   })
 
-  test('currentUserが存在しない場合、WelcomePageが表示される', () => {
-    ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({
-      currentUser: false
-    }))
+  describe('currentUserが存在しない場合', () => {
+    beforeEach(() => {
+      currentUser = false
+      ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({
+        currentUser
+      }))
+    })
 
-    const { getByText } = setUp()
-    expect(getByText('MockedWelcomePage')).toBeInTheDocument()
+    test('WelcomePageが表示される', () => {
+      const { getByText } = setUp()
+      expect(getByText('MockedWelcomePage')).toBeInTheDocument()
+    })
   })
 })

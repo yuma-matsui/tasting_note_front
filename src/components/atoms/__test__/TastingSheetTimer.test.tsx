@@ -1,6 +1,8 @@
 import { render } from '@testing-library/react'
-import { TastingSheet, TastingSheetTimerProps } from '../../../types'
+
 import TastingSheetTimer from '../TastingSheetTimer'
+import { TastingSheetTimerProps } from '../../../types'
+import { initialTastingSheet } from '../../../utils'
 
 const mockStyle = { display: 'block' }
 const mockTimerClassName = 'mock-timer-class'
@@ -21,7 +23,7 @@ const setUp = ({ tastingSheet, isLastStep }: TastingSheetTimerProps) => {
 describe('TastingSheetTimer', () => {
   let props: TastingSheetTimerProps
   const initialProps: TastingSheetTimerProps = {
-    tastingSheet: {} as TastingSheet,
+    tastingSheet: { ...initialTastingSheet },
     isLastStep: true
   }
 

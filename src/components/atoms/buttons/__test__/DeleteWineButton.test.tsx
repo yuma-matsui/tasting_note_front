@@ -1,8 +1,9 @@
-import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { render, screen } from '@testing-library/react'
 
 import DeleteWineButton from '../DeleteWineButton'
 import { WineApi } from '../../../../types'
+import { wineTestData } from '../../../../utils'
 
 const mockOnClickDeleteWine = jest.fn()
 jest.mock('../../../../hooks/api/useDeleteWine', () => () => ({
@@ -19,7 +20,7 @@ const setUp = ({ wine }: { wine: WineApi }) => {
 }
 
 describe('DeleteWineButton', () => {
-  const wine = {} as WineApi
+  const wine = { ...wineTestData }
 
   it('"削除"が表示される', () => {
     const { getByText } = setUp({ wine })

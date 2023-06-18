@@ -1,8 +1,9 @@
-import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { render, screen } from '@testing-library/react'
 
 import ConfirmationAndBackButton from '../ConfirmationAndBackButton'
 import { TastingSheet } from '../../../../types'
+import { initialTastingSheet } from '../../../../utils'
 
 const mockClassName = 'mock-class'
 jest.mock('../../../../hooks/useGetButtonClassName', () => () => ({
@@ -19,7 +20,7 @@ const setUp = ({ tastingSheet }: { tastingSheet: TastingSheet }) => {
 }
 
 describe('ConfirmationAndBackButton', () => {
-  const tastingSheet = {} as TastingSheet
+  const tastingSheet = { ...initialTastingSheet }
 
   it('"戻る"が表示される', () => {
     const { getByText } = setUp({ tastingSheet })

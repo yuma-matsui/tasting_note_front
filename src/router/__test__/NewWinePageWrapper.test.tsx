@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
+
 import Router, { RouterProvider, createMemoryRouter } from 'react-router-dom'
 import { render } from '@testing-library/react'
 
-import { useAuthContext as mockUseAuthContext } from '../../hooks'
 import NewWinePageWrapper from '../NewWinePageWrapper'
+import { useAuthContext as mockUseAuthContext } from '../../hooks'
 
 jest.mock('../../components/pages/NewWinePage', () => () => <p>MockedNewWinePage</p>)
 
@@ -37,44 +38,55 @@ const setUp = () => {
 }
 
 describe('NewWinePageWrapper', () => {
-  const useLocationParams = {
-    key: 'test',
-    pathname: 'test',
-    search: 'test',
-    state: { id: 1, name: 'test', color: 'red' },
-    hash: 'test'
-  }
+  let currentUser: boolean
+  const state = { id: 1, name: 'test', color: 'red' }
 
   beforeEach(() => {
-    ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({
-      currentUser: true
-    }))
-    jest.spyOn(Router, 'useLocation').mockReturnValue(useLocationParams)
-  })
+    currentUser = true
 
-  test('currentUserが存在して、location.stateが存在する場合、NewWinePageが表示される', () => {
-    const { getByText } = setUp()
-    expect(getByText('MockedNewWinePage')).toBeInTheDocument()
-  })
-
-  test('currentUserが存在しない場合、トップページにリダイレクトされる', () => {
-    ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({
-      currentUser: false
-    }))
-
-    const { router, queryByText } = setUp()
-    expect(queryByText('MockedNewWinePage')).not.toBeInTheDocument()
-    expect(router.state.location.pathname).toEqual('/')
-  })
-
-  test('location.stateが存在しない場合、トップページにリダイレクトされる', () => {
     jest.spyOn(Router, 'useLocation').mockReturnValue({
-      ...useLocationParams,
-      state: null
+      ...jest.requireActual('react-router-dom'),
+      state
+    })
+    ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({
+      currentUser
+    }))
+  })
+
+  describe('currentUserが存在して、location.stateが存在する場合', () => {
+    test('NewWinePageが表示される', () => {
+      const { getByText } = setUp()
+      expect(getByText('MockedNewWinePage')).toBeInTheDocument()
+    })
+  })
+
+  describe('currentUserが存在しない場合', () => {
+    beforeEach(() => {
+      currentUser = false
+      ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({
+        currentUser
+      }))
     })
 
-    const { router, queryByText } = setUp()
-    expect(queryByText('MockedNewWinePage')).not.toBeInTheDocument()
-    expect(router.state.location.pathname).toEqual('/')
+    test('トップページにリダイレクトされる', () => {
+      const { router, queryByText } = setUp()
+      expect(queryByText('MockedNewWinePage')).not.toBeInTheDocument()
+      expect(router.state.location.pathname).toEqual('/')
+    })
+  })
+
+  describe('location.stateが存在しない場合', () => {
+    beforeEach(() => {
+      jest.spyOn(Router, 'useLocation').mockReturnValue({
+        ...jest.requireActual('react-router-dom'),
+        state: null
+      })
+    })
+
+    test('トップページにリダイレクトされる', () => {
+      const { router, queryByText } = setUp()
+      expect(queryByText('MockedNewWinePage')).not.toBeInTheDocument()
+      expect(router.state.location.pathname).toEqual('/')
+    })
   })
 })

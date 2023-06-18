@@ -1,12 +1,12 @@
 import { render, screen } from '@testing-library/react'
 
-import { WineApi } from '../../../types'
 import WineDetailLists from '../WineDetailLists'
+import { wineTestData } from '../../../utils'
 
 jest.mock('../../molecules/SheetOrWineDetailsDataList', () => () => <p>MockedSheetOrWineDetailsDataList</p>)
 
 describe('WineDetailLists', () => {
-  const wine = {} as WineApi
+  const wine = { ...wineTestData }
   test('SheetOrWineDetailsDataListが6つ表示される', () => {
     render(<WineDetailLists wine={wine} />)
 

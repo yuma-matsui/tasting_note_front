@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 
-import { WineImageInputProps } from '../../../../types'
 import WineImageInput from '../WineImageInput'
+import { WineImageInputProps } from '../../../../types'
 
 const setUp = ({ onChangeImageFile }: WineImageInputProps) => {
   const utils = render(<WineImageInput onChangeImageFile={onChangeImageFile} />)

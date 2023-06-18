@@ -1,6 +1,7 @@
 import { render } from '@testing-library/react'
-import { WineSelectBoxProps } from '../../../../types'
+
 import WineSelectBox from '../WineSelectBox'
+import { WineSelectBoxProps } from '../../../../types'
 
 const setUp = ({ name, register, options, label }: WineSelectBoxProps) => {
   const utils = render(<WineSelectBox name={name} register={register} options={options} label={label} />)

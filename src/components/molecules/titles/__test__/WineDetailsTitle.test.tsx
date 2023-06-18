@@ -1,8 +1,9 @@
-import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { render, screen } from '@testing-library/react'
 
-import { WineApi } from '../../../../types'
 import WineDetailsTitle from '../WineDetailsTitle'
+import { WineApi } from '../../../../types'
+import { wineTestData } from '../../../../utils'
 
 const mockOnClickOpenModal = jest.fn()
 jest.mock('../../../../hooks/useOnClickOpenModal', () => () => ({
@@ -19,7 +20,7 @@ const setUp = (wine: WineApi) => {
 }
 
 describe('WineDetailsTitle', () => {
-  const wine = { name: 'test' } as WineApi
+  const wine = { ...wineTestData }
 
   test('wineのnameが表示される', () => {
     const { getByText } = setUp(wine)

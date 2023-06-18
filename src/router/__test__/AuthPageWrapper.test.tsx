@@ -2,8 +2,8 @@ import { render } from '@testing-library/react'
 import { ReactElement } from 'react'
 import { RouterProvider, createMemoryRouter } from 'react-router-dom'
 
-import { useAuthContext as mockUseAuthContext } from '../../hooks'
 import AuthPageWrapper from '../AuthPageWrapper'
+import { useAuthContext as mockUseAuthContext } from '../../hooks'
 
 jest.mock('../../hooks/context/useAuthContext')
 
@@ -31,25 +31,34 @@ const setUp = (page: ReactElement) => {
 }
 
 describe('AuthPageWrapper', () => {
+  let currentUser: boolean
   const page = <p>MockedPage</p>
 
   beforeEach(() => {
+    currentUser = true
     ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({
-      currentUser: true
+      currentUser
     }))
   })
 
-  test('currentUserが存在する場合、トップページにリダイレクトされる', () => {
-    const { router } = setUp(page)
-    expect(router.state.location.pathname).toEqual('/')
+  describe('currentUserが存在する場合', () => {
+    test('トップページにリダイレクトされる', () => {
+      const { router } = setUp(page)
+      expect(router.state.location.pathname).toEqual('/')
+    })
   })
 
-  test('currentUserが存在しない場合はpropsで受け取ったpageが表示される', () => {
-    ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({
-      currentUser: false
-    }))
+  describe('currentUserが存在しない場合', () => {
+    beforeEach(() => {
+      currentUser = false
+      ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({
+        currentUser
+      }))
+    })
 
-    const { getByText } = setUp(page)
-    expect(getByText('MockedPage')).toBeInTheDocument()
+    test('propsで受け取ったpageが表示される', () => {
+      const { getByText } = setUp(page)
+      expect(getByText('MockedPage')).toBeInTheDocument()
+    })
   })
 })

@@ -1,9 +1,10 @@
+import userEvent from '@testing-library/user-event'
 import { render } from '@testing-library/react'
 import { RouterProvider, createMemoryRouter } from 'react-router-dom'
-import userEvent from '@testing-library/user-event'
 
-import { CardInsideLinkProps, WineApi } from '../../../../types'
 import CardInsideLink from '../CardInsideLink'
+import { CardInsideLinkProps } from '../../../../types'
+import { wineTestData } from '../../../../utils'
 
 const setUp = ({ text, to, textColor, state }: CardInsideLinkProps) => {
   const router = createMemoryRouter([
@@ -30,7 +31,7 @@ describe('CardInsideLink', () => {
     text: 'test',
     to: '/',
     textColor: 'red',
-    state: {} as WineApi
+    state: { ...wineTestData }
   }
 
   beforeEach(() => {
@@ -56,10 +57,6 @@ describe('CardInsideLink', () => {
   })
 
   test('クリックされるとstateが更新される', () => {
-    props.state = {
-      name: 'test'
-    } as WineApi
-
     const { router, getByRole } = setUp(props)
     userEvent.click(getByRole('link'))
 

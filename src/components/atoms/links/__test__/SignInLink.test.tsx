@@ -1,9 +1,10 @@
+import userEvent from '@testing-library/user-event'
 import { render } from '@testing-library/react'
 import { RouterProvider, createMemoryRouter } from 'react-router-dom'
-import userEvent from '@testing-library/user-event'
 
 import SignInLink from '../SignInLink'
 import { TastingSheet } from '../../../../types'
+import { initialTastingSheet } from '../../../../utils'
 
 const setUp = (tastingSheet?: TastingSheet) => {
   const router = createMemoryRouter([
@@ -43,7 +44,7 @@ describe('SignInLink', () => {
   })
 
   test('propsにtastingSheetがある場合、クリックされた時にstateが更新される', () => {
-    const tastingSheet = { name: 'test' } as TastingSheet
+    const tastingSheet = { ...initialTastingSheet }
     const { router, getByRole } = setUp(tastingSheet)
     userEvent.click(getByRole('link'))
 

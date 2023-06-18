@@ -1,8 +1,9 @@
-import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { render, screen } from '@testing-library/react'
 
-import { PostTastingSheetButtonProps, TastingSheet } from '../../../../types'
 import PostTastingSheetButton from '../PostTastingSheetButton'
+import { PostTastingSheetButtonProps } from '../../../../types'
+import { initialTastingSheet } from '../../../../utils'
 
 const mockPostTastingSheet = jest.fn()
 jest.mock('../../../../hooks/api/usePostTastingSheet', () => () => ({
@@ -26,7 +27,7 @@ const setUp = ({ tastingSheet }: PostTastingSheetButtonProps) => {
 describe('PostTastingSheetButton', () => {
   let props: PostTastingSheetButtonProps
   const initialProps: PostTastingSheetButtonProps = {
-    tastingSheet: {} as TastingSheet
+    tastingSheet: { ...initialTastingSheet }
   }
 
   beforeEach(() => {
