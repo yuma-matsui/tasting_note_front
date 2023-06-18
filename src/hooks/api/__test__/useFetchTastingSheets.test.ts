@@ -139,7 +139,7 @@ describe('useFetchATastingSheet', () => {
           mockClient.get.mockImplementation(() => ({ data: resultSheets }))
         })
 
-        test('', async () => {
+        test('APIで取得したtastingSheetsを返す', async () => {
           const { result } = await act(() => setUp())
           expect(result.current.tastingSheets).toEqual(resultSheets)
         })
