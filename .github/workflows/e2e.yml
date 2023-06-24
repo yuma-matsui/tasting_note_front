@@ -13,9 +13,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Prepare .env.production file
+      - name: Prepare .env file
         run: |
-          cat << EOF > .env.production
+          cat << EOF > .env
           REACT_APP_API_URL=${{ secrets.REACT_APP_API_URL }}
           REACT_APP_FIREBASE_API_KEY=${{ secrets.REACT_APP_FIREBASE_API_KEY }}
           REACT_APP_FIREBASE_AUTH_DOMAIN=${{ secrets.REACT_APP_FIREBASE_AUTH_DOMAIN }}
