@@ -15,3 +15,7 @@ export { default as resetPasswordFormSchema } from './schema/resetPasswordFormSc
 export { default as getFirebaseErrorMessage } from './getFirebaseErrorMessage'
 export { default as wineTestData } from './test_data/wine'
 export { default as headersTestData } from './test_data/headers'
+export { default as appearanceTestData } from './test_data/appearance'
+export { default as flavorTestData } from './test_data/flavor'
+export { default as tasteTestData } from './test_data/taste'
+export { default as conclusionTestData } from './test_data/conclusion'

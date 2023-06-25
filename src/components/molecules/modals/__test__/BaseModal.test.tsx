@@ -24,21 +24,45 @@ describe('BaseModal', () => {
     props = { ...initialProps }
   })
 
-  test('textが表示される', () => {
-    const { getByText } = setUp(props)
-    expect(getByText(props.text)).toBeInTheDocument()
-  })
+  describe('visibleがfalseの場合', () => {
+    beforeEach(() => {
+      props.visible = false
+    })
 
-  test.each([['leftButton'], ['rightButton']])('%sが表示される', (buttonText) => {
-    const { getByText } = setUp(props)
-    expect(getByText(buttonText)).toBeInTheDocument()
-  })
+    test('textが表示されない', () => {
+      const { queryByText } = setUp(props)
+      expect(queryByText(props.text)).not.toBeInTheDocument()
+    })
 
-  describe('visible', () => {
-    test.each([[false], [true]])('checkedが%pのinputタグが表示される', (bool) => {
-      props.visible = bool
+    test.each([['leftButton'], ['rightButton']])('%sが表示される', (buttonText) => {
+      const { queryByText } = setUp(props)
+      expect(queryByText(buttonText)).not.toBeInTheDocument()
+    })
+
+    test('checkedがfalseのinputタグが表示される', () => {
       const { getByRole } = setUp(props)
-      expect(getByRole('checkbox', { checked: bool })).toBeInTheDocument()
+      expect(getByRole('checkbox', { checked: false })).toBeInTheDocument()
+    })
+  })
+
+  describe('visibleがtrueの場合', () => {
+    beforeEach(() => {
+      props.visible = true
+    })
+
+    test('textが表示される', () => {
+      const { getByText } = setUp(props)
+      expect(getByText(props.text)).toBeInTheDocument()
+    })
+
+    test.each([['leftButton'], ['rightButton']])('%sが表示される', (buttonText) => {
+      const { getByText } = setUp(props)
+      expect(getByText(buttonText)).toBeInTheDocument()
+    })
+
+    test('checkedがtrueのinputタグが表示される', () => {
+      const { getByRole } = setUp(props)
+      expect(getByRole('checkbox', { checked: true })).toBeInTheDocument()
     })
   })
 })
