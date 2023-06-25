@@ -24,8 +24,6 @@ jobs:
           REACT_APP_FIREBASE_MESSAGING_SENDER_ID=${{ secrets.REACT_APP_FIREBASE_MESSAGING_SENDER_ID }}
           REACT_APP_FIREBASE_APP_ID=${{ secrets.REACT_APP_FIREBASE_APP_ID }}
           REACT_APP_FIREBASE_MEASUREMENT_ID=${{ secrets.REACT_APP_FIREBASE_MEASUREMENT_ID }}
-          REACT_APP_CF_DOMAIN=${{ secrets.REACT_APP_CF_DOMAIN }}
-          REACT_APP_SEND_EMAIL_URL=${{ secrets.REACT_APP_SEND_EMAIL_URL }}
           EOF
 
       - name: Cypress install
@@ -60,4 +58,3 @@ jobs:
           start: npm start
           wait-on: 'http://localhost:3000'
           browser: chrome
-
