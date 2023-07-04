@@ -9,6 +9,7 @@
         "airbnb/hooks",
         "plugin:@typescript-eslint/recommended",
         "plugin:@typescript-eslint/recommended-requiring-type-checking",
+        "plugin:cypress/recommended",
         "prettier"
     ],
     "overrides": [
@@ -21,7 +22,7 @@
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
-        "project": "./tsconfig.json",
+        "project": ["./tsconfig.json", "cypress/tsconfig.json"],
         "ecmaFeatures": {
             "jsx": true
         },
@@ -32,7 +33,8 @@
         "react",
         "@typescript-eslint",
         "import",
-        "unused-imports"
+        "unused-imports",
+        "cypress"
     ],
     "ignorePatterns": ["build"],
     "rules": {
