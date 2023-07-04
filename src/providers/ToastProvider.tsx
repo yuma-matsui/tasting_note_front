@@ -10,7 +10,7 @@ const DISPLAYING_MILLISECOND = 2000
 
 const ToastProvider: FC<ReactNodeChildren> = ({ children }) => {
   const { loading } = useAuthContext()
-  const { requesting } = useRequestingContext()
+  const requesting = useRequestingContext()
 
   const [visible, setVisible] = useState(false)
   const [toastText, setToastText] = useState<string>('')

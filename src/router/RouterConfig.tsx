@@ -24,7 +24,7 @@ import AuthPageWrapper from './AuthPageWrapper'
 
 const RouterConfig: FC = () => {
   const { loading, error } = useAuthContext()
-  const { requesting } = useRequestingContext()
+  const requesting = useRequestingContext()
 
   if (loading || requesting) return <LoadingSpinner />
   if (error) return <AuthErrorPage error={error} />

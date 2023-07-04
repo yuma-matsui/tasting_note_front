@@ -6,13 +6,13 @@ import { TastingSheet, TastingSheetApi } from '../../types'
 import useAuthContext from '../context/useAuthContext'
 import useAxios from '../useAxios'
 import useToastContext from '../context/useToastContext'
-import useRequestingContext from '../context/useRequestingContext'
+import useRequestingDispatchContext from '../context/useRequestingDispatchContext'
 
 const usePostTastingSheet = () => {
   const navigate = useNavigate()
   const { currentUser } = useAuthContext()
   const { client, getHeaders } = useAxios()
-  const { setRequesting } = useRequestingContext()
+  const setRequesting = useRequestingDispatchContext()
   const { showToast } = useToastContext()
   const { showBoundary } = useErrorBoundary()
 

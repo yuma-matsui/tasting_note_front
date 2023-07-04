@@ -28,9 +28,7 @@ jest.mock('../../context/useToastContext', () => () => ({
   showToast: mockShowToast
 }))
 const mockSetRequesting = jest.fn()
-jest.mock('../../context/useRequestingContext', () => () => ({
-  setRequesting: mockSetRequesting
-}))
+jest.mock('../../context/useRequestingDispatchContext', () => () => mockSetRequesting)
 
 const setUp = () => {
   const { result } = renderHook(() => usePostWine())

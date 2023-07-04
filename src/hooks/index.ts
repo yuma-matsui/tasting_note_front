@@ -29,6 +29,7 @@ export { default as useAuthContext } from './context/useAuthContext'
 export { default as useToastContext } from './context/useToastContext'
 export { default as useModalContext } from './context/useModalContext'
 export { default as useRequestingContext } from './context/useRequestingContext'
+export { default as useRequestingDispatchContext } from './context/useRequestingDispatchContext'
 
 export { default as useOnClickAuth } from './auth/useOnClickAuth'
 export { default as useUrgentSignOut } from './auth/useUrgentSignOut'
