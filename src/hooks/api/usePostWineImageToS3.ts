@@ -3,14 +3,14 @@ import { useErrorBoundary } from 'react-error-boundary'
 
 import useAuthContext from '../context/useAuthContext'
 import useAxios from '../useAxios'
-import useRequestingContext from '../context/useRequestingContext'
+import useRequestingDispatchContext from '../context/useRequestingDispatchContext'
 
 const usePostWineImageToS3 = () => {
   const { showBoundary } = useErrorBoundary()
 
   const { currentUser } = useAuthContext()
   const { client, getHeaders } = useAxios()
-  const { setRequesting } = useRequestingContext()
+  const setRequesting = useRequestingDispatchContext()
 
   const postWineImageToS3 = async (file: File, filename: string) => {
     if (!currentUser) return

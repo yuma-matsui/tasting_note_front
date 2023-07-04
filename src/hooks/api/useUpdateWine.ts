@@ -1,11 +1,11 @@
 import { useNavigate } from 'react-router-dom'
 import { useErrorBoundary } from 'react-error-boundary'
 
+import { Wine, WineApi } from '../../types'
 import useAuthContext from '../context/useAuthContext'
 import useToastContext from '../context/useToastContext'
 import useAxios from '../useAxios'
-import useRequestingContext from '../context/useRequestingContext'
-import { Wine, WineApi } from '../../types'
+import useRequestingDispatchContext from '../context/useRequestingDispatchContext'
 
 const useUpdateWine = () => {
   const navigate = useNavigate()
@@ -14,7 +14,7 @@ const useUpdateWine = () => {
   const { client, getHeaders } = useAxios()
   const { currentUser } = useAuthContext()
   const { showToast } = useToastContext()
-  const { setRequesting } = useRequestingContext()
+  const setRequesting = useRequestingDispatchContext()
 
   const updateWine = async (wine: Wine, wineId: number) => {
     if (!currentUser) return

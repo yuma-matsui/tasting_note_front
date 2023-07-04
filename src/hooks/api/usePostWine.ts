@@ -5,7 +5,7 @@ import { Wine } from '../../types'
 import useAuthContext from '../context/useAuthContext'
 import useToastContext from '../context/useToastContext'
 import useAxios from '../useAxios'
-import useRequestingContext from '../context/useRequestingContext'
+import useRequestingDispatchContext from '../context/useRequestingDispatchContext'
 
 const usePostWine = () => {
   const navigate = useNavigate()
@@ -13,7 +13,7 @@ const usePostWine = () => {
   const { currentUser } = useAuthContext()
   const { showToast } = useToastContext()
   const { showBoundary } = useErrorBoundary()
-  const { setRequesting } = useRequestingContext()
+  const setRequesting = useRequestingDispatchContext()
 
   const postWine = async (wine: Wine) => {
     if (!currentUser) return

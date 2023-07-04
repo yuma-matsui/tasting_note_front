@@ -1,14 +1,17 @@
 import { FC, useMemo, useState } from 'react'
 
 import { ReactNodeChildren } from '../types'
-import { RequestingContext } from '../contexts'
+import { RequestingContext, RequestingDispatchContext } from '../contexts'
 
 const RequestingProvider: FC<ReactNodeChildren> = ({ children }) => {
   const [requesting, setRequesting] = useState(false)
+  const requestingState = useMemo(() => setRequesting, [])
 
-  const requestingState = useMemo(() => ({ requesting, setRequesting }), [requesting])
-
-  return <RequestingContext.Provider value={requestingState}>{children}</RequestingContext.Provider>
+  return (
+    <RequestingContext.Provider value={requesting}>
+      <RequestingDispatchContext.Provider value={requestingState}>{children}</RequestingDispatchContext.Provider>
+    </RequestingContext.Provider>
+  )
 }
 
 export default RequestingProvider

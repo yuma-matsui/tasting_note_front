@@ -1,11 +1,5 @@
-import { Dispatch, SetStateAction, createContext } from 'react'
+import { createContext } from 'react'
 
-const RequestingContext = createContext<{
-  requesting: boolean
-  setRequesting: Dispatch<SetStateAction<boolean>>
-}>({
-  requesting: false,
-  setRequesting: () => {}
-})
+const RequestingContext = createContext<boolean>(false)
 
 export default RequestingContext
