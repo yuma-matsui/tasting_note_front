@@ -24,9 +24,7 @@ jest.mock('../../context/useAuthContext')
 jest.mock('../../useAxios')
 
 const mockSetRequesting = jest.fn()
-jest.mock('../../context/useRequestingContext', () => () => ({
-  setRequesting: mockSetRequesting
-}))
+jest.mock('../../context/useRequestingDispatchContext', () => () => mockSetRequesting)
 
 const mockShowToast = jest.fn()
 jest.mock('../../context/useToastContext', () => () => ({
