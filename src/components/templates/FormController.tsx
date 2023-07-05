@@ -1,7 +1,6 @@
 import { FC, memo, useRef } from 'react'
 
-import { useAuthContext, useBeforeUnload, useGetButtonFlexType } from '../../hooks'
-import { FormControllerProps } from '../../types'
+import { useBeforeUnload, useCurrentUserContext, useGetButtonFlexType } from '../../hooks'
 import {
   ConfirmationAndBackButton,
   FinishTastingButton,
@@ -9,6 +8,7 @@ import {
   PostTastingSheetButton,
   SaveSheetButton
 } from '../atoms'
+import { FormControllerProps } from '../../types'
 
 const FormController: FC<FormControllerProps> = memo(
   ({
@@ -24,7 +24,7 @@ const FormController: FC<FormControllerProps> = memo(
   }) => {
     useBeforeUnload()
     const submitRef = useRef<HTMLInputElement>(null)
-    const { currentUser } = useAuthContext()
+    const currentUser = useCurrentUserContext()
     const { getButtonFlexType } = useGetButtonFlexType()
 
     return (

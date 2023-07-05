@@ -27,7 +27,6 @@ export type { default as Wine } from './wine/wine'
 export type { default as WineFormState } from './wine/wineFormState'
 export type { default as WineUseFormName } from './wine/wineUseFormName'
 
-export type { default as AuthContextType } from './contexts/authContextType'
 export type { default as ToastContextType } from './contexts/toastContextType'
 export type { default as ModalContextType } from './contexts/modalContextType'
 

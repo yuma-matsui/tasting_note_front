@@ -4,9 +4,9 @@ import Router, { RouterProvider, createMemoryRouter } from 'react-router-dom'
 import { render } from '@testing-library/react'
 
 import TastingSheetPageWrapper from '../TastingSheetPageWrapper'
-import { useAuthContext as mockUseAuthContext } from '../../hooks'
+import { useCurrentUserContext as mockUseCurrentUserContext } from '../../hooks'
 
-jest.mock('../../hooks/context/useAuthContext')
+jest.mock('../../hooks/context/useCurrentUserContext')
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useParams: jest.fn()
@@ -46,9 +46,7 @@ describe('TastingSheetPageWrapper', () => {
     jest.spyOn(Router, 'useParams').mockReturnValue({
       tastingSheetId: '1'
     })
-    ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({
-      currentUser
-    }))
+    ;(mockUseCurrentUserContext as jest.Mock).mockImplementation(() => currentUser)
   })
 
   describe('currentUserが存在して、tastingSheetIdが数字の文字列の場合', () => {
@@ -61,9 +59,7 @@ describe('TastingSheetPageWrapper', () => {
   describe('currentUserが存在しない場合', () => {
     beforeEach(() => {
       currentUser = false
-      ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({
-        currentUser
-      }))
+      ;(mockUseCurrentUserContext as jest.Mock).mockImplementation(() => currentUser)
     })
 
     test('トップページにリダイレクトされる', () => {

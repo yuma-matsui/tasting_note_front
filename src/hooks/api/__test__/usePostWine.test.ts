@@ -3,7 +3,7 @@
 import { renderHook } from '@testing-library/react'
 import { act } from 'react-dom/test-utils'
 
-import mockUseAuthContext from '../../context/useAuthContext'
+import mockUseCurrentUserContext from '../../context/useCurrentUserContext'
 import usePostWine from '../usePostWine'
 import { wineTestData } from '../../../utils'
 import { Wine } from '../../../types'
@@ -13,7 +13,7 @@ jest.mock('react-router-dom', () => ({
   useNavigate: jest.fn()
 }))
 
-jest.mock('../../context/useAuthContext')
+jest.mock('../../context/useCurrentUserContext')
 jest.mock('../../useAxios', () => () => ({
   client: jest.fn(),
   getHeaders: jest.fn()
@@ -42,18 +42,14 @@ describe('usePostTastingSheet', () => {
     postingWine = { ...wineTestData, name: 'postingWine' }
 
     currentUser = true
-    ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({
-      currentUser
-    }))
+    ;(mockUseCurrentUserContext as jest.Mock).mockImplementation(() => currentUser)
   })
 
   describe('postWine', () => {
     describe('currentUserが存在しない場合', () => {
       beforeEach(() => {
         currentUser = false
-        ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({
-          currentUser
-        }))
+        ;(mockUseCurrentUserContext as jest.Mock).mockImplementation(() => currentUser)
       })
 
       test('早期リターンされて何も実行されない', async () => {

@@ -3,10 +3,10 @@
 import { renderHook } from '@testing-library/react'
 import { act } from 'react-dom/test-utils'
 
-import mockUseAuthContext from '../../context/useAuthContext'
+import mockUseCurrentUserContext from '../../context/useCurrentUserContext'
 import usePostWineImageToS3 from '../usePostWineImageToS3'
 
-jest.mock('../../context/useAuthContext')
+jest.mock('../../context/useCurrentUserContext')
 jest.mock('../../useAxios', () => () => ({
   client: jest.fn(),
   getHeaders: jest.fn()
@@ -30,18 +30,14 @@ describe('usePostTastingSheet', () => {
 
   beforeEach(() => {
     currentUser = true
-    ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({
-      currentUser
-    }))
+    ;(mockUseCurrentUserContext as jest.Mock).mockImplementation(() => currentUser)
   })
 
   describe('postWineImageToS3', () => {
     describe('currentUserが存在しない場合', () => {
       beforeEach(() => {
         currentUser = false
-        ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({
-          currentUser
-        }))
+        ;(mockUseCurrentUserContext as jest.Mock).mockImplementation(() => currentUser)
       })
 
       test('早期リターンされて何も実行されない', async () => {

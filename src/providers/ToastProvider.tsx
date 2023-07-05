@@ -3,13 +3,13 @@ import { createPortal } from 'react-dom'
 
 import { BaseToast } from '../components/atoms'
 import { ToastContext } from '../contexts'
-import { useAuthContext, useRequestingContext } from '../hooks'
+import { useAuthLoadingContext, useRequestingContext } from '../hooks'
 import { ReactNodeChildren, ToastProps, ToastType } from '../types'
 
 const DISPLAYING_MILLISECOND = 2000
 
 const ToastProvider: FC<ReactNodeChildren> = ({ children }) => {
-  const { loading } = useAuthContext()
+  const loading = useAuthLoadingContext()
   const requesting = useRequestingContext()
 
   const [visible, setVisible] = useState(false)

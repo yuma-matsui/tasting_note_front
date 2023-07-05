@@ -1,10 +1,10 @@
 import { FC } from 'react'
 
 import { SignedInWelcomePage, WelcomePage } from '../components/pages'
-import { useAuthContext } from '../hooks'
+import { useCurrentUserContext } from '../hooks'
 
 const WelcomePageWrapper: FC = () => {
-  const { currentUser } = useAuthContext()
+  const currentUser = useCurrentUserContext()
 
   return currentUser ? <SignedInWelcomePage /> : <WelcomePage />
 }

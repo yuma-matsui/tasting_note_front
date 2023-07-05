@@ -1,14 +1,14 @@
 import { useNavigate } from 'react-router-dom'
 
 import { WineApi } from '../../types'
-import useAuthContext from '../context/useAuthContext'
 import useToastContext from '../context/useToastContext'
 import useAxios from '../useAxios'
 import useRequestingDispatchContext from '../context/useRequestingDispatchContext'
+import useCurrentUserContext from '../context/useCurrentUserContext'
 
 const useDeleteWine = (wine: WineApi) => {
   const navigate = useNavigate()
-  const { currentUser } = useAuthContext()
+  const currentUser = useCurrentUserContext()
   const { client, getHeaders } = useAxios()
   const { showToast } = useToastContext()
   const fetchAndChangeRequesting = useRequestingDispatchContext()

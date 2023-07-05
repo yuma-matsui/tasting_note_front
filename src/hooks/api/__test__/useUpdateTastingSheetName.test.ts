@@ -4,7 +4,7 @@ import Router from 'react-router-dom'
 import { renderHook } from '@testing-library/react'
 import { act } from 'react-dom/test-utils'
 
-import mockUseAuthContext from '../../context/useAuthContext'
+import mockUseCurrentUserContext from '../../context/useCurrentUserContext'
 import useUpdateTastingSheetName from '../useUpdateTastingSheetName'
 import { initialTastingSheet } from '../../../utils'
 
@@ -13,7 +13,7 @@ jest.mock('react-router-dom', () => ({
   useParams: jest.fn()
 }))
 
-jest.mock('../../context/useAuthContext')
+jest.mock('../../context/useCurrentUserContext')
 jest.mock('../../useAxios', () => () => ({
   client: jest.fn(),
   getHeaders: jest.fn()
@@ -42,9 +42,7 @@ describe('useUpdateTastingSheetName', () => {
   beforeEach(() => {
     tastingSheetId = '1'
     currentUser = true
-    ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({
-      currentUser
-    }))
+    ;(mockUseCurrentUserContext as jest.Mock).mockImplementation(() => currentUser)
 
     jest.spyOn(Router, 'useParams').mockReturnValue({
       tastingSheetId
@@ -55,9 +53,7 @@ describe('useUpdateTastingSheetName', () => {
     describe('currentUserが存在しない場合', () => {
       beforeEach(() => {
         currentUser = false
-        ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({
-          currentUser
-        }))
+        ;(mockUseCurrentUserContext as jest.Mock).mockImplementation(() => currentUser)
       })
 
       test('早期リターンされて何も実行されない', async () => {
