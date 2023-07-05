@@ -5,7 +5,7 @@ import ErrorBoundary from 'react-error-boundary'
 import { renderHook } from '@testing-library/react'
 import { act } from 'react-dom/test-utils'
 
-import mockUseAuthContext from '../../context/useAuthContext'
+import mockUseCurrentUserContext from '../../context/useCurrentUserContext'
 import mockUseAxios from '../../useAxios'
 import { headersTestData, initialTastingSheet } from '../../../utils'
 import { TastingSheetApi } from '../../../types'
@@ -16,7 +16,7 @@ jest.mock('react-error-boundary', () => ({
   useErrorBoundary: jest.fn()
 }))
 
-jest.mock('../../context/useAuthContext')
+jest.mock('../../context/useCurrentUserContext')
 jest.mock('../../useAxios')
 
 const setUp = () => {
@@ -44,9 +44,7 @@ describe('useFetchATastingSheet', () => {
   beforeEach(() => {
     resultSheets = []
     currentUser = true
-    ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({
-      currentUser
-    }))
+    ;(mockUseCurrentUserContext as jest.Mock).mockImplementation(() => currentUser)
 
     mockClient.get.mockImplementation(() => ({
       data: resultSheets
@@ -71,9 +69,7 @@ describe('useFetchATastingSheet', () => {
     describe('currentUserが存在しない場合', () => {
       beforeEach(() => {
         currentUser = false
-        ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({
-          currentUser
-        }))
+        ;(mockUseCurrentUserContext as jest.Mock).mockImplementation(() => currentUser)
       })
 
       test('何も実行されない', async () => {

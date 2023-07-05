@@ -1,12 +1,12 @@
 import { FC, ReactElement } from 'react'
 import { Navigate } from 'react-router-dom'
 
-import { useAuthContext } from '../hooks'
+import { useCurrentUserContext } from '../hooks'
 
 const AuthPageWrapper: FC<{
   page: ReactElement
 }> = ({ page }) => {
-  const { currentUser } = useAuthContext()
+  const currentUser = useCurrentUserContext()
 
   return currentUser ? <Navigate to="/" /> : page
 }

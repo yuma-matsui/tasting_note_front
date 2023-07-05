@@ -1,11 +1,11 @@
 import axios from 'axios'
 
-import useAuthContext from '../context/useAuthContext'
 import useAxios from '../useAxios'
 import useRequestingDispatchContext from '../context/useRequestingDispatchContext'
+import useCurrentUserContext from '../context/useCurrentUserContext'
 
 const usePostWineImageToS3 = () => {
-  const { currentUser } = useAuthContext()
+  const currentUser = useCurrentUserContext()
   const { client, getHeaders } = useAxios()
   const fetchAndChangeRequesting = useRequestingDispatchContext()
 

@@ -3,9 +3,9 @@ import { ReactElement } from 'react'
 import { RouterProvider, createMemoryRouter } from 'react-router-dom'
 
 import AuthPageWrapper from '../AuthPageWrapper'
-import { useAuthContext as mockUseAuthContext } from '../../hooks'
+import { useCurrentUserContext as mockUseCurrentUserContext } from '../../hooks'
 
-jest.mock('../../hooks/context/useAuthContext')
+jest.mock('../../hooks/context/useCurrentUserContext')
 
 const setUp = (page: ReactElement) => {
   const router = createMemoryRouter(
@@ -36,9 +36,7 @@ describe('AuthPageWrapper', () => {
 
   beforeEach(() => {
     currentUser = true
-    ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({
-      currentUser
-    }))
+    ;(mockUseCurrentUserContext as jest.Mock).mockImplementation(() => currentUser)
   })
 
   describe('currentUserが存在する場合', () => {
@@ -51,9 +49,7 @@ describe('AuthPageWrapper', () => {
   describe('currentUserが存在しない場合', () => {
     beforeEach(() => {
       currentUser = false
-      ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({
-        currentUser
-      }))
+      ;(mockUseCurrentUserContext as jest.Mock).mockImplementation(() => currentUser)
     })
 
     test('propsで受け取ったpageが表示される', () => {

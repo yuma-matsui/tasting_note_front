@@ -2,8 +2,8 @@ import { useLayoutEffect, useState } from 'react'
 import { useErrorBoundary } from 'react-error-boundary'
 
 import { TastingSheetApi } from '../../types'
-import useAuthContext from '../context/useAuthContext'
 import useAxios from '../useAxios'
+import useCurrentUserContext from '../context/useCurrentUserContext'
 
 const useFetchTastingSheets = () => {
   const [tastingSheets, setTastingSheets] = useState<TastingSheetApi[]>([])
@@ -11,7 +11,7 @@ const useFetchTastingSheets = () => {
   const { showBoundary } = useErrorBoundary()
 
   const { client, getHeaders } = useAxios()
-  const { currentUser } = useAuthContext()
+  const currentUser = useCurrentUserContext()
 
   useLayoutEffect(() => {
     const fetchTastingSheets = async () => {

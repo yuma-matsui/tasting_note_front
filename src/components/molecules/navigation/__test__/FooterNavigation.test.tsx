@@ -1,9 +1,9 @@
 import { render } from '@testing-library/react'
 
 import FooterNavigation from '../FooterNavigation'
-import { useAuthContext as mockUseAuthContext } from '../../../../hooks'
+import { useCurrentUserContext as mockUseCurrentUserContext } from '../../../../hooks'
 
-jest.mock('../../../../hooks/context/useAuthContext')
+jest.mock('../../../../hooks/context/useCurrentUserContext')
 
 jest.mock('../../../../hooks/useCheckEditingForm', () => () => ({
   isEditing: false
@@ -23,9 +23,7 @@ describe('FooterNavigation', () => {
   let currentUser: boolean
   beforeEach(() => {
     currentUser = false
-    ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({
-      currentUser
-    }))
+    ;(mockUseCurrentUserContext as jest.Mock).mockImplementation(() => currentUser)
   })
 
   test('navタグが表示される', () => {
@@ -48,9 +46,7 @@ describe('FooterNavigation', () => {
   describe('currenUserが存在する場合', () => {
     beforeEach(() => {
       currentUser = true
-      ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({
-        currentUser
-      }))
+      ;(mockUseCurrentUserContext as jest.Mock).mockImplementation(() => currentUser)
     })
 
     test('liタグが4つ表示される', () => {

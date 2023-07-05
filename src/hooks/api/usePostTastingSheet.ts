@@ -2,14 +2,14 @@ import { useNavigate } from 'react-router-dom'
 import { User } from 'firebase/auth'
 
 import { TastingSheet, TastingSheetApi } from '../../types'
-import useAuthContext from '../context/useAuthContext'
 import useAxios from '../useAxios'
 import useToastContext from '../context/useToastContext'
 import useRequestingDispatchContext from '../context/useRequestingDispatchContext'
+import useCurrentUserContext from '../context/useCurrentUserContext'
 
 const usePostTastingSheet = () => {
   const navigate = useNavigate()
-  const { currentUser } = useAuthContext()
+  const currentUser = useCurrentUserContext()
   const { client, getHeaders } = useAxios()
   const { showToast } = useToastContext()
   const fetchAndChangeRequesting = useRequestingDispatchContext()

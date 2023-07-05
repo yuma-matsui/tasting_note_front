@@ -2,10 +2,10 @@ import { FC } from 'react'
 import { Navigate, useParams } from 'react-router-dom'
 import { TastingSheetDetailsPage } from '../components/pages'
 
-import { useAuthContext } from '../hooks'
+import { useCurrentUserContext } from '../hooks'
 
 const TastingSheetPageWrapper: FC = () => {
-  const { currentUser } = useAuthContext()
+  const currentUser = useCurrentUserContext()
 
   const { tastingSheetId } = useParams()
   const id = Number(tastingSheetId)

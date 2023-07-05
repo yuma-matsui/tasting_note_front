@@ -1,14 +1,14 @@
 import { renderHook } from '@testing-library/react'
 import { act } from 'react-dom/test-utils'
 
-import mockUseAuthContext from '../../context/useAuthContext'
+import mockUseCurrentUserContext from '../../context/useCurrentUserContext'
 import useDeleteTastingSheet from '../useDeleteTastingSheet'
 
 jest.mock('../../useAxios', () => () => ({
   client: jest.fn(),
   getHeaders: jest.fn()
 }))
-jest.mock('../../context/useAuthContext')
+jest.mock('../../context/useCurrentUserContext')
 
 const mockFetchAndChangeRequesting = jest.fn()
 jest.mock('../../context/useRequestingDispatchContext', () => () => mockFetchAndChangeRequesting)
@@ -32,18 +32,14 @@ describe('useDeleteTastingSheet', () => {
 
   beforeEach(() => {
     currentUser = true
-    ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({
-      currentUser
-    }))
+    ;(mockUseCurrentUserContext as jest.Mock).mockImplementation(() => currentUser)
   })
 
   describe('deleteTastingSheet', () => {
     describe('currentUserが存在しない場合', () => {
       beforeEach(() => {
         currentUser = false
-        ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({
-          currentUser
-        }))
+        ;(mockUseCurrentUserContext as jest.Mock).mockImplementation(() => currentUser)
       })
 
       test('早期リターンされて何も起こらない', async () => {

@@ -3,12 +3,15 @@
 import { render, screen } from '@testing-library/react'
 
 import FormController from '../FormController'
-import { useAuthContext as mockUseAuthContext, useGetButtonFlexType as mockUseGetButtonFlexType } from '../../../hooks'
+import {
+  useCurrentUserContext as mockUseCurrentUserContext,
+  useGetButtonFlexType as mockUseGetButtonFlexType
+} from '../../../hooks'
 import { FormControllerProps } from '../../../types'
 import { initialTastingSheet } from '../../../utils'
 
 jest.mock('../../../hooks/tasting_sheet/useBeforeUnload')
-jest.mock('../../../hooks/context/useAuthContext')
+jest.mock('../../../hooks/context/useCurrentUserContext')
 jest.mock('../../../hooks/useGetButtonFlexType')
 
 jest.mock('../../atoms/buttons/ConfirmationAndBackButton', () => () => <p>MockedConfirmationAndBackButton</p>)
@@ -69,9 +72,7 @@ describe('FromController', () => {
   beforeEach(() => {
     currentUser = false
     props = { ...initialProps }
-    ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({
-      currentUser
-    }))
+    ;(mockUseCurrentUserContext as jest.Mock).mockImplementation(() => currentUser)
     ;(mockUseGetButtonFlexType as jest.Mock).mockImplementation(() => ({
       getButtonFlexType: jest.fn()
     }))
@@ -108,9 +109,7 @@ describe('FromController', () => {
       beforeEach(() => {
         props.isLastStep = isLastStep
         currentUser = isCurrentUser
-        ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({
-          currentUser
-        }))
+        ;(mockUseCurrentUserContext as jest.Mock).mockImplementation(() => currentUser)
       })
       test('表示されない', () => {
         const { queryByText } = setUp(props)
@@ -149,9 +148,7 @@ describe('FromController', () => {
       beforeEach(() => {
         props.isLastStep = true
         currentUser = true
-        ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({
-          currentUser
-        }))
+        ;(mockUseCurrentUserContext as jest.Mock).mockImplementation(() => currentUser)
       })
 
       test('表示される', () => {
@@ -168,9 +165,7 @@ describe('FromController', () => {
       beforeEach(() => {
         props.isLastStep = isLastStep
         currentUser = isCurrentUser
-        ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({
-          currentUser
-        }))
+        ;(mockUseCurrentUserContext as jest.Mock).mockImplementation(() => currentUser)
       })
 
       test('表示されない', () => {
@@ -200,7 +195,7 @@ describe('FromController', () => {
       beforeEach(() => {
         props.isLastStep = isLastStep
         currentUser = isCurrentUser
-        ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({ currentUser }))
+        ;(mockUseCurrentUserContext as jest.Mock).mockImplementation(() => currentUser)
       })
 
       test('表示されない', () => {

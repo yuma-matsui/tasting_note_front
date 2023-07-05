@@ -1,10 +1,10 @@
 import { getAuth } from 'firebase/auth'
 import { useSignOut } from 'react-firebase-hooks/auth'
 
-import useAuthContext from '../context/useAuthContext'
+import useAuthErrorDispatchContext from '../context/useAuthErrorDispatchContext'
 
 const useSignOutUser = () => {
-  const { setAuthError } = useAuthContext()
+  const setAuthError = useAuthErrorDispatchContext()
   const [signOutUser, , signOutError] = useSignOut(getAuth())
 
   const signOut = async () => {
