@@ -3,7 +3,13 @@ import { AuthError, getAuth } from 'firebase/auth'
 import { FC, useMemo, useState } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
 
-import { AuthContext } from '../contexts'
+import {
+  AuthCurrentUserContext,
+  AuthErrorContext,
+  AuthErrorDispatchContext,
+  AuthLoadingContext,
+  AuthLoadingDispatchContext
+} from '../contexts'
 import { ReactNodeChildren } from '../types'
 import { firebaseConfig } from '../lib'
 
@@ -13,21 +19,20 @@ const AuthProvider: FC<ReactNodeChildren> = ({ children }) => {
   const [authLoading, setAuthLoading] = useState(false)
   const [authError, setAuthError] = useState<AuthError | Error | undefined>()
 
-  const loading = authChangeLoading || authLoading
-  const error = authChangeError || authError
+  const loading = useMemo(() => authChangeLoading || authLoading, [authChangeLoading, authLoading])
+  const error = useMemo(() => authChangeError || authError, [authChangeError, authError])
 
-  const authState = useMemo(
-    () => ({
-      currentUser,
-      loading,
-      error,
-      setAuthError,
-      setAuthLoading
-    }),
-    [currentUser, loading, error]
+  return (
+    <AuthCurrentUserContext.Provider value={currentUser}>
+      <AuthLoadingContext.Provider value={loading}>
+        <AuthErrorContext.Provider value={error}>
+          <AuthLoadingDispatchContext.Provider value={setAuthLoading}>
+            <AuthErrorDispatchContext.Provider value={setAuthError}>{children}</AuthErrorDispatchContext.Provider>
+          </AuthLoadingDispatchContext.Provider>
+        </AuthErrorContext.Provider>
+      </AuthLoadingContext.Provider>
+    </AuthCurrentUserContext.Provider>
   )
-
-  return <AuthContext.Provider value={authState}>{children}</AuthContext.Provider>
 }
 
 export default AuthProvider
