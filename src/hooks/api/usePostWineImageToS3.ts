@@ -11,10 +11,12 @@ const usePostWineImageToS3 = () => {
 
   const postWineImageToS3 = async (file: File, filename: string) => {
     if (!currentUser) return
+
     const fetchFunction = async () => {
       const { data: signedUrl } = await client.post<string>('/images', { filename }, await getHeaders(currentUser))
       await axios.put(signedUrl, file)
     }
+
     await fetchAndChangeRequesting(fetchFunction)
   }
 
