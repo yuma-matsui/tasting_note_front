@@ -1,6 +1,6 @@
-import { Dispatch, SetStateAction, createContext } from 'react'
+import { createContext } from 'react'
 
-const RequestingDispatchContext = createContext<Dispatch<SetStateAction<boolean>>>(() => {
+const RequestingDispatchContext = createContext<(fetch: () => Promise<void>) => Promise<void>>(() => {
   throw Error('No default value!')
 })
 
