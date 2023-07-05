@@ -1,10 +1,8 @@
 import { FC } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { ErrorBoundary } from 'react-error-boundary'
 
 import {
   Error404Page,
-  ErrorFallbackForApi,
   NewTastingSheetPage,
   PrivacyPolicyPage,
   ResetPasswordPage,
@@ -24,38 +22,36 @@ import AuthPageWrapper from './AuthPageWrapper'
 
 const RouterConfig: FC = () => {
   const { loading, error } = useAuthContext()
-  const { requesting } = useRequestingContext()
+  const requesting = useRequestingContext()
 
   if (loading || requesting) return <LoadingSpinner />
   if (error) return <AuthErrorPage error={error} />
 
   return (
     <BrowserRouter>
-      <ErrorBoundary FallbackComponent={ErrorFallbackForApi}>
-        <ModalProvider>
-          <Routes>
-            <Route path="/" element={<WelcomePageWrapper />} />
-            <Route path="/signin" element={<AuthPageWrapper page={<SignInPage />} />} />
-            <Route path="/signup" element={<AuthPageWrapper page={<SignUpPage />} />} />
-            <Route path="/reset_password" element={<AuthPageWrapper page={<ResetPasswordPage />} />} />
-            <Route path="/pp" element={<PrivacyPolicyPage />} />
-            <Route path="/tos" element={<TermOfServicePage />} />
-            <Route path="/tasting_sheets">
-              <Route index element={<Error404Page />} />
-              <Route path=":tastingSheetId" element={<TastingSheetPageWrapper />} />
-              <Route path="new" element={<NewTastingSheetPage />} />
+      <ModalProvider>
+        <Routes>
+          <Route path="/" element={<WelcomePageWrapper />} />
+          <Route path="/signin" element={<AuthPageWrapper page={<SignInPage />} />} />
+          <Route path="/signup" element={<AuthPageWrapper page={<SignUpPage />} />} />
+          <Route path="/reset_password" element={<AuthPageWrapper page={<ResetPasswordPage />} />} />
+          <Route path="/pp" element={<PrivacyPolicyPage />} />
+          <Route path="/tos" element={<TermOfServicePage />} />
+          <Route path="/tasting_sheets">
+            <Route index element={<Error404Page />} />
+            <Route path=":tastingSheetId" element={<TastingSheetPageWrapper />} />
+            <Route path="new" element={<NewTastingSheetPage />} />
+          </Route>
+          <Route path="/wines">
+            <Route index element={<Error404Page />} />
+            <Route path="new" element={<NewWinePageWrapper />} />
+            <Route path="edit">
+              <Route path=":wineId" element={<EditWinePageWrapper />} />
             </Route>
-            <Route path="/wines">
-              <Route index element={<Error404Page />} />
-              <Route path="new" element={<NewWinePageWrapper />} />
-              <Route path="edit">
-                <Route path=":wineId" element={<EditWinePageWrapper />} />
-              </Route>
-            </Route>
-            <Route path="*" element={<Error404Page />} />
-          </Routes>
-        </ModalProvider>
-      </ErrorBoundary>
+          </Route>
+          <Route path="*" element={<Error404Page />} />
+        </Routes>
+      </ModalProvider>
     </BrowserRouter>
   )
 }

@@ -1,14 +1,35 @@
-import { FC, useMemo, useState } from 'react'
+import { FC, useCallback, useState } from 'react'
+import { useErrorBoundary } from 'react-error-boundary'
 
 import { ReactNodeChildren } from '../types'
-import { RequestingContext } from '../contexts'
+import { RequestingContext, RequestingDispatchContext } from '../contexts'
 
 const RequestingProvider: FC<ReactNodeChildren> = ({ children }) => {
   const [requesting, setRequesting] = useState(false)
+  const { showBoundary } = useErrorBoundary()
 
-  const requestingState = useMemo(() => ({ requesting, setRequesting }), [requesting])
+  const fetchAndChangeRequesting = useCallback(
+    async (fetch: () => Promise<void>) => {
+      setRequesting(true)
 
-  return <RequestingContext.Provider value={requestingState}>{children}</RequestingContext.Provider>
+      try {
+        await fetch()
+      } catch (e) {
+        if (e instanceof Error) showBoundary(e)
+      } finally {
+        setRequesting(false)
+      }
+    },
+    [showBoundary]
+  )
+
+  return (
+    <RequestingContext.Provider value={requesting}>
+      <RequestingDispatchContext.Provider value={fetchAndChangeRequesting}>
+        {children}
+      </RequestingDispatchContext.Provider>
+    </RequestingContext.Provider>
+  )
 }
 
 export default RequestingProvider
