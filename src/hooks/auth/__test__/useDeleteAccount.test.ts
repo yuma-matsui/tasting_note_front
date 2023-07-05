@@ -4,7 +4,7 @@ import Auth from 'react-firebase-hooks/auth'
 import { renderHook } from '@testing-library/react'
 import { act } from 'react-dom/test-utils'
 
-import mockUseAuthContext from '../../context/useAuthContext'
+import mockUseCurrentUserContext from '../../context/useCurrentUserContext'
 import mockUseAxios from '../../useAxios'
 import useDeleteAccount from '../useDeleteAccount'
 import { headersTestData } from '../../../utils'
@@ -16,13 +16,16 @@ jest.mock('react-firebase-hooks/auth', () => ({
   ...jest.requireActual('react-firebase-hooks/auth'),
   useDeleteUser: jest.fn()
 }))
-jest.mock('../../context/useAuthContext')
+jest.mock('../../context/useCurrentUserContext')
 jest.mock('../../useAxios')
+
+const mockSetAuthLoading = jest.fn()
+jest.mock('../../context/useAuthLoadingDispatchContext', () => () => mockSetAuthLoading)
+jest.mock('../../context/useAuthErrorDispatchContext', () => () => jest.fn())
 
 describe('useDeleteAccount', () => {
   const userId = 999
   let currentUser: boolean
-  const mockSetAuthLoading = jest.fn()
   const mockDeleteUser = jest.fn()
   const mockClient = {
     get: jest.fn(),
@@ -32,11 +35,7 @@ describe('useDeleteAccount', () => {
 
   beforeEach(() => {
     currentUser = true
-    ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({
-      currentUser,
-      setAuthLoading: mockSetAuthLoading,
-      setAuthError: jest.fn()
-    }))
+    ;(mockUseCurrentUserContext as jest.Mock).mockImplementation(() => currentUser)
 
     mockClient.get.mockImplementation(() => ({ data: userId }))
     mockGetHeaders.mockImplementation(() => headersTestData)
@@ -52,12 +51,9 @@ describe('useDeleteAccount', () => {
     describe('currentUserがfalseの場合', () => {
       beforeEach(() => {
         currentUser = false
-        ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({
-          currentUser,
-          setAuthLoading: mockSetAuthLoading,
-          setAuthError: jest.fn()
-        }))
+        ;(mockUseCurrentUserContext as jest.Mock).mockImplementation(() => currentUser)
       })
+
       test('早期リターンされて何も起こらない', async () => {
         const { result } = renderHook(() => useDeleteAccount())
         await act(() => result.current.deleteAccount())

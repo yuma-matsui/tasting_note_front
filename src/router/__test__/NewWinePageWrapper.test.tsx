@@ -4,11 +4,11 @@ import Router, { RouterProvider, createMemoryRouter } from 'react-router-dom'
 import { render } from '@testing-library/react'
 
 import NewWinePageWrapper from '../NewWinePageWrapper'
-import { useAuthContext as mockUseAuthContext } from '../../hooks'
+import { useCurrentUserContext as mockUseCurrentUserContext } from '../../hooks'
 
 jest.mock('../../components/pages/NewWinePage', () => () => <p>MockedNewWinePage</p>)
 
-jest.mock('../../hooks/context/useAuthContext')
+jest.mock('../../hooks/context/useCurrentUserContext')
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useLocation: jest.fn()
@@ -48,9 +48,7 @@ describe('NewWinePageWrapper', () => {
       ...jest.requireActual('react-router-dom'),
       state
     })
-    ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({
-      currentUser
-    }))
+    ;(mockUseCurrentUserContext as jest.Mock).mockImplementation(() => currentUser)
   })
 
   describe('currentUserが存在して、location.stateが存在する場合', () => {
@@ -63,9 +61,7 @@ describe('NewWinePageWrapper', () => {
   describe('currentUserが存在しない場合', () => {
     beforeEach(() => {
       currentUser = false
-      ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({
-        currentUser
-      }))
+      ;(mockUseCurrentUserContext as jest.Mock).mockImplementation(() => currentUser)
     })
 
     test('トップページにリダイレクトされる', () => {

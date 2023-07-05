@@ -1,11 +1,11 @@
-import useAuthContext from '../context/useAuthContext'
 import useToastContext from '../context/useToastContext'
 import useAxios from '../useAxios'
 import useRequestingDispatchContext from '../context/useRequestingDispatchContext'
+import useCurrentUserContext from '../context/useCurrentUserContext'
 
 const useDeleteTastingSheet = (id: number) => {
   const { client, getHeaders } = useAxios()
-  const { currentUser } = useAuthContext()
+  const currentUser = useCurrentUserContext()
   const { showToast } = useToastContext()
   const fetchAndChangeRequesting = useRequestingDispatchContext()
 

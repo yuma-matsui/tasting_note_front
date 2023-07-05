@@ -1,11 +1,15 @@
 import { getAuth } from 'firebase/auth'
 import { useDeleteUser } from 'react-firebase-hooks/auth'
 
-import useAuthContext from '../context/useAuthContext'
 import useAxios from '../useAxios'
+import useCurrentUserContext from '../context/useCurrentUserContext'
+import useAuthLoadingDispatchContext from '../context/useAuthLoadingDispatchContext'
+import useAuthErrorDispatchContext from '../context/useAuthErrorDispatchContext'
 
 const useDeleteAccount = () => {
-  const { currentUser, setAuthLoading, setAuthError } = useAuthContext()
+  const currentUser = useCurrentUserContext()
+  const setAuthLoading = useAuthLoadingDispatchContext()
+  const setAuthError = useAuthErrorDispatchContext()
   const { client, getHeaders } = useAxios()
   const [deleteUser, , deleteError] = useDeleteUser(getAuth())
 

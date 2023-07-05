@@ -4,15 +4,15 @@ import { useErrorBoundary } from 'react-error-boundary'
 
 import { TastingSheetApi } from '../../types'
 import { initialTastingSheet } from '../../utils'
-import useAuthContext from '../context/useAuthContext'
 import useAxios from '../useAxios'
+import useCurrentUserContext from '../context/useCurrentUserContext'
 
 const useFetchATastingSheet = (tastingSheetId: number) => {
   const navigate = useNavigate()
   const { showBoundary } = useErrorBoundary()
 
   const { client, getHeaders } = useAxios()
-  const { currentUser } = useAuthContext()
+  const currentUser = useCurrentUserContext()
 
   const [tastingSheet, setTastingSheet] = useState<TastingSheetApi>({
     ...initialTastingSheet,

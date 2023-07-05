@@ -16,9 +16,7 @@ jest.mock('react-firebase-hooks/auth', () => ({
   useSignOut: jest.fn()
 }))
 
-jest.mock('../../context/useAuthContext', () => () => ({
-  setAuthError: jest.fn()
-}))
+jest.mock('../../context/useAuthErrorDispatchContext', () => () => jest.fn())
 
 describe('useSignOutUser', () => {
   const mockSignOutUser = jest.fn()

@@ -1,9 +1,9 @@
 import { render } from '@testing-library/react'
 
 import WelcomePageWrapper from '../WelcomePageWrapper'
-import { useAuthContext as mockUseAuthContext } from '../../hooks'
+import { useCurrentUserContext as mockUseCurrentUserContext } from '../../hooks'
 
-jest.mock('../../hooks/context/useAuthContext')
+jest.mock('../../hooks/context/useCurrentUserContext')
 
 jest.mock('../../components/pages/WelcomePage', () => () => <p>MockedWelcomePage</p>)
 jest.mock('../../components/pages/SignedInWelcomePage', () => () => <p>MockedSignedInWelcomePage</p>)
@@ -21,9 +21,7 @@ describe('WelcomePageWrapper', () => {
 
   beforeEach(() => {
     currentUser = true
-    ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({
-      currentUser
-    }))
+    ;(mockUseCurrentUserContext as jest.Mock).mockImplementation(() => currentUser)
   })
 
   describe('currentUserが存在する場合', () => {
@@ -36,9 +34,7 @@ describe('WelcomePageWrapper', () => {
   describe('currentUserが存在しない場合', () => {
     beforeEach(() => {
       currentUser = false
-      ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({
-        currentUser
-      }))
+      ;(mockUseCurrentUserContext as jest.Mock).mockImplementation(() => currentUser)
     })
 
     test('WelcomePageが表示される', () => {

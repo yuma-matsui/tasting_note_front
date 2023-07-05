@@ -4,10 +4,10 @@ import Router, { RouterProvider, createMemoryRouter } from 'react-router-dom'
 import { render } from '@testing-library/react'
 
 import EditWinePageWrapper from '../EditWinePageWrapper'
-import { useAuthContext as mockUseAuthContext } from '../../hooks'
+import { useCurrentUserContext as mockUseCurrentUserContext } from '../../hooks'
 import { wineTestData } from '../../utils'
 
-jest.mock('../../hooks/context/useAuthContext')
+jest.mock('../../hooks/context/useCurrentUserContext')
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
@@ -44,9 +44,7 @@ describe('EditWinePageWrapper', () => {
   let currentUser: boolean
   beforeEach(() => {
     currentUser = true
-    ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({
-      currentUser
-    }))
+    ;(mockUseCurrentUserContext as jest.Mock).mockImplementation(() => currentUser)
 
     jest.spyOn(Router, 'useParams').mockReturnValue({
       wineId: '1'
@@ -69,9 +67,7 @@ describe('EditWinePageWrapper', () => {
   describe('currentUserが存在しない場合', () => {
     beforeEach(() => {
       currentUser = false
-      ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({
-        currentUser
-      }))
+      ;(mockUseCurrentUserContext as jest.Mock).mockImplementation(() => currentUser)
     })
 
     test('トップページにリダイレクトされる', () => {

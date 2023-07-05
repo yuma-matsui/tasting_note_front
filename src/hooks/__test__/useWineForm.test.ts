@@ -8,7 +8,6 @@ import { renderHook } from '@testing-library/react'
 import { act } from 'react-dom/test-utils'
 
 import useWineForm from '../useWineForm'
-import mockUseAuthContext from '../context/useAuthContext'
 import { WineApi, WineFormState } from '../../types'
 import { ALCOHOL_PERCENTAGES, COUNTRIES, GRAPES_RED, GRAPES_WHITE, VINTAGES } from '../../assets'
 import { wineTestData } from '../../utils'
@@ -33,7 +32,7 @@ jest.mock('../api/useUpdateWine', () => () => ({
   updateWine: mockUpdateWine
 }))
 
-jest.mock('../context/useAuthContext')
+jest.mock('../context/useCurrentUserContext', () => () => null)
 
 jest.mock('react-error-boundary', () => ({
   ...jest.requireActual('react-error-boundary'),
@@ -85,9 +84,6 @@ describe('useWineForm', () => {
     mockImageFile = null
     mockIsValid = false
     mockIsSubmitting = false
-    ;(mockUseAuthContext as jest.Mock).mockImplementation(() => ({
-      currentUser: false
-    }))
 
     jest.spyOn(React, 'useState').mockReturnValue([mockImageFile, mockSetImageFile])
 

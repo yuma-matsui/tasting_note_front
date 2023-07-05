@@ -10,7 +10,7 @@ import {
   SignUpPage,
   TermOfServicePage
 } from '../components/pages'
-import { useAuthContext, useRequestingContext } from '../hooks'
+import { useAuthErrorContext, useAuthLoadingContext, useRequestingContext } from '../hooks'
 import { ModalProvider } from '../providers'
 import { LoadingSpinner } from '../components/atoms'
 import EditWinePageWrapper from './EditWinePageWrapper'
@@ -21,7 +21,8 @@ import AuthErrorPage from '../components/pages/AuthErrorPage'
 import AuthPageWrapper from './AuthPageWrapper'
 
 const RouterConfig: FC = () => {
-  const { loading, error } = useAuthContext()
+  const loading = useAuthLoadingContext()
+  const error = useAuthErrorContext()
   const requesting = useRequestingContext()
 
   if (loading || requesting) return <LoadingSpinner />

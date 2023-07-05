@@ -1,11 +1,11 @@
 import { FC, memo } from 'react'
 import { Link } from 'react-router-dom'
 
-import { useAuthContext, useCheckEditingForm } from '../../../hooks'
+import { useCheckEditingForm, useCurrentUserContext } from '../../../hooks'
 import { DeleteAccountButton, FooterLinkWrapper, SignOutButton } from '../../atoms'
 
 const FooterNavigation: FC = memo(() => {
-  const { currentUser } = useAuthContext()
+  const currentUser = useCurrentUserContext()
   const { isEditing } = useCheckEditingForm()
 
   return (
