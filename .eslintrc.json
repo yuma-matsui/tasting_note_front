@@ -3,12 +3,10 @@
     "browser": true,
     "es2021": true
   },
+  "plugins": ["cypress", "import", "react", "unused-imports"],
   "extends": [
-    "airbnb",
-    "airbnb-typescript",
-    "airbnb/hooks",
     "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:jsx-a11y/recommended",
     "plugin:cypress/recommended",
     "prettier"
   ],
@@ -23,13 +21,9 @@
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "project": ["./tsconfig.json", "cypress/tsconfig.json"],
-    "ecmaFeatures": {
-      "jsx": true
-    },
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": ["react", "@typescript-eslint", "import", "unused-imports", "cypress"],
   "ignorePatterns": ["build"],
   "rules": {
     "no-use-before-define": "off",
