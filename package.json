@@ -1,6 +1,7 @@
 {
   "name": "tasting-note",
   "version": "0.0.2",
+  "license": "CC-BY-NC-SA-4.0",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
