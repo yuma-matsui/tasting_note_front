@@ -7,7 +7,7 @@ import SearchColorRadioProps from '../../../../types/props/searchColorRadioProps
 const mockLabel = 'mock label'
 jest.mock('../../../../hooks/useGetSearchRadioLabel', () => () => mockLabel)
 
-const setUp = ({ color, checked, onChange }: SearchColorRadioProps) => {
+const setUp = ({ checked, color, onChange }: SearchColorRadioProps) => {
   const utils = render(<SearchColorRadio color={color} checked={checked} onChange={onChange} />)
 
   return {
@@ -19,8 +19,8 @@ const setUp = ({ color, checked, onChange }: SearchColorRadioProps) => {
 describe('SearchColorRadio', () => {
   let props: SearchColorRadioProps
   const initialProps: SearchColorRadioProps = {
-    color: 'red',
     checked: false,
+    color: 'red',
     onChange: jest.fn()
   }
 

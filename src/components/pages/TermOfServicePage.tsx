@@ -5,7 +5,7 @@ import { HeadMeta } from '../molecules'
 import { metaContents } from '../../assets'
 
 const TermOfServicePage: FC = () => {
-  const { title, description, path } = metaContents.tos
+  const { description, path, title } = metaContents.tos
 
   return (
     <HeadMeta title={title} description={description} path={path}>

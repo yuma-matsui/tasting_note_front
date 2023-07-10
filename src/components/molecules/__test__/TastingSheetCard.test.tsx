@@ -37,9 +37,9 @@ describe('TastingSheetCard', () => {
 
   let useHasWineAndImageReturnValue: typeof initialReturnValue
   const initialReturnValue = {
+    cardImage: 'card-image',
     hasWine: true,
-    hasWineImage: true,
-    cardImage: 'card-image'
+    hasWineImage: true
   }
 
   beforeEach(() => {

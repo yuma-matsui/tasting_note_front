@@ -12,7 +12,7 @@ import { Footer } from '../organisms'
 import { metaContents } from '../../assets'
 
 const WelcomePage: FC = memo(() => {
-  const { title, description } = metaContents.root
+  const { description, title } = metaContents.root
 
   return (
     <HeadMeta title={title} description={description}>

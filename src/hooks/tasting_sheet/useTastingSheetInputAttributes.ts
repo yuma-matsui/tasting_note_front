@@ -25,10 +25,10 @@ const useTastingSheetInputsAttributes = () => {
   }
 
   return {
-    isMultipleInputs,
-    isDisabled,
     getValidationMethod,
-    isChecked
+    isChecked,
+    isDisabled,
+    isMultipleInputs
   }
 }
 

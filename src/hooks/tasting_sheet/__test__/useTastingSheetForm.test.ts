@@ -30,21 +30,21 @@ describe('useTastingSheetForm', () => {
   beforeEach(() => {
     jest.spyOn(Form, 'useForm').mockReturnValue({
       ...jest.requireActual('react-hook-form'),
-      register: mockRegister,
-      handleSubmit: mockHandleSubmit,
+      formState: {
+        ...jest.requireActual('react-hook-form'),
+        errors: {
+          tastingSheet: mockErrors
+        },
+        isSubmitting: mockIsSubmitting,
+        isValid: mockIsValid
+      },
       getValues: mockGetValues,
+      handleSubmit: mockHandleSubmit,
+      register: mockRegister,
       setValue: mockSetValue,
       watch: mockWatch.mockImplementation(() => ({
         tastingSheet: mockWatchedTastingSheet
-      })),
-      formState: {
-        ...jest.requireActual('react-hook-form'),
-        isValid: mockIsValid,
-        isSubmitting: mockIsSubmitting,
-        errors: {
-          tastingSheet: mockErrors
-        }
-      }
+      }))
     })
   })
 

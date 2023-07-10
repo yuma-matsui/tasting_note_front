@@ -36,9 +36,9 @@ const useFetchTastingSheets = () => {
   }, [])
 
   return {
-    tastingSheets,
+    fetching,
     hasTastingSheets: tastingSheets.length >= 1,
-    fetching
+    tastingSheets
   }
 }
 

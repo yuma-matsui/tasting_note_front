@@ -36,9 +36,9 @@ const setUp = () => {
 describe('SignedInWelcomePage', () => {
   let useFetchTastingSheetsReturnValue: typeof initialReturnValue
   const initialReturnValue = {
-    tastingSheets: [],
+    fetching: false,
     hasTastingSheets: false,
-    fetching: false
+    tastingSheets: []
   }
 
   beforeEach(() => {

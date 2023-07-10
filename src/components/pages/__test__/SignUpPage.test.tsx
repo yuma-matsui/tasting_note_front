@@ -34,10 +34,10 @@ const setUp = () => {
 describe('ResetPasswordPage', () => {
   let useGetAuthFormParamsReturnValue: typeof initialReturnValue
   const initialReturnValue = {
-    tastingSheet: {},
+    authError: undefined,
     authFunction: jest.fn(),
     loading: false,
-    authError: undefined,
+    tastingSheet: {},
     type: 'signUp'
   }
 

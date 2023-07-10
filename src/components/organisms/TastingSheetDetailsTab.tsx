@@ -8,7 +8,7 @@ import { TastingSheetFormWrapper } from '../templates'
 
 const TastingSheetDetailsTab: FC<{ tastingSheet: TastingSheet }> = memo(({ tastingSheet }) => {
   const labels = useTastingSheetLabels(tastingSheet.color)
-  const { isShow, onClickTabChange, getFormResult } = useDetailsTabItems(tastingSheet)
+  const { getFormResult, isShow, onClickTabChange } = useDetailsTabItems(tastingSheet)
   const { getTabButtonClassName } = useGetTabButtonClassName()
 
   return (
@@ -26,10 +26,10 @@ const TastingSheetDetailsTab: FC<{ tastingSheet: TastingSheet }> = memo(({ tasti
         ))}
       </div>
       <div className="my-6 w-full border-black border-2">
-        {labels.map(({ type, items, options }) => (
+        {labels.map(({ items, options, type }) => (
           <dl key={type}>
             {[...items, ...options].map(
-              ({ heading, name, subHeading }) =>
+              ({ name, heading, subHeading }) =>
                 isShow(type) && (
                   <SheetOrWineDetailsDataList
                     key={heading}

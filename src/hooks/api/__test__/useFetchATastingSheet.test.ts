@@ -53,8 +53,8 @@ describe('useFetchATastingSheet', () => {
 
     resultSheet = {
       ...initialTastingSheet,
-      name: 'resultSheet',
       id: tastingSheetId,
+      name: 'resultSheet',
       createdAt: 'test',
       wine: null
     }

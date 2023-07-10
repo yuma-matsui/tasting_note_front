@@ -44,21 +44,21 @@ describe('useAuthForm', () => {
   beforeEach(() => {
     isSent = false
     resetPasswordFormProps = {
-      sendEmail: mockSendEmail,
+      error: undefined,
       isSent,
-      setIsSent: mockSetIsSent,
-      error: undefined
+      sendEmail: mockSendEmail,
+      setIsSent: mockSetIsSent
     }
 
     jest.spyOn(Form, 'useForm').mockReturnValue({
       ...jest.requireActual('react-hook-form'),
-      register: mockRegister,
-      handleSubmit: mockHandleSubmit,
-      reset: mockReset,
       formState: {
         ...jest.requireActual('react-hook-form'),
         errors: mockErrors
-      }
+      },
+      handleSubmit: mockHandleSubmit,
+      register: mockRegister,
+      reset: mockReset
     })
 
     jest.spyOn(ErrorBoundary, 'useErrorBoundary').mockReturnValue({

@@ -14,7 +14,7 @@ jest.mock('../../../atoms/inputs/TastingSheetNameInput', () => () => <p>TastingS
 jest.mock('../../../atoms/selects/TastingSheetTimeSelectBox', () => () => <p>TastingSheetTimeSelectBox</p>)
 jest.mock('../../WineColorRadios', () => () => <p>WineColorRadios</p>)
 
-const setUp = ({ register, errors }: FormRegisterAndErrors) => {
+const setUp = ({ errors, register }: FormRegisterAndErrors) => {
   const utils = render(<NewTastingSheetSettingForm register={register} errors={errors} />)
 
   return {
@@ -24,8 +24,8 @@ const setUp = ({ register, errors }: FormRegisterAndErrors) => {
 
 describe('NewTastingSheetSettingForm', () => {
   const props: FormRegisterAndErrors = {
-    register: jest.fn(),
-    errors: undefined
+    errors: undefined,
+    register: jest.fn()
   }
 
   test.each([

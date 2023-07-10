@@ -33,26 +33,26 @@ const useWineForm = (wine?: WineApi) => {
   const { postWineImageToS3 } = usePostWineImageToS3()
 
   const {
-    register,
-    handleSubmit,
-    setValue,
     formState: {
-      isValid,
+      errors: { wine: errors },
       isSubmitting,
-      errors: { wine: errors }
-    }
+      isValid
+    },
+    handleSubmit,
+    register,
+    setValue
   } = useForm<WineFormState>({
     defaultValues: {
       wine: wine ?? {
         name: '',
-        image: null,
-        vintage: '',
+        alcoholPercentage: '',
         country: '',
         grape: '',
-        region: null,
-        alcoholPercentage: '',
+        image: null,
         memo: null,
-        tastingSheetId
+        region: null,
+        tastingSheetId,
+        vintage: ''
       }
     },
     mode: 'onChange'
@@ -85,23 +85,23 @@ const useWineForm = (wine?: WineApi) => {
   }
 
   const selectBoxOptions = {
-    vintages: VINTAGES,
-    countries: COUNTRIES,
     alcoholPercentages: ALCOHOL_PERCENTAGES,
-    grapes: getGrapes()
+    countries: COUNTRIES,
+    grapes: getGrapes(),
+    vintages: VINTAGES
   }
 
   return {
-    register,
-    onSubmit,
-    handleSubmit,
     disabled,
     errors,
-    tastingSheetId,
-    selectBoxOptions,
+    handleSubmit,
     imageFile,
     onChangeImageFile,
-    submitButtonClassName
+    onSubmit,
+    register,
+    selectBoxOptions,
+    submitButtonClassName,
+    tastingSheetId
   }
 }
 

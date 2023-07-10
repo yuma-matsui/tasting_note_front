@@ -15,12 +15,12 @@ class FormItem<T> {
   }
 
   get property() {
-    const { heading, name, subHeading } = this.#property
+    const { name, heading, subHeading } = this.#property
     return {
-      heading,
       name,
-      subHeading,
-      labels: this.#getLabels()
+      heading,
+      labels: this.#getLabels(),
+      subHeading
     }
   }
 }

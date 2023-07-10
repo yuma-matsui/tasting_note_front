@@ -5,16 +5,16 @@ import { Appearance, Conclusion, Flavor, Taste } from '../../src/types'
 declare global {
   namespace Cypress {
     interface Chainable {
+      checkAppearanceForm: (appearance: Appearance) => void
+      checkConclusionForm: (conclusion: Conclusion) => void
+      checkFlavorForm: (flavor: Flavor) => void
+      checkTasteForm: (taste: Taste) => void
       inputSettingForm: (color: '白' | '赤') => void
       stepToAppearanceForm: () => void
-      checkAppearanceForm: (appearance: Appearance) => void
-      stepToFlavorForm: () => void
-      checkFlavorForm: (flavor: Flavor) => void
-      stepToTasteForm: () => void
-      checkTasteForm: (taste: Taste) => void
       stepToConclusionForm: () => void
-      checkConclusionForm: (conclusion: Conclusion) => void
       stepToConfirmationTab: () => void
+      stepToFlavorForm: () => void
+      stepToTasteForm: () => void
     }
   }
 }

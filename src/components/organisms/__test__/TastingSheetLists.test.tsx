@@ -11,7 +11,7 @@ jest.mock('../TastingSheetCards', () => () => <p>MockedTastingSheetCards</p>)
 
 jest.mock('../../../hooks/useTastingSheetsPagination')
 
-const setUp = ({ tastingSheets, onClickToggleSideBar }: TastingSheetListsProps) => {
+const setUp = ({ onClickToggleSideBar, tastingSheets }: TastingSheetListsProps) => {
   const utils = render(<TastingSheetLists tastingSheets={tastingSheets} onClickToggleSideBar={onClickToggleSideBar} />)
 
   return {
@@ -26,13 +26,13 @@ describe('TastingSheetLists', () => {
 
   let usePaginationReturnValue: typeof initialReturnValue
   const initialReturnValue = {
-    pageNumber: 1,
-    next: jest.fn(),
     back: jest.fn(),
     displayingTastingSheets: ['test'],
     isFirstPage: false,
     isLastPage: false,
-    isMoreThanFiveSheets: false
+    isMoreThanFiveSheets: false,
+    next: jest.fn(),
+    pageNumber: 1
   }
 
   beforeEach(() => {
@@ -51,8 +51,8 @@ describe('TastingSheetLists', () => {
       }
     ]
     props = {
-      tastingSheets,
-      onClickToggleSideBar: jest.fn()
+      onClickToggleSideBar: jest.fn(),
+      tastingSheets
     }
 
     usePaginationReturnValue = { ...initialReturnValue }

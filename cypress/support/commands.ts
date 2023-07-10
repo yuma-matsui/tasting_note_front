@@ -14,10 +14,10 @@ const stepToAppearanceForm = () => {
 }
 
 const checkAppearanceForm = ({
-  clarity,
-  brightness,
   appearanceColors,
   appearanceImpressions,
+  brightness,
+  clarity,
   consistency,
   intensity
 }: Appearance) => {
@@ -38,10 +38,10 @@ const stepToFlavorForm = () => {
 
 const checkFlavorForm = ({
   flavorFirstImpressions,
-  flavorFruits,
   flavorFlowers,
-  flavorSpices,
-  flavorImpressions
+  flavorFruits,
+  flavorImpressions,
+  flavorSpices
 }: Flavor) => {
   flavorFirstImpressions.map((firstImpression) => cy.contains(firstImpression).click())
   flavorFruits.map((fruit) => cy.contains(fruit).click())
@@ -57,7 +57,7 @@ const stepToTasteForm = () => {
   cy.contains('次へ').click()
 }
 
-const checkTasteForm = ({ attack, sweetness, bitterness, acidity, balance, afterTaste, alcohol }: Taste) => {
+const checkTasteForm = ({ acidity, afterTaste, alcohol, attack, balance, bitterness, sweetness }: Taste) => {
   cy.contains(attack).click()
   cy.contains(sweetness).click()
   cy.contains(bitterness).click()
@@ -74,7 +74,7 @@ const stepToConclusionForm = () => {
   cy.contains('次へ').click()
 }
 
-const checkConclusionForm = ({ evaluation, optimumTemperature, glass, vintage, country, grape }: Conclusion) => {
+const checkConclusionForm = ({ country, evaluation, glass, grape, optimumTemperature, vintage }: Conclusion) => {
   cy.contains(evaluation).click()
   cy.contains(optimumTemperature).click()
   cy.contains(glass).click()

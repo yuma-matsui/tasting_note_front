@@ -1,13 +1,13 @@
 type Wine = {
   name: string
-  image: string | null
-  vintage: string
-  country: string
-  region: string | null
-  grape: string
   alcoholPercentage: string
+  country: string
+  grape: string
+  image: string | null
   memo: string | null
+  region: string | null
   tastingSheetId: number
+  vintage: string
 }
 
 export default Wine

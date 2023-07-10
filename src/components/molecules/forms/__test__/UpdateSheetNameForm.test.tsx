@@ -34,11 +34,11 @@ describe('UpdateSheetNameForm', () => {
 
   let useUpdateFormReturnValue: typeof initialReturnValue
   const initialReturnValue = {
-    register: jest.fn(),
-    handleSubmit: jest.fn(),
     disabled: false,
     errors: false,
-    onSubmit: jest.fn()
+    handleSubmit: jest.fn(),
+    onSubmit: jest.fn(),
+    register: jest.fn()
   }
 
   beforeEach(() => {

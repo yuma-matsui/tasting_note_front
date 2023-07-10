@@ -7,8 +7,8 @@ import { useResetPasswordFormParams } from '../../hooks'
 import { metaContents } from '../../assets'
 
 const ResetPasswordPage: FC = () => {
-  const { title, description, path } = metaContents.resetPassword
-  const { sendEmail, loading, error, isSent, setIsSent } = useResetPasswordFormParams()
+  const { description, path, title } = metaContents.resetPassword
+  const { error, isSent, loading, sendEmail, setIsSent } = useResetPasswordFormParams()
 
   if (loading) return <LoadingSpinner />
 

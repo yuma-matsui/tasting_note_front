@@ -11,12 +11,12 @@ const setUp = (page: ReactElement) => {
   const router = createMemoryRouter(
     [
       {
-        path: '/test',
-        element: <AuthPageWrapper page={page} />
+        element: <AuthPageWrapper page={page} />,
+        path: '/test'
       },
       {
-        path: '/',
-        element: <p>Test</p>
+        element: <p>Test</p>,
+        path: '/'
       }
     ],
     { initialEntries: ['/test'] }

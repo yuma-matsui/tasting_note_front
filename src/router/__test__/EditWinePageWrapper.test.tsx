@@ -11,8 +11,8 @@ jest.mock('../../hooks/context/useCurrentUserContext')
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
-  useParams: jest.fn(),
-  useLocation: jest.fn()
+  useLocation: jest.fn(),
+  useParams: jest.fn()
 }))
 
 jest.mock('../../components/pages/EditWinePage', () => () => <p>MockedEditWinePage</p>)
@@ -21,12 +21,12 @@ const setUp = () => {
   const router = createMemoryRouter(
     [
       {
-        path: '/test',
-        element: <EditWinePageWrapper />
+        element: <EditWinePageWrapper />,
+        path: '/test'
       },
       {
-        path: '/',
-        element: <p>Test</p>
+        element: <p>Test</p>,
+        path: '/'
       }
     ],
     { initialEntries: ['/test'] }
@@ -71,7 +71,7 @@ describe('EditWinePageWrapper', () => {
     })
 
     test('トップページにリダイレクトされる', () => {
-      const { router, queryByText } = setUp()
+      const { queryByText, router } = setUp()
       expect(queryByText('MockedEditWinePage')).not.toBeInTheDocument()
       expect(router.state.location.pathname).toEqual('/')
     })
@@ -86,7 +86,7 @@ describe('EditWinePageWrapper', () => {
       })
 
       test('トップページにリダイレクトされる', () => {
-        const { router, queryByText } = setUp()
+        const { queryByText, router } = setUp()
         expect(queryByText('MockedEditWinePage')).not.toBeInTheDocument()
         expect(router.state.location.pathname).toEqual('/')
       })
@@ -102,7 +102,7 @@ describe('EditWinePageWrapper', () => {
     })
 
     test('トップページにリダイレクトされる', () => {
-      const { router, queryByText } = setUp()
+      const { queryByText, router } = setUp()
       expect(queryByText('MockedEditWinePage')).not.toBeInTheDocument()
       expect(router.state.location.pathname).toEqual('/')
     })

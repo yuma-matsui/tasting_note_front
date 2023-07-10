@@ -7,14 +7,14 @@ import { TastingSheetCheckBox } from '../../atoms'
 import { TastingSheetFormWrapper } from '../../templates'
 import ConclusionSelectBoxes from '../ConclusionSelectBoxes'
 
-const TastingSheetBaseForm: FC<TastingSheetBaseFormProps> = memo(({ type, items, options, register, getValues }) => {
-  const { isDisabled, isChecked } = useTastingSheetInputsAttributes()
+const TastingSheetBaseForm: FC<TastingSheetBaseFormProps> = memo(({ getValues, items, options, register, type }) => {
+  const { isChecked, isDisabled } = useTastingSheetInputsAttributes()
   const { isMultipleInputs } = useGetIsMultipleInputs()
 
   return (
     <TastingSheetFormWrapper title={type}>
       <div className="w-full mt-4">
-        {items.map(({ heading, name, labels, subHeading }) => (
+        {items.map(({ name, heading, labels, subHeading }) => (
           <div key={heading} className="form-section-border">
             <h3 className="form-heading-text">
               {heading}

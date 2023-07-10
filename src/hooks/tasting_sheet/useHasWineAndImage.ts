@@ -10,9 +10,9 @@ const useHasWineAndImage = (tastingSheet: TastingSheetApi) => {
     : defaultImage
 
   return {
+    cardImage,
     hasWine,
-    hasWineImage,
-    cardImage
+    hasWineImage
   }
 }
 

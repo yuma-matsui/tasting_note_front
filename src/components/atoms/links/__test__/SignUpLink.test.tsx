@@ -9,12 +9,12 @@ import { initialTastingSheet } from '../../../../utils'
 const setUp = (tastingSheet?: TastingSheet) => {
   const router = createMemoryRouter([
     {
-      path: '/',
-      element: <SignUpLink tastingSheet={tastingSheet} />
+      element: <SignUpLink tastingSheet={tastingSheet} />,
+      path: '/'
     },
     {
-      path: '/signup',
-      element: <p>sign up</p>
+      element: <p>sign up</p>,
+      path: '/signup'
     }
   ])
   const utils = render(<RouterProvider router={router} />)
@@ -37,7 +37,7 @@ describe('SignInLink', () => {
   })
 
   test('クリックされた場合、/signupに遷移する', () => {
-    const { router, getByRole } = setUp()
+    const { getByRole, router } = setUp()
     userEvent.click(getByRole('link'))
 
     expect(router.state.location.pathname).toEqual('/signup')
@@ -45,7 +45,7 @@ describe('SignInLink', () => {
 
   test('propsにtastingSheetがある場合、クリックされた時にstateが更新される', () => {
     const tastingSheet = { ...initialTastingSheet }
-    const { router, getByRole } = setUp(tastingSheet)
+    const { getByRole, router } = setUp(tastingSheet)
     userEvent.click(getByRole('link'))
 
     expect(router.state.location.state).toBe(tastingSheet)

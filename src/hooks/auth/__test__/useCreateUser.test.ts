@@ -18,8 +18,8 @@ jest.mock('../../useAxios')
 
 describe('useCreateUser', () => {
   const user = {
-    uid: 'test',
-    email: 'test@example.com'
+    email: 'test@example.com',
+    uid: 'test'
   } as User
 
   const mockClient = {
@@ -48,8 +48,8 @@ describe('useCreateUser', () => {
         '/users',
         {
           user: {
-            uid: user.uid,
-            email: user.email
+            email: user.email,
+            uid: user.uid
           }
         },
         headersTestData

@@ -7,7 +7,7 @@ import { TastingSheetNameInput } from '../../atoms'
 const UpdateSheetNameForm: FC<{
   tastingSheet: TastingSheetApi
 }> = memo(({ tastingSheet }) => {
-  const { register, handleSubmit, disabled, errors, onSubmit } = useTastingSheetUpdateForm(tastingSheet)
+  const { disabled, errors, handleSubmit, onSubmit, register } = useTastingSheetUpdateForm(tastingSheet)
   const { className } = useGetButtonClassName(tastingSheet.color, disabled)
   const buttonMargin = errors ? 'mt-1' : 'mt-7'
 

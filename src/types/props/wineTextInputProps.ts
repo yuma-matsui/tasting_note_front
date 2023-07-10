@@ -5,10 +5,10 @@ import WineUseFormName from '../wine/wineUseFormName'
 
 type WineTextInputProps = {
   name: WineUseFormName
+  errors?: Merge<FieldError, FieldErrorsImpl<WineFormState>> | undefined
   label: string
   register: UseFormRegister<WineFormState>
   required: boolean
-  errors?: Merge<FieldError, FieldErrorsImpl<WineFormState>> | undefined
 }
 
 export default WineTextInputProps

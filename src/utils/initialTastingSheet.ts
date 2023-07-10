@@ -2,42 +2,42 @@ import { TastingSheet } from '../types'
 
 const initialTastingSheet: TastingSheet = {
   name: '',
-  time: '',
-  color: 'white',
   appearance: {
-    clarity: '',
-    brightness: '',
     appearanceColors: [],
-    intensity: '',
+    appearanceImpressions: [],
+    brightness: '',
+    clarity: '',
     consistency: '',
-    appearanceImpressions: []
+    intensity: ''
+  },
+  color: 'white',
+  conclusion: {
+    country: '',
+    decantage: null,
+    evaluation: '',
+    glass: '',
+    grape: '',
+    optimumTemperature: '',
+    vintage: ''
   },
   flavor: {
     flavorFirstImpressions: [],
-    flavorFruits: [],
     flavorFlowers: [],
-    flavorSpices: [],
-    flavorImpressions: []
+    flavorFruits: [],
+    flavorImpressions: [],
+    flavorSpices: []
   },
   taste: {
-    attack: '',
-    sweetness: '',
     acidity: '',
-    astringent: null,
-    bitterness: null,
+    afterTaste: '',
     alcohol: '',
+    astringent: null,
+    attack: '',
     balance: '',
-    afterTaste: ''
+    bitterness: null,
+    sweetness: ''
   },
-  conclusion: {
-    evaluation: '',
-    optimumTemperature: '',
-    glass: '',
-    decantage: null,
-    vintage: '',
-    country: '',
-    grape: ''
-  }
+  time: ''
 }
 
 export default initialTastingSheet

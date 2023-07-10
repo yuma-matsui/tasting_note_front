@@ -18,9 +18,9 @@ describe('useGetButtonClassName', () => {
   let useCheckButtonStatusReturnValue: typeof initialReturnValue
   const initialReturnValue = {
     isBack: false,
-    isWhite: false,
     isRed: false,
-    isStart: false
+    isStart: false,
+    isWhite: false
   }
 
   beforeEach(() => {

@@ -41,21 +41,21 @@ describe('useAuthForm', () => {
     type = 'signIn'
     tastingSheet = { ...initialTastingSheet }
     authFormProps = {
-      type,
+      authError: undefined,
       authFunction: mockAuthFunction,
       tastingSheet,
-      authError: undefined
+      type
     }
 
     jest.spyOn(Form, 'useForm').mockReturnValue({
       ...jest.requireActual('react-hook-form'),
-      register: mockRegister,
-      handleSubmit: mockHandleSubmit,
-      reset: mockReset,
       formState: {
         ...jest.requireActual('react-hook-form'),
         errors: mockErrors
-      }
+      },
+      handleSubmit: mockHandleSubmit,
+      register: mockRegister,
+      reset: mockReset
     })
 
     jest.spyOn(ErrorBoundary, 'useErrorBoundary').mockReturnValue({
@@ -111,9 +111,9 @@ describe('useAuthForm', () => {
 
       await act(() => result.current.onSubmit(mockData))
       expect(mockSignUpOrInAndPostTastingSheet).toHaveBeenCalledWith({
-        user: undefined,
         tastingSheet,
-        type
+        type,
+        user: undefined
       })
     })
   })

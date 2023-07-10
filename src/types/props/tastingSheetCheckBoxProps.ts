@@ -6,13 +6,13 @@ import WineColor from '../tasting_sheet/wineColor'
 
 type TastingSheetCheckBoxProps = {
   id: string
-  value: string
   name: TastingSheetUseFormName
-  label?: string | undefined
-  disabled?: boolean
-  register: UseFormRegister<TastingSheetFormState>
-  color: WineColor
   checked?: boolean
+  color: WineColor
+  disabled?: boolean
+  label?: string | undefined
+  register: UseFormRegister<TastingSheetFormState>
+  value: string
 }
 
 export default TastingSheetCheckBoxProps

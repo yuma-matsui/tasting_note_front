@@ -19,8 +19,8 @@ jest.mock('../../../hooks/useToggleSideBar', () => () => ({
 }))
 
 jest.mock('../../../hooks/tasting_sheet/useFilteredTastingSheets', () => () => ({
-  setFilter: jest.fn(),
-  filteredTastingSheets: []
+  filteredTastingSheets: [],
+  setFilter: jest.fn()
 }))
 
 const setUp = (tastingSheets: TastingSheetApi[]) => {

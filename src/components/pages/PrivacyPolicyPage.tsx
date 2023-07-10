@@ -5,7 +5,7 @@ import { metaContents } from '../../assets'
 import { HeadMeta } from '../molecules'
 
 const PrivacyPolicyPage: FC = () => {
-  const { title, description, path } = metaContents.pp
+  const { description, path, title } = metaContents.pp
 
   return (
     <HeadMeta title={title} description={description} path={path}>

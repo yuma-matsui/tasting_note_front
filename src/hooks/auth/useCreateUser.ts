@@ -10,8 +10,8 @@ const useCreateUser = () => {
   const createUser = async (user: User) => {
     try {
       const userParams = {
-        uid: user.uid,
-        email: user.email
+        email: user.email,
+        uid: user.uid
       }
       await client.post('/users', { user: userParams }, await getHeaders(user))
     } catch (e) {

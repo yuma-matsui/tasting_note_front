@@ -5,8 +5,8 @@ import GoToAnotherPageButton from './GoToAnotherPageButton'
 
 const FinishTastingButton: FC = memo(() => {
   const { onClickOpenModal } = useOnClickOpenModal({
-    text: 'このまま記録せずに終了しますがよろしいですか？',
-    rightButton: <GoToAnotherPageButton to="/" text="はい" />
+    rightButton: <GoToAnotherPageButton to="/" text="はい" />,
+    text: 'このまま記録せずに終了しますがよろしいですか？'
   })
 
   return (

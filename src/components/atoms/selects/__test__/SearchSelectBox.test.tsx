@@ -4,7 +4,7 @@ import { render } from '@testing-library/react'
 import SearchSelectBox from '../SearchSelectBox'
 import { SearchSelectBoxProps } from '../../../../types'
 
-const setUp = ({ options, id, label, onChange, selectedOption }: SearchSelectBoxProps) => {
+const setUp = ({ id, label, onChange, options, selectedOption }: SearchSelectBoxProps) => {
   const utils = render(
     <SearchSelectBox options={options} id={id} label={label} onChange={onChange} selectedOption={selectedOption} />
   )
@@ -19,10 +19,10 @@ describe('SearchSelectBox', () => {
 
   let props: SearchSelectBoxProps
   const initialProps: SearchSelectBoxProps = {
-    options: [option1],
     id: 'test',
     label: 'test',
     onChange: jest.fn(),
+    options: [option1],
     selectedOption: '指定なし'
   }
 

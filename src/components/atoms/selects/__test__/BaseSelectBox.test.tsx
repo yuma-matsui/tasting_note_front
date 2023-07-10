@@ -3,7 +3,7 @@ import { render } from '@testing-library/react'
 import BaseSelectBox from '../BaseSelectBox'
 import { TastingSheetSelectBoxProps } from '../../../../types'
 
-const setUp = ({ id, register, name, options, label }: TastingSheetSelectBoxProps) => {
+const setUp = ({ id, name, label, options, register }: TastingSheetSelectBoxProps) => {
   const utils = render(<BaseSelectBox id={id} register={register} name={name} options={options} label={label} />)
 
   return {
@@ -15,10 +15,10 @@ describe('BaseSelectBox', () => {
   let props: TastingSheetSelectBoxProps
   const initialProps: TastingSheetSelectBoxProps = {
     id: 'test',
-    register: jest.fn(),
     name: 'tastingSheet.color',
+    label: 'test',
     options: ['option1', 'options2'],
-    label: 'test'
+    register: jest.fn()
   }
 
   beforeEach(() => {

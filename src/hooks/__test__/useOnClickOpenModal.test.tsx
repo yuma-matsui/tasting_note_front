@@ -18,8 +18,8 @@ const setUp = (props: ShowModalProps) => {
 
 describe('useOnClickOpenModal', () => {
   const props = {
-    text: 'test',
-    rightButton: <p>test</p>
+    rightButton: <p>test</p>,
+    text: 'test'
   }
 
   describe('onClickOpenModal', () => {

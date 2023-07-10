@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async'
 
 import { HeadMetaProps } from '../../types'
 
-const HeadMeta: FC<HeadMetaProps> = memo(({ title, description, path, error = false, children }) => (
+const HeadMeta: FC<HeadMetaProps> = memo(({ children, description, error = false, path, title }) => (
   <>
     <Helmet>
       <title>{title}</title>

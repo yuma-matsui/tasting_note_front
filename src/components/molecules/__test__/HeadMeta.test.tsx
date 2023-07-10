@@ -14,7 +14,7 @@ jest.mock('react-helmet-async', () => ({
   )
 }))
 
-const setUp = ({ title, description, path, error = false, children }: HeadMetaProps) => {
+const setUp = ({ children, description, error = false, path, title }: HeadMetaProps) => {
   const utils = render(
     <HeadMeta title={title} description={description} path={path} error={error}>
       {children}
@@ -30,11 +30,11 @@ const setUp = ({ title, description, path, error = false, children }: HeadMetaPr
 describe('HeadMeta', () => {
   let props: HeadMetaProps
   const initialProps: HeadMetaProps = {
-    title: 'test-title',
+    children: <p>Children</p>,
     description: 'test-description',
-    path: '/test-path',
     error: false,
-    children: <p>Children</p>
+    path: '/test-path',
+    title: 'test-title'
   }
 
   beforeEach(() => {

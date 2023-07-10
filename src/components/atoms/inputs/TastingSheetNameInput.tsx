@@ -1,7 +1,7 @@
 import { FC, memo } from 'react'
 import { FormRegisterAndErrors } from '../../../types'
 
-const TastingSheetNameInput: FC<FormRegisterAndErrors> = memo(({ register, errors }) => (
+const TastingSheetNameInput: FC<FormRegisterAndErrors> = memo(({ errors, register }) => (
   <div className="form-control w-full max-w-xs my-6">
     <label htmlFor="name" className="label flex flex-col items-center">
       <span className="label-text mb-2 leading-6 self-start">シート名</span>

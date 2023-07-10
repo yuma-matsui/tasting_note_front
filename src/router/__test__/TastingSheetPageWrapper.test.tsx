@@ -18,12 +18,12 @@ const setUp = () => {
   const router = createMemoryRouter(
     [
       {
-        path: '/test',
-        element: <TastingSheetPageWrapper />
+        element: <TastingSheetPageWrapper />,
+        path: '/test'
       },
       {
-        path: '/',
-        element: <p>Test</p>
+        element: <p>Test</p>,
+        path: '/'
       }
     ],
     { initialEntries: ['/test'] }
@@ -63,7 +63,7 @@ describe('TastingSheetPageWrapper', () => {
     })
 
     test('トップページにリダイレクトされる', () => {
-      const { router, queryByText } = setUp()
+      const { queryByText, router } = setUp()
       expect(queryByText('MockedTastingSheetDetailsPage')).not.toBeInTheDocument()
       expect(router.state.location.pathname).toEqual('/')
     })
@@ -77,7 +77,7 @@ describe('TastingSheetPageWrapper', () => {
     })
 
     test('トップページにリダイレクトされる', () => {
-      const { router, queryByText } = setUp()
+      const { queryByText, router } = setUp()
       expect(queryByText('MockedTastingSheetDetailsPage')).not.toBeInTheDocument()
       expect(router.state.location.pathname).toEqual('/')
     })

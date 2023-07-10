@@ -2,7 +2,7 @@ import { FC, memo } from 'react'
 import { TastingSheetSearchSideBarProps } from '../../types'
 
 const TastingSheetSearchSideBar: FC<TastingSheetSearchSideBarProps> = memo(
-  ({ sideBarContent, children, visible, onClickToggleSideBar }) => (
+  ({ children, onClickToggleSideBar, sideBarContent, visible }) => (
     <div className="drawer">
       <input type="checkbox" className="drawer-toggle" checked={visible} readOnly />
       <div className="drawer-content hidden-scrollbar">{children}</div>

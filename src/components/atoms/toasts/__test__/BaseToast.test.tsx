@@ -7,7 +7,7 @@ jest.mock('../../../../hooks/useGetToastClassName', () => () => ({
   toastColorClass: 'mockToastColorClass'
 }))
 
-const setUp = ({ text, visible, type }: BaseToastProps) => {
+const setUp = ({ text, type, visible }: BaseToastProps) => {
   const utils = render(<BaseToast text={text} visible={visible} type={type} />)
 
   return {
@@ -19,8 +19,8 @@ describe('BaseToast', () => {
   let props: BaseToastProps
   const initialProps: BaseToastProps = {
     text: 'test',
-    visible: false,
-    type: 'success'
+    type: 'success',
+    visible: false
   }
 
   beforeEach(() => {

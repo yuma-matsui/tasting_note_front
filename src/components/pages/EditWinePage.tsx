@@ -6,7 +6,7 @@ import { DefaultLayout } from '../templates'
 import { metaContents } from '../../assets'
 
 const EditWinePage: FC<{ wine: WineApi }> = memo(({ wine }) => {
-  const { title, description } = metaContents.editWine
+  const { description, title } = metaContents.editWine
 
   return (
     <HeadMeta title={title} description={description} path={`/wines/edit/${wine.id}`}>

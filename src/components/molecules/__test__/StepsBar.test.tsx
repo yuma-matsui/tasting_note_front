@@ -3,7 +3,7 @@ import { render } from '@testing-library/react'
 import StepsBar from '../StepsBar'
 import { StepsBarProps, WineColor } from '../../../types'
 
-const setUp = ({ currentStepIndex, color }: StepsBarProps) => {
+const setUp = ({ color, currentStepIndex }: StepsBarProps) => {
   const utils = render(<StepsBar currentStepIndex={currentStepIndex} color={color} />)
 
   return {
@@ -14,8 +14,8 @@ const setUp = ({ currentStepIndex, color }: StepsBarProps) => {
 describe('StepsBar', () => {
   let props: StepsBarProps
   const initialProps: StepsBarProps = {
-    currentStepIndex: 1,
-    color: 'red'
+    color: 'red',
+    currentStepIndex: 1
   }
 
   beforeEach(() => {

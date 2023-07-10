@@ -7,10 +7,10 @@ const useResetPasswordFormParams = () => {
   const [isSent, setIsSent] = useState(false)
 
   return {
-    sendEmail,
-    loading,
     error,
     isSent,
+    loading,
+    sendEmail,
     setIsSent
   }
 }

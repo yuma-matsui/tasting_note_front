@@ -7,16 +7,16 @@ import { TastingSheetSearchFormProps } from '../../../types'
 
 const TastingSheetSearchForm: FC<TastingSheetSearchFormProps> = memo(({ setFilter }) => {
   const {
-    onSubmit,
     color,
-    onChangeColor,
-    country,
-    onChangeCountry,
-    grape,
-    onChangeGrape,
-    grapeOptions,
     countries,
-    onClickAllClear
+    country,
+    grape,
+    grapeOptions,
+    onChangeColor,
+    onChangeCountry,
+    onChangeGrape,
+    onClickAllClear,
+    onSubmit
   } = useTastingSheetSearchForm(setFilter)
 
   return (

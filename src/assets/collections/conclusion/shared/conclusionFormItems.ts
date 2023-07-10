@@ -8,30 +8,30 @@ import GLASS_LABELS from './glassLabels'
 
 const CONCLUSION_FORM_ITEMS: AbstractFormItem<ConclusionName>[] = [
   {
-    heading: '評価',
     name: 'evaluation',
-    subHeading: '軽→重',
+    heading: '評価',
     labels: {
-      white: EVALUATION_LABELS_WHITE,
-      red: EVALUATION_LABELS_RED
-    }
+      red: EVALUATION_LABELS_RED,
+      white: EVALUATION_LABELS_WHITE
+    },
+    subHeading: '軽→重'
   },
   {
-    heading: '適正温度',
     name: 'optimumTemperature',
+    heading: '適正温度',
     labels: {
-      white: OPTIMUM_TEMPERATURE_LABELS_WHITE,
-      red: OPTIMUM_TEMPERATURE_LABELS_RED
+      red: OPTIMUM_TEMPERATURE_LABELS_RED,
+      white: OPTIMUM_TEMPERATURE_LABELS_WHITE
     }
   },
   {
-    heading: 'グラス',
     name: 'glass',
+    heading: 'グラス',
     labels: GLASS_LABELS
   },
   {
-    heading: 'デカンタージュ',
     name: 'decantage',
+    heading: 'デカンタージュ',
     labels: DECANTAGE_LABELS
   }
 ]

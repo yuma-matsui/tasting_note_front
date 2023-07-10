@@ -13,13 +13,13 @@ const useSignUpOrInAndPostTastingSheet = () => {
   const { createUser } = useCreateUser()
 
   const signUpOrInAndPostTastingSheet = async ({
-    user,
     tastingSheet,
-    type
+    type,
+    user
   }: {
-    user: User | undefined
     tastingSheet: TastingSheet | null
     type: 'signIn' | 'signUp'
+    user: User | undefined
   }) => {
     const isSignUp = type === 'signUp'
 

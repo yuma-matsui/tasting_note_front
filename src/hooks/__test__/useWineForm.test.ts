@@ -99,17 +99,17 @@ describe('useWineForm', () => {
 
     jest.spyOn(Form, 'useForm').mockReturnValue({
       ...jest.requireActual('react-hook-form'),
-      register: mockRegister,
-      handleSubmit: mockHandleSubmit,
-      setValue: mockSetValue,
       formState: {
         ...jest.requireActual('react-hook-form'),
-        isValid: mockIsValid,
-        isSubmitting: mockIsSubmitting,
         errors: {
           wine: mockErrors
-        }
-      }
+        },
+        isSubmitting: mockIsSubmitting,
+        isValid: mockIsValid
+      },
+      handleSubmit: mockHandleSubmit,
+      register: mockRegister,
+      setValue: mockSetValue
     })
   })
 
@@ -185,11 +185,11 @@ describe('useWineForm', () => {
         ...jest.requireActual('react-hook-form'),
         formState: {
           ...jest.requireActual('react-hook-form'),
-          isSubmitting,
-          isValid,
           errors: {
             wine: mockErrors
-          }
+          },
+          isSubmitting,
+          isValid
         }
       })
 

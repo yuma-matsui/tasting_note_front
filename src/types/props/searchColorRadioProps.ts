@@ -1,8 +1,8 @@
 import { ChangeEvent } from 'react'
 
 type SearchColorRadioProps = {
-  color: string
   checked: boolean
+  color: string
   onChange: (e: ChangeEvent<HTMLInputElement>) => void
 }
 

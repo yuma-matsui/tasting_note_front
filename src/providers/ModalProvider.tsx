@@ -18,7 +18,7 @@ const ModalProvider: FC<ReactNodeChildren> = ({ children }) => {
     setVisible(false)
   }, [pathname])
 
-  const showModal = useCallback(({ text, leftButton, rightButton }: ShowModalProps) => {
+  const showModal = useCallback(({ leftButton, rightButton, text }: ShowModalProps) => {
     setModalText(text)
     setModalLeftButton(leftButton ?? <CloseModalButton onClick={() => setVisible(false)} />)
     setModalRightButton(rightButton)

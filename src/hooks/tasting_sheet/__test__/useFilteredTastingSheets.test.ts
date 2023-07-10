@@ -9,25 +9,25 @@ describe('useFilteredTastingSheets', () => {
   const tastingSheets: TastingSheetApi[] = [
     {
       ...initialTastingSheet,
+      id: 1,
       color: 'red',
       conclusion: {
         ...initialTastingSheet.conclusion,
-        grape: 'カベルネ・ソーヴィニヨン',
-        country: 'フランス'
+        country: 'フランス',
+        grape: 'カベルネ・ソーヴィニヨン'
       },
-      id: 1,
       createdAt: 'test',
       wine: null
     },
     {
       ...initialTastingSheet,
+      id: 2,
       color: 'white',
       conclusion: {
         ...initialTastingSheet.conclusion,
-        grape: 'シャルドネ',
-        country: 'イタリア'
+        country: 'イタリア',
+        grape: 'シャルドネ'
       },
-      id: 2,
       createdAt: 'test',
       wine: null
     }

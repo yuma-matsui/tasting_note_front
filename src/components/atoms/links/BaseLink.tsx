@@ -5,10 +5,10 @@ import { useOnClickOpenModal } from '../../../hooks'
 import { BaseLinkProps } from '../../../types'
 import GoToAnotherPageButton from '../buttons/GoToAnotherPageButton'
 
-const BaseLink: FC<BaseLinkProps> = memo(({ logo, isEditing }) => {
+const BaseLink: FC<BaseLinkProps> = memo(({ isEditing, logo }) => {
   const { onClickOpenModal } = useOnClickOpenModal({
-    text: '編集途中ですがよろしいですか？',
-    rightButton: <GoToAnotherPageButton to="/" text="OK" />
+    rightButton: <GoToAnotherPageButton to="/" text="OK" />,
+    text: '編集途中ですがよろしいですか？'
   })
 
   return isEditing ? (

@@ -5,7 +5,7 @@ import { ConclusionSelectBoxesProps } from '../../../types'
 
 jest.mock('../../atoms/selects/TastingSheetSelectBox', () => () => <p>TastingSheetSelectBox</p>)
 
-const setUp = ({ register, options }: ConclusionSelectBoxesProps) => {
+const setUp = ({ options, register }: ConclusionSelectBoxesProps) => {
   const utils = render(<ConclusionSelectBoxes register={register} options={options} />)
 
   return {
@@ -15,11 +15,11 @@ const setUp = ({ register, options }: ConclusionSelectBoxesProps) => {
 
 describe('ConclusionSelectBoxes', () => {
   const props: ConclusionSelectBoxesProps = {
-    register: jest.fn(),
     options: [
-      { heading: 'option1', name: 'appearanceColors', labels: [] },
-      { heading: 'option2', name: 'appearanceColors', labels: [] }
-    ]
+      { name: 'appearanceColors', heading: 'option1', labels: [] },
+      { name: 'appearanceColors', heading: 'option2', labels: [] }
+    ],
+    register: jest.fn()
   }
 
   test('optionsの要素数だけTastingSheetSelectBoxが表示される', () => {

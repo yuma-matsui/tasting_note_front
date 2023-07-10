@@ -5,9 +5,9 @@ import WineUseFormName from '../wine/wineUseFormName'
 
 type WineSelectBoxProps = {
   name: WineUseFormName
-  register: UseFormRegister<WineFormState>
-  options: string[]
   label: string
+  options: string[]
+  register: UseFormRegister<WineFormState>
 }
 
 export default WineSelectBoxProps

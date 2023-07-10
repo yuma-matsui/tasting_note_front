@@ -13,12 +13,12 @@ import {
 
 const TastingSheetCard: FC<TastingSheetCardProps> = memo(({ tastingSheet }) => {
   const { bgColor, textColor } = useTastingSheetCardColor(tastingSheet)
-  const { hasWine, hasWineImage, cardImage } = useHasWineAndImage(tastingSheet)
+  const { cardImage, hasWine, hasWineImage } = useHasWineAndImage(tastingSheet)
   const state = useTastingSheetStateForWine(tastingSheet)
 
   const { onClickOpenModal } = useOnClickOpenModal({
-    text: '本当に削除してもよろしいですか？',
-    rightButton: <DeleteTastingSheetButton id={tastingSheet.id} />
+    rightButton: <DeleteTastingSheetButton id={tastingSheet.id} />,
+    text: '本当に削除してもよろしいですか？'
   })
 
   return (

@@ -6,8 +6,8 @@ import TastingSheetCards from './TastingSheetCards'
 import { TastingSheetListsProps } from '../../types'
 import { useTastingSheetsPagination } from '../../hooks'
 
-const TastingSheetLists: FC<TastingSheetListsProps> = memo(({ tastingSheets, onClickToggleSideBar }) => {
-  const { pageNumber, next, back, displayingTastingSheets, isFirstPage, isLastPage, isMoreThanFiveSheets } =
+const TastingSheetLists: FC<TastingSheetListsProps> = memo(({ onClickToggleSideBar, tastingSheets }) => {
+  const { back, displayingTastingSheets, isFirstPage, isLastPage, isMoreThanFiveSheets, next, pageNumber } =
     useTastingSheetsPagination(tastingSheets)
 
   return (

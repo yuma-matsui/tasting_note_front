@@ -34,21 +34,21 @@ jest.mock('../../molecules/StepsBar', () => () => <p>MockedStepsBar</p>)
 jest.mock('../../../hooks/tasting_sheet/useMultiStepForm')
 
 jest.mock('../../../hooks/tasting_sheet/useTastingSheetForm', () => () => ({
-  handleSubmit: jest.fn(),
-  isValid: false,
-  isSubmitting: false,
-  onSubmit: jest.fn(),
-  register: jest.fn(),
   errors: undefined,
   getValues: jest.fn(),
+  handleSubmit: jest.fn(),
+  isSubmitting: false,
+  isValid: false,
+  onSubmit: jest.fn(),
+  register: jest.fn(),
   tastingSheet: {}
 }))
 
 jest.mock('../../../hooks/tasting_sheet/useTastingSheetLabels', () => () => [
-  { type: 'appearance', items: [], options: [] },
-  { type: 'flavor', items: [], options: [] },
-  { type: 'taste', items: [], options: [] },
-  { type: 'conclusion', items: [], options: [] }
+  { items: [], options: [], type: 'appearance' },
+  { items: [], options: [], type: 'flavor' },
+  { items: [], options: [], type: 'taste' },
+  { items: [], options: [], type: 'conclusion' }
 ])
 
 const setUp = () => {
@@ -62,13 +62,13 @@ const setUp = () => {
 describe('NewTastingSheetPage', () => {
   let useMultiStepFormReturnValue: typeof initialStepFormReturnValue
   const initialStepFormReturnValue = {
-    step: <p>MockedStep</p>,
-    onClickPageControl: jest.fn(),
-    isFirstStep: false,
-    isAppearanceStep: false,
-    isLastStep: false,
+    currentStepIndex: 0,
     getButtonText: jest.fn(),
-    currentStepIndex: 0
+    isAppearanceStep: false,
+    isFirstStep: false,
+    isLastStep: false,
+    onClickPageControl: jest.fn(),
+    step: <p>MockedStep</p>
   }
 
   beforeEach(() => {

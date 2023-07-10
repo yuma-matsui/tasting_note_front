@@ -21,14 +21,14 @@ jest.mock('../../atoms/buttons/PostTastingSheetButton', () => () => <p>MockedPos
 jest.mock('../../atoms/buttons/SaveSheetButton', () => () => <p>MockedSaveSheetButton</p>)
 
 const setUp = ({
-  children,
-  onClick,
-  isFirstStep,
-  isAppearanceStep,
-  isLastStep,
-  disabled,
   backButtonText,
+  children,
+  disabled,
+  isAppearanceStep,
+  isFirstStep,
+  isLastStep,
   nextButtonText,
+  onClick,
   tastingSheet
 }: FormControllerProps) => {
   const utils = render(
@@ -58,14 +58,14 @@ describe('FromController', () => {
   const mockedClassName = 'mock-class'
 
   const initialProps: FormControllerProps = {
-    children: <p>MockedChildren</p>,
-    onClick: jest.fn(),
-    isFirstStep: false,
-    isAppearanceStep: false,
-    isLastStep: false,
-    disabled: false,
     backButtonText: 'test-back-button-text',
+    children: <p>MockedChildren</p>,
+    disabled: false,
+    isAppearanceStep: false,
+    isFirstStep: false,
+    isLastStep: false,
     nextButtonText: 'test-next-button-text',
+    onClick: jest.fn(),
     tastingSheet: { ...initialTastingSheet }
   }
 
@@ -218,8 +218,8 @@ describe('FromController', () => {
         beforeEach(() => {
           props = {
             ...props,
-            isFirstStep,
             isAppearanceStep,
+            isFirstStep,
             isLastStep
           }
         })
@@ -239,8 +239,8 @@ describe('FromController', () => {
       beforeEach(() => {
         props = {
           ...props,
-          isFirstStep,
           isAppearanceStep,
+          isFirstStep,
           isLastStep
         }
       })

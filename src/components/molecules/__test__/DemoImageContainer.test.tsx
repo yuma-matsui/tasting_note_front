@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react'
 import DemoImageContainer from '../DemoImageContainer'
 import { DemoImageContainerProps } from '../../../types'
 
-const setUp = ({ text, src, alt }: DemoImageContainerProps) => {
+const setUp = ({ alt, src, text }: DemoImageContainerProps) => {
   const utils = render(<DemoImageContainer text={text} src={src} alt={alt} />)
 
   return {
@@ -14,9 +14,9 @@ const setUp = ({ text, src, alt }: DemoImageContainerProps) => {
 
 describe('DemoImageContainer', () => {
   const props = {
-    text: 'DemoImageContainerTest',
+    alt: 'test-alt',
     src: 'test-src',
-    alt: 'test-alt'
+    text: 'DemoImageContainerTest'
   }
 
   test('textが表示される', () => {

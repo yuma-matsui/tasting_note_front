@@ -28,8 +28,8 @@ describe('useDeleteAccount', () => {
   let currentUser: boolean
   const mockDeleteUser = jest.fn()
   const mockClient = {
-    get: jest.fn(),
-    delete: jest.fn()
+    delete: jest.fn(),
+    get: jest.fn()
   }
   const mockGetHeaders = jest.fn()
 

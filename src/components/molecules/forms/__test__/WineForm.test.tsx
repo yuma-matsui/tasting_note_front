@@ -36,21 +36,21 @@ describe('WineForm', () => {
   const mockSubmitButtonClassName = 'mock-class'
   let useWineFormReturnValue: typeof initialReturnValue
   const initialReturnValue = {
-    register: jest.fn(),
-    handleSubmit: jest.fn(),
     disabled: false,
     errors: false,
-    onSubmit: jest.fn(),
-    tastingSheetId: 1,
-    selectBoxOptions: {
-      vintages: [],
-      countries: [],
-      alcoholPercentages: [],
-      grapes: []
-    },
+    handleSubmit: jest.fn(),
     imageFile: true,
     onChangeImageFile: jest.fn(),
-    submitButtonClassName: mockSubmitButtonClassName
+    onSubmit: jest.fn(),
+    register: jest.fn(),
+    selectBoxOptions: {
+      alcoholPercentages: [],
+      countries: [],
+      grapes: [],
+      vintages: []
+    },
+    submitButtonClassName: mockSubmitButtonClassName,
+    tastingSheetId: 1
   }
 
   beforeEach(() => {

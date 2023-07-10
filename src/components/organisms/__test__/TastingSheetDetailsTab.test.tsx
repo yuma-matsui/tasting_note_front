@@ -43,32 +43,32 @@ describe('TastingSheetDetailsTab', () => {
 
   const labels = [
     {
-      type: 'appearance',
       items: mockedLabelItems,
-      options: []
+      options: [],
+      type: 'appearance'
     },
     {
-      type: 'flavor',
       items: mockedLabelItems,
-      options: []
+      options: [],
+      type: 'flavor'
     },
     {
-      type: 'taste',
       items: mockedLabelItems,
-      options: []
+      options: [],
+      type: 'taste'
     },
     {
-      type: 'conclusion',
       items: mockedLabelItems,
-      options: mockedLabelOptions
+      options: mockedLabelOptions,
+      type: 'conclusion'
     }
   ] as TastingSheetLabelsTuple
 
   let useDetailsTabItemsReturnValue: typeof initialTabItemsReturnValue
   const initialTabItemsReturnValue = {
+    getFormResult: jest.fn(),
     isShow: jest.fn(),
-    onClickTabChange: jest.fn(),
-    getFormResult: jest.fn()
+    onClickTabChange: jest.fn()
   }
 
   let useGetTabButtonClassNameReturnValue: typeof initialTabButtonReturnValue

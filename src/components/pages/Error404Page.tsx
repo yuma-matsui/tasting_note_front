@@ -6,7 +6,7 @@ import { metaContents } from '../../assets'
 import { HeadMeta } from '../molecules'
 
 const Error404Page: FC = () => {
-  const { title, description } = metaContents.notFound
+  const { description, title } = metaContents.notFound
 
   return (
     <HeadMeta title={title} description={description} error>

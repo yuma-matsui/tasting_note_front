@@ -3,7 +3,7 @@ import { render } from '@testing-library/react'
 import WineSelectBox from '../WineSelectBox'
 import { WineSelectBoxProps } from '../../../../types'
 
-const setUp = ({ name, register, options, label }: WineSelectBoxProps) => {
+const setUp = ({ name, label, options, register }: WineSelectBoxProps) => {
   const utils = render(<WineSelectBox name={name} register={register} options={options} label={label} />)
 
   return {
@@ -15,9 +15,9 @@ describe('WineSelectBox', () => {
   const option1 = 'option1'
   const props: WineSelectBoxProps = {
     name: 'wine.name',
-    register: jest.fn(),
+    label: 'test',
     options: [option1],
-    label: 'test'
+    register: jest.fn()
   }
 
   test('labelが表示される', () => {

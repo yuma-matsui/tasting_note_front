@@ -3,9 +3,9 @@ import AuthForm from '../user/authForm'
 
 type AuthFormInputProps = {
   name: 'email' | 'password' | 'passwordConfirmation'
+  error: Merge<FieldError, FieldErrorsImpl<AuthForm>> | undefined
   label: string
   register: UseFormRegister<AuthForm>
-  error: Merge<FieldError, FieldErrorsImpl<AuthForm>> | undefined
 }
 
 export default AuthFormInputProps

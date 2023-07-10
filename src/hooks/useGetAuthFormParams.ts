@@ -14,10 +14,10 @@ const useGetAuthFormParams = ({ type }: UseGetAuthFormParamsProps) => {
   const [signInWithEmailAndPassword, , signInLoading, signInError] = useSignInWithEmailAndPassword(getAuth())
 
   return {
-    tastingSheet,
+    authError: isSignIn ? signInError : createError,
     authFunction: isSignIn ? signInWithEmailAndPassword : createUserWithEmailAndPassword,
     loading: isSignIn ? signInLoading : createLoading,
-    authError: isSignIn ? signInError : createError,
+    tastingSheet,
     type
   }
 }

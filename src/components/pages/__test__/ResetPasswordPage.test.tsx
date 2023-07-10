@@ -34,10 +34,10 @@ const setUp = () => {
 describe('ResetPasswordPage', () => {
   let useResetPasswordFormParamsReturnValue: typeof initialReturnValue
   const initialReturnValue = {
-    sendEmail: jest.fn(),
-    loading: false,
     error: undefined,
     isSent: false,
+    loading: false,
+    sendEmail: jest.fn(),
     setIsSent: jest.fn()
   }
 

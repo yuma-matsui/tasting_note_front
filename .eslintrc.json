@@ -3,7 +3,13 @@
     "browser": true,
     "es2021": true
   },
-  "plugins": ["cypress", "import", "react", "unused-imports"],
+  "plugins": [
+    "cypress",
+    "import",
+    "react",
+    "sort-keys-custom-order",
+    "unused-imports"
+  ],
   "extends": [
     "plugin:@typescript-eslint/recommended",
     "plugin:cypress/recommended",
@@ -35,6 +41,14 @@
     "@typescript-eslint/consistent-type-definitions": "off",
     "@typescript-eslint/no-misused-promises": "off",
     "react/jsx-props-no-spreading": "off",
+    "sort-keys-custom-order/object-keys": [
+      "warn",
+      { "orderedKeys": ["id", "name" ] }
+    ],
+    "sort-keys-custom-order/type-keys": [
+      "warn",
+      { "orderedKeys": ["id", "name" ] }
+    ],
     "import/extensions": [
       "error",
       "ignorePackages",

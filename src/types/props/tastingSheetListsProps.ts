@@ -1,8 +1,8 @@
 import TastingSheetApi from '../api/tastingSheetApi'
 
 type TastingSheetListsProps = {
-  tastingSheets: TastingSheetApi[]
   onClickToggleSideBar: () => void
+  tastingSheets: TastingSheetApi[]
 }
 
 export default TastingSheetListsProps

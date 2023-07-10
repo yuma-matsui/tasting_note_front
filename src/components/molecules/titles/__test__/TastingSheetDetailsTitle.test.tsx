@@ -26,8 +26,8 @@ const setUp = (tastingSheet: TastingSheetApi) => {
 describe('TastingSheetDetailsTitle', () => {
   const tastingSheet = {
     ...initialTastingSheet,
-    name: 'test',
     id: 1,
+    name: 'test',
     createdAt: 'test',
     wine: null
   }

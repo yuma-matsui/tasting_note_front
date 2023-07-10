@@ -9,7 +9,7 @@ const ErrorFallbackForApi = ({ error }: FallbackProps) => {
   useUrgentSignOut()
   useShowErrorAndWarningToast()
   useReloadDisplay()
-  const { title, description } = metaContents.apiError
+  const { description, title } = metaContents.apiError
 
   if (error instanceof Error) console.error(error.message)
 

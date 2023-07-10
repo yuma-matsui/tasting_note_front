@@ -1,10 +1,10 @@
 import { UseCheckButtonStatusProps } from '../types'
 
-const useCheckButtonStatus = ({ value, color }: UseCheckButtonStatusProps) => ({
+const useCheckButtonStatus = ({ color, value }: UseCheckButtonStatusProps) => ({
   isBack: value === '戻る',
   isNext: value === '次へ',
-  isStart: value === 'テイスティングをはじめる',
   isRed: color === 'red',
+  isStart: value === 'テイスティングをはじめる',
   isWhite: color === 'white'
 })
 

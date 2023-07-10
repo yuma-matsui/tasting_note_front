@@ -12,14 +12,14 @@ import { FormControllerProps } from '../../types'
 
 const FormController: FC<FormControllerProps> = memo(
   ({
-    children,
-    onClick,
-    isFirstStep,
-    isAppearanceStep,
-    isLastStep,
-    disabled,
     backButtonText,
+    children,
+    disabled,
+    isAppearanceStep,
+    isFirstStep,
+    isLastStep,
     nextButtonText,
+    onClick,
     tastingSheet
   }) => {
     useBeforeUnload()

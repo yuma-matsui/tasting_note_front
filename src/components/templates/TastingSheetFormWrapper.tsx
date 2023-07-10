@@ -4,7 +4,7 @@ import { useCheckEditingForm } from '../../hooks'
 import { FormWrapperProps } from '../../types'
 import { formTitleFormat } from '../../utils'
 
-const TastingSheetFormWrapper: FC<FormWrapperProps> = memo(({ title, children }) => {
+const TastingSheetFormWrapper: FC<FormWrapperProps> = memo(({ children, title }) => {
   const { isEditing } = useCheckEditingForm()
 
   return (

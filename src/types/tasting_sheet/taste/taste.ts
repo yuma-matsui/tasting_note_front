@@ -1,12 +1,12 @@
 type Taste = {
-  attack: string
-  sweetness: string
   acidity: string
-  astringent: string | null
-  bitterness: string | null
-  balance: string
-  alcohol: string
   afterTaste: string
+  alcohol: string
+  astringent: string | null
+  attack: string
+  balance: string
+  bitterness: string | null
+  sweetness: string
 }
 
 export default Taste

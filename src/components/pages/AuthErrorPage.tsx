@@ -21,7 +21,7 @@ const AuthErrorPage: FC<{
     })
   })
 
-  const { title, description } = metaContents.apiError
+  const { description, title } = metaContents.apiError
 
   return (
     <HeadMeta title={title} description={description} error>

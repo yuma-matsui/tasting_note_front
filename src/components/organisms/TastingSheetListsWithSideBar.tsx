@@ -9,7 +9,7 @@ import TastingSheetLists from './TastingSheetLists'
 const TastingSheetListsWithSideBar: FC<{
   tastingSheets: TastingSheetApi[]
 }> = memo(({ tastingSheets }) => {
-  const { setFilter, filteredTastingSheets } = useFilteredTastingSheets(tastingSheets)
+  const { filteredTastingSheets, setFilter } = useFilteredTastingSheets(tastingSheets)
   const { isOpen, onClickToggleSideBar } = useToggleSideBar()
 
   return (

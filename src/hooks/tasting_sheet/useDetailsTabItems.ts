@@ -20,9 +20,9 @@ const useDetailsTabItems = (tastingSheet: TastingSheet) => {
   }
 
   return {
+    getFormResult,
     isShow,
-    onClickTabChange,
-    getFormResult
+    onClickTabChange
   }
 }
 

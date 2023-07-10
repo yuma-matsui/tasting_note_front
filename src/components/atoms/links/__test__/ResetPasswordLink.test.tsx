@@ -7,12 +7,12 @@ import ResetPasswordLink from '../ResetPasswordLink'
 const setUp = () => {
   const router = createMemoryRouter([
     {
-      path: '/',
-      element: <ResetPasswordLink />
+      element: <ResetPasswordLink />,
+      path: '/'
     },
     {
-      path: '/reset_password',
-      element: <p>reset password</p>
+      element: <p>reset password</p>,
+      path: '/reset_password'
     }
   ])
   const utils = render(<RouterProvider router={router} />)
@@ -40,7 +40,7 @@ describe('ResetPasswordLink', () => {
   })
 
   test('クリックされた場合、/reset_passwordに遷移する', () => {
-    const { router, getByRole } = setUp()
+    const { getByRole, router } = setUp()
     userEvent.click(getByRole('link'))
 
     expect(router.state.location.pathname).toEqual('/reset_password')

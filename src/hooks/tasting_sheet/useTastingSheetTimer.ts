@@ -58,9 +58,9 @@ const useTastingSheetTimer = ({ time }: TastingSheet) => {
   }, [halfTime, leftAMinute, showToast, timeUp])
 
   return {
-    timerClassName: getTimerColor(),
     styleForMinute: getTimerStyle(convertToMin(secondTimer)),
-    styleForSecond: getTimerStyle(convertToSecond(secondTimer))
+    styleForSecond: getTimerStyle(convertToSecond(secondTimer)),
+    timerClassName: getTimerColor()
   }
 }
 

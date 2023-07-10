@@ -26,16 +26,16 @@ describe('TastingSheetSearchForm', () => {
   }
 
   const useSearchFormReturnValue = {
-    onSubmit: jest.fn(),
     color: 'test',
-    onChangeColor: jest.fn(),
-    country: 'test',
-    onChangeCountry: jest.fn(),
-    grape: 'test',
-    onChangeGrape: jest.fn(),
-    grapeOptions: [],
     countries: [],
-    onClickAllClear: jest.fn()
+    country: 'test',
+    grape: 'test',
+    grapeOptions: [],
+    onChangeColor: jest.fn(),
+    onChangeCountry: jest.fn(),
+    onChangeGrape: jest.fn(),
+    onClickAllClear: jest.fn(),
+    onSubmit: jest.fn()
   }
 
   beforeEach(() => {

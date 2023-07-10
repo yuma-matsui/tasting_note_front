@@ -5,7 +5,7 @@ import { SearchColorRadiosProps } from '../../../types'
 
 jest.mock('../../atoms/inputs/SearchColorRadio', () => () => <p>SearchColorRadio</p>)
 
-const setUp = ({ selectedColor, onChange }: SearchColorRadiosProps) => {
+const setUp = ({ onChange, selectedColor }: SearchColorRadiosProps) => {
   const utils = render(<SearchColorRadios selectedColor={selectedColor} onChange={onChange} />)
 
   return {
@@ -15,8 +15,8 @@ const setUp = ({ selectedColor, onChange }: SearchColorRadiosProps) => {
 
 describe('SearchColorRadios', () => {
   const props: SearchColorRadiosProps = {
-    selectedColor: 'red',
-    onChange: jest.fn()
+    onChange: jest.fn(),
+    selectedColor: 'red'
   }
 
   test('SearchColorRadioが3つ表示される', () => {
