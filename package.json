@@ -67,8 +67,8 @@
     "web-vitals": "^2.1.4"
   },
   "lint-staged": {
-    "*.{ts,tsx}": "yarn fix:eslint",
-    "*": "yarn fix:prettier"
+    "*.{ts,tsx}": "npm run fix:eslint",
+    "*": "npm run fix:prettier"
   },
   "browserslist": {
     "production": [
