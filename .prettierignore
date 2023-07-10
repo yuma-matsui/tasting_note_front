@@ -3,4 +3,4 @@ package-lock.json
 public
 README.md
 yarn.lock
-.prettierignore
+/.*

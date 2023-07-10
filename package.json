@@ -8,10 +8,12 @@
     "cy:open": "cypress open",
     "cy:run": "cypress run",
     "eject": "react-scripts eject",
-    "lint": "run-p lint:*",
-    "lint:eslint": "eslint --ext .jsx,.js,.tsx,.ts ./src",
-    "lint:prettier": "prettier --write './src/**/*.{jsx,js,tsx,ts}'",
-    "eslint:fix": "eslint --fix --ext .jsx,.js,.tsx,.ts ./src",
+    "lint": "run-p -c lint:*",
+    "fix": "run-s -c fix:eslint fix:prettier",
+    "lint:eslint": "eslint --ext .jsx,.js,.tsx,.ts .",
+    "lint:prettier": "prettier -c .",
+    "fix:eslint": "eslint --ext .jsx,.js,.tsx,.ts . --fix",
+    "fix:prettier": "prettier -w .",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -64,10 +66,8 @@
     "web-vitals": "^2.1.4"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "eslint --ext .jsx,.js,.tsx,.ts ./src",
-      "prettier --write './src/**/*.{jsx,js,tsx,ts}'"
-    ]
+    "*.{ts,tsx}": "yarn fix:eslint",
+    "*": "yarn fix:prettier"
   },
   "browserslist": {
     "production": [
