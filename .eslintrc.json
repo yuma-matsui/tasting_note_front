@@ -6,8 +6,9 @@
   "plugins": ["cypress", "import", "react", "unused-imports"],
   "extends": [
     "plugin:@typescript-eslint/recommended",
-    "plugin:jsx-a11y/recommended",
     "plugin:cypress/recommended",
+    "plugin:jsx-a11y/recommended",
+    "plugin:react-hooks/recommended",
     "prettier"
   ],
   "overrides": [
