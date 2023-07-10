@@ -29,7 +29,14 @@ const mockUseReloadDisplay = jest.fn()
 jest.mock('../../../hooks/useReloadDisplay', () => () => mockUseReloadDisplay())
 
 const setUp = (error: Error) => {
-  const utils = render(<ErrorFallbackForApi error={error} resetErrorBoundary={() => {}} />)
+  const utils = render(
+    <ErrorFallbackForApi
+      error={error}
+      resetErrorBoundary={() => {
+        throw Error('No default value!')
+      }}
+    />
+  )
 
   return {
     ...utils
