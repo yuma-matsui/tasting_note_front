@@ -1,6 +1,4 @@
-build/
-public/
-**/node_modules/
-*.config.js
-.*.lintrc.js
-/*.*
+**/node_modules/*
+/tailwind.config.js
+/prettier.config.js
+/cypress.config.ts
