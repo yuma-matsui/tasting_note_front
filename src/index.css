@@ -6,11 +6,11 @@
 @tailwind utilities;
 
 body {
-  @apply font-body
+  @apply font-body;
 }
 
 .root {
-  @apply m-0 flex flex-col min-h-screen
+  @apply m-0 flex flex-col min-h-screen;
 }
 
 .font-mincho {
@@ -18,8 +18,7 @@ body {
 }
 
 .top-page-section-heading {
-  @apply
-  text-theme-red
+  @apply text-theme-red
   tracking-wider
   font-mincho
   font-extrabold
@@ -28,74 +27,74 @@ body {
   border-l-8
   pb-1
   pl-2
-  mb-5
+  mb-5;
 }
 
 .base-btn {
-  @apply
-  rounded-full
+  @apply rounded-full
   px-6
   py-2
   border-transparent
   text-white
   cursor-pointer
-  text-center
+  text-center;
 }
 
 .sub-wrapper {
-  @apply w-full md:w-162 mx-auto
+  @apply w-full md:w-162 mx-auto;
 }
 
 .main-wrapper {
-  @apply sub-wrapper px-5 md:px-0
+  @apply sub-wrapper px-5 md:px-0;
 }
 
 .demo-img-wrapper {
-  @apply sub-wrapper h-96
+  @apply sub-wrapper h-96;
 }
 
 section {
-  @apply mb-4
+  @apply mb-4;
 }
 
 .label {
-  @apply justify-start
+  @apply justify-start;
 }
 
 .flex.flex-wrap .label {
-  @apply w-1/2 border-b border-r p-4
+  @apply w-1/2 border-b border-r p-4;
 }
 
 .label-text {
-  @apply text-base
+  @apply text-base;
 }
 
 .steps .step.step-success:after {
-  @apply bg-theme-green
+  @apply bg-theme-green;
 }
 
 .steps .step.step-error:after {
-  @apply bg-theme-red
+  @apply bg-theme-red;
 }
 
 .steps .step:after {
-  @apply text-white bg-gray-300
+  @apply text-white bg-gray-300;
 }
 
 .steps .step:before {
-  @apply bg-gray-300
+  @apply bg-gray-300;
 }
 
-.checkbox-success, .checkbox-error {
+.checkbox-success,
+.checkbox-error {
   --chkfg: 4 100% 100%;
 }
 
 .tab-success {
-  @apply text-theme-green opacity-50
+  @apply text-theme-green opacity-50;
 }
 
 .tab-error {
-  @apply text-theme-red opacity-50
+  @apply text-theme-red opacity-50;
 }
 
 .tabs-boxed .tab-active.tab-success {
@@ -109,40 +108,39 @@ section {
 }
 
 .form-heading-text {
-  @apply text-lg font-semibold py-2 px-4 bg-gray-300 border-y border-gray-400 box-content
+  @apply text-lg font-semibold py-2 px-4 bg-gray-300 border-y border-gray-400 box-content;
 }
 
 .form-subheading-text {
-  @apply ml-2 text-base font-normal
+  @apply ml-2 text-base font-normal;
 }
 
 .form-section-border {
-  @apply border-black border-2 mb-4
+  @apply border-black border-2 mb-4;
 }
 
 .tos-pp-wrapper {
-  @apply mb-6 leading-loose break-words
+  @apply mb-6 leading-loose break-words;
 }
 
 .tos-pp-wrapper h2 {
-  @apply font-semibold text-lg border-b pb-1 my-6
+  @apply font-semibold text-lg border-b pb-1 my-6;
 }
 
 .tos-pp-wrapper p {
-  @apply mb-4
+  @apply mb-4;
 }
 
 .tos-pp-wrapper ol {
-  @apply list-decimal pl-6 mt-4
+  @apply list-decimal pl-6 mt-4;
 }
 
 .tos-pp-wrapper li {
-  @apply mb-2
+  @apply mb-2;
 }
 
 .page-title {
-  @apply
-  font-semibold
+  @apply font-semibold
   text-xl
   text-center
   w-full
@@ -150,31 +148,35 @@ section {
   py-2
   rounded
   bg-zinc-500
-  font-mincho
+  font-mincho;
 }
 
-.wine-form, .user-form {
-  @apply my-4 flex flex-col sm:items-center
+.wine-form,
+.user-form {
+  @apply my-4 flex flex-col sm:items-center;
 }
 
-.wine-form-control, .user-form-control {
-  @apply form-control w-full max-w-md mb-4
+.wine-form-control,
+.user-form-control {
+  @apply form-control w-full max-w-md mb-4;
 }
 
-.wine-form-label, .user-form-label {
-  @apply label flex flex-col items-start
+.wine-form-label,
+.user-form-label {
+  @apply label flex flex-col items-start;
 }
 
-.wine-form-label-text, .user-form-label-text {
-  @apply label-text mb-2
+.wine-form-label-text,
+.user-form-label-text {
+  @apply label-text mb-2;
 }
 
 .user-form-error-message {
-  @apply text-theme-red my-4 text-center font-semibold
+  @apply text-theme-red my-4 text-center font-semibold;
 }
 
 .btn-group .btn {
-  @apply bg-zinc-500 border-zinc-500
+  @apply bg-zinc-500 border-zinc-500;
 }
 
 @layer utilities {
