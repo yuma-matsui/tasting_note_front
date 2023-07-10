@@ -14,7 +14,9 @@ describe('useAxios', () => {
 
   test('getHeaders', async () => {
     const mockedUser = {
-      getIdToken: () => {}
+      getIdToken: () => {
+        jest.fn()
+      }
     } as User
 
     const { result } = renderHook(() => useAxios())

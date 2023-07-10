@@ -189,7 +189,6 @@ describe('useTastingSheetTimer', () => {
   })
 
   describe('styleForMinute', () => {
-    beforeEach(() => {})
     test('{ "--value": Number(残り分数) } のオブジェクトが返る', () => {
       const leftSecond = 299
       jest
