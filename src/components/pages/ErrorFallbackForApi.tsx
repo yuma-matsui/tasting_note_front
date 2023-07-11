@@ -1,15 +1,15 @@
 import { FallbackProps } from 'react-error-boundary'
 
-import { useReloadDisplay, useShowErrorAndWarningToast, useUrgentSignOut } from '../../hooks'
-import { DefaultLayout } from '../templates'
 import { metaContents } from '../../assets'
+import { useReloadDisplay, useShowErrorAndWarningToast, useUrgentSignOut } from '../../hooks'
 import { HeadMeta } from '../molecules'
+import { DefaultLayout } from '../templates'
 
 const ErrorFallbackForApi = ({ error }: FallbackProps) => {
   useUrgentSignOut()
   useShowErrorAndWarningToast()
   useReloadDisplay()
-  const { title, description } = metaContents.apiError
+  const { description, title } = metaContents.apiError
 
   if (error instanceof Error) console.error(error.message)
 

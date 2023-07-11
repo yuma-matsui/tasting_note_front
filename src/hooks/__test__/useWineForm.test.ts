@@ -1,16 +1,16 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 
-import React from 'react'
-import Form from 'react-hook-form'
-import ErrorBoundary from 'react-error-boundary'
-import Router from 'react-router-dom'
 import { renderHook } from '@testing-library/react'
+import React from 'react'
 import { act } from 'react-dom/test-utils'
+import ErrorBoundary from 'react-error-boundary'
+import Form from 'react-hook-form'
+import Router from 'react-router-dom'
 
-import useWineForm from '../useWineForm'
-import { WineApi, WineFormState } from '../../types'
 import { ALCOHOL_PERCENTAGES, COUNTRIES, GRAPES_RED, GRAPES_WHITE, VINTAGES } from '../../assets'
+import { WineApi, WineFormState } from '../../types'
 import { wineTestData } from '../../utils'
+import useWineForm from '../useWineForm'
 
 jest.mock('react', () => ({
   ...jest.requireActual('react'),
@@ -99,17 +99,17 @@ describe('useWineForm', () => {
 
     jest.spyOn(Form, 'useForm').mockReturnValue({
       ...jest.requireActual('react-hook-form'),
-      register: mockRegister,
-      handleSubmit: mockHandleSubmit,
-      setValue: mockSetValue,
       formState: {
         ...jest.requireActual('react-hook-form'),
-        isValid: mockIsValid,
-        isSubmitting: mockIsSubmitting,
         errors: {
           wine: mockErrors
-        }
-      }
+        },
+        isSubmitting: mockIsSubmitting,
+        isValid: mockIsValid
+      },
+      handleSubmit: mockHandleSubmit,
+      register: mockRegister,
+      setValue: mockSetValue
     })
   })
 
@@ -185,11 +185,11 @@ describe('useWineForm', () => {
         ...jest.requireActual('react-hook-form'),
         formState: {
           ...jest.requireActual('react-hook-form'),
-          isSubmitting,
-          isValid,
           errors: {
             wine: mockErrors
-          }
+          },
+          isSubmitting,
+          isValid
         }
       })
 

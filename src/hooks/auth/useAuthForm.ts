@@ -1,12 +1,12 @@
+import { yupResolver } from '@hookform/resolvers/yup'
 import { useErrorBoundary } from 'react-error-boundary'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { yupResolver } from '@hookform/resolvers/yup'
 
 import { AuthForm, AuthFormProps, WineColor } from '../../types'
-import useSignUpOrInAndPostTastingSheet from '../api/useSignUpOrInAndPostTastingSheet'
 import { signInFormSchema, signUpFormSchema } from '../../utils'
+import useSignUpOrInAndPostTastingSheet from '../api/useSignUpOrInAndPostTastingSheet'
 
-const useAuthForm = ({ tastingSheet, authFunction, type }: AuthFormProps) => {
+const useAuthForm = ({ authFunction, tastingSheet, type }: AuthFormProps) => {
   const { showBoundary } = useErrorBoundary()
   const { signUpOrInAndPostTastingSheet } = useSignUpOrInAndPostTastingSheet()
 
@@ -15,10 +15,10 @@ const useAuthForm = ({ tastingSheet, authFunction, type }: AuthFormProps) => {
   const btnColor: WineColor = isSignIn ? 'white' : 'red'
 
   const {
-    register,
+    formState: { errors },
     handleSubmit,
-    reset,
-    formState: { errors }
+    register,
+    reset
   } = useForm<AuthForm>({
     resolver: yupResolver(schema)
   })
@@ -28,9 +28,9 @@ const useAuthForm = ({ tastingSheet, authFunction, type }: AuthFormProps) => {
       const user = await authFunction(email, password)
       reset()
       await signUpOrInAndPostTastingSheet({
-        user: user?.user,
         tastingSheet,
-        type
+        type,
+        user: user?.user
       })
     } catch (e) {
       if (e instanceof Error) showBoundary(e)
@@ -38,14 +38,14 @@ const useAuthForm = ({ tastingSheet, authFunction, type }: AuthFormProps) => {
   }
 
   return {
-    register,
-    handleSubmit,
-    errors,
-    onSubmit,
-    isSignIn,
-    title: isSignIn ? 'ログイン' : 'サインアップ',
+    btnColor,
     btnValue: isSignIn ? 'ログイン' : '登録',
-    btnColor
+    errors,
+    handleSubmit,
+    isSignIn,
+    onSubmit,
+    register,
+    title: isSignIn ? 'ログイン' : 'サインアップ'
   }
 }
 

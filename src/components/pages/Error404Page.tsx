@@ -1,12 +1,12 @@
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
 
-import { DefaultLayout } from '../templates'
 import { metaContents } from '../../assets'
 import { HeadMeta } from '../molecules'
+import { DefaultLayout } from '../templates'
 
 const Error404Page: FC = () => {
-  const { title, description } = metaContents.notFound
+  const { description, title } = metaContents.notFound
 
   return (
     <HeadMeta title={title} description={description} error>

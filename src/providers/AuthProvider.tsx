@@ -10,8 +10,8 @@ import {
   AuthLoadingContext,
   AuthLoadingDispatchContext
 } from '../contexts'
-import { ReactNodeChildren } from '../types'
 import { firebaseConfig } from '../lib'
+import { ReactNodeChildren } from '../types'
 
 const AuthProvider: FC<ReactNodeChildren> = ({ children }) => {
   const auth = getAuth(initializeApp(firebaseConfig))

@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 
-import TastingSheetCheckBox from '../TastingSheetCheckBox'
 import { TastingSheetCheckBoxProps } from '../../../../types'
+import TastingSheetCheckBox from '../TastingSheetCheckBox'
 
 const mockType = 'text'
 jest.mock('../../../../hooks/tasting_sheet/useGetRadioOrCheckBoxType', () => () => ({
@@ -25,7 +25,7 @@ jest.mock('../../../../hooks/tasting_sheet/useTastingSheetForm', () => () => ({
   getValues: jest.fn()
 }))
 
-const setUp = ({ id, name, value, register, label, disabled = false, color, checked }: TastingSheetCheckBoxProps) => {
+const setUp = ({ id, name, checked, color, disabled = false, label, register, value }: TastingSheetCheckBoxProps) => {
   const utils = render(
     <TastingSheetCheckBox
       id={id}
@@ -50,11 +50,11 @@ describe('TastingSheetCheckBox', () => {
   const initialParams: TastingSheetCheckBoxProps = {
     id: 'test-id',
     name: 'tastingSheet.color',
-    value: 'test-value',
-    register: jest.fn(),
-    label: 'test-label',
+    checked: false,
     color: 'red',
-    checked: false
+    label: 'test-label',
+    register: jest.fn(),
+    value: 'test-value'
   }
 
   beforeEach(() => {

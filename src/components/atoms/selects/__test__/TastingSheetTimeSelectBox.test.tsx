@@ -1,9 +1,9 @@
 import { render } from '@testing-library/react'
 
-import TastingSheetTimeSelectBox from '../TastingSheetTimeSelectBox'
 import { TastingSheetSelectBoxProps } from '../../../../types'
+import TastingSheetTimeSelectBox from '../TastingSheetTimeSelectBox'
 
-const setUp = ({ id, register, name, options, label }: TastingSheetSelectBoxProps) => {
+const setUp = ({ id, name, label, options, register }: TastingSheetSelectBoxProps) => {
   const utils = render(
     <TastingSheetTimeSelectBox id={id} register={register} name={name} options={options} label={label} />
   )
@@ -16,10 +16,10 @@ const setUp = ({ id, register, name, options, label }: TastingSheetSelectBoxProp
 describe('TastingSheetTimeSelectBox', () => {
   const props: TastingSheetSelectBoxProps = {
     id: 'test',
-    register: jest.fn(),
     name: 'tastingSheet.color',
+    label: 'test',
     options: [],
-    label: 'test'
+    register: jest.fn()
   }
 
   test('labelが表示される', () => {

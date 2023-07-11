@@ -1,5 +1,5 @@
-import userEvent from '@testing-library/user-event'
 import { render } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 
 import {
   useDetailsTabItems as mockUseDetailsTabItems,
@@ -7,9 +7,9 @@ import {
   useTastingSheetLabels as mockUseTastingSheetLabels
 } from '../../../hooks'
 import { ReactNodeChildren, TastingSheet, TastingSheetLabelsTuple } from '../../../types'
-import TastingSheetDetailsTab from '../TastingSheetDetailsTab'
 import TastingSheetFormItem from '../../../types/tasting_sheet/tastingSheetFormItem'
 import { initialTastingSheet } from '../../../utils'
+import TastingSheetDetailsTab from '../TastingSheetDetailsTab'
 
 jest.mock('../../templates/TastingSheetFormWrapper', () => ({ children }: ReactNodeChildren) => (
   <>
@@ -43,32 +43,32 @@ describe('TastingSheetDetailsTab', () => {
 
   const labels = [
     {
-      type: 'appearance',
       items: mockedLabelItems,
-      options: []
+      options: [],
+      type: 'appearance'
     },
     {
-      type: 'flavor',
       items: mockedLabelItems,
-      options: []
+      options: [],
+      type: 'flavor'
     },
     {
-      type: 'taste',
       items: mockedLabelItems,
-      options: []
+      options: [],
+      type: 'taste'
     },
     {
-      type: 'conclusion',
       items: mockedLabelItems,
-      options: mockedLabelOptions
+      options: mockedLabelOptions,
+      type: 'conclusion'
     }
   ] as TastingSheetLabelsTuple
 
   let useDetailsTabItemsReturnValue: typeof initialTabItemsReturnValue
   const initialTabItemsReturnValue = {
+    getFormResult: jest.fn(),
     isShow: jest.fn(),
-    onClickTabChange: jest.fn(),
-    getFormResult: jest.fn()
+    onClickTabChange: jest.fn()
   }
 
   let useGetTabButtonClassNameReturnValue: typeof initialTabButtonReturnValue

@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 
-import ErrorBoundary from 'react-error-boundary'
-import Router from 'react-router-dom'
 import { renderHook } from '@testing-library/react'
 import { act } from 'react-dom/test-utils'
+import ErrorBoundary from 'react-error-boundary'
+import Router from 'react-router-dom'
 
 import useOnClickAuth from '../useOnClickAuth'
 

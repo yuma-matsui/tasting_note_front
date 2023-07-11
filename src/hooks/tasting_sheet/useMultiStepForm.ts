@@ -40,13 +40,13 @@ const useMultiStepForm = (steps: ReactElement[]) => {
 
   return {
     currentStepIndex,
-    steps,
-    step: steps[currentStepIndex],
+    getButtonText,
+    isAppearanceStep,
     isFirstStep,
     isLastStep: currentStepIndex === steps.length - 1,
-    isAppearanceStep,
     onClickPageControl,
-    getButtonText
+    step: steps[currentStepIndex],
+    steps
   }
 }
 

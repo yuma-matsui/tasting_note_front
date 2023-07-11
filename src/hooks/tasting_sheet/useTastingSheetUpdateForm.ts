@@ -9,13 +9,13 @@ const useTastingSheetUpdateForm = (tastingSheet: TastingSheetApi) => {
 
   const { updateSheetName } = useUpdateTastingSheetName()
   const {
-    register,
-    handleSubmit,
     formState: {
-      isValid,
+      errors: { tastingSheet: errors },
       isSubmitting,
-      errors: { tastingSheet: errors }
-    }
+      isValid
+    },
+    handleSubmit,
+    register
   } = useForm<TastingSheetFormState>({
     defaultValues: {
       tastingSheet
@@ -32,11 +32,11 @@ const useTastingSheetUpdateForm = (tastingSheet: TastingSheetApi) => {
   }
 
   return {
-    register,
-    handleSubmit,
     disabled: isSubmitting || !isValid,
     errors,
-    onSubmit
+    handleSubmit,
+    onSubmit,
+    register
   }
 }
 

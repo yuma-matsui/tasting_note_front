@@ -1,5 +1,6 @@
 import { FC, memo } from 'react'
 
+import { metaContents } from '../../assets'
 import { SignInLink, SignUpLink, StartTastingLink } from '../atoms'
 import {
   HeadMeta,
@@ -9,10 +10,9 @@ import {
   WelcomePageWithRegistrationSection
 } from '../molecules'
 import { Footer } from '../organisms'
-import { metaContents } from '../../assets'
 
 const WelcomePage: FC = memo(() => {
-  const { title, description } = metaContents.root
+  const { description, title } = metaContents.root
 
   return (
     <HeadMeta title={title} description={description}>

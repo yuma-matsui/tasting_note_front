@@ -19,7 +19,7 @@ describe('SignedInTopPageInstruction', () => {
   })
 
   test('liタグが3つ表示される', () => {
-    const { getByRole, getAllByRole } = setUp()
+    const { getAllByRole, getByRole } = setUp()
     expect(getByRole('list')).toBeInTheDocument()
     expect(getAllByRole('listitem').length).toEqual(3)
   })

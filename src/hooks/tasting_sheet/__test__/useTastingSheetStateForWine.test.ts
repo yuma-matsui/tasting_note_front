@@ -1,8 +1,8 @@
 import { renderHook } from '@testing-library/react'
 
 import { TastingSheetStateForWine } from '../../../types'
-import useTastingSheetStateForWine from '../useTastingSheetStateForWine'
 import { initialTastingSheet } from '../../../utils'
+import useTastingSheetStateForWine from '../useTastingSheetStateForWine'
 
 describe('useTastingSheetStateForWine', () => {
   const state: TastingSheetStateForWine = {
@@ -12,11 +12,11 @@ describe('useTastingSheetStateForWine', () => {
   }
   const tastingSheet = {
     ...initialTastingSheet,
-    createdAt: '',
-    wine: null,
     id: state.id,
+    name: state.name,
     color: state.color,
-    name: state.name
+    createdAt: '',
+    wine: null
   }
 
   test('id、name、colorプロパティをもつオブジェクトを返す', () => {

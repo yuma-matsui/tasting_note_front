@@ -1,9 +1,9 @@
 import { AuthError } from 'firebase/auth'
 import { FC, memo, useEffect } from 'react'
 
-import { FooterLogo, HeadMeta, HeaderLogo } from '../molecules'
-import { useToastContext, useUrgentSignOut } from '../../hooks'
 import { metaContents } from '../../assets'
+import { useToastContext, useUrgentSignOut } from '../../hooks'
+import { FooterLogo, HeaderLogo, HeadMeta } from '../molecules'
 
 const AuthErrorPage: FC<{
   error: Error | AuthError
@@ -21,7 +21,7 @@ const AuthErrorPage: FC<{
     })
   })
 
-  const { title, description } = metaContents.apiError
+  const { description, title } = metaContents.apiError
 
   return (
     <HeadMeta title={title} description={description} error>

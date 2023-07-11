@@ -3,8 +3,8 @@
 import { renderHook } from '@testing-library/react'
 import { User } from 'firebase/auth'
 
-import useAxios from '../useAxios'
 import { client } from '../../lib'
+import useAxios from '../useAxios'
 
 describe('useAxios', () => {
   test('client', () => {

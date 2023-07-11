@@ -1,7 +1,8 @@
 import { FC, memo } from 'react'
+
 import { SearchSelectBoxProps } from '../../../types'
 
-const SearchSelectBox: FC<SearchSelectBoxProps> = memo(({ options, id, label, onChange, selectedOption }) => (
+const SearchSelectBox: FC<SearchSelectBoxProps> = memo(({ id, label, onChange, options, selectedOption }) => (
   <div className="form-control w-11/12 max-w-xs mb-4">
     <label htmlFor={id} className="label">
       <span className="label-text">{label}</span>

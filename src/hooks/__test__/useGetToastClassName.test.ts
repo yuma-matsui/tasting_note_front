@@ -1,7 +1,7 @@
 import { renderHook } from '@testing-library/react'
 
-import useGetToastClassName from '../useGetToastClassName'
 import { ToastType } from '../../types'
+import useGetToastClassName from '../useGetToastClassName'
 
 const setUp = (type: ToastType) => {
   const { result } = renderHook(() => useGetToastClassName(type))

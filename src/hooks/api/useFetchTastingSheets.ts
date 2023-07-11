@@ -2,8 +2,8 @@ import { useLayoutEffect, useState } from 'react'
 import { useErrorBoundary } from 'react-error-boundary'
 
 import { TastingSheetApi } from '../../types'
-import useAxios from '../useAxios'
 import useCurrentUserContext from '../context/useCurrentUserContext'
+import useAxios from '../useAxios'
 
 const useFetchTastingSheets = () => {
   const [tastingSheets, setTastingSheets] = useState<TastingSheetApi[]>([])
@@ -36,9 +36,9 @@ const useFetchTastingSheets = () => {
   }, [])
 
   return {
-    tastingSheets,
+    fetching,
     hasTastingSheets: tastingSheets.length >= 1,
-    fetching
+    tastingSheets
   }
 }
 

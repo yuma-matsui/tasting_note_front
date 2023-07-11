@@ -12,49 +12,49 @@ import FLAVOR_SPICE_LABELS_WHITE from '../white/flavorSpiceLabelsWhite'
 
 const FLAVOR_FORM_ITEMS: AbstractFormItem<FlavorName>[] = [
   {
-    heading: '第一印象',
     name: 'flavorFirstImpressions',
-    subHeading: '強さ/性質',
+    heading: '第一印象',
     labels: {
-      white: FLAVOR_FIRST_IMPRESSION_LABELS_WHITE,
-      red: FLAVOR_FIRST_IMPRESSION_LABELS_RED
-    }
+      red: FLAVOR_FIRST_IMPRESSION_LABELS_RED,
+      white: FLAVOR_FIRST_IMPRESSION_LABELS_WHITE
+    },
+    subHeading: '強さ/性質'
   },
   {
-    heading: '果実',
     name: 'flavorFruits',
-    subHeading: '熟成度低→高',
+    heading: '果実',
     labels: {
-      white: FLAVOR_FRUIT_LABELS_WHITE,
-      red: FLAVOR_FRUIT_LABELS_RED
-    }
+      red: FLAVOR_FRUIT_LABELS_RED,
+      white: FLAVOR_FRUIT_LABELS_WHITE
+    },
+    subHeading: '熟成度低→高'
   },
   {
-    heading: '花・植物',
     name: 'flavorFlowers',
-    subHeading: '花/植物/ドライ/菌類',
+    heading: '花・植物',
     labels: {
-      white: FLAVOR_FLOWER_LABELS_WHITE,
-      red: FLAVOR_FLOWER_LABELS_RED
-    }
+      red: FLAVOR_FLOWER_LABELS_RED,
+      white: FLAVOR_FLOWER_LABELS_WHITE
+    },
+    subHeading: '花/植物/ドライ/菌類'
   },
   {
-    heading: '香辛料・芳香・化学物質',
     name: 'flavorSpices',
-    subHeading: '香辛料/樽/動物/他',
+    heading: '香辛料・芳香・化学物質',
     labels: {
-      white: FLAVOR_SPICE_LABELS_WHITE,
-      red: FLAVOR_SPICE_LABELS_RED
-    }
+      red: FLAVOR_SPICE_LABELS_RED,
+      white: FLAVOR_SPICE_LABELS_WHITE
+    },
+    subHeading: '香辛料/樽/動物/他'
   },
   {
-    heading: '香りの印象',
     name: 'flavorImpressions',
-    subHeading: '熟成感/特性',
+    heading: '香りの印象',
     labels: {
-      white: FLAVOR_IMPRESSION_LABELS_WHITE,
-      red: FLAVOR_IMPRESSION_LABELS_RED
-    }
+      red: FLAVOR_IMPRESSION_LABELS_RED,
+      white: FLAVOR_IMPRESSION_LABELS_WHITE
+    },
+    subHeading: '熟成感/特性'
   }
 ]
 

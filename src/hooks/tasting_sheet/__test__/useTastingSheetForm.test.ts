@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 
-import React from 'react'
-import Form from 'react-hook-form'
 import { renderHook } from '@testing-library/react'
+import React from 'react'
 import { act } from 'react-dom/test-utils'
+import Form from 'react-hook-form'
 
-import useTastingSheetForm from '../useTastingSheetForm'
 import { initialTastingSheet } from '../../../utils'
+import useTastingSheetForm from '../useTastingSheetForm'
 
 jest.mock('react-hook-form', () => ({
   ...jest.requireActual('react-hook-form'),
@@ -30,21 +30,21 @@ describe('useTastingSheetForm', () => {
   beforeEach(() => {
     jest.spyOn(Form, 'useForm').mockReturnValue({
       ...jest.requireActual('react-hook-form'),
-      register: mockRegister,
-      handleSubmit: mockHandleSubmit,
+      formState: {
+        ...jest.requireActual('react-hook-form'),
+        errors: {
+          tastingSheet: mockErrors
+        },
+        isSubmitting: mockIsSubmitting,
+        isValid: mockIsValid
+      },
       getValues: mockGetValues,
+      handleSubmit: mockHandleSubmit,
+      register: mockRegister,
       setValue: mockSetValue,
       watch: mockWatch.mockImplementation(() => ({
         tastingSheet: mockWatchedTastingSheet
-      })),
-      formState: {
-        ...jest.requireActual('react-hook-form'),
-        isValid: mockIsValid,
-        isSubmitting: mockIsSubmitting,
-        errors: {
-          tastingSheet: mockErrors
-        }
-      }
+      }))
     })
   })
 

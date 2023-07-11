@@ -13,51 +13,51 @@ import CONSISTENCY_LABELS from './consistencyLabels'
 
 const APPEARANCE_FORM_ITEMS: AbstractFormItem<AppearanceName>[] = [
   {
-    heading: '清澄度',
     name: 'clarity',
+    heading: '清澄度',
     labels: {
-      white: CLARITY_LABELS_WHITE,
-      red: CLARITY_LABELS_RED
+      red: CLARITY_LABELS_RED,
+      white: CLARITY_LABELS_WHITE
     }
   },
   {
-    heading: '輝き',
     name: 'brightness',
+    heading: '輝き',
     labels: {
-      white: BRIGHTNESS_LABELS_WHITE,
-      red: BRIGHTNESS_LABELS_RED
+      red: BRIGHTNESS_LABELS_RED,
+      white: BRIGHTNESS_LABELS_WHITE
     }
   },
   {
-    heading: '色調',
     name: 'appearanceColors',
-    subHeading: '補助用語/メイン',
+    heading: '色調',
     labels: {
-      white: APPEARANCE_COLOR_LABELS_WHITE,
-      red: APPEARANCE_COLOR_LABELS_RED
-    }
+      red: APPEARANCE_COLOR_LABELS_RED,
+      white: APPEARANCE_COLOR_LABELS_WHITE
+    },
+    subHeading: '補助用語/メイン'
   },
   {
-    heading: '濃淡',
     name: 'intensity',
+    heading: '濃淡',
     labels: {
-      white: INTENSITY_LABELS_WHITE,
-      red: INTENSITY_LABELS_RED
+      red: INTENSITY_LABELS_RED,
+      white: INTENSITY_LABELS_WHITE
     }
   },
   {
-    heading: '粘性',
     name: 'consistency',
+    heading: '粘性',
     labels: CONSISTENCY_LABELS
   },
   {
-    heading: '外観の印象',
     name: 'appearanceImpressions',
-    subHeading: '若さ/成熟度',
+    heading: '外観の印象',
     labels: {
-      white: APPEARANCE_IMPRESSION_LABELS_WHITE,
-      red: APPEARANCE_IMPRESSION_LABELS_RED
-    }
+      red: APPEARANCE_IMPRESSION_LABELS_RED,
+      white: APPEARANCE_IMPRESSION_LABELS_WHITE
+    },
+    subHeading: '若さ/成熟度'
   }
 ]
 

@@ -2,8 +2,8 @@ import { render } from '@testing-library/react'
 
 import { useFetchATastingSheet as mockUseFetchATastingSheet } from '../../../hooks'
 import { ReactNodeChildren, TastingSheetApi } from '../../../types'
-import TastingSheetDetailsPage from '../TastingSheetDetailsPage'
 import { initialTastingSheet, wineTestData } from '../../../utils'
+import TastingSheetDetailsPage from '../TastingSheetDetailsPage'
 
 jest.mock('../../../hooks/api/useFetchATastingSheet')
 

@@ -1,25 +1,25 @@
-import userEvent from '@testing-library/user-event'
 import { render } from '@testing-library/react'
-import { RouterProvider, createMemoryRouter } from 'react-router-dom'
+import userEvent from '@testing-library/user-event'
+import { createMemoryRouter, RouterProvider } from 'react-router-dom'
 
-import WineEditLink from '../WineEditLink'
 import { WineEditLinkProps } from '../../../../types'
 import { wineTestData } from '../../../../utils'
+import WineEditLink from '../WineEditLink'
 
 const mockClassName = 'mock-class'
 jest.mock('../../../../hooks/useGetButtonClassName', () => () => ({
   className: mockClassName
 }))
 
-const setUp = ({ wine, color }: WineEditLinkProps) => {
+const setUp = ({ color, wine }: WineEditLinkProps) => {
   const router = createMemoryRouter([
     {
-      path: '/',
-      element: <WineEditLink wine={wine} color={color} />
+      element: <WineEditLink wine={wine} color={color} />,
+      path: '/'
     },
     {
-      path: '/wines/edit/:id',
-      element: <p>test</p>
+      element: <p>test</p>,
+      path: '/wines/edit/:id'
     }
   ])
 
@@ -34,8 +34,8 @@ const setUp = ({ wine, color }: WineEditLinkProps) => {
 describe('WineEditLink', () => {
   let props: WineEditLinkProps
   const initialProps: WineEditLinkProps = {
-    wine: { ...wineTestData },
-    color: 'red'
+    color: 'red',
+    wine: { ...wineTestData }
   }
 
   beforeEach(() => {
@@ -58,14 +58,14 @@ describe('WineEditLink', () => {
   })
 
   test('クリックされた場合、/wines/edit/:idに遷移する', () => {
-    const { router, getByRole } = setUp(props)
+    const { getByRole, router } = setUp(props)
     userEvent.click(getByRole('link'))
 
     expect(router.state.location.pathname).toEqual(`/wines/edit/${props.wine.id}`)
   })
 
   test('クリックされた場合、stateが更新される', () => {
-    const { router, getByRole } = setUp(props)
+    const { getByRole, router } = setUp(props)
     userEvent.click(getByRole('link'))
 
     expect(router.state.location.state).toBe(props.wine)

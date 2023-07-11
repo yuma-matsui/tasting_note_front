@@ -28,13 +28,13 @@ const useTastingSheetsPagination = (tastingSheets: TastingSheetApi[]) => {
   )
 
   return {
-    pageNumber,
-    isFirstPage: pageNumber === 1,
-    isLastPage: pageNumber === Math.ceil(tastingSheets.length / DISPLAYING_SHEETS_NUMBER),
-    next,
     back,
     displayingTastingSheets,
-    isMoreThanFiveSheets: tastingSheets.length > DISPLAYING_SHEETS_NUMBER
+    isFirstPage: pageNumber === 1,
+    isLastPage: pageNumber === Math.ceil(tastingSheets.length / DISPLAYING_SHEETS_NUMBER),
+    isMoreThanFiveSheets: tastingSheets.length > DISPLAYING_SHEETS_NUMBER,
+    next,
+    pageNumber
   }
 }
 

@@ -1,9 +1,9 @@
-import userEvent from '@testing-library/user-event'
 import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 
-import TastingSheetSearchForm from '../TastingSheetSearchForm'
 import { useTastingSheetSearchForm as mockUserTastingSheetSearchForm } from '../../../../hooks'
 import { TastingSheetSearchFormProps } from '../../../../types'
+import TastingSheetSearchForm from '../TastingSheetSearchForm'
 
 jest.mock('../../../../hooks/tasting_sheet/useTastingSheetSearchForm')
 
@@ -26,16 +26,16 @@ describe('TastingSheetSearchForm', () => {
   }
 
   const useSearchFormReturnValue = {
-    onSubmit: jest.fn(),
     color: 'test',
-    onChangeColor: jest.fn(),
-    country: 'test',
-    onChangeCountry: jest.fn(),
-    grape: 'test',
-    onChangeGrape: jest.fn(),
-    grapeOptions: [],
     countries: [],
-    onClickAllClear: jest.fn()
+    country: 'test',
+    grape: 'test',
+    grapeOptions: [],
+    onChangeColor: jest.fn(),
+    onChangeCountry: jest.fn(),
+    onChangeGrape: jest.fn(),
+    onClickAllClear: jest.fn(),
+    onSubmit: jest.fn()
   }
 
   beforeEach(() => {

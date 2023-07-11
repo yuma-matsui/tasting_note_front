@@ -1,15 +1,15 @@
-import userEvent from '@testing-library/user-event'
 import { render } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 
-import FooterLinkWrapper from '../FooterLinkWrapper'
 import { FooterLinkWrapperProps } from '../../../../types'
+import FooterLinkWrapper from '../FooterLinkWrapper'
 
 const mockOnClickOpenModal = jest.fn()
 jest.mock('../../../../hooks/useOnClickOpenModal', () => () => ({
   onClickOpenModal: mockOnClickOpenModal
 }))
 
-const setUp = ({ text, defaultLink, linkOnModal, isEditing }: FooterLinkWrapperProps) => {
+const setUp = ({ defaultLink, isEditing, linkOnModal, text }: FooterLinkWrapperProps) => {
   const utils = render(
     <FooterLinkWrapper text={text} defaultLink={defaultLink} linkOnModal={linkOnModal} isEditing={isEditing} />
   )
@@ -22,10 +22,10 @@ const setUp = ({ text, defaultLink, linkOnModal, isEditing }: FooterLinkWrapperP
 describe('FooterLinkWrapper', () => {
   let props: FooterLinkWrapperProps
   const initialProps: FooterLinkWrapperProps = {
-    text: 'test',
     defaultLink: <a href="/">defaultLink</a>,
+    isEditing: true,
     linkOnModal: <a href="/">linkOnModal</a>,
-    isEditing: true
+    text: 'test'
   }
 
   beforeEach(() => {

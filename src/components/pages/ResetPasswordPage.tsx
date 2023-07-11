@@ -1,14 +1,14 @@
 import { FC } from 'react'
 
-import { DefaultLayout } from '../templates'
-import { HeadMeta, ResetPasswordForm } from '../molecules'
-import { LoadingSpinner } from '../atoms'
-import { useResetPasswordFormParams } from '../../hooks'
 import { metaContents } from '../../assets'
+import { useResetPasswordFormParams } from '../../hooks'
+import { LoadingSpinner } from '../atoms'
+import { HeadMeta, ResetPasswordForm } from '../molecules'
+import { DefaultLayout } from '../templates'
 
 const ResetPasswordPage: FC = () => {
-  const { title, description, path } = metaContents.resetPassword
-  const { sendEmail, loading, error, isSent, setIsSent } = useResetPasswordFormParams()
+  const { description, path, title } = metaContents.resetPassword
+  const { error, isSent, loading, sendEmail, setIsSent } = useResetPasswordFormParams()
 
   if (loading) return <LoadingSpinner />
 

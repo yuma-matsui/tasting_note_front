@@ -10,9 +10,9 @@ import {
 import { TastingSheetCheckBoxProps } from '../../../types'
 
 const TastingSheetCheckBox: FC<TastingSheetCheckBoxProps> = memo(
-  ({ id, name, value, disabled = false, register, label, color, checked }) => {
+  ({ id, name, checked, color, disabled = false, label, register, value }) => {
     const { getValues } = useTastingSheetForm()
-    const { isMultipleInputs, getValidationMethod } = useTastingSheetInputsAttributes()
+    const { getValidationMethod, isMultipleInputs } = useTastingSheetInputsAttributes()
     const { type } = useGetRadioOrCheckBoxType(isMultipleInputs(getValues(name)))
     const { className: labelClassName } = useGetLabelClassName(color, checked)
     const { className: inputClassName } = useGetCheckBoxClassName(type, color)

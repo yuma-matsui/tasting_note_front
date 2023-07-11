@@ -5,10 +5,10 @@ import TastingSheetUseFormName from '../tasting_sheet/tastingSheetUseFormName'
 
 type TastingSheetSelectBoxProps = {
   id: string
-  register: UseFormRegister<TastingSheetFormState>
   name: TastingSheetUseFormName
-  options: string[]
   label: string
+  options: string[]
+  register: UseFormRegister<TastingSheetFormState>
 }
 
 export default TastingSheetSelectBoxProps

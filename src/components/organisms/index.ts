@@ -1,6 +1,6 @@
 export { default as Footer } from './Footer'
 export { default as Header } from './Header'
-export { default as TastingSheetDetailsTab } from './TastingSheetDetailsTab'
 export { default as SignedInTopPageInstruction } from './SignedInTopPageInstruction'
-export { default as WineDetails } from './WineDetails'
+export { default as TastingSheetDetailsTab } from './TastingSheetDetailsTab'
 export { default as TastingSheetListsWithSideBar } from './TastingSheetListsWithSideBar'
+export { default as WineDetails } from './WineDetails'

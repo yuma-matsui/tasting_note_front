@@ -1,7 +1,7 @@
 import { renderHook } from '@testing-library/react'
 
-import useTastingSheetLabels from '../useTastingSheetLabels'
 import { WineColor } from '../../../types'
+import useTastingSheetLabels from '../useTastingSheetLabels'
 
 describe('useTastingSheetLabels', () => {
   let color: WineColor
@@ -22,18 +22,19 @@ describe('useTastingSheetLabels', () => {
       {
         items: [
           {
+            name: 'clarity',
             heading: '清澄度',
             labels: ['澄んだ', '深みのある', 'やや濁った', '濁った'],
-            name: 'clarity',
             subHeading: undefined
           },
           {
+            name: 'brightness',
             heading: '輝き',
             labels: ['輝きのある', '艶のある', 'モヤがかった'],
-            name: 'brightness',
             subHeading: undefined
           },
           {
+            name: 'appearanceColors',
             heading: '色調',
             labels: [
               '紫がかった',
@@ -46,22 +47,22 @@ describe('useTastingSheetLabels', () => {
               'マホガニー',
               'レンガ'
             ],
-            name: 'appearanceColors',
             subHeading: '補助用語/メイン'
           },
           {
+            name: 'intensity',
             heading: '濃淡',
             labels: ['無色に近い', '明るい', 'やや明るい', 'やや濃い', '濃い', '非常に濃い'],
-            name: 'intensity',
             subHeading: undefined
           },
           {
+            name: 'consistency',
             heading: '粘性',
             labels: ['さらっとした', 'やや軽い', 'やや強い', '強い'],
-            name: 'consistency',
             subHeading: undefined
           },
           {
+            name: 'appearanceImpressions',
             heading: '外観の印象',
             labels: [
               '若々しい',
@@ -74,7 +75,6 @@ describe('useTastingSheetLabels', () => {
               '成熟度が高い',
               '濃縮感が強い'
             ],
-            name: 'appearanceImpressions',
             subHeading: '若さ/成熟度'
           }
         ],
@@ -84,6 +84,7 @@ describe('useTastingSheetLabels', () => {
       {
         items: [
           {
+            name: 'flavorFirstImpressions',
             heading: '第一印象',
             labels: [
               '閉じている',
@@ -96,10 +97,10 @@ describe('useTastingSheetLabels', () => {
               '深みのある',
               '複雑な'
             ],
-            name: 'flavorFirstImpressions',
             subHeading: '強さ/性質'
           },
           {
+            name: 'flavorFruits',
             heading: '果実',
             labels: [
               'イチゴ',
@@ -111,10 +112,10 @@ describe('useTastingSheetLabels', () => {
               '干しプラム',
               '乾燥イチジク'
             ],
-            name: 'flavorFruits',
             subHeading: '熟成度低→高'
           },
           {
+            name: 'flavorFlowers',
             heading: '花・植物',
             labels: [
               'バラ',
@@ -138,10 +139,10 @@ describe('useTastingSheetLabels', () => {
               'トリュフ',
               '土'
             ],
-            name: 'flavorFlowers',
             subHeading: '花/植物/ドライ/菌類'
           },
           {
+            name: 'flavorSpices',
             heading: '香辛料・芳香・化学物質',
             labels: [
               '黒胡椒',
@@ -164,10 +165,10 @@ describe('useTastingSheetLabels', () => {
               'ヨード',
               'ランシオ'
             ],
-            name: 'flavorSpices',
             subHeading: '香辛料/樽/動物/他'
           },
           {
+            name: 'flavorImpressions',
             heading: '香りの印象',
             labels: [
               '若々しい',
@@ -180,7 +181,6 @@ describe('useTastingSheetLabels', () => {
               'ニュートラル',
               '木樽からのニュアンス'
             ],
-            name: 'flavorImpressions',
             subHeading: '熟成感/特性'
           }
         ],
@@ -190,24 +190,25 @@ describe('useTastingSheetLabels', () => {
       {
         items: [
           {
+            name: 'attack',
             heading: 'アタック',
             labels: ['軽い', 'やや軽い', 'やや強い', '強い', 'インパクトのある'],
-            name: 'attack',
             subHeading: undefined
           },
           {
+            name: 'sweetness',
             heading: '甘み',
             labels: ['ドライ', 'ソフトな', 'まろやかな', '豊かな', '残糖がある'],
-            name: 'sweetness',
             subHeading: '(アルコールのボリューム感も含む)'
           },
           {
+            name: 'acidity',
             heading: '酸味',
             labels: ['なめらかな', '豊かな', '爽やかな', '生き生きとした', 'シャープな', '堅い', '厳しい', '攻撃的な'],
-            name: 'acidity',
             subHeading: '弱→強'
           },
           {
+            name: 'astringent',
             heading: 'タンニン分',
             labels: [
               'サラサラとした',
@@ -218,10 +219,10 @@ describe('useTastingSheetLabels', () => {
               '力強い',
               '収斂性のある'
             ],
-            name: 'astringent',
             subHeading: '弱→強'
           },
           {
+            name: 'balance',
             heading: 'バランス',
             labels: [
               'スマートな',
@@ -234,19 +235,18 @@ describe('useTastingSheetLabels', () => {
               '流れるような',
               'ふくよかな'
             ],
-            name: 'balance',
             subHeading: '左上/右上/下'
           },
           {
+            name: 'alcohol',
             heading: 'アルコール',
             labels: ['軽い', 'やや軽め', '中程度', 'やや強め', '強い', '熱さを感じる'],
-            name: 'alcohol',
             subHeading: undefined
           },
           {
+            name: 'afterTaste',
             heading: '余韻',
             labels: ['短い', 'やや短い', 'やや長い', '長い'],
-            name: 'afterTaste',
             subHeading: undefined
           }
         ],
@@ -256,6 +256,7 @@ describe('useTastingSheetLabels', () => {
       {
         items: [
           {
+            name: 'evaluation',
             heading: '評価',
             labels: [
               'シンプル、フレッシュ感を楽しむ',
@@ -264,30 +265,30 @@ describe('useTastingSheetLabels', () => {
               '濃縮し力強い',
               '複雑性があり引き締まった'
             ],
-            name: 'evaluation',
             subHeading: '軽→重'
           },
           {
+            name: 'optimumTemperature',
             heading: '適正温度',
             labels: ['10度未満', '10〜13度', '14〜16度', '17〜20度', '21度以上'],
-            name: 'optimumTemperature',
             subHeading: undefined
           },
           {
+            name: 'glass',
             heading: 'グラス',
             labels: ['小ぶり', '中庸', '大ぶり'],
-            name: 'glass',
             subHeading: undefined
           },
           {
+            name: 'decantage',
             heading: 'デカンタージュ',
             labels: ['必要なし', '事前(30分前)', '事前(60分前)', '事前(1時間以上前)'],
-            name: 'decantage',
             subHeading: undefined
           }
         ],
         options: [
           {
+            name: 'vintage',
             heading: '収穫年',
             labels: [
               '2022',
@@ -414,10 +415,10 @@ describe('useTastingSheetLabels', () => {
               '1901',
               '1900'
             ],
-            name: 'vintage',
             subHeading: undefined
           },
           {
+            name: 'country',
             heading: '生産国',
             labels: [
               'アメリカ',
@@ -439,10 +440,10 @@ describe('useTastingSheetLabels', () => {
               '南アフリカ',
               '日本'
             ],
-            name: 'country',
             subHeading: undefined
           },
           {
+            name: 'grape',
             heading: '主なぶどう品種',
             labels: [
               'アリアニコ',
@@ -460,7 +461,6 @@ describe('useTastingSheetLabels', () => {
               'マルベック',
               'メルロ'
             ],
-            name: 'grape',
             subHeading: undefined
           }
         ],
@@ -477,18 +477,19 @@ describe('useTastingSheetLabels', () => {
       {
         items: [
           {
+            name: 'clarity',
             heading: '清澄度',
             labels: ['澄んだ', 'やや濁った', '濁った'],
-            name: 'clarity',
             subHeading: undefined
           },
           {
+            name: 'brightness',
             heading: '輝き',
             labels: ['輝きのある', '落ち着いた', 'モヤがかった'],
-            name: 'brightness',
             subHeading: undefined
           },
           {
+            name: 'appearanceColors',
             heading: '色調',
             labels: [
               'グリーンがかった',
@@ -500,22 +501,22 @@ describe('useTastingSheetLabels', () => {
               'オレンジ',
               'アンバー'
             ],
-            name: 'appearanceColors',
             subHeading: '補助用語/メイン'
           },
           {
+            name: 'intensity',
             heading: '濃淡',
             labels: ['無色に近い', '淡い', 'やや濃い', '濃い', '非常に濃い'],
-            name: 'intensity',
             subHeading: undefined
           },
           {
+            name: 'consistency',
             heading: '粘性',
             labels: ['さらっとした', 'やや軽い', 'やや強い', '強い'],
-            name: 'consistency',
             subHeading: undefined
           },
           {
+            name: 'appearanceImpressions',
             heading: '外観の印象',
             labels: [
               '若々しい',
@@ -527,7 +528,6 @@ describe('useTastingSheetLabels', () => {
               '成熟度が高い',
               '濃縮感がある'
             ],
-            name: 'appearanceImpressions',
             subHeading: '若さ/成熟度'
           }
         ],
@@ -537,6 +537,7 @@ describe('useTastingSheetLabels', () => {
       {
         items: [
           {
+            name: 'flavorFirstImpressions',
             heading: '第一印象',
             labels: [
               '閉じている',
@@ -550,10 +551,10 @@ describe('useTastingSheetLabels', () => {
               '深みのある',
               '複雑な'
             ],
-            name: 'flavorFirstImpressions',
             subHeading: '強さ/性質'
           },
           {
+            name: 'flavorFruits',
             heading: '果実',
             labels: [
               '柑橘類',
@@ -570,10 +571,10 @@ describe('useTastingSheetLabels', () => {
               'バナナ',
               'マンゴー'
             ],
-            name: 'flavorFruits',
             subHeading: '熟成度低→高'
           },
           {
+            name: 'flavorFlowers',
             heading: '花・植物',
             labels: [
               'スイカズラ',
@@ -589,10 +590,10 @@ describe('useTastingSheetLabels', () => {
               'フレッシュアーモンド',
               'ヘーゼルナッツ'
             ],
-            name: 'flavorFlowers',
             subHeading: '花/植物/ドライ/菌類'
           },
           {
+            name: 'flavorSpices',
             heading: '香辛料・芳香・化学物質',
             labels: [
               '石灰',
@@ -620,10 +621,10 @@ describe('useTastingSheetLabels', () => {
               '蜂蜜',
               '蜜蝋'
             ],
-            name: 'flavorSpices',
             subHeading: '香辛料/樽/動物/他'
           },
           {
+            name: 'flavorImpressions',
             heading: '香りの印象',
             labels: [
               '若々しい',
@@ -638,7 +639,6 @@ describe('useTastingSheetLabels', () => {
               '成熟度が高い',
               '複雑性のある'
             ],
-            name: 'flavorImpressions',
             subHeading: '熟成感/特性'
           }
         ],
@@ -648,30 +648,31 @@ describe('useTastingSheetLabels', () => {
       {
         items: [
           {
+            name: 'attack',
             heading: 'アタック',
             labels: ['軽い', 'やや軽い', 'やや強い', '強い', 'インパクトのある'],
-            name: 'attack',
             subHeading: undefined
           },
           {
+            name: 'sweetness',
             heading: '甘み',
             labels: ['ドライ', 'ソフトな', 'まろやかな', '豊かな', '残糖がある'],
-            name: 'sweetness',
             subHeading: '(アルコールのボリューム感も含む)'
           },
           {
+            name: 'acidity',
             heading: '酸味',
             labels: ['なめらかな', '爽やかな', '溌剌とした', 'シャープな', '堅い', '力強い', '厳しい', '攻撃的な'],
-            name: 'acidity',
             subHeading: '弱→強'
           },
           {
+            name: 'bitterness',
             heading: '苦味',
             labels: ['控えめ', '穏やかな', 'コク(深み)を与える', '旨味をともなった', '強い(突出した)'],
-            name: 'bitterness',
             subHeading: undefined
           },
           {
+            name: 'balance',
             heading: 'バランス',
             labels: [
               'スムースな',
@@ -685,19 +686,18 @@ describe('useTastingSheetLabels', () => {
               'ふくよかな',
               'ねっとりした'
             ],
-            name: 'balance',
             subHeading: '左上/右上/下'
           },
           {
+            name: 'alcohol',
             heading: 'アルコール',
             labels: ['軽い', 'やや軽め', '中程度', 'やや強め', '強い', '熱さを感じる'],
-            name: 'alcohol',
             subHeading: undefined
           },
           {
+            name: 'afterTaste',
             heading: '余韻',
             labels: ['短い', 'やや短い', 'やや長い', '長い'],
-            name: 'afterTaste',
             subHeading: undefined
           }
         ],
@@ -707,6 +707,7 @@ describe('useTastingSheetLabels', () => {
       {
         items: [
           {
+            name: 'evaluation',
             heading: '評価',
             labels: [
               'シンプル、フレッシュ感を楽しむ',
@@ -715,24 +716,24 @@ describe('useTastingSheetLabels', () => {
               '濃縮し力強い',
               'ポテンシャルがある'
             ],
-            name: 'evaluation',
             subHeading: '軽→重'
           },
           {
+            name: 'optimumTemperature',
             heading: '適正温度',
             labels: ['8度未満', '8〜10度', '11〜14度', '15〜18度', '19度以上'],
-            name: 'optimumTemperature',
             subHeading: undefined
           },
           {
+            name: 'glass',
             heading: 'グラス',
             labels: ['小ぶり', '中庸', '大ぶり'],
-            name: 'glass',
             subHeading: undefined
           }
         ],
         options: [
           {
+            name: 'vintage',
             heading: '収穫年',
             labels: [
               '2022',
@@ -859,10 +860,10 @@ describe('useTastingSheetLabels', () => {
               '1901',
               '1900'
             ],
-            name: 'vintage',
             subHeading: undefined
           },
           {
+            name: 'country',
             heading: '生産国',
             labels: [
               'アメリカ',
@@ -884,10 +885,10 @@ describe('useTastingSheetLabels', () => {
               '南アフリカ',
               '日本'
             ],
-            name: 'country',
             subHeading: undefined
           },
           {
+            name: 'grape',
             heading: '主なぶどう品種',
             labels: [
               'アリゴテ',
@@ -907,7 +908,6 @@ describe('useTastingSheetLabels', () => {
               'ミュスカデ',
               'リースリング'
             ],
-            name: 'grape',
             subHeading: undefined
           }
         ],

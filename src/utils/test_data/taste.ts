@@ -1,14 +1,14 @@
 import { Taste } from '../../types'
 
 const taste: Taste = {
-  attack: '軽い',
-  sweetness: 'ソフトな',
   acidity: 'なめらかな',
-  bitterness: '控えめ',
-  astringent: null,
-  balance: 'スムースな',
+  afterTaste: '短い',
   alcohol: '熱さを感じる',
-  afterTaste: '短い'
+  astringent: null,
+  attack: '軽い',
+  balance: 'スムースな',
+  bitterness: '控えめ',
+  sweetness: 'ソフトな'
 }
 
 export default taste

@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 
-import useSignOutUser from './useSignOutUser'
 import useCurrentUserContext from '../context/useCurrentUserContext'
+import useSignOutUser from './useSignOutUser'
 
 const useUrgentSignOut = () => {
   const currentUser = useCurrentUserContext()

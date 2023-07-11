@@ -2,9 +2,9 @@ import { User } from 'firebase/auth'
 import { useErrorBoundary } from 'react-error-boundary'
 
 import { TastingSheet } from '../../types'
+import useCreateUser from '../auth/useCreateUser'
 import useToastContext from '../context/useToastContext'
 import usePostTastingSheet from './usePostTastingSheet'
-import useCreateUser from '../auth/useCreateUser'
 
 const useSignUpOrInAndPostTastingSheet = () => {
   const { showToast } = useToastContext()
@@ -13,13 +13,13 @@ const useSignUpOrInAndPostTastingSheet = () => {
   const { createUser } = useCreateUser()
 
   const signUpOrInAndPostTastingSheet = async ({
-    user,
     tastingSheet,
-    type
+    type,
+    user
   }: {
-    user: User | undefined
     tastingSheet: TastingSheet | null
     type: 'signIn' | 'signUp'
+    user: User | undefined
   }) => {
     const isSignUp = type === 'signUp'
 

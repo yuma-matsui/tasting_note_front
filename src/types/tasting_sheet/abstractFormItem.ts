@@ -1,11 +1,11 @@
 type AbstractFormItem<T> = {
-  heading: string
   name: T
+  heading: string
   labels:
     | string[]
     | {
-        white: string[]
         red: string[]
+        white: string[]
       }
   subHeading?: string | undefined
 }

@@ -2,7 +2,7 @@ import { FC, memo } from 'react'
 
 import { DetailsDataListProps } from '../../types'
 
-const SheetOrWineDetailsDataList: FC<DetailsDataListProps> = memo(({ title, subTitle, content }) => (
+const SheetOrWineDetailsDataList: FC<DetailsDataListProps> = memo(({ content, subTitle, title }) => (
   <>
     <dt className="form-heading-text">
       {title} {subTitle && <span className="form-subheading-text">{subTitle}</span>}

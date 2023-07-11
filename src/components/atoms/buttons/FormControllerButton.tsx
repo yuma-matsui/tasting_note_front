@@ -1,10 +1,10 @@
 import { FC, memo } from 'react'
 import { HiBackward, HiForward } from 'react-icons/hi2'
 
-import { FormControllerButtonProps } from '../../../types'
 import { useCheckButtonStatus, useGetButtonClassName } from '../../../hooks'
+import { FormControllerButtonProps } from '../../../types'
 
-const FormControllerButton: FC<FormControllerButtonProps> = memo(({ value, disabled, onClick, tastingSheet }) => {
+const FormControllerButton: FC<FormControllerButtonProps> = memo(({ disabled, onClick, tastingSheet, value }) => {
   const { className } = useGetButtonClassName(tastingSheet.color, disabled, value)
   const { isBack, isNext } = useCheckButtonStatus({ value })
 

@@ -1,8 +1,8 @@
 import WineColor from '../tasting_sheet/wineColor'
 
 type UseCheckButtonStatusProps = {
-  value?: string | undefined
   color?: WineColor
+  value?: string | undefined
 }
 
 export default UseCheckButtonStatusProps

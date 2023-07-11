@@ -1,9 +1,9 @@
 import { render } from '@testing-library/react'
 
-import TastingSheetNameInput from '../TastingSheetNameInput'
 import { FormRegisterAndErrors } from '../../../../types'
+import TastingSheetNameInput from '../TastingSheetNameInput'
 
-const setUp = ({ register, errors }: FormRegisterAndErrors) => {
+const setUp = ({ errors, register }: FormRegisterAndErrors) => {
   const utils = render(<TastingSheetNameInput register={register} errors={errors} />)
 
   return {
@@ -14,8 +14,8 @@ const setUp = ({ register, errors }: FormRegisterAndErrors) => {
 describe('TastingSheetNameInput', () => {
   let props: FormRegisterAndErrors
   const initialProps: FormRegisterAndErrors = {
-    register: jest.fn(),
-    errors: undefined
+    errors: undefined,
+    register: jest.fn()
   }
 
   beforeEach(() => {

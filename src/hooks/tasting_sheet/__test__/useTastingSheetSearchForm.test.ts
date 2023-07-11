@@ -1,10 +1,10 @@
 import { renderHook } from '@testing-library/react'
+import { ChangeEvent, FormEvent } from 'react'
 import { act } from 'react-dom/test-utils'
-import { FormEvent, ChangeEvent } from 'react'
 
-import useTastingSheetSearchForm from '../useTastingSheetSearchForm'
 import { COUNTRIES, GRAPES_RED, GRAPES_WHITE } from '../../../assets'
 import { initialFilter } from '../../../utils'
+import useTastingSheetSearchForm from '../useTastingSheetSearchForm'
 
 type ReactInputEvent = ChangeEvent<HTMLInputElement>
 type ReactSelectEvent = ChangeEvent<HTMLSelectElement>

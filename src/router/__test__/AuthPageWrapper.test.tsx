@@ -1,9 +1,9 @@
 import { render } from '@testing-library/react'
 import { ReactElement } from 'react'
-import { RouterProvider, createMemoryRouter } from 'react-router-dom'
+import { createMemoryRouter, RouterProvider } from 'react-router-dom'
 
-import AuthPageWrapper from '../AuthPageWrapper'
 import { useCurrentUserContext as mockUseCurrentUserContext } from '../../hooks'
+import AuthPageWrapper from '../AuthPageWrapper'
 
 jest.mock('../../hooks/context/useCurrentUserContext')
 
@@ -11,12 +11,12 @@ const setUp = (page: ReactElement) => {
   const router = createMemoryRouter(
     [
       {
-        path: '/test',
-        element: <AuthPageWrapper page={page} />
+        element: <AuthPageWrapper page={page} />,
+        path: '/test'
       },
       {
-        path: '/',
-        element: <p>Test</p>
+        element: <p>Test</p>,
+        path: '/'
       }
     ],
     { initialEntries: ['/test'] }

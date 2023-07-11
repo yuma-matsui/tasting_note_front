@@ -1,8 +1,8 @@
 import { render } from '@testing-library/react'
 
-import SignedInWelcomePage from '../SignedInWelcomePage'
 import { useFetchTastingSheets as mockUseFetchTastingSheets } from '../../../hooks'
 import { ReactNodeChildren } from '../../../types'
+import SignedInWelcomePage from '../SignedInWelcomePage'
 
 jest.mock('../../molecules/HeadMeta', () => ({ children }: ReactNodeChildren) => (
   <>
@@ -36,9 +36,9 @@ const setUp = () => {
 describe('SignedInWelcomePage', () => {
   let useFetchTastingSheetsReturnValue: typeof initialReturnValue
   const initialReturnValue = {
-    tastingSheets: [],
+    fetching: false,
     hasTastingSheets: false,
-    fetching: false
+    tastingSheets: []
   }
 
   beforeEach(() => {

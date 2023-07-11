@@ -2,8 +2,8 @@
 
 import { render } from '@testing-library/react'
 
-import ErrorFallbackForApi from '../ErrorFallbackForApi'
 import { ReactNodeChildren } from '../../../types'
+import ErrorFallbackForApi from '../ErrorFallbackForApi'
 
 jest.mock('../../molecules/HeadMeta', () => ({ children }: ReactNodeChildren) => (
   <>

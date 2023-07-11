@@ -2,8 +2,8 @@ import ToastType from './toastType'
 
 type BaseToastProps = {
   text: string
-  visible: boolean
   type: ToastType
+  visible: boolean
 }
 
 export default BaseToastProps

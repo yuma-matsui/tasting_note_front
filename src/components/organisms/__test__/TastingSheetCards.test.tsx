@@ -1,8 +1,8 @@
 import { render } from '@testing-library/react'
 
-import TastingSheetCards from '../TastingSheetCards'
 import { TastingSheetApi } from '../../../types'
 import { initialTastingSheet } from '../../../utils'
+import TastingSheetCards from '../TastingSheetCards'
 
 jest.mock('../../molecules/TastingSheetCard', () => () => <p>MockedTastingSheetCard</p>)
 

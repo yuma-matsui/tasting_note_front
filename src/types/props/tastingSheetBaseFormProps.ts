@@ -5,11 +5,11 @@ import TastingSheetFormState from '../tasting_sheet/tastingSheetFormState'
 import TastingSheetFormType from '../tasting_sheet/tastingSheetFormType'
 
 type TastingSheetBaseFormProps = {
-  type: TastingSheetFormType
+  getValues: UseFormGetValues<TastingSheetFormState>
   items: TastingSheetFormItem[]
   options: TastingSheetFormItem[]
   register: UseFormRegister<TastingSheetFormState>
-  getValues: UseFormGetValues<TastingSheetFormState>
+  type: TastingSheetFormType
 }
 
 export default TastingSheetBaseFormProps

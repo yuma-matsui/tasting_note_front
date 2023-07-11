@@ -1,11 +1,11 @@
-import userEvent from '@testing-library/user-event'
 import { fireEvent, render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import { act } from 'react-dom/test-utils'
 
-import WineForm from '../WineForm'
-import { WineApi } from '../../../../types'
 import { useWineForm as mockUseWineForm } from '../../../../hooks'
+import { WineApi } from '../../../../types'
 import { wineTestData } from '../../../../utils'
+import WineForm from '../WineForm'
 
 jest.mock('../../../../hooks/useWineForm')
 
@@ -36,21 +36,21 @@ describe('WineForm', () => {
   const mockSubmitButtonClassName = 'mock-class'
   let useWineFormReturnValue: typeof initialReturnValue
   const initialReturnValue = {
-    register: jest.fn(),
-    handleSubmit: jest.fn(),
     disabled: false,
     errors: false,
-    onSubmit: jest.fn(),
-    tastingSheetId: 1,
-    selectBoxOptions: {
-      vintages: [],
-      countries: [],
-      alcoholPercentages: [],
-      grapes: []
-    },
+    handleSubmit: jest.fn(),
     imageFile: true,
     onChangeImageFile: jest.fn(),
-    submitButtonClassName: mockSubmitButtonClassName
+    onSubmit: jest.fn(),
+    register: jest.fn(),
+    selectBoxOptions: {
+      alcoholPercentages: [],
+      countries: [],
+      grapes: [],
+      vintages: []
+    },
+    submitButtonClassName: mockSubmitButtonClassName,
+    tastingSheetId: 1
   }
 
   beforeEach(() => {

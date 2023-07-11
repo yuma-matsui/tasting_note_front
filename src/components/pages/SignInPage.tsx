@@ -1,14 +1,14 @@
 import { FC } from 'react'
 
-import { DefaultLayout } from '../templates'
-import { AuthForm, HeadMeta } from '../molecules'
+import { metaContents } from '../../assets'
 import { useGetAuthFormParams } from '../../hooks'
 import { LoadingSpinner } from '../atoms'
-import { metaContents } from '../../assets'
+import { AuthForm, HeadMeta } from '../molecules'
+import { DefaultLayout } from '../templates'
 
 const SignInPage: FC = () => {
-  const { title, description, path } = metaContents.signIn
-  const { tastingSheet, authFunction, loading, authError, type } = useGetAuthFormParams({ type: 'signIn' })
+  const { description, path, title } = metaContents.signIn
+  const { authError, authFunction, loading, tastingSheet, type } = useGetAuthFormParams({ type: 'signIn' })
 
   if (loading) return <LoadingSpinner />
 

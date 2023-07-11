@@ -1,14 +1,14 @@
 const wine = {
   id: 1,
   name: 'test',
-  image: null,
-  vintage: 'test',
-  country: 'test',
-  region: 'test',
-  grape: 'test',
   alcoholPercentage: 'test',
+  country: 'test',
+  grape: 'test',
+  image: null,
   memo: null,
-  tastingSheetId: 1
+  region: 'test',
+  tastingSheetId: 1,
+  vintage: 'test'
 }
 
 export default wine

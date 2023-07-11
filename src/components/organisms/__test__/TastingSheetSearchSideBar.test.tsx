@@ -1,10 +1,10 @@
-import userEvent from '@testing-library/user-event'
 import { render } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 
-import TastingSheetSearchSideBar from '../TastingSheetSearchSideBar'
 import { TastingSheetSearchSideBarProps } from '../../../types'
+import TastingSheetSearchSideBar from '../TastingSheetSearchSideBar'
 
-const setUp = ({ sideBarContent, children, visible, onClickToggleSideBar }: TastingSheetSearchSideBarProps) => {
+const setUp = ({ children, onClickToggleSideBar, sideBarContent, visible }: TastingSheetSearchSideBarProps) => {
   const utils = render(
     <TastingSheetSearchSideBar
       sideBarContent={sideBarContent}
@@ -23,10 +23,10 @@ const setUp = ({ sideBarContent, children, visible, onClickToggleSideBar }: Tast
 describe('TastingSheetSearchSideBar', () => {
   let props: TastingSheetSearchSideBarProps
   const initialProps: TastingSheetSearchSideBarProps = {
-    sideBarContent: <p>MockedSideBarContent</p>,
     children: <p>MockedChildren</p>,
-    visible: false,
-    onClickToggleSideBar: jest.fn()
+    onClickToggleSideBar: jest.fn(),
+    sideBarContent: <p>MockedSideBarContent</p>,
+    visible: false
   }
 
   beforeEach(() => {

@@ -1,26 +1,26 @@
-import userEvent from '@testing-library/user-event'
 import { render } from '@testing-library/react'
-import { RouterProvider, createMemoryRouter } from 'react-router-dom'
+import userEvent from '@testing-library/user-event'
+import { createMemoryRouter, RouterProvider } from 'react-router-dom'
 
-import SignInOrUpAndPostLinks from '../SignInOrUpAndPostLinks'
 import { TastingSheet, WineColor } from '../../../types'
 import { initialTastingSheet } from '../../../utils'
+import SignInOrUpAndPostLinks from '../SignInOrUpAndPostLinks'
 
 type TestCases = [WineColor, string][]
 
 const setUp = (tastingSheet: TastingSheet) => {
   const router = createMemoryRouter([
     {
-      path: '/',
-      element: <SignInOrUpAndPostLinks tastingSheet={tastingSheet} />
+      element: <SignInOrUpAndPostLinks tastingSheet={tastingSheet} />,
+      path: '/'
     },
     {
-      path: '/signup',
-      element: <p>SignUp</p>
+      element: <p>SignUp</p>,
+      path: '/signup'
     },
     {
-      path: '/signin',
-      element: <p>SignIn</p>
+      element: <p>SignIn</p>,
+      path: '/signin'
     }
   ])
 
@@ -69,7 +69,7 @@ describe('SignInOrUpAndPostLink', () => {
       ['サインアップ', '/signup'],
       ['ログイン', '/signin']
     ])('%sリンクを押すと%sへ遷移する', (text, href) => {
-      const { router, getByRole } = setUp(tastingSheet)
+      const { getByRole, router } = setUp(tastingSheet)
       userEvent.click(getByRole('link', { name: text }))
 
       expect(router.state.location.pathname).toEqual(href)
@@ -77,7 +77,7 @@ describe('SignInOrUpAndPostLink', () => {
   })
 
   test.each([['サインアップ'], ['ログイン']])('%sリンクが押されるとstateが更新される', (text) => {
-    const { router, getByRole } = setUp(tastingSheet)
+    const { getByRole, router } = setUp(tastingSheet)
     expect(router.state.location.state).toBeNull()
 
     userEvent.click(getByRole('link', { name: text }))

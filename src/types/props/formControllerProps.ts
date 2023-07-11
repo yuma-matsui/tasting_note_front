@@ -3,14 +3,14 @@ import { ReactElement } from 'react'
 import TastingSheet from '../tasting_sheet/tastingSheet'
 
 type FormControllerProps = {
+  backButtonText: string
   children: ReactElement | undefined
-  onClick: (type: 'back' | 'next', ref: React.RefObject<HTMLInputElement>) => void
+  disabled: boolean
+  isAppearanceStep: boolean
   isFirstStep: boolean
   isLastStep: boolean
-  isAppearanceStep: boolean
-  backButtonText: string
   nextButtonText: string
-  disabled: boolean
+  onClick: (type: 'back' | 'next', ref: React.RefObject<HTMLInputElement>) => void
   tastingSheet: TastingSheet
 }
 

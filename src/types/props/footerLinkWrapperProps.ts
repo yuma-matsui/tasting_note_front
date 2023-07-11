@@ -1,10 +1,10 @@
 import { ReactElement } from 'react'
 
 type FooterLinkWrapperProps = {
-  text: string
   defaultLink: ReactElement
-  linkOnModal: ReactElement
   isEditing: boolean
+  linkOnModal: ReactElement
+  text: string
 }
 
 export default FooterLinkWrapperProps

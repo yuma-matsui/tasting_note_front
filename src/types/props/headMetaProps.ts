@@ -1,11 +1,11 @@
 import { ReactNode } from 'react'
 
 type HeadMetaProps = {
-  title: string
-  description: string
-  path?: string | undefined
-  error?: boolean
   children: ReactNode
+  description: string
+  error?: boolean
+  path?: string | undefined
+  title: string
 }
 
 export default HeadMetaProps

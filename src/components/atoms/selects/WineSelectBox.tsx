@@ -2,7 +2,7 @@ import { FC, memo } from 'react'
 
 import { WineSelectBoxProps } from '../../../types'
 
-const WineSelectBox: FC<WineSelectBoxProps> = memo(({ name, register, options, label }) => (
+const WineSelectBox: FC<WineSelectBoxProps> = memo(({ name, label, options, register }) => (
   <div className="wine-form-control">
     <label htmlFor={name} className="wine-form-label">
       <span className="wine-form-label-text">{label}</span>

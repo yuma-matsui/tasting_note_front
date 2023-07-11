@@ -1,9 +1,9 @@
 import { render } from '@testing-library/react'
 
-import SheetOrWineDetailsDataList from '../SheetOrWineDetailsDataList'
 import { DetailsDataListProps } from '../../../types'
+import SheetOrWineDetailsDataList from '../SheetOrWineDetailsDataList'
 
-const setUp = ({ title, subTitle, content }: DetailsDataListProps) => {
+const setUp = ({ content, subTitle, title }: DetailsDataListProps) => {
   const utils = render(<SheetOrWineDetailsDataList title={title} subTitle={subTitle} content={content} />)
 
   return {
@@ -14,9 +14,9 @@ const setUp = ({ title, subTitle, content }: DetailsDataListProps) => {
 describe('SheetOrWineDetailsDataList', () => {
   let props: DetailsDataListProps
   const initialProps: DetailsDataListProps = {
-    title: 'test-title',
+    content: 'test-content',
     subTitle: 'test-sub-title',
-    content: 'test-content'
+    title: 'test-title'
   }
 
   beforeEach(() => {

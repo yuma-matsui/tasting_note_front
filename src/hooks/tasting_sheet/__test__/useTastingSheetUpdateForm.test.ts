@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 
-import Form from 'react-hook-form'
-import ErrorBoundary from 'react-error-boundary'
 import { renderHook } from '@testing-library/react'
 import { act } from 'react-dom/test-utils'
+import ErrorBoundary from 'react-error-boundary'
+import Form from 'react-hook-form'
 
-import useTastingSheetUpdateForm from '../useTastingSheetUpdateForm'
 import { initialTastingSheet } from '../../../utils'
+import useTastingSheetUpdateForm from '../useTastingSheetUpdateForm'
 
 jest.mock('react-hook-form', () => ({
   ...jest.requireActual('react-hook-form'),
@@ -42,16 +42,16 @@ describe('useTastingSheetUpdateForm', () => {
 
     jest.spyOn(Form, 'useForm').mockReturnValue({
       ...jest.requireActual('react-hook-form'),
-      register: mockRegister,
-      handleSubmit: mockHandleSubmit,
       formState: {
         ...jest.requireActual('react-hook-form'),
-        isValid,
-        isSubmitting,
         errors: {
           tastingSheet: mockErrors
-        }
-      }
+        },
+        isSubmitting,
+        isValid
+      },
+      handleSubmit: mockHandleSubmit,
+      register: mockRegister
     })
 
     jest.spyOn(ErrorBoundary, 'useErrorBoundary').mockReturnValue({
@@ -91,16 +91,16 @@ describe('useTastingSheetUpdateForm', () => {
       test(`${String(result)}を返す`, () => {
         jest.spyOn(Form, 'useForm').mockReturnValue({
           ...jest.requireActual('react-hook-form'),
-          register: mockRegister,
-          handleSubmit: mockHandleSubmit,
           formState: {
             ...jest.requireActual('react-hook-form'),
-            isValid: valid,
-            isSubmitting: submitting,
             errors: {
               tastingSheet: mockErrors
-            }
-          }
+            },
+            isSubmitting: submitting,
+            isValid: valid
+          },
+          handleSubmit: mockHandleSubmit,
+          register: mockRegister
         })
 
         const {

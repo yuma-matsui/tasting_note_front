@@ -2,8 +2,8 @@
 
 import { render } from '@testing-library/react'
 
-import AuthErrorPage from '../AuthErrorPage'
 import { ReactNodeChildren } from '../../../types'
+import AuthErrorPage from '../AuthErrorPage'
 
 jest.mock('../../molecules/HeadMeta', () => ({ children }: ReactNodeChildren) => (
   <>

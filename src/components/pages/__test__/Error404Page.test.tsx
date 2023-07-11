@@ -1,8 +1,8 @@
 import { render } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 
-import Error404Page from '../Error404Page'
 import { ReactNodeChildren } from '../../../types'
+import Error404Page from '../Error404Page'
 
 jest.mock('../../molecules/HeadMeta', () => ({ children }: ReactNodeChildren) => (
   <>

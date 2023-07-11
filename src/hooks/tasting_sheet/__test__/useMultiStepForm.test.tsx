@@ -1,5 +1,5 @@
-import React, { ReactElement } from 'react'
 import { renderHook } from '@testing-library/react'
+import React, { ReactElement } from 'react'
 import { act } from 'react-dom/test-utils'
 
 import useMultiStepForm from '../useMultiStepForm'

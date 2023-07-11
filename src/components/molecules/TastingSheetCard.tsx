@@ -1,24 +1,24 @@
 import { FC, memo } from 'react'
-import { Link } from 'react-router-dom'
 import { BsExclamationTriangle } from 'react-icons/bs'
+import { Link } from 'react-router-dom'
 
-import { TastingSheetCardProps } from '../../types'
-import { CardInsideLink, DeleteTastingSheetButton } from '../atoms'
 import {
   useHasWineAndImage,
   useOnClickOpenModal,
   useTastingSheetCardColor,
   useTastingSheetStateForWine
 } from '../../hooks'
+import { TastingSheetCardProps } from '../../types'
+import { CardInsideLink, DeleteTastingSheetButton } from '../atoms'
 
 const TastingSheetCard: FC<TastingSheetCardProps> = memo(({ tastingSheet }) => {
   const { bgColor, textColor } = useTastingSheetCardColor(tastingSheet)
-  const { hasWine, hasWineImage, cardImage } = useHasWineAndImage(tastingSheet)
+  const { cardImage, hasWine, hasWineImage } = useHasWineAndImage(tastingSheet)
   const state = useTastingSheetStateForWine(tastingSheet)
 
   const { onClickOpenModal } = useOnClickOpenModal({
-    text: '本当に削除してもよろしいですか？',
-    rightButton: <DeleteTastingSheetButton id={tastingSheet.id} />
+    rightButton: <DeleteTastingSheetButton id={tastingSheet.id} />,
+    text: '本当に削除してもよろしいですか？'
   })
 
   return (

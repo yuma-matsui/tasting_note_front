@@ -6,8 +6,8 @@ import { DeleteWineButton } from '../../atoms'
 
 const WineDetailsTitle: FC<{ wine: WineApi }> = memo(({ wine }) => {
   const { onClickOpenModal } = useOnClickOpenModal({
-    text: '登録したワインを削除しますがよろしいですか？',
-    rightButton: <DeleteWineButton wine={wine} />
+    rightButton: <DeleteWineButton wine={wine} />,
+    text: '登録したワインを削除しますがよろしいですか？'
   })
 
   return (

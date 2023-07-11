@@ -1,10 +1,10 @@
-import userEvent from '@testing-library/user-event'
 import { render } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 
-import PaginationButtons from '../PaginationButtons'
 import { PaginationButtonsProps } from '../../../types'
+import PaginationButtons from '../PaginationButtons'
 
-const setUp = ({ pageNumber, back, next, isFirstPage, isLastPage }: PaginationButtonsProps) => {
+const setUp = ({ back, isFirstPage, isLastPage, next, pageNumber }: PaginationButtonsProps) => {
   const utils = render(
     <PaginationButtons
       pageNumber={pageNumber}
@@ -23,11 +23,11 @@ const setUp = ({ pageNumber, back, next, isFirstPage, isLastPage }: PaginationBu
 describe('PaginationButtonsProps', () => {
   let props: PaginationButtonsProps
   const initialProps: PaginationButtonsProps = {
-    pageNumber: 1,
     back: jest.fn(),
-    next: jest.fn(),
     isFirstPage: false,
-    isLastPage: false
+    isLastPage: false,
+    next: jest.fn(),
+    pageNumber: 1
   }
 
   beforeEach(() => {

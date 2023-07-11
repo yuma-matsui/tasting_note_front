@@ -1,8 +1,8 @@
 import axios from 'axios'
 
-import useAxios from '../useAxios'
-import useRequestingDispatchContext from '../context/useRequestingDispatchContext'
 import useCurrentUserContext from '../context/useCurrentUserContext'
+import useRequestingDispatchContext from '../context/useRequestingDispatchContext'
+import useAxios from '../useAxios'
 
 const usePostWineImageToS3 = () => {
   const currentUser = useCurrentUserContext()

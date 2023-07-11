@@ -1,33 +1,33 @@
-import React from 'react'
 import { renderHook } from '@testing-library/react'
+import React from 'react'
 
-import useFilteredTastingSheets from '../useFilteredTastingSheets'
 import { TastingSheetApi } from '../../../types'
 import { initialTastingSheet } from '../../../utils'
+import useFilteredTastingSheets from '../useFilteredTastingSheets'
 
 describe('useFilteredTastingSheets', () => {
   const tastingSheets: TastingSheetApi[] = [
     {
       ...initialTastingSheet,
+      id: 1,
       color: 'red',
       conclusion: {
         ...initialTastingSheet.conclusion,
-        grape: 'カベルネ・ソーヴィニヨン',
-        country: 'フランス'
+        country: 'フランス',
+        grape: 'カベルネ・ソーヴィニヨン'
       },
-      id: 1,
       createdAt: 'test',
       wine: null
     },
     {
       ...initialTastingSheet,
+      id: 2,
       color: 'white',
       conclusion: {
         ...initialTastingSheet.conclusion,
-        grape: 'シャルドネ',
-        country: 'イタリア'
+        country: 'イタリア',
+        grape: 'シャルドネ'
       },
-      id: 2,
       createdAt: 'test',
       wine: null
     }

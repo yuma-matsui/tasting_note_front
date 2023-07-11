@@ -1,20 +1,20 @@
-import userEvent from '@testing-library/user-event'
 import { render } from '@testing-library/react'
-import { RouterProvider, createMemoryRouter } from 'react-router-dom'
+import userEvent from '@testing-library/user-event'
+import { createMemoryRouter, RouterProvider } from 'react-router-dom'
 
-import CardInsideLink from '../CardInsideLink'
 import { CardInsideLinkProps } from '../../../../types'
 import { wineTestData } from '../../../../utils'
+import CardInsideLink from '../CardInsideLink'
 
-const setUp = ({ text, to, textColor, state }: CardInsideLinkProps) => {
+const setUp = ({ state, text, textColor, to }: CardInsideLinkProps) => {
   const router = createMemoryRouter([
     {
-      path: '/',
-      element: <CardInsideLink text={text} to={to} textColor={textColor} state={state} />
+      element: <CardInsideLink text={text} to={to} textColor={textColor} state={state} />,
+      path: '/'
     },
     {
-      path: '/test',
-      element: <p>test</p>
+      element: <p>test</p>,
+      path: '/test'
     }
   ])
   const utils = render(<RouterProvider router={router} />)
@@ -28,10 +28,10 @@ const setUp = ({ text, to, textColor, state }: CardInsideLinkProps) => {
 describe('CardInsideLink', () => {
   let props: CardInsideLinkProps
   const initialProps: CardInsideLinkProps = {
+    state: { ...wineTestData },
     text: 'test',
-    to: '/',
     textColor: 'red',
-    state: { ...wineTestData }
+    to: '/'
   }
 
   beforeEach(() => {
@@ -50,14 +50,14 @@ describe('CardInsideLink', () => {
 
   test('クリックされるとtoへ遷移する', () => {
     props.to = '/test'
-    const { router, getByRole } = setUp(props)
+    const { getByRole, router } = setUp(props)
 
     userEvent.click(getByRole('link'))
     expect(router.state.location.pathname).toEqual(props.to)
   })
 
   test('クリックされるとstateが更新される', () => {
-    const { router, getByRole } = setUp(props)
+    const { getByRole, router } = setUp(props)
     userEvent.click(getByRole('link'))
 
     expect(router.state.location.state).toBe(props.state)

@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 
-import Router from 'react-router-dom'
-import Auth from 'react-firebase-hooks/auth'
 import { renderHook } from '@testing-library/react'
+import Auth from 'react-firebase-hooks/auth'
+import Router from 'react-router-dom'
 
-import useGetAuthFormParams from '../useGetAuthFormParams'
 import { UseGetAuthFormParamsProps } from '../../types'
+import useGetAuthFormParams from '../useGetAuthFormParams'
 
 type TestCases = ['signIn' | 'signUp', string | boolean | undefined | jest.Mock][]
 
