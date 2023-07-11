@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 
-import ErrorBoundary from 'react-error-boundary'
-import Form from 'react-hook-form'
 import { renderHook } from '@testing-library/react'
 import { act } from 'react-dom/test-utils'
+import ErrorBoundary from 'react-error-boundary'
+import Form from 'react-hook-form'
 
-import useAuthForm from '../useAuthForm'
 import { AuthForm, AuthFormProps, TastingSheet } from '../../../types'
 import { initialTastingSheet } from '../../../utils'
+import useAuthForm from '../useAuthForm'
 
 jest.mock('react-hook-form', () => ({
   ...jest.requireActual('react-hook-form'),
@@ -41,21 +41,21 @@ describe('useAuthForm', () => {
     type = 'signIn'
     tastingSheet = { ...initialTastingSheet }
     authFormProps = {
-      type,
+      authError: undefined,
       authFunction: mockAuthFunction,
       tastingSheet,
-      authError: undefined
+      type
     }
 
     jest.spyOn(Form, 'useForm').mockReturnValue({
       ...jest.requireActual('react-hook-form'),
-      register: mockRegister,
-      handleSubmit: mockHandleSubmit,
-      reset: mockReset,
       formState: {
         ...jest.requireActual('react-hook-form'),
         errors: mockErrors
-      }
+      },
+      handleSubmit: mockHandleSubmit,
+      register: mockRegister,
+      reset: mockReset
     })
 
     jest.spyOn(ErrorBoundary, 'useErrorBoundary').mockReturnValue({
@@ -111,9 +111,9 @@ describe('useAuthForm', () => {
 
       await act(() => result.current.onSubmit(mockData))
       expect(mockSignUpOrInAndPostTastingSheet).toHaveBeenCalledWith({
-        user: undefined,
         tastingSheet,
-        type
+        type,
+        user: undefined
       })
     })
   })

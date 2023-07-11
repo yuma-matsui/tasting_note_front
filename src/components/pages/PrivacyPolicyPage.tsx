@@ -1,11 +1,11 @@
 import { FC } from 'react'
 
-import { DefaultLayout } from '../templates'
 import { metaContents } from '../../assets'
 import { HeadMeta } from '../molecules'
+import { DefaultLayout } from '../templates'
 
 const PrivacyPolicyPage: FC = () => {
-  const { title, description, path } = metaContents.pp
+  const { description, path, title } = metaContents.pp
 
   return (
     <HeadMeta title={title} description={description} path={path}>

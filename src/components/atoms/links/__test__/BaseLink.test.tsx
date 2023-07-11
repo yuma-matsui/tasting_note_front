@@ -1,25 +1,25 @@
-import userEvent from '@testing-library/user-event'
 import { render } from '@testing-library/react'
-import { RouterProvider, createMemoryRouter } from 'react-router-dom'
+import userEvent from '@testing-library/user-event'
+import { createMemoryRouter, RouterProvider } from 'react-router-dom'
 
-import BaseLink from '../BaseLink'
 import { BaseLinkProps } from '../../../../types'
+import BaseLink from '../BaseLink'
 
 const mockOnClickOpenModal = jest.fn()
 jest.mock('../../../../hooks/useOnClickOpenModal', () => () => ({
   onClickOpenModal: mockOnClickOpenModal
 }))
 
-const setUp = ({ logo, isEditing }: BaseLinkProps) => {
+const setUp = ({ isEditing, logo }: BaseLinkProps) => {
   const router = createMemoryRouter(
     [
       {
-        path: '/test',
-        element: <BaseLink logo={logo} isEditing={isEditing} />
+        element: <BaseLink logo={logo} isEditing={isEditing} />,
+        path: '/test'
       },
       {
-        path: '/',
-        element: <p>test</p>
+        element: <p>test</p>,
+        path: '/'
       }
     ],
     { initialEntries: ['/test'] }
@@ -35,8 +35,8 @@ const setUp = ({ logo, isEditing }: BaseLinkProps) => {
 describe('BaseLink', () => {
   let props: BaseLinkProps
   const initialProps: BaseLinkProps = {
-    logo: <p>logo</p>,
-    isEditing: true
+    isEditing: true,
+    logo: <p>logo</p>
   }
 
   beforeEach(() => {
@@ -83,7 +83,7 @@ describe('BaseLink', () => {
     })
 
     test('クリックされた場合、トップページに遷移する', () => {
-      const { router, getByRole } = setUp(props)
+      const { getByRole, router } = setUp(props)
       userEvent.click(getByRole('link'))
 
       expect(router.state.location.pathname).toEqual('/')

@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 
-import React from 'react'
-import userEvent from '@testing-library/user-event'
 import { render } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+import React from 'react'
 
-import TastingSheetDetailsTitle from '../TastingSheetDetailsTitle'
 import { TastingSheetApi } from '../../../../types'
 import { initialTastingSheet } from '../../../../utils'
+import TastingSheetDetailsTitle from '../TastingSheetDetailsTitle'
 
 jest.mock('react', () => ({
   ...jest.requireActual('react'),
@@ -26,8 +26,8 @@ const setUp = (tastingSheet: TastingSheetApi) => {
 describe('TastingSheetDetailsTitle', () => {
   const tastingSheet = {
     ...initialTastingSheet,
-    name: 'test',
     id: 1,
+    name: 'test',
     createdAt: 'test',
     wine: null
   }

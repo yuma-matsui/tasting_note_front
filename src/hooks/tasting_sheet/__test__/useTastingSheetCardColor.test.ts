@@ -1,8 +1,8 @@
 import { renderHook } from '@testing-library/react'
 
-import useTastingSheetCardColor from '../useTastingSheetCardColor'
 import { TastingSheetApi, WineColor } from '../../../types'
 import { initialTastingSheet } from '../../../utils'
+import useTastingSheetCardColor from '../useTastingSheetCardColor'
 
 type TestCases = [WineColor, string, string][]
 

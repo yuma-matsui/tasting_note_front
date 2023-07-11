@@ -1,9 +1,9 @@
 import { render } from '@testing-library/react'
 
-import BaseModal from '../BaseModal'
 import { BaseModalProps } from '../../../../types'
+import BaseModal from '../BaseModal'
 
-const setUp = ({ text, leftButton, rightButton, visible }: BaseModalProps) => {
+const setUp = ({ leftButton, rightButton, text, visible }: BaseModalProps) => {
   const utils = render(<BaseModal text={text} leftButton={leftButton} rightButton={rightButton} visible={visible} />)
 
   return {
@@ -14,9 +14,9 @@ const setUp = ({ text, leftButton, rightButton, visible }: BaseModalProps) => {
 describe('BaseModal', () => {
   let props: BaseModalProps
   const initialProps: BaseModalProps = {
-    text: 'test',
     leftButton: <p>leftButton</p>,
     rightButton: <p>rightButton</p>,
+    text: 'test',
     visible: false
   }
 

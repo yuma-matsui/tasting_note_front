@@ -1,16 +1,16 @@
 import WineColor from './wineColor'
 
 type FormItemClassProperty<T> = {
-  color: WineColor
   name: T
+  color: WineColor
   heading: string
-  subHeading?: string | undefined
   labels:
     | string[]
     | {
         red: string[]
         white: string[]
       }
+  subHeading?: string | undefined
 }
 
 export default FormItemClassProperty

@@ -1,8 +1,8 @@
 import { ReactElement } from 'react'
 
 type BaseLinkProps = {
-  logo: ReactElement
   isEditing: boolean
+  logo: ReactElement
 }
 
 export default BaseLinkProps

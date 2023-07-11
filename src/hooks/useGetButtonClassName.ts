@@ -2,7 +2,7 @@ import { WineColor } from '../types'
 import useCheckButtonStatus from './useCheckButtonStatus'
 
 const useGetButtonClassName = (color: WineColor, disabled = false, value?: string) => {
-  const { isBack, isWhite, isRed, isStart } = useCheckButtonStatus({ value, color })
+  const { isBack, isRed, isStart, isWhite } = useCheckButtonStatus({ color, value })
 
   let className = 'base-btn'
   if (isBack) className += ' bg-transparent border w-32'

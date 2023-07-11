@@ -1,7 +1,7 @@
 import { renderHook } from '@testing-library/react'
 
-import useOnClickOpenModal from '../useOnClickOpenModal'
 import { ShowModalProps } from '../../types'
+import useOnClickOpenModal from '../useOnClickOpenModal'
 
 const mockShowModal = jest.fn()
 jest.mock('../context/useModalContext', () => () => ({
@@ -18,8 +18,8 @@ const setUp = (props: ShowModalProps) => {
 
 describe('useOnClickOpenModal', () => {
   const props = {
-    text: 'test',
-    rightButton: <p>test</p>
+    rightButton: <p>test</p>,
+    text: 'test'
   }
 
   describe('onClickOpenModal', () => {

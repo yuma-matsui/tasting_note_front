@@ -1,7 +1,8 @@
 import { FC, memo } from 'react'
+
 import { WineTextInputProps } from '../../../types'
 
-const WineTextInput: FC<WineTextInputProps> = memo(({ name, label, register, required, errors }) => (
+const WineTextInput: FC<WineTextInputProps> = memo(({ name, errors, label, register, required }) => (
   <div className="wine-form-control">
     <label htmlFor={name} className="wine-form-label">
       <span className="wine-form-label-text">

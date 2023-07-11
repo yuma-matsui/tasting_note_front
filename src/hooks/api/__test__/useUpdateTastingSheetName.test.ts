@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 
-import Router from 'react-router-dom'
 import { renderHook } from '@testing-library/react'
 import { act } from 'react-dom/test-utils'
+import Router from 'react-router-dom'
 
+import { initialTastingSheet } from '../../../utils'
 import mockUseCurrentUserContext from '../../context/useCurrentUserContext'
 import useUpdateTastingSheetName from '../useUpdateTastingSheetName'
-import { initialTastingSheet } from '../../../utils'
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),

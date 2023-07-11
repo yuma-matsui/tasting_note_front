@@ -1,7 +1,7 @@
 import { renderHook } from '@testing-library/react'
 
-import useConclusionLabels from '../useConclusionLabels'
 import { WineColor } from '../../../../types'
+import useConclusionLabels from '../useConclusionLabels'
 
 const setUp = (color: WineColor, type?: 'select' | undefined) => {
   const { result } = renderHook(() => useConclusionLabels(color, type))
@@ -16,6 +16,7 @@ describe('useConclusionLabels', () => {
         const labels = setUp('red')
         expect(labels).toMatchObject([
           {
+            name: 'evaluation',
             heading: '評価',
             labels: [
               'シンプル、フレッシュ感を楽しむ',
@@ -24,25 +25,24 @@ describe('useConclusionLabels', () => {
               '濃縮し力強い',
               '複雑性があり引き締まった'
             ],
-            name: 'evaluation',
             subHeading: '軽→重'
           },
           {
+            name: 'optimumTemperature',
             heading: '適正温度',
             labels: ['10度未満', '10〜13度', '14〜16度', '17〜20度', '21度以上'],
-            name: 'optimumTemperature',
             subHeading: undefined
           },
           {
+            name: 'glass',
             heading: 'グラス',
             labels: ['小ぶり', '中庸', '大ぶり'],
-            name: 'glass',
             subHeading: undefined
           },
           {
+            name: 'decantage',
             heading: 'デカンタージュ',
             labels: ['必要なし', '事前(30分前)', '事前(60分前)', '事前(1時間以上前)'],
-            name: 'decantage',
             subHeading: undefined
           }
         ])
@@ -54,6 +54,7 @@ describe('useConclusionLabels', () => {
         const labels = setUp('white')
         expect(labels).toMatchObject([
           {
+            name: 'evaluation',
             heading: '評価',
             labels: [
               'シンプル、フレッシュ感を楽しむ',
@@ -62,19 +63,18 @@ describe('useConclusionLabels', () => {
               '濃縮し力強い',
               'ポテンシャルがある'
             ],
-            name: 'evaluation',
             subHeading: '軽→重'
           },
           {
+            name: 'optimumTemperature',
             heading: '適正温度',
             labels: ['8度未満', '8〜10度', '11〜14度', '15〜18度', '19度以上'],
-            name: 'optimumTemperature',
             subHeading: undefined
           },
           {
+            name: 'glass',
             heading: 'グラス',
             labels: ['小ぶり', '中庸', '大ぶり'],
-            name: 'glass',
             subHeading: undefined
           }
         ])
@@ -88,6 +88,7 @@ describe('useConclusionLabels', () => {
         const options = setUp('red', 'select')
         expect(options).toMatchObject([
           {
+            name: 'vintage',
             heading: '収穫年',
             labels: [
               '2022',
@@ -214,10 +215,10 @@ describe('useConclusionLabels', () => {
               '1901',
               '1900'
             ],
-            name: 'vintage',
             subHeading: undefined
           },
           {
+            name: 'country',
             heading: '生産国',
             labels: [
               'アメリカ',
@@ -239,10 +240,10 @@ describe('useConclusionLabels', () => {
               '南アフリカ',
               '日本'
             ],
-            name: 'country',
             subHeading: undefined
           },
           {
+            name: 'grape',
             heading: '主なぶどう品種',
             labels: [
               'アリアニコ',
@@ -260,7 +261,6 @@ describe('useConclusionLabels', () => {
               'マルベック',
               'メルロ'
             ],
-            name: 'grape',
             subHeading: undefined
           }
         ])
@@ -272,6 +272,7 @@ describe('useConclusionLabels', () => {
         const options = setUp('white', 'select')
         expect(options).toMatchObject([
           {
+            name: 'vintage',
             heading: '収穫年',
             labels: [
               '2022',
@@ -398,10 +399,10 @@ describe('useConclusionLabels', () => {
               '1901',
               '1900'
             ],
-            name: 'vintage',
             subHeading: undefined
           },
           {
+            name: 'country',
             heading: '生産国',
             labels: [
               'アメリカ',
@@ -423,10 +424,10 @@ describe('useConclusionLabels', () => {
               '南アフリカ',
               '日本'
             ],
-            name: 'country',
             subHeading: undefined
           },
           {
+            name: 'grape',
             heading: '主なぶどう品種',
             labels: [
               'アリゴテ',
@@ -446,7 +447,6 @@ describe('useConclusionLabels', () => {
               'ミュスカデ',
               'リースリング'
             ],
-            name: 'grape',
             subHeading: undefined
           }
         ])

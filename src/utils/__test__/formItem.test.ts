@@ -6,9 +6,9 @@ describe('FormItem', () => {
     let formItem: FormItemClassProperty<string>
     beforeEach(() => {
       formItem = {
+        name: 'test',
         color: 'white',
         heading: 'test',
-        name: 'test',
         labels: ['test'],
         subHeading: 'test'
       }
@@ -17,8 +17,8 @@ describe('FormItem', () => {
     describe('初期値に与えるオブジェクトのlabelsが配列の場合', () => {
       it('初期化に与えたheading, name, labels, subHeadingを持つオブジェクトを返す', () => {
         expect(new FormItem(formItem).property).toEqual({
-          heading: 'test',
           name: 'test',
+          heading: 'test',
           labels: ['test'],
           subHeading: 'test'
         })
@@ -28,8 +28,8 @@ describe('FormItem', () => {
     describe('初期化に与えるオブジェクトのlabelsがオブジェクトの場合', () => {
       beforeEach(() => {
         formItem.labels = {
-          white: ['test white'],
-          red: ['test red']
+          red: ['test red'],
+          white: ['test white']
         }
       })
       it('colorがwhiteの場合、whiteに与えた配列がlabelsの値として返る', () => {

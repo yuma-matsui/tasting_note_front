@@ -3,10 +3,10 @@ import { FC, memo } from 'react'
 import { useOnClickOpenModal } from '../../../hooks'
 import { FooterLinkWrapperProps } from '../../../types'
 
-const FooterLinkWrapper: FC<FooterLinkWrapperProps> = memo(({ text, defaultLink, linkOnModal, isEditing }) => {
+const FooterLinkWrapper: FC<FooterLinkWrapperProps> = memo(({ defaultLink, isEditing, linkOnModal, text }) => {
   const { onClickOpenModal } = useOnClickOpenModal({
-    text: '編集途中ですがよろしいですか？',
-    rightButton: linkOnModal
+    rightButton: linkOnModal,
+    text: '編集途中ですがよろしいですか？'
   })
 
   return isEditing ? (

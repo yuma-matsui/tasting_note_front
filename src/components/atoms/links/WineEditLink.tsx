@@ -1,10 +1,10 @@
 import { FC, memo } from 'react'
 import { Link } from 'react-router-dom'
 
-import { WineEditLinkProps } from '../../../types'
 import { useGetButtonClassName } from '../../../hooks'
+import { WineEditLinkProps } from '../../../types'
 
-const WineEditLink: FC<WineEditLinkProps> = memo(({ wine, color }) => {
+const WineEditLink: FC<WineEditLinkProps> = memo(({ color, wine }) => {
   const { className } = useGetButtonClassName(color)
 
   return (

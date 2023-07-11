@@ -1,9 +1,9 @@
 import { renderHook } from '@testing-library/react'
 
 import mockDefaultImage from '../../../assets/images/wineGlass.jpg'
-import useHasWineAndImage from '../useHasWineAndImage'
 import { TastingSheetApi } from '../../../types'
 import { initialTastingSheet, wineTestData } from '../../../utils'
+import useHasWineAndImage from '../useHasWineAndImage'
 
 jest.mock('../../../assets/images/wineGlass.jpg')
 

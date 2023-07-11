@@ -1,10 +1,10 @@
 type Appearance = {
-  clarity: string
-  brightness: string
   appearanceColors: string[]
-  intensity: string
-  consistency: string
   appearanceImpressions: string[]
+  brightness: string
+  clarity: string
+  consistency: string
+  intensity: string
 }
 
 export default Appearance

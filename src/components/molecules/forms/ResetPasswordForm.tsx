@@ -1,12 +1,12 @@
 import { FC, memo } from 'react'
 
+import { useResetPasswordForm } from '../../../hooks'
 import { ResetPasswordFormProps } from '../../../types'
 import { getFirebaseErrorMessage } from '../../../utils'
-import { useResetPasswordForm } from '../../../hooks'
 import { AuthFormInput, AuthFormSubmitInput } from '../../atoms'
 
 const ResetPasswordForm: FC<ResetPasswordFormProps> = memo((resetPasswordFormProps) => {
-  const { register, handleSubmit, onSubmit, errors } = useResetPasswordForm(resetPasswordFormProps)
+  const { errors, handleSubmit, onSubmit, register } = useResetPasswordForm(resetPasswordFormProps)
   const { error } = resetPasswordFormProps
 
   return (

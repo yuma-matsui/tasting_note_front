@@ -3,8 +3,8 @@ import { FC, memo } from 'react'
 import { useTastingSheetTimer } from '../../hooks'
 import { TastingSheetTimerProps } from '../../types'
 
-const TastingSheetTimer: FC<TastingSheetTimerProps> = memo(({ tastingSheet, isLastStep }) => {
-  const { timerClassName, styleForSecond, styleForMinute } = useTastingSheetTimer(tastingSheet)
+const TastingSheetTimer: FC<TastingSheetTimerProps> = memo(({ isLastStep, tastingSheet }) => {
+  const { styleForMinute, styleForSecond, timerClassName } = useTastingSheetTimer(tastingSheet)
 
   if (isLastStep) return null
 

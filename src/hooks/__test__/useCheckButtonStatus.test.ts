@@ -1,7 +1,7 @@
 import { renderHook } from '@testing-library/react'
 
-import useCheckButtonStatus from '../useCheckButtonStatus'
 import { UseCheckButtonStatusProps, WineColor } from '../../types'
+import useCheckButtonStatus from '../useCheckButtonStatus'
 
 const setUp = (props: UseCheckButtonStatusProps) => {
   const { result } = renderHook(() => useCheckButtonStatus(props))

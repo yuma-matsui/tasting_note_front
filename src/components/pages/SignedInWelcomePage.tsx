@@ -1,15 +1,15 @@
 import { FC, memo } from 'react'
 
+import { metaContents } from '../../assets'
 import { useFetchTastingSheets } from '../../hooks'
 import { LoadingSpinner, StartTastingLink } from '../atoms'
+import { HeadMeta } from '../molecules'
 import { SignedInTopPageInstruction, TastingSheetListsWithSideBar } from '../organisms'
 import { DefaultLayout } from '../templates'
-import { metaContents } from '../../assets'
-import { HeadMeta } from '../molecules'
 
 const SignedInWelcomePage: FC = memo(() => {
-  const { title, description } = metaContents.root
-  const { tastingSheets, hasTastingSheets, fetching } = useFetchTastingSheets()
+  const { description, title } = metaContents.root
+  const { fetching, hasTastingSheets, tastingSheets } = useFetchTastingSheets()
 
   return fetching ? (
     <LoadingSpinner />

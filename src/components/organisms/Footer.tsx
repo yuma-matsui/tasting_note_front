@@ -1,8 +1,8 @@
 import { FC, memo } from 'react'
 
-import { FooterLogo, FooterNavigation } from '../molecules'
 import { useCheckEditingForm } from '../../hooks'
 import { BaseLink } from '../atoms'
+import { FooterLogo, FooterNavigation } from '../molecules'
 
 const Footer: FC = memo(() => {
   const { isEditing } = useCheckEditingForm()

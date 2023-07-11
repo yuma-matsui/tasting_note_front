@@ -1,11 +1,11 @@
 import { FC } from 'react'
 
-import { DefaultLayout } from '../templates'
-import { HeadMeta } from '../molecules'
 import { metaContents } from '../../assets'
+import { HeadMeta } from '../molecules'
+import { DefaultLayout } from '../templates'
 
 const TermOfServicePage: FC = () => {
-  const { title, description, path } = metaContents.tos
+  const { description, path, title } = metaContents.tos
 
   return (
     <HeadMeta title={title} description={description} path={path}>

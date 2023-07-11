@@ -2,24 +2,24 @@ import TastingSheetFormItem from './tastingSheetFormItem'
 
 type TastingSheetLabelsTuple = [
   {
+    items: TastingSheetFormItem[]
+    options: []
     type: 'appearance'
-    items: TastingSheetFormItem[]
-    options: []
   },
   {
+    items: TastingSheetFormItem[]
+    options: []
     type: 'flavor'
-    items: TastingSheetFormItem[]
-    options: []
   },
   {
+    items: TastingSheetFormItem[]
+    options: []
     type: 'taste'
-    items: TastingSheetFormItem[]
-    options: []
   },
   {
-    type: 'conclusion'
     items: TastingSheetFormItem[]
     options: TastingSheetFormItem[]
+    type: 'conclusion'
   }
 ]
 

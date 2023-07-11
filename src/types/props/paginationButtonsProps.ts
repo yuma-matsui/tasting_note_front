@@ -1,9 +1,9 @@
 type PaginationButtonsProps = {
-  pageNumber: number
   back: () => void
-  next: () => void
   isFirstPage: boolean
   isLastPage: boolean
+  next: () => void
+  pageNumber: number
 }
 
 export default PaginationButtonsProps

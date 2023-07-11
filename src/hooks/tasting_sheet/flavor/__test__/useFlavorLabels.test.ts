@@ -1,7 +1,7 @@
 import { renderHook } from '@testing-library/react'
 
-import useFlavorLabels from '../useFlavorLabels'
 import { WineColor } from '../../../../types'
+import useFlavorLabels from '../useFlavorLabels'
 
 const setUp = (color: WineColor) => {
   const { result } = renderHook(() => useFlavorLabels(color))
@@ -15,6 +15,7 @@ describe('useFlavorLabels', () => {
       const labels = setUp('red')
       expect(labels).toMatchObject([
         {
+          name: 'flavorFirstImpressions',
           heading: '第一印象',
           labels: [
             '閉じている',
@@ -27,10 +28,10 @@ describe('useFlavorLabels', () => {
             '深みのある',
             '複雑な'
           ],
-          name: 'flavorFirstImpressions',
           subHeading: '強さ/性質'
         },
         {
+          name: 'flavorFruits',
           heading: '果実',
           labels: [
             'イチゴ',
@@ -42,10 +43,10 @@ describe('useFlavorLabels', () => {
             '干しプラム',
             '乾燥イチジク'
           ],
-          name: 'flavorFruits',
           subHeading: '熟成度低→高'
         },
         {
+          name: 'flavorFlowers',
           heading: '花・植物',
           labels: [
             'バラ',
@@ -69,10 +70,10 @@ describe('useFlavorLabels', () => {
             'トリュフ',
             '土'
           ],
-          name: 'flavorFlowers',
           subHeading: '花/植物/ドライ/菌類'
         },
         {
+          name: 'flavorSpices',
           heading: '香辛料・芳香・化学物質',
           labels: [
             '黒胡椒',
@@ -95,10 +96,10 @@ describe('useFlavorLabels', () => {
             'ヨード',
             'ランシオ'
           ],
-          name: 'flavorSpices',
           subHeading: '香辛料/樽/動物/他'
         },
         {
+          name: 'flavorImpressions',
           heading: '香りの印象',
           labels: [
             '若々しい',
@@ -111,7 +112,6 @@ describe('useFlavorLabels', () => {
             'ニュートラル',
             '木樽からのニュアンス'
           ],
-          name: 'flavorImpressions',
           subHeading: '熟成感/特性'
         }
       ])
@@ -123,6 +123,7 @@ describe('useFlavorLabels', () => {
       const labels = setUp('white')
       expect(labels).toMatchObject([
         {
+          name: 'flavorFirstImpressions',
           heading: '第一印象',
           labels: [
             '閉じている',
@@ -136,10 +137,10 @@ describe('useFlavorLabels', () => {
             '深みのある',
             '複雑な'
           ],
-          name: 'flavorFirstImpressions',
           subHeading: '強さ/性質'
         },
         {
+          name: 'flavorFruits',
           heading: '果実',
           labels: [
             '柑橘類',
@@ -156,10 +157,10 @@ describe('useFlavorLabels', () => {
             'バナナ',
             'マンゴー'
           ],
-          name: 'flavorFruits',
           subHeading: '熟成度低→高'
         },
         {
+          name: 'flavorFlowers',
           heading: '花・植物',
           labels: [
             'スイカズラ',
@@ -175,10 +176,10 @@ describe('useFlavorLabels', () => {
             'フレッシュアーモンド',
             'ヘーゼルナッツ'
           ],
-          name: 'flavorFlowers',
           subHeading: '花/植物/ドライ/菌類'
         },
         {
+          name: 'flavorSpices',
           heading: '香辛料・芳香・化学物質',
           labels: [
             '石灰',
@@ -206,10 +207,10 @@ describe('useFlavorLabels', () => {
             '蜂蜜',
             '蜜蝋'
           ],
-          name: 'flavorSpices',
           subHeading: '香辛料/樽/動物/他'
         },
         {
+          name: 'flavorImpressions',
           heading: '香りの印象',
           labels: [
             '若々しい',
@@ -224,7 +225,6 @@ describe('useFlavorLabels', () => {
             '成熟度が高い',
             '複雑性のある'
           ],
-          name: 'flavorImpressions',
           subHeading: '熟成感/特性'
         }
       ])

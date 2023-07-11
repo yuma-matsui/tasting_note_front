@@ -1,16 +1,16 @@
-import userEvent from '@testing-library/user-event'
 import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 
-import FormControllerButton from '../FormControllerButton'
 import { FormControllerButtonProps } from '../../../../types'
 import { initialTastingSheet } from '../../../../utils'
+import FormControllerButton from '../FormControllerButton'
 
 const mockClassName = 'mock-class'
 jest.mock('../../../../hooks/useGetButtonClassName', () => () => ({
   className: mockClassName
 }))
 
-const setUp = ({ value, disabled, onClick, tastingSheet }: FormControllerButtonProps) => {
+const setUp = ({ disabled, onClick, tastingSheet, value }: FormControllerButtonProps) => {
   const utils = render(
     <FormControllerButton value={value} disabled={disabled} onClick={onClick} tastingSheet={tastingSheet} />
   )
@@ -24,10 +24,10 @@ const setUp = ({ value, disabled, onClick, tastingSheet }: FormControllerButtonP
 describe('FormControllerButton', () => {
   let props: FormControllerButtonProps
   const initialProps = {
-    value: 'test',
     disabled: false,
+    onClick: jest.fn(),
     tastingSheet: { ...initialTastingSheet },
-    onClick: jest.fn()
+    value: 'test'
   }
 
   beforeEach(() => {

@@ -1,15 +1,15 @@
 import { render } from '@testing-library/react'
 
-import TastingSheetFormWrapper from '../TastingSheetFormWrapper'
-import { FormWrapperProps } from '../../../types'
 import { useCheckEditingForm as mockUseCheckEditingForm } from '../../../hooks'
+import { FormWrapperProps } from '../../../types'
+import TastingSheetFormWrapper from '../TastingSheetFormWrapper'
 
 jest.mock('../../../hooks/useCheckEditingForm')
 
 const mockedTitle = 'mocked-title'
 jest.mock('../../../utils/formTitleFormat', () => () => mockedTitle)
 
-const setUp = ({ title, children }: FormWrapperProps) => {
+const setUp = ({ children, title }: FormWrapperProps) => {
   const utils = render(<TastingSheetFormWrapper title={title}>{children}</TastingSheetFormWrapper>)
 
   return {
@@ -20,8 +20,8 @@ const setUp = ({ title, children }: FormWrapperProps) => {
 describe('TastingSheetFormWrapper', () => {
   let isEditing: boolean
   const props: FormWrapperProps = {
-    title: 'appearance',
-    children: <p>MockedChildren</p>
+    children: <p>MockedChildren</p>,
+    title: 'appearance'
   }
 
   beforeEach(() => {

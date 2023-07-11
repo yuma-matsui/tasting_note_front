@@ -5,7 +5,7 @@ import { WineEditLink, WineImage } from '../atoms'
 import { DetailsPageBottomButtons, WineDetailsTitle } from '../molecules'
 import WineDetailLists from './WineDetailLists'
 
-const WineDetails: FC<WineDetailsProps> = memo(({ wine, tastingSheet }) => (
+const WineDetails: FC<WineDetailsProps> = memo(({ tastingSheet, wine }) => (
   <>
     <WineDetailsTitle wine={wine} />
     {wine.image && <WineImage filename={wine.image} />}

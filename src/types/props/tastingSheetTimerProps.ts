@@ -1,8 +1,8 @@
 import TastingSheet from '../tasting_sheet/tastingSheet'
 
 type TastingSheetTimerProps = {
-  tastingSheet: TastingSheet
   isLastStep: boolean
+  tastingSheet: TastingSheet
 }
 
 export default TastingSheetTimerProps

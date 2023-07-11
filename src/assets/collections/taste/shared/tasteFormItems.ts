@@ -12,53 +12,53 @@ import SWEETNESS_LABELS from './sweetnessLabels'
 
 const TASTE_FORM_ITEMS: AbstractFormItem<TasteName>[] = [
   {
-    heading: 'アタック',
     name: 'attack',
+    heading: 'アタック',
     labels: ATTACK_LABELS
   },
   {
-    heading: '甘み',
     name: 'sweetness',
-    subHeading: '(アルコールのボリューム感も含む)',
-    labels: SWEETNESS_LABELS
+    heading: '甘み',
+    labels: SWEETNESS_LABELS,
+    subHeading: '(アルコールのボリューム感も含む)'
   },
   {
-    heading: '酸味',
     name: 'acidity',
-    subHeading: '弱→強',
+    heading: '酸味',
     labels: {
-      white: ACIDITY_LABELS_WHITE,
-      red: ACIDITY_LABELS_RED
-    }
+      red: ACIDITY_LABELS_RED,
+      white: ACIDITY_LABELS_WHITE
+    },
+    subHeading: '弱→強'
   },
   {
-    heading: 'タンニン分',
     name: 'astringent',
-    subHeading: '弱→強',
-    labels: ASTRINGENT_LABELS
+    heading: 'タンニン分',
+    labels: ASTRINGENT_LABELS,
+    subHeading: '弱→強'
   },
   {
-    heading: '苦味',
     name: 'bitterness',
+    heading: '苦味',
     labels: BITTERNESS_LABELS
   },
   {
-    heading: 'バランス',
     name: 'balance',
-    subHeading: '左上/右上/下',
+    heading: 'バランス',
     labels: {
-      white: BALANCE_LABELS_WHITE,
-      red: BALANCE_LABELS_RED
-    }
+      red: BALANCE_LABELS_RED,
+      white: BALANCE_LABELS_WHITE
+    },
+    subHeading: '左上/右上/下'
   },
   {
-    heading: 'アルコール',
     name: 'alcohol',
+    heading: 'アルコール',
     labels: ALCOHOL_LABELS
   },
   {
-    heading: '余韻',
     name: 'afterTaste',
+    heading: '余韻',
     labels: AFTER_TASTE_LABELS
   }
 ]

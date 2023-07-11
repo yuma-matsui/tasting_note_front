@@ -1,10 +1,10 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import { act } from 'react-dom/test-utils'
 
-import UpdateSheetNameForm from '../UpdateSheetNameForm'
-import { TastingSheetApi } from '../../../../types'
 import { useTastingSheetUpdateForm as mockUseTastingSheetUpdateForm } from '../../../../hooks'
+import { TastingSheetApi } from '../../../../types'
 import { initialTastingSheet } from '../../../../utils'
+import UpdateSheetNameForm from '../UpdateSheetNameForm'
 
 jest.mock('../../../../hooks/tasting_sheet/useTastingSheetUpdateForm')
 
@@ -34,11 +34,11 @@ describe('UpdateSheetNameForm', () => {
 
   let useUpdateFormReturnValue: typeof initialReturnValue
   const initialReturnValue = {
-    register: jest.fn(),
-    handleSubmit: jest.fn(),
     disabled: false,
     errors: false,
-    onSubmit: jest.fn()
+    handleSubmit: jest.fn(),
+    onSubmit: jest.fn(),
+    register: jest.fn()
   }
 
   beforeEach(() => {

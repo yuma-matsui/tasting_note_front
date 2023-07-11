@@ -1,26 +1,26 @@
 import { FC, memo, ReactElement } from 'react'
 
-import { HeadMeta, NewTastingSheetSettingForm, StepsBar, TastingSheetBaseForm } from '../molecules'
-import { DefaultLayout, FormController } from '../templates'
+import { metaContents } from '../../assets'
 import { useMultiStepForm, useTastingSheetForm, useTastingSheetLabels } from '../../hooks'
 import { TastingSheetTimer } from '../atoms'
+import { HeadMeta, NewTastingSheetSettingForm, StepsBar, TastingSheetBaseForm } from '../molecules'
 import { TastingSheetDetailsTab } from '../organisms'
-import { metaContents } from '../../assets'
+import { DefaultLayout, FormController } from '../templates'
 
 const NewTastingSheetPage: FC = memo(() => {
-  const { title, description, path } = metaContents.newSheet
-  const { handleSubmit, isValid, isSubmitting, onSubmit, register, errors, getValues, tastingSheet } =
+  const { description, path, title } = metaContents.newSheet
+  const { errors, getValues, handleSubmit, isSubmitting, isValid, onSubmit, register, tastingSheet } =
     useTastingSheetForm()
   const labels = useTastingSheetLabels(tastingSheet.color)
 
   const steps: ReactElement[] = [
     <NewTastingSheetSettingForm register={register} errors={errors} />,
-    ...labels.map(({ type, items, options }) => (
+    ...labels.map(({ items, options, type }) => (
       <TastingSheetBaseForm type={type} items={items} options={options} register={register} getValues={getValues} />
     )),
     <TastingSheetDetailsTab tastingSheet={tastingSheet} />
   ]
-  const { step, onClickPageControl, isFirstStep, isAppearanceStep, isLastStep, getButtonText, currentStepIndex } =
+  const { currentStepIndex, getButtonText, isAppearanceStep, isFirstStep, isLastStep, onClickPageControl, step } =
     useMultiStepForm(steps)
 
   return (

@@ -2,7 +2,7 @@ import { FC, memo } from 'react'
 
 import { TastingSheetSelectBoxProps } from '../../../types'
 
-const BaseSelectBox: FC<TastingSheetSelectBoxProps> = memo(({ id, register, name, options, label }) => (
+const BaseSelectBox: FC<TastingSheetSelectBoxProps> = memo(({ id, name, label, options, register }) => (
   <select
     id={id}
     {...register(name, { required: true })}

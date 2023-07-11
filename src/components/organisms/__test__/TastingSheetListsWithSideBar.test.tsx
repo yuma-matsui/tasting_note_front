@@ -1,8 +1,8 @@
 import { render } from '@testing-library/react'
 
-import TastingSheetListsWithSideBar from '../TastingSheetListsWithSideBar'
 import { ReactNodeChildren, TastingSheetApi } from '../../../types'
 import { initialTastingSheet } from '../../../utils'
+import TastingSheetListsWithSideBar from '../TastingSheetListsWithSideBar'
 
 jest.mock('../TastingSheetSearchSideBar', () => ({ children }: ReactNodeChildren) => (
   <>
@@ -19,8 +19,8 @@ jest.mock('../../../hooks/useToggleSideBar', () => () => ({
 }))
 
 jest.mock('../../../hooks/tasting_sheet/useFilteredTastingSheets', () => () => ({
-  setFilter: jest.fn(),
-  filteredTastingSheets: []
+  filteredTastingSheets: [],
+  setFilter: jest.fn()
 }))
 
 const setUp = (tastingSheets: TastingSheetApi[]) => {

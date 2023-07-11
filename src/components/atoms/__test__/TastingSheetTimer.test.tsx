@@ -1,18 +1,18 @@
 import { render } from '@testing-library/react'
 
-import TastingSheetTimer from '../TastingSheetTimer'
 import { TastingSheetTimerProps } from '../../../types'
 import { initialTastingSheet } from '../../../utils'
+import TastingSheetTimer from '../TastingSheetTimer'
 
 const mockStyle = { display: 'block' }
 const mockTimerClassName = 'mock-timer-class'
 jest.mock('../../../hooks/tasting_sheet/useTastingSheetTimer', () => () => ({
-  timerClassName: mockTimerClassName,
+  styleForMinute: mockStyle,
   styleForSecond: mockStyle,
-  styleForMinute: mockStyle
+  timerClassName: mockTimerClassName
 }))
 
-const setUp = ({ tastingSheet, isLastStep }: TastingSheetTimerProps) => {
+const setUp = ({ isLastStep, tastingSheet }: TastingSheetTimerProps) => {
   const utils = render(<TastingSheetTimer tastingSheet={tastingSheet} isLastStep={isLastStep} />)
 
   return {
@@ -23,8 +23,8 @@ const setUp = ({ tastingSheet, isLastStep }: TastingSheetTimerProps) => {
 describe('TastingSheetTimer', () => {
   let props: TastingSheetTimerProps
   const initialProps: TastingSheetTimerProps = {
-    tastingSheet: { ...initialTastingSheet },
-    isLastStep: true
+    isLastStep: true,
+    tastingSheet: { ...initialTastingSheet }
   }
 
   beforeEach(() => {

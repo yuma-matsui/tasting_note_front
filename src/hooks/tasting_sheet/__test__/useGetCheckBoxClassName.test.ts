@@ -1,8 +1,8 @@
 import { renderHook } from '@testing-library/react'
 
+import { WineColor } from '../../../types'
 import mockUseCheckCheckBoxStatus from '../../useCheckCheckBoxStatus'
 import useGetCheckBoxClassName from '../useGetCheckBoxClassName'
-import { WineColor } from '../../../types'
 
 jest.mock('../../useCheckCheckBoxStatus')
 

@@ -1,9 +1,9 @@
-import userEvent from '@testing-library/user-event'
 import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 
-import ConfirmationAndBackButton from '../ConfirmationAndBackButton'
 import { TastingSheet } from '../../../../types'
 import { initialTastingSheet } from '../../../../utils'
+import ConfirmationAndBackButton from '../ConfirmationAndBackButton'
 
 const mockClassName = 'mock-class'
 jest.mock('../../../../hooks/useGetButtonClassName', () => () => ({

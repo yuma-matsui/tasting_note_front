@@ -41,16 +41,16 @@ const useTastingSheetSearchForm = (setFilter: Dispatch<SetStateAction<TastingShe
   }
 
   return {
-    onSubmit,
     color,
-    onChangeColor,
-    country,
-    onChangeCountry,
-    grape,
-    onChangeGrape,
-    grapeOptions,
     countries: COUNTRIES,
-    onClickAllClear
+    country,
+    grape,
+    grapeOptions,
+    onChangeColor,
+    onChangeCountry,
+    onChangeGrape,
+    onClickAllClear,
+    onSubmit
   }
 }
 

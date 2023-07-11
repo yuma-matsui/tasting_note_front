@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 
-import ErrorBoundary from 'react-error-boundary'
-import { User } from 'firebase/auth'
 import { renderHook } from '@testing-library/react'
+import { User } from 'firebase/auth'
 import { act } from 'react-dom/test-utils'
+import ErrorBoundary from 'react-error-boundary'
 
+import { headersTestData } from '../../../utils'
 import mockUseAxios from '../../useAxios'
 import useCreateUser from '../useCreateUser'
-import { headersTestData } from '../../../utils'
 
 jest.mock('react-error-boundary', () => ({
   ...jest.requireActual('react-error-boundary'),
@@ -18,8 +18,8 @@ jest.mock('../../useAxios')
 
 describe('useCreateUser', () => {
   const user = {
-    uid: 'test',
-    email: 'test@example.com'
+    email: 'test@example.com',
+    uid: 'test'
   } as User
 
   const mockClient = {
@@ -48,8 +48,8 @@ describe('useCreateUser', () => {
         '/users',
         {
           user: {
-            uid: user.uid,
-            email: user.email
+            email: user.email,
+            uid: user.uid
           }
         },
         headersTestData

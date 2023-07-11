@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react'
 
-import NewWinePage from '../NewWinePage'
 import { ReactNodeChildren } from '../../../types'
+import NewWinePage from '../NewWinePage'
 
 jest.mock('../../molecules/HeadMeta', () => ({ children }: ReactNodeChildren) => (
   <>

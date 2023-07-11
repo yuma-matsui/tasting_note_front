@@ -1,11 +1,11 @@
 import { fireEvent, render } from '@testing-library/react'
-import { act } from 'react-dom/test-utils'
 import { AuthError } from 'firebase/auth'
+import { act } from 'react-dom/test-utils'
 
-import ResetPasswordForm from '../ResetPasswordForm'
-import { ResetPasswordFormProps } from '../../../../types'
 import { useResetPasswordForm } from '../../../../hooks'
+import { ResetPasswordFormProps } from '../../../../types'
 import { getFirebaseErrorMessage } from '../../../../utils'
+import ResetPasswordForm from '../ResetPasswordForm'
 
 jest.mock('../../../../hooks/auth/useResetPasswordForm')
 jest.mock('../../../../utils/getFirebaseErrorMessage')
@@ -13,7 +13,7 @@ jest.mock('../../../../utils/getFirebaseErrorMessage')
 jest.mock('../../../atoms/inputs/AuthFormInput', () => () => <p>AuthFormInput</p>)
 jest.mock('../../../atoms/inputs/AuthFormSubmitInput', () => () => <input type="submit" value="AuthFormSubmitInput" />)
 
-const setUp = ({ sendEmail, error, isSent, setIsSent }: ResetPasswordFormProps) => {
+const setUp = ({ error, isSent, sendEmail, setIsSent }: ResetPasswordFormProps) => {
   const utils = render(<ResetPasswordForm sendEmail={sendEmail} error={error} isSent={isSent} setIsSent={setIsSent} />)
 
   return {
@@ -24,22 +24,22 @@ const setUp = ({ sendEmail, error, isSent, setIsSent }: ResetPasswordFormProps) 
 describe('ResetPasswordForm', () => {
   let props: ResetPasswordFormProps
   const initialProps: ResetPasswordFormProps = {
-    sendEmail: jest.fn(),
     error: undefined,
     isSent: false,
+    sendEmail: jest.fn(),
     setIsSent: jest.fn()
   }
 
   let useResetPasswordFormReturnValue = {} as typeof initialReturnValue
   const initialReturnValue = {
-    register: jest.fn(),
-    handleSubmit: jest.fn(),
-    onSubmit: jest.fn(),
     errors: {
       email: 'test',
       password: 'test',
       passwordConfirmation: 'test'
-    }
+    },
+    handleSubmit: jest.fn(),
+    onSubmit: jest.fn(),
+    register: jest.fn()
   }
 
   beforeEach(() => {

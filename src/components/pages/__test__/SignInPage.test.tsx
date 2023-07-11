@@ -1,8 +1,8 @@
 import { render } from '@testing-library/react'
 
-import SignInPage from '../SignInPage'
 import { useGetAuthFormParams as mockUseGetAuthFormParams } from '../../../hooks'
 import { ReactNodeChildren } from '../../../types'
+import SignInPage from '../SignInPage'
 
 jest.mock('../../molecules/HeadMeta', () => ({ children }: ReactNodeChildren) => (
   <>
@@ -34,10 +34,10 @@ const setUp = () => {
 describe('ResetPasswordPage', () => {
   let useGetAuthFormParamsReturnValue: typeof initialReturnValue
   const initialReturnValue = {
-    tastingSheet: {},
+    authError: undefined,
     authFunction: jest.fn(),
     loading: false,
-    authError: undefined,
+    tastingSheet: {},
     type: 'signIn'
   }
 

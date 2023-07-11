@@ -2,9 +2,6 @@ import WineApi from '../api/wineApi'
 import WineColor from '../tasting_sheet/wineColor'
 
 type CardInsideLinkProps = {
-  text: string
-  to: string
-  textColor: string
   state:
     | WineApi
     | {
@@ -12,6 +9,9 @@ type CardInsideLinkProps = {
         name: string
         color: WineColor
       }
+  text: string
+  textColor: string
+  to: string
 }
 
 export default CardInsideLinkProps

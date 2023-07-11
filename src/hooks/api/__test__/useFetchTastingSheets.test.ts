@@ -1,14 +1,14 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 
-import React from 'react'
-import ErrorBoundary from 'react-error-boundary'
 import { renderHook } from '@testing-library/react'
+import React from 'react'
 import { act } from 'react-dom/test-utils'
+import ErrorBoundary from 'react-error-boundary'
 
+import { TastingSheetApi } from '../../../types'
+import { headersTestData, initialTastingSheet } from '../../../utils'
 import mockUseCurrentUserContext from '../../context/useCurrentUserContext'
 import mockUseAxios from '../../useAxios'
-import { headersTestData, initialTastingSheet } from '../../../utils'
-import { TastingSheetApi } from '../../../types'
 import useFetchTastingSheets from '../useFetchTastingSheets'
 
 jest.mock('react-error-boundary', () => ({

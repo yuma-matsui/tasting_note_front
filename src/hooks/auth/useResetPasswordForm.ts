@@ -1,14 +1,14 @@
+import { yupResolver } from '@hookform/resolvers/yup'
 import { useEffect } from 'react'
 import { useErrorBoundary } from 'react-error-boundary'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigate } from 'react-router-dom'
 
-import { resetPasswordFormSchema } from '../../utils'
 import { AuthForm, ResetPasswordFormProps } from '../../types'
+import { resetPasswordFormSchema } from '../../utils'
 import useToastContext from '../context/useToastContext'
 
-const useResetPasswordForm = ({ sendEmail, isSent, setIsSent }: ResetPasswordFormProps) => {
+const useResetPasswordForm = ({ isSent, sendEmail, setIsSent }: ResetPasswordFormProps) => {
   const { showBoundary } = useErrorBoundary()
   const { showToast } = useToastContext()
   const navigate = useNavigate()
@@ -21,10 +21,10 @@ const useResetPasswordForm = ({ sendEmail, isSent, setIsSent }: ResetPasswordFor
   }, [isSent, showToast, navigate])
 
   const {
-    register,
+    formState: { errors },
     handleSubmit,
-    reset,
-    formState: { errors }
+    register,
+    reset
   } = useForm<AuthForm>({
     resolver: yupResolver(resetPasswordFormSchema)
   })
@@ -44,10 +44,10 @@ const useResetPasswordForm = ({ sendEmail, isSent, setIsSent }: ResetPasswordFor
   }
 
   return {
-    register,
     errors,
     handleSubmit,
-    onSubmit
+    onSubmit,
+    register
   }
 }
 

@@ -1,9 +1,9 @@
-import userEvent from '@testing-library/user-event'
 import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 
-import WineDetailsTitle from '../WineDetailsTitle'
 import { WineApi } from '../../../../types'
 import { wineTestData } from '../../../../utils'
+import WineDetailsTitle from '../WineDetailsTitle'
 
 const mockOnClickOpenModal = jest.fn()
 jest.mock('../../../../hooks/useOnClickOpenModal', () => () => ({

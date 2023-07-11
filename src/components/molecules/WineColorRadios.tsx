@@ -1,8 +1,8 @@
 import { FC, memo } from 'react'
 
 import { WINE_COLORS } from '../../assets'
-import { TastingSheetCheckBox } from '../atoms'
 import { WineColorRadiosProps } from '../../types'
+import { TastingSheetCheckBox } from '../atoms'
 
 const WineColorRadios: FC<WineColorRadiosProps> = memo(({ register }) => (
   <div className="flex flex-col items-center form-control w-full max-w-xs mb-6">

@@ -1,9 +1,9 @@
 import { FC, memo } from 'react'
 
-import { TastingSheet } from '../../../types'
 import { useGetButtonClassName, useOnClickOpenModal } from '../../../hooks'
-import SignUpLink from '../links/SignUpLink'
+import { TastingSheet } from '../../../types'
 import SignInLink from '../links/SignInLink'
+import SignUpLink from '../links/SignUpLink'
 
 const SaveSheetButton: FC<{
   tastingSheet: TastingSheet
@@ -11,9 +11,9 @@ const SaveSheetButton: FC<{
   const { className } = useGetButtonClassName(tastingSheet.color)
 
   const { onClickOpenModal } = useOnClickOpenModal({
-    text: 'サインアップまたはログインを行います',
     leftButton: <SignUpLink tastingSheet={tastingSheet} />,
-    rightButton: <SignInLink tastingSheet={tastingSheet} />
+    rightButton: <SignInLink tastingSheet={tastingSheet} />,
+    text: 'サインアップまたはログインを行います'
   })
 
   return (

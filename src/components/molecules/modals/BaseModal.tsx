@@ -2,7 +2,7 @@ import { FC, memo } from 'react'
 
 import { BaseModalProps } from '../../../types'
 
-const BaseModal: FC<BaseModalProps> = memo(({ text, leftButton, rightButton, visible }) => (
+const BaseModal: FC<BaseModalProps> = memo(({ leftButton, rightButton, text, visible }) => (
   <>
     <input type="checkbox" className="modal-toggle" checked={visible} readOnly />
     {visible && (

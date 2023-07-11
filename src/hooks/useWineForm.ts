@@ -1,15 +1,15 @@
 import { ChangeEvent, useState } from 'react'
+import { useErrorBoundary } from 'react-error-boundary'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useLocation } from 'react-router-dom'
-import { useErrorBoundary } from 'react-error-boundary'
 
 import { ALCOHOL_PERCENTAGES, COUNTRIES, GRAPES_RED, GRAPES_WHITE, VINTAGES } from '../assets'
 import { TastingSheetStateForWine, WineApi, WineColor, WineFormState } from '../types'
 import usePostWine from './api/usePostWine'
 import usePostWineImageToS3 from './api/usePostWineImageToS3'
 import useUpdateWine from './api/useUpdateWine'
-import useGetButtonClassName from './useGetButtonClassName'
 import useCurrentUserContext from './context/useCurrentUserContext'
+import useGetButtonClassName from './useGetButtonClassName'
 
 const useWineForm = (wine?: WineApi) => {
   const { showBoundary } = useErrorBoundary()
@@ -33,26 +33,26 @@ const useWineForm = (wine?: WineApi) => {
   const { postWineImageToS3 } = usePostWineImageToS3()
 
   const {
-    register,
-    handleSubmit,
-    setValue,
     formState: {
-      isValid,
+      errors: { wine: errors },
       isSubmitting,
-      errors: { wine: errors }
-    }
+      isValid
+    },
+    handleSubmit,
+    register,
+    setValue
   } = useForm<WineFormState>({
     defaultValues: {
       wine: wine ?? {
         name: '',
-        image: null,
-        vintage: '',
+        alcoholPercentage: '',
         country: '',
         grape: '',
-        region: null,
-        alcoholPercentage: '',
+        image: null,
         memo: null,
-        tastingSheetId
+        region: null,
+        tastingSheetId,
+        vintage: ''
       }
     },
     mode: 'onChange'
@@ -85,23 +85,23 @@ const useWineForm = (wine?: WineApi) => {
   }
 
   const selectBoxOptions = {
-    vintages: VINTAGES,
-    countries: COUNTRIES,
     alcoholPercentages: ALCOHOL_PERCENTAGES,
-    grapes: getGrapes()
+    countries: COUNTRIES,
+    grapes: getGrapes(),
+    vintages: VINTAGES
   }
 
   return {
-    register,
-    onSubmit,
-    handleSubmit,
     disabled,
     errors,
-    tastingSheetId,
-    selectBoxOptions,
+    handleSubmit,
     imageFile,
     onChangeImageFile,
-    submitButtonClassName
+    onSubmit,
+    register,
+    selectBoxOptions,
+    submitButtonClassName,
+    tastingSheetId
   }
 }
 

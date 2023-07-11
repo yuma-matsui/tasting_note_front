@@ -1,9 +1,9 @@
 import { FC, memo } from 'react'
 
 import appearance_sheet from '../../../assets/images/sheets/appearance_sheet.jpg'
+import conclusion_sheet from '../../../assets/images/sheets/conclusion_sheet.jpg'
 import flavor_sheet from '../../../assets/images/sheets/flavor_sheet.jpg'
 import taste_sheet from '../../../assets/images/sheets/taste_sheet.jpg'
-import conclusion_sheet from '../../../assets/images/sheets/conclusion_sheet.jpg'
 import DemoImageContainer from '../DemoImageContainer'
 
 const WelcomePageImagesSection: FC = memo(() => (

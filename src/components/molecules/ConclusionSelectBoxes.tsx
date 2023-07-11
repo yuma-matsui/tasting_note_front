@@ -4,9 +4,9 @@ import { ConclusionSelectBoxesProps } from '../../types'
 import { convertToFormName } from '../../utils'
 import { TastingSheetSelectBox } from '../atoms'
 
-const ConclusionSelectBoxes: FC<ConclusionSelectBoxesProps> = memo(({ register, options }) => (
+const ConclusionSelectBoxes: FC<ConclusionSelectBoxesProps> = memo(({ options, register }) => (
   <>
-    {options.map(({ heading, name, labels }) => (
+    {options.map(({ name, heading, labels }) => (
       <TastingSheetSelectBox
         key={heading}
         id={name}

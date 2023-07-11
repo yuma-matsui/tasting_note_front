@@ -1,9 +1,9 @@
 import { render } from '@testing-library/react'
 
-import WineTextInput from '../WineTextInput'
 import { WineTextInputProps } from '../../../../types'
+import WineTextInput from '../WineTextInput'
 
-const setUp = ({ name, label, register, required, errors }: WineTextInputProps) => {
+const setUp = ({ name, errors, label, register, required }: WineTextInputProps) => {
   const utils = render(
     <WineTextInput name={name} label={label} register={register} required={required} errors={errors} />
   )
@@ -17,10 +17,10 @@ describe('WineTextInput', () => {
   let props: WineTextInputProps
   const initialProps: WineTextInputProps = {
     name: 'wine.name',
+    errors: undefined,
     label: 'test',
     register: jest.fn(),
-    required: true,
-    errors: undefined
+    required: true
   }
 
   beforeEach(() => {

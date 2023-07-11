@@ -6,7 +6,7 @@ import { TastingSheetNameInput, TastingSheetTimeSelectBox } from '../../atoms'
 import { TastingSheetFormWrapper } from '../../templates'
 import WineColorRadios from '../WineColorRadios'
 
-const NewTastingSheetSettingForm: FC<FormRegisterAndErrors> = memo(({ register, errors }) => (
+const NewTastingSheetSettingForm: FC<FormRegisterAndErrors> = memo(({ errors, register }) => (
   <TastingSheetFormWrapper title="setting">
     <TastingSheetNameInput register={register} errors={errors} />
     <TastingSheetTimeSelectBox

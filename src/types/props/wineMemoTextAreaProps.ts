@@ -1,4 +1,5 @@
 import { UseFormRegister } from 'react-hook-form'
+
 import WineFormState from '../wine/wineFormState'
 
 type WineMemoTextAreaProps = {

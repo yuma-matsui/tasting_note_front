@@ -1,13 +1,13 @@
 import { Conclusion } from '../../types'
 
 const conclusion: Conclusion = {
-  evaluation: '成熟度が高く豊か',
-  optimumTemperature: '8度未満',
-  glass: '小ぶり',
-  vintage: '2020',
   country: 'イタリア',
+  decantage: null,
+  evaluation: '成熟度が高く豊か',
+  glass: '小ぶり',
   grape: 'シャルドネ',
-  decantage: null
+  optimumTemperature: '8度未満',
+  vintage: '2020'
 }
 
 export default conclusion

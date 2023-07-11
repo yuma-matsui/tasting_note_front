@@ -1,15 +1,15 @@
 import { FC, memo } from 'react'
 
-import { TastingSheetApi } from '../../types'
 import { useFilteredTastingSheets, useToggleSideBar } from '../../hooks'
-import TastingSheetSearchSideBar from './TastingSheetSearchSideBar'
+import { TastingSheetApi } from '../../types'
 import { TastingSheetSearchForm } from '../molecules'
 import TastingSheetLists from './TastingSheetLists'
+import TastingSheetSearchSideBar from './TastingSheetSearchSideBar'
 
 const TastingSheetListsWithSideBar: FC<{
   tastingSheets: TastingSheetApi[]
 }> = memo(({ tastingSheets }) => {
-  const { setFilter, filteredTastingSheets } = useFilteredTastingSheets(tastingSheets)
+  const { filteredTastingSheets, setFilter } = useFilteredTastingSheets(tastingSheets)
   const { isOpen, onClickToggleSideBar } = useToggleSideBar()
 
   return (

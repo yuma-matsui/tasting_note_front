@@ -14,21 +14,21 @@ import {
 
 const WineForm: FC<{ wine?: WineApi | undefined }> = memo(({ wine }) => {
   const {
-    register,
-    handleSubmit,
     disabled,
     errors,
-    onSubmit,
-    tastingSheetId,
-    selectBoxOptions: { vintages, countries, grapes, alcoholPercentages },
+    handleSubmit,
     imageFile,
     onChangeImageFile,
-    submitButtonClassName
+    onSubmit,
+    register,
+    selectBoxOptions: { alcoholPercentages, countries, grapes, vintages },
+    submitButtonClassName,
+    tastingSheetId
   } = useWineForm(wine)
 
   const { onClickOpenModal } = useOnClickOpenModal({
-    text: '編集中ですがよろしいですか？',
-    rightButton: <GoToAnotherPageButton to={`/tasting_sheets/${tastingSheetId}`} text="OK" />
+    rightButton: <GoToAnotherPageButton to={`/tasting_sheets/${tastingSheetId}`} text="OK" />,
+    text: '編集中ですがよろしいですか？'
   })
 
   return (

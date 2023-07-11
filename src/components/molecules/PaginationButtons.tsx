@@ -2,7 +2,7 @@ import { FC, memo } from 'react'
 
 import { PaginationButtonsProps } from '../../types'
 
-const PaginationButtons: FC<PaginationButtonsProps> = memo(({ pageNumber, back, next, isFirstPage, isLastPage }) => (
+const PaginationButtons: FC<PaginationButtonsProps> = memo(({ back, isFirstPage, isLastPage, next, pageNumber }) => (
   <div className="btn-group">
     {!isFirstPage && (
       <button type="button" className="btn" onClick={back}>

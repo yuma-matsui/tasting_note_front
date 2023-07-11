@@ -1,8 +1,8 @@
 import { FC, useCallback, useState } from 'react'
 import { useErrorBoundary } from 'react-error-boundary'
 
-import { ReactNodeChildren } from '../types'
 import { RequestingContext, RequestingDispatchContext } from '../contexts'
+import { ReactNodeChildren } from '../types'
 
 const RequestingProvider: FC<ReactNodeChildren> = ({ children }) => {
   const [requesting, setRequesting] = useState(false)

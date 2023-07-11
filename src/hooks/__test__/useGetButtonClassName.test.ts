@@ -1,8 +1,8 @@
 import { renderHook } from '@testing-library/react'
 
+import { WineColor } from '../../types'
 import mockUseCheckButtonStatus from '../useCheckButtonStatus'
 import useGetButtonClassName from '../useGetButtonClassName'
-import { WineColor } from '../../types'
 
 jest.mock('../useCheckButtonStatus')
 
@@ -18,9 +18,9 @@ describe('useGetButtonClassName', () => {
   let useCheckButtonStatusReturnValue: typeof initialReturnValue
   const initialReturnValue = {
     isBack: false,
-    isWhite: false,
     isRed: false,
-    isStart: false
+    isStart: false,
+    isWhite: false
   }
 
   beforeEach(() => {

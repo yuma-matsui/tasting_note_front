@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 
-import userEvent from '@testing-library/user-event'
 import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 
-import GoToNewWinePageButton from '../GoToNewWinePageButton'
 import { TastingSheetApi } from '../../../../types'
 import { initialTastingSheet } from '../../../../utils'
+import GoToNewWinePageButton from '../GoToNewWinePageButton'
 
 const mockNavigate = jest.fn()
 jest.mock('react-router-dom', () => ({

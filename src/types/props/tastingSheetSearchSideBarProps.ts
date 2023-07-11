@@ -1,10 +1,10 @@
 import { ReactElement, ReactNode } from 'react'
 
 type TastingSheetSearchSideBarProps = {
-  sideBarContent: ReactElement
   children: ReactNode
-  visible: boolean
   onClickToggleSideBar: () => void
+  sideBarContent: ReactElement
+  visible: boolean
 }
 
 export default TastingSheetSearchSideBarProps

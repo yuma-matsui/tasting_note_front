@@ -1,7 +1,7 @@
 type DemoImageContainerProps = {
-  text: string
-  src: string
   alt: string
+  src: string
+  text: string
 }
 
 export default DemoImageContainerProps

@@ -1,9 +1,9 @@
 import { ReactElement } from 'react'
 
 type BaseModalProps = {
-  text: string
   leftButton: ReactElement
   rightButton: ReactElement
+  text: string
   visible: boolean
 }
 

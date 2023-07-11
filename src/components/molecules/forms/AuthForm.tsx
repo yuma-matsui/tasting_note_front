@@ -1,12 +1,12 @@
 import { FC, memo } from 'react'
 
-import { AuthFormProps } from '../../../types'
 import { useAuthForm } from '../../../hooks'
+import { AuthFormProps } from '../../../types'
 import { getFirebaseErrorMessage } from '../../../utils'
 import { AuthFormInput, AuthFormSubmitInput, ResetPasswordLink } from '../../atoms'
 
 const AuthForm: FC<AuthFormProps> = memo((authFormProps) => {
-  const { register, handleSubmit, onSubmit, errors, isSignIn, title, btnValue, btnColor } = useAuthForm(authFormProps)
+  const { btnColor, btnValue, errors, handleSubmit, isSignIn, onSubmit, register, title } = useAuthForm(authFormProps)
   const { authError } = authFormProps
 
   return (

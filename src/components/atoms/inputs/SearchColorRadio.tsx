@@ -3,7 +3,7 @@ import { FC, memo } from 'react'
 import { useGetSearchRadioLabel } from '../../../hooks'
 import SearchColorRadioProps from '../../../types/props/searchColorRadioProps'
 
-const SearchColorRadio: FC<SearchColorRadioProps> = memo(({ color, checked, onChange }) => {
+const SearchColorRadio: FC<SearchColorRadioProps> = memo(({ checked, color, onChange }) => {
   const label = useGetSearchRadioLabel(color)
 
   return (

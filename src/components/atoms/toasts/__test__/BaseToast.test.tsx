@@ -1,13 +1,13 @@
 import { render } from '@testing-library/react'
 
-import BaseToast from '../BaseToast'
 import { BaseToastProps } from '../../../../types'
+import BaseToast from '../BaseToast'
 
 jest.mock('../../../../hooks/useGetToastClassName', () => () => ({
   toastColorClass: 'mockToastColorClass'
 }))
 
-const setUp = ({ text, visible, type }: BaseToastProps) => {
+const setUp = ({ text, type, visible }: BaseToastProps) => {
   const utils = render(<BaseToast text={text} visible={visible} type={type} />)
 
   return {
@@ -19,8 +19,8 @@ describe('BaseToast', () => {
   let props: BaseToastProps
   const initialProps: BaseToastProps = {
     text: 'test',
-    visible: false,
-    type: 'success'
+    type: 'success',
+    visible: false
   }
 
   beforeEach(() => {

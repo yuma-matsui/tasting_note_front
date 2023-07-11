@@ -1,8 +1,8 @@
 import { renderHook } from '@testing-library/react'
 
-import useGetTabButtonClassName from '../useGetTabButtonClassName'
 import { TastingSheet, WineColor } from '../../types'
 import { initialTastingSheet } from '../../utils'
+import useGetTabButtonClassName from '../useGetTabButtonClassName'
 
 const setUp = () => {
   const { result } = renderHook(() => useGetTabButtonClassName())

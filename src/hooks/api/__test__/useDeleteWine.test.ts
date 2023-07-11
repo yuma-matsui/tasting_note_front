@@ -3,10 +3,10 @@
 import { renderHook } from '@testing-library/react'
 import { act } from 'react-dom/test-utils'
 
+import { WineApi } from '../../../types'
+import { wineTestData } from '../../../utils'
 import mockUseCurrentUserContext from '../../context/useCurrentUserContext'
 import useDeleteWine from '../useDeleteWine'
-import { wineTestData } from '../../../utils'
-import { WineApi } from '../../../types'
 
 jest.mock('../../context/useCurrentUserContext')
 jest.mock('../../useAxios', () => () => ({

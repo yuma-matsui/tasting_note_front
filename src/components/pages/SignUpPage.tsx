@@ -1,14 +1,14 @@
 import { FC } from 'react'
 
-import { DefaultLayout } from '../templates'
+import { metaContents } from '../../assets'
 import { useGetAuthFormParams } from '../../hooks'
 import { LoadingSpinner } from '../atoms'
 import { AuthForm, HeadMeta } from '../molecules'
-import { metaContents } from '../../assets'
+import { DefaultLayout } from '../templates'
 
 const SignUpPage: FC = () => {
-  const { title, description, path } = metaContents.signUp
-  const { tastingSheet, authFunction, loading, authError, type } = useGetAuthFormParams({ type: 'signUp' })
+  const { description, path, title } = metaContents.signUp
+  const { authError, authFunction, loading, tastingSheet, type } = useGetAuthFormParams({ type: 'signUp' })
 
   if (loading) return <LoadingSpinner />
 

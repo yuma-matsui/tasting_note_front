@@ -2,10 +2,10 @@ import { fireEvent, render } from '@testing-library/react'
 import { AuthError } from 'firebase/auth'
 import { act } from 'react-dom/test-utils'
 
-import AuthForm from '../AuthForm'
-import { AuthFormProps } from '../../../../types'
 import { useAuthForm as mockUseAuthForm } from '../../../../hooks'
-import { initialTastingSheet, getFirebaseErrorMessage as mockGetFirebaseErrorMessage } from '../../../../utils'
+import { AuthFormProps } from '../../../../types'
+import { getFirebaseErrorMessage as mockGetFirebaseErrorMessage, initialTastingSheet } from '../../../../utils'
+import AuthForm from '../AuthForm'
 
 jest.mock('../../../../hooks/auth/useAuthForm')
 jest.mock('../../../../utils/getFirebaseErrorMessage')
@@ -16,7 +16,7 @@ jest.mock('../../../atoms/inputs/AuthFormSubmitInput', () => () => (
 ))
 jest.mock('../../../atoms/links/ResetPasswordLink', () => () => <a href="/">MockResetPasswordLink</a>)
 
-const setUp = ({ tastingSheet, authFunction, authError, type }: AuthFormProps) => {
+const setUp = ({ authError, authFunction, tastingSheet, type }: AuthFormProps) => {
   const utils = render(
     <AuthForm tastingSheet={tastingSheet} authFunction={authFunction} authError={authError} type={type} />
   )
@@ -29,28 +29,28 @@ const setUp = ({ tastingSheet, authFunction, authError, type }: AuthFormProps) =
 describe('AuthForm', () => {
   let props: AuthFormProps
   const initialProps: AuthFormProps = {
-    tastingSheet: { ...initialTastingSheet },
-    authFunction: jest.fn(),
     authError: {
       message: 'error-test'
     } as AuthError,
+    authFunction: jest.fn(),
+    tastingSheet: { ...initialTastingSheet },
     type: 'signIn'
   }
 
   let useAuthFormReturnValue = {} as typeof initialReturnValue
   const initialReturnValue = {
-    register: jest.fn(),
-    handleSubmit: jest.fn(),
-    onSubmit: jest.fn(),
+    btnColor: 'test',
+    btnValue: 'test',
     errors: {
       email: 'test',
       password: 'test',
       passwordConfirmation: 'test'
     },
+    handleSubmit: jest.fn(),
     isSignIn: false,
-    title: 'test',
-    btnValue: 'test',
-    btnColor: 'test'
+    onSubmit: jest.fn(),
+    register: jest.fn(),
+    title: 'test'
   }
 
   beforeEach(() => {

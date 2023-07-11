@@ -1,6 +1,7 @@
 import { FC } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
+import { LoadingSpinner } from '../components/atoms'
 import {
   Error404Page,
   NewTastingSheetPage,
@@ -10,15 +11,14 @@ import {
   SignUpPage,
   TermOfServicePage
 } from '../components/pages'
+import AuthErrorPage from '../components/pages/AuthErrorPage'
 import { useAuthErrorContext, useAuthLoadingContext, useRequestingContext } from '../hooks'
 import { ModalProvider } from '../providers'
-import { LoadingSpinner } from '../components/atoms'
+import AuthPageWrapper from './AuthPageWrapper'
 import EditWinePageWrapper from './EditWinePageWrapper'
 import NewWinePageWrapper from './NewWinePageWrapper'
 import TastingSheetPageWrapper from './TastingSheetPageWrapper'
 import WelcomePageWrapper from './WelcomePageWrapper'
-import AuthErrorPage from '../components/pages/AuthErrorPage'
-import AuthPageWrapper from './AuthPageWrapper'
 
 const RouterConfig: FC = () => {
   const loading = useAuthLoadingContext()

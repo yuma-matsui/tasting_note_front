@@ -1,8 +1,8 @@
 import { render } from '@testing-library/react'
 
-import ResetPasswordPage from '../ResetPasswordPage'
 import { useResetPasswordFormParams as mockUseResetPasswordFormParams } from '../../../hooks'
 import { ReactNodeChildren } from '../../../types'
+import ResetPasswordPage from '../ResetPasswordPage'
 
 jest.mock('../../molecules/HeadMeta', () => ({ children }: ReactNodeChildren) => (
   <>
@@ -34,10 +34,10 @@ const setUp = () => {
 describe('ResetPasswordPage', () => {
   let useResetPasswordFormParamsReturnValue: typeof initialReturnValue
   const initialReturnValue = {
-    sendEmail: jest.fn(),
-    loading: false,
     error: undefined,
     isSent: false,
+    loading: false,
+    sendEmail: jest.fn(),
     setIsSent: jest.fn()
   }
 

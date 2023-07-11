@@ -13,10 +13,10 @@ const useTastingSheetLabels = (color: WineColor): TastingSheetLabelsTuple => {
   const conclusionOptions = useConclusionLabels(color, 'select')
 
   return [
-    { type: 'appearance', items: appearanceLabels, options: [] },
-    { type: 'flavor', items: flavorLabels, options: [] },
-    { type: 'taste', items: tasteLabels, options: [] },
-    { type: 'conclusion', items: conclusionLabels, options: conclusionOptions }
+    { items: appearanceLabels, options: [], type: 'appearance' },
+    { items: flavorLabels, options: [], type: 'flavor' },
+    { items: tasteLabels, options: [], type: 'taste' },
+    { items: conclusionLabels, options: conclusionOptions, type: 'conclusion' }
   ]
 }
 

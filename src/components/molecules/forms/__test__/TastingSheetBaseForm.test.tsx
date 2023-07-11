@@ -1,14 +1,14 @@
 import { render } from '@testing-library/react'
 import { ReactNode } from 'react'
 
-import TastingSheetBaseForm from '../TastingSheetBaseForm'
-import { TastingSheetBaseFormProps } from '../../../../types'
 import { useGetIsMultipleInputs } from '../../../../hooks'
+import { TastingSheetBaseFormProps } from '../../../../types'
+import TastingSheetBaseForm from '../TastingSheetBaseForm'
 
 jest.mock('../../../../hooks/tasting_sheet/useGetIsMultipleInputs')
 jest.mock('../../../../hooks/tasting_sheet/useTastingSheetInputAttributes', () => () => ({
-  isDisabled: jest.fn(),
-  isChecked: jest.fn()
+  isChecked: jest.fn(),
+  isDisabled: jest.fn()
 }))
 
 jest.mock('../../../templates/TastingSheetFormWrapper', () => ({ children }: { children: ReactNode }) => (
@@ -20,7 +20,7 @@ jest.mock('../../../templates/TastingSheetFormWrapper', () => ({ children }: { c
 jest.mock('../../../atoms/inputs/TastingSheetCheckBox', () => () => <p>TastingSheetCheckBox</p>)
 jest.mock('../../ConclusionSelectBoxes', () => () => <p>ConclusionSelectBoxes</p>)
 
-const setUp = ({ type, items, options, register, getValues }: TastingSheetBaseFormProps) => {
+const setUp = ({ getValues, items, options, register, type }: TastingSheetBaseFormProps) => {
   const utils = render(
     <TastingSheetBaseForm type={type} items={items} options={options} register={register} getValues={getValues} />
   )
@@ -33,23 +33,23 @@ const setUp = ({ type, items, options, register, getValues }: TastingSheetBaseFo
 describe('TastingSheetBaseForm', () => {
   let props: TastingSheetBaseFormProps
   const initialProps: TastingSheetBaseFormProps = {
-    type: 'appearance',
+    getValues: jest.fn(),
     items: [
       {
-        heading: 'item1',
         name: 'appearanceColors',
+        heading: 'item1',
         labels: ['label1', 'label2']
       },
       {
-        heading: 'item2',
         name: 'afterTaste',
+        heading: 'item2',
         labels: ['label3', 'label4'],
         subHeading: 'item2-subHeading'
       }
     ],
     options: [],
     register: jest.fn(),
-    getValues: jest.fn()
+    type: 'appearance'
   }
 
   beforeEach(() => {

@@ -6,21 +6,21 @@ import VINTAGES from './vintages'
 
 const CONCLUSION_SELECT_OPTIONS: AbstractFormItem<ConclusionName>[] = [
   {
-    heading: '収穫年',
     name: 'vintage',
+    heading: '収穫年',
     labels: VINTAGES
   },
   {
-    heading: '生産国',
     name: 'country',
+    heading: '生産国',
     labels: COUNTRIES
   },
   {
-    heading: '主なぶどう品種',
     name: 'grape',
+    heading: '主なぶどう品種',
     labels: {
-      white: GRAPES_WHITE,
-      red: GRAPES_RED
+      red: GRAPES_RED,
+      white: GRAPES_WHITE
     }
   }
 ]

@@ -1,11 +1,11 @@
-import userEvent from '@testing-library/user-event'
 import { render } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import { MemoryRouter } from 'react-router-dom'
 
-import TastingSheetCard from '../TastingSheetCard'
-import { TastingSheetCardProps } from '../../../types'
 import { useHasWineAndImage as mockUseHasWineAndImage } from '../../../hooks'
+import { TastingSheetCardProps } from '../../../types'
 import { initialTastingSheet, wineTestData } from '../../../utils'
+import TastingSheetCard from '../TastingSheetCard'
 
 const mockBgColor = 'mock-bg-color'
 const mockTextColor = 'mock-text-color'
@@ -37,9 +37,9 @@ describe('TastingSheetCard', () => {
 
   let useHasWineAndImageReturnValue: typeof initialReturnValue
   const initialReturnValue = {
+    cardImage: 'card-image',
     hasWine: true,
-    hasWineImage: true,
-    cardImage: 'card-image'
+    hasWineImage: true
   }
 
   beforeEach(() => {
