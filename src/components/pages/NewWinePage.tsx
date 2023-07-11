@@ -1,8 +1,8 @@
 import { FC } from 'react'
 
+import { metaContents } from '../../assets'
 import { HeadMeta, WineForm } from '../molecules'
 import { DefaultLayout } from '../templates'
-import { metaContents } from '../../assets'
 
 const NewWinePage: FC = () => {
   const { description, path, title } = metaContents.newWine

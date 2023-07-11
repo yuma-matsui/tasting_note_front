@@ -1,5 +1,5 @@
-import userEvent from '@testing-library/user-event'
 import { render } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 
 import {
   useDetailsTabItems as mockUseDetailsTabItems,
@@ -7,9 +7,9 @@ import {
   useTastingSheetLabels as mockUseTastingSheetLabels
 } from '../../../hooks'
 import { ReactNodeChildren, TastingSheet, TastingSheetLabelsTuple } from '../../../types'
-import TastingSheetDetailsTab from '../TastingSheetDetailsTab'
 import TastingSheetFormItem from '../../../types/tasting_sheet/tastingSheetFormItem'
 import { initialTastingSheet } from '../../../utils'
+import TastingSheetDetailsTab from '../TastingSheetDetailsTab'
 
 jest.mock('../../templates/TastingSheetFormWrapper', () => ({ children }: ReactNodeChildren) => (
   <>

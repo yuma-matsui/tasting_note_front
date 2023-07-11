@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 
-import Auth from 'react-firebase-hooks/auth'
 import { renderHook } from '@testing-library/react'
 import { act } from 'react-dom/test-utils'
+import Auth from 'react-firebase-hooks/auth'
 
+import { headersTestData } from '../../../utils'
 import mockUseCurrentUserContext from '../../context/useCurrentUserContext'
 import mockUseAxios from '../../useAxios'
 import useDeleteAccount from '../useDeleteAccount'
-import { headersTestData } from '../../../utils'
 
 jest.mock('firebase/auth', () => ({
   getAuth: jest.fn()

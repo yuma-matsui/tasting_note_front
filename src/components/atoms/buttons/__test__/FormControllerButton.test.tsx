@@ -1,9 +1,9 @@
-import userEvent from '@testing-library/user-event'
 import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 
-import FormControllerButton from '../FormControllerButton'
 import { FormControllerButtonProps } from '../../../../types'
 import { initialTastingSheet } from '../../../../utils'
+import FormControllerButton from '../FormControllerButton'
 
 const mockClassName = 'mock-class'
 jest.mock('../../../../hooks/useGetButtonClassName', () => () => ({

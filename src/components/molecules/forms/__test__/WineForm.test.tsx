@@ -1,11 +1,11 @@
-import userEvent from '@testing-library/user-event'
 import { fireEvent, render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import { act } from 'react-dom/test-utils'
 
-import WineForm from '../WineForm'
-import { WineApi } from '../../../../types'
 import { useWineForm as mockUseWineForm } from '../../../../hooks'
+import { WineApi } from '../../../../types'
 import { wineTestData } from '../../../../utils'
+import WineForm from '../WineForm'
 
 jest.mock('../../../../hooks/useWineForm')
 

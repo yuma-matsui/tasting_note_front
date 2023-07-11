@@ -1,7 +1,7 @@
 import { FC, memo } from 'react'
 
-import { AuthFormProps } from '../../../types'
 import { useAuthForm } from '../../../hooks'
+import { AuthFormProps } from '../../../types'
 import { getFirebaseErrorMessage } from '../../../utils'
 import { AuthFormInput, AuthFormSubmitInput, ResetPasswordLink } from '../../atoms'
 

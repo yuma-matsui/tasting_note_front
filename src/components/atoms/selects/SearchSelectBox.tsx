@@ -1,4 +1,5 @@
 import { FC, memo } from 'react'
+
 import { SearchSelectBoxProps } from '../../../types'
 
 const SearchSelectBox: FC<SearchSelectBoxProps> = memo(({ id, label, onChange, options, selectedOption }) => (

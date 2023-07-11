@@ -1,5 +1,5 @@
-import { TastingSheetApi } from '../../types'
 import defaultImage from '../../assets/images/wineGlass.jpg'
+import { TastingSheetApi } from '../../types'
 
 const useHasWineAndImage = (tastingSheet: TastingSheetApi) => {
   const hasWine = tastingSheet.wine !== null

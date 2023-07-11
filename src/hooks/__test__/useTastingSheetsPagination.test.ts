@@ -1,9 +1,9 @@
 import { renderHook } from '@testing-library/react'
 import { act } from 'react-dom/test-utils'
 
-import useTastingSheetsPagination from '../useTastingSheetsPagination'
 import { TastingSheetApi } from '../../types'
 import { initialTastingSheet } from '../../utils'
+import useTastingSheetsPagination from '../useTastingSheetsPagination'
 
 const setUpTastingSheets = (sheetsCount: number) => {
   const tastingSheets: TastingSheetApi[] = []

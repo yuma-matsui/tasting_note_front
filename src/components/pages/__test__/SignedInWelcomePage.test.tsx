@@ -1,8 +1,8 @@
 import { render } from '@testing-library/react'
 
-import SignedInWelcomePage from '../SignedInWelcomePage'
 import { useFetchTastingSheets as mockUseFetchTastingSheets } from '../../../hooks'
 import { ReactNodeChildren } from '../../../types'
+import SignedInWelcomePage from '../SignedInWelcomePage'
 
 jest.mock('../../molecules/HeadMeta', () => ({ children }: ReactNodeChildren) => (
   <>

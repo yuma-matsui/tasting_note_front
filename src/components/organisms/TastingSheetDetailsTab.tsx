@@ -1,6 +1,6 @@
 import { FC, memo } from 'react'
-import { useDetailsTabItems, useGetTabButtonClassName, useTastingSheetLabels } from '../../hooks'
 
+import { useDetailsTabItems, useGetTabButtonClassName, useTastingSheetLabels } from '../../hooks'
 import { TastingSheet } from '../../types'
 import { formTitleFormat } from '../../utils'
 import { SheetOrWineDetailsDataList } from '../molecules'

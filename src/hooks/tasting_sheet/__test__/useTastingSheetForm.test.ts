@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 
-import React from 'react'
-import Form from 'react-hook-form'
 import { renderHook } from '@testing-library/react'
+import React from 'react'
 import { act } from 'react-dom/test-utils'
+import Form from 'react-hook-form'
 
-import useTastingSheetForm from '../useTastingSheetForm'
 import { initialTastingSheet } from '../../../utils'
+import useTastingSheetForm from '../useTastingSheetForm'
 
 jest.mock('react-hook-form', () => ({
   ...jest.requireActual('react-hook-form'),

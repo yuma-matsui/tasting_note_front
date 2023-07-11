@@ -1,8 +1,8 @@
 import { render } from '@testing-library/react'
 
-import NewTastingSheetPage from '../NewTastingSheetPage'
 import { useMultiStepForm as mockUseMultiStepForm } from '../../../hooks'
 import { ReactNodeChildren } from '../../../types'
+import NewTastingSheetPage from '../NewTastingSheetPage'
 
 jest.mock('../../molecules/HeadMeta', () => ({ children }: ReactNodeChildren) => (
   <>

@@ -1,8 +1,8 @@
 import { render } from '@testing-library/react'
 
-import TastingSheetTimer from '../TastingSheetTimer'
 import { TastingSheetTimerProps } from '../../../types'
 import { initialTastingSheet } from '../../../utils'
+import TastingSheetTimer from '../TastingSheetTimer'
 
 const mockStyle = { display: 'block' }
 const mockTimerClassName = 'mock-timer-class'

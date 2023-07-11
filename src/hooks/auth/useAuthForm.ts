@@ -1,10 +1,10 @@
+import { yupResolver } from '@hookform/resolvers/yup'
 import { useErrorBoundary } from 'react-error-boundary'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { yupResolver } from '@hookform/resolvers/yup'
 
 import { AuthForm, AuthFormProps, WineColor } from '../../types'
-import useSignUpOrInAndPostTastingSheet from '../api/useSignUpOrInAndPostTastingSheet'
 import { signInFormSchema, signUpFormSchema } from '../../utils'
+import useSignUpOrInAndPostTastingSheet from '../api/useSignUpOrInAndPostTastingSheet'
 
 const useAuthForm = ({ authFunction, tastingSheet, type }: AuthFormProps) => {
   const { showBoundary } = useErrorBoundary()

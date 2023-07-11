@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react'
 
-import PrivacyPolicyPage from '../PrivacyPolicyPage'
 import { ReactNodeChildren } from '../../../types'
+import PrivacyPolicyPage from '../PrivacyPolicyPage'
 
 jest.mock('../../molecules/HeadMeta', () => ({ children }: ReactNodeChildren) => (
   <>

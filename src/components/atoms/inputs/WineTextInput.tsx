@@ -1,4 +1,5 @@
 import { FC, memo } from 'react'
+
 import { WineTextInputProps } from '../../../types'
 
 const WineTextInput: FC<WineTextInputProps> = memo(({ name, errors, label, register, required }) => (

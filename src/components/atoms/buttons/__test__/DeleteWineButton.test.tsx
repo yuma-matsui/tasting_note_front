@@ -1,9 +1,9 @@
-import userEvent from '@testing-library/user-event'
 import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 
-import DeleteWineButton from '../DeleteWineButton'
 import { WineApi } from '../../../../types'
 import { wineTestData } from '../../../../utils'
+import DeleteWineButton from '../DeleteWineButton'
 
 const mockOnClickDeleteWine = jest.fn()
 jest.mock('../../../../hooks/api/useDeleteWine', () => () => ({

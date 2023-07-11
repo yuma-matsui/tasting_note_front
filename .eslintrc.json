@@ -3,13 +3,6 @@
     "browser": true,
     "es2021": true
   },
-  "plugins": [
-    "cypress",
-    "import",
-    "react",
-    "sort-keys-custom-order",
-    "unused-imports"
-  ],
   "extends": [
     "plugin:@typescript-eslint/recommended",
     "plugin:cypress/recommended",
@@ -31,16 +24,21 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "ignorePatterns": ["build"],
+  "plugins": [
+    "cypress",
+    "import",
+    "react",
+    "simple-import-sort",
+    "sort-keys-custom-order",
+    "unused-imports"
+  ],
   "rules": {
-    "no-use-before-define": "off",
-    "@typescript-eslint/no-use-before-define": ["error"],
-    "import/prefer-default-export": "off",
-    "react/react-in-jsx-scope": "off",
-    "react/function-component-definition": "off",
-    "@typescript-eslint/consistent-type-definitions": "off",
-    "@typescript-eslint/no-misused-promises": "off",
+    "import/first": "error",
+    "import/newline-after-import": "error",
+    "import/no-duplicates": "error",
     "react/jsx-props-no-spreading": "off",
+    "simple-import-sort/exports": "error",
+    "simple-import-sort/imports": "error",
     "sort-keys-custom-order/object-keys": [
       "warn",
       { "orderedKeys": ["id", "name" ] }
@@ -49,28 +47,7 @@
       "warn",
       { "orderedKeys": ["id", "name" ] }
     ],
-    "import/extensions": [
-      "error",
-      "ignorePackages",
-      {
-        "js": "never",
-        "jsx": "never",
-        "ts": "never",
-        "tsx": "never"
-      }
-    ],
-    "react/jsx-filename-extension": [
-      "error",
-      {
-        "extensions": [".jsx", ".ts", ".tsx"]
-      }
-    ],
-    "no-void": [
-      "error",
-      {
-        "allowAsStatement": true
-      }
-    ]
+    "@typescript-eslint/no-use-before-define": ["error"]
   },
   "settings": {
     "import/resolver": {

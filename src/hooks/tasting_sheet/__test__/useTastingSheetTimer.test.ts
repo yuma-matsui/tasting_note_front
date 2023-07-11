@@ -1,9 +1,9 @@
-import React from 'react'
 import { cleanup, renderHook } from '@testing-library/react'
+import React from 'react'
 
-import useTastingSheetTimer from '../useTastingSheetTimer'
 import { TastingSheet } from '../../../types'
 import { initialTastingSheet } from '../../../utils'
+import useTastingSheetTimer from '../useTastingSheetTimer'
 
 const mockShowToast = jest.fn()
 jest.mock('../../context/useToastContext', () => () => ({

@@ -1,8 +1,8 @@
 import { render } from '@testing-library/react'
 
-import EditWinePage from '../EditWinePage'
 import { ReactNodeChildren, WineApi } from '../../../types'
 import { wineTestData } from '../../../utils'
+import EditWinePage from '../EditWinePage'
 
 jest.mock('../../molecules/HeadMeta', () => ({ children }: ReactNodeChildren) => (
   <>

@@ -1,10 +1,10 @@
-import userEvent from '@testing-library/user-event'
 import { render } from '@testing-library/react'
-import { RouterProvider, createMemoryRouter } from 'react-router-dom'
+import userEvent from '@testing-library/user-event'
+import { createMemoryRouter, RouterProvider } from 'react-router-dom'
 
-import SignInOrUpAndPostLinks from '../SignInOrUpAndPostLinks'
 import { TastingSheet, WineColor } from '../../../types'
 import { initialTastingSheet } from '../../../utils'
+import SignInOrUpAndPostLinks from '../SignInOrUpAndPostLinks'
 
 type TestCases = [WineColor, string][]
 

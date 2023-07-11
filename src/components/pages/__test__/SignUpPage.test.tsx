@@ -1,8 +1,8 @@
 import { render } from '@testing-library/react'
 
-import SignUpPage from '../SignUpPage'
 import { useGetAuthFormParams as mockUseGetAuthFormParams } from '../../../hooks'
 import { ReactNodeChildren } from '../../../types'
+import SignUpPage from '../SignUpPage'
 
 jest.mock('../../molecules/HeadMeta', () => ({ children }: ReactNodeChildren) => (
   <>

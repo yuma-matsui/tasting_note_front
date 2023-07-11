@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 
-import TastingSheetCheckBox from '../TastingSheetCheckBox'
 import { TastingSheetCheckBoxProps } from '../../../../types'
+import TastingSheetCheckBox from '../TastingSheetCheckBox'
 
 const mockType = 'text'
 jest.mock('../../../../hooks/tasting_sheet/useGetRadioOrCheckBoxType', () => () => ({

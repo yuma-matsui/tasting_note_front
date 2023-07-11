@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react'
 
-import TastingSheetSelectBox from '../TastingSheetSelectBox'
 import { TastingSheetSelectBoxProps } from '../../../../types'
+import TastingSheetSelectBox from '../TastingSheetSelectBox'
 
 const setUp = ({ id, name, label, options, register }: TastingSheetSelectBoxProps) => {
   const utils = render(

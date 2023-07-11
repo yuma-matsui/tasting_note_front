@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react'
 
-import TastingSheetTimeSelectBox from '../TastingSheetTimeSelectBox'
 import { TastingSheetSelectBoxProps } from '../../../../types'
+import TastingSheetTimeSelectBox from '../TastingSheetTimeSelectBox'
 
 const setUp = ({ id, name, label, options, register }: TastingSheetSelectBoxProps) => {
   const utils = render(

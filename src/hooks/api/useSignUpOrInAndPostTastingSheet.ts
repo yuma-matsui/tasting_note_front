@@ -2,9 +2,9 @@ import { User } from 'firebase/auth'
 import { useErrorBoundary } from 'react-error-boundary'
 
 import { TastingSheet } from '../../types'
+import useCreateUser from '../auth/useCreateUser'
 import useToastContext from '../context/useToastContext'
 import usePostTastingSheet from './usePostTastingSheet'
-import useCreateUser from '../auth/useCreateUser'
 
 const useSignUpOrInAndPostTastingSheet = () => {
   const { showToast } = useToastContext()

@@ -1,9 +1,9 @@
-import React from 'react'
 import { renderHook } from '@testing-library/react'
+import React from 'react'
 
-import useFilteredTastingSheets from '../useFilteredTastingSheets'
 import { TastingSheetApi } from '../../../types'
 import { initialTastingSheet } from '../../../utils'
+import useFilteredTastingSheets from '../useFilteredTastingSheets'
 
 describe('useFilteredTastingSheets', () => {
   const tastingSheets: TastingSheetApi[] = [

@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react'
 
-import WelcomePageWrapper from '../WelcomePageWrapper'
 import { useCurrentUserContext as mockUseCurrentUserContext } from '../../hooks'
+import WelcomePageWrapper from '../WelcomePageWrapper'
 
 jest.mock('../../hooks/context/useCurrentUserContext')
 

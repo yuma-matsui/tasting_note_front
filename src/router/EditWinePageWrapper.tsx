@@ -2,8 +2,8 @@ import { FC } from 'react'
 import { Navigate, useLocation, useParams } from 'react-router-dom'
 
 import { EditWinePage } from '../components/pages'
-import { WineApi } from '../types'
 import { useCurrentUserContext } from '../hooks'
+import { WineApi } from '../types'
 
 const EditWinePageWrapper: FC = () => {
   const currentUser = useCurrentUserContext()

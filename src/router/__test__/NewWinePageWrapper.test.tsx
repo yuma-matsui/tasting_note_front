@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 
-import Router, { RouterProvider, createMemoryRouter } from 'react-router-dom'
 import { render } from '@testing-library/react'
+import Router, { createMemoryRouter, RouterProvider } from 'react-router-dom'
 
-import NewWinePageWrapper from '../NewWinePageWrapper'
 import { useCurrentUserContext as mockUseCurrentUserContext } from '../../hooks'
+import NewWinePageWrapper from '../NewWinePageWrapper'
 
 jest.mock('../../components/pages/NewWinePage', () => () => <p>MockedNewWinePage</p>)
 

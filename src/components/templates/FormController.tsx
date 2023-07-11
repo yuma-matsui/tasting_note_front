@@ -1,6 +1,7 @@
 import { FC, memo, useRef } from 'react'
 
 import { useBeforeUnload, useCurrentUserContext, useGetButtonFlexType } from '../../hooks'
+import { FormControllerProps } from '../../types'
 import {
   ConfirmationAndBackButton,
   FinishTastingButton,
@@ -8,7 +9,6 @@ import {
   PostTastingSheetButton,
   SaveSheetButton
 } from '../atoms'
-import { FormControllerProps } from '../../types'
 
 const FormController: FC<FormControllerProps> = memo(
   ({

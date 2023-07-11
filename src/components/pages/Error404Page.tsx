@@ -1,9 +1,9 @@
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
 
-import { DefaultLayout } from '../templates'
 import { metaContents } from '../../assets'
 import { HeadMeta } from '../molecules'
+import { DefaultLayout } from '../templates'
 
 const Error404Page: FC = () => {
   const { description, title } = metaContents.notFound

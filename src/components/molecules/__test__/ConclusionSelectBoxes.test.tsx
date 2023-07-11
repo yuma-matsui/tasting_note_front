@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react'
 
-import ConclusionSelectBoxes from '../ConclusionSelectBoxes'
 import { ConclusionSelectBoxesProps } from '../../../types'
+import ConclusionSelectBoxes from '../ConclusionSelectBoxes'
 
 jest.mock('../../atoms/selects/TastingSheetSelectBox', () => () => <p>TastingSheetSelectBox</p>)
 

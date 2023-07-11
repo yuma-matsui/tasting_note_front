@@ -2,13 +2,13 @@
 
 import { render, screen } from '@testing-library/react'
 
-import FormController from '../FormController'
 import {
   useCurrentUserContext as mockUseCurrentUserContext,
   useGetButtonFlexType as mockUseGetButtonFlexType
 } from '../../../hooks'
 import { FormControllerProps } from '../../../types'
 import { initialTastingSheet } from '../../../utils'
+import FormController from '../FormController'
 
 jest.mock('../../../hooks/tasting_sheet/useBeforeUnload')
 jest.mock('../../../hooks/context/useCurrentUserContext')

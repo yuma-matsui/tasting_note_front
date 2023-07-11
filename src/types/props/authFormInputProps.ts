@@ -1,4 +1,5 @@
 import { FieldError, FieldErrorsImpl, Merge, UseFormRegister } from 'react-hook-form'
+
 import AuthForm from '../user/authForm'
 
 type AuthFormInputProps = {

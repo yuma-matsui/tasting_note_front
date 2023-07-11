@@ -1,8 +1,8 @@
 import { render } from '@testing-library/react'
 import { ReactNode } from 'react'
 
-import NewTastingSheetSettingForm from '../NewTastingSheetSettingForm'
 import { FormRegisterAndErrors } from '../../../../types'
+import NewTastingSheetSettingForm from '../NewTastingSheetSettingForm'
 
 jest.mock('../../../templates/TastingSheetFormWrapper', () => ({ children }: { children: ReactNode }) => (
   <>

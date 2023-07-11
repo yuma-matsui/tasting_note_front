@@ -1,9 +1,9 @@
 import { render } from '@testing-library/react'
 import { ReactNode } from 'react'
 
-import TastingSheetBaseForm from '../TastingSheetBaseForm'
-import { TastingSheetBaseFormProps } from '../../../../types'
 import { useGetIsMultipleInputs } from '../../../../hooks'
+import { TastingSheetBaseFormProps } from '../../../../types'
+import TastingSheetBaseForm from '../TastingSheetBaseForm'
 
 jest.mock('../../../../hooks/tasting_sheet/useGetIsMultipleInputs')
 jest.mock('../../../../hooks/tasting_sheet/useTastingSheetInputAttributes', () => () => ({

@@ -1,8 +1,8 @@
 import { renderHook } from '@testing-library/react'
 
+import { WineColor } from '../../types'
 import mockUseCheckButtonStatus from '../useCheckButtonStatus'
 import useGetButtonClassName from '../useGetButtonClassName'
-import { WineColor } from '../../types'
 
 jest.mock('../useCheckButtonStatus')
 

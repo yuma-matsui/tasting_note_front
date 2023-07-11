@@ -1,9 +1,9 @@
-import { useNavigate } from 'react-router-dom'
 import { useErrorBoundary } from 'react-error-boundary'
+import { useNavigate } from 'react-router-dom'
 
 import useToastContext from '../context/useToastContext'
-import useSignOutUser from './useSignOutUser'
 import useDeleteAccount from './useDeleteAccount'
+import useSignOutUser from './useSignOutUser'
 
 const useOnClickAuth = () => {
   const { showBoundary } = useErrorBoundary()

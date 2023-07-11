@@ -1,7 +1,7 @@
 import { FC, memo } from 'react'
 
-import { SearchColorRadio } from '../atoms'
 import { SearchColorRadiosProps } from '../../types'
+import { SearchColorRadio } from '../atoms'
 
 const SearchColorRadios: FC<SearchColorRadiosProps> = memo(({ onChange, selectedColor }) => (
   <div className="mb-4 md:flex">

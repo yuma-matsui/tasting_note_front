@@ -1,8 +1,8 @@
 import { render } from '@testing-library/react'
 
-import ResetPasswordPage from '../ResetPasswordPage'
 import { useResetPasswordFormParams as mockUseResetPasswordFormParams } from '../../../hooks'
 import { ReactNodeChildren } from '../../../types'
+import ResetPasswordPage from '../ResetPasswordPage'
 
 jest.mock('../../molecules/HeadMeta', () => ({ children }: ReactNodeChildren) => (
   <>

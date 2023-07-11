@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 
-import ErrorBoundary from 'react-error-boundary'
 import { renderHook } from '@testing-library/react'
-import { act } from 'react-dom/test-utils'
 import { User } from 'firebase/auth'
+import { act } from 'react-dom/test-utils'
+import ErrorBoundary from 'react-error-boundary'
 
-import useSignUpOrInAndPostTastingSheet from '../useSignUpOrInAndPostTastingSheet'
 import { TastingSheet } from '../../../types'
 import { initialTastingSheet } from '../../../utils'
+import useSignUpOrInAndPostTastingSheet from '../useSignUpOrInAndPostTastingSheet'
 
 type TestCases = [string, 'signUp' | 'signIn'][]
 

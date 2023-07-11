@@ -1,10 +1,10 @@
-import userEvent from '@testing-library/user-event'
 import { render } from '@testing-library/react'
-import { RouterProvider, createMemoryRouter } from 'react-router-dom'
+import userEvent from '@testing-library/user-event'
+import { createMemoryRouter, RouterProvider } from 'react-router-dom'
 
-import WineEditLink from '../WineEditLink'
 import { WineEditLinkProps } from '../../../../types'
 import { wineTestData } from '../../../../utils'
+import WineEditLink from '../WineEditLink'
 
 const mockClassName = 'mock-class'
 jest.mock('../../../../hooks/useGetButtonClassName', () => () => ({

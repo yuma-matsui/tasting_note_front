@@ -2,10 +2,10 @@ import { fireEvent, render } from '@testing-library/react'
 import { AuthError } from 'firebase/auth'
 import { act } from 'react-dom/test-utils'
 
-import AuthForm from '../AuthForm'
-import { AuthFormProps } from '../../../../types'
 import { useAuthForm as mockUseAuthForm } from '../../../../hooks'
-import { initialTastingSheet, getFirebaseErrorMessage as mockGetFirebaseErrorMessage } from '../../../../utils'
+import { AuthFormProps } from '../../../../types'
+import { getFirebaseErrorMessage as mockGetFirebaseErrorMessage, initialTastingSheet } from '../../../../utils'
+import AuthForm from '../AuthForm'
 
 jest.mock('../../../../hooks/auth/useAuthForm')
 jest.mock('../../../../utils/getFirebaseErrorMessage')

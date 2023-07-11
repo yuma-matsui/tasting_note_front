@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 
-import WineDetailLists from '../WineDetailLists'
 import { wineTestData } from '../../../utils'
+import WineDetailLists from '../WineDetailLists'
 
 jest.mock('../../molecules/SheetOrWineDetailsDataList', () => () => <p>MockedSheetOrWineDetailsDataList</p>)
 

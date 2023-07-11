@@ -1,8 +1,8 @@
 import { renderHook } from '@testing-library/react'
 
 import { TastingSheetStateForWine } from '../../../types'
-import useTastingSheetStateForWine from '../useTastingSheetStateForWine'
 import { initialTastingSheet } from '../../../utils'
+import useTastingSheetStateForWine from '../useTastingSheetStateForWine'
 
 describe('useTastingSheetStateForWine', () => {
   const state: TastingSheetStateForWine = {

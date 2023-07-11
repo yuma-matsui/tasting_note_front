@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 
-import Router from 'react-router-dom'
-import ErrorBoundary from 'react-error-boundary'
-import Form from 'react-hook-form'
 import { renderHook } from '@testing-library/react'
 import { act } from 'react-dom/test-utils'
+import ErrorBoundary from 'react-error-boundary'
+import Form from 'react-hook-form'
+import Router from 'react-router-dom'
 
-import useResetPasswordForm from '../useResetPasswordForm'
 import { AuthForm, ResetPasswordFormProps } from '../../../types'
+import useResetPasswordForm from '../useResetPasswordForm'
 
 jest.mock('react-hook-form', () => ({
   ...jest.requireActual('react-hook-form'),

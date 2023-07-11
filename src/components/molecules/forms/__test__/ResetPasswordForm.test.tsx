@@ -1,11 +1,11 @@
 import { fireEvent, render } from '@testing-library/react'
-import { act } from 'react-dom/test-utils'
 import { AuthError } from 'firebase/auth'
+import { act } from 'react-dom/test-utils'
 
-import ResetPasswordForm from '../ResetPasswordForm'
-import { ResetPasswordFormProps } from '../../../../types'
 import { useResetPasswordForm } from '../../../../hooks'
+import { ResetPasswordFormProps } from '../../../../types'
 import { getFirebaseErrorMessage } from '../../../../utils'
+import ResetPasswordForm from '../ResetPasswordForm'
 
 jest.mock('../../../../hooks/auth/useResetPasswordForm')
 jest.mock('../../../../utils/getFirebaseErrorMessage')

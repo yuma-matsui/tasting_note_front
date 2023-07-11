@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 
-import ErrorBoundary from 'react-error-boundary'
-import Form from 'react-hook-form'
 import { renderHook } from '@testing-library/react'
 import { act } from 'react-dom/test-utils'
+import ErrorBoundary from 'react-error-boundary'
+import Form from 'react-hook-form'
 
-import useAuthForm from '../useAuthForm'
 import { AuthForm, AuthFormProps, TastingSheet } from '../../../types'
 import { initialTastingSheet } from '../../../utils'
+import useAuthForm from '../useAuthForm'
 
 jest.mock('react-hook-form', () => ({
   ...jest.requireActual('react-hook-form'),

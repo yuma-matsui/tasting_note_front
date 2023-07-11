@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react'
 
-import AuthFormInput from '../AuthFormInput'
 import { AuthFormInputProps } from '../../../../types'
+import AuthFormInput from '../AuthFormInput'
 
 const setUp = ({ name, error, label, register }: AuthFormInputProps) => {
   const utils = render(<AuthFormInput name={name} label={label} register={register} error={error} />)

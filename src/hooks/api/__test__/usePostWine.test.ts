@@ -3,10 +3,10 @@
 import { renderHook } from '@testing-library/react'
 import { act } from 'react-dom/test-utils'
 
+import { Wine } from '../../../types'
+import { wineTestData } from '../../../utils'
 import mockUseCurrentUserContext from '../../context/useCurrentUserContext'
 import usePostWine from '../usePostWine'
-import { wineTestData } from '../../../utils'
-import { Wine } from '../../../types'
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),

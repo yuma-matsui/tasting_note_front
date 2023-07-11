@@ -1,4 +1,5 @@
 import { renderHook } from '@testing-library/react'
+
 import mockUseCurrentUserContext from '../../context/useCurrentUserContext'
 import useUrgentSignOut from '../useUrgentSignOut'
 

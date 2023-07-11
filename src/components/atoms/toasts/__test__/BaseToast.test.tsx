@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react'
 
-import BaseToast from '../BaseToast'
 import { BaseToastProps } from '../../../../types'
+import BaseToast from '../BaseToast'
 
 jest.mock('../../../../hooks/useGetToastClassName', () => () => ({
   toastColorClass: 'mockToastColorClass'

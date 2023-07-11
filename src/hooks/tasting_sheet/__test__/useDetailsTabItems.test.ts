@@ -1,19 +1,19 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 
-import React from 'react'
 import { renderHook } from '@testing-library/react'
+import React from 'react'
 import { act } from 'react-dom/test-utils'
 
-import useDetailsTabItems from '../useDetailsTabItems'
 import { TastingSheet, TastingSheetAllName, TastingSheetFormType } from '../../../types'
 import {
-  initialTastingSheet,
   formResultFormat as mockFormResultFormat,
+  initialTastingSheet,
   isAppearanceName as mockIsAppearanceName,
+  isConclusionName as mockIsConclusionName,
   isFlavorName as mockIsFlavorName,
-  isTasteName as mockIsTasteName,
-  isConclusionName as mockIsConclusionName
+  isTasteName as mockIsTasteName
 } from '../../../utils'
+import useDetailsTabItems from '../useDetailsTabItems'
 
 jest.mock('../../../utils/formResultFormat')
 jest.mock('../../../utils/isAppearanceName')

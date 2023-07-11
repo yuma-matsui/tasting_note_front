@@ -1,10 +1,10 @@
-import userEvent from '@testing-library/user-event'
 import { render } from '@testing-library/react'
-import { RouterProvider, createMemoryRouter } from 'react-router-dom'
+import userEvent from '@testing-library/user-event'
+import { createMemoryRouter, RouterProvider } from 'react-router-dom'
 
-import SignInLink from '../SignInLink'
 import { TastingSheet } from '../../../../types'
 import { initialTastingSheet } from '../../../../utils'
+import SignInLink from '../SignInLink'
 
 const setUp = (tastingSheet?: TastingSheet) => {
   const router = createMemoryRouter([

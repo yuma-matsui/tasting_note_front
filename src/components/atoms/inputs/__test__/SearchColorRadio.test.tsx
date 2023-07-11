@@ -1,8 +1,8 @@
-import userEvent from '@testing-library/user-event'
 import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 
-import SearchColorRadio from '../SearchColorRadio'
 import SearchColorRadioProps from '../../../../types/props/searchColorRadioProps'
+import SearchColorRadio from '../SearchColorRadio'
 
 const mockLabel = 'mock label'
 jest.mock('../../../../hooks/useGetSearchRadioLabel', () => () => mockLabel)

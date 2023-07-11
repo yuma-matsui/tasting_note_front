@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react'
 
-import BaseSelectBox from '../BaseSelectBox'
 import { TastingSheetSelectBoxProps } from '../../../../types'
+import BaseSelectBox from '../BaseSelectBox'
 
 const setUp = ({ id, name, label, options, register }: TastingSheetSelectBoxProps) => {
   const utils = render(<BaseSelectBox id={id} register={register} name={name} options={options} label={label} />)

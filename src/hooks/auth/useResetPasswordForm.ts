@@ -1,11 +1,11 @@
+import { yupResolver } from '@hookform/resolvers/yup'
 import { useEffect } from 'react'
 import { useErrorBoundary } from 'react-error-boundary'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigate } from 'react-router-dom'
 
-import { resetPasswordFormSchema } from '../../utils'
 import { AuthForm, ResetPasswordFormProps } from '../../types'
+import { resetPasswordFormSchema } from '../../utils'
 import useToastContext from '../context/useToastContext'
 
 const useResetPasswordForm = ({ isSent, sendEmail, setIsSent }: ResetPasswordFormProps) => {

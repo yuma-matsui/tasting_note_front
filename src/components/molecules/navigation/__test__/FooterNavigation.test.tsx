@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react'
 
-import FooterNavigation from '../FooterNavigation'
 import { useCurrentUserContext as mockUseCurrentUserContext } from '../../../../hooks'
+import FooterNavigation from '../FooterNavigation'
 
 jest.mock('../../../../hooks/context/useCurrentUserContext')
 

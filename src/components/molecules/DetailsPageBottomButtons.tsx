@@ -1,4 +1,4 @@
-import { FC, ReactElement, memo } from 'react'
+import { FC, memo, ReactElement } from 'react'
 import { Link } from 'react-router-dom'
 
 const DetailsPageBottomButtons: FC<{

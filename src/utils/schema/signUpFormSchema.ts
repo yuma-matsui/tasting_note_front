@@ -1,4 +1,5 @@
 import * as Yup from 'yup'
+
 import MAIL_PATTERN from './mailPattern'
 
 const PASSWORD_PATTERN = /[a-zA-Z\d]{8,}/

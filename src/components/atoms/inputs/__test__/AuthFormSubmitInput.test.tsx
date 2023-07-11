@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 
-import AuthFormSubmitInput from '../AuthFormSubmitInput'
 import { WineColor } from '../../../../types'
+import AuthFormSubmitInput from '../AuthFormSubmitInput'
 
 const mockClassName = 'mock-class'
 jest.mock('../../../../hooks/useGetButtonClassName', () => () => ({

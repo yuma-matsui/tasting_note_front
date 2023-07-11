@@ -1,6 +1,6 @@
 import { FC, memo } from 'react'
-import { Link } from 'react-router-dom'
 import { MdAppRegistration } from 'react-icons/md'
+import { Link } from 'react-router-dom'
 
 import { TastingSheet } from '../../../types'
 

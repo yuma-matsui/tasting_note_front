@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 
-import Auth from 'react-firebase-hooks/auth'
 import { renderHook } from '@testing-library/react'
 import { act } from 'react-dom/test-utils'
+import Auth from 'react-firebase-hooks/auth'
 
 import useSignOutUser from '../useSignOutUser'
 

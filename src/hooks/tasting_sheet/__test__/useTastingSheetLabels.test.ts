@@ -1,7 +1,7 @@
 import { renderHook } from '@testing-library/react'
 
-import useTastingSheetLabels from '../useTastingSheetLabels'
 import { WineColor } from '../../../types'
+import useTastingSheetLabels from '../useTastingSheetLabels'
 
 describe('useTastingSheetLabels', () => {
   let color: WineColor

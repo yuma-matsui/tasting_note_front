@@ -1,4 +1,5 @@
 import { FC, memo } from 'react'
+
 import { FormRegisterAndErrors } from '../../../types'
 
 const TastingSheetNameInput: FC<FormRegisterAndErrors> = memo(({ errors, register }) => (

@@ -1,9 +1,9 @@
 import { FC, memo } from 'react'
 
-import { TastingSheet } from '../../../types'
 import { useGetButtonClassName, useOnClickOpenModal } from '../../../hooks'
-import SignUpLink from '../links/SignUpLink'
+import { TastingSheet } from '../../../types'
 import SignInLink from '../links/SignInLink'
+import SignUpLink from '../links/SignUpLink'
 
 const SaveSheetButton: FC<{
   tastingSheet: TastingSheet

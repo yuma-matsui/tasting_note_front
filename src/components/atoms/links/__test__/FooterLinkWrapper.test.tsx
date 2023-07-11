@@ -1,8 +1,8 @@
-import userEvent from '@testing-library/user-event'
 import { render } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 
-import FooterLinkWrapper from '../FooterLinkWrapper'
 import { FooterLinkWrapperProps } from '../../../../types'
+import FooterLinkWrapper from '../FooterLinkWrapper'
 
 const mockOnClickOpenModal = jest.fn()
 jest.mock('../../../../hooks/useOnClickOpenModal', () => () => ({

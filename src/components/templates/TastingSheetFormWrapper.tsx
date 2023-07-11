@@ -1,6 +1,6 @@
 import { FC, memo } from 'react'
-import { useCheckEditingForm } from '../../hooks'
 
+import { useCheckEditingForm } from '../../hooks'
 import { FormWrapperProps } from '../../types'
 import { formTitleFormat } from '../../utils'
 

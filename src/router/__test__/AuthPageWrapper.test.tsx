@@ -1,9 +1,9 @@
 import { render } from '@testing-library/react'
 import { ReactElement } from 'react'
-import { RouterProvider, createMemoryRouter } from 'react-router-dom'
+import { createMemoryRouter, RouterProvider } from 'react-router-dom'
 
-import AuthPageWrapper from '../AuthPageWrapper'
 import { useCurrentUserContext as mockUseCurrentUserContext } from '../../hooks'
+import AuthPageWrapper from '../AuthPageWrapper'
 
 jest.mock('../../hooks/context/useCurrentUserContext')
 
