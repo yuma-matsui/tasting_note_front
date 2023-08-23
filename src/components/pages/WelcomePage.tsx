@@ -1,7 +1,7 @@
 import { FC, memo } from 'react'
 
 import { metaContents } from '../../assets'
-import { SignInLink, SignUpLink, StartTastingLink } from '../atoms'
+import { StartTastingLink } from '../atoms'
 import {
   HeadMeta,
   TopPageTitle,
@@ -21,11 +21,7 @@ const WelcomePage: FC = memo(() => {
         <WelcomePageAboutSection />
         <WelcomePageImagesSection />
         <WelcomePageWithRegistrationSection />
-        <div className="flex justify-between mb-6 mx-auto sm:w-96">
-          <SignUpLink />
-          <SignInLink />
-        </div>
-        <StartTastingLink text="登録しないではじめる" />
+        <StartTastingLink text="はじめる" />
       </div>
       <Footer />
     </HeadMeta>

@@ -9,10 +9,8 @@ const StartTastingLink: FC<{
     to="/tasting_sheets/new"
     className={`
       rounded-full
-      bg-transparent
-      border
-      border-sub-red
-      text-sub-red
+      bg-theme-red
+      text-white
       font-semibold
       bottom-2
       text-lg
@@ -22,7 +20,7 @@ const StartTastingLink: FC<{
       sm:w-96
       block
       mx-auto
-      text-center
+      text-center∫
       ${text === 'テイスティングをはじめる' ? 'sticky' : ''}
     `}
   >
