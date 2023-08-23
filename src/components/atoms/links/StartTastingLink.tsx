@@ -20,7 +20,7 @@ const StartTastingLink: FC<{
       sm:w-96
       block
       mx-auto
-      text-center∫
+      text-center
       ${text === 'テイスティングをはじめる' ? 'sticky' : ''}
     `}
   >
