@@ -11,7 +11,6 @@ const StartTastingLink: FC<{
       rounded-full
       bg-theme-red
       text-white
-      font-semibold
       bottom-2
       text-lg
       py-2

@@ -2,13 +2,7 @@ import { FC, memo, useRef } from 'react'
 
 import { useBeforeUnload, useCurrentUserContext, useGetButtonFlexType } from '../../hooks'
 import { FormControllerProps } from '../../types'
-import {
-  ConfirmationAndBackButton,
-  FinishTastingButton,
-  FormControllerButton,
-  PostTastingSheetButton,
-  SaveSheetButton
-} from '../atoms'
+import { ConfirmationAndBackButton, FinishTastingButton, FormControllerButton, PostTastingSheetButton } from '../atoms'
 
 const FormController: FC<FormControllerProps> = memo(
   ({
@@ -30,7 +24,6 @@ const FormController: FC<FormControllerProps> = memo(
     return (
       <>
         {children}
-        {isLastStep && !currentUser && <FinishTastingButton />}
         <div className={`w-full flex ${getButtonFlexType(isFirstStep)}`}>
           {!isFirstStep && !isAppearanceStep && (
             <FormControllerButton
@@ -42,7 +35,8 @@ const FormController: FC<FormControllerProps> = memo(
           )}
           {isAppearanceStep && <ConfirmationAndBackButton tastingSheet={tastingSheet} />}
           {isLastStep && currentUser && <PostTastingSheetButton tastingSheet={tastingSheet} />}
-          {isLastStep && !currentUser && <SaveSheetButton tastingSheet={tastingSheet} />}
+          {isLastStep && !currentUser && <FinishTastingButton color={tastingSheet.color} />}
+          {/* {isLastStep && !currentUser && <SaveSheetButton tastingSheet={tastingSheet} />} */}
           {!isLastStep && (
             <FormControllerButton
               value={nextButtonText}

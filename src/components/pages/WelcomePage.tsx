@@ -2,13 +2,7 @@ import { FC, memo } from 'react'
 
 import { metaContents } from '../../assets'
 import { StartTastingLink } from '../atoms'
-import {
-  HeadMeta,
-  TopPageTitle,
-  WelcomePageAboutSection,
-  WelcomePageImagesSection,
-  WelcomePageWithRegistrationSection
-} from '../molecules'
+import { HeadMeta, TopPageTitle, WelcomePageAboutSection, WelcomePageImagesSection } from '../molecules'
 import { Footer } from '../organisms'
 
 const WelcomePage: FC = memo(() => {
@@ -20,8 +14,10 @@ const WelcomePage: FC = memo(() => {
         <TopPageTitle />
         <WelcomePageAboutSection />
         <WelcomePageImagesSection />
-        <WelcomePageWithRegistrationSection />
-        <StartTastingLink text="はじめる" />
+        {/* <WelcomePageWithRegistrationSection /> */}
+        <div className="mt-6">
+          <StartTastingLink text="はじめる" />
+        </div>
       </div>
       <Footer />
     </HeadMeta>

@@ -373,72 +373,73 @@ describe('テイスティングシートの記録', () => {
         })
       })
 
-      describe('記録するボタン', () => {
-        it('常にenabledになっている', () => {
-          cy.contains('記録する').should('be.enabled')
+      // describe('記録するボタン', () => {
+      //   it('常にenabledになっている', () => {
+      //     cy.contains('記録する').should('be.enabled')
+      //   })
+
+      //   it('クリックすると確認ダイアログが表示される', () => {
+      //     cy.contains('記録する').click()
+      //     cy.contains('サインアップまたはログインを行います').should('exist')
+      //   })
+
+      //   describe('ダイアログ内のボタンのクリック', () => {
+      //     beforeEach(() => {
+      //       cy.contains('記録する').click()
+      //     })
+
+      //     describe('サインアップボタンを押した場合', () => {
+      //       it('サインアップページに遷移する', () => {
+      //         cy.get('a[href="/signup"]').click()
+      //         cy.url().should('include', '/signup')
+      //         cy.get('h2').should('have.text', 'サインアップ')
+      //       })
+      //     })
+
+      //     describe('ログインボタンを押した場合', () => {
+      //       it('ログインページに遷移する', () => {
+      //         cy.get('a[href="/signin"]').click()
+      //         cy.url().should('include', '/signin')
+      //         cy.get('h2').should('have.text', 'ログイン')
+      //       })
+      //     })
+      //   })
+      // })
+
+      describe('終了するリンク', () => {
+        it('クリックするとトップページに遷移する', () => {
+          cy.contains('終了する').click()
+          cy.url().should('eq', 'http://localhost:3000/')
+          cy.get('h1').should('have.text', 'Tasting Note')
         })
 
-        it('クリックすると確認ダイアログが表示される', () => {
-          cy.contains('記録する').click()
-          cy.contains('サインアップまたはログインを行います').should('exist')
-        })
+        // describe('確認ダイアログ内のボタンのクリック', () => {
+        //   beforeEach(() => {
+        //     cy.contains('記録せずに終了する').click()
+        //   })
 
-        describe('ダイアログ内のボタンのクリック', () => {
-          beforeEach(() => {
-            cy.contains('記録する').click()
-          })
+        //   describe('いいえを押した場合', () => {
+        //     beforeEach(() => {
+        //       cy.contains('いいえ').click()
+        //     })
 
-          describe('サインアップボタンを押した場合', () => {
-            it('サインアップページに遷移する', () => {
-              cy.get('a[href="/signup"]').click()
-              cy.url().should('include', '/signup')
-              cy.get('h2').should('have.text', 'サインアップ')
-            })
-          })
+        //     it('ダイアログが非表示になる', () => {
+        //       cy.contains('このまま記録せずに終了しますがよろしいですか？').should('not.exist')
+        //     })
 
-          describe('ログインボタンを押した場合', () => {
-            it('ログインページに遷移する', () => {
-              cy.get('a[href="/signin"]').click()
-              cy.url().should('include', '/signin')
-              cy.get('h2').should('have.text', 'ログイン')
-            })
-          })
-        })
-      })
+        //     it('あなたの回答が表示されている', () => {
+        //       cy.get('h2').should('have.text', 'あなたの回答')
+        //     })
+        //   })
 
-      describe('記録せずに終了するリンク', () => {
-        it('クリックすると確認ダイアログが表示される', () => {
-          cy.contains('記録せずに終了する').click()
-          cy.contains('このまま記録せずに終了しますがよろしいですか？').should('exist')
-        })
-
-        describe('確認ダイアログ内のボタンのクリック', () => {
-          beforeEach(() => {
-            cy.contains('記録せずに終了する').click()
-          })
-
-          describe('いいえを押した場合', () => {
-            beforeEach(() => {
-              cy.contains('いいえ').click()
-            })
-
-            it('ダイアログが非表示になる', () => {
-              cy.contains('このまま記録せずに終了しますがよろしいですか？').should('not.exist')
-            })
-
-            it('あなたの回答が表示されている', () => {
-              cy.get('h2').should('have.text', 'あなたの回答')
-            })
-          })
-
-          describe('はいを押した場合', () => {
-            it('トップページに遷移する', () => {
-              cy.contains('はい').click()
-              cy.url().should('eq', 'http://localhost:3000/')
-              cy.get('h1').should('have.text', 'Tasting Note')
-            })
-          })
-        })
+        //   describe('はいを押した場合', () => {
+        //     it('トップページに遷移する', () => {
+        //       cy.contains('はい').click()
+        //       cy.url().should('eq', 'http://localhost:3000/')
+        //       cy.get('h1').should('have.text', 'Tasting Note')
+        //     })
+        //   })
+        // })
       })
     })
   })
