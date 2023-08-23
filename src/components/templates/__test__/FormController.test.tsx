@@ -18,7 +18,7 @@ jest.mock('../../atoms/buttons/ConfirmationAndBackButton', () => () => <p>Mocked
 jest.mock('../../atoms/buttons/FinishTastingButton', () => () => <p>MockedFinishTastingButton</p>)
 jest.mock('../../atoms/buttons/FormControllerButton', () => () => <p>MockedFormControllerButton</p>)
 jest.mock('../../atoms/buttons/PostTastingSheetButton', () => () => <p>MockedPostTastingSheetButton</p>)
-jest.mock('../../atoms/buttons/SaveSheetButton', () => () => <p>MockedSaveSheetButton</p>)
+// jest.mock('../../atoms/buttons/SaveSheetButton', () => () => <p>MockedSaveSheetButton</p>)
 
 const setUp = ({
   backButtonText,
@@ -175,35 +175,35 @@ describe('FromController', () => {
     })
   })
 
-  describe('SaveSheetButton', () => {
-    describe('isLastStepがtrue、currenUserがfalseの場合', () => {
-      beforeEach(() => {
-        props.isLastStep = true
-      })
+  // describe('SaveSheetButton', () => {
+  //   describe('isLastStepがtrue、currenUserがfalseの場合', () => {
+  //     beforeEach(() => {
+  //       props.isLastStep = true
+  //     })
 
-      test('表示される', () => {
-        const { getByText } = setUp(props)
-        expect(getByText('MockedSaveSheetButton')).toBeInTheDocument()
-      })
-    })
+  //     test('表示される', () => {
+  //       const { getByText } = setUp(props)
+  //       expect(getByText('MockedSaveSheetButton')).toBeInTheDocument()
+  //     })
+  //   })
 
-    describe.each([
-      [false, false],
-      [false, true],
-      [true, true]
-    ])('isLastStepが%p、currentUserが%pの場合', (isLastStep, isCurrentUser) => {
-      beforeEach(() => {
-        props.isLastStep = isLastStep
-        currentUser = isCurrentUser
-        ;(mockUseCurrentUserContext as jest.Mock).mockImplementation(() => currentUser)
-      })
+  //   describe.each([
+  //     [false, false],
+  //     [false, true],
+  //     [true, true]
+  //   ])('isLastStepが%p、currentUserが%pの場合', (isLastStep, isCurrentUser) => {
+  //     beforeEach(() => {
+  //       props.isLastStep = isLastStep
+  //       currentUser = isCurrentUser
+  //       ;(mockUseCurrentUserContext as jest.Mock).mockImplementation(() => currentUser)
+  //     })
 
-      test('表示されない', () => {
-        const { queryByText } = setUp(props)
-        expect(queryByText('MockedSaveSheetButton')).not.toBeInTheDocument()
-      })
-    })
-  })
+  //     test('表示されない', () => {
+  //       const { queryByText } = setUp(props)
+  //       expect(queryByText('MockedSaveSheetButton')).not.toBeInTheDocument()
+  //     })
+  //   })
+  // })
 
   describe('FormControllerButton', () => {
     describe.each([

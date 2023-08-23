@@ -2,19 +2,10 @@ import { FC } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import { LoadingSpinner } from '../components/atoms'
-import {
-  Error404Page,
-  NewTastingSheetPage,
-  PrivacyPolicyPage,
-  ResetPasswordPage,
-  SignInPage,
-  SignUpPage,
-  TermOfServicePage
-} from '../components/pages'
+import { Error404Page, NewTastingSheetPage, PrivacyPolicyPage, TermOfServicePage } from '../components/pages'
 import AuthErrorPage from '../components/pages/AuthErrorPage'
 import { useAuthErrorContext, useAuthLoadingContext, useRequestingContext } from '../hooks'
 import { ModalProvider } from '../providers'
-import AuthPageWrapper from './AuthPageWrapper'
 import EditWinePageWrapper from './EditWinePageWrapper'
 import NewWinePageWrapper from './NewWinePageWrapper'
 import TastingSheetPageWrapper from './TastingSheetPageWrapper'
@@ -33,9 +24,9 @@ const RouterConfig: FC = () => {
       <ModalProvider>
         <Routes>
           <Route path="/" element={<WelcomePageWrapper />} />
-          <Route path="/signin" element={<AuthPageWrapper page={<SignInPage />} />} />
+          {/* <Route path="/signin" element={<AuthPageWrapper page={<SignInPage />} />} />
           <Route path="/signup" element={<AuthPageWrapper page={<SignUpPage />} />} />
-          <Route path="/reset_password" element={<AuthPageWrapper page={<ResetPasswordPage />} />} />
+          <Route path="/reset_password" element={<AuthPageWrapper page={<ResetPasswordPage />} />} /> */}
           <Route path="/pp" element={<PrivacyPolicyPage />} />
           <Route path="/tos" element={<TermOfServicePage />} />
           <Route path="/tasting_sheets">
