@@ -9,11 +9,8 @@ const StartTastingLink: FC<{
     to="/tasting_sheets/new"
     className={`
       rounded-full
-      bg-transparent
-      border
-      border-sub-red
-      text-sub-red
-      font-semibold
+      bg-theme-red
+      text-white
       bottom-2
       text-lg
       py-2

@@ -1,14 +1,8 @@
 import { FC, memo } from 'react'
 
 import { metaContents } from '../../assets'
-import { SignInLink, SignUpLink, StartTastingLink } from '../atoms'
-import {
-  HeadMeta,
-  TopPageTitle,
-  WelcomePageAboutSection,
-  WelcomePageImagesSection,
-  WelcomePageWithRegistrationSection
-} from '../molecules'
+import { StartTastingLink } from '../atoms'
+import { HeadMeta, TopPageTitle, WelcomePageAboutSection, WelcomePageImagesSection } from '../molecules'
 import { Footer } from '../organisms'
 
 const WelcomePage: FC = memo(() => {
@@ -20,12 +14,10 @@ const WelcomePage: FC = memo(() => {
         <TopPageTitle />
         <WelcomePageAboutSection />
         <WelcomePageImagesSection />
-        <WelcomePageWithRegistrationSection />
-        <div className="flex justify-between mb-6 mx-auto sm:w-96">
-          <SignUpLink />
-          <SignInLink />
+        {/* <WelcomePageWithRegistrationSection /> */}
+        <div className="mt-6">
+          <StartTastingLink text="はじめる" />
         </div>
-        <StartTastingLink text="登録しないではじめる" />
       </div>
       <Footer />
     </HeadMeta>
